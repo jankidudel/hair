@@ -4,7 +4,7 @@ An Angular static site for appearance-focused hair routines, styling, tools, and
 
 ## Setup
 
-Use Node 22+ and run `npm install`. Installation automatically points Git at the repository-local `.githooks` directory. The pre-commit hook checks formatting, linting, and content safety; pre-push runs lint, tests, production builds, and the safety check.
+Use Node 22+ and run `npm install` from the repository root. Installation automatically points Git at the repository-local `.githooks` directory. The pre-commit hook checks formatting, linting, and content safety; pre-push runs lint, tests, production builds, and the safety check. You do not need to change directory: use root `npm run` commands or `make` (for example, `make dev` starts the Angular site).
 
 ## Commands
 
@@ -25,4 +25,4 @@ The conservative safety scanner reports each file and matched term for editorial
 
 Deploy CDK separately after configuring AWS CLI credentials and the target account/region. The stacks create a private S3 site bucket, CloudFront OAC distribution, and API Gateway/Lambda health endpoint. A custom domain, Route 53 record, and ACM certificate are intentionally deferred until the brand domain is selected.
 
-GitHub Actions uses AWS OIDC only. Pull requests verify the project. A push to `main` with frontend changes deploys to the existing dev bucket; the manual production workflow is protected by the `prod` GitHub environment. Configure `AWS_DEPLOY_ROLE_ARN` as an environment secret and `AWS_REGION`, `SITE_BUCKET`, and `CLOUDFRONT_DISTRIBUTION_ID` as environment variables.
+GitHub Actions uses AWS OIDC only. Pull requests verify the project. GitHub Actions deployments are currently disabled until infrastructure is configured. Local CDK deploy commands remain available for deliberate operator use. When ready, configure `AWS_DEPLOY_ROLE_ARN` as an environment secret and `AWS_REGION`, `SITE_BUCKET`, and `CLOUDFRONT_DISTRIBUTION_ID` as environment variables, then re-enable the workflows.

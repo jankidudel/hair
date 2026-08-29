@@ -8,12 +8,12 @@
     "test": "tsx --test test/**/*.test.ts"
   },
   "dependencies": {
-    "@types/aws-lambda": "^8.10.0"
+    "@types/aws-lambda": "8.10.162"
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "eslint": "^9.0.0",
-    "tsx": "^4.20.0",
-    "typescript-eslint": "^8.0.0"
+    "@eslint/js": "9.39.5",
+    "eslint": "9.39.5",
+    "tsx": "4.23.12",
+    "typescript-eslint": "8.68.0"
   }
 }

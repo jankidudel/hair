@@ -1,9 +1,11 @@
 name: Deploy production site
+# Deployment is intentionally disabled until AWS infrastructure is configured.
 on:
   workflow_dispatch:
 permissions: { id-token: write, contents: read }
 jobs:
   deploy:
+    if: ${{ false }} # Disable deployment until AWS infrastructure is configured.
     runs-on: ubuntu-latest
     environment: prod
     steps:

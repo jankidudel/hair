@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "ng serve",
+    "dev": "npm run content:generate && ng serve",
     "build": "npm run content:generate && npm run seo:generate && ng build",
     "lint": "eslint .",
-    "test": "ng test --watch=false",
+    "test": "npm run content:generate && ng test --watch=false",
     "content:generate": "tsx scripts/generate-content.ts",
     "seo:generate": "tsx scripts/generate-seo.ts"
   },

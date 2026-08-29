@@ -23,7 +23,7 @@
     "infra:deploy:prod": "npm run deploy:prod --workspace=infra",
     "precommit": "npm run format:check && npm run lint && npm run content:check",
     "prepush": "npm run lint && npm run test && npm run build && npm run content:check",
-    "prepare": "npm run hooks:install",
+    "prepare": "npm run content:generate --workspace=frontend && npm run hooks:install",
     "hooks:install": "git config core.hooksPath .githooks"
   },
   "devDependencies": {

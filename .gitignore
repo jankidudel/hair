@@ -4,3 +4,4 @@ coverage/
 .angular/
 cdk.out/
 .env
+frontend/src/app/content.generated.ts

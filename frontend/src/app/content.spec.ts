@@ -7,6 +7,7 @@ describe('generated editorial content', () => {
       'cold-water-for-hair',
       'how-often-should-you-wash-your-hair',
       'how-to-choose-a-hair-brush',
+      'markdown-syntax-example',
     ]);
   });
 });

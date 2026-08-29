@@ -1,0 +1,38 @@
+{
+  "name": "hair",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "workspaces": [
+    "frontend",
+    "api",
+    "infra"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "content:check": "tsx scripts/check-content.ts",
+    "infra:build": "npm run build --workspace=infra",
+    "infra:diff:dev": "npm run diff:dev --workspace=infra",
+    "infra:deploy:dev": "npm run deploy:dev --workspace=infra",
+    "infra:diff:prod": "npm run diff:prod --workspace=infra",
+    "infra:deploy:prod": "npm run deploy:prod --workspace=infra",
+    "precommit": "npm run format:check && npm run lint && npm run content:check",
+    "prepush": "npm run lint && npm run test && npm run build && npm run content:check",
+    "prepare": "npm run hooks:install",
+    "hooks:install": "git config core.hooksPath .githooks"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "prettier": "^3.6.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

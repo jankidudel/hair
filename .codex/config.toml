@@ -1,0 +1,8 @@
+model = "gpt-5.6-terra"
+model_provider = "openai"
+
+[model_settings]
+reasoning_effort = "light"
+
+[features]
+memories = true

@@ -1,0 +1,41 @@
+{
+  "name": "@hair/frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ng serve",
+    "build": "npm run content:generate && npm run seo:generate && ng build",
+    "lint": "eslint .",
+    "test": "ng test --watch=false",
+    "content:generate": "tsx scripts/generate-content.ts",
+    "seo:generate": "tsx scripts/generate-seo.ts"
+  },
+  "dependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-server": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "@angular/ssr": "^20.0.0",
+    "gray-matter": "^4.0.3",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "unified": "^11.0.5",
+    "zone.js": "^0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@eslint/js": "^9.0.0",
+    "angular-eslint": "^20.0.0",
+    "eslint": "^9.0.0",
+    "jsdom": "^26.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0"
+  }
+}

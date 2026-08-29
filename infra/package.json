@@ -1,0 +1,29 @@
+{
+  "name": "@hair/infra",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint bin lib test",
+    "test": "tsx --test test/**/*.test.ts",
+    "synth": "npm run build --workspace=@hair/api && cdk synth",
+    "diff:dev": "npm run synth && cdk diff Hair-dev",
+    "deploy:dev": "npm run synth && cdk deploy Hair-dev",
+    "diff:prod": "npm run synth && cdk diff Hair-prod",
+    "deploy:prod": "npm run synth && cdk deploy Hair-prod"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.200.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^24.0.0",
+    "aws-cdk": "^2.200.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

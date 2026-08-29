@@ -1,0 +1,142 @@
+:root {
+  color: #1d2922;
+  background: #fcfcf8;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  color: #245a3d;
+}
+.site-header,
+main,
+footer {
+  max-width: 72rem;
+  margin: auto;
+  padding: 1.25rem 2rem;
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #e3e5dd;
+}
+.brand {
+  font-weight: 800;
+  color: inherit;
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+nav a {
+  text-decoration: none;
+}
+nav .active {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+main {
+  min-height: 70vh;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+footer {
+  border-top: 1px solid #e3e5dd;
+  color: #546056;
+  font-size: 0.9rem;
+}
+section,
+article {
+  max-width: 48rem;
+}
+h1 {
+  font-size: clamp(2.3rem, 6vw, 4.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  margin: 0.3rem 0 1.25rem;
+}
+h2 {
+  line-height: 1.2;
+}
+.hero {
+  padding: 3rem 0;
+}
+.lede {
+  font-size: 1.25rem;
+}
+.eyebrow,
+.dates {
+  color: #647268;
+  font-size: 0.9rem;
+}
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.1rem;
+  background: #245a3d;
+  color: white;
+  border-radius: 0.3rem;
+  text-decoration: none;
+}
+.cards {
+  display: grid;
+  gap: 1rem;
+}
+.card {
+  display: block;
+  border: 1px solid #d9dfd6;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+}
+.card p {
+  color: #245a3d;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.card h2 {
+  margin: 0.3rem 0;
+}
+.disclosure {
+  background: #f1f5ec;
+  padding: 0.75rem;
+  border-left: 3px solid #6a8b5c;
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+}
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.article-body th,
+.article-body td {
+  border: 1px solid #d9dfd6;
+  padding: 0.6rem;
+  text-align: left;
+}
+@media (max-width: 42rem) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .site-header,
+  main,
+  footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  main {
+    padding-top: 2rem;
+  }
+}

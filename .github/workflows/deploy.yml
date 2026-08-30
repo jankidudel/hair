@@ -1,0 +1,44 @@
+name: Deploy
+
+# Deployment is intentionally disabled until AWS infrastructure is configured.
+on:
+  push:
+    branches: [main]
+    paths: ['frontend/**', 'package*.json']
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: GitHub Environment and AWS stage to deploy
+        required: true
+        default: dev
+        type: choice
+        options: [dev, prod]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-${{ inputs.environment || 'dev' }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
+    name: Deploy ${{ inputs.environment || 'dev' }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'dev' }}
+    env:
+      AWS_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run content:check && npm run build --workspace=frontend
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: aws s3 sync frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}" --delete
+      - run: aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" --paths '/*'

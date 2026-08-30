@@ -8,9 +8,7 @@
     "test": "tsx --test test/**/*.test.ts",
     "synth": "npm run build --workspace=@hair/api && cdk synth",
     "diff:dev": "npm run synth && cdk diff Hair-dev",
-    "deploy:dev": "npm run synth && cdk deploy Hair-dev",
-    "diff:prod": "npm run synth && cdk diff Hair-prod",
-    "deploy:prod": "npm run synth && cdk deploy Hair-prod"
+    "diff:prod": "npm run synth && cdk diff Hair-prod"
   },
   "dependencies": {
     "aws-cdk-lib": "2.267.0",

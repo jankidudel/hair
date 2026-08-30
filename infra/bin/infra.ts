@@ -7,6 +7,6 @@ for (const environment of ['dev', 'prod'] as const)
     environment,
     env: {
       account: process.env['CDK_DEFAULT_ACCOUNT'],
-      region: process.env['CDK_DEFAULT_REGION'],
+      region: process.env['CDK_DEFAULT_REGION'] ?? 'us-east-1',
     },
   });

@@ -55,11 +55,6 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - name: Bootstrap CDK (safe to repeat)
-        working-directory: infra
-        run: |
-          ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
-          npx cdk bootstrap "aws://$ACCOUNT_ID/$AWS_REGION"
       - name: Show infrastructure changes
         run: npm run infra:diff:${{ env.STAGE }}
       - name: Deploy infrastructure and API

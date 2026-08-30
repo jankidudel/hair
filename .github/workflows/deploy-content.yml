@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy content
 
 # Deployment is intentionally disabled until AWS infrastructure is configured.
 on:
@@ -19,13 +19,13 @@ permissions:
   id-token: write
 
 concurrency:
-  group: deploy-${{ inputs.environment || 'dev' }}
+  group: deploy-content-${{ inputs.environment || 'dev' }}
   cancel-in-progress: false
 
 jobs:
   deploy:
     if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
-    name: Deploy ${{ inputs.environment || 'dev' }}
+    name: Deploy content to ${{ inputs.environment || 'dev' }}
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment || 'dev' }}
     env:

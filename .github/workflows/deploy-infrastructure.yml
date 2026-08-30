@@ -1,0 +1,52 @@
+name: Deploy infrastructure
+
+# Deployment is intentionally disabled until AWS infrastructure is configured.
+on:
+  push:
+    branches: [main]
+    paths: ['infra/**', 'api/**', 'package.json', 'package-lock.json']
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: GitHub Environment and AWS stage to deploy
+        required: true
+        default: dev
+        type: choice
+        options: [dev, prod]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-infrastructure-${{ inputs.environment || 'dev' }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
+    name: Deploy infrastructure ${{ inputs.environment || 'dev' }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'dev' }}
+    env:
+      AWS_REGION: us-east-1
+      STAGE: ${{ inputs.environment || 'dev' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run lint && npm run test && npm run infra:build
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Bootstrap CDK (safe to repeat)
+        working-directory: infra
+        run: |
+          ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+          npx cdk bootstrap "aws://$ACCOUNT_ID/$AWS_REGION"
+      - name: Show infrastructure changes
+        run: npm run infra:diff:${{ env.STAGE }}
+      - name: Deploy infrastructure and API
+        run: npm run infra:deploy:${{ env.STAGE }}

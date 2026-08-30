@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
+    # if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
     name: Deploy content to ${{ inputs.environment || 'dev' }}
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment || 'dev' }}

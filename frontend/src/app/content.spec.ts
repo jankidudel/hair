@@ -1,13 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import { articles } from './content.generated';
+import { articleRegistry } from './article-registry';
 
 describe('generated editorial content', () => {
   it('has one prerenderable route per article', () => {
-    expect(articles.map((article) => article.slug)).toEqual([
-      'cold-water-for-hair',
-      'how-often-should-you-wash-your-hair',
-      'how-to-choose-a-hair-brush',
-      'markdown-syntax-example',
-    ]);
+    const enabledSlugs = articleRegistry
+      .filter((article) => article.enabled)
+      .map((article) => article.slug);
+    expect(articles.map((article) => article.slug)).toHaveLength(
+      enabledSlugs.length,
+    );
+    expect(new Set(articles.map((article) => article.slug))).toEqual(
+      new Set(enabledSlugs),
+    );
   });
 });

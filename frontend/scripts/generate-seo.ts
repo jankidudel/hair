@@ -1,25 +1,19 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import matter from 'gray-matter';
-import { readdir, readFile } from 'node:fs/promises';
+import { articles } from '../src/app/content.generated.ts';
 
 const root = join(import.meta.dirname, '..');
-const siteUrl = process.env['SITE_URL'] || 'https://example.com';
-const content = join(root, 'content');
+const siteUrl = process.env['SITE_URL'] || 'https://combreport.com';
 const entries = [
   '/',
+  '/hair-care',
   '/guides',
   '/products',
   '/about',
   '/privacy',
   '/affiliate-disclosure',
 ];
-for (const file of (await readdir(content)).filter(
-  (item) => item.endsWith('.md') && item !== 'article-template.md',
-))
-  entries.push(
-    `/guides/${matter(await readFile(join(content, file), 'utf8')).data.slug}`,
-  );
+for (const { slug } of articles) entries.push(`/guides/${slug}`);
 const publicDirectory = join(root, 'public');
 await mkdir(publicDirectory, { recursive: true });
 await writeFile(

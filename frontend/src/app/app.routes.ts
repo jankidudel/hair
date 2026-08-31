@@ -3,6 +3,11 @@ import { ArticlePageComponent } from './article-page.component';
 import { StaticPageComponent } from './static-page.component';
 export const routes: Routes = [
   { path: '', component: StaticPageComponent, data: { page: 'home' } },
+  {
+    path: 'hair-care',
+    component: StaticPageComponent,
+    data: { page: 'hair-care' },
+  },
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
   {
     path: 'products',

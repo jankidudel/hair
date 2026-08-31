@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
-import { articles } from './content.generated';
+import { articleIndexGroups } from './content.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
 @Component({
   imports: [RouterLink],
@@ -19,12 +19,30 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
     @case ('guides') {
       <section>
         <p class="eyebrow">Guides</p>
+        <h1>Hair tools and routine guides</h1>
+        @for (group of articleIndexGroups; track group.id) {
+          <section class="article-group">
+            <h2>{{ group.label }}</h2>
+            <div class="cards">
+              @for (article of group.articles; track article.slug) {
+                <a class="card" [routerLink]="['/guides', article.slug]"
+                  ><h3>{{ article.heading }}</h3>
+                  <span>{{ article.description }}</span></a
+                >
+              }
+            </div>
+          </section>
+        }
+      </section>
+    }
+    @case ('hair-care') {
+      <section>
+        <p class="eyebrow">Hair care</p>
         <h1>Hair care guides</h1>
         <div class="cards">
-          @for (article of articles; track article.slug) {
+          @for (article of hairCareArticles; track article.slug) {
             <a class="card" [routerLink]="['/guides', article.slug]"
-              ><p>{{ article.category }}</p>
-              <h2>{{ article.title }}</h2>
+              ><h2>{{ article.heading }}</h2>
               <span>{{ article.description }}</span></a
             >
           }
@@ -43,7 +61,7 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
     }
     @case ('about') {
       <section>
-        <h1>About Everyday Hair</h1>
+        <h1>About Comb Report</h1>
         <p>
           We make appearance-focused hair care easier to navigate with useful,
           plainly written guides.
@@ -70,31 +88,39 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
 export class StaticPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
-  readonly articles = articles;
+  readonly articleIndexGroups = articleIndexGroups;
+  readonly hairCareArticles =
+    articleIndexGroups.find((group) => group.id === 'hair-care')?.articles ??
+    [];
   page = 'home';
   ngOnInit(): void {
     this.page = this.route.snapshot.data['page'] as string;
     const data: Record<string, [string, string, string]> = {
       home: [
-        'Everyday Hair | Practical Hair Care Guides',
+        'Comb Report | Honest Hair Tool and Routine Advice',
         'Appearance-focused hair routines, guides, and product comparisons.',
         '/',
       ],
       guides: [
-        'Hair Care Guides | Everyday Hair',
-        'Practical hair-care guides for everyday routines.',
+        'Hair Tools and Routine Guides | Comb Report',
+        'Honest hair-tool comparisons and practical routine advice.',
         '/guides',
       ],
+      'hair-care': [
+        'Hair Care Guides | Comb Report',
+        'Practical hair care guides for everyday styling routines.',
+        '/hair-care',
+      ],
       products: [
-        'Products | Everyday Hair',
+        'Products | Comb Report',
         'Hair tools and product comparisons.',
         '/products',
       ],
-      about: ['About | Everyday Hair', 'About Everyday Hair.', '/about'],
-      privacy: ['Privacy | Everyday Hair', 'Privacy information.', '/privacy'],
+      about: ['About | Comb Report', 'About Comb Report.', '/about'],
+      privacy: ['Privacy | Comb Report', 'Privacy information.', '/privacy'],
       affiliate: [
-        'Affiliate Disclosure | Everyday Hair',
-        'How affiliate links support Everyday Hair.',
+        'Affiliate Disclosure | Comb Report',
+        'How affiliate links support Comb Report.',
         '/affiliate-disclosure',
       ],
     };
@@ -107,7 +133,7 @@ export class StaticPageComponent implements OnInit {
         ? {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Everyday Hair',
+            name: 'Comb Report',
             url: SITE_URL,
           }
         : undefined,

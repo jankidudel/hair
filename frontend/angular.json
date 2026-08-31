@@ -25,6 +25,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "port": 4202
+          },
           "configurations": {
             "development": { "buildTarget": "hair-frontend:build:development" },
             "production": { "buildTarget": "hair-frontend:build:production" }

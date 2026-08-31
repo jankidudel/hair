@@ -7,16 +7,27 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
   template: `@if (article) {
     <article>
       <a routerLink="/guides">← All guides</a>
-      <p class="eyebrow">{{ article.category }}</p>
-      <h1>{{ article.title }}</h1>
+      <p class="eyebrow">{{ article.eyebrow }}</p>
+      <h1>{{ article.heading }}</h1>
       <p class="lede">{{ article.description }}</p>
-      <p class="dates">
-        Published {{ article.published }} · Updated {{ article.updated }}
-      </p>
+      @if (article.published && article.updated) {
+        <p class="dates">
+          Published {{ article.published }} · Updated {{ article.updated }}
+        </p>
+      }
       @if (article.affiliateDisclosure) {
         <p class="disclosure">This article may contain affiliate links.</p>
       }
       <section class="article-body" [innerHTML]="article.html"></section>
+      @if (article.faq.length > 0) {
+        <section class="article-faq">
+          <h2>FAQ</h2>
+          @for (faq of article.faq; track faq.question) {
+            <h3>{{ faq.question }}</h3>
+            <p>{{ faq.answer }}</p>
+          }
+        </section>
+      }
     </article>
   }`,
 })

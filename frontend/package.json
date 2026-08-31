@@ -19,6 +19,7 @@
     "@angular/router": "20.3.30",
     "@angular/ssr": "20.3.35",
     "gray-matter": "4.0.3",
+    "rehype-parse": "9.0.1",
     "rehype-sanitize": "6.0.0",
     "rehype-stringify": "10.0.1",
     "remark-gfm": "4.0.1",

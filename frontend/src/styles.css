@@ -4,6 +4,10 @@
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   line-height: 1.6;
 }
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
 * {
   box-sizing: border-box;
 }
@@ -38,11 +42,19 @@ nav {
   gap: 0.9rem;
 }
 nav a {
+  position: relative;
+  display: inline-flex;
   text-decoration: none;
+  white-space: nowrap;
 }
-nav .active {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+nav .active::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 2px;
+  background: currentcolor;
+  content: '';
 }
 main {
   min-height: 70vh;
@@ -53,6 +65,15 @@ footer {
   border-top: 1px solid #e3e5dd;
   color: #546056;
   font-size: 0.9rem;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.footer-row p {
+  margin: 0;
 }
 section,
 article {
@@ -90,6 +111,13 @@ h2 {
   display: grid;
   gap: 1rem;
 }
+.article-group {
+  max-width: none;
+  margin-top: 3rem;
+}
+.article-group h2 {
+  margin-bottom: 1rem;
+}
 .card {
   display: block;
   border: 1px solid #d9dfd6;
@@ -105,6 +133,9 @@ h2 {
 }
 .card h2 {
   margin: 0.3rem 0;
+}
+.card h3 {
+  margin: 0 0 0.35rem;
 }
 .disclosure {
   background: #f1f5ec;
@@ -125,6 +156,9 @@ h2 {
   padding: 0.6rem;
   text-align: left;
 }
+.article-faq {
+  margin-top: 2.5rem;
+}
 @media (max-width: 42rem) {
   .site-header {
     align-items: flex-start;
@@ -138,5 +172,9 @@ h2 {
   }
   main {
     padding-top: 2rem;
+  }
+  .footer-row {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

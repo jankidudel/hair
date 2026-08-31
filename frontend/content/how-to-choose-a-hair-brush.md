@@ -8,14 +8,28 @@ category: 'Guides'
 affiliateDisclosure: true
 ---
 
-# How to Choose a Hair Brush
-
-The best brush is the one that suits the finish you want and feels comfortable to use. Start with the brush shape, then consider bristle spacing and handle weight.
-
-| Brush type      | Everyday use                   |
-| --------------- | ------------------------------ |
-| Paddle brush    | Smoothing longer lengths       |
-| Round brush     | Adding shape while blow-drying |
-| Wide-tooth comb | Working through damp lengths   |
-
-Choose a comfortable handle and clean your brush regularly so it stays pleasant to use.
+<h1>How to Choose a Hair Brush</h1>
+<p>The best brush is the one that suits the finish you want and feels comfortable to use. Start with the brush shape, then consider bristle spacing and handle weight.</p>
+<table>
+<thead>
+<tr>
+<th>Brush type</th>
+<th>Everyday use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paddle brush</td>
+<td>Smoothing longer lengths</td>
+</tr>
+<tr>
+<td>Round brush</td>
+<td>Adding shape while blow-drying</td>
+</tr>
+<tr>
+<td>Wide-tooth comb</td>
+<td>Working through damp lengths</td>
+</tr>
+</tbody>
+</table>
+<p>Choose a comfortable handle and clean your brush regularly so it stays pleasant to use.</p>

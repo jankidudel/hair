@@ -1,0 +1,29 @@
+---
+title: 'How to Use a Hot-Air Brush | Comb Report'
+description: 'Learn a simple hot-air brush routine: prepare damp hair, choose a sensible heat setting, work in sections and finish without overworking the hair.'
+slug: 'how-to-use-hot-air-brush'
+eyebrow: 'Styling guide'
+heading: 'How to Use a Hot-Air Brush'
+faq:
+  - question: Should hair be wet before using a hot-air brush?
+    answer: Follow the tool instructions. Many models are intended for towel-dried, damp hair rather than soaking-wet hair.
+  - question: How small should my sections be?
+    answer: Use sections narrow enough that the brush can grip and move through them comfortably without pulling.
+  - question: Why does my hot-air brush snag?
+    answer: Sections may be too large, hair may be too wet, or the barrel may not suit your length. Slow down and reduce the section size.
+---
+
+<p>A hot-air brush is easiest to use when you approach it as a styling tool, not a faster version of a conventional dryer. Preparation and sectioning do most of the work.</p>
+<h2>1. Start damp, not dripping</h2>
+<p>Blot excess water with a microfibre towel. Follow the instructions for your heat-protection product, then allow hair to become towel-dried and manageable. If your hair is very wet or thick, pre-dry it with a conventional dryer first.</p>
+<h2>2. Choose a sensible setting</h2>
+<p>Start with moderate heat and airflow. You can increase them if needed, but beginning at maximum makes it harder to judge what the tool is doing. Use the cool setting at the end if your model has one.</p>
+<h2>3. Work in sections</h2>
+<p>Clip away most of your hair and begin underneath. Take a section that is no wider than the brush can comfortably control. Start near the roots, then guide the brush through the lengths with steady movement. Do not hold one area under hot air for too long.</p>
+<h2>4. Shape deliberately</h2>
+<p>For a smoother finish, direct the brush down through the lengths. For more root lift, raise the section slightly at the roots before moving along it. Use smaller sections around the face and on shorter layers.</p>
+<h2>5. Finish and clean the tool</h2>
+<p>Let the tool cool before removing hair from the brush or storing it. Clear loose hair from the barrel after use and follow the manufacturer cleaning guidance.</p>
+<p>Read <a href="/guides/best-hot-air-brushes">Best Hot-Air Brushes</a> to choose a suitable model, and <a href="/guides/hot-air-brush-vs-hair-dryer">Hot-Air Brush vs Hair Dryer</a> if you are still deciding which tool type makes sense.</p>
+<h2>The bottom line</h2>
+<p>Use manageable sections, moderate settings and steady movement. A calmer technique usually works better than turning everything to maximum.</p>

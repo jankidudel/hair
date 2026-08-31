@@ -1,16 +1,23 @@
 ---
-title: 'A clear, useful title'
-description: 'A concise description for search results.'
-slug: 'your-article-slug'
-published: '2026-08-29'
-updated: '2026-08-29'
-category: 'Guides'
-affiliateDisclosure: false
+title: 'A clear, useful title | Comb Report'
+description: 'A concise, accurate meta description of roughly 145–160 characters.'
+slug: article-slug
+eyebrow: Short category label
+heading: On-page article heading
+faq:
+  - question: A useful question?
+    answer: A concise, accurate answer.
+  - question: Another useful question?
+    answer: A concise, accurate answer.
+  - question: A final useful question?
+    answer: A concise, accurate answer.
 ---
 
-# A clear, useful title
+<p>Write ordinary grooming and appearance advice here. Use the approved HTML elements for links, lists, headings, tables and, where the project has approved assets, images.</p>
 
-Write ordinary grooming and appearance advice here. Use standard Markdown for [links](https://example.com), images (`![Alt text](/image.jpg)`), lists, headings, and GFM tables.
+<h2>A useful section</h2>
+
+<p>Use <a href="/guides">normal HTML links</a> and keep the page H1 in front matter rather than the article body.</p>
 
 | Tool            | Best for          |
 | --------------- | ----------------- |

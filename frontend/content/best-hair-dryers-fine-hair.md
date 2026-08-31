@@ -29,4 +29,4 @@ faq:
 <h2>Before you buy</h2>
 <p>Ignore dramatic claims and compare the practical details: weight, cable length, attachment quality, heat settings and return policy. Product versions change, so check the current manufacturer specification before ordering. For a broader buying checklist, read <a href="/guides/how-to-choose-hair-dryer">How to Choose a Hair Dryer</a>.</p>
 <h2>The bottom line</h2>
-<p>The best hair dryer for fine hair is controllable, not merely powerful. Buy the model that gives you moderate heat, usable airflow and an attachment that suits how you style.</p>
+<p>The best hair dryer for fine hair is controllable, not merely powerful. Buy the model that gives you moderate heat, usable airflow and an attachment that suits your day-to-day styling routine.</p>

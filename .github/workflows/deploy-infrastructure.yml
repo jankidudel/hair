@@ -4,7 +4,9 @@ name: Deploy infrastructure
 on:
   push:
     branches: [main]
-    paths: ['infra/**', 'api/**', 'package.json', 'package-lock.json']
+    # The root lockfile is shared by all npm workspaces. It must not make a
+    # frontend-only dependency update deploy CDK or the API.
+    paths: ['infra/**', 'api/**']
   workflow_dispatch:
     inputs:
       environment:

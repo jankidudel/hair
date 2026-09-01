@@ -8,7 +8,7 @@ Use Node 22+ and run `npm install` from the repository root. Installation automa
 
 ## Commands
 
-`npm run dev`, `npm run build`, `npm run lint`, `npm run test`, `npm run format`, and `npm run content:check` operate across the project. Infrastructure commands are `npm run infra:build`, `npm run infra:diff:dev`, and `npm run infra:diff:prod`. Deployments run through GitHub Actions.
+`npm run dev`, `npm run build`, `npm run lint`, `npm run test`, `npm run format`, and `npm run content:check` operate across the project. Run `npm run check:internal-links` after a frontend build to validate every generated same-site link, anchor, and canonical URL. Infrastructure commands are `npm run infra:build`, `npm run infra:diff:dev`, and `npm run infra:diff:prod`. Deployments run through GitHub Actions.
 
 ## Structure
 

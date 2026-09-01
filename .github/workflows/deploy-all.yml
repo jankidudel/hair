@@ -50,6 +50,8 @@ jobs:
           cat cdk-outputs.json
       - name: Build frontend and articles
         run: npm run build --workspace=frontend
+      - name: Check generated internal links
+        run: npm run check:internal-links
       - name: Upload frontend
         run: aws s3 sync frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}" --delete
       - name: Invalidate CloudFront

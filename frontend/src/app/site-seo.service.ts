@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
-export const SITE_URL = 'https://combreport.com';
+export const SITE_URL = 'https://www.combreport.com';
 @Injectable({ providedIn: 'root' })
 export class SiteSeoService {
   private readonly document = inject(DOCUMENT);

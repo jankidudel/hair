@@ -1,11 +1,20 @@
 import * as cdk from 'aws-cdk-lib';
 import { Duration, RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as wafv2 from 'aws-cdk-lib/aws-wafv2';
 import { Construct } from 'constructs';
+
+const productionApexDomain = 'combreport.com';
+const productionCanonicalDomain = `www.${productionApexDomain}`;
+const cloudFrontIpRateLimit = 3_000;
+const cloudFrontIpRateLimitWindowSeconds = 300;
 export interface HairStackProps extends StackProps {
   environment: 'dev' | 'prod';
 }
@@ -22,12 +31,67 @@ export class HairStack extends Stack {
       removalPolicy: production ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
       autoDeleteObjects: !production,
     });
+    const hostedZone = production
+      ? new route53.PublicHostedZone(this, 'ProductionHostedZone', {
+          zoneName: productionApexDomain,
+        })
+      : undefined;
+    const certificate = hostedZone
+      ? new acm.Certificate(this, 'ProductionCertificate', {
+          domainName: productionCanonicalDomain,
+          subjectAlternativeNames: [productionApexDomain],
+          validation: acm.CertificateValidation.fromDns(hostedZone),
+        })
+      : undefined;
+    const productionWebAcl = production
+      ? new wafv2.CfnWebACL(this, 'ProductionWebAcl', {
+          name: 'hair-prod-cloudfront',
+          scope: 'CLOUDFRONT',
+          defaultAction: { allow: {} },
+          visibilityConfig: {
+            cloudWatchMetricsEnabled: true,
+            metricName: 'hairProdCloudFrontWebAcl',
+            sampledRequestsEnabled: true,
+          },
+          rules: [
+            {
+              name: 'RateLimitByIp',
+              priority: 0,
+              action: { block: {} },
+              statement: {
+                rateBasedStatement: {
+                  aggregateKeyType: 'IP',
+                  limit: cloudFrontIpRateLimit,
+                  evaluationWindowSec: cloudFrontIpRateLimitWindowSeconds,
+                },
+              },
+              visibilityConfig: {
+                cloudWatchMetricsEnabled: true,
+                metricName: 'hairProdCloudFrontRateLimitByIp',
+                sampledRequestsEnabled: true,
+              },
+            },
+          ],
+        })
+      : undefined;
+    productionWebAcl?.applyRemovalPolicy(RemovalPolicy.RETAIN);
     const routeRewrite = new cloudfront.Function(
       this,
       'PrerenderRouteRewrite',
       {
         code: cloudfront.FunctionCode.fromInline(`function handler(event) {
   var request = event.request;
+  if (request.headers.host.value === '${productionApexDomain}') {
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: {
+        location: {
+          value: 'https://${productionCanonicalDomain}' + request.uri
+        }
+      }
+    };
+  }
   if (request.uri.endsWith('/')) request.uri += 'index.html';
   else if (!request.uri.includes('.')) request.uri += '/index.html';
   return request;
@@ -47,8 +111,36 @@ export class HairStack extends Stack {
           },
         ],
       },
+      certificate,
+      domainNames: certificate
+        ? [productionCanonicalDomain, productionApexDomain]
+        : undefined,
+      webAclId: productionWebAcl?.attrArn,
       defaultRootObject: 'index.html',
     });
+    if (hostedZone) {
+      const target = route53.RecordTarget.fromAlias(
+        new route53Targets.CloudFrontTarget(distribution),
+      );
+      new route53.ARecord(this, 'ProductionApexAliasRecord', {
+        zone: hostedZone,
+        target,
+      });
+      new route53.AaaaRecord(this, 'ProductionApexAliasIpv6Record', {
+        zone: hostedZone,
+        target,
+      });
+      new route53.ARecord(this, 'ProductionCanonicalAliasRecord', {
+        zone: hostedZone,
+        recordName: 'www',
+        target,
+      });
+      new route53.AaaaRecord(this, 'ProductionCanonicalAliasIpv6Record', {
+        zone: hostedZone,
+        recordName: 'www',
+        target,
+      });
+    }
     // `npm run build --workspace=api` creates api/dist before CDK deployment.
     const health = new lambda.Function(this, 'HealthFunction', {
       runtime: lambda.Runtime.NODEJS_22_X,
@@ -68,5 +160,13 @@ export class HairStack extends Stack {
       value: distribution.distributionId,
     });
     new cdk.CfnOutput(this, 'HealthUrl', { value: `${api.url}health` });
+    if (hostedZone) {
+      new cdk.CfnOutput(this, 'ProductionHostedZoneId', {
+        value: hostedZone.hostedZoneId,
+      });
+      new cdk.CfnOutput(this, 'ProductionHostedZoneNameServers', {
+        value: cdk.Fn.join(', ', hostedZone.hostedZoneNameServers!),
+      });
+    }
   }
 }

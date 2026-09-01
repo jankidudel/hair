@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { articles } from '../src/app/content.generated.ts';
 
 const root = join(import.meta.dirname, '..');
-const siteUrl = process.env['SITE_URL'] || 'https://combreport.com';
+const siteUrl = process.env['SITE_URL'] || 'https://www.combreport.com';
 const entries = [
   '/',
   '/hair-care',

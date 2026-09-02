@@ -17,6 +17,7 @@ const cloudFrontIpRateLimit = 3_000;
 const cloudFrontIpRateLimitWindowSeconds = 300;
 export interface HairStackProps extends StackProps {
   environment: 'dev' | 'prod';
+  googleSiteVerification?: string;
 }
 export class HairStack extends Stack {
   constructor(scope: Construct, id: string, props: HairStackProps) {
@@ -140,6 +141,12 @@ export class HairStack extends Stack {
         recordName: 'www',
         target,
       });
+      if (props.googleSiteVerification) {
+        new route53.TxtRecord(this, 'GoogleSiteVerificationRecord', {
+          zone: hostedZone,
+          values: [`google-site-verification=${props.googleSiteVerification}`],
+        });
+      }
     }
     // `npm run build --workspace=api` creates api/dist before CDK deployment.
     const health = new lambda.Function(this, 'HealthFunction', {

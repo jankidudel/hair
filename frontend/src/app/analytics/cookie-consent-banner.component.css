@@ -1,0 +1,55 @@
+.consent-banner {
+  position: fixed;
+  z-index: 10;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  max-width: 54rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin: auto;
+  border: 1px solid #d9dfd6;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #fcfcf8;
+  box-shadow: 0 0.5rem 2rem rgb(29 41 34 / 18%);
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+.consent-banner p {
+  margin-top: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button {
+  border: 1px solid #245a3d;
+  border-radius: 0.3rem;
+  padding: 0.55rem 0.75rem;
+  color: #245a3d;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  color: #fff;
+  background: #245a3d;
+}
+
+@media (max-width: 42rem) {
+  .consent-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

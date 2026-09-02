@@ -5,18 +5,24 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
 @Component({
   imports: [RouterLink],
   template: `@if (article) {
-    <article>
-      <a routerLink="/guides">← All guides</a>
-      <p class="eyebrow">{{ article.eyebrow }}</p>
-      <h1>{{ article.heading }}</h1>
-      <p class="lede">{{ article.description }}</p>
-      @if (article.published && article.updated) {
-        <p class="dates">
-          Published {{ article.published }} · Updated {{ article.updated }}
-        </p>
-      }
+    <article class="article-page">
+      <header class="article-header">
+        <a class="back-link" routerLink="/guides">← All guides</a>
+        <p class="eyebrow">{{ article.category }}</p>
+        <h1>{{ article.heading }}</h1>
+        <p class="lede">{{ article.description }}</p>
+        @if (article.published && article.updated) {
+          <p class="dates">
+            Published {{ article.published }} · Updated {{ article.updated }}
+          </p>
+        }
+      </header>
       @if (article.affiliateDisclosure) {
-        <p class="disclosure">This article may contain affiliate links.</p>
+        <aside class="disclosure">
+          This article may contain affiliate links.
+          <a routerLink="/affiliate-disclosure">How this supports Comb Report</a
+          >.
+        </aside>
       }
       <section class="article-body" [innerHTML]="article.html"></section>
       @if (article.faq.length > 0) {

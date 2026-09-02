@@ -15,7 +15,10 @@ test('creates private static hosting and a health API', () => {
 
 test('adds the production domain and required WAF protection', () => {
   const app = new cdk.App();
-  const stack = new HairStack(app, 'Test', { environment: 'prod' });
+  const stack = new HairStack(app, 'Test', {
+    environment: 'prod',
+    googleSiteVerification: 'test-verification-token',
+  });
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::Route53::HostedZone', 1);
   template.hasResourceProperties('AWS::CertificateManager::Certificate', {
@@ -34,5 +37,9 @@ test('adds the production domain and required WAF protection', () => {
     Name: 'hair-prod-cloudfront',
     Scope: 'CLOUDFRONT',
   });
-  template.resourceCountIs('AWS::Route53::RecordSet', 4);
+  template.resourceCountIs('AWS::Route53::RecordSet', 5);
+  template.hasResourceProperties('AWS::Route53::RecordSet', {
+    Type: 'TXT',
+    ResourceRecords: ['"google-site-verification=test-verification-token"'],
+  });
 });

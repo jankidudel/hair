@@ -29,11 +29,17 @@ jobs:
       AWS_REGION: us-east-1
       CDK_DEFAULT_REGION: us-east-1
       STAGE: ${{ inputs.environment }}
+      GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with: { node-version: 24, cache: npm }
       - run: npm ci
+      - name: Verify Google site verification configuration
+        if: ${{ env.STAGE == 'prod' && env.GOOGLE_SITE_VERIFICATION == '' }}
+        run: |
+          echo "::error::GOOGLE_SITE_VERIFICATION is not available in the prod GitHub Environment."
+          exit 1
       - run: npm run lint && npm run test && npm run content:check && npm run infra:build
       - uses: aws-actions/configure-aws-credentials@v6
         with:

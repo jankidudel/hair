@@ -21,5 +21,6 @@ faq:
 <h2>Brush or comb?</h2>
 <p>A wide-tooth comb can be a good alternative where you want a simpler tool with more open spacing. A detangling brush can feel faster and more comfortable for some routines. Read <a href="/guides/wide-tooth-comb-vs-detangling-brush">Wide-Tooth Comb vs Detangling Brush</a> for the practical differences.</p>
 <p>If your hair has a specific need, see <a href="/guides/best-brushes-thick-hair">Best Hair Brushes for Thick Hair</a>, <a href="/guides/best-brushes-curly-hair">Curly Hair</a> or <a href="/guides/best-brushes-fine-hair">Fine Hair</a>.</p>
+<p>For a quick starting point by length, texture and styling goal, try the <a href="/hair-brush-finder">Hair Brush Finder</a>.</p>
 <h2>The bottom line</h2>
 <p>The best detangling brush is one that moves through your hair with less pulling. Prioritise bristle flexibility, comfort and whether it is designed for your preferred wet-or-dry routine.</p>

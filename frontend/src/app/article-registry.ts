@@ -142,6 +142,36 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
   },
   {
+    slug: 'best-hair-brush-for-short-hair',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 80,
+    enabled: true,
+  },
+  {
+    slug: 'best-hair-brush-for-thick-hair',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 90,
+    enabled: true,
+  },
+  {
+    slug: 'best-hair-brush-for-curly-hair',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 100,
+    enabled: true,
+  },
+  {
+    slug: 'boar-bristle-vs-nylon-brush',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 110,
+    enabled: true,
+  },
+  {
+    slug: 'hair-brush-vs-comb',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 120,
+    enabled: true,
+  },
+  {
     slug: 'best-heat-protectants',
     group: ArticleGroupId.HairCare,
     order: 10,

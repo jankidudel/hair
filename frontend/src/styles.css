@@ -433,6 +433,178 @@ h3 {
   margin-top: 2rem;
   font-size: 1.35rem;
 }
+.finder-hero {
+  max-width: 47rem;
+  margin-inline: auto;
+  text-align: center;
+}
+.finder-hero h1 {
+  max-width: none;
+}
+.finder-hero .lede {
+  margin-inline: auto;
+}
+.finder-time {
+  color: var(--green);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+.finder-time span {
+  color: var(--terracotta);
+  font-size: 1.15rem;
+}
+.finder-card {
+  width: min(100%, 43rem);
+  min-height: 31rem;
+  margin: 3rem auto 0;
+  padding: clamp(1.4rem, 4vw, 2.75rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 1.1rem 2.6rem rgba(29, 41, 34, 0.06);
+}
+.finder-progress {
+  display: grid;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.progress-track {
+  height: 0.35rem;
+  overflow: hidden;
+  background: #e9e2d6;
+}
+.progress-track span {
+  display: block;
+  height: 100%;
+  background: var(--terracotta);
+  transition: width 180ms ease;
+}
+.finder-question {
+  padding-block: 2.4rem 1.5rem;
+}
+.brush-icon {
+  display: block;
+  width: 3.3rem;
+  margin-bottom: 1.35rem;
+  fill: none;
+  stroke: var(--terracotta);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+.finder-question h2,
+.finder-result h2 {
+  max-width: 17ch;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+}
+.finder-options {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+.finder-option {
+  display: grid;
+  gap: 0.15rem;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+.finder-option:hover,
+.finder-option[aria-checked='true'] {
+  border-color: var(--green);
+  background: #e9f0e9;
+  transform: translateY(-1px);
+}
+.finder-option:focus-visible,
+.finder-back:focus-visible,
+.finder-restart:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.finder-option span {
+  font-weight: 750;
+}
+.finder-option small {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.finder-back,
+.finder-restart {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.finder-result {
+  padding-top: 0.4rem;
+}
+.finder-rationale {
+  max-width: 42rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+.result-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.result-sections section {
+  padding: 1.3rem;
+  background: var(--paper);
+}
+.result-sections h3,
+.buying-notes h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+.result-sections p,
+.result-sections ul,
+.buying-notes ul {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.result-sections li + li,
+.buying-notes li + li {
+  margin-top: 0.35rem;
+}
+.finder-avoid {
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--terracotta);
+  background: #eee5d8;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.buying-notes {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.finder-restart {
+  display: block;
+  margin-top: 1.2rem;
+}
 @media (max-width: 48rem) {
   .site-header,
   .site-main,
@@ -461,7 +633,24 @@ h3 {
     gap: 2.5rem;
   }
   .featured-guide {
-    min-height: 27rem;
+    display: block;
+    min-height: 0;
+    padding: 0 0 1.5rem;
+  }
+  .featured-art {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .featured-art svg {
+    display: block;
+  }
+  .featured-guide > :not(.featured-art) {
+    margin-inline: 1.5rem;
+  }
+  .featured-guide > .text-link {
+    display: inline-block;
   }
   .topic-links a + a {
     padding-left: 0;
@@ -475,6 +664,9 @@ h3 {
   .section-heading-row {
     align-items: flex-start;
     flex-direction: column;
+  }
+  .result-sections {
+    grid-template-columns: 1fr;
   }
 }
 @media (prefers-reduced-motion: reduce) {

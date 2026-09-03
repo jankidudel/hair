@@ -23,5 +23,6 @@ faq:
 <h2>Care matters</h2>
 <p>Remove loose hair regularly and follow the manufacturer cleaning instructions. Brush materials and cushioning can be damaged by soaking, so do not assume every brush can be cleaned in the same way.</p>
 <p>Read <a href="/guides/how-to-choose-hair-brush">How to Choose the Right Hair Brush</a> for a broader framework and <a href="/guides/best-detangling-brushes">Best Detangling Brushes</a> for a more practical everyday category.</p>
+<p>Not sure which direction fits your own routine? The <a href="/hair-brush-finder">Hair Brush Finder</a> offers a quick, practical starting point.</p>
 <h2>The bottom line</h2>
 <p>Think of a boar-bristle brush as a finishing or smoothing tool, not a miracle answer to every hair routine.</p>

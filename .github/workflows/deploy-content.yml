@@ -35,7 +35,12 @@ jobs:
       - uses: actions/setup-node@v6
         with: { node-version: 24, cache: npm }
       - run: npm ci
-      - run: npm run content:check && npm run build --workspace=frontend && npm run check:internal-links
+      - run: npm run content:check
+      - run: npm run build:deployment-development --workspace=frontend
+        if: ${{ (inputs.environment || 'dev') == 'dev' }}
+      - run: npm run build --workspace=frontend
+        if: ${{ (inputs.environment || 'dev') == 'prod' }}
+      - run: npm run check:internal-links
       - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}

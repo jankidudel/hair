@@ -46,6 +46,11 @@ export class AnalyticsService {
       this.consent.analyticsAllowed() ? this.enable() : this.disable(),
     );
   }
+  track(eventName: string, parameters?: Record<string, string | number>): void {
+    if (!this.enabled || !this.initialised || !this.consent.analyticsAllowed())
+      return;
+    this.getWindow().gtag?.('event', eventName, parameters);
+  }
   private enable(): void {
     if (!this.enabled) return;
     this.setMeasurementDisabled(false);

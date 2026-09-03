@@ -33,6 +33,7 @@ import { CookieConsentBannerComponent } from './analytics/cookie-consent-banner.
           [routerLinkActiveOptions]="{ exact: true }"
           >Home</a
         ><a routerLink="/hair-care" routerLinkActive="active">Hair Care</a
+        ><a routerLink="/hair-brush-finder" routerLinkActive="active">Tools</a
         ><a routerLink="/products" routerLinkActive="active">Products</a
         ><a routerLink="/guides" routerLinkActive="active">Guides</a
         ><a routerLink="/about" routerLinkActive="active">About</a>

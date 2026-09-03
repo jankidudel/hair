@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "npm run content:generate && ng serve",
     "build": "npm run content:generate && npm run seo:generate && ng build",
+    "build:deployment-development": "npm run content:generate && npm run seo:generate:development && ng build --configuration deployment-development",
     "lint": "eslint .",
     "test": "npm run content:generate && ng test --watch=false",
     "content:generate": "tsx scripts/generate-content.ts",
-    "seo:generate": "tsx scripts/generate-seo.ts"
+    "seo:generate": "tsx scripts/generate-seo.ts production",
+    "seo:generate:development": "tsx scripts/generate-seo.ts development"
   },
   "dependencies": {
     "@angular/common": "20.3.30",

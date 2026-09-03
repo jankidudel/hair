@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ArticlePageComponent } from './article-page.component';
 import { StaticPageComponent } from './static-page.component';
+import { HairBrushFinderComponent } from './hair-brush-finder.component';
 export const routes: Routes = [
   { path: '', component: StaticPageComponent, data: { page: 'home' } },
   {
@@ -9,6 +10,7 @@ export const routes: Routes = [
     data: { page: 'hair-care' },
   },
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
+  { path: 'hair-brush-finder', component: HairBrushFinderComponent },
   {
     path: 'products',
     component: StaticPageComponent,

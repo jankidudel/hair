@@ -10,5 +10,15 @@ if [ "$before_format" != "$after_format" ]; then
   exit 1
 fi
 
+if ! git diff --cached --quiet -- frontend/content frontend/src/app/article-registry.ts; then
+  npm run content:generate --workspace=frontend
+  npm run seo:generate --workspace=frontend
+
+  if ! git diff --quiet -- frontend/public/sitemap.xml frontend/public/robots.txt; then
+    echo "Generated SEO assets changed. Review and stage frontend/public/sitemap.xml (and robots.txt if changed), then commit again."
+    exit 1
+  fi
+fi
+
 echo "Running pre-commit checks..."
 npm run precommit

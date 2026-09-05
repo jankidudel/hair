@@ -18,7 +18,7 @@ const prohibitedTerms = [
 ];
 const matcher = new RegExp(`\\b(?:${prohibitedTerms.join('|')})\\b`, 'gi');
 const files = (await readdir(contentDirectory)).filter((file) =>
-  file.endsWith('.md'),
+  file.endsWith('.html'),
 );
 const failures: string[] = [];
 for (const file of files) {
@@ -37,5 +37,5 @@ if (failures.length > 0) {
   process.exit(1);
 }
 console.log(
-  `Content safety check passed (${files.length} Markdown files checked).`,
+  `Content safety check passed (${files.length} HTML files checked).`,
 );

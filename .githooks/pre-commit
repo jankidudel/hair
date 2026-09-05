@@ -1,5 +1,14 @@
 #!/bin/sh
 set -eu
 
+before_format=$(git diff --binary | git hash-object --stdin)
+npm run format
+after_format=$(git diff --binary | git hash-object --stdin)
+
+if [ "$before_format" != "$after_format" ]; then
+  echo "Formatting was applied. Review and stage the changes, then commit again."
+  exit 1
+fi
+
 echo "Running pre-commit checks..."
 npm run precommit

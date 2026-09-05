@@ -11,9 +11,10 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
         <p class="eyebrow">{{ article.category }}</p>
         <h1>{{ article.heading }}</h1>
         <p class="lede">{{ article.description }}</p>
-        @if (article.published && article.updated) {
+        @if (article.publishDate && article.updatedDate) {
           <p class="dates">
-            Published {{ article.published }} · Updated {{ article.updated }}
+            Published {{ article.publishDate }} · Updated
+            {{ article.updatedDate }}
           </p>
         }
       </header>
@@ -54,8 +55,8 @@ export class ArticlePageComponent implements OnInit {
           '@type': 'Article',
           headline: this.article.title,
           description: this.article.description,
-          datePublished: this.article.published,
-          dateModified: this.article.updated,
+          datePublished: this.article.publishDate,
+          dateModified: this.article.updatedDate,
           mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
         },
       );

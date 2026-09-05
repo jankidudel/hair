@@ -11,6 +11,5 @@ jobs:
       - run: npm run format:check
       - run: npm run lint
       - run: npm run test
-      - run: npm run build
-      - run: npm run check:internal-links
+      - run: npm run check:seo
       - run: npm run content:check

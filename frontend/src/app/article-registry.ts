@@ -15,7 +15,24 @@ export interface ArticleRegistryEntry {
   readonly group: ArticleGroupId;
   readonly order: number;
   readonly enabled: boolean;
+  readonly publishDate: string;
 }
+
+type ArticleRegistryDraft = Omit<ArticleRegistryEntry, 'publishDate'>;
+
+const establishedPublishDate = '2026-08-31';
+const scheduledPublishDates: Readonly<Record<string, string>> = {
+  'best-hair-dryer-for-short-hair': '2026-09-05',
+  'hair-dryer-diffuser-vs-concentrator': '2026-09-05',
+  'round-brush-vs-paddle-brush': '2026-09-05',
+  'how-to-use-a-hair-dryer-diffuser': '2026-09-19',
+  'ionic-vs-ceramic-hair-dryer': '2026-09-19',
+  'best-hot-air-brush-for-thick-hair': '2026-09-19',
+  'hot-air-brush-vs-straightening-brush': '2026-10-03',
+  'best-round-brush-for-blow-drying': '2026-10-03',
+  'how-to-clean-a-hair-brush': '2026-10-03',
+  'how-to-use-a-microfibre-hair-towel': '2026-10-03',
+};
 
 export const articleGroups = {
   [ArticleGroupId.HairDryers]: { label: 'Hair Dryers' },
@@ -26,7 +43,7 @@ export const articleGroups = {
   [ArticleGroupId.Guides]: { label: 'Guides' },
 } as const;
 
-export const articleRegistry: readonly ArticleRegistryEntry[] = [
+const articleRegistryEntries: readonly ArticleRegistryDraft[] = [
   {
     slug: 'best-hair-dryers-fine-hair',
     group: ArticleGroupId.HairDryers,
@@ -64,6 +81,30 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
   },
   {
+    slug: 'best-hair-dryer-for-short-hair',
+    group: ArticleGroupId.HairDryers,
+    order: 70,
+    enabled: true,
+  },
+  {
+    slug: 'hair-dryer-diffuser-vs-concentrator',
+    group: ArticleGroupId.HairDryers,
+    order: 80,
+    enabled: true,
+  },
+  {
+    slug: 'how-to-use-a-hair-dryer-diffuser',
+    group: ArticleGroupId.HairDryers,
+    order: 90,
+    enabled: true,
+  },
+  {
+    slug: 'ionic-vs-ceramic-hair-dryer',
+    group: ArticleGroupId.HairDryers,
+    order: 100,
+    enabled: true,
+  },
+  {
     slug: 'best-hot-air-brushes',
     group: ArticleGroupId.HotAirBrushes,
     order: 10,
@@ -97,6 +138,18 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     slug: 'how-to-use-hot-air-brush',
     group: ArticleGroupId.HotAirBrushes,
     order: 60,
+    enabled: true,
+  },
+  {
+    slug: 'best-hot-air-brush-for-thick-hair',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 70,
+    enabled: true,
+  },
+  {
+    slug: 'hot-air-brush-vs-straightening-brush',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 80,
     enabled: true,
   },
   {
@@ -172,6 +225,24 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
   },
   {
+    slug: 'round-brush-vs-paddle-brush',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 130,
+    enabled: true,
+  },
+  {
+    slug: 'best-round-brush-for-blow-drying',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 140,
+    enabled: true,
+  },
+  {
+    slug: 'how-to-clean-a-hair-brush',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 150,
+    enabled: true,
+  },
+  {
     slug: 'best-heat-protectants',
     group: ArticleGroupId.HairCare,
     order: 10,
@@ -202,6 +273,12 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
   },
   {
+    slug: 'how-to-use-a-microfibre-hair-towel',
+    group: ArticleGroupId.HairAccessories,
+    order: 40,
+    enabled: true,
+  },
+  {
     slug: 'cold-water-for-hair',
     group: ArticleGroupId.Guides,
     order: 10,
@@ -226,3 +303,10 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
   },
 ] as const;
+
+/** The registry is the sole publication source; article HTML holds editorial data. */
+export const articleRegistry: readonly ArticleRegistryEntry[] =
+  articleRegistryEntries.map((entry) => ({
+    ...entry,
+    publishDate: scheduledPublishDates[entry.slug] ?? establishedPublishDate,
+  }));

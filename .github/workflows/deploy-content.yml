@@ -40,7 +40,8 @@ jobs:
         if: ${{ (inputs.environment || 'dev') == 'dev' }}
       - run: npm run build --workspace=frontend
         if: ${{ (inputs.environment || 'dev') == 'prod' }}
-      - run: npm run check:internal-links
+      - run: npm run check:seo
+        if: ${{ (inputs.environment || 'dev') == 'prod' }}
       - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}

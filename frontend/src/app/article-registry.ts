@@ -322,11 +322,4 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-08-31',
   },
-  {
-    slug: 'markdown-syntax-example',
-    group: ArticleGroupId.Guides,
-    order: 40,
-    enabled: true,
-    publishDate: '2026-08-31',
-  },
 ] as const;

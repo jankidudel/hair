@@ -118,6 +118,20 @@ export class HairStack extends Stack {
         : undefined,
       webAclId: productionWebAcl?.attrArn,
       defaultRootObject: 'index.html',
+      errorResponses: [
+        {
+          httpStatus: 403,
+          responseHttpStatus: 404,
+          responsePagePath: '/404/index.html',
+          ttl: Duration.seconds(0),
+        },
+        {
+          httpStatus: 404,
+          responseHttpStatus: 404,
+          responsePagePath: '/404/index.html',
+          ttl: Duration.seconds(0),
+        },
+      ],
     });
     if (hostedZone) {
       const target = route53.RecordTarget.fromAlias(

@@ -45,6 +45,18 @@ export class SiteSeoService {
       this.document.head.appendChild(script);
     }
   }
+  applyNoIndex(title: string, description: string): void {
+    this.title.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
+    this.meta.updateTag({ name: 'robots', content: 'noindex, nofollow' });
+    this.meta.removeTag("property='og:title'");
+    this.meta.removeTag("property='og:description'");
+    this.meta.removeTag("property='og:url'");
+    this.document.querySelector('link[rel="canonical"]')?.remove();
+    this.document
+      .querySelectorAll('script[data-site-jsonld]')
+      .forEach((node) => node.remove());
+  }
   private canonicalUrl(path: string): string | null {
     if (!environment.indexingEnabled || !SITE_URL) return null;
     try {

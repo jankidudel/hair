@@ -8,5 +8,8 @@ export const serverRoutes: ServerRoute[] = [
       return articles.map(({ slug }) => ({ slug }));
     },
   },
+  { path: '404', renderMode: RenderMode.Prerender },
+  // This S3-hosted application is static-only; CloudFront maps unknown URLs
+  // to the prerendered 404 document with an HTTP 404 response.
   { path: '**', renderMode: RenderMode.Prerender },
 ];

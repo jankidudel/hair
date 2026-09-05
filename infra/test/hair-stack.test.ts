@@ -31,6 +31,20 @@ test('adds the production domain and required WAF protection', () => {
       WebACLId: {
         'Fn::GetAtt': [Match.stringLikeRegexp('^ProductionWebAcl'), 'Arn'],
       },
+      CustomErrorResponses: [
+        {
+          ErrorCachingMinTTL: 0,
+          ErrorCode: 403,
+          ResponseCode: 404,
+          ResponsePagePath: '/404/index.html',
+        },
+        {
+          ErrorCachingMinTTL: 0,
+          ErrorCode: 404,
+          ResponseCode: 404,
+          ResponsePagePath: '/404/index.html',
+        },
+      ],
     },
   });
   template.hasResourceProperties('AWS::WAFv2::WebACL', {

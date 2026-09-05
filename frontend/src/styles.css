@@ -346,6 +346,20 @@ h3 {
 .listing-intro {
   max-width: 42rem;
 }
+.not-found-page {
+  display: grid;
+  min-height: 32rem;
+  align-content: center;
+}
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.not-found-actions .button {
+  margin-top: 0;
+}
 .listing-intro h1 {
   max-width: 10ch;
   font-size: clamp(2.75rem, 5vw, 4.6rem);

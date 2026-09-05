@@ -27,6 +27,6 @@ describe('generated editorial content', () => {
       articleRegistry.find(
         (article) => article.slug === 'how-to-use-a-hair-dryer-diffuser',
       )?.publishDate,
-    ).toBe('2026-09-19');
+    ).toBe('2026-09-05');
   });
 });

@@ -6,6 +6,8 @@ Never create or publish medical or health content, including diagnosis, treatmen
 
 Articles use the `.html` extension with required front matter and a safe HTML body. Use the shared Angular article page—never add an Angular component per article. Interactive experiences and bespoke landing pages are Angular components, not custom HTML blocks.
 
+When work adds public pages or routes, the final handoff must list every new or changed public page as its full canonical production URL using `https://www.combreport.com` as the base. Do this automatically; do not wait to be asked.
+
 ## Dependency versions
 
 Use exact package versions in every `package.json`: for example, `"rehype-parse": "9.0.1"`, never `"^9.0.1"`, `"~9.0.1"`, or another range. Keep the lockfile in sync whenever a dependency changes.

@@ -20,12 +20,6 @@ description: 'A reader-first summary between 120 and 165 characters.'
 slug: 'lowercase-hyphenated-slug'
 eyebrow: 'Hair dryers'
 heading: 'Visible page H1'
-contentType: 'buying-guide'
-primaryQuery: 'reader decision'
-secondaryQueries: ['natural supporting phrase', 'another supporting phrase']
-searchIntent: 'commercial-investigation'
-cluster: 'hair-dryers'
-author: 'Comb Report Editorial'
 faq:
   - question: 'Question?'
     answer: 'Clear answer.'

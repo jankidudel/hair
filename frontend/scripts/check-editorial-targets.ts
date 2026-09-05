@@ -66,9 +66,9 @@ for (const file of files) {
     typeof data.heading === 'string' ? data.heading.trim() : title;
   const canonical = `/guides/${slug}`;
   const prefix = `${file} (${slug})`;
-  // Established articles retain their original editorial contract until they are
-  // migrated to the new front matter. New publishing-model sources are strict.
-  const modernSource = typeof data.contentType === 'string';
+  // Established articles retain their original editorial contract; scheduled
+  // registry entries are held to the new editorial target.
+  const modernSource = entry.publishDate >= '2026-09-05';
   if (!title || !description || !heading)
     errors.push(`${prefix}: title, description, and heading are required.`);
   if (seenTitles.has(title)) errors.push(`${prefix}: duplicate title.`);
@@ -108,10 +108,6 @@ for (const file of files) {
     warnings.push(`${prefix}: title should be 45–65 characters.`);
   if (description.length < 120 || description.length > 165)
     warnings.push(`${prefix}: description should be 120–165 characters.`);
-  if (!Array.isArray(data.secondaryQueries) || data.secondaryQueries.length < 2)
-    warnings.push(`${prefix}: fewer than two secondary queries.`);
-  if (typeof data.author !== 'string' || !data.author.trim())
-    warnings.push(`${prefix}: no byline/author.`);
   const hrefs = [...parsed.content.matchAll(/href=["']([^"']+)["']/gi)].map(
     (match) => match[1],
   );
@@ -150,13 +146,13 @@ for (const file of files) {
   rows.push([
     slug,
     errors.some((error) => error.startsWith(prefix)) ? 'ERROR' : 'OK',
-    `primary: ${String(data.primaryQuery ?? heading)}; secondary: ${((data.secondaryQueries as string[]) ?? []).join(', ') || '—'}`,
+    entry.publishDate,
   ]);
 }
 for (const [slug, entry] of registry)
   if (entry.enabled && !files.some((file) => file === `${slug}.html`))
     errors.push(`registry '${slug}': missing HTML source file.`);
-console.log('| Guide | Result | Editor terms |\n| --- | --- | --- |');
+console.log('| Guide | Result | Publish date |\n| --- | --- | --- |');
 for (const row of rows) console.log(`| ${row.join(' | ')} |`);
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 for (const error of errors) console.error(`ERROR: ${error}`);

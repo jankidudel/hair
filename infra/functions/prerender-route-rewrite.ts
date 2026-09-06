@@ -1,5 +1,7 @@
-export function handler(event: any) {
-  const request = event.request;
+// CloudFront executes this file as JavaScript, so it must contain no TypeScript
+// syntax despite using a .ts filename for repository consistency.
+function handler(event) {
+  var request = event.request;
 
   if (request.headers.host.value === 'combreport.com') {
     return {
@@ -13,9 +15,9 @@ export function handler(event: any) {
     };
   }
 
-  if (request.uri.endsWith('/')) {
+  if (request.uri.charAt(request.uri.length - 1) === '/') {
     request.uri += 'index.html';
-  } else if (!request.uri.includes('.')) {
+  } else if (request.uri.indexOf('.') === -1) {
     request.uri += '/index.html';
   }
 

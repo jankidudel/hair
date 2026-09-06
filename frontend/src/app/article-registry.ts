@@ -217,6 +217,27 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-05',
   },
   {
+    slug: 'how-to-clean-hot-air-brush',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 80,
+    enabled: true,
+    publishDate: '2026-09-05',
+  },
+  {
+    slug: 'hot-air-brush-barrel-size-guide',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 90,
+    enabled: true,
+    publishDate: '2026-09-05',
+  },
+  {
+    slug: 'can-you-use-hot-air-brush-on-dry-hair',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 100,
+    enabled: true,
+    publishDate: '2026-09-05',
+  },
+  {
     slug: 'best-detangling-brushes',
     group: ArticleGroupId.BrushesAndCombs,
     order: 10,

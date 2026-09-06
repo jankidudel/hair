@@ -10,11 +10,18 @@ import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as wafv2 from 'aws-cdk-lib/aws-wafv2';
 import { Construct } from 'constructs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const productionApexDomain = 'combreport.com';
 const productionCanonicalDomain = `www.${productionApexDomain}`;
 const cloudFrontIpRateLimit = 3_000;
 const cloudFrontIpRateLimitWindowSeconds = 300;
+const infrastructureDirectory = dirname(fileURLToPath(import.meta.url));
+const prerenderRouteRewritePath = join(
+  infrastructureDirectory,
+  '../functions/prerender-route-rewrite.ts',
+);
 export interface HairStackProps extends StackProps {
   environment: 'dev' | 'prod';
   googleSiteVerification?: string;
@@ -80,23 +87,9 @@ export class HairStack extends Stack {
       this,
       'PrerenderRouteRewrite',
       {
-        code: cloudfront.FunctionCode.fromInline(`function handler(event) {
-  var request = event.request;
-  if (request.headers.host.value === '${productionApexDomain}') {
-    return {
-      statusCode: 301,
-      statusDescription: 'Moved Permanently',
-      headers: {
-        location: {
-          value: 'https://${productionCanonicalDomain}' + request.uri
-        }
-      }
-    };
-  }
-  if (request.uri.endsWith('/')) request.uri += 'index.html';
-  else if (!request.uri.includes('.')) request.uri += '/index.html';
-  return request;
-}`),
+        code: cloudfront.FunctionCode.fromFile({
+          filePath: prerenderRouteRewritePath,
+        }),
       },
     );
     const distribution = new cloudfront.Distribution(this, 'Distribution', {

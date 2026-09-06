@@ -5,3 +5,5 @@ coverage/
 cdk.out/
 .env
 frontend/src/app/content.generated.ts
+frontend/public/robots.txt
+frontend/public/sitemap.xml

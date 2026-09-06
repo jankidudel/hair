@@ -14,6 +14,11 @@ interface FinderQuestion {
   options: readonly { value: string; label: string; detail: string }[];
 }
 
+interface FinderGuideLink {
+  readonly slug: string;
+  readonly label: string;
+}
+
 const questions: readonly FinderQuestion[] = [
   {
     key: 'length',
@@ -213,6 +218,20 @@ const questions: readonly FinderQuestion[] = [
               <li>A brush head or barrel size that suits your length</li>
             </ul>
           </section>
+          <section class="finder-next-steps" aria-label="Related brush guides">
+            <h3>Continue reading</h3>
+            <ul>
+              @for (guide of nextStepGuides; track guide.slug) {
+                <li>
+                  <a
+                    [href]="'/guides/' + guide.slug"
+                    (click)="guideClicked(guide.slug)"
+                    >{{ guide.label }}</a
+                  >
+                </li>
+              }
+            </ul>
+          </section>
           <a
             class="button"
             [routerLink]="['/guides', result.primary.guideSlug]"
@@ -249,6 +268,48 @@ export class HairBrushFinderComponent {
   }
   get result() {
     return recommendHairBrush(this.answers as HairBrushAnswers);
+  }
+  get nextStepGuides(): readonly FinderGuideLink[] {
+    if (this.answers.texture === 'curly-coily') {
+      return [
+        {
+          slug: 'best-hair-brush-for-curly-hair',
+          label: 'Best Hair Brushes for Curly Hair',
+        },
+        {
+          slug: 'wide-tooth-comb-vs-detangling-brush',
+          label: 'Wide-Tooth Comb vs Detangling Brush',
+        },
+      ];
+    }
+    if (this.answers.thickness === 'thick') {
+      return [
+        {
+          slug: 'best-hair-brush-for-thick-hair',
+          label: 'Best Hair Brushes for Thick Hair',
+        },
+        { slug: 'best-detangling-brushes', label: 'Best Detangling Brushes' },
+      ];
+    }
+    if (this.answers.thickness === 'fine') {
+      return [
+        {
+          slug: 'best-brushes-fine-hair',
+          label: 'Best Hair Brushes for Fine Hair',
+        },
+        { slug: 'hair-brush-vs-comb', label: 'Hair Brush vs Comb' },
+      ];
+    }
+    return [
+      {
+        slug: 'how-to-choose-hair-brush',
+        label: 'How to Choose the Right Hair Brush',
+      },
+      {
+        slug: 'round-brush-vs-paddle-brush',
+        label: 'Round Brush vs Paddle Brush',
+      },
+    ];
   }
   answer(value: string): void {
     if (!this.started) {

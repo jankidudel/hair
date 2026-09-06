@@ -1,15 +1,6 @@
 name: Verify
 on: [pull_request]
+
 jobs:
-  verify:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
-      - run: npm ci
-      - run: npm run format:check
-      - run: npm run lint
-      - run: npm run test
-      - run: npm run check:seo
-      - run: npm run content:check
+  validate:
+    uses: ./.github/workflows/frontend-validation.yml

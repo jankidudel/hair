@@ -6,7 +6,7 @@ Never create or publish medical or health content, including diagnosis, treatmen
 
 Articles use the `.html` extension with required front matter and a safe HTML body. Use the shared Angular article page—never add an Angular component per article. Interactive experiences and bespoke landing pages are Angular components, not custom HTML blocks.
 
-When work adds public pages or routes, the final handoff must list every new or changed public page as its full canonical production URL using `https://www.combreport.com` as the base. Do this automatically; do not wait to be asked.
+When work changes public pages or routes, the final handoff must separately list added pages and updated pages, each as full canonical production URLs using `https://www.combreport.com` as the base. Do this automatically; do not wait to be asked.
 
 ## Dependency versions
 

@@ -4,11 +4,11 @@ An Angular static site for appearance-focused hair routines, styling, tools, and
 
 ## Setup
 
-Use Node 22+ and run `npm install` from the repository root. Installation automatically points Git at the repository-local `.githooks` directory. The pre-commit hook checks formatting, linting, and content safety; pre-push runs lint, tests, production builds, and the safety check. You do not need to change directory: use root `npm run` commands or `make` (for example, `make dev` starts the Angular site).
+Use Node 22+ and run `npm install` from the repository root. Installation automatically points Git at the repository-local `.githooks` directory. Pre-commit performs formatting, linting, content safety, and a fast staged-guide check. Pre-push runs the complete `npm run verify` gate. You do not need to change directory: use root `npm run` commands or `make` (for example, `make dev` starts the Angular site).
 
 ## Commands
 
-`npm run dev`, `npm run build`, `npm run lint`, `npm run test`, `npm run format`, and `npm run content:check` operate across the project. `npm run check:editorial-targets` is the fast, date-aware editorial check; pass `-- --date=YYYY-MM-DD` for a deterministic release date. `npm run check:seo` builds production output and checks sitemap, metadata, canonicals, rendered H1s and internal links. Infrastructure commands are `npm run infra:build`, `npm run infra:diff:dev`, and `npm run infra:diff:prod`.
+`npm run check:staged-content` validates only staged guide files. `npm run check:editorial-targets` is the full, date-aware editorial check; pass `-- --date=YYYY-MM-DD` for a deterministic release date. `npm run check:seo` runs that editorial gate, builds production output, and checks sitemap, metadata, canonicals, rendered H1s and internal links. `npm run verify` is the complete local pre-push gate. Infrastructure commands are `npm run infra:build`, `npm run infra:diff:dev`, and `npm run infra:diff:prod`.
 
 ## Publishing a guide
 
@@ -25,7 +25,9 @@ faq:
     answer: 'Clear answer.'
 ```
 
-A guide is public only when its `article-registry.ts` entry is enabled and its registry `publishDate` is today or earlier in UTC. Future and disabled guides are absent from generated routes, listings, navigation and sitemap. Before a release, add a contextual incoming link from a live category or related guide, set its `publishDate` in the registry, run `npm run check:editorial-targets`, then run `npm run check:seo` for production. Add `reviewMethod` only when naming or ranking specific products; do not imply testing that did not occur. `updatedDate` is reserved for meaningful editorial changes.
+A guide is public only when its `article-registry.ts` entry is enabled and its registry `publishDate` is today or earlier in UTC. Future and disabled guides are drafts: they are absent from generated routes, listings, navigation and sitemap, and may remain below the publishable-content minimum while you work. Before publication, add a contextual incoming link from a live category or related guide, set its `publishDate`, then run `npm run check:editorial-targets` and `npm run check:seo`.
+
+Hard errors block commits, pushes, pull requests and deployments; warnings identify worthwhile editorial improvements without blocking release. `git commit --no-verify` is an emergency local escape hatch only: it never permits deployment when the non-bypassable GitHub validation job fails. Add `reviewMethod` only when naming or ranking specific products; do not imply testing that did not occur. `updatedDate` is reserved for meaningful editorial changes.
 
 ## Structure
 

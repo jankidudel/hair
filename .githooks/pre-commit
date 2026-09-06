@@ -10,6 +10,8 @@ if [ "$before_format" != "$after_format" ]; then
   exit 1
 fi
 
+npm run check:staged-content
+
 if ! git diff --cached --quiet -- frontend/content frontend/src/app/article-registry.ts; then
   npm run content:generate --workspace=frontend
   npm run seo:generate --workspace=frontend

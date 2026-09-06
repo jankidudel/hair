@@ -36,6 +36,7 @@ jobs:
         with: { node-version: 24, cache: npm }
       - run: npm ci
       - run: npm run content:check
+      - run: npm run check:editorial-targets
       - run: npm run build:deployment-development --workspace=frontend
         if: ${{ (inputs.environment || 'dev') == 'dev' }}
       - run: npm run build --workspace=frontend

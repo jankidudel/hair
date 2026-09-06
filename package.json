@@ -20,11 +20,12 @@
     "content:check": "tsx scripts/check-content.ts",
     "check:editorial-targets": "npm run check:editorial-targets --workspace=frontend",
     "check:seo": "npm run check:seo --workspace=frontend",
+    "verify": "npm run lint && npm run test && npm run content:check && npm run check:seo",
     "infra:build": "npm run build --workspace=infra",
     "infra:diff:dev": "npm run diff:dev --workspace=infra",
     "infra:diff:prod": "npm run diff:prod --workspace=infra",
     "precommit": "npm run lint && npm run content:check",
-    "prepush": "npm run lint && npm run test && npm run build && npm run content:check",
+    "prepush": "npm run verify",
     "prepare": "npm run content:generate --workspace=frontend && npm run hooks:install",
     "hooks:install": "git config core.hooksPath .githooks"
   },

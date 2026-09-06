@@ -2,9 +2,15 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { articles } from './content.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
+import {
+  GuideCategory,
+  guideCategories,
+  guideCategoryById,
+} from './article-registry';
+import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, BreadcrumbsComponent],
   template: `@switch (page) {
     @case ('home') {
       <section class="home-hero">
@@ -90,13 +96,28 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
       </section>
     }
     @case ('guides') {
-      <section class="listing-intro">
+      <app-breadcrumbs [items]="guidesBreadcrumbs" />
+      <section class="listing-intro guides-intro">
         <p class="eyebrow">Guides</p>
         <h1>Hair tools and routine guides</h1>
         <p class="lede">
           Straightforward reading for choosing tools and making your routine
           feel more considered.
         </p>
+      </section>
+      <section class="category-hubs" aria-labelledby="category-hubs-heading">
+        <div class="section-heading">
+          <p class="eyebrow">Browse by category</p>
+          <h2 id="category-hubs-heading">Find a guide by topic</h2>
+        </div>
+        <div class="category-links">
+          @for (category of categories; track category.id) {
+            <a [routerLink]="category.path">
+              <span>{{ category.label }}</span
+              ><b aria-hidden="true">→</b>
+            </a>
+          }
+        </div>
       </section>
       <section class="editorial-grid guides-grid" aria-label="All guides">
         @for (article of guides; track article.slug; let first = $first) {
@@ -114,27 +135,30 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
         }
       </section>
     }
-    @case ('hair-care') {
-      <section class="listing-intro">
-        <p class="eyebrow">Hair care</p>
-        <h1>Hair care guides</h1>
-        <p class="lede">
-          Practical choices for a routine that feels comfortable and looks
-          considered.
-        </p>
-      </section>
-      <section class="editorial-grid guides-grid" aria-label="Hair care guides">
-        @for (article of hairCareArticles; track article.slug) {
-          <a class="guide-card" [routerLink]="['/guides', article.slug]"
-            ><p class="eyebrow">{{ article.category }}</p>
-            <h2>{{ article.heading }}</h2>
-            <p>{{ article.description }}</p>
-            <span class="text-link"
-              >Read guide <span aria-hidden="true">→</span></span
-            ></a
-          >
-        }
-      </section>
+    @case ('category') {
+      @if (category) {
+        <app-breadcrumbs [items]="categoryBreadcrumbs" />
+        <section class="listing-intro">
+          <p class="eyebrow">{{ category.label }}</p>
+          <h1>{{ category.heading }}</h1>
+          <p class="lede">{{ category.intro }}</p>
+        </section>
+        <section
+          class="editorial-grid guides-grid"
+          [attr.aria-label]="category.label + ' guides'"
+        >
+          @for (article of categoryArticles; track article.slug) {
+            <a class="guide-card" [routerLink]="['/guides', article.slug]"
+              ><p class="eyebrow">{{ article.category }}</p>
+              <h2>{{ article.heading }}</h2>
+              <p>{{ article.description }}</p>
+              <span class="text-link"
+                >Read guide <span aria-hidden="true">→</span></span
+              ></a
+            >
+          }
+        </section>
+      }
     }
     @case ('products') {
       <section class="listing-intro">
@@ -181,15 +205,32 @@ export class StaticPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   readonly guides = articles;
+  readonly categories = guideCategories;
+  readonly guidesBreadcrumbs: readonly Breadcrumb[] = [
+    { label: 'Home', path: '/' },
+    { label: 'Guides' },
+  ];
   readonly featuredGuide = articles[0];
   readonly latestGuides = articles.slice(0, 6);
-  readonly hairCareArticles = articles.filter(
-    (article) => article.group === 'hair-care',
-  );
+  category?: GuideCategory;
+  categoryArticles = articles;
+  categoryBreadcrumbs: readonly Breadcrumb[] = [];
   page = 'home';
 
   ngOnInit(): void {
     this.page = this.route.snapshot.data['page'] as string;
+    const categoryId = this.route.snapshot.data['category'];
+    if (this.page === 'category') {
+      this.category = guideCategoryById[categoryId];
+      this.categoryArticles = articles.filter(
+        (article) => article.group === this.category?.id,
+      );
+      this.categoryBreadcrumbs = [
+        { label: 'Home', path: '/' },
+        { label: 'Guides', path: '/guides' },
+        { label: this.category.label },
+      ];
+    }
     const data: Record<string, [string, string, string]> = {
       home: [
         'Comb Report | Honest Hair Tool and Routine Advice',
@@ -200,11 +241,6 @@ export class StaticPageComponent implements OnInit {
         'Hair Tools and Routine Guides | Comb Report',
         'Honest hair-tool comparisons and practical routine advice.',
         '/guides',
-      ],
-      'hair-care': [
-        'Hair Care Guides | Comb Report',
-        'Practical hair care guides for everyday styling routines.',
-        '/hair-care',
       ],
       products: [
         'Products | Comb Report',
@@ -219,7 +255,11 @@ export class StaticPageComponent implements OnInit {
         '/affiliate-disclosure',
       ],
     };
-    const [title, description, path] = data[this.page];
+    const pageData =
+      this.page === 'category' && this.category
+        ? [this.category.title, this.category.description, this.category.path]
+        : data[this.page];
+    const [title, description, path] = pageData;
     this.seo.set(
       title,
       description,
@@ -232,6 +272,18 @@ export class StaticPageComponent implements OnInit {
             url: SITE_URL,
           }
         : undefined,
+      this.page === 'guides'
+        ? [
+            { label: 'Home', path: '/' },
+            { label: 'Guides', path: '/guides' },
+          ]
+        : this.page === 'category' && this.category
+          ? [
+              { label: 'Home', path: '/' },
+              { label: 'Guides', path: '/guides' },
+              { label: this.category.label, path: this.category.path },
+            ]
+          : undefined,
     );
   }
 }

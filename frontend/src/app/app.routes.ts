@@ -9,7 +9,27 @@ export const routes: Routes = [
   {
     path: 'hair-care',
     component: StaticPageComponent,
-    data: { page: 'hair-care' },
+    data: { page: 'category', category: 'hair-care' },
+  },
+  {
+    path: 'hair-dryers',
+    component: StaticPageComponent,
+    data: { page: 'category', category: 'hair-dryers' },
+  },
+  {
+    path: 'hot-air-brushes',
+    component: StaticPageComponent,
+    data: { page: 'category', category: 'hot-air-brushes' },
+  },
+  {
+    path: 'brushes-combs',
+    component: StaticPageComponent,
+    data: { page: 'category', category: 'brushes-and-combs' },
+  },
+  {
+    path: 'hair-accessories',
+    component: StaticPageComponent,
+    data: { page: 'category', category: 'hair-accessories' },
   },
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
   { path: 'hair-brush-finder', component: HairBrushFinderComponent },

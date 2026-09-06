@@ -27,6 +27,68 @@ export const articleGroups = {
   [ArticleGroupId.Guides]: { label: 'Guides' },
 } as const;
 
+export const guideCategories = [
+  {
+    id: ArticleGroupId.HairDryers,
+    label: 'Hair Dryers',
+    path: '/hair-dryers',
+    title: 'Hair Dryer Guides | Comb Report',
+    description:
+      'Practical hair dryer guides for choosing and using styling tools.',
+    heading: 'Hair dryer guides',
+    intro:
+      'Find practical help with choosing a hair dryer, comparing styling features, and matching a dryer to the finish you want.',
+  },
+  {
+    id: ArticleGroupId.HotAirBrushes,
+    label: 'Hot-Air Brushes',
+    path: '/hot-air-brushes',
+    title: 'Hot-Air Brush Guides | Comb Report',
+    description: 'Practical hot-air brush guides for everyday styling choices.',
+    heading: 'Hot-air brush guides',
+    intro:
+      'Explore hot-air brush comparisons and straightforward advice for choosing a styling tool that suits your routine.',
+  },
+  {
+    id: ArticleGroupId.BrushesAndCombs,
+    label: 'Brushes & Combs',
+    path: '/brushes-combs',
+    title: 'Hair Brush and Comb Guides | Comb Report',
+    description:
+      'Hair brush and comb guides for everyday grooming and styling.',
+    heading: 'Brushes and combs guides',
+    intro:
+      'Browse clear guides to brushes and combs, from everyday detangling choices to styling shapes and materials.',
+  },
+  {
+    id: ArticleGroupId.HairCare,
+    label: 'Hair Care',
+    path: '/hair-care',
+    title: 'Hair Care Guides | Comb Report',
+    description: 'Practical hair care guides for everyday styling routines.',
+    heading: 'Hair care guides',
+    intro:
+      'Practical choices for a routine that feels comfortable and looks considered.',
+  },
+  {
+    id: ArticleGroupId.HairAccessories,
+    label: 'Hair Accessories',
+    path: '/hair-accessories',
+    title: 'Hair Accessories Guides | Comb Report',
+    description: 'Hair accessory guides for simple everyday styling routines.',
+    heading: 'Hair accessories guides',
+    intro:
+      'Discover useful guides to the accessories that support an everyday styling routine, from towels to heatless tools.',
+  },
+] as const;
+
+export type GuideCategory = (typeof guideCategories)[number];
+
+export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
+  Object.fromEntries(
+    guideCategories.map((category) => [category.id, category]),
+  );
+
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
     slug: 'best-hair-dryers-fine-hair',
@@ -303,21 +365,21 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
   },
   {
     slug: 'cold-water-for-hair',
-    group: ArticleGroupId.Guides,
+    group: ArticleGroupId.HairCare,
     order: 10,
     enabled: true,
     publishDate: '2026-08-31',
   },
   {
     slug: 'how-often-should-you-wash-your-hair',
-    group: ArticleGroupId.Guides,
+    group: ArticleGroupId.HairCare,
     order: 20,
     enabled: true,
     publishDate: '2026-08-31',
   },
   {
     slug: 'how-to-choose-a-hair-brush',
-    group: ArticleGroupId.Guides,
+    group: ArticleGroupId.BrushesAndCombs,
     order: 30,
     enabled: true,
     publishDate: '2026-08-31',

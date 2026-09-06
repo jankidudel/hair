@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { articles } from './content.generated';
 import { articleRegistry } from './article-registry';
+import { guideCategories, guideCategoryById } from './article-registry';
 import { isPublishedOn } from './publication-date';
 
 describe('generated editorial content', () => {
@@ -28,5 +29,19 @@ describe('generated editorial content', () => {
         (article) => article.slug === 'how-to-use-a-hair-dryer-diffuser',
       )?.publishDate,
     ).toBe('2026-09-05');
+  });
+
+  it('maps every publishable guide to a category hub and excludes future guides', () => {
+    for (const article of articles) {
+      expect(guideCategoryById[article.group]).toBeDefined();
+    }
+    expect(guideCategories.map((category) => category.path)).toEqual([
+      '/hair-dryers',
+      '/hot-air-brushes',
+      '/brushes-combs',
+      '/hair-care',
+      '/hair-accessories',
+    ]);
+    expect(isPublishedOn(true, '2099-01-01', '2026-09-05')).toBe(false);
   });
 });

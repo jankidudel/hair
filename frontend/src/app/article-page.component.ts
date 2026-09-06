@@ -2,12 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { articles, Article } from './content.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
+import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
+import { guideCategoryById } from './article-registry';
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, BreadcrumbsComponent],
   template: `@if (article) {
     <article class="article-page">
+      <app-breadcrumbs [items]="breadcrumbs" />
       <header class="article-header">
-        <a class="back-link" routerLink="/guides">← All guides</a>
         <p class="eyebrow">{{ article.category }}</p>
         <h1>{{ article.heading }}</h1>
         <p class="lede">{{ article.description }}</p>
@@ -42,10 +44,18 @@ export class ArticlePageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   article?: Article;
+  breadcrumbs: readonly Breadcrumb[] = [];
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.article = articles.find((item) => item.slug === slug);
-    if (this.article)
+    if (this.article) {
+      const category = guideCategoryById[this.article.group];
+      this.breadcrumbs = [
+        { label: 'Home', path: '/' },
+        { label: 'Guides', path: '/guides' },
+        { label: category.label, path: category.path },
+        { label: this.article.heading },
+      ];
       this.seo.set(
         this.article.title,
         this.article.description,
@@ -59,6 +69,13 @@ export class ArticlePageComponent implements OnInit {
           dateModified: this.article.updatedDate,
           mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
         },
+        this.breadcrumbs
+          .filter((item): item is Breadcrumb & { path: string } => !!item.path)
+          .concat({
+            label: this.article.heading,
+            path: `/guides/${this.article.slug}`,
+          }),
       );
+    }
   }
 }

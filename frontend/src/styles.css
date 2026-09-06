@@ -346,6 +346,67 @@ h3 {
 .listing-intro {
   max-width: 42rem;
 }
+.breadcrumbs {
+  margin: 0 0 1.35rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.5;
+  list-style: none;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.breadcrumbs li + li::before {
+  margin-right: 0.35rem;
+  color: var(--border);
+  content: '›';
+}
+.breadcrumbs a {
+  color: var(--green);
+}
+.category-hubs {
+  margin-top: 3.5rem;
+}
+.category-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+}
+.category-links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  text-decoration: none;
+}
+.category-links a:nth-child(odd) {
+  padding-right: 1.5rem;
+}
+.category-links a:nth-child(even) {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+.category-links b {
+  color: var(--terracotta);
+  font-family: var(--sans);
+  font-size: 1rem;
+}
 .not-found-page {
   display: grid;
   min-height: 32rem;
@@ -360,9 +421,9 @@ h3 {
 .not-found-actions .button {
   margin-top: 0;
 }
-.listing-intro h1 {
-  max-width: 10ch;
-  font-size: clamp(2.75rem, 5vw, 4.6rem);
+.guides-intro h1 {
+  max-width: 20ch;
+  font-size: clamp(2.45rem, 4.25vw, 4rem);
 }
 .article-page {
   width: min(100%, 46rem);
@@ -375,14 +436,6 @@ h3 {
 .article-header h1 {
   max-width: 14ch;
   font-size: clamp(2.55rem, 5vw, 4.6rem);
-}
-.back-link {
-  display: inline-block;
-  margin-bottom: 2.5rem;
-  color: var(--green);
-  font-size: 0.87rem;
-  font-weight: 700;
-  text-decoration: none;
 }
 .article-body {
   font-family: var(--serif);
@@ -640,7 +693,8 @@ h3 {
   }
   .home-hero,
   .topic-links,
-  .editorial-grid {
+  .editorial-grid,
+  .category-links {
     grid-template-columns: 1fr;
   }
   .home-hero {
@@ -668,6 +722,11 @@ h3 {
   }
   .topic-links a + a {
     padding-left: 0;
+    border-left: 0;
+  }
+  .category-links a:nth-child(odd),
+  .category-links a:nth-child(even) {
+    padding-inline: 0;
     border-left: 0;
   }
   .guide-card-featured {

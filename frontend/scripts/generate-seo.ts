@@ -1,6 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { articles } from '../src/app/content.generated.ts';
+import { guideCategories } from '../src/app/article-registry.ts';
 
 type BuildConfiguration = 'development' | 'production';
 interface SiteConfig {
@@ -29,6 +30,9 @@ const indexingEnabled = config.indexingEnabled === true && siteUrl !== null;
 const entries = [
   '/',
   '/hair-care',
+  ...guideCategories
+    .filter((category) => category.path !== '/hair-care')
+    .map((category) => category.path),
   '/guides',
   '/hair-brush-finder',
   '/products',

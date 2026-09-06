@@ -191,9 +191,9 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
     slug: 'hot-air-brush-vs-hair-dryer',
     group: ArticleGroupId.HotAirBrushes,
-    order: 40,
+    order: 50,
     enabled: true,
-    publishDate: '2026-09-06',
+    publishDate: '2026-08-31',
   },
   {
     slug: 'how-to-use-hot-air-brush',

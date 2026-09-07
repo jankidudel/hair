@@ -12,6 +12,7 @@ import * as wafv2 from 'aws-cdk-lib/aws-wafv2';
 import { Construct } from 'constructs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
 
 const productionApexDomain = 'combreport.com';
 const productionCanonicalDomain = `www.${productionApexDomain}`;
@@ -22,6 +23,38 @@ const prerenderRouteRewritePath = join(
   infrastructureDirectory,
   '../functions/prerender-route-rewrite.ts',
 );
+
+const basicAuthenticationChallenge = 'Basic realm="Development"';
+
+export function wrapViewerRequestWithBasicAuth(
+  routeRewriteCode: string,
+  expectedAuthorization: string,
+): string {
+  return `${routeRewriteCode}
+
+var expectedAuthorization = '${expectedAuthorization}';
+
+function handler(event) {
+  var request = event.request;
+  var authorization = request.headers.authorization;
+
+  if (!authorization || authorization.value !== expectedAuthorization) {
+    return {
+      statusCode: 401,
+      statusDescription: 'Unauthorized',
+      headers: {
+        'www-authenticate': {
+          value: '${basicAuthenticationChallenge}',
+        },
+      },
+    };
+  }
+
+  return rewriteOrRedirect(request);
+}
+`;
+}
+
 export interface HairStackProps extends StackProps {
   environment: 'dev' | 'prod';
   googleSiteVerification?: string;
@@ -83,13 +116,27 @@ export class HairStack extends Stack {
         })
       : undefined;
     productionWebAcl?.applyRemovalPolicy(RemovalPolicy.RETAIN);
+    const devBasicAuthorization = production
+      ? undefined
+      : new cdk.CfnParameter(this, 'DevBasicAuthorization', {
+          type: 'String',
+          noEcho: true,
+        });
+    const routeRewriteCode = readFileSync(prerenderRouteRewritePath, 'utf8');
     const routeRewrite = new cloudfront.Function(
       this,
       'PrerenderRouteRewrite',
       {
-        code: cloudfront.FunctionCode.fromFile({
-          filePath: prerenderRouteRewritePath,
-        }),
+        code: devBasicAuthorization
+          ? cloudfront.FunctionCode.fromInline(
+              wrapViewerRequestWithBasicAuth(
+                routeRewriteCode,
+                devBasicAuthorization.valueAsString,
+              ),
+            )
+          : cloudfront.FunctionCode.fromFile({
+              filePath: prerenderRouteRewritePath,
+            }),
       },
     );
     const distribution = new cloudfront.Distribution(this, 'Distribution', {

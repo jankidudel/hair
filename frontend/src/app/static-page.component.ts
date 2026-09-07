@@ -119,6 +119,27 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
           }
         </div>
       </section>
+      <section class="category-hubs" aria-labelledby="brush-cluster-heading">
+        <div class="section-heading">
+          <p class="eyebrow">Brushes &amp; combs</p>
+          <h2 id="brush-cluster-heading">Hair Brush Care &amp; Selection</h2>
+        </div>
+        <p>
+          Choose a styling brush, understand its bristles, and keep the one you
+          own in good working order.
+        </p>
+        <div class="category-links">
+          <a routerLink="/guides/round-brush-size-guide"
+            >Round brush size guide <b>→</b></a
+          ><a routerLink="/guides/boar-bristle-vs-nylon-brush"
+            >Boar bristle vs nylon <b>→</b></a
+          ><a routerLink="/guides/how-to-clean-a-hair-brush"
+            >How to clean a hairbrush <b>→</b></a
+          ><a routerLink="/guides/what-is-the-grey-fuzz-on-my-hairbrush"
+            >What is grey fuzz? <b>→</b></a
+          >
+        </div>
+      </section>
       <section class="editorial-grid guides-grid" aria-label="All guides">
         @for (article of guides; track article.slug; let first = $first) {
           <a

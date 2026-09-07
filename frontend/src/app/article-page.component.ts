@@ -4,8 +4,9 @@ import { articles, Article } from './content.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { guideCategoryById } from './article-registry';
+import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.component';
 @Component({
-  imports: [RouterLink, BreadcrumbsComponent],
+  imports: [RouterLink, BreadcrumbsComponent, RoundBrushSizeFinderComponent],
   template: `@if (article) {
     <article class="article-page">
       <app-breadcrumbs [items]="breadcrumbs" />
@@ -20,6 +21,9 @@ import { guideCategoryById } from './article-registry';
           </p>
         }
       </header>
+      @if (article.slug === 'round-brush-size-guide') {
+        <app-round-brush-size-finder />
+      }
       @if (article.affiliateDisclosure) {
         <aside class="disclosure">
           This article may contain affiliate links.

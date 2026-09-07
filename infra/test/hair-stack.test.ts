@@ -10,6 +10,21 @@ test('creates private static hosting and a health API', () => {
   template.resourceCountIs('AWS::S3::Bucket', 1);
   template.resourceCountIs('AWS::CloudFront::Distribution', 1);
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
+  template.hasParameter('DevBasicAuthorization', {
+    NoEcho: true,
+    Type: 'String',
+  });
+  const developmentFunction = Object.values(
+    template.findResources('AWS::CloudFront::Function'),
+  )[0] as { Properties: { FunctionCode: unknown } };
+  assert.match(
+    JSON.stringify(developmentFunction.Properties.FunctionCode),
+    /DevBasicAuthorization/,
+  );
+  assert.match(
+    JSON.stringify(developmentFunction.Properties.FunctionCode),
+    /expectedAuthorization/,
+  );
   assert.ok(template.toJSON());
 });
 
@@ -21,6 +36,9 @@ test('adds the production domain and required WAF protection', () => {
   });
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::Route53::HostedZone', 1);
+  assert.ok(
+    !Object.hasOwn(template.toJSON().Parameters ?? {}, 'DevBasicAuthorization'),
+  );
   template.hasResourceProperties('AWS::CertificateManager::Certificate', {
     DomainName: 'www.combreport.com',
     SubjectAlternativeNames: ['combreport.com'],
@@ -51,6 +69,13 @@ test('adds the production domain and required WAF protection', () => {
     Name: 'hair-prod-cloudfront',
     Scope: 'CLOUDFRONT',
   });
+  const productionFunction = Object.values(
+    template.findResources('AWS::CloudFront::Function'),
+  )[0] as { Properties: { FunctionCode: string } };
+  assert.doesNotMatch(
+    productionFunction.Properties.FunctionCode,
+    /expectedAuthorization/,
+  );
   template.resourceCountIs('AWS::Route53::RecordSet', 5);
   template.hasResourceProperties('AWS::Route53::RecordSet', {
     Type: 'TXT',

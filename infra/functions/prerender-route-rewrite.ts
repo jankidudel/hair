@@ -1,8 +1,6 @@
 // CloudFront executes this file as JavaScript, so it must contain no TypeScript
 // syntax despite using a .ts filename for repository consistency.
-function handler(event) {
-  var request = event.request;
-
+function rewriteOrRedirect(request) {
   if (request.headers.host.value === 'combreport.com') {
     return {
       statusCode: 301,
@@ -22,4 +20,8 @@ function handler(event) {
   }
 
   return request;
+}
+
+function handler(event) {
+  return rewriteOrRedirect(event.request);
 }

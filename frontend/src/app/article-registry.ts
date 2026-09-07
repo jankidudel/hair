@@ -343,6 +343,20 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-05',
   },
   {
+    slug: 'round-brush-size-guide',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 145,
+    enabled: true,
+    publishDate: '2026-09-07',
+  },
+  {
+    slug: 'what-is-the-grey-fuzz-on-my-hairbrush',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 155,
+    enabled: true,
+    publishDate: '2026-09-07',
+  },
+  {
     slug: 'best-heat-protectants',
     group: ArticleGroupId.HairCare,
     order: 10,

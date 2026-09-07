@@ -48,5 +48,7 @@ jobs:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
           retry-max-attempts: 3
-      - run: aws s3 sync frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}" --delete
+      - run: aws s3 sync frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}"
+      - name: Remove retired frontend bundles after 30 days
+        run: .github/scripts/cleanup-stale-frontend-assets.sh frontend/dist/hair-frontend/browser "${{ vars.SITE_BUCKET }}"
       - run: aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" --paths '/*'

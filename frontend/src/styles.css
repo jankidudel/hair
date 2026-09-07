@@ -442,6 +442,10 @@ h3 {
   max-width: 100%;
   font-size: clamp(2.35rem, 4.15vw, 3.9rem);
 }
+.round-brush-guide .article-header h1 {
+  max-width: 20ch;
+  font-size: clamp(2.25rem, 3.4vw, 3.25rem);
+}
 .article-body {
   font-family: var(--serif);
   font-size: 1.14rem;
@@ -534,6 +538,53 @@ h3 {
   border: 1px solid var(--border);
   background: var(--surface);
   box-shadow: 0 1.1rem 2.6rem rgba(29, 41, 34, 0.06);
+}
+.round-brush-finder {
+  width: 100%;
+  min-height: 0;
+  margin-top: 2rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+.round-brush-finder h2 {
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+}
+.round-brush-finder > p:not(.eyebrow, .finder-rationale) {
+  max-width: 40rem;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.round-brush-finder .finder-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.round-brush-finder .finder-options label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+.round-brush-finder select {
+  width: 100%;
+  min-height: 2.7rem;
+  padding: 0.45rem 2rem 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+.round-brush-finder select:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
+}
+.round-brush-finder .finder-rationale {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--terracotta);
+  background: #eee5d8;
 }
 .finder-progress {
   display: grid;
@@ -745,6 +796,9 @@ h3 {
     flex-direction: column;
   }
   .result-sections {
+    grid-template-columns: 1fr;
+  }
+  .round-brush-finder .finder-options {
     grid-template-columns: 1fr;
   }
 }

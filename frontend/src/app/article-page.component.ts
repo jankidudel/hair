@@ -8,18 +8,15 @@ import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.compone
 @Component({
   imports: [RouterLink, BreadcrumbsComponent, RoundBrushSizeFinderComponent],
   template: `@if (article) {
-    <article class="article-page">
+    <article
+      class="article-page"
+      [class.round-brush-guide]="article.slug === 'round-brush-size-guide'"
+    >
       <app-breadcrumbs [items]="breadcrumbs" />
       <header class="article-header">
         <p class="eyebrow">{{ article.category }}</p>
         <h1>{{ article.heading }}</h1>
         <p class="lede">{{ article.description }}</p>
-        @if (article.publishDate && article.updatedDate) {
-          <p class="dates">
-            Published {{ article.publishDate }} · Updated
-            {{ article.updatedDate }}
-          </p>
-        }
       </header>
       @if (article.slug === 'round-brush-size-guide') {
         <app-round-brush-size-finder />

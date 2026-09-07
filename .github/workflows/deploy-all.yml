@@ -81,6 +81,8 @@ jobs:
       - name: Check generated internal links
         run: npm run check:internal-links
       - name: Upload frontend
-        run: aws s3 sync frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}" --delete
+        run: |
+          aws s3 sync frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}"
+          .github/scripts/cleanup-stale-frontend-assets.sh frontend/dist/hair-frontend/browser "${{ vars.SITE_BUCKET }}"
       - name: Invalidate CloudFront
         run: aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" --paths '/*'

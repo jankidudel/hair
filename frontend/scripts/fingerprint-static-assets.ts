@@ -10,9 +10,15 @@ const outputDirectory = resolve(
   'browser',
 );
 const entryAssetNames = ['main.js', 'styles.css'] as const;
+const indexHtml = await readFile(join(outputDirectory, 'index.html'), 'utf8');
 
 const replacements = new Map<string, string>();
 for (const entryAssetName of entryAssetNames) {
+  if (!indexHtml.includes(entryAssetName)) {
+    ensureEntryAssetIsAlreadyFingerprinted(indexHtml, entryAssetName);
+    continue;
+  }
+
   const sourcePath = join(outputDirectory, entryAssetName);
   const contents = await readFile(sourcePath);
   const extension = extname(entryAssetName);
@@ -28,9 +34,30 @@ for (const entryAssetName of entryAssetNames) {
 }
 
 await rewriteHtmlReferences(outputDirectory);
-console.log(
-  `Fingerprinted static entry assets: ${[...replacements.values()].join(', ')}.`,
-);
+if (replacements.size === 0) {
+  console.log('Static entry assets are already fingerprinted.');
+} else {
+  console.log(
+    `Fingerprinted static entry assets: ${[...replacements.values()].join(', ')}.`,
+  );
+}
+
+function ensureEntryAssetIsAlreadyFingerprinted(
+  html: string,
+  entryAssetName: string,
+): void {
+  const extension = extname(entryAssetName);
+  const basename = entryAssetName.slice(0, -extension.length);
+  const fingerprintedEntryPattern = new RegExp(
+    `${basename}[-.][A-Za-z0-9_-]{8,}\\${extension}`,
+  );
+
+  if (!fingerprintedEntryPattern.test(html)) {
+    throw new Error(
+      `Expected ${entryAssetName} or a fingerprinted equivalent in index.html.`,
+    );
+  }
+}
 
 async function rewriteHtmlReferences(directory: string): Promise<void> {
   const entries = await readdir(directory, { withFileTypes: true });

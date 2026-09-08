@@ -2,6 +2,12 @@ name: Frontend validation
 
 on:
   workflow_call:
+    inputs:
+      check-generated-seo:
+        description: Build and inspect the generated production SEO output
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: read
@@ -19,6 +25,9 @@ jobs:
       - run: npm run test
       - run: npm run content:check
       - run: npm run check:seo
+        if: ${{ inputs.check-generated-seo }}
+      - run: npm run check:editorial-targets
+        if: ${{ !inputs.check-generated-seo }}
       - name: Upload generated site on failure
         if: failure()
         uses: actions/upload-artifact@v4

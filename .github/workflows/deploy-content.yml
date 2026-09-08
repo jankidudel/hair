@@ -25,6 +25,8 @@ concurrency:
 jobs:
   validate:
     uses: ./.github/workflows/frontend-validation.yml
+    with:
+      check-generated-seo: false
 
   deploy:
     needs: [validate]
@@ -43,6 +45,9 @@ jobs:
         if: ${{ (inputs.environment || 'dev') == 'dev' }}
       - run: npm run build --workspace=frontend
         if: ${{ (inputs.environment || 'dev') == 'prod' }}
+      - name: Check generated SEO output
+        if: ${{ (inputs.environment || 'dev') == 'prod' }}
+        run: npm run check:generated-seo --workspace=frontend
       - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}

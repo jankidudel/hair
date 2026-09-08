@@ -9,10 +9,29 @@ test('creates private static hosting and a health API', () => {
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::S3::Bucket', 1);
   template.resourceCountIs('AWS::CloudFront::Distribution', 1);
-  template.hasResourceProperties('AWS::CloudFront::CachePolicy', {
-    CachePolicyConfig: {
-      MinTTL: 0,
-    },
+  template.resourceCountIs('AWS::CloudFront::CachePolicy', 0);
+  template.hasResourceProperties('AWS::CloudFront::Distribution', {
+    DistributionConfig: Match.objectLike({
+      DefaultCacheBehavior: Match.objectLike({
+        CachePolicyId: '4135ea2d-6df8-44a3-9df3-4b5a84be39ad',
+      }),
+      CacheBehaviors: Match.arrayWith([
+        Match.objectLike({
+          PathPattern: '*.js',
+          CachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6',
+          FunctionAssociations: Match.arrayWith([
+            Match.objectLike({ EventType: 'viewer-request' }),
+          ]),
+        }),
+        Match.objectLike({
+          PathPattern: '*.css',
+          CachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6',
+          FunctionAssociations: Match.arrayWith([
+            Match.objectLike({ EventType: 'viewer-request' }),
+          ]),
+        }),
+      ]),
+    }),
   });
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
   template.hasParameter('DevBasicAuthorization', {

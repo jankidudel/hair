@@ -8,7 +8,7 @@ describe('generated editorial content', () => {
   it('has one prerenderable route per article', () => {
     const enabledSlugs = articleRegistry
       .filter((article) =>
-        isPublishedOn(article.enabled, article.publishDate, '2026-09-07'),
+        isPublishedOn(article.enabled, article.publishDate, '2026-09-08'),
       )
       .map((article) => article.slug);
     expect(articles.map((article) => article.slug)).toHaveLength(

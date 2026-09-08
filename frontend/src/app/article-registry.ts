@@ -238,6 +238,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-05',
   },
   {
+    slug: 'hot-air-brush-vs-hair-dryer-and-round-brush',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 110,
+    enabled: true,
+    publishDate: '2026-09-08',
+  },
+  {
     slug: 'best-detangling-brushes',
     group: ArticleGroupId.BrushesAndCombs,
     order: 10,

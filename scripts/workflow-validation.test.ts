@@ -44,8 +44,14 @@ test('frontend deployment preserves prior hashed assets and revalidates entries'
   assert.match(deployScript, /max-age=31536000, immutable/);
   assert.match(deployScript, /no-cache, max-age=0, must-revalidate/);
   assert.match(deployScript, /is_hashed_asset/);
+  assert.match(deployScript, /\(js\|css\|woff2\?\|ttf\|otf/);
   assert.match(deployScript, /Upload new content-addressed assets before/);
   assert.match(deployScript, /Route documents are deliberately last/);
+  assert.match(deployScript, /mutable_paths\+=\("\/\$relative_path"\)/);
+  assert.match(
+    deployScript,
+    /invalidation_paths\+=\("\$\{mutable_paths\[@\]\}"\)/,
+  );
   assert.match(deployScript, /invalidation-completed/);
   assert.doesNotMatch(deployScript, /'\/\*'/);
 
@@ -54,4 +60,29 @@ test('frontend deployment preserves prior hashed assets and revalidates entries'
     assert.match(source, /deploy-frontend-assets\.sh/);
     assert.doesNotMatch(source, /cleanup-stale-frontend-assets/);
   }
+});
+
+test('deployment builds fingerprint static entry assets', async () => {
+  const frontendPackage = JSON.parse(
+    await readFile(
+      new URL('../frontend/package.json', import.meta.url),
+      'utf8',
+    ),
+  ) as { scripts: Record<string, string> };
+
+  assert.match(frontendPackage.scripts.build, /assets:fingerprint/);
+  assert.match(
+    frontendPackage.scripts['build:deployment-development'],
+    /assets:fingerprint/,
+  );
+  const fingerprintScript = await readFile(
+    new URL(
+      '../frontend/scripts/fingerprint-static-assets.ts',
+      import.meta.url,
+    ),
+    'utf8',
+  );
+  assert.match(fingerprintScript, /main\.js/);
+  assert.match(fingerprintScript, /styles\.css/);
+  assert.match(fingerprintScript, /createHash\('sha256'\)/);
 });

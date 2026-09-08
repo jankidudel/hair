@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "npm run content:generate && ng serve",
-    "build": "npm run content:generate && npm run seo:generate && ng build",
-    "build:deployment-development": "npm run content:generate && npm run seo:generate:development && ng build --configuration deployment-development",
+    "build": "npm run content:generate && npm run seo:generate && ng build && npm run assets:fingerprint",
+    "build:deployment-development": "npm run content:generate && npm run seo:generate:development && ng build --configuration deployment-development && npm run assets:fingerprint",
     "lint": "eslint .",
     "test": "npm run content:generate && ng test --watch=false",
     "content:generate": "tsx scripts/generate-content.ts",
@@ -13,6 +13,7 @@
     "check:generated-seo": "tsx scripts/check-generated-seo.ts",
     "check:links": "tsx ../../scripts/check-internal-links.ts",
     "check:seo": "npm run check:editorial-targets && npm run build && npm run check:generated-seo",
+    "assets:fingerprint": "tsx scripts/fingerprint-static-assets.ts",
     "seo:generate": "tsx scripts/generate-seo.ts production",
     "seo:generate:development": "tsx scripts/generate-seo.ts development"
   },

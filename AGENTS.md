@@ -10,6 +10,10 @@ Do not display published or updated dates in public page copy or UI. Keep regist
 
 When work changes public pages or routes, the final handoff must separately list added pages and updated pages, each as full canonical production URLs using `https://www.combreport.com` as the base. Do this automatically; do not wait to be asked.
 
+## Git handoff
+
+Leave all work unstaged for user review. Do not run `git add` or create commits; report the changed files and validation results so the user can make the final staging and commit decision.
+
 ## Dependency versions
 
 Use exact package versions in every `package.json`: for example, `"rehype-parse": "9.0.1"`, never `"^9.0.1"`, `"~9.0.1"`, or another range. Keep the lockfile in sync whenever a dependency changes.

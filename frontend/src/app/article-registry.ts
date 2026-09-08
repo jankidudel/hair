@@ -364,6 +364,27 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-07',
   },
   {
+    slug: 'how-to-use-a-round-brush-with-a-hair-dryer',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 160,
+    enabled: true,
+    publishDate: '2026-09-09',
+  },
+  {
+    slug: 'how-to-get-root-volume-with-a-round-brush',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 170,
+    enabled: true,
+    publishDate: '2026-09-09',
+  },
+  {
+    slug: 'how-to-blow-dry-a-bob-with-a-round-brush',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 180,
+    enabled: true,
+    publishDate: '2026-09-09',
+  },
+  {
     slug: 'best-heat-protectants',
     group: ArticleGroupId.HairCare,
     order: 10,

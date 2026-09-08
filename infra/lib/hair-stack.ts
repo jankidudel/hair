@@ -139,12 +139,26 @@ export class HairStack extends Stack {
             }),
       },
     );
+    const siteCachePolicy = new cloudfront.CachePolicy(
+      this,
+      'SiteCachePolicy',
+      {
+        minTtl: Duration.seconds(0),
+        defaultTtl: Duration.days(1),
+        maxTtl: Duration.days(365),
+        cookieBehavior: cloudfront.CacheCookieBehavior.none(),
+        headerBehavior: cloudfront.CacheHeaderBehavior.none(),
+        queryStringBehavior: cloudfront.CacheQueryStringBehavior.none(),
+        enableAcceptEncodingBrotli: true,
+        enableAcceptEncodingGzip: true,
+      },
+    );
     const distribution = new cloudfront.Distribution(this, 'Distribution', {
       defaultBehavior: {
         origin: origins.S3BucketOrigin.withOriginAccessControl(site),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         compress: true,
-        cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
+        cachePolicy: siteCachePolicy,
         functionAssociations: [
           {
             eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,

@@ -9,6 +9,11 @@ test('creates private static hosting and a health API', () => {
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::S3::Bucket', 1);
   template.resourceCountIs('AWS::CloudFront::Distribution', 1);
+  template.hasResourceProperties('AWS::CloudFront::CachePolicy', {
+    CachePolicyConfig: {
+      MinTTL: 0,
+    },
+  });
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
   template.hasParameter('DevBasicAuthorization', {
     NoEcho: true,

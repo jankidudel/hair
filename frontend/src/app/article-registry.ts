@@ -259,6 +259,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   {
+    slug: 'hot-air-brush-vs-curling-iron',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 95,
+    enabled: true,
+    publishDate: '2026-09-08',
+  },
+  {
     slug: 'best-brushes-thick-hair',
     group: ArticleGroupId.BrushesAndCombs,
     order: 20,

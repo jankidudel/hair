@@ -121,7 +121,7 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
     slug: 'how-to-choose-hair-dryer',
     group: ArticleGroupId.HairDryers,
-    order: 50,
+    order: 0,
     enabled: true,
     publishDate: '2026-08-31',
   },

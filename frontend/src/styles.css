@@ -332,6 +332,179 @@ h3 {
 .guides-grid {
   margin-top: 3rem;
 }
+.category-product-explorer {
+  max-width: 46rem;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-left: 3px solid var(--terracotta);
+  background: var(--surface);
+}
+.category-product-explorer h2 {
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+}
+.category-product-explorer p:not(.eyebrow) {
+  color: var(--muted);
+}
+.products-page,
+.comparison-page {
+  max-width: 68rem;
+}
+.how-we-compare,
+.product-filters,
+.comparison-guidance {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.how-we-compare {
+  max-width: 50rem;
+}
+.how-we-compare h2,
+.product-filters h2,
+.comparison-guidance h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+.how-we-compare li + li {
+  margin-top: 0.6rem;
+}
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+.filter-group + .filter-group {
+  margin-top: 0.75rem;
+}
+.filter-group button {
+  min-height: 2.55rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.filter-group button.selected,
+.filter-group button:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--surface);
+}
+.filter-group button:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 22rem;
+  padding: clamp(1.3rem, 3vw, 2rem);
+  background: var(--surface);
+}
+.product-card h2 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
+.product-card h3 {
+  margin-top: 1.4rem;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.product-card ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.product-source,
+.related-guide {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+.product-actions .button {
+  margin-top: 0;
+}
+.official-link {
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+.related-guide {
+  margin-bottom: 0;
+}
+.empty-state {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+}
+.comparison-page > .lede {
+  max-width: 46rem;
+}
+.comparison-matrix {
+  display: block;
+  width: 100%;
+  margin-top: 2.5rem;
+  overflow-x: auto;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+.comparison-matrix th,
+.comparison-matrix td {
+  min-width: 12rem;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.comparison-matrix th {
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+.comparison-matrix td {
+  color: var(--muted);
+}
+.comparison-matrix a {
+  font-weight: 650;
+}
+.external-label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.comparison-guidance {
+  max-width: 46rem;
+}
+.dryer-finder-compare {
+  margin: 1.2rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
 .trust-statement {
   max-width: 46rem;
   margin-top: clamp(5rem, 11vw, 9rem);
@@ -586,6 +759,80 @@ h3 {
   border-left: 3px solid var(--terracotta);
   background: #eee5d8;
 }
+.hair-dryer-finder {
+  width: 100%;
+  min-height: 0;
+  margin-top: 2rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+.hair-dryer-finder h2 {
+  max-width: 24ch;
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+}
+.hair-dryer-finder > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.hair-dryer-finder .finder-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.hair-dryer-finder .finder-options label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+.hair-dryer-finder select {
+  width: 100%;
+  min-height: 2.7rem;
+  padding: 0.45rem 2rem 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+.hair-dryer-finder select:focus-visible,
+.finder-submit:focus-visible,
+.dryer-finder-links a:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.finder-submit {
+  margin-top: 1.5rem;
+}
+.dryer-finder-result {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.dryer-finder-result h3 {
+  max-width: 30ch;
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+}
+.dryer-finder-result > p {
+  color: var(--muted);
+}
+.dryer-finder-result h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+.dryer-finder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.25rem;
+  margin-top: 1.25rem;
+}
+.dryer-finder-links a {
+  color: var(--green);
+  font-weight: 750;
+}
 .finder-progress {
   display: grid;
   gap: 0.55rem;
@@ -730,6 +977,9 @@ h3 {
   margin-top: 1.2rem;
 }
 @media (max-width: 48rem) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
   .site-header,
   .site-main,
   .site-footer {
@@ -799,6 +1049,9 @@ h3 {
     grid-template-columns: 1fr;
   }
   .round-brush-finder .finder-options {
+    grid-template-columns: 1fr;
+  }
+  .hair-dryer-finder .finder-options {
     grid-template-columns: 1fr;
   }
 }

@@ -171,25 +171,42 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
           @for (article of categoryArticles; track article.slug) {
             <a class="guide-card" [routerLink]="['/guides', article.slug]"
               ><p class="eyebrow">{{ article.category }}</p>
-              <h2>{{ article.heading }}</h2>
-              <p>{{ article.description }}</p>
+              <h2>
+                {{
+                  article.slug === 'how-to-choose-hair-dryer'
+                    ? 'Choose a Hair Dryer'
+                    : article.heading
+                }}
+              </h2>
+              <p>
+                {{
+                  article.slug === 'how-to-choose-hair-dryer'
+                    ? 'Use the feature finder, then compare dryers for your routine.'
+                    : article.description
+                }}
+              </p>
               <span class="text-link"
                 >Read guide <span aria-hidden="true">→</span></span
               ></a
             >
           }
         </section>
+        @if (
+          category.id === 'hair-dryers' || category.id === 'hot-air-brushes'
+        ) {
+          <section class="category-product-explorer">
+            <p class="eyebrow">Specification-led explorer</p>
+            <h2>Compare Hair Tools Before You Buy</h2>
+            <p>
+              Compare published manufacturer specifications alongside the buying
+              guides for this category.
+            </p>
+            <a class="text-link" routerLink="/products"
+              >Explore comparisons <span aria-hidden="true">→</span></a
+            >
+          </section>
+        }
       }
-    }
-    @case ('products') {
-      <section class="listing-intro">
-        <p class="eyebrow">Products</p>
-        <h1>Product comparisons, coming soon</h1>
-        <p class="lede">
-          We’re building clear comparisons for brushes, shampoos, and styling
-          tools.
-        </p>
-      </section>
     }
     @case ('about') {
       <section class="listing-intro">
@@ -262,11 +279,6 @@ export class StaticPageComponent implements OnInit {
         'Hair Tools and Routine Guides | Comb Report',
         'Honest hair-tool comparisons and practical routine advice.',
         '/guides',
-      ],
-      products: [
-        'Products | Comb Report',
-        'Hair tools and product comparisons.',
-        '/products',
       ],
       about: ['About | Comb Report', 'About Comb Report.', '/about'],
       privacy: ['Privacy | Comb Report', 'Privacy information.', '/privacy'],

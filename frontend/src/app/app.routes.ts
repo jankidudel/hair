@@ -3,6 +3,7 @@ import { ArticlePageComponent } from './article-page.component';
 import { StaticPageComponent } from './static-page.component';
 import { HairBrushFinderComponent } from './hair-brush-finder.component';
 import { NotFoundPageComponent } from './not-found-page.component';
+import { ProductExplorerComponent } from './product-explorer.component';
 import { publishedGuideCanMatch } from './published-guide-route';
 export const routes: Routes = [
   { path: '', component: StaticPageComponent, data: { page: 'home' } },
@@ -33,11 +34,8 @@ export const routes: Routes = [
   },
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
   { path: 'hair-brush-finder', component: HairBrushFinderComponent },
-  {
-    path: 'products',
-    component: StaticPageComponent,
-    data: { page: 'products' },
-  },
+  { path: 'products', component: ProductExplorerComponent },
+  { path: 'products/:comparison', component: ProductExplorerComponent },
   { path: 'about', component: StaticPageComponent, data: { page: 'about' } },
   {
     path: 'privacy',

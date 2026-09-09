@@ -1,11 +1,21 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import { articles } from './content.generated';
+import { canonicalComparisons } from './product-comparisons';
 export const serverRoutes: ServerRoute[] = [
   {
     path: 'guides/:slug',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       return articles.map(({ slug }) => ({ slug }));
+    },
+  },
+  {
+    path: 'products/:comparison',
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      return canonicalComparisons.map(({ slug: comparison }) => ({
+        comparison,
+      }));
     },
   },
   { path: '404', renderMode: RenderMode.Prerender },

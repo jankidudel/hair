@@ -5,8 +5,14 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { guideCategoryById } from './article-registry';
 import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.component';
+import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 @Component({
-  imports: [RouterLink, BreadcrumbsComponent, RoundBrushSizeFinderComponent],
+  imports: [
+    RouterLink,
+    BreadcrumbsComponent,
+    RoundBrushSizeFinderComponent,
+    HairDryerFinderComponent,
+  ],
   template: `@if (article) {
     <article
       class="article-page"
@@ -20,6 +26,9 @@ import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.compone
       </header>
       @if (article.slug === 'round-brush-size-guide') {
         <app-round-brush-size-finder />
+      }
+      @if (article.slug === 'how-to-choose-hair-dryer') {
+        <app-hair-dryer-finder />
       }
       @if (article.affiliateDisclosure) {
         <aside class="disclosure">

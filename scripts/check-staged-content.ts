@@ -9,6 +9,7 @@ import {
   isPublishedOn,
   isValidCalendarDate,
 } from '../frontend/src/app/publication-date.ts';
+import { canonicalComparisons } from '../frontend/src/app/product-comparisons.ts';
 
 const execFileAsync = promisify(execFile);
 const hardMinimumWords = 500;
@@ -25,6 +26,7 @@ const staticRoutes = new Set([
   '/about',
   '/privacy',
   '/affiliate-disclosure',
+  ...canonicalComparisons.map((comparison) => comparison.path),
 ]);
 
 export interface StagedGuideInput {

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { articleRegistry } from '../frontend/src/app/article-registry.ts';
+import { canonicalComparisons } from '../frontend/src/app/product-comparisons.ts';
 import { validateStagedGuide } from './check-staged-content.ts';
 
 function source(slug: string, body: string): string {
@@ -46,4 +47,17 @@ test('rejects a publishable guide below the hard minimum', () => {
     today: '2026-09-06',
   });
   assert.match(errors.join('\n'), /body is too short/);
+});
+
+test('allows links to registered product comparison routes', () => {
+  const body = `<p>${'Useful comparison context '.repeat(250)}</p>${canonicalComparisons
+    .map((comparison) => `<a href="${comparison.path}">Compare</a>`)
+    .join('')}`;
+  const errors = validateStagedGuide({
+    file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
+    source: source(entry.slug, body),
+    entry,
+    today: '2026-09-06',
+  });
+  assert.deepEqual(errors, []);
 });

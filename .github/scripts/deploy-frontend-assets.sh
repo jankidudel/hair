@@ -30,12 +30,10 @@ for file in "${files[@]}"; do
 done
 
 # Stable names can change between deployments, so they must revalidate.
-mutable_paths=()
 for file in "${files[@]}"; do
   relative_path="${file#"$build_directory"/}"
   if ! is_hashed_asset "$relative_path" && [[ "$relative_path" != *.html ]]; then
     upload_file "$relative_path" "$mutable_cache_control"
-    mutable_paths+=("/$relative_path")
   fi
 done
 
@@ -47,24 +45,6 @@ for file in "${files[@]}"; do
   fi
 done
 
-mapfile -t invalidation_paths < <(
-  find "$build_directory" -name index.html -printf '/%P\n' |
-    sed 's#^/index.html$#/#' |
-    LC_ALL=C sort
-)
-# Invalidate every mutable object. A stable main.js or styles.css can contain a
-# newer route registry than an already-cached copy; leaving it at an edge can
-# make Angular replace freshly prerendered HTML with its client-side 404 page.
-# Older hashed assets intentionally remain untouched for already-open tabs.
-invalidation_paths+=(/index.csr.html)
-invalidation_paths+=("${mutable_paths[@]}")
-invalidation_id="$(
-  aws cloudfront create-invalidation \
-    --distribution-id "$distribution_id" \
-    --paths "${invalidation_paths[@]}" \
-    --query 'Invalidation.Id' \
-    --output text
-)"
-aws cloudfront wait invalidation-completed \
-  --distribution-id "$distribution_id" \
-  --id "$invalidation_id"
+# Route documents revalidate through the caching-disabled behavior. Every
+# referenced JS and CSS entry asset is content-addressed by the build, so a
+# new deployment uses new URLs without CloudFront invalidations.

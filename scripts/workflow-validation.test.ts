@@ -31,7 +31,7 @@ test('pull requests call the same frontend validation workflow', async () => {
   assert.ok(root);
 });
 
-test('frontend deployment preserves prior hashed assets and revalidates entries', async () => {
+test('frontend deployment preserves prior hashed assets without CloudFront invalidation', async () => {
   const deployScript = await readFile(
     new URL('../.github/scripts/deploy-frontend-assets.sh', import.meta.url),
     'utf8',
@@ -47,13 +47,8 @@ test('frontend deployment preserves prior hashed assets and revalidates entries'
   assert.match(deployScript, /\(js\|css\|woff2\?\|ttf\|otf/);
   assert.match(deployScript, /Upload new content-addressed assets before/);
   assert.match(deployScript, /Route documents are deliberately last/);
-  assert.match(deployScript, /mutable_paths\+=\("\/\$relative_path"\)/);
-  assert.match(
-    deployScript,
-    /invalidation_paths\+=\("\$\{mutable_paths\[@\]\}"\)/,
-  );
-  assert.match(deployScript, /invalidation-completed/);
-  assert.doesNotMatch(deployScript, /'\/\*'/);
+  assert.doesNotMatch(deployScript, /cloudfront create-invalidation/);
+  assert.match(deployScript, /content-addressed by the build/);
 
   for (const name of ['deploy-content.yml', 'deploy-all.yml']) {
     const source = await workflow(name);

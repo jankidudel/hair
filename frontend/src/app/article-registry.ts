@@ -203,6 +203,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   {
+    slug: 'how-to-use-a-hot-air-brush-on-short-hair',
+    group: ArticleGroupId.HotAirBrushes,
+    order: 65,
+    enabled: true,
+    publishDate: '2026-09-08',
+  },
+  {
     slug: 'best-hot-air-brush-for-thick-hair',
     group: ArticleGroupId.HotAirBrushes,
     order: 70,

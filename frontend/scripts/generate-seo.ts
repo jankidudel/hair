@@ -36,6 +36,7 @@ const entries = [
     .map((category) => category.path),
   '/guides',
   '/hair-brush-finder',
+  '/hair-tool-routine-builder',
   '/products',
   '/about',
   '/privacy',

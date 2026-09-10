@@ -70,15 +70,29 @@ export class ArticlePageComponent implements OnInit {
         this.article.title,
         this.article.description,
         `/guides/${this.article.slug}`,
-        {
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: this.article.title,
-          description: this.article.description,
-          datePublished: this.article.publishDate,
-          dateModified: this.article.updatedDate,
-          mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
-        },
+        [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: this.article.title,
+            description: this.article.description,
+            datePublished: this.article.publishDate,
+            dateModified: this.article.updatedDate,
+            mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: this.article.faq.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          },
+        ],
         this.breadcrumbs
           .filter((item): item is Breadcrumb & { path: string } => !!item.path)
           .concat({

@@ -61,3 +61,14 @@ test('allows links to registered product comparison routes', () => {
   });
   assert.deepEqual(errors, []);
 });
+
+test('allows links to the hair tool routine builder', () => {
+  const body = `<p>${'Useful routine context '.repeat(250)}</p><a href="/hair-tool-routine-builder">Build a routine</a>`;
+  const errors = validateStagedGuide({
+    file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
+    source: source(entry.slug, body),
+    entry,
+    today: '2026-09-06',
+  });
+  assert.deepEqual(errors, []);
+});

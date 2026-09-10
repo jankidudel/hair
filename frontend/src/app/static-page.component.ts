@@ -140,6 +140,19 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
           >
         </div>
       </section>
+      <section class="category-hubs" aria-labelledby="routine-builder-heading">
+        <div class="section-heading">
+          <p class="eyebrow">Build a smaller toolkit</p>
+          <h2 id="routine-builder-heading">Hair Tool Routine Builder</h2>
+        </div>
+        <p>
+          Choose the few tool categories that support your ordinary routine
+          before comparing extra options.
+        </p>
+        <a class="text-link" routerLink="/hair-tool-routine-builder"
+          >Build a simple routine <span aria-hidden="true">→</span></a
+        >
+      </section>
       <section class="editorial-grid guides-grid" aria-label="All guides">
         @for (article of guides; track article.slug; let first = $first) {
           <a

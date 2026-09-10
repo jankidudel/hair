@@ -371,6 +371,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-07',
   },
   {
+    slug: 'what-hair-tools-do-i-need',
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 150,
+    enabled: true,
+    publishDate: '2026-09-10',
+  },
+  {
     slug: 'what-is-the-grey-fuzz-on-my-hairbrush',
     group: ArticleGroupId.BrushesAndCombs,
     order: 155,

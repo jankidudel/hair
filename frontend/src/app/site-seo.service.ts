@@ -17,7 +17,7 @@ export class SiteSeoService {
     title: string,
     description: string,
     path: string,
-    jsonLd?: object,
+    jsonLd?: object | readonly object[],
     breadcrumbs?: readonly BreadcrumbSchemaItem[],
   ): void {
     const url = this.canonicalUrl(path);
@@ -57,7 +57,7 @@ export class SiteSeoService {
     }
   }
   private structuredData(
-    jsonLd: object | undefined,
+    jsonLd: object | readonly object[] | undefined,
     breadcrumbs: readonly BreadcrumbSchemaItem[] | undefined,
   ): object | undefined {
     const breadcrumbList = breadcrumbs
@@ -71,12 +71,14 @@ export class SiteSeoService {
           })),
         }
       : undefined;
-    if (!jsonLd && !breadcrumbList) return undefined;
-    if (!breadcrumbList) return jsonLd;
-    const graph = [jsonLd, breadcrumbList].filter(
-      (item): item is object => item !== undefined,
-    );
-    return { '@context': 'https://schema.org', '@graph': graph };
+    const entities = [
+      ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+      ...(breadcrumbList ? [breadcrumbList] : []),
+    ];
+    if (entities.length === 0) return undefined;
+    return entities.length === 1
+      ? entities[0]
+      : { '@context': 'https://schema.org', '@graph': entities };
   }
   applyNoIndex(title: string, description: string): void {
     this.title.setTitle(title);

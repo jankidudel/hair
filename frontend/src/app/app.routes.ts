@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ArticlePageComponent } from './article-page.component';
 import { StaticPageComponent } from './static-page.component';
 import { HairBrushFinderComponent } from './hair-brush-finder.component';
+import { HairToolRoutineBuilderComponent } from './hair-tool-routine-builder.component';
 import { NotFoundPageComponent } from './not-found-page.component';
 import { ProductExplorerComponent } from './product-explorer.component';
 import { publishedGuideCanMatch } from './published-guide-route';
@@ -34,6 +35,10 @@ export const routes: Routes = [
   },
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
   { path: 'hair-brush-finder', component: HairBrushFinderComponent },
+  {
+    path: 'hair-tool-routine-builder',
+    component: HairToolRoutineBuilderComponent,
+  },
   { path: 'products', component: ProductExplorerComponent },
   { path: 'products/:comparison', component: ProductExplorerComponent },
   { path: 'about', component: StaticPageComponent, data: { page: 'about' } },

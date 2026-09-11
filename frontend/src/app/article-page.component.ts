@@ -6,12 +6,14 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { guideCategoryById } from './article-registry';
 import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.component';
 import { HairDryerFinderComponent } from './hair-dryer-finder.component';
+import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
 @Component({
   imports: [
     RouterLink,
     BreadcrumbsComponent,
     RoundBrushSizeFinderComponent,
     HairDryerFinderComponent,
+    HairDryerSpecsDecoderComponent,
   ],
   template: `@if (article) {
     <article
@@ -29,6 +31,9 @@ import { HairDryerFinderComponent } from './hair-dryer-finder.component';
       }
       @if (article.slug === 'how-to-choose-hair-dryer') {
         <app-hair-dryer-finder />
+      }
+      @if (article.slug === 'hair-dryer-wattage-guide') {
+        <app-hair-dryer-specs-decoder />
       }
       @if (article.affiliateDisclosure) {
         <aside class="disclosure">

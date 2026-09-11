@@ -119,6 +119,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   {
+    slug: 'hair-dryer-wattage-guide',
+    group: ArticleGroupId.HairDryers,
+    order: 50,
+    enabled: true,
+    publishDate: '2026-09-10',
+  },
+  {
     slug: 'how-to-choose-hair-dryer',
     group: ArticleGroupId.HairDryers,
     order: 0,

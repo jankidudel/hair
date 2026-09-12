@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ViewEncapsulation, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 export interface Breadcrumb {
@@ -9,6 +9,7 @@ export interface Breadcrumb {
 @Component({
   selector: 'app-breadcrumbs',
   imports: [RouterLink],
+  encapsulation: ViewEncapsulation.None,
   styleUrl: 'breadcrumbs.component.css',
   template: `<nav class="breadcrumbs" aria-label="Breadcrumb">
     <ol>

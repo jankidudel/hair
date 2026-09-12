@@ -2,6 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 import { articleRegistry } from '../src/app/article-registry.ts';
+import { resolveArticleSlugReference } from '../src/app/article-slug.ts';
 import {
   isPublishedOn,
   isValidCalendarDate,
@@ -33,7 +34,12 @@ const sourceBySlug = new Map<string, Record<string, unknown>>();
 for (const file of files) {
   const parsed = matter(await readFile(join(directory, file), 'utf8'));
   const data = parsed.data as Record<string, unknown>;
-  if (typeof data.slug === 'string') sourceBySlug.set(data.slug, data);
+  if (typeof data.slug === 'string') {
+    const slug = resolveArticleSlugReference(data.slug);
+    if (slug) {
+      sourceBySlug.set(slug, data);
+    }
+  }
 }
 for (const [slug, entry] of registry) {
   const data = sourceBySlug.get(slug);
@@ -44,9 +50,10 @@ for (const [slug, entry] of registry) {
 for (const file of files) {
   const parsed = matter(await readFile(join(directory, file), 'utf8'));
   const data = parsed.data as Record<string, unknown>;
-  const slug = typeof data.slug === 'string' ? data.slug : '';
+  const slugReference = typeof data.slug === 'string' ? data.slug : '';
+  const slug = resolveArticleSlugReference(slugReference);
   if (!slug) {
-    errors.push(`${file}: missing slug.`);
+    errors.push(`${file}: slug must use a valid ArticleSlug reference.`);
     continue;
   }
   if (seenSlugs.has(slug)) errors.push(`${file}: duplicate slug '${slug}'.`);
@@ -124,7 +131,9 @@ for (const file of files) {
   )
     errors.push(`${prefix}: needs a contextual internal link.`);
   for (const href of internal.filter((href) => href.startsWith('/guides/'))) {
-    const target = href.split(/[?#]/)[0].slice('/guides/'.length);
+    const targetReference = href.split(/[?#]/)[0].slice('/guides/'.length);
+    const target =
+      resolveArticleSlugReference(targetReference) ?? targetReference;
     if (!published.has(target) && registry.has(target))
       errors.push(`${prefix}: links to unpublished guide '${target}'.`);
   }

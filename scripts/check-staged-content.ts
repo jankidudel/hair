@@ -5,6 +5,7 @@ import {
   articleRegistry,
   type ArticleRegistryEntry,
 } from '../frontend/src/app/article-registry.ts';
+import { resolveArticleSlugReference } from '../frontend/src/app/article-slug.ts';
 import {
   isPublishedOn,
   isValidCalendarDate,
@@ -62,16 +63,18 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
   const data = parsed.data as Record<string, unknown>;
   const title = requiredString(data, 'title');
   const description = requiredString(data, 'description');
-  const slug = requiredString(data, 'slug');
+  const slugReference = requiredString(data, 'slug');
+  const slug = slugReference
+    ? resolveArticleSlugReference(slugReference)
+    : undefined;
   const heading = requiredString(data, 'heading');
-  if (!title || !description || !slug || !heading)
+  const isLegacyArticle = !('eyebrow' in data) && !('heading' in data);
+  if (!title || !description || !slug || (!isLegacyArticle && !heading))
     errors.push(
       `${prefix}: title, description, slug, and heading are required.`,
     );
-  if (slug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))
-    errors.push(
-      `${prefix}: slug must use lowercase words separated by hyphens.`,
-    );
+  if (slugReference && !slug)
+    errors.push(`${prefix}: slug must use an ArticleSlug reference.`);
   if (slug && input.file !== `frontend/content/${slug}.html`)
     errors.push(`${prefix}: filename must match slug '${slug}'.`);
   if (!input.entry)
@@ -80,7 +83,7 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
     errors.push(`${prefix}: registry slug does not match front matter.`);
   if (input.entry && !isValidCalendarDate(input.entry.publishDate))
     errors.push(`${prefix}: registry publishDate is invalid.`);
-  if (/<h1\b/i.test(parsed.content))
+  if (!isLegacyArticle && /<h1\b/i.test(parsed.content))
     errors.push(
       `${prefix}: article HTML must not include H1; heading generates the page H1.`,
     );
@@ -112,7 +115,10 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
   for (const href of parsed.content.matchAll(/href=["']([^"']+)["']/gi)) {
     const path = href[1];
     if (!path.startsWith('/')) continue;
-    const guideSlug = path.match(/^\/guides\/([^/#?]+)$/)?.[1];
+    const guideSlugReference = path.match(/^\/guides\/([^/#?]+)$/)?.[1];
+    const guideSlug = guideSlugReference
+      ? (resolveArticleSlugReference(guideSlugReference) ?? guideSlugReference)
+      : undefined;
     if (guideSlug && !publishedSlugs.has(guideSlug))
       errors.push(
         `${prefix}: links to unpublished or unknown guide '${path}'.`,
@@ -147,10 +153,13 @@ if (import.meta.main) {
     await Promise.all(
       (await stagedFiles()).map(async (file) => {
         const source = await stagedSource(file);
-        const slug = requiredString(
+        const slugReference = requiredString(
           matter(source).data as Record<string, unknown>,
           'slug',
         );
+        const slug = slugReference
+          ? resolveArticleSlugReference(slugReference)
+          : undefined;
         return validateStagedGuide({
           file,
           source,

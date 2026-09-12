@@ -6,6 +6,7 @@ type Density = 'fine' | 'medium' | 'thick';
 
 @Component({
   selector: 'app-round-brush-size-finder',
+  styleUrl: 'round-brush-size-finder.component.css',
   template: ` <section
     class="finder-card round-brush-finder"
     aria-labelledby="round-brush-finder-heading"

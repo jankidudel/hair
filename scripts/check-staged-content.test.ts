@@ -1,14 +1,17 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { articleRegistry } from '../frontend/src/app/article-registry.ts';
+import { articleSlugNameByValue } from '../frontend/src/app/article-slug.ts';
 import { canonicalComparisons } from '../frontend/src/app/product-comparisons.ts';
 import { validateStagedGuide } from './check-staged-content.ts';
 
 function source(slug: string, body: string): string {
+  const slugName =
+    articleSlugNameByValue[slug as keyof typeof articleSlugNameByValue];
   return `---
 title: 'A useful guide title'
 description: 'A useful guide description that gives readers enough context for a decision.'
-slug: '${slug}'
+slug: '{{ArticleSlug.${slugName}}}'
 eyebrow: 'Hair dryers'
 heading: 'A useful guide heading'
 ---

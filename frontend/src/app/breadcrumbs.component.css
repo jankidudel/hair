@@ -1,0 +1,29 @@
+.breadcrumbs {
+  margin: 0 0 1.35rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.5;
+  list-style: none;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.breadcrumbs li + li::before {
+  margin-right: 0.35rem;
+  color: var(--border);
+  content: '›';
+}
+.breadcrumbs a {
+  color: var(--green);
+}

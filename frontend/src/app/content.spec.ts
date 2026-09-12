@@ -1,14 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { articles } from './content.generated';
 import { articleRegistry } from './article-registry';
+import { ArticleSlug } from './article-slug';
 import { guideCategories, guideCategoryById } from './article-registry';
 import { isPublishedOn } from './publication-date';
 
 describe('generated editorial content', () => {
   it('has one prerenderable route per article', () => {
+    const today = new Date().toISOString().slice(0, 10);
     const enabledSlugs = articleRegistry
       .filter((article) =>
-        isPublishedOn(article.enabled, article.publishDate, '2026-09-10'),
+        isPublishedOn(article.enabled, article.publishDate, today),
       )
       .map((article) => article.slug);
     expect(articles.map((article) => article.slug)).toHaveLength(
@@ -16,6 +18,12 @@ describe('generated editorial content', () => {
     );
     expect(new Set(articles.map((article) => article.slug))).toEqual(
       new Set(enabledSlugs),
+    );
+  });
+
+  it('registers every canonical article slug exactly once', () => {
+    expect(articleRegistry.map((article) => article.slug).sort()).toEqual(
+      Object.values(ArticleSlug).sort(),
     );
   });
 

@@ -9,6 +9,7 @@ export interface Breadcrumb {
 @Component({
   selector: 'app-breadcrumbs',
   imports: [RouterLink],
+  styleUrl: 'breadcrumbs.component.css',
   template: `<nav class="breadcrumbs" aria-label="Breadcrumb">
     <ol>
       @for (item of items(); track item.label; let last = $last) {

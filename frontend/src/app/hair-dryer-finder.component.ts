@@ -14,6 +14,7 @@ import {
 @Component({
   selector: 'app-hair-dryer-finder',
   imports: [RouterLink],
+  styleUrl: 'hair-dryer-finder.component.css',
   template: `
     <section
       class="finder-card hair-dryer-finder"

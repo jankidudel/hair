@@ -1,0 +1,303 @@
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(20rem, 0.78fr);
+  align-items: stretch;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+.hero-copy {
+  align-self: center;
+  padding-block: 1.5rem;
+}
+.featured-guide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 30rem;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+.featured-guide::before {
+  position: absolute;
+  z-index: 1;
+  top: 1.35rem;
+  right: 1.35rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  background: var(--terracotta);
+  content: '';
+}
+.featured-guide h2 {
+  max-width: 12ch;
+  font-size: clamp(2rem, 3vw, 3.1rem);
+}
+.featured-guide > p:not(.eyebrow) {
+  max-width: 31rem;
+  color: var(--muted);
+}
+.featured-art {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 52%;
+  overflow: hidden;
+  background: #e9e2d6;
+}
+.featured-art svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 2;
+  opacity: 0.8;
+}
+.featured-art circle {
+  fill: var(--terracotta);
+  stroke: none;
+}
+.topic-section,
+.latest-section {
+  margin-top: clamp(5rem, 11vw, 9rem);
+}
+.section-heading {
+  margin-bottom: 1.8rem;
+}
+.section-heading-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.topic-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+}
+.topic-links a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.3vw, 1.9rem);
+  text-decoration: none;
+}
+.topic-links a + a {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+.topic-links span {
+  color: var(--terracotta);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+.topic-links b {
+  margin-left: auto;
+  padding-right: 1rem;
+  color: var(--green);
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 16rem;
+  padding: 1.55rem;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+.guide-card:hover {
+  background: var(--surface);
+}
+.guide-card h2,
+.guide-card h3 {
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.55rem, 2.3vw, 2.25rem);
+  line-height: 1.08;
+}
+.guide-card > p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+.guide-card .text-link {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+.guide-card-featured {
+  grid-row: span 2;
+  min-height: 32rem;
+  padding: 2rem;
+  background: var(--surface);
+}
+.guide-card-featured h2,
+.guide-card-featured h3 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+.guides-grid {
+  margin-top: 3rem;
+}
+.category-product-explorer {
+  max-width: 46rem;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-left: 3px solid var(--terracotta);
+  background: var(--surface);
+}
+.category-product-explorer h2 {
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+}
+.category-product-explorer p:not(.eyebrow) {
+  color: var(--muted);
+}
+.trust-statement {
+  max-width: 46rem;
+  margin-top: clamp(5rem, 11vw, 9rem);
+  padding-top: 1.7rem;
+  border-top: 3px solid var(--terracotta);
+}
+.trust-statement > p:not(.eyebrow) {
+  margin: 0.75rem 0 1.1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.listing-intro {
+  max-width: 58rem;
+}
+.listing-intro .lede {
+  max-width: 42rem;
+}
+.breadcrumbs {
+  margin: 0 0 1.35rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.5;
+  list-style: none;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.breadcrumbs li + li::before {
+  margin-right: 0.35rem;
+  color: var(--border);
+  content: '›';
+}
+.breadcrumbs a {
+  color: var(--green);
+}
+.category-hubs {
+  margin-top: 3.5rem;
+}
+.category-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+}
+.category-links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  text-decoration: none;
+}
+.category-links a:nth-child(odd) {
+  padding-right: 1.5rem;
+}
+.category-links a:nth-child(even) {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+.category-links b {
+  color: var(--terracotta);
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+.listing-intro h1 {
+  max-width: 100%;
+  font-size: clamp(2.45rem, 4.25vw, 4rem);
+}
+
+@media (max-width: 48rem) {
+  .home-hero,
+  .topic-links,
+  .editorial-grid,
+  .category-links {
+    grid-template-columns: 1fr;
+  }
+  .home-hero {
+    gap: 2.5rem;
+  }
+  .featured-guide {
+    display: block;
+    min-height: 0;
+    padding: 0 0 1.5rem;
+  }
+  .featured-art {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .featured-art svg {
+    display: block;
+  }
+  .featured-guide > :not(.featured-art) {
+    margin-inline: 1.5rem;
+  }
+  .featured-guide > .text-link {
+    display: inline-block;
+  }
+  .topic-links a + a {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .category-links a:nth-child(odd),
+  .category-links a:nth-child(even) {
+    padding-inline: 0;
+    border-left: 0;
+  }
+  .guide-card-featured {
+    grid-row: auto;
+    min-height: 20rem;
+  }
+  .section-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

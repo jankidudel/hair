@@ -10,6 +10,7 @@ import { CookieConsentBannerComponent } from './analytics/cookie-consent-banner.
     RouterLinkActive,
     CookieConsentBannerComponent,
   ],
+  styleUrl: 'app.component.css',
   template: `
     <header class="site-header">
       <a class="brand" routerLink="/" aria-label="Comb Report home">

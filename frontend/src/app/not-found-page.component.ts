@@ -4,6 +4,7 @@ import { SiteSeoService } from './site-seo.service';
 
 @Component({
   imports: [RouterLink],
+  styleUrl: 'not-found-page.component.css',
   template: `
     <section class="not-found-page">
       <p class="eyebrow">Error 404</p>

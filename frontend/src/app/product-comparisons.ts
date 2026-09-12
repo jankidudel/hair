@@ -1,3 +1,5 @@
+import { ArticleSlug } from './article-slug';
+
 export type ProductCategory = 'hair-dryer' | 'multi-styler' | 'hot-air-brush';
 export type PriceTier = 'entry' | 'mid-range' | 'premium';
 
@@ -68,8 +70,8 @@ export const productProfiles: readonly ProductProfile[] = [
     officialProductUrl: dysonSupersonicUrl,
     verifiedAt,
     relatedGuideSlugs: [
-      'dyson-supersonic-vs-shark-speedstyle',
-      'how-to-choose-hair-dryer',
+      ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
+      ArticleSlug.HairDryerChooser,
     ],
     comparisonStatus: 'specification-led',
   },
@@ -99,8 +101,8 @@ export const productProfiles: readonly ProductProfile[] = [
     officialProductUrl: sharkSpeedstyleUrl,
     verifiedAt,
     relatedGuideSlugs: [
-      'dyson-supersonic-vs-shark-speedstyle',
-      'how-to-choose-hair-dryer',
+      ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
+      ArticleSlug.HairDryerChooser,
     ],
     comparisonStatus: 'specification-led',
   },
@@ -148,8 +150,8 @@ export const productProfiles: readonly ProductProfile[] = [
     officialProductUrl: dysonAirwrapUrl,
     verifiedAt,
     relatedGuideSlugs: [
-      'dyson-airwrap-vs-shark-flexstyle',
-      'best-hot-air-brushes',
+      ArticleSlug.DysonAirwrapVsSharkFlexstyle,
+      ArticleSlug.BestHotAirBrushes,
     ],
     comparisonStatus: 'specification-led',
   },
@@ -197,8 +199,8 @@ export const productProfiles: readonly ProductProfile[] = [
     officialProductUrl: sharkFlexstyleUrl,
     verifiedAt,
     relatedGuideSlugs: [
-      'dyson-airwrap-vs-shark-flexstyle',
-      'best-hot-air-brushes',
+      ArticleSlug.DysonAirwrapVsSharkFlexstyle,
+      ArticleSlug.BestHotAirBrushes,
     ],
     comparisonStatus: 'specification-led',
   },

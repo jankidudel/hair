@@ -16,6 +16,7 @@ type AnswerKey = keyof HairDryerSpecsAnswers;
 @Component({
   selector: 'app-hair-dryer-specs-decoder',
   imports: [RouterLink],
+  styleUrl: 'hair-dryer-specs-decoder.component.css',
   template: `
     <section
       class="finder-card hair-dryer-specs-decoder"

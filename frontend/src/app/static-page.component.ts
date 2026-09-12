@@ -8,9 +8,11 @@ import {
   guideCategoryById,
 } from './article-registry';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
+import { ArticleSlug } from './article-slug';
 
 @Component({
   imports: [RouterLink, BreadcrumbsComponent],
+  styleUrl: 'static-page.component.css',
   template: `@switch (page) {
     @case ('home') {
       <section class="home-hero">
@@ -129,13 +131,17 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
           own in good working order.
         </p>
         <div class="category-links">
-          <a routerLink="/guides/round-brush-size-guide"
+          <a [routerLink]="['/guides', articleSlug.RoundBrushSizeGuide]"
             >Round brush size guide <b>→</b></a
-          ><a routerLink="/guides/boar-bristle-vs-nylon-brush"
+          ><a [routerLink]="['/guides', articleSlug.BoarBristleVsNylonBrush]"
             >Boar bristle vs nylon <b>→</b></a
-          ><a routerLink="/guides/how-to-clean-a-hair-brush"
+          ><a [routerLink]="['/guides', articleSlug.HowToCleanAHairBrush]"
             >How to clean a hairbrush <b>→</b></a
-          ><a routerLink="/guides/what-is-the-grey-fuzz-on-my-hairbrush"
+          ><a
+            [routerLink]="[
+              '/guides',
+              articleSlug.WhatIsTheGreyFuzzOnMyHairbrush,
+            ]"
             >What is grey fuzz? <b>→</b></a
           >
         </div>
@@ -186,14 +192,14 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
               ><p class="eyebrow">{{ article.category }}</p>
               <h2>
                 {{
-                  article.slug === 'how-to-choose-hair-dryer'
+                  article.slug === articleSlug.HairDryerChooser
                     ? 'Choose a Hair Dryer'
                     : article.heading
                 }}
               </h2>
               <p>
                 {{
-                  article.slug === 'how-to-choose-hair-dryer'
+                  article.slug === articleSlug.HairDryerChooser
                     ? 'Use the feature finder, then compare dryers for your routine.'
                     : article.description
                 }}
@@ -256,6 +262,7 @@ export class StaticPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   readonly guides = articles;
+  readonly articleSlug = ArticleSlug;
   readonly categories = guideCategories;
   readonly guidesBreadcrumbs: readonly Breadcrumb[] = [
     { label: 'Home', path: '/' },

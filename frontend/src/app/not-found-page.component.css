@@ -1,0 +1,14 @@
+.not-found-page {
+  display: grid;
+  min-height: 32rem;
+  align-content: center;
+}
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.not-found-actions .button {
+  margin-top: 0;
+}

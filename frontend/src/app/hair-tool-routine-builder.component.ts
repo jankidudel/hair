@@ -12,6 +12,7 @@ import { SiteSeoService } from './site-seo.service';
 
 @Component({
   imports: [RouterLink],
+  styleUrl: 'hair-tool-routine-builder.component.css',
   template: `
     <section class="finder-hero">
       <p class="eyebrow">Tools · Routine planning</p>

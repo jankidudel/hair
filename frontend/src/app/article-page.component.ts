@@ -3,10 +3,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { articles, Article } from './content.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
+import { ArticleSlug } from './article-slug';
 import { guideCategoryById } from './article-registry';
 import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.component';
 import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
+import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.component';
 @Component({
   imports: [
     RouterLink,
@@ -14,11 +16,15 @@ import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.compo
     RoundBrushSizeFinderComponent,
     HairDryerFinderComponent,
     HairDryerSpecsDecoderComponent,
+    HairDryerSettingsFinderComponent,
   ],
+  styleUrl: 'article-page.component.css',
   template: `@if (article) {
     <article
       class="article-page"
-      [class.round-brush-guide]="article.slug === 'round-brush-size-guide'"
+      [class.round-brush-guide]="
+        article.slug === articleSlug.RoundBrushSizeGuide
+      "
     >
       <app-breadcrumbs [items]="breadcrumbs" />
       <header class="article-header">
@@ -26,14 +32,19 @@ import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.compo
         <h1>{{ article.heading }}</h1>
         <p class="lede">{{ article.description }}</p>
       </header>
-      @if (article.slug === 'round-brush-size-guide') {
-        <app-round-brush-size-finder />
-      }
-      @if (article.slug === 'how-to-choose-hair-dryer') {
-        <app-hair-dryer-finder />
-      }
-      @if (article.slug === 'hair-dryer-wattage-guide') {
-        <app-hair-dryer-specs-decoder />
+      @switch (article.slug) {
+        @case (articleSlug.RoundBrushSizeGuide) {
+          <app-round-brush-size-finder />
+        }
+        @case (articleSlug.HairDryerChooser) {
+          <app-hair-dryer-finder />
+        }
+        @case (articleSlug.HairDryerWattageGuide) {
+          <app-hair-dryer-specs-decoder />
+        }
+        @case (articleSlug.HairDryerSettingsGuide) {
+          <app-hair-dryer-settings-finder />
+        }
       }
       @if (article.affiliateDisclosure) {
         <aside class="disclosure">
@@ -59,6 +70,7 @@ export class ArticlePageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   article?: Article;
+  readonly articleSlug = ArticleSlug;
   breadcrumbs: readonly Breadcrumb[] = [];
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');

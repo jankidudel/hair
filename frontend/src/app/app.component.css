@@ -1,0 +1,95 @@
+.site-header,
+.site-main,
+.site-footer {
+  width: min(100% - 3rem, 73.75rem);
+  margin-inline: auto;
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 5.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+}
+.brand-mark {
+  width: 2.35rem;
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke: var(--terracotta);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+}
+nav a {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+nav a.active {
+  color: var(--green);
+  box-shadow: inset 0 -2px 0 var(--terracotta);
+}
+.site-main {
+  min-height: 71vh;
+  padding-block: clamp(2.75rem, 7vw, 6.25rem);
+}
+.site-footer {
+  padding-block: 1.65rem 2.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.footer-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.footer-row p {
+  max-width: 35rem;
+  margin: 0;
+}
+
+@media (max-width: 48rem) {
+  .site-header,
+  .site-main,
+  .site-footer {
+    width: min(100% - 2rem, 73.75rem);
+  }
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-block: 1.1rem;
+  }
+  nav {
+    width: 100%;
+    gap: 0.4rem 1rem;
+  }
+  .site-main {
+    padding-block: 2.75rem 4.5rem;
+  }
+  .footer-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

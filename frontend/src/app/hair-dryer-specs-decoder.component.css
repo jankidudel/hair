@@ -1,0 +1,80 @@
+.hair-dryer-specs-decoder {
+  width: 100%;
+  min-height: 0;
+  margin-top: 2rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+h2 {
+  max-width: 24ch;
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+}
+.hair-dryer-specs-decoder > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.specs-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.specs-options fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+}
+.specs-options fieldset[aria-invalid='true'] {
+  border-color: var(--terracotta);
+}
+.specs-options legend {
+  padding: 0 0.2rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+.specs-options label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+.specs-options input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.25rem 0 0;
+  accent-color: var(--green);
+}
+.specs-options input:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.specs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+.specs-actions .finder-submit {
+  margin-top: 0;
+}
+.button-secondary {
+  border: 1px solid var(--green);
+  background: transparent;
+  color: var(--green);
+}
+.specs-error {
+  margin: 1rem 0 0;
+  color: var(--terracotta);
+  font-weight: 700;
+}
+@media (max-width: 700px) {
+  .specs-options {
+    grid-template-columns: 1fr;
+  }
+}

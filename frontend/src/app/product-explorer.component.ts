@@ -19,6 +19,7 @@ type PriceFilter = PriceTier | 'all';
 
 @Component({
   imports: [RouterLink],
+  styleUrl: 'product-explorer.component.css',
   template: `@if (comparison) {
       <section class="comparison-page">
         <p class="eyebrow">Specification-led comparison</p>

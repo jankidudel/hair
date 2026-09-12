@@ -6,6 +6,7 @@ import rehypeParse from 'rehype-parse';
 import rehypeSanitize, { defaultSchema, type Options } from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
 import prettier from 'prettier';
+import { ArticleSlug } from '../src/app/article-slug.ts';
 import { articleGroups, articleRegistry } from '../src/app/article-registry.ts';
 import {
   isPublishedOn,
@@ -90,6 +91,28 @@ const htmlToSafeHtml = (html: string) =>
     .use(rehypeStringify)
     .process(html);
 
+function resolveArticleSlugReference(value: string, file: string): string {
+  const match = /^\{\{ArticleSlug\.([A-Za-z][A-Za-z0-9]*)\}\}$/.exec(value);
+  if (!match)
+    throw new Error(
+      `${file}: slug must use an ArticleSlug reference such as '{{ArticleSlug.HairDryerChooser}}'.`,
+    );
+  const slug = ArticleSlug[match[1] as keyof typeof ArticleSlug];
+  if (!slug) throw new Error(`${file}: unknown ArticleSlug '${match[1]}'.`);
+  return slug;
+}
+
+function resolveArticleSlugReferences(html: string, file: string): string {
+  return html.replaceAll(
+    /\{\{ArticleSlug\.([A-Za-z][A-Za-z0-9]*)\}\}/g,
+    (reference, name: string) => {
+      const slug = ArticleSlug[name as keyof typeof ArticleSlug];
+      if (!slug) throw new Error(`${file}: unknown ArticleSlug '${name}'.`);
+      return slug;
+    },
+  );
+}
+
 function requiredString(
   data: Record<string, unknown>,
   field: string,
@@ -137,7 +160,10 @@ for (const file of (await readdir(contentDirectory))
   .sort()) {
   const parsed = matter(await readFile(join(contentDirectory, file), 'utf8'));
   const data = parsed.data as Record<string, unknown>;
-  const slug = requiredString(data, 'slug', file);
+  const slug = resolveArticleSlugReference(
+    requiredString(data, 'slug', file),
+    file,
+  );
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))
     throw new Error(
       `${file}: slug must use lowercase words separated by hyphens.`,
@@ -203,7 +229,9 @@ for (const file of (await readdir(contentDirectory))
         : undefined,
     reviewMethod,
     affiliateDisclosure: data.affiliateDisclosure === true,
-    html: String(await htmlToSafeHtml(parsed.content)),
+    html: String(
+      await htmlToSafeHtml(resolveArticleSlugReferences(parsed.content, file)),
+    ),
   });
 }
 

@@ -1,0 +1,79 @@
+.article-page {
+  width: min(100%, 46rem);
+  margin-inline: auto;
+}
+.article-header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-header h1 {
+  max-width: 100%;
+  font-size: clamp(2.35rem, 4.15vw, 3.9rem);
+}
+.round-brush-guide .article-header h1 {
+  max-width: 20ch;
+  font-size: clamp(2.25rem, 3.4vw, 3.25rem);
+}
+.article-body {
+  font-family: var(--serif);
+  font-size: 1.14rem;
+  line-height: 1.75;
+}
+.article-body > :first-child {
+  margin-top: 2rem;
+}
+.article-body h2 {
+  margin-top: 3.25rem;
+  padding-top: 1.05rem;
+  border-top: 1px solid var(--border);
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+}
+.article-body h3 {
+  margin-top: 2.2rem;
+}
+.article-body a {
+  color: var(--green);
+  font-weight: 650;
+}
+.article-body li + li {
+  margin-top: 0.5rem;
+}
+.article-body strong {
+  color: var(--green);
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+}
+.article-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+}
+.article-body th,
+.article-body td {
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.disclosure {
+  margin: 1.8rem 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--terracotta);
+  background: #eee5d8;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+.article-faq {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.article-faq h3 {
+  margin-top: 2rem;
+  font-size: 1.35rem;
+}

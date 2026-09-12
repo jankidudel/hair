@@ -118,6 +118,7 @@ const questions: readonly FinderQuestion[] = [
 
 @Component({
   imports: [RouterLink],
+  styleUrl: 'hair-brush-finder.component.css',
   template: `
     <section class="finder-hero">
       <p class="eyebrow">Tools · Hair brushes</p>

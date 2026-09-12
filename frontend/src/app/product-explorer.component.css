@@ -2,6 +2,10 @@
 .comparison-page {
   max-width: 68rem;
 }
+.products-page .listing-intro h1 {
+  max-width: 16ch;
+  font-size: clamp(2.4rem, 3.25vw, 3.4rem);
+}
 .how-we-compare,
 .product-filters,
 .comparison-guidance {

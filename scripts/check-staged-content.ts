@@ -22,6 +22,7 @@ const staticRoutes = new Set([
   '/hot-air-brushes',
   '/brushes-combs',
   '/hair-accessories',
+  '/tools',
   '/hair-brush-finder',
   '/hair-tool-routine-builder',
   '/products',

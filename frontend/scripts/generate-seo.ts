@@ -35,6 +35,7 @@ const entries = [
     .filter((category) => category.path !== '/hair-care')
     .map((category) => category.path),
   '/guides',
+  '/tools',
   '/hair-brush-finder',
   '/hair-tool-routine-builder',
   '/products',

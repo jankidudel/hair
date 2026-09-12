@@ -175,6 +175,40 @@ import { ArticleSlug } from './article-slug';
         }
       </section>
     }
+    @case ('tools') {
+      <app-breadcrumbs [items]="toolsBreadcrumbs" />
+      <section class="listing-intro tools-intro">
+        <p class="eyebrow">Interactive tools</p>
+        <h1>Practical help for choosing and using hair tools</h1>
+        <p class="lede">
+          Use these simple, browser-based helpers to narrow a styling choice or
+          find a comfortable starting point. They do not collect the details you
+          enter.
+        </p>
+      </section>
+      <section class="tools-grid" aria-label="Hair tools">
+        @for (tool of tools; track tool.name) {
+          <a class="tool-card" [routerLink]="tool.path">
+            <p class="eyebrow">{{ tool.type }}</p>
+            <h2>{{ tool.name }}</h2>
+            <p>{{ tool.description }}</p>
+            <span class="text-link"
+              >{{ tool.action }} <span aria-hidden="true">→</span></span
+            >
+          </a>
+        }
+      </section>
+      <section class="tools-note" aria-labelledby="tools-note-heading">
+        <h2 id="tools-note-heading">Want to compare specific models?</h2>
+        <p>
+          Browse published manufacturer specifications side by side, then use
+          the related guides to weigh the trade-offs for your routine.
+        </p>
+        <a class="text-link" routerLink="/products"
+          >Explore product comparisons <span aria-hidden="true">→</span></a
+        >
+      </section>
+    }
     @case ('category') {
       @if (category) {
         <app-breadcrumbs [items]="categoryBreadcrumbs" />
@@ -268,6 +302,64 @@ export class StaticPageComponent implements OnInit {
     { label: 'Home', path: '/' },
     { label: 'Guides' },
   ];
+  readonly toolsBreadcrumbs: readonly Breadcrumb[] = [
+    { label: 'Home', path: '/' },
+    { label: 'Tools' },
+  ];
+  readonly toolsBreadcrumbSchema = [
+    { label: 'Home', path: '/' },
+    { label: 'Tools', path: '/tools' },
+  ] as const;
+  readonly tools = [
+    {
+      name: 'Hair Brush Finder',
+      type: 'Choose a brush',
+      description:
+        'Narrow down brush shapes and bristles for your length, texture, and usual styling goal.',
+      path: '/hair-brush-finder',
+      action: 'Use the finder',
+    },
+    {
+      name: 'Hair Tool Routine Builder',
+      type: 'Build a smaller toolkit',
+      description:
+        'Choose a few useful tool categories for your ordinary routine before adding more.',
+      path: '/hair-tool-routine-builder',
+      action: 'Build a routine',
+    },
+    {
+      name: 'Hair Dryer Feature Finder',
+      type: 'Choose a dryer',
+      description:
+        'Identify the dryer features and attachments that may matter most for your routine.',
+      path: '/guides/how-to-choose-hair-dryer',
+      action: 'Use the finder',
+    },
+    {
+      name: 'Hair Dryer Settings Finder',
+      type: 'Start a blow-dry',
+      description:
+        'Find a comfort-led heat and airflow starting point for the style you are making.',
+      path: '/guides/hair-dryer-heat-and-speed-settings-guide',
+      action: 'Find a starting point',
+    },
+    {
+      name: 'Hair Dryer Specs Decoder',
+      type: 'Read a label',
+      description:
+        'Turn common dryer label details into a practical next step for home or travel use.',
+      path: '/guides/hair-dryer-wattage-guide',
+      action: 'Decode the details',
+    },
+    {
+      name: 'Round Brush Size Finder',
+      type: 'Choose a barrel',
+      description:
+        'Use your length and styling goal to choose a sensible round-brush size to start with.',
+      path: '/guides/round-brush-size-guide',
+      action: 'Find a brush size',
+    },
+  ] as const;
   readonly featuredGuide = articles[0];
   readonly latestGuides = articles.slice(0, 6);
   category?: GuideCategory;
@@ -300,6 +392,11 @@ export class StaticPageComponent implements OnInit {
         'Honest hair-tool comparisons and practical routine advice.',
         '/guides',
       ],
+      tools: [
+        'Interactive Hair Tools | Comb Report',
+        'Browser-based helpers for choosing and using everyday hair styling tools.',
+        '/tools',
+      ],
       about: ['About | Comb Report', 'About Comb Report.', '/about'],
       privacy: ['Privacy | Comb Report', 'Privacy information.', '/privacy'],
       affiliate: [
@@ -325,18 +422,20 @@ export class StaticPageComponent implements OnInit {
             url: SITE_URL,
           }
         : undefined,
-      this.page === 'guides'
-        ? [
-            { label: 'Home', path: '/' },
-            { label: 'Guides', path: '/guides' },
-          ]
-        : this.page === 'category' && this.category
+      this.page === 'tools'
+        ? this.toolsBreadcrumbSchema
+        : this.page === 'guides'
           ? [
               { label: 'Home', path: '/' },
               { label: 'Guides', path: '/guides' },
-              { label: this.category.label, path: this.category.path },
             ]
-          : undefined,
+          : this.page === 'category' && this.category
+            ? [
+                { label: 'Home', path: '/' },
+                { label: 'Guides', path: '/guides' },
+                { label: this.category.label, path: this.category.path },
+              ]
+            : undefined,
     );
   }
 }

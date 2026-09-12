@@ -39,6 +39,7 @@ export const routes: Routes = [
     path: 'hair-tool-routine-builder',
     component: HairToolRoutineBuilderComponent,
   },
+  { path: 'tools', component: StaticPageComponent, data: { page: 'tools' } },
   { path: 'products', component: ProductExplorerComponent },
   { path: 'products/:comparison', component: ProductExplorerComponent },
   { path: 'about', component: StaticPageComponent, data: { page: 'about' } },

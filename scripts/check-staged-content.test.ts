@@ -54,7 +54,10 @@ test('rejects a publishable guide below the hard minimum', () => {
 
 test('allows links to registered product comparison routes', () => {
   const body = `<p>${'Useful comparison context '.repeat(250)}</p>${canonicalComparisons
-    .map((comparison) => `<a href="${comparison.path}">Compare</a>`)
+    .map(
+      (comparison) =>
+        `<a href="/products/{{ArticleSlug.${articleSlugNameByValue[comparison.slug as keyof typeof articleSlugNameByValue]}}}">Compare</a>`,
+    )
     .join('')}`;
   const errors = validateStagedGuide({
     file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',

@@ -20,6 +20,8 @@ export const ArticleSlug = {
   BestHotAirBrushesFineHair: 'best-hot-air-brushes-fine-hair',
   BestHotAirBrushesShortHair: 'best-hot-air-brushes-short-hair',
   DysonAirwrapVsSharkFlexstyle: 'dyson-airwrap-vs-shark-flexstyle',
+  BaBylissAirStyle1000VsFlawlessVolume:
+    'babyliss-air-style-1000-vs-flawless-volume',
   HotAirBrushVsHairDryer: 'hot-air-brush-vs-hair-dryer',
   HowToUseHotAirBrush: 'how-to-use-hot-air-brush',
   HowToUseAHotAirBrushOnShortHair: 'how-to-use-a-hot-air-brush-on-short-hair',

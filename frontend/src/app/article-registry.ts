@@ -219,6 +219,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   {
+    slug: ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 45,
+    enabled: true,
+    publishDate: '2026-09-12',
+  },
+  {
     slug: ArticleSlug.HotAirBrushVsHairDryer,
     group: ArticleGroupId.HotAirBrushes,
     order: 50,

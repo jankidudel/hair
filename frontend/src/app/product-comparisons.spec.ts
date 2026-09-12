@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   comparisonFacts,
   comparisonForProduct,
+  ProductCategory,
   productBySlug,
   productProfiles,
 } from './product-comparisons';
@@ -9,11 +10,18 @@ import {
 describe('product comparison data', () => {
   it('filters the local profiles by category and price tier', () => {
     expect(
-      productProfiles.filter((product) => product.category === 'hair-dryer'),
+      productProfiles.filter(
+        (product) => product.category === ProductCategory.HairDryer,
+      ),
     ).toHaveLength(2);
     expect(
       productProfiles.filter((product) => product.priceTier === 'entry'),
-    ).toEqual([]);
+    ).toHaveLength(1);
+    expect(
+      productProfiles.filter(
+        (product) => product.category === ProductCategory.HotAirBrush,
+      ),
+    ).toHaveLength(2);
   });
 
   it('selects only an explicit canonical comparison for each product', () => {
@@ -21,6 +29,9 @@ describe('product comparison data', () => {
       '/products/dyson-supersonic-vs-shark-speedstyle',
     );
     expect(comparisonForProduct('not-a-product')).toBeUndefined();
+    expect(comparisonForProduct('babyliss-flawless-volume')?.path).toBe(
+      '/products/babyliss-air-style-1000-vs-flawless-volume',
+    );
   });
 
   it('keeps an absent verified fact visible as not confirmed data for the matrix', () => {

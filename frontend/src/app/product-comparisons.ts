@@ -1,6 +1,13 @@
 import { ArticleSlug } from './article-slug';
 
-export type ProductCategory = 'hair-dryer' | 'multi-styler' | 'hot-air-brush';
+export const ProductCategory = {
+  HairDryer: 'hair-dryer',
+  MultiStyler: 'multi-styler',
+  HotAirBrush: 'hot-air-brush',
+} as const;
+
+export type ProductCategory =
+  (typeof ProductCategory)[keyof typeof ProductCategory];
 export type PriceTier = 'entry' | 'mid-range' | 'premium';
 
 export interface VerifiedFact {
@@ -42,13 +49,17 @@ const dysonAirwrapUrl =
   'https://www.dyson.co.uk/hair-care/hair-stylers/airwrap-id';
 const sharkFlexstyleUrl =
   'https://sharkclean.co.uk/product/shark-flexstyle-5-in-1-air-styler-hair-dryer-with-storage-case-black-rose-gold-hd440uk-zidHD440UK';
+const babylissAirStyle1000Url =
+  'https://www.babyliss.com/uk-en/air-style-1000-2136U.html';
+const babylissFlawlessVolumeUrl =
+  'https://www.babyliss.com/uk-en/flawless-volume-2764U.html';
 
 export const productProfiles: readonly ProductProfile[] = [
   {
     slug: 'dyson-supersonic',
     name: 'Dyson Supersonic',
     brand: 'Dyson',
-    category: 'hair-dryer',
+    category: ProductCategory.HairDryer,
     imageAlt: 'Dyson Supersonic hair dryer',
     priceTier: 'premium',
     bestFor: ['dryer with five stated attachments', 'attachment-led routines'],
@@ -79,7 +90,7 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'shark-speedstyle',
     name: 'Shark SpeedStyle',
     brand: 'Shark',
-    category: 'hair-dryer',
+    category: ProductCategory.HairDryer,
     imageAlt: 'Shark SpeedStyle hair dryer',
     priceTier: 'premium',
     bestFor: ['compact dryer format', 'three stated styling attachments'],
@@ -110,7 +121,7 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'dyson-airwrap',
     name: 'Dyson Airwrap i.d.',
     brand: 'Dyson',
-    category: 'multi-styler',
+    category: ProductCategory.MultiStyler,
     imageAlt: 'Dyson Airwrap i.d. multi-styler and dryer',
     priceTier: 'premium',
     bestFor: ['multi-step styling routines', 'app-connected curling sequence'],
@@ -159,7 +170,7 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'shark-flexstyle',
     name: 'Shark FlexStyle 5-in-1',
     brand: 'Shark',
-    category: 'multi-styler',
+    category: ProductCategory.MultiStyler,
     imageAlt: 'Shark FlexStyle multi-styler and hair dryer',
     priceTier: 'premium',
     bestFor: ['dryer-to-styler format', 'five stated styling functions'],
@@ -204,6 +215,93 @@ export const productProfiles: readonly ProductProfile[] = [
     ],
     comparisonStatus: 'specification-led',
   },
+  {
+    slug: 'babyliss-air-style-1000',
+    name: 'BaByliss Air Style 1000',
+    brand: 'BaByliss',
+    category: ProductCategory.HotAirBrush,
+    imageAlt: 'BaByliss Air Style 1000 multi-attachment hot-air brush',
+    priceTier: 'mid-range',
+    bestFor: [
+      'a routine that changes between drying, smoothing and shaping',
+      'using a dryer nozzle before a brush attachment',
+    ],
+    notIdealFor: ['buyers who only want one fixed brush barrel'],
+    verifiedFacts: [
+      {
+        label: 'Format',
+        value: 'Multi-attachment hair dryer brush',
+        sourceUrl: babylissAirStyle1000Url,
+        verifiedAt,
+      },
+      {
+        label: 'Included styling attachments',
+        value:
+          'Drying nozzle, 50 mm thermal brush, conical barrel and paddle brush stated',
+        sourceUrl: babylissAirStyle1000Url,
+        verifiedAt,
+      },
+      {
+        label: 'Airflow',
+        value: '1,000 W stated',
+        sourceUrl: babylissAirStyle1000Url,
+        verifiedAt,
+      },
+    ],
+    officialProductUrl: babylissAirStyle1000Url,
+    verifiedAt,
+    relatedGuideSlugs: [
+      ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+      ArticleSlug.BestHotAirBrushes,
+    ],
+    comparisonStatus: 'specification-led',
+  },
+  {
+    slug: 'babyliss-flawless-volume',
+    name: 'BaByliss Flawless Volume',
+    brand: 'BaByliss',
+    category: ProductCategory.HotAirBrush,
+    imageAlt: 'BaByliss Flawless Volume hot-air brush',
+    priceTier: 'entry',
+    bestFor: [
+      'a simple brush-led drying and shaping routine',
+      'one 38 mm barrel for manageable sections',
+    ],
+    notIdealFor: ['buyers who want multiple brush and barrel attachments'],
+    verifiedFacts: [
+      {
+        label: 'Format',
+        value: 'Hot-air brush',
+        sourceUrl: babylissFlawlessVolumeUrl,
+        verifiedAt,
+      },
+      {
+        label: 'Barrel',
+        value: '38 mm titanium-ceramic barrel stated',
+        sourceUrl: babylissFlawlessVolumeUrl,
+        verifiedAt,
+      },
+      {
+        label: 'Settings',
+        value: 'Two heat settings and cool setting stated',
+        sourceUrl: babylissFlawlessVolumeUrl,
+        verifiedAt,
+      },
+      {
+        label: 'Airflow',
+        value: '500 W stated',
+        sourceUrl: babylissFlawlessVolumeUrl,
+        verifiedAt,
+      },
+    ],
+    officialProductUrl: babylissFlawlessVolumeUrl,
+    verifiedAt,
+    relatedGuideSlugs: [
+      ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+      ArticleSlug.BestHotAirBrushes,
+    ],
+    comparisonStatus: 'specification-led',
+  },
 ];
 
 // @todo: review, this needs to be improved
@@ -219,6 +317,12 @@ export const canonicalComparisons: readonly CanonicalComparison[] = [
     path: '/products/dyson-airwrap-vs-shark-flexstyle',
     productSlugs: ['dyson-airwrap', 'shark-flexstyle'],
     guideSlug: 'dyson-airwrap-vs-shark-flexstyle',
+  },
+  {
+    slug: 'babyliss-air-style-1000-vs-flawless-volume',
+    path: '/products/babyliss-air-style-1000-vs-flawless-volume',
+    productSlugs: ['babyliss-air-style-1000', 'babyliss-flawless-volume'],
+    guideSlug: 'babyliss-air-style-1000-vs-flawless-volume',
   },
 ];
 

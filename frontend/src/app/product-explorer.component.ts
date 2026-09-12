@@ -7,15 +7,24 @@ import {
   canonicalComparisons,
   productBySlug,
   productProfiles,
+  ProductCategory,
   type CanonicalComparison,
   type PriceTier,
-  type ProductCategory,
   type ProductProfile,
 } from './product-comparisons';
 import { SiteSeoService } from './site-seo.service';
 
 type CategoryFilter = ProductCategory | 'all';
 type PriceFilter = PriceTier | 'all';
+
+const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
+  [ProductCategory.HairDryer]:
+    'You may prefer a dedicated hair dryer if your routine is centred on drying and the particular attachments included with that exact model.',
+  [ProductCategory.HotAirBrush]:
+    'You may prefer a hot-air brush when a brush-led, smooth or softly shaped finish is your usual goal. Decide whether one fixed barrel or several attachments better matches the steps you actually use.',
+  [ProductCategory.MultiStyler]:
+    'You may prefer a multi-styler if you want a dryer and several styling formats in one system, and expect to use the included attachments.',
+};
 
 @Component({
   imports: [RouterLink],
@@ -231,9 +240,9 @@ export class ProductExplorerComponent implements OnInit {
     value: CategoryFilter;
   }[] = [
     { label: 'All', value: 'all' },
-    { label: 'Hair Dryers', value: 'hair-dryer' },
-    { label: 'Multi-stylers', value: 'multi-styler' },
-    { label: 'Hot-Air Brushes', value: 'hot-air-brush' },
+    { label: 'Hair Dryers', value: ProductCategory.HairDryer },
+    { label: 'Multi-stylers', value: ProductCategory.MultiStyler },
+    { label: 'Hot-Air Brushes', value: ProductCategory.HotAirBrush },
   ];
   readonly priceFilters: readonly { label: string; value: PriceFilter }[] = [
     { label: 'All price tiers', value: 'all' },
@@ -297,8 +306,8 @@ export class ProductExplorerComponent implements OnInit {
     );
   }
   get choiceCopy(): string {
-    return this.firstProduct?.category === 'hair-dryer'
-      ? 'You may prefer a dedicated hair dryer if your routine is centred on drying and the particular attachments included with that exact model.'
-      : 'You may prefer a multi-styler if you want a dryer and several styling formats in one system, and expect to use the included attachments.';
+    return this.firstProduct
+      ? productCategoryChoiceCopy[this.firstProduct.category]
+      : '';
   }
 }

@@ -120,11 +120,23 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
     const guideSlug = guideSlugReference
       ? (resolveArticleSlugReference(guideSlugReference) ?? guideSlugReference)
       : undefined;
+    const comparisonSlugReference = path.match(/^\/products\/([^/#?]+)$/)?.[1];
+    const comparisonSlug = comparisonSlugReference
+      ? (resolveArticleSlugReference(comparisonSlugReference) ??
+        comparisonSlugReference)
+      : undefined;
     if (guideSlug && !publishedSlugs.has(guideSlug))
       errors.push(
         `${prefix}: links to unpublished or unknown guide '${path}'.`,
       );
-    else if (!guideSlug && !staticRoutes.has(path))
+    else if (
+      comparisonSlug &&
+      !canonicalComparisons.some(
+        (comparison) => comparison.path === `/products/${comparisonSlug}`,
+      )
+    )
+      errors.push(`${prefix}: links to unknown product comparison '${path}'.`);
+    else if (!guideSlug && !comparisonSlug && !staticRoutes.has(path))
       errors.push(`${prefix}: links to unknown internal route '${path}'.`);
   }
   return errors;

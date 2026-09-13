@@ -9,6 +9,7 @@ import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.compone
 import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
 import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.component';
+import { StraighteningBrushFinderComponent } from './straightening-brush-finder.component';
 @Component({
   imports: [
     RouterLink,
@@ -17,6 +18,7 @@ import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.c
     HairDryerFinderComponent,
     HairDryerSpecsDecoderComponent,
     HairDryerSettingsFinderComponent,
+    StraighteningBrushFinderComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
@@ -44,6 +46,9 @@ import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.c
         }
         @case (articleSlug.HairDryerSettingsGuide) {
           <app-hair-dryer-settings-finder />
+        }
+        @case (articleSlug.HowToChooseAStraighteningBrush) {
+          <app-straightening-brush-finder />
         }
       }
       @if (article.affiliateDisclosure) {

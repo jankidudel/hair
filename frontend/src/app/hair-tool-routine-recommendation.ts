@@ -1,3 +1,5 @@
+import { ArticleSlug } from './article-slug';
+
 export type HairLength = 'short' | 'medium' | 'long';
 export type RoutineGoal = 'smooth' | 'blowout' | 'curls' | 'travel';
 export type StylingTime = 'under-10' | '10-20' | 'over-20';
@@ -155,6 +157,10 @@ export function recommendHairToolRoutine(
   links.push({
     path: '/guides/how-to-choose-hair-brush',
     label: 'Read the hair brush choosing guide',
+  });
+  links.push({
+    path: `/guides/${ArticleSlug.HowToChooseAStraighteningBrush}`,
+    label: 'Use the Straightening Brush Finder',
   });
   if (answers.length === 'short' && owns('hot-air-brush'))
     links.push({

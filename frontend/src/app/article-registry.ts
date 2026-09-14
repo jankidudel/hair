@@ -457,6 +457,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   {
+    slug: ArticleSlug.HeatProtectantSprayVsCream,
+    group: ArticleGroupId.HairCare,
+    order: 15,
+    enabled: true,
+    publishDate: '2026-09-14',
+  },
+  {
     slug: ArticleSlug.BestLeaveInConditionersDryHair,
     group: ArticleGroupId.HairCare,
     order: 20,
@@ -483,6 +490,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     order: 30,
     enabled: true,
     publishDate: '2026-08-31',
+  },
+  {
+    slug: ArticleSlug.HowToUseHeatlessCurlersOnShortHair,
+    group: ArticleGroupId.HairAccessories,
+    order: 35,
+    enabled: true,
+    publishDate: '2026-09-14',
   },
   {
     slug: ArticleSlug.HowToUseAMicrofibreHairTowel,

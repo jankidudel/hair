@@ -10,6 +10,7 @@ import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
 import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.component';
 import { StraighteningBrushFinderComponent } from './straightening-brush-finder.component';
+import { HeatProtectantFinderComponent } from './heat-protectant-finder.component';
 @Component({
   imports: [
     RouterLink,
@@ -19,6 +20,7 @@ import { StraighteningBrushFinderComponent } from './straightening-brush-finder.
     HairDryerSpecsDecoderComponent,
     HairDryerSettingsFinderComponent,
     StraighteningBrushFinderComponent,
+    HeatProtectantFinderComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
@@ -49,6 +51,9 @@ import { StraighteningBrushFinderComponent } from './straightening-brush-finder.
         }
         @case (articleSlug.HowToChooseAStraighteningBrush) {
           <app-straightening-brush-finder />
+        }
+        @case (articleSlug.HeatProtectantSprayVsCream) {
+          <app-heat-protectant-finder />
         }
       }
       @if (article.affiliateDisclosure) {

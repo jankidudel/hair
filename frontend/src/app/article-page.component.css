@@ -45,20 +45,6 @@
   max-width: 100%;
   height: auto;
 }
-.article-body table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  border-collapse: collapse;
-  font-family: var(--sans);
-  font-size: 0.88rem;
-}
-.article-body th,
-.article-body td {
-  padding: 0.7rem;
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-}
 .disclosure {
   margin: 1.8rem 0;
   padding: 1rem 1.1rem;

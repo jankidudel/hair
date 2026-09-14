@@ -359,6 +359,14 @@ export class StaticPageComponent implements OnInit {
       path: '/guides/round-brush-size-guide',
       action: 'Find a brush size',
     },
+    {
+      name: 'Heat Protectant Finder',
+      type: 'Choose an application format',
+      description:
+        'Use your styling routine and the product directions to choose a practical format and application point.',
+      path: '/guides/heat-protectant-spray-vs-cream',
+      action: 'Use the finder',
+    },
   ] as const;
   readonly featuredGuide = articles[0];
   readonly latestGuides = articles.slice(0, 6);

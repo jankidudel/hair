@@ -57,10 +57,13 @@ export const ArticleSlug = {
     'how-to-get-root-volume-with-a-round-brush',
   HowToBlowDryABobWithARoundBrush: 'how-to-blow-dry-a-bob-with-a-round-brush',
   BestHeatProtectants: 'best-heat-protectants',
+  HeatProtectantSprayVsCream: 'heat-protectant-spray-vs-cream',
   BestLeaveInConditionersDryHair: 'best-leave-in-conditioners-dry-hair',
   BestMicrofibreHairTowels: 'best-microfibre-hair-towels',
   SilkVsSatinPillowcaseHair: 'silk-vs-satin-pillowcase-hair',
   BestHeatlessCurlingSets: 'best-heatless-curling-sets',
+  HowToUseHeatlessCurlersOnShortHair:
+    'how-to-use-heatless-curlers-on-short-hair',
   HowToUseAMicrofibreHairTowel: 'how-to-use-a-microfibre-hair-towel',
   ColdWaterForHair: 'cold-water-for-hair',
   HowOftenShouldYouWashYourHair: 'how-often-should-you-wash-your-hair',

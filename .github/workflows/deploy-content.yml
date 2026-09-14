@@ -2,9 +2,6 @@ name: Deploy content
 
 # Deployment is intentionally disabled until AWS infrastructure is configured.
 on:
-  push:
-    branches: [main]
-    paths: ['frontend/**', 'package*.json']
   workflow_dispatch:
     inputs:
       environment:
@@ -26,7 +23,7 @@ jobs:
   validate:
     uses: ./.github/workflows/frontend-validation.yml
     with:
-      check-generated-seo: false
+      build-production-artifact: false
 
   deploy:
     needs: [validate]
@@ -48,6 +45,8 @@ jobs:
       - name: Check generated SEO output
         if: ${{ (inputs.environment || 'dev') == 'prod' }}
         run: npm run check:generated-seo --workspace=frontend
+      - name: Check generated internal links
+        run: npm run check:internal-links
       - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}

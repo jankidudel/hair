@@ -23,7 +23,7 @@ jobs:
   validate:
     uses: ./.github/workflows/frontend-validation.yml
     with:
-      check-generated-seo: false
+      build-production-artifact: false
 
   deploy:
     needs: [validate]
@@ -46,21 +46,22 @@ jobs:
         run: |
           echo "::error::GOOGLE_SITE_VERIFICATION is not available in the prod GitHub Environment."
           exit 1
-      - run: npm run infra:build
+      - name: Build API package for deployment
+        run: npm run build --workspace=@hair/api
       - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
           retry-max-attempts: 3
       - name: Show infrastructure changes
-        run: npm run infra:diff:${{ env.STAGE }}
+        working-directory: infra
+        run: npx cdk diff "Hair-$STAGE"
       - name: Deploy infrastructure and API
         if: ${{ inputs.environment == 'dev' }}
         working-directory: infra
         env:
           DEV_BASIC_AUTHORIZATION: ${{ secrets.DEV_BASIC_AUTHORIZATION }}
         run: |
-          npm run synth
           if [ -z "$DEV_BASIC_AUTHORIZATION" ]; then
             echo "::error::DEV_BASIC_AUTHORIZATION is required in the dev GitHub Environment."
             exit 1
@@ -71,7 +72,6 @@ jobs:
         if: ${{ inputs.environment == 'prod' }}
         working-directory: infra
         run: |
-          npm run synth
           npx cdk deploy "Hair-$STAGE" --require-approval never --outputs-file cdk-outputs.json
           cat cdk-outputs.json
       - name: Build development frontend and articles

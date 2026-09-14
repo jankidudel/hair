@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint bin lib test",
     "test": "tsx --test test/**/*.test.ts",
     "synth": "npm run build --workspace=@hair/api && cdk synth",

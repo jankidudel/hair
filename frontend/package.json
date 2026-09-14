@@ -7,6 +7,7 @@
     "build": "npm run content:generate && npm run seo:generate && ng build && npm run assets:fingerprint",
     "build:deployment-development": "npm run content:generate && npm run seo:generate:development && ng build --configuration deployment-development && npm run assets:fingerprint",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "npm run content:generate && ng test --watch=false",
     "content:generate": "tsx scripts/generate-content.ts",
     "check:editorial-targets": "tsx scripts/check-editorial-targets.ts",

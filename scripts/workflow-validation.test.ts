@@ -24,11 +24,44 @@ test('frontend deployments require reusable validation', async () => {
 
 test('pull requests call the same frontend validation workflow', async () => {
   const source = await workflow('verify.yml');
+  assert.match(source, /pull_request:/);
+  assert.match(source, /push:\s*\n\s+branches: \[main\]/);
   assert.match(
     source,
     /validate:\s*\n\s+uses: \.\/\.github\/workflows\/frontend-validation\.yml/,
   );
   assert.ok(root);
+});
+
+test('only manual workflows can deploy', async () => {
+  for (const name of ['deploy-content.yml', 'deploy-all.yml']) {
+    const source = await workflow(name);
+    assert.match(source, /on:\s*\n\s+workflow_dispatch:/);
+    assert.doesNotMatch(source, /\n\s+push:/);
+  }
+});
+
+test('CI builds the production artifact exactly once while deployments validate without building', async () => {
+  const validation = await workflow('frontend-validation.yml');
+  assert.match(validation, /npm run validate:prebuild/);
+  assert.match(validation, /npm run build --workspace=frontend/);
+  assert.match(validation, /inputs\.build-production-artifact/);
+  assert.doesNotMatch(validation, /npm run check:seo/);
+
+  for (const name of ['deploy-content.yml', 'deploy-all.yml']) {
+    const source = await workflow(name);
+    assert.match(source, /build-production-artifact: false/);
+    assert.doesNotMatch(source, /check-generated-seo: false/);
+  }
+});
+
+test('the all-in-one deployment builds the API package once before diffing and deploying', async () => {
+  const source = await workflow('deploy-all.yml');
+  const apiBuild = 'npm run build --workspace=@hair/api';
+  assert.equal(source.split(apiBuild).length - 1, 1);
+  assert.match(source, /npx cdk diff "Hair-\$STAGE"/);
+  assert.doesNotMatch(source, /npm run infra:diff/);
+  assert.doesNotMatch(source, /npm run synth/);
 });
 
 test('frontend deployment preserves prior hashed assets without CloudFront invalidation', async () => {

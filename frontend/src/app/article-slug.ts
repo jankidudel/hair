@@ -28,6 +28,8 @@ export const ArticleSlug = {
   BestHotAirBrushForThickHair: 'best-hot-air-brush-for-thick-hair',
   HotAirBrushVsStraighteningBrush: 'hot-air-brush-vs-straightening-brush',
   HowToChooseAStraighteningBrush: 'how-to-choose-a-straightening-brush',
+  HowToUseAStraighteningBrush: 'how-to-use-a-straightening-brush',
+  StraighteningBrushVsFlatIron: 'straightening-brush-vs-flat-iron',
   HowToCleanHotAirBrush: 'how-to-clean-hot-air-brush',
   HotAirBrushBarrelSizeGuide: 'hot-air-brush-barrel-size-guide',
   CanYouUseHotAirBrushOnDryHair: 'can-you-use-hot-air-brush-on-dry-hair',

@@ -268,6 +268,20 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-13',
   },
   {
+    slug: ArticleSlug.HowToUseAStraighteningBrush,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 76,
+    enabled: true,
+    publishDate: '2026-09-15',
+  },
+  {
+    slug: ArticleSlug.StraighteningBrushVsFlatIron,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 77,
+    enabled: true,
+    publishDate: '2026-09-15',
+  },
+  {
     slug: ArticleSlug.HowToCleanHotAirBrush,
     group: ArticleGroupId.HotAirBrushes,
     order: 80,

@@ -16,6 +16,7 @@ export const ArticleSlug = {
   HowToUseHairDryerConcentratorNozzle:
     'how-to-use-hair-dryer-concentrator-nozzle',
   HowToCleanHairDryerFilter: 'how-to-clean-hair-dryer-filter',
+  HowToBlowDryHair: 'how-to-blow-dry-hair',
   BestHotAirBrushes: 'best-hot-air-brushes',
   BestHotAirBrushesFineHair: 'best-hot-air-brushes-fine-hair',
   BestHotAirBrushesShortHair: 'best-hot-air-brushes-short-hair',

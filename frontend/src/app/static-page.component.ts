@@ -344,6 +344,14 @@ export class StaticPageComponent implements OnInit {
       action: 'Find a starting point',
     },
     {
+      name: 'Blow-Dry Routine Planner',
+      type: 'Plan a blow-dry',
+      description:
+        'Build a simple sequence around the finish you want, from drying prep to the attachment and final pass.',
+      path: '/guides/how-to-blow-dry-hair',
+      action: 'Plan a routine',
+    },
+    {
       name: 'Hair Dryer Specs Decoder',
       type: 'Read a label',
       description:

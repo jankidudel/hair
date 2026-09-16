@@ -11,6 +11,7 @@ import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.compo
 import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.component';
 import { StraighteningBrushFinderComponent } from './straightening-brush-finder.component';
 import { HeatProtectantFinderComponent } from './heat-protectant-finder.component';
+import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.component';
 @Component({
   imports: [
     RouterLink,
@@ -21,6 +22,7 @@ import { HeatProtectantFinderComponent } from './heat-protectant-finder.componen
     HairDryerSettingsFinderComponent,
     StraighteningBrushFinderComponent,
     HeatProtectantFinderComponent,
+    BlowDryRoutinePlannerComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
@@ -54,6 +56,9 @@ import { HeatProtectantFinderComponent } from './heat-protectant-finder.componen
         }
         @case (articleSlug.HeatProtectantSprayVsCream) {
           <app-heat-protectant-finder />
+        }
+        @case (articleSlug.HowToBlowDryHair) {
+          <app-blow-dry-routine-planner />
         }
       }
       @if (article.affiliateDisclosure) {

@@ -1,0 +1,68 @@
+.blow-dry-routine-planner {
+  width: 100%;
+  margin-top: 2rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+h2 {
+  max-width: 24ch;
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+}
+
+.blow-dry-routine-planner > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.finder-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.finder-options label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+select {
+  width: 100%;
+  min-height: 2.7rem;
+  padding: 0.45rem 2rem 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+select:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+.routine-result {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.routine-result h3 {
+  margin: 0;
+}
+
+.routine-result ol {
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 700px) {
+  .finder-options {
+    grid-template-columns: 1fr;
+  }
+}

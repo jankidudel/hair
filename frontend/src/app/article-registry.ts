@@ -191,6 +191,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-12',
   },
   {
+    slug: ArticleSlug.HowToBlowDryHair,
+    group: ArticleGroupId.HairDryers,
+    order: 140,
+    enabled: true,
+    publishDate: '2026-09-16',
+  },
+  {
     slug: ArticleSlug.BestHotAirBrushes,
     group: ArticleGroupId.HotAirBrushes,
     order: 10,

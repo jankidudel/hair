@@ -1,9 +1,42 @@
+# Dependencies
 node_modules/
+
+# Build and framework output
 dist/
 coverage/
 .angular/
+.cache/
+.vite/
+.turbo/
+.nx/
 cdk.out/
+*.tsbuildinfo
+
+# Test and diagnostic output
+playwright-report/
+test-results/
+blob-report/
+.eslintcache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local configuration and secrets. Keep safe templates versioned.
 .env
+.env.*
+!.env.example
+!.env.template
+
+# Generated application output (regenerate; do not edit by hand)
 frontend/src/app/content.generated.ts
 frontend/public/robots.txt
 frontend/public/sitemap.xml
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json

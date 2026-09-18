@@ -163,6 +163,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-05',
   },
   {
+    slug: ArticleSlug.HowToDiffuseWavyHair,
+    group: ArticleGroupId.HairDryers,
+    order: 95,
+    enabled: true,
+    publishDate: '2026-09-18',
+  },
+  {
     slug: ArticleSlug.IonicVsCeramicHairDryer,
     group: ArticleGroupId.HairDryers,
     order: 100,
@@ -254,6 +261,20 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-09-08',
   },
   {
+    slug: ArticleSlug.HowToUseAHotAirBrushOnLongHair,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 66,
+    enabled: true,
+    publishDate: '2026-09-18',
+  },
+  {
+    slug: ArticleSlug.HowToUseAHotAirBrushOnFineHair,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 67,
+    enabled: true,
+    publishDate: '2026-09-18',
+  },
+  {
     slug: ArticleSlug.BestHotAirBrushForThickHair,
     group: ArticleGroupId.HotAirBrushes,
     order: 70,
@@ -280,6 +301,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     order: 76,
     enabled: true,
     publishDate: '2026-09-15',
+  },
+  {
+    slug: ArticleSlug.HowToUseAStraighteningBrushOnShortHair,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 76,
+    enabled: true,
+    publishDate: '2026-09-18',
   },
   {
     slug: ArticleSlug.StraighteningBrushVsFlatIron,
@@ -469,6 +497,13 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     order: 180,
     enabled: true,
     publishDate: '2026-09-08',
+  },
+  {
+    slug: ArticleSlug.HowToBlowDryLongHairWithARoundBrush,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 190,
+    enabled: true,
+    publishDate: '2026-09-18',
   },
   {
     slug: ArticleSlug.BestHeatProtectants,

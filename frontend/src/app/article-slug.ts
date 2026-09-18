@@ -11,6 +11,7 @@ export const ArticleSlug = {
   BestHairDryerForShortHair: 'best-hair-dryer-for-short-hair',
   HairDryerDiffuserVsConcentrator: 'hair-dryer-diffuser-vs-concentrator',
   HowToUseAHairDryerDiffuser: 'how-to-use-a-hair-dryer-diffuser',
+  HowToDiffuseWavyHair: 'how-to-diffuse-wavy-hair',
   IonicVsCeramicHairDryer: 'ionic-vs-ceramic-hair-dryer',
   HairDryerSettingsGuide: 'hair-dryer-heat-and-speed-settings-guide',
   HowToUseHairDryerConcentratorNozzle:
@@ -26,10 +27,14 @@ export const ArticleSlug = {
   HotAirBrushVsHairDryer: 'hot-air-brush-vs-hair-dryer',
   HowToUseHotAirBrush: 'how-to-use-hot-air-brush',
   HowToUseAHotAirBrushOnShortHair: 'how-to-use-a-hot-air-brush-on-short-hair',
+  HowToUseAHotAirBrushOnLongHair: 'how-to-use-a-hot-air-brush-on-long-hair',
+  HowToUseAHotAirBrushOnFineHair: 'how-to-use-a-hot-air-brush-on-fine-hair',
   BestHotAirBrushForThickHair: 'best-hot-air-brush-for-thick-hair',
   HotAirBrushVsStraighteningBrush: 'hot-air-brush-vs-straightening-brush',
   HowToChooseAStraighteningBrush: 'how-to-choose-a-straightening-brush',
   HowToUseAStraighteningBrush: 'how-to-use-a-straightening-brush',
+  HowToUseAStraighteningBrushOnShortHair:
+    'how-to-use-a-straightening-brush-on-short-hair',
   StraighteningBrushVsFlatIron: 'straightening-brush-vs-flat-iron',
   HowToCleanHotAirBrush: 'how-to-clean-hot-air-brush',
   HotAirBrushBarrelSizeGuide: 'hot-air-brush-barrel-size-guide',
@@ -59,6 +64,8 @@ export const ArticleSlug = {
   HowToGetRootVolumeWithARoundBrush:
     'how-to-get-root-volume-with-a-round-brush',
   HowToBlowDryABobWithARoundBrush: 'how-to-blow-dry-a-bob-with-a-round-brush',
+  HowToBlowDryLongHairWithARoundBrush:
+    'how-to-blow-dry-long-hair-with-a-round-brush',
   BestHeatProtectants: 'best-heat-protectants',
   HeatProtectantSprayVsCream: 'heat-protectant-spray-vs-cream',
   BestLeaveInConditionersDryHair: 'best-leave-in-conditioners-dry-hair',

@@ -41,8 +41,32 @@ export const routes: Routes = [
   },
   { path: 'tools', component: StaticPageComponent, data: { page: 'tools' } },
   { path: 'products', component: ProductExplorerComponent },
-  { path: 'products/:comparison', component: ProductExplorerComponent },
   { path: 'about', component: StaticPageComponent, data: { page: 'about' } },
+  {
+    path: 'authors/combreport-editorial-team',
+    component: StaticPageComponent,
+    data: { page: 'author' },
+  },
+  {
+    path: 'editorial-policy',
+    component: StaticPageComponent,
+    data: { page: 'editorial-policy' },
+  },
+  {
+    path: 'testing-research-methodology',
+    component: StaticPageComponent,
+    data: { page: 'methodology' },
+  },
+  {
+    path: 'corrections-policy',
+    component: StaticPageComponent,
+    data: { page: 'corrections' },
+  },
+  {
+    path: 'contact',
+    component: StaticPageComponent,
+    data: { page: 'contact' },
+  },
   {
     path: 'privacy',
     component: StaticPageComponent,

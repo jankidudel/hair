@@ -9,6 +9,7 @@ import {
 } from './article-registry';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { ArticleSlug } from './article-slug';
+import { combReportEditorialTeam } from './editorial';
 
 @Component({
   imports: [RouterLink, BreadcrumbsComponent],
@@ -271,6 +272,101 @@ import { ArticleSlug } from './article-slug';
         </p>
       </section>
     }
+    @case ('author') {
+      <section class="listing-intro">
+        <p class="eyebrow">Editorial identity</p>
+        <h1>{{ editorialTeam.name }}</h1>
+        <p class="lede">{{ editorialTeam.description }}</p>
+        <p>
+          Read our <a routerLink="/editorial-policy">editorial policy</a> and
+          <a routerLink="/testing-research-methodology">research methodology</a>
+          for how labels and sources are used.
+        </p>
+      </section>
+    }
+    @case ('editorial-policy') {
+      <section class="listing-intro">
+        <p class="eyebrow">Standards</p>
+        <h1>Editorial policy</h1>
+        <p class="lede">
+          Comb Report publishes appearance-focused grooming guidance. We aim to
+          separate practical editorial advice from sourced product facts.
+        </p>
+        <h2>What we publish</h2>
+        <p>
+          We do not present a product as hands-on tested, expert reviewed, or
+          commercially recommended without the evidence needed for that label.
+          Product specifications should link to a source and state when they
+          were checked.
+        </p>
+        <h2>Corrections and updates</h2>
+        <p>
+          Material corrections are reflected in the article record. Contact us
+          with a specific correction or source so it can be assessed.
+        </p>
+      </section>
+    }
+    @case ('methodology') {
+      <section class="listing-intro">
+        <p class="eyebrow">Standards</p>
+        <h1>Testing and research methodology</h1>
+        <p class="lede">
+          Every guide is labelled so readers can distinguish editorial guidance
+          from sourced product research.
+        </p>
+        <h2>Content-method labels</h2>
+        <ul>
+          <li>
+            <strong>Editorial guide:</strong> practical guidance without a claim
+            of product testing.
+          </li>
+          <li>
+            <strong>Specification researched:</strong> factual product details
+            traced to published sources.
+          </li>
+          <li>
+            <strong>Expert reviewed:</strong> used only with a named, verified
+            reviewer and review date.
+          </li>
+          <li>
+            <strong>Hands-on tested:</strong> used only with documented tester,
+            protocol, date, and original evidence.
+          </li>
+        </ul>
+        <p>
+          Prices, retailer availability, and bundles can change. We do not treat
+          them as permanent facts unless they are maintained.
+        </p>
+      </section>
+    }
+    @case ('corrections') {
+      <section class="listing-intro">
+        <p class="eyebrow">Standards</p>
+        <h1>Corrections policy</h1>
+        <p class="lede">
+          If you spot an inaccurate specification, broken source, or misleading
+          statement, send us the page and supporting source.
+        </p>
+        <p>
+          We assess substantiated corrections and update material inaccuracies.
+          We do not alter dates merely because a page is rebuilt.
+        </p>
+      </section>
+    }
+    @case ('contact') {
+      <section class="listing-intro">
+        <p class="eyebrow">Contact</p>
+        <h1>Contact Comb Report</h1>
+        <p class="lede">
+          For corrections, source information, or business enquiries, please use
+          the contact channel provided by the site owner.
+        </p>
+        <p>
+          Contact details are awaiting owner confirmation and are not yet
+          published.
+        </p>
+      </section>
+    }
     @case ('privacy') {
       <section class="listing-intro">
         <p class="eyebrow">Privacy</p>
@@ -297,6 +393,7 @@ export class StaticPageComponent implements OnInit {
   private readonly seo = inject(SiteSeoService);
   readonly guides = articles;
   readonly articleSlug = ArticleSlug;
+  readonly editorialTeam = combReportEditorialTeam;
   readonly categories = guideCategories;
   readonly guidesBreadcrumbs: readonly Breadcrumb[] = [
     { label: 'Home', path: '/' },
@@ -420,6 +517,27 @@ export class StaticPageComponent implements OnInit {
         'How affiliate links support Comb Report.',
         '/affiliate-disclosure',
       ],
+      author: [
+        'Comb Report Editorial Team | Comb Report',
+        'The transparent interim editorial identity for Comb Report.',
+        '/authors/combreport-editorial-team',
+      ],
+      'editorial-policy': [
+        'Editorial Policy | Comb Report',
+        'How Comb Report labels and maintains editorial content.',
+        '/editorial-policy',
+      ],
+      methodology: [
+        'Testing and Research Methodology | Comb Report',
+        'How Comb Report distinguishes editorial guidance, research, review, and testing.',
+        '/testing-research-methodology',
+      ],
+      corrections: [
+        'Corrections Policy | Comb Report',
+        'How to report and assess a correction on Comb Report.',
+        '/corrections-policy',
+      ],
+      contact: ['Contact | Comb Report', 'Contact Comb Report.', '/contact'],
     };
     const pageData =
       this.page === 'category' && this.category
@@ -431,12 +549,20 @@ export class StaticPageComponent implements OnInit {
       description,
       path,
       this.page === 'home'
-        ? {
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'Comb Report',
-            url: SITE_URL,
-          }
+        ? [
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Comb Report',
+              url: SITE_URL,
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Comb Report',
+              url: SITE_URL,
+            },
+          ]
         : undefined,
       this.page === 'tools'
         ? this.toolsBreadcrumbSchema

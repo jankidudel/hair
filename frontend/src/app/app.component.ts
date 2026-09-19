@@ -50,7 +50,11 @@ import { CookieConsentBannerComponent } from './analytics/cookie-consent-banner.
         </p>
         <p>
           <a routerLink="/about">About</a> ·
-          <a routerLink="/privacy">Privacy</a>
+          <a routerLink="/privacy">Privacy</a> ·
+          <a routerLink="/editorial-policy">Editorial policy</a> ·
+          <a routerLink="/testing-research-methodology">Methodology</a> ·
+          <a routerLink="/corrections-policy">Corrections</a> ·
+          <a routerLink="/contact">Contact</a>
         </p>
       </div>
     </footer>

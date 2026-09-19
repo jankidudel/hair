@@ -134,9 +134,7 @@ export class HairStack extends Stack {
                 devBasicAuthorization.valueAsString,
               ),
             )
-          : cloudfront.FunctionCode.fromFile({
-              filePath: prerenderRouteRewritePath,
-            }),
+          : cloudfront.FunctionCode.fromInline(routeRewriteCode),
       },
     );
     const cacheableStaticAssetBehavior = {

@@ -27,7 +27,7 @@ test('allows a disabled draft below the hard minimum', () => {
     file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
     source: source(entry.slug, '<p>Draft copy.</p>'),
     entry: { ...entry, enabled: false },
-    today: '2026-09-06',
+    today: '2026-09-20',
   });
   assert.deepEqual(errors, []);
 });
@@ -52,18 +52,15 @@ test('rejects a publishable guide below the hard minimum', () => {
   assert.match(errors.join('\n'), /body is too short/);
 });
 
-test('allows links to registered product comparison routes', () => {
+test('allows links to registered canonical comparison guides', () => {
   const body = `<p>${'Useful comparison context '.repeat(250)}</p>${canonicalComparisons
-    .map(
-      (comparison) =>
-        `<a href="/products/{{ArticleSlug.${articleSlugNameByValue[comparison.slug as keyof typeof articleSlugNameByValue]}}}">Compare</a>`,
-    )
+    .map((comparison) => `<a href="${comparison.path}">Compare</a>`)
     .join('')}`;
   const errors = validateStagedGuide({
     file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
     source: source(entry.slug, body),
     entry,
-    today: '2026-09-06',
+    today: '2026-09-20',
   });
   assert.deepEqual(errors, []);
 });

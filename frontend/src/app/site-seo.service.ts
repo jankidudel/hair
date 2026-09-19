@@ -29,6 +29,18 @@ export class SiteSeoService {
     });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({
+      property: 'og:image',
+      content: `${SITE_URL}/android-chrome-512x512.png`,
+    });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({
+      name: 'twitter:image',
+      content: `${SITE_URL}/android-chrome-512x512.png`,
+    });
     if (url) this.meta.updateTag({ property: 'og:url', content: url });
     else this.meta.removeTag("property='og:url'");
     let canonical = this.document.querySelector(
@@ -52,7 +64,10 @@ export class SiteSeoService {
       const script = this.document.createElement('script');
       script.type = 'application/ld+json';
       script.setAttribute('data-site-jsonld', 'true');
-      script.textContent = JSON.stringify(structuredData);
+      script.textContent = JSON.stringify(structuredData).replace(
+        /</g,
+        '\\u003c',
+      );
       this.document.head.appendChild(script);
     }
   }

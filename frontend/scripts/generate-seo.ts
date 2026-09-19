@@ -2,7 +2,6 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { articles } from '../src/app/content.generated.ts';
 import { guideCategories } from '../src/app/article-registry.ts';
-import { canonicalComparisons } from '../src/app/product-comparisons.ts';
 
 type BuildConfiguration = 'development' | 'production';
 interface SiteConfig {
@@ -42,8 +41,12 @@ const entries = [
   '/about',
   '/privacy',
   '/affiliate-disclosure',
+  '/editorial-policy',
+  '/testing-research-methodology',
+  '/corrections-policy',
+  '/authors/combreport-editorial-team',
+  '/contact',
 ];
-for (const { path } of canonicalComparisons) entries.push(path);
 for (const { slug } of articles) entries.push(`/guides/${slug}`);
 const publicDirectory = join(root, 'public');
 await mkdir(publicDirectory, { recursive: true });

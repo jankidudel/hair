@@ -304,23 +304,22 @@ export const productProfiles: readonly ProductProfile[] = [
   },
 ];
 
-// @todo: review, this needs to be improved
 export const canonicalComparisons: readonly CanonicalComparison[] = [
   {
     slug: 'dyson-supersonic-vs-shark-speedstyle',
-    path: '/products/dyson-supersonic-vs-shark-speedstyle',
+    path: '/guides/dyson-supersonic-vs-shark-speedstyle',
     productSlugs: ['dyson-supersonic', 'shark-speedstyle'],
     guideSlug: 'dyson-supersonic-vs-shark-speedstyle',
   },
   {
     slug: 'dyson-airwrap-vs-shark-flexstyle',
-    path: '/products/dyson-airwrap-vs-shark-flexstyle',
+    path: '/guides/dyson-airwrap-vs-shark-flexstyle',
     productSlugs: ['dyson-airwrap', 'shark-flexstyle'],
     guideSlug: 'dyson-airwrap-vs-shark-flexstyle',
   },
   {
     slug: 'babyliss-air-style-1000-vs-flawless-volume',
-    path: '/products/babyliss-air-style-1000-vs-flawless-volume',
+    path: '/guides/babyliss-air-style-1000-vs-flawless-volume',
     productSlugs: ['babyliss-air-style-1000', 'babyliss-flawless-volume'],
     guideSlug: 'babyliss-air-style-1000-vs-flawless-volume',
   },

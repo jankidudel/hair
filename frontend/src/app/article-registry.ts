@@ -237,7 +237,7 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     group: ArticleGroupId.HotAirBrushes,
     order: 45,
     enabled: true,
-    publishDate: '2026-09-12',
+    publishDate: '2026-09-19',
   },
   {
     slug: ArticleSlug.HotAirBrushVsHairDryer,

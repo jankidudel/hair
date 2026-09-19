@@ -5,6 +5,7 @@ import { SiteSeoService, SITE_URL } from './site-seo.service';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { ArticleSlug } from './article-slug';
 import { guideCategoryById } from './article-registry';
+import { combReportEditorialTeam, contentMethodLabel } from './editorial';
 import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.component';
 import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
@@ -37,6 +38,17 @@ import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.compo
         <p class="eyebrow">{{ article.category }}</p>
         <h1>{{ article.heading }}</h1>
         <p class="lede">{{ article.description }}</p>
+        <p class="article-byline">
+          By
+          <a routerLink="/authors/combreport-editorial-team">{{
+            editorialTeam.name
+          }}</a>
+          <a
+            class="content-method"
+            routerLink="/testing-research-methodology"
+            >{{ contentMethodLabel[article.contentMethod] }}</a
+          >
+        </p>
       </header>
       @switch (article.slug) {
         @case (articleSlug.RoundBrushSizeGuide) {
@@ -86,6 +98,8 @@ export class ArticlePageComponent implements OnInit {
   private readonly seo = inject(SiteSeoService);
   article?: Article;
   readonly articleSlug = ArticleSlug;
+  readonly editorialTeam = combReportEditorialTeam;
+  readonly contentMethodLabel = contentMethodLabel;
   breadcrumbs: readonly Breadcrumb[] = [];
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
@@ -109,7 +123,17 @@ export class ArticlePageComponent implements OnInit {
             headline: this.article.title,
             description: this.article.description,
             datePublished: this.article.publishDate,
-            dateModified: this.article.updatedDate,
+            dateModified: this.article.updatedDate ?? this.article.publishDate,
+            author: {
+              '@type': 'Organization',
+              name: this.editorialTeam.name,
+              url: `${SITE_URL}/authors/${this.editorialTeam.slug}`,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Comb Report',
+              url: SITE_URL,
+            },
             mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
           },
           {

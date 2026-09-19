@@ -26,11 +26,11 @@ describe('product comparison data', () => {
 
   it('selects only an explicit canonical comparison for each product', () => {
     expect(comparisonForProduct('dyson-supersonic')?.path).toBe(
-      '/products/dyson-supersonic-vs-shark-speedstyle',
+      '/guides/dyson-supersonic-vs-shark-speedstyle',
     );
     expect(comparisonForProduct('not-a-product')).toBeUndefined();
     expect(comparisonForProduct('babyliss-flawless-volume')?.path).toBe(
-      '/products/babyliss-air-style-1000-vs-flawless-volume',
+      '/guides/babyliss-air-style-1000-vs-flawless-volume',
     );
   });
 

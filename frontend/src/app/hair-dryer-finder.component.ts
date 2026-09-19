@@ -129,7 +129,7 @@ import {
           </nav>
           @if (goal === 'quick' || goal === 'smooth') {
             <p class="dryer-finder-compare">
-              <a routerLink="/products/dyson-supersonic-vs-shark-speedstyle"
+              <a routerLink="/guides/dyson-supersonic-vs-shark-speedstyle"
                 >Compare published dryer specifications</a
               >
             </p>

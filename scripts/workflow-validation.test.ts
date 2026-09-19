@@ -22,10 +22,10 @@ test('frontend deployments require reusable validation', async () => {
   }
 });
 
-test('pull requests call the same frontend validation workflow', async () => {
+test('pull requests validate without running on main pushes', async () => {
   const source = await workflow('verify.yml');
   assert.match(source, /pull_request:/);
-  assert.match(source, /push:\s*\n\s+branches: \[main\]/);
+  assert.doesNotMatch(source, /\n\s+push:/);
   assert.match(
     source,
     /validate:\s*\n\s+uses: \.\/\.github\/workflows\/frontend-validation\.yml/,

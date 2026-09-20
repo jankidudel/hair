@@ -1,12 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ArticleSlug } from './article-slug';
+import { ArticleGroupId } from './article-registry';
+import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
+import { articles } from './content.generated';
 import { SiteSeoService } from './site-seo.service';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, BreadcrumbsComponent],
   styleUrl: './static-page.component.css',
   template: `
+    <app-breadcrumbs [items]="breadcrumbs" />
     <section class="listing-intro">
       <p class="eyebrow">Direct-heat tools</p>
       <h1>
@@ -23,6 +27,18 @@ import { SiteSeoService } from './site-seo.service';
             : 'Choose a clamp, wand or tapered format and a practical barrel-size band for the routine you want.'
         }}
       </p>
+    </section>
+    <section class="editorial-grid guides-grid" aria-label="Direct-heat guides">
+      @for (guide of guides; track guide.slug) {
+        <a class="guide-card" [routerLink]="['/guides', guide.slug]">
+          <p class="eyebrow">{{ guide.category }}</p>
+          <h2>{{ guide.heading }}</h2>
+          <p>{{ guide.description }}</p>
+          <span class="text-link"
+            >Read guide <span aria-hidden="true">→</span></span
+          >
+        </a>
+      }
     </section>
     <section class="category-product-explorer">
       <p class="eyebrow">Start here</p>
@@ -80,6 +96,14 @@ export class DirectHeatHubComponent {
   private readonly seo = inject(SiteSeoService);
   readonly articleSlug = ArticleSlug;
   readonly isFlat = this.route.snapshot.data['kind'] === 'flat';
+  readonly guides = articles.filter(
+    (article) => article.group === ArticleGroupId.DirectHeat,
+  );
+  readonly breadcrumbs: readonly Breadcrumb[] = [
+    { label: 'Home', path: '/' },
+    { label: 'Guides', path: '/guides' },
+    { label: 'Flat Irons & Curling Tools' },
+  ];
   constructor() {
     this.seo.set(
       this.isFlat
@@ -89,6 +113,12 @@ export class DirectHeatHubComponent {
         ? 'Compare flat-iron plate widths, controls and researched US models.'
         : 'Compare curling-tool formats, barrel sizes and researched US models.',
       this.isFlat ? '/flat-irons' : '/curling-irons',
+      undefined,
+      [
+        { label: 'Home', path: '/' },
+        { label: 'Guides', path: '/guides' },
+        { label: 'Flat Irons & Curling Tools', path: '/flat-irons' },
+      ],
     );
   }
 }

@@ -239,6 +239,7 @@ const questions: readonly FinderQuestion[] = [
             (click)="guideClicked(result.primary.guideSlug)"
             >Read the buying guide</a
           >
+          <p><a routerLink="/products">Compare published specifications</a></p>
           <button class="finder-restart" type="button" (click)="restart()">
             Start again
           </button>
@@ -314,7 +315,7 @@ export class HairBrushFinderComponent {
   }
   answer(value: string): void {
     if (!this.started) {
-      this.analytics.track('hair_brush_finder_started');
+      this.analytics.track('tool_started', { tool: 'hair_brush_finder' });
       this.started = true;
     }
     const key = this.question.key;
@@ -327,7 +328,7 @@ export class HairBrushFinderComponent {
       return;
     }
     this.complete = true;
-    this.analytics.track('hair_brush_finder_completed', {
+    this.analytics.track('tool_completed', {
       primary_recommendation_category: this.result.primary.category,
     });
   }
@@ -346,7 +347,7 @@ export class HairBrushFinderComponent {
     this.analytics.track('hair_brush_finder_restart');
   }
   guideClicked(slug: string): void {
-    this.analytics.track('hair_brush_finder_guide_clicked', {
+    this.analytics.track('result_to_guide_click', {
       destination_slug: slug,
     });
   }

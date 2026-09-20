@@ -18,13 +18,17 @@ import { combReportEditorialTeam } from './editorial';
     @case ('home') {
       <section class="home-hero">
         <div class="hero-copy">
-          <p class="eyebrow">Hair appearance, simply explained</p>
-          <h1>Everyday routines for hair that feels like you.</h1>
+          <p class="eyebrow">US hair-tool guidance</p>
+          <h1>Choose hair tools with clear, specification-led guidance.</h1>
           <p class="hero-lede">
-            Practical guides, styling tools, and thoughtful product
-            comparisons—focused on appearance and everyday care.
+            Independent, source-linked help for comparing dryers, styling tools
+            and brushes. We explain published specifications and routine
+            trade-offs; we do not claim hands-on testing where we have not done
+            it.
           </p>
-          <a class="button" routerLink="/guides">Browse guides</a>
+          <a class="button" routerLink="/guides/how-to-choose-hair-dryer"
+            >Find a blow dryer</a
+          >
         </div>
         <a
           class="featured-guide"
@@ -52,9 +56,15 @@ import { combReportEditorialTeam } from './editorial';
           <h2 id="topics-heading">Explore by topic</h2>
         </div>
         <div class="topic-links">
-          <a routerLink="/hair-care"><span>01</span> Hair Care <b>→</b></a>
-          <a routerLink="/products"><span>02</span> Products <b>→</b></a>
-          <a routerLink="/guides"><span>03</span> Guides <b>→</b></a>
+          <a routerLink="/guides/how-to-choose-hair-dryer"
+            ><span>01</span> Find a blow dryer <b>→</b></a
+          >
+          <a routerLink="/products"
+            ><span>02</span> Compare styling tools <b>→</b></a
+          >
+          <a routerLink="/hair-brush-finder"
+            ><span>03</span> Choose a brush <b>→</b></a
+          >
         </div>
       </section>
       <section class="latest-section" aria-labelledby="latest-heading">
@@ -219,6 +229,21 @@ import { combReportEditorialTeam } from './editorial';
           <p class="lede">{{ category.intro }}</p>
         </section>
         <section
+          class="category-product-explorer"
+          aria-labelledby="start-here-heading"
+        >
+          <p class="eyebrow">Start here</p>
+          <h2 id="start-here-heading">Choose your next step</h2>
+          <ul>
+            @for (link of categoryStartLinks; track link.path) {
+              <li>
+                <a [routerLink]="link.path">{{ link.label }}</a> —
+                {{ link.description }}
+              </li>
+            }
+          </ul>
+        </section>
+        <section
           class="editorial-grid guides-grid"
           [attr.aria-label]="category.label + ' guides'"
         >
@@ -246,7 +271,9 @@ import { combReportEditorialTeam } from './editorial';
           }
         </section>
         @if (
-          category.id === 'hair-dryers' || category.id === 'hot-air-brushes'
+          category.id === 'hair-dryers' ||
+          category.id === 'hot-air-brushes' ||
+          category.id === 'brushes-and-combs'
         ) {
           <section class="category-product-explorer">
             <p class="eyebrow">Specification-led explorer</p>
@@ -477,6 +504,11 @@ export class StaticPageComponent implements OnInit {
   readonly latestGuides = articles.slice(0, 6);
   category?: GuideCategory;
   categoryArticles = articles;
+  categoryStartLinks: readonly {
+    label: string;
+    path: string;
+    description: string;
+  }[] = [];
   categoryBreadcrumbs: readonly Breadcrumb[] = [];
   page = 'home';
 
@@ -488,6 +520,64 @@ export class StaticPageComponent implements OnInit {
       this.categoryArticles = articles.filter(
         (article) => article.group === this.category?.id,
       );
+      const startLinks: Record<
+        string,
+        readonly { label: string; path: string; description: string }[]
+      > = {
+        'hair-dryers': [
+          {
+            label: 'Use the Hair Dryer Finder',
+            path: '/guides/how-to-choose-hair-dryer',
+            description: 'turn your routine into a feature checklist',
+          },
+          {
+            label: 'Compare Dyson and Shark',
+            path: '/guides/dyson-supersonic-vs-shark-speedstyle',
+            description:
+              'check source-linked US specifications and bundle limits',
+          },
+          {
+            label: 'Plan international travel',
+            path: '/guides/best-travel-hair-dryers',
+            description: 'start with voltage compatibility',
+          },
+        ],
+        'hot-air-brushes': [
+          {
+            label: 'Choose a hot-air brush',
+            path: '/guides/best-hot-air-brushes',
+            description: 'compare a brush-led dryer with other tool formats',
+          },
+          {
+            label: 'Compare options for fine hair',
+            path: '/guides/best-hot-air-brushes-fine-hair',
+            description: 'focus on published controls and head shape',
+          },
+          {
+            label: 'Check barrel size',
+            path: '/guides/hot-air-brush-barrel-size-guide',
+            description: 'match section length and styling control',
+          },
+        ],
+        'brushes-and-combs': [
+          {
+            label: 'Use the Hair Brush Finder',
+            path: '/hair-brush-finder',
+            description: 'choose a tool category from your main task',
+          },
+          {
+            label: 'Choose a brush by job',
+            path: '/guides/how-to-choose-hair-brush',
+            description: 'separate detangling, smoothing and blow-dry needs',
+          },
+          {
+            label: 'Compare detangling options',
+            path: '/guides/best-detangling-brushes',
+            description: 'check wet-use directions, spacing and form factor',
+          },
+        ],
+      };
+      this.categoryStartLinks = startLinks[categoryId] ?? [];
       this.categoryBreadcrumbs = [
         { label: 'Home', path: '/' },
         { label: 'Guides', path: '/guides' },

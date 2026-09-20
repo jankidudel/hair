@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AnalyticsService } from './analytics/analytics.service';
 import { articles } from './content.generated';
 import {
   comparisonFacts,
@@ -8,6 +9,7 @@ import {
   productBySlug,
   productProfiles,
   ProductCategory,
+  parseProductSelection,
   type CanonicalComparison,
   type PriceTier,
   type ProductProfile,
@@ -24,6 +26,8 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
     'You may prefer a hot-air brush when a brush-led, smooth or softly shaped finish is your usual goal. Decide whether one fixed barrel or several attachments better matches the steps you actually use.',
   [ProductCategory.MultiStyler]:
     'You may prefer a multi-styler if you want a dryer and several styling formats in one system, and expect to use the included attachments.',
+  [ProductCategory.HairBrush]:
+    'You may prefer a brush when the task is detangling, smoothing, or sectioning rather than heated styling. Check wet-use and care directions for the exact brush.',
 };
 
 @Component({
@@ -135,8 +139,8 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
           <h2 id="how-we-compare-heading">How we compare products</h2>
           <ol>
             <li>
-              Specifications come from the current official manufacturer page,
-              linked with each stated fact.
+              Specifications come from an official US manufacturer or support
+              source, linked with each stated fact and its check date.
             </li>
             <li>
               Features do not guarantee the same result for every person or
@@ -179,6 +183,83 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
             }
           </div>
         </section>
+        <section class="selected-comparison" aria-labelledby="selected-heading">
+          <h2 id="selected-heading">Compare up to three products</h2>
+          <p class="product-source" aria-live="polite">
+            {{ selectedSlugs.length }} of 3 selected. The selection is stored in
+            the page URL so you can copy or bookmark it.
+          </p>
+          @if (selectedProducts.length) {
+            <div
+              class="comparison-scroll"
+              tabindex="0"
+              aria-label="Selected product comparison"
+            >
+              <table class="comparison-matrix">
+                <thead>
+                  <tr>
+                    <th scope="col">Published detail</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <th scope="col">{{ product.name }}</th>
+                    }
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Type</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <td>{{ product.subtype }}</td>
+                    }
+                  </tr>
+                  <tr>
+                    <th scope="row">Evidence</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <td>
+                        {{
+                          product.evidenceStatus === 'specification-researched'
+                            ? 'Specification researched'
+                            : 'Limited specification coverage'
+                        }}
+                      </td>
+                    }
+                  </tr>
+                  <tr>
+                    <th scope="row">Checked</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <td>{{ product.verifiedAt }}</td>
+                    }
+                  </tr>
+                  <tr>
+                    <th scope="row">Availability</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <td>
+                        {{
+                          product.availability === 'available'
+                            ? 'Available at last check'
+                            : 'Recheck before purchase'
+                        }}
+                      </td>
+                    }
+                  </tr>
+                  <tr>
+                    <th scope="row">Source</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <td>
+                        <a
+                          [href]="product.officialProductUrl"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          (click)="trackOutbound(product.slug)"
+                          >Official US source</a
+                        >
+                      </td>
+                    }
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          }
+        </section>
         @if (filteredProducts.length) {
           <section class="product-grid" aria-label="Product profiles">
             @for (product of filteredProducts; track product.slug) {
@@ -189,8 +270,32 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                 </p>
                 <h2>{{ product.name }}</h2>
                 <p class="product-source">
-                  Manufacturer specifications checked; bundles vary by market.
+                  {{
+                    product.evidenceStatus === 'specification-researched'
+                      ? 'Specification researched'
+                      : 'Limited specification coverage'
+                  }}
+                  · checked {{ product.verifiedAt }}.
                 </p>
+                @if (product.conflictNote) {
+                  <p class="product-source">{{ product.conflictNote }}</p>
+                }
+                <button
+                  type="button"
+                  class="compare-toggle"
+                  [class.selected]="isSelected(product.slug)"
+                  [attr.aria-pressed]="isSelected(product.slug)"
+                  [disabled]="
+                    !isSelected(product.slug) && selectedSlugs.length >= 3
+                  "
+                  (click)="toggleProduct(product.slug)"
+                >
+                  {{
+                    isSelected(product.slug)
+                      ? 'Remove from comparison'
+                      : 'Add to comparison'
+                  }}
+                </button>
                 <h3>May suit a routine where…</h3>
                 <ul>
                   @for (tag of product.bestFor; track tag) {
@@ -211,8 +316,8 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                     [href]="product.officialProductUrl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Official specifications
-                    <span aria-hidden="true">↗</span></a
+                    (click)="trackOutbound(product.slug)"
+                    >Official US source <span aria-hidden="true">↗</span></a
                   >
                 </div>
                 <p class="related-guide">
@@ -234,7 +339,9 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
 })
 export class ProductExplorerComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly seo = inject(SiteSeoService);
+  private readonly analytics = inject(AnalyticsService);
   readonly categoryFilters: readonly {
     label: string;
     value: CategoryFilter;
@@ -243,6 +350,7 @@ export class ProductExplorerComponent implements OnInit {
     { label: 'Hair Dryers', value: ProductCategory.HairDryer },
     { label: 'Multi-stylers', value: ProductCategory.MultiStyler },
     { label: 'Hot-Air Brushes', value: ProductCategory.HotAirBrush },
+    { label: 'Hair Brushes', value: ProductCategory.HairBrush },
   ];
   readonly priceFilters: readonly { label: string; value: PriceFilter }[] = [
     { label: 'All price tiers', value: 'all' },
@@ -252,6 +360,7 @@ export class ProductExplorerComponent implements OnInit {
   ];
   categoryFilter: CategoryFilter = 'all';
   priceFilter: PriceFilter = 'all';
+  selectedSlugs: string[] = [];
   comparison?: CanonicalComparison;
   firstProduct?: ProductProfile;
   secondProduct?: ProductProfile;
@@ -265,8 +374,18 @@ export class ProductExplorerComponent implements OnInit {
         (this.priceFilter === 'all' || product.priceTier === this.priceFilter),
     );
   }
+  get selectedProducts(): readonly ProductProfile[] {
+    return this.selectedSlugs
+      .map(productBySlug)
+      .filter((product): product is ProductProfile => product !== undefined);
+  }
   ngOnInit(): void {
     const comparisonSlug = this.route.snapshot.paramMap.get('comparison');
+    this.selectedSlugs = [
+      ...parseProductSelection(
+        this.route.snapshot.queryParamMap.get('compare'),
+      ),
+    ];
     this.comparison = canonicalComparisons.find(
       (entry) => entry.slug === comparisonSlug,
     );
@@ -298,6 +417,34 @@ export class ProductExplorerComponent implements OnInit {
   }
   comparisonForProduct(slug: string): CanonicalComparison | undefined {
     return comparisonForProduct(slug);
+  }
+  isSelected(slug: string): boolean {
+    return this.selectedSlugs.includes(slug);
+  }
+  toggleProduct(slug: string): void {
+    if (this.isSelected(slug)) {
+      this.selectedSlugs = this.selectedSlugs.filter((item) => item !== slug);
+    } else if (this.selectedSlugs.length < 3) {
+      this.selectedSlugs = [...this.selectedSlugs, slug];
+    }
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        compare: this.selectedSlugs.length
+          ? this.selectedSlugs.join(',')
+          : null,
+      },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+    this.analytics.track('product_explorer_selection', {
+      selected_count: this.selectedSlugs.length,
+    });
+  }
+  trackOutbound(slug: string): void {
+    this.analytics.track('product_explorer_outbound_click', {
+      product_slug: slug,
+    });
   }
   categoryLabel(category: ProductCategory): string {
     return (

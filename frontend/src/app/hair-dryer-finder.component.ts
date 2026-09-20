@@ -134,6 +134,9 @@ import {
               >
             </p>
           }
+          <p class="dryer-finder-compare">
+            <a routerLink="/products">Compare published specifications</a>
+          </p>
         </section>
       }
     </section>
@@ -178,20 +181,20 @@ export class HairDryerFinderComponent {
       priority: this.priority,
       diffuser: this.diffuser,
     });
-    this.analytics.track('hair_dryer_finder_result_shown', {
+    this.analytics.track('tool_completed', {
       goal: this.goal,
       priority: this.priority,
       diffuser: this.diffuser,
     });
   }
   trackGuideClick(slug: string): void {
-    this.analytics.track('hair_dryer_finder_internal_link_clicked', {
+    this.analytics.track('result_to_guide_click', {
       destination_slug: slug,
     });
   }
   private trackStarted(): void {
     if (this.started) return;
     this.started = true;
-    this.analytics.track('hair_dryer_finder_started');
+    this.analytics.track('tool_started', { tool: 'hair_dryer_finder' });
   }
 }

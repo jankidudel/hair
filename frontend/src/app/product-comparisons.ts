@@ -1,342 +1,435 @@
 import { ArticleSlug } from './article-slug';
 
+/** The single US-market source of product facts for product-facing surfaces. */
 export const ProductCategory = {
   HairDryer: 'hair-dryer',
   MultiStyler: 'multi-styler',
   HotAirBrush: 'hot-air-brush',
+  HairBrush: 'hair-brush',
 } as const;
-
 export type ProductCategory =
   (typeof ProductCategory)[keyof typeof ProductCategory];
 export type PriceTier = 'entry' | 'mid-range' | 'premium';
-
+export type EvidenceStatus =
+  'specification-researched' | 'limited-specification';
 export interface VerifiedFact {
   readonly label: string;
   readonly value: string;
   readonly sourceUrl: string;
   readonly verifiedAt: string;
 }
-
 export interface ProductProfile {
   readonly slug: string;
   readonly name: string;
   readonly brand: string;
   readonly category: ProductCategory;
+  readonly subtype: string;
   readonly imageAlt: string;
   readonly priceTier: PriceTier;
   readonly bestFor: readonly string[];
   readonly notIdealFor: readonly string[];
   readonly verifiedFacts: readonly VerifiedFact[];
   readonly officialProductUrl: string;
+  readonly supportUrl?: string;
   readonly verifiedAt: string;
+  readonly availability: 'available' | 'availability-to-check';
+  readonly evidenceStatus: EvidenceStatus;
+  readonly conflictNote?: string;
   readonly relatedGuideSlugs: readonly string[];
   readonly comparisonStatus: 'specification-led';
 }
-
 export interface CanonicalComparison {
   readonly slug: string;
   readonly path: string;
   readonly productSlugs: readonly [string, string];
   readonly guideSlug: string;
 }
-
-const verifiedAt = '2026-09-09';
-const dysonSupersonicUrl =
-  'https://www.dyson.co.uk/hair-care/hair-dryers/supersonic';
-const sharkSpeedstyleUrl =
-  'https://sharkclean.co.uk/product/shark-speedstyle-3-in-1-hair-dryer-for-straight-wavy-hair-hd331uk-zidHD331UK';
-const dysonAirwrapUrl =
-  'https://www.dyson.co.uk/hair-care/hair-stylers/airwrap-id';
-const sharkFlexstyleUrl =
-  'https://sharkclean.co.uk/product/shark-flexstyle-5-in-1-air-styler-hair-dryer-with-storage-case-black-rose-gold-hd440uk-zidHD440UK';
-const babylissAirStyle1000Url =
-  'https://www.babyliss.com/uk-en/air-style-1000-2136U.html';
-const babylissFlawlessVolumeUrl =
-  'https://www.babyliss.com/uk-en/flawless-volume-2764U.html';
+const checked = '2026-09-20';
+const fact = (
+  label: string,
+  value: string,
+  sourceUrl: string,
+): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: checked });
+const product = (
+  input: Omit<ProductProfile, 'verifiedAt' | 'comparisonStatus'>,
+): ProductProfile => ({
+  ...input,
+  verifiedAt: checked,
+  comparisonStatus: 'specification-led',
+});
 
 export const productProfiles: readonly ProductProfile[] = [
-  {
-    slug: 'dyson-supersonic',
-    name: 'Dyson Supersonic',
+  product({
+    slug: 'dyson-supersonic-nural',
+    name: 'Dyson Supersonic Nural™ hair dryer',
     brand: 'Dyson',
     category: ProductCategory.HairDryer,
-    imageAlt: 'Dyson Supersonic hair dryer',
+    subtype: 'full-size dryer',
+    imageAlt: 'Dyson Supersonic Nural hair dryer',
     priceTier: 'premium',
-    bestFor: ['dryer with five stated attachments', 'attachment-led routines'],
-    notIdealFor: ['buyers who need a fixed bundle across markets'],
-    verifiedFacts: [
-      {
-        label: 'Format',
-        value: 'Hair dryer',
-        sourceUrl: dysonSupersonicUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Included attachments',
-        value: 'Five attachments stated',
-        sourceUrl: dysonSupersonicUrl,
-        verifiedAt,
-      },
+    bestFor: [
+      'documented diffuser and wide-tooth-comb attachments',
+      'separate heat and airflow controls',
     ],
-    officialProductUrl: dysonSupersonicUrl,
-    verifiedAt,
+    notIdealFor: ['international use without checking the exact model voltage'],
+    officialProductUrl: 'https://www.dyson.com/hair-care/hair-dryers',
+    supportUrl:
+      'https://www.dyson.com/support/hair-care/hair-dryers/supersonic-nural',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'US electrical specification',
+        '120 V / 60 Hz; 1,600 W',
+        'https://www.dyson.com/content/dam/dyson/for-business/business-refresh/docs/us/hair-care/DysonSupersonictechspec.pdf',
+      ),
+      fact(
+        'Controls',
+        '3 airflow settings and 4 heat settings including cold shot',
+        'https://www.dyson.com/support/journey/guides/245739-01?machineId=201967-01',
+      ),
+      fact(
+        'Warranty',
+        '2-year limited warranty stated',
+        'https://www.dyson.com/hair-care/hair-dryers',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
+      ArticleSlug.BestHairDryersCurlyHair,
+      ArticleSlug.HairDryerChooser,
+    ],
+  }),
+  product({
+    slug: 'shark-speedstyle-pro',
+    name: 'Shark SpeedStyle™ Pro',
+    brand: 'Shark',
+    category: ProductCategory.HairDryer,
+    subtype: 'full-size dryer',
+    imageAlt: 'Shark SpeedStyle Pro hair dryer',
+    priceTier: 'premium',
+    bestFor: [
+      'comparing the exact included attachment bundle',
+      'a dedicated dryer format',
+    ],
+    notIdealFor: ['buyers who need a fixed attachment list across all bundles'],
+    officialProductUrl:
+      'https://www.sharkninja.com/parts-support/beauty-parts/hair-dryers',
+    availability: 'availability-to-check',
+    evidenceStatus: 'limited-specification',
+    conflictNote:
+      'Shark lists SpeedStyle family support, but exact current US bundle details should be confirmed before purchase.',
+    verifiedFacts: [
+      fact(
+        'Support path',
+        'SpeedStyle family parts and support are listed by SharkNinja',
+        'https://www.sharkninja.com/parts-support/beauty-parts/hair-dryers',
+      ),
+    ],
     relatedGuideSlugs: [
       ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
       ArticleSlug.HairDryerChooser,
     ],
-    comparisonStatus: 'specification-led',
-  },
-  {
-    slug: 'shark-speedstyle',
-    name: 'Shark SpeedStyle',
-    brand: 'Shark',
+  }),
+  product({
+    slug: 'conair-digitalaire-2',
+    name: 'InfinitiPRO by Conair® DigitalAIRE® 2.0 Hair Dryer',
+    brand: 'Conair',
     category: ProductCategory.HairDryer,
-    imageAlt: 'Shark SpeedStyle hair dryer',
-    priceTier: 'premium',
-    bestFor: ['compact dryer format', 'three stated styling attachments'],
-    notIdealFor: ['buyers who need a universal attachment bundle'],
-    verifiedFacts: [
-      {
-        label: 'Format',
-        value: 'Hair dryer',
-        sourceUrl: sharkSpeedstyleUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Included attachments',
-        value: 'Three styling attachments stated',
-        sourceUrl: sharkSpeedstyleUrl,
-        verifiedAt,
-      },
-    ],
-    officialProductUrl: sharkSpeedstyleUrl,
-    verifiedAt,
-    relatedGuideSlugs: [
-      ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
-      ArticleSlug.HairDryerChooser,
-    ],
-    comparisonStatus: 'specification-led',
-  },
-  {
-    slug: 'dyson-airwrap',
-    name: 'Dyson Airwrap i.d.',
-    brand: 'Dyson',
-    category: ProductCategory.MultiStyler,
-    imageAlt: 'Dyson Airwrap i.d. multi-styler and dryer',
-    priceTier: 'premium',
-    bestFor: ['multi-step styling routines', 'app-connected curling sequence'],
-    notIdealFor: ['buyers who only need a basic dryer'],
-    verifiedFacts: [
-      {
-        label: 'Format',
-        value: 'Multi-styler and dryer',
-        sourceUrl: dysonAirwrapUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Stated functions',
-        value: 'Dry, curl, wave, shape, stretch and diffuse',
-        sourceUrl: dysonAirwrapUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Settings',
-        value: '3 heat and 3 speed settings',
-        sourceUrl: dysonAirwrapUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Weight',
-        value: '0.595 kg',
-        sourceUrl: dysonAirwrapUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Guarantee',
-        value: '2 years',
-        sourceUrl: dysonAirwrapUrl,
-        verifiedAt,
-      },
-    ],
-    officialProductUrl: dysonAirwrapUrl,
-    verifiedAt,
-    relatedGuideSlugs: [
-      ArticleSlug.DysonAirwrapVsSharkFlexstyle,
-      ArticleSlug.BestHotAirBrushes,
-    ],
-    comparisonStatus: 'specification-led',
-  },
-  {
-    slug: 'shark-flexstyle',
-    name: 'Shark FlexStyle 5-in-1',
-    brand: 'Shark',
-    category: ProductCategory.MultiStyler,
-    imageAlt: 'Shark FlexStyle multi-styler and hair dryer',
-    priceTier: 'premium',
-    bestFor: ['dryer-to-styler format', 'five stated styling functions'],
-    notIdealFor: ['buyers who need a fixed bundle across markets'],
-    verifiedFacts: [
-      {
-        label: 'Format',
-        value: 'Air styler and hair dryer',
-        sourceUrl: sharkFlexstyleUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Stated functions',
-        value: 'Curl, straighten, volumise, smooth and define',
-        sourceUrl: sharkFlexstyleUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Settings',
-        value: '3 heat and airflow settings',
-        sourceUrl: sharkFlexstyleUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Weight',
-        value: '700 g',
-        sourceUrl: sharkFlexstyleUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Guarantee',
-        value: '2 years',
-        sourceUrl: sharkFlexstyleUrl,
-        verifiedAt,
-      },
-    ],
-    officialProductUrl: sharkFlexstyleUrl,
-    verifiedAt,
-    relatedGuideSlugs: [
-      ArticleSlug.DysonAirwrapVsSharkFlexstyle,
-      ArticleSlug.BestHotAirBrushes,
-    ],
-    comparisonStatus: 'specification-led',
-  },
-  {
-    slug: 'babyliss-air-style-1000',
-    name: 'BaByliss Air Style 1000',
-    brand: 'BaByliss',
-    category: ProductCategory.HotAirBrush,
-    imageAlt: 'BaByliss Air Style 1000 multi-attachment hot-air brush',
+    subtype: 'dual-voltage dryer',
+    imageAlt: 'Conair DigitalAIRE 2.0 hair dryer',
     priceTier: 'mid-range',
     bestFor: [
-      'a routine that changes between drying, smoothing and shaping',
-      'using a dryer nozzle before a brush attachment',
+      'international travel with documented automatic dual voltage',
+      'a folding handle and diffuser',
     ],
-    notIdealFor: ['buyers who only want one fixed brush barrel'],
+    notIdealFor: ['a buyer who does not need travel features'],
+    officialProductUrl: 'https://www.conair.com/digitalaire2.html',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
     verifiedFacts: [
-      {
-        label: 'Format',
-        value: 'Multi-attachment hair dryer brush',
-        sourceUrl: babylissAirStyle1000Url,
-        verifiedAt,
-      },
-      {
-        label: 'Included styling attachments',
-        value:
-          'Drying nozzle, 50 mm thermal brush, conical barrel and paddle brush stated',
-        sourceUrl: babylissAirStyle1000Url,
-        verifiedAt,
-      },
-      {
-        label: 'Airflow',
-        value: '1,000 W stated',
-        sourceUrl: babylissAirStyle1000Url,
-        verifiedAt,
-      },
+      fact(
+        'Voltage',
+        'Automatic dual voltage stated',
+        'https://www.conair.com/digitalaire2.html',
+      ),
+      fact(
+        'Controls',
+        '4 heat and 4 speed settings plus cold shot stated',
+        'https://www.conair.com/digitalaire2.html',
+      ),
+      fact(
+        'Attachments',
+        'Concentrator, diffuser and Frizz Defense attachment stated',
+        'https://www.conair.com/digitalaire2.html',
+      ),
     ],
-    officialProductUrl: babylissAirStyle1000Url,
-    verifiedAt,
     relatedGuideSlugs: [
-      ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+      ArticleSlug.BestTravelHairDryers,
+      ArticleSlug.BestHairDryersCurlyHair,
+    ],
+  }),
+  product({
+    slug: 'conair-smoothwrap',
+    name: 'InfinitiPRO by Conair® Smoothwrap Dual Ion Hair Dryer',
+    brand: 'Conair',
+    category: ProductCategory.HairDryer,
+    subtype: 'full-size dryer',
+    imageAlt: 'Conair Smoothwrap hair dryer',
+    priceTier: 'entry',
+    bestFor: ['a simple dryer with documented heat and speed controls'],
+    notIdealFor: [
+      'international travel; the manual describes standard 110–125 V use',
+    ],
+    officialProductUrl: 'https://www.conair.com/',
+    supportUrl:
+      'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw8c6198a6/Instructional%20Booklets/910N.pdf',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Power and controls',
+        '1,875 W; 3 heat and 2 speed settings; cool shot',
+        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw8c6198a6/Instructional%20Booklets/910N.pdf',
+      ),
+      fact(
+        'Voltage',
+        'Standard dryers are designed for 110 to 125 V AC',
+        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw8c6198a6/Instructional%20Booklets/910N.pdf',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BestHairDryersFineHair,
+      ArticleSlug.HairDryerChooser,
+    ],
+  }),
+  product({
+    slug: 'dyson-supersonic-travel',
+    name: 'Dyson Supersonic™ Travel hair dryer',
+    brand: 'Dyson',
+    category: ProductCategory.HairDryer,
+    subtype: 'compact travel dryer',
+    imageAlt: 'Dyson Supersonic Travel hair dryer',
+    priceTier: 'premium',
+    bestFor: ['a compact dedicated travel dryer'],
+    notIdealFor: ['assuming a plug adapter changes voltage'],
+    officialProductUrl: 'https://www.dyson.com/hair-care/hair-dryers',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Travel format',
+        '32% smaller and 25% lighter than the original Supersonic, according to Dyson',
+        'https://www.dyson.com/hair-care/hair-dryers',
+      ),
+      fact(
+        'Attachment compatibility',
+        'Compatible with Supersonic and Nural attachments, except Supersonic r attachments',
+        'https://www.dyson.com/hair-care/hair-dryers',
+      ),
+    ],
+    relatedGuideSlugs: [ArticleSlug.BestTravelHairDryers],
+  }),
+  product({
+    slug: 'revlon-one-step-volumizer-plus',
+    name: 'Revlon One-Step™ Volumizer PLUS',
+    brand: 'Revlon',
+    category: ProductCategory.HotAirBrush,
+    subtype: 'detachable oval hot-air brush',
+    imageAlt: 'Revlon One-Step Volumizer Plus hot-air brush',
+    priceTier: 'mid-range',
+    bestFor: [
+      'a detachable 2.4-inch oval head',
+      'documented low, medium, high and cool settings',
+    ],
+    notIdealFor: [
+      'international travel without confirming the appliance rating',
+    ],
+    officialProductUrl:
+      'https://www.revlonhairtools.com/dryers/one-step-volumizer-plus/',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Head and controls',
+        '2.4-inch oval head; low, medium, high and cool settings',
+        'https://www.revlonhairtools.com/dryers/one-step-volumizer-plus/',
+      ),
+      fact(
+        'Warranty',
+        '4-year limited warranty stated',
+        'https://www.revlonhairtools.com/dryers/one-step-volumizer-plus/',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BestHotAirBrushesFineHair,
       ArticleSlug.BestHotAirBrushes,
     ],
-    comparisonStatus: 'specification-led',
-  },
-  {
-    slug: 'babyliss-flawless-volume',
-    name: 'BaByliss Flawless Volume',
-    brand: 'BaByliss',
+  }),
+  product({
+    slug: 'conair-bc95',
+    name: 'InfinitiPRO by Conair® 2-in-1 Wet-or-Dry Hot Air Styler',
+    brand: 'Conair',
     category: ProductCategory.HotAirBrush,
-    imageAlt: 'BaByliss Flawless Volume hot-air brush',
+    subtype: 'oval wet-or-dry hot-air styler',
+    imageAlt: 'Conair Wet-or-Dry Hot Air Styler',
+    priceTier: 'mid-range',
+    bestFor: ['a large oval barrel and wet/dry mode switch'],
+    notIdealFor: ['someone who needs a small round barrel'],
+    officialProductUrl:
+      'https://www.conair.com/2-in-one-wet-or-dry-hot-air-styler/BC95.html?lang=en_US',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Power and design',
+        '1,000 W; large oval barrel; Wet mode and Dry mode stated',
+        'https://www.conair.com/2-in-one-wet-or-dry-hot-air-styler/BC95.html?lang=en_US',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BestHotAirBrushesFineHair,
+      ArticleSlug.BestHotAirBrushes,
+    ],
+  }),
+  product({
+    slug: 'conair-bc200',
+    name: 'InfinitiPRO by Conair® Hot Air Paddle Brush Styler',
+    brand: 'Conair',
+    category: ProductCategory.HotAirBrush,
+    subtype: 'paddle hot-air brush',
+    imageAlt: 'Conair Hot Air Paddle Brush Styler',
     priceTier: 'entry',
     bestFor: [
-      'a simple brush-led drying and shaping routine',
-      'one 38 mm barrel for manageable sections',
+      'a paddle-shaped styling surface',
+      'three documented heat/speed settings',
     ],
-    notIdealFor: ['buyers who want multiple brush and barrel attachments'],
+    notIdealFor: ['a routine that needs a round barrel'],
+    officialProductUrl: 'https://www.conair.com/',
+    supportUrl:
+      'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw298835f7/Instructional%20Booklets/BC200N.pdf',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
     verifiedFacts: [
-      {
-        label: 'Format',
-        value: 'Hot-air brush',
-        sourceUrl: babylissFlawlessVolumeUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Barrel',
-        value: '38 mm titanium-ceramic barrel stated',
-        sourceUrl: babylissFlawlessVolumeUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Settings',
-        value: 'Two heat settings and cool setting stated',
-        sourceUrl: babylissFlawlessVolumeUrl,
-        verifiedAt,
-      },
-      {
-        label: 'Airflow',
-        value: '500 W stated',
-        sourceUrl: babylissFlawlessVolumeUrl,
-        verifiedAt,
-      },
+      fact(
+        'Controls',
+        'Low, high and cool settings stated',
+        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw298835f7/Instructional%20Booklets/BC200N.pdf',
+      ),
+      fact(
+        'Bristles',
+        'Nylon, silicone and detangling bristles stated',
+        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw298835f7/Instructional%20Booklets/BC200N.pdf',
+      ),
     ],
-    officialProductUrl: babylissFlawlessVolumeUrl,
-    verifiedAt,
+    relatedGuideSlugs: [ArticleSlug.BestHotAirBrushesFineHair],
+  }),
+  product({
+    slug: 'tangle-teezer-ultimate-detangler',
+    name: 'Tangle Teezer The Ultimate Detangler',
+    brand: 'Tangle Teezer',
+    category: ProductCategory.HairBrush,
+    subtype: 'handled wet-use detangling brush',
+    imageAlt: 'Tangle Teezer Ultimate Detangler brush',
+    priceTier: 'entry',
+    bestFor: [
+      'wet hair and shower routines',
+      'a handled brush with two-tier teeth',
+    ],
+    notIdealFor: [
+      'heat styling; the brand limits its Blow-Styling range to low-to-cool heat',
+    ],
+    officialProductUrl:
+      'https://us.tangleteezer.com/products/the-ultimate-detangler',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Wet-use direction',
+        'Designed for wet hair and shower use',
+        'https://us.tangleteezer.com/products/the-ultimate-detangler',
+      ),
+      fact(
+        'Care',
+        'Remove hair, rinse with warm water and mild soap or shampoo as needed; air dry',
+        'https://us.tangleteezer.com/products/the-ultimate-detangler',
+      ),
+    ],
     relatedGuideSlugs: [
-      ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
-      ArticleSlug.BestHotAirBrushes,
+      ArticleSlug.BestDetanglingBrushes,
+      ArticleSlug.BestHairBrushForCurlyHair,
     ],
-    comparisonStatus: 'specification-led',
-  },
+  }),
+  product({
+    slug: 'wet-brush-original-detangler',
+    name: 'Wet Brush Original Detangler',
+    brand: 'Wet Brush',
+    category: ProductCategory.HairBrush,
+    subtype: 'flexible-bristle detangling brush',
+    imageAlt: 'Wet Brush Original Detangler',
+    priceTier: 'entry',
+    bestFor: ['a simple everyday detangling option'],
+    notIdealFor: [
+      'assuming care directions without the exact package documentation',
+    ],
+    officialProductUrl: 'https://wetbrush.com/',
+    availability: 'available',
+    evidenceStatus: 'limited-specification',
+    verifiedFacts: [
+      fact(
+        'US availability',
+        'Original Detangler is listed on Wet Brush’s official US store',
+        'https://wetbrush.com/',
+      ),
+    ],
+    relatedGuideSlugs: [ArticleSlug.BestDetanglingBrushes],
+  }),
+  product({
+    slug: 'tangle-teezer-ultimate-detangler-naturally-curly',
+    name: 'Tangle Teezer The Ultimate Detangler Naturally Curly',
+    brand: 'Tangle Teezer',
+    category: ProductCategory.HairBrush,
+    subtype: 'curly-to-coily detangling brush',
+    imageAlt: 'Tangle Teezer Ultimate Detangler Naturally Curly',
+    priceTier: 'entry',
+    bestFor: [
+      'a curly-to-coily routine where an official detangler category is relevant',
+    ],
+    notIdealFor: ['claiming a styling result from specifications alone'],
+    officialProductUrl: 'https://us.tangleteezer.com/collections/view-all',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Range classification',
+        'Listed by Tangle Teezer US as a detangling option for curly to coily hair',
+        'https://us.tangleteezer.com/collections/view-all',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BestHairBrushForCurlyHair,
+      ArticleSlug.BestDetanglingBrushes,
+    ],
+  }),
 ];
-
 export const canonicalComparisons: readonly CanonicalComparison[] = [
   {
-    slug: 'dyson-supersonic-vs-shark-speedstyle',
-    path: '/guides/dyson-supersonic-vs-shark-speedstyle',
-    productSlugs: ['dyson-supersonic', 'shark-speedstyle'],
-    guideSlug: 'dyson-supersonic-vs-shark-speedstyle',
-  },
-  {
-    slug: 'dyson-airwrap-vs-shark-flexstyle',
-    path: '/guides/dyson-airwrap-vs-shark-flexstyle',
-    productSlugs: ['dyson-airwrap', 'shark-flexstyle'],
-    guideSlug: 'dyson-airwrap-vs-shark-flexstyle',
-  },
-  {
-    slug: 'babyliss-air-style-1000-vs-flawless-volume',
-    path: '/guides/babyliss-air-style-1000-vs-flawless-volume',
-    productSlugs: ['babyliss-air-style-1000', 'babyliss-flawless-volume'],
-    guideSlug: 'babyliss-air-style-1000-vs-flawless-volume',
+    slug: ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
+    path: `/guides/${ArticleSlug.DysonSupersonicVsSharkSpeedstyle}`,
+    productSlugs: ['dyson-supersonic-nural', 'shark-speedstyle-pro'],
+    guideSlug: ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
   },
 ];
-
-export function comparisonForProduct(
-  slug: string,
-): CanonicalComparison | undefined {
-  return canonicalComparisons.find((comparison) =>
-    comparison.productSlugs.includes(slug),
-  );
+export const productBySlug = (slug: string) =>
+  productProfiles.find((item) => item.slug === slug);
+export const comparisonForProduct = (slug: string) =>
+  canonicalComparisons.find((item) => item.productSlugs.includes(slug));
+export function parseProductSelection(value: string | null): readonly string[] {
+  if (!value) return [];
+  return [
+    ...new Set(value.split(',').filter((slug) => productBySlug(slug))),
+  ].slice(0, 3);
 }
-
-export function productBySlug(slug: string): ProductProfile | undefined {
-  return productProfiles.find((product) => product.slug === slug);
-}
-
 export function comparisonFacts(
   first: ProductProfile,
   second: ProductProfile,
@@ -346,13 +439,11 @@ export function comparisonFacts(
   second: VerifiedFact | undefined;
 }[] {
   const labels = new Set(
-    [...first.verifiedFacts, ...second.verifiedFacts].map((fact) => fact.label),
+    [...first.verifiedFacts, ...second.verifiedFacts].map((item) => item.label),
   );
-  return [...labels]
-    .map((label) => ({
-      label,
-      first: first.verifiedFacts.find((fact) => fact.label === label),
-      second: second.verifiedFacts.find((fact) => fact.label === label),
-    }))
-    .filter((fact) => fact.first?.value !== fact.second?.value);
+  return [...labels].map((label) => ({
+    label,
+    first: first.verifiedFacts.find((item) => item.label === label),
+    second: second.verifiedFacts.find((item) => item.label === label),
+  }));
 }

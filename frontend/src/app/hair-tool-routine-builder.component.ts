@@ -178,6 +178,9 @@ export class HairToolRoutineBuilderComponent {
     { value: 'dryer', label: 'A dryer' },
     { value: 'hot-air-brush', label: 'A hot-air brush' },
     { value: 'round-brush', label: 'A round brush' },
+    { value: 'flat-iron', label: 'A flat iron' },
+    { value: 'curling-iron', label: 'A curling iron' },
+    { value: 'curling-wand', label: 'A curling wand' },
   ] as const;
   length: HairLength = 'medium';
   goal: RoutineGoal = 'smooth';

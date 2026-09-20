@@ -77,6 +77,20 @@ export const ArticleSlug = {
   HowToUseAMicrofibreHairTowel: 'how-to-use-a-microfibre-hair-towel',
   ColdWaterForHair: 'cold-water-for-hair',
   HowOftenShouldYouWashYourHair: 'how-often-should-you-wash-your-hair',
+  BestFlatIrons: 'best-flat-irons',
+  BestFlatIronsFineHair: 'best-flat-irons-fine-hair',
+  BestFlatIronsThickHair: 'best-flat-irons-thick-hair',
+  BestTravelFlatIrons: 'best-travel-flat-irons',
+  BestCurlingIrons: 'best-curling-irons',
+  BestCurlingIronsFineHair: 'best-curling-irons-fine-hair',
+  BestCurlingToolsShortHair: 'best-curling-tools-short-hair',
+  BestCurlingToolsLongHair: 'best-curling-tools-long-hair',
+  FlatIronVsStraighteningBrush: 'flat-iron-vs-straightening-brush',
+  FlatIronVsHotAirBrush: 'flat-iron-vs-hot-air-brush',
+  CurlingIronVsWand: 'curling-iron-vs-curling-wand',
+  FlatIronVsCurlingIron: 'flat-iron-vs-curling-iron-for-curls',
+  FlatIronPlateWidthGuide: 'flat-iron-plate-width-guide',
+  CurlingIronBarrelSizeGuide: 'curling-iron-barrel-size-guide',
 } as const;
 
 export type ArticleSlug = (typeof ArticleSlug)[keyof typeof ArticleSlug];

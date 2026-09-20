@@ -65,6 +65,9 @@ import { combReportEditorialTeam } from './editorial';
           <a routerLink="/hair-brush-finder"
             ><span>03</span> Choose a brush <b>→</b></a
           >
+          <a routerLink="/flat-irons"
+            ><span>04</span> Explore direct-heat tools <b>→</b></a
+          >
         </div>
       </section>
       <section class="latest-section" aria-labelledby="latest-heading">
@@ -289,6 +292,81 @@ import { combReportEditorialTeam } from './editorial';
         }
       }
     }
+    @case ('flat-irons') {
+      <section class="listing-intro">
+        <p class="eyebrow">Direct-heat tools</p>
+        <h1>Flat irons and hair straighteners</h1>
+        <p class="lede">
+          Choose a flat-iron format by plate width, controls and documented
+          travel details—not a promise about results.
+        </p>
+      </section>
+      <section class="category-product-explorer">
+        <p class="eyebrow">Start here</p>
+        <h2>Choose your next step</h2>
+        <ul>
+          <li>
+            <a routerLink="/flat-iron-finder">Use the Flat Iron Finder</a> —
+            narrow a practical profile.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.FlatIronPlateWidthGuide]"
+              >Compare plate widths</a
+            >
+            — use inches-first practical bands.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.BestFlatIrons]"
+              >Compare researched models</a
+            >
+            — inspect exact US source records.
+          </li>
+        </ul>
+        <p>
+          Specifications are researched from official sources. Follow the exact
+          manufacturer instructions; no plate material or feature guarantees a
+          styling outcome.
+        </p>
+      </section>
+    }
+    @case ('curling-irons') {
+      <section class="listing-intro">
+        <p class="eyebrow">Direct-heat tools</p>
+        <h1>Curling irons, wands and barrel sizes</h1>
+        <p class="lede">
+          Choose a clamp, wand or tapered format and a practical barrel-size
+          band for the routine you want.
+        </p>
+      </section>
+      <section class="category-product-explorer">
+        <p class="eyebrow">Start here</p>
+        <h2>Choose your next step</h2>
+        <ul>
+          <li>
+            <a routerLink="/curling-tool-finder">Use the Curling Tool Finder</a>
+            — compare clamp and wand formats.
+          </li>
+          <li>
+            <a
+              [routerLink]="['/guides', articleSlug.CurlingIronBarrelSizeGuide]"
+              >Compare barrel sizes</a
+            >
+            — sizes influence possible results, not guarantees.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.BestCurlingIrons]"
+              >Compare researched models</a
+            >
+            — inspect exact US source records.
+          </li>
+        </ul>
+        <p>
+          Hair length, sections, technique and the exact instructions affect the
+          result. Product specifications do not prove curl longevity or
+          performance.
+        </p>
+      </section>
+    }
     @case ('about') {
       <section class="listing-intro">
         <p class="eyebrow">About</p>
@@ -435,6 +513,22 @@ export class StaticPageComponent implements OnInit {
     { label: 'Tools', path: '/tools' },
   ] as const;
   readonly tools = [
+    {
+      name: 'Flat Iron Finder',
+      type: 'Choose a flat iron',
+      description:
+        'Use plate-width and handling preferences to identify a practical profile.',
+      path: '/flat-iron-finder',
+      action: 'Use the finder',
+    },
+    {
+      name: 'Curling Tool Finder',
+      type: 'Choose a curling format',
+      description:
+        'Compare clamp, wand and barrel-size trade-offs without a rigid rule.',
+      path: '/curling-tool-finder',
+      action: 'Use the finder',
+    },
     {
       name: 'Hair Brush Finder',
       type: 'Choose a brush',
@@ -599,6 +693,16 @@ export class StaticPageComponent implements OnInit {
         'Interactive Hair Tools | Comb Report',
         'Browser-based helpers for choosing and using everyday hair styling tools.',
         '/tools',
+      ],
+      'flat-irons': [
+        'Flat Irons and Hair Straighteners | Comb Report',
+        'Compare flat-iron plate widths, controls and researched US models.',
+        '/flat-irons',
+      ],
+      'curling-irons': [
+        'Curling Irons and Wands | Comb Report',
+        'Compare curling-tool formats, barrel sizes and researched US models.',
+        '/curling-irons',
       ],
       about: ['About | Comb Report', 'About Comb Report.', '/about'],
       privacy: ['Privacy | Comb Report', 'Privacy information.', '/privacy'],

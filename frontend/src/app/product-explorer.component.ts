@@ -28,6 +28,12 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
     'You may prefer a multi-styler if you want a dryer and several styling formats in one system, and expect to use the included attachments.',
   [ProductCategory.HairBrush]:
     'You may prefer a brush when the task is detangling, smoothing, or sectioning rather than heated styling. Check wet-use and care directions for the exact brush.',
+  [ProductCategory.FlatIron]:
+    'You may prefer a flat iron when plate width and close-section control match the finishing step you actually want. Follow the exact model instructions.',
+  [ProductCategory.CurlingIron]:
+    'You may prefer a clamp curling iron when that format suits your handling preference. Barrel size influences the possible result but does not guarantee it.',
+  [ProductCategory.CurlingWand]:
+    'You may prefer a clipless curling wand when that wrapping format suits your handling preference. Check the exact model directions and included accessories.',
 };
 
 @Component({
@@ -351,6 +357,9 @@ export class ProductExplorerComponent implements OnInit {
     { label: 'Multi-stylers', value: ProductCategory.MultiStyler },
     { label: 'Hot-Air Brushes', value: ProductCategory.HotAirBrush },
     { label: 'Hair Brushes', value: ProductCategory.HairBrush },
+    { label: 'Flat Irons', value: ProductCategory.FlatIron },
+    { label: 'Curling Irons', value: ProductCategory.CurlingIron },
+    { label: 'Curling Wands', value: ProductCategory.CurlingWand },
   ];
   readonly priceFilters: readonly { label: string; value: PriceFilter }[] = [
     { label: 'All price tiers', value: 'all' },

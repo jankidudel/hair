@@ -6,6 +6,7 @@ import {
   type ArticleRegistryEntry,
 } from '../frontend/src/app/article-registry.ts';
 import { resolveArticleSlugReference } from '../frontend/src/app/article-slug.ts';
+import { SitePath } from '../frontend/src/app/site-path.ts';
 import {
   isPublishedOn,
   isValidCalendarDate,
@@ -24,6 +25,8 @@ const staticRoutes = new Set([
   '/hair-accessories',
   '/tools',
   '/hair-brush-finder',
+  '/flat-iron-finder',
+  '/curling-tool-finder',
   '/hair-tool-routine-builder',
   '/products',
   '/about',
@@ -114,7 +117,15 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
       .map((entry) => entry.slug),
   );
   for (const href of parsed.content.matchAll(/href=["']([^"']+)["']/gi)) {
-    const path = href[1];
+    const sitePathReference = /^\{\{SitePath\.([A-Za-z][A-Za-z0-9]*)\}\}$/.exec(
+      href[1],
+    );
+    const path = sitePathReference
+      ? SitePath[sitePathReference[1] as keyof typeof SitePath]
+      : href[1];
+    if (!path)
+      errors.push(`${prefix}: references an unknown SitePath '${href[1]}'.`);
+    if (!path) continue;
     if (!path.startsWith('/')) continue;
     const guideSlugReference = path.match(/^\/guides\/([^/#?]+)$/)?.[1];
     const guideSlug = guideSlugReference

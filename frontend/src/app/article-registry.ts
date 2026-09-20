@@ -7,6 +7,7 @@ export const ArticleGroupId = {
   HairCare: 'hair-care',
   HairAccessories: 'hair-accessories',
   Guides: 'guides',
+  DirectHeat: 'direct-heat',
 } as const;
 
 export type ArticleGroupId =
@@ -27,9 +28,20 @@ export const articleGroups = {
   [ArticleGroupId.HairCare]: { label: 'Hair Care' },
   [ArticleGroupId.HairAccessories]: { label: 'Hair Accessories' },
   [ArticleGroupId.Guides]: { label: 'Guides' },
+  [ArticleGroupId.DirectHeat]: { label: 'Flat Irons & Curling Tools' },
 } as const;
 
 export const guideCategories = [
+  {
+    id: ArticleGroupId.DirectHeat,
+    label: 'Flat Irons & Curling Tools',
+    path: '/flat-irons',
+    title: 'Flat Iron and Curling Tool Guides | Comb Report',
+    description: 'Practical direct-heat styling-tool guides and comparisons.',
+    heading: 'Flat-iron and curling-tool guides',
+    intro:
+      'Compare direct-contact styling-tool formats, documented features and practical routine trade-offs.',
+  },
   {
     id: ArticleGroupId.HairDryers,
     label: 'Hair Dryers',
@@ -92,6 +104,28 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
   );
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
+  ...[
+    ArticleSlug.BestFlatIrons,
+    ArticleSlug.BestFlatIronsFineHair,
+    ArticleSlug.BestFlatIronsThickHair,
+    ArticleSlug.BestTravelFlatIrons,
+    ArticleSlug.BestCurlingIrons,
+    ArticleSlug.BestCurlingIronsFineHair,
+    ArticleSlug.BestCurlingToolsShortHair,
+    ArticleSlug.BestCurlingToolsLongHair,
+    ArticleSlug.FlatIronVsStraighteningBrush,
+    ArticleSlug.FlatIronVsHotAirBrush,
+    ArticleSlug.CurlingIronVsWand,
+    ArticleSlug.FlatIronVsCurlingIron,
+    ArticleSlug.FlatIronPlateWidthGuide,
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.DirectHeat,
+    order: index + 1,
+    enabled: true,
+    publishDate: '2026-09-20',
+  })),
   {
     slug: ArticleSlug.BestHairDryersFineHair,
     group: ArticleGroupId.HairDryers,

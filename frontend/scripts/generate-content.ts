@@ -7,6 +7,7 @@ import rehypeSanitize, { defaultSchema, type Options } from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
 import prettier from 'prettier';
 import { ArticleSlug } from '../src/app/article-slug.ts';
+import { SitePath } from '../src/app/site-path.ts';
 import { articleGroups, articleRegistry } from '../src/app/article-registry.ts';
 import {
   ContentMethod,
@@ -110,12 +111,20 @@ function resolveArticleSlugReference(value: string, file: string): string {
 }
 
 function resolveArticleSlugReferences(html: string, file: string): string {
-  return html.replaceAll(
+  const withArticleSlugs = html.replaceAll(
     /\{\{ArticleSlug\.([A-Za-z][A-Za-z0-9]*)\}\}/g,
     (reference, name: string) => {
       const slug = ArticleSlug[name as keyof typeof ArticleSlug];
       if (!slug) throw new Error(`${file}: unknown ArticleSlug '${name}'.`);
       return slug;
+    },
+  );
+  return withArticleSlugs.replaceAll(
+    /\{\{SitePath\.([A-Za-z][A-Za-z0-9]*)\}\}/g,
+    (reference, name: string) => {
+      const path = SitePath[name as keyof typeof SitePath];
+      if (!path) throw new Error(`${file}: unknown SitePath '${name}'.`);
+      return path;
     },
   );
 }

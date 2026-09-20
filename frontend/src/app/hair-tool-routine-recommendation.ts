@@ -3,7 +3,13 @@ import { ArticleSlug } from './article-slug';
 export type HairLength = 'short' | 'medium' | 'long';
 export type RoutineGoal = 'smooth' | 'blowout' | 'curls' | 'travel';
 export type StylingTime = 'under-10' | '10-20' | 'over-20';
-export type OwnedTool = 'dryer' | 'hot-air-brush' | 'round-brush';
+export type OwnedTool =
+  | 'dryer'
+  | 'hot-air-brush'
+  | 'round-brush'
+  | 'flat-iron'
+  | 'curling-iron'
+  | 'curling-wand';
 
 export interface HairToolRoutineAnswers {
   readonly length: HairLength;
@@ -146,7 +152,9 @@ export function recommendHairToolRoutine(
           label: 'Add when useful',
           tool: 'Curl or wave finishing tool category',
           detail:
-            'Choose the category for the level of definition you want rather than collecting overlapping tools.',
+            owns('curling-iron') || owns('curling-wand')
+              ? 'Use your existing direct-heat curling tool when it still matches the result you want; do not add a duplicate by default.'
+              : 'Choose a curling iron, curling wand, or no extra direct-heat tool for the level of definition you want rather than collecting overlapping tools.',
         },
       ],
       skip: 'A large round brush is not the main tool for making defined curls or waves.',

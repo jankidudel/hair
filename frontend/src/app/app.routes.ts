@@ -5,6 +5,8 @@ import { HairBrushFinderComponent } from './hair-brush-finder.component';
 import { HairToolRoutineBuilderComponent } from './hair-tool-routine-builder.component';
 import { NotFoundPageComponent } from './not-found-page.component';
 import { ProductExplorerComponent } from './product-explorer.component';
+import { DirectHeatFinderComponent } from './direct-heat-finder.component';
+import { DirectHeatHubComponent } from './direct-heat-hub.component';
 import { publishedGuideCanMatch } from './published-guide-route';
 export const routes: Routes = [
   { path: '', component: StaticPageComponent, data: { page: 'home' } },
@@ -35,6 +37,26 @@ export const routes: Routes = [
   },
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
   { path: 'hair-brush-finder', component: HairBrushFinderComponent },
+  {
+    path: 'flat-irons',
+    component: DirectHeatHubComponent,
+    data: { kind: 'flat' },
+  },
+  {
+    path: 'curling-irons',
+    component: DirectHeatHubComponent,
+    data: { kind: 'curling' },
+  },
+  {
+    path: 'flat-iron-finder',
+    component: DirectHeatFinderComponent,
+    data: { kind: 'flat' },
+  },
+  {
+    path: 'curling-tool-finder',
+    component: DirectHeatFinderComponent,
+    data: { kind: 'curling' },
+  },
   {
     path: 'hair-tool-routine-builder',
     component: HairToolRoutineBuilderComponent,

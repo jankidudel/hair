@@ -44,6 +44,7 @@ describe('generated editorial content', () => {
       expect(guideCategoryById[article.group]).toBeDefined();
     }
     expect(guideCategories.map((category) => category.path)).toEqual([
+      '/flat-irons',
       '/hair-dryers',
       '/hot-air-brushes',
       '/brushes-combs',

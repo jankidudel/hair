@@ -6,6 +6,9 @@ export const ProductCategory = {
   MultiStyler: 'multi-styler',
   HotAirBrush: 'hot-air-brush',
   HairBrush: 'hair-brush',
+  FlatIron: 'flat-iron',
+  CurlingIron: 'curling-iron',
+  CurlingWand: 'curling-wand',
 } as const;
 export type ProductCategory =
   (typeof ProductCategory)[keyof typeof ProductCategory];
@@ -37,6 +40,12 @@ export interface ProductProfile {
   readonly conflictNote?: string;
   readonly relatedGuideSlugs: readonly string[];
   readonly comparisonStatus: 'specification-led';
+  /** Direct-heat details are deliberately optional: unknown is never a positive match. */
+  readonly plateWidthInches?: number;
+  readonly barrelDiameterInches?: number;
+  readonly heatControl?: 'fixed' | 'presets' | 'adjustable' | 'unknown';
+  readonly dualVoltage?: boolean;
+  readonly mechanism?: 'clamp' | 'clipless' | 'interchangeable' | 'automatic';
 }
 export interface CanonicalComparison {
   readonly slug: string;
@@ -410,6 +419,310 @@ export const productProfiles: readonly ProductProfile[] = [
       ArticleSlug.BestHairBrushForCurlyHair,
       ArticleSlug.BestDetanglingBrushes,
     ],
+  }),
+  ...[
+    [
+      'ghd-chronos',
+      'ghd Chronos Flat Iron (1 inch plate) Black',
+      'ghd',
+      1,
+      'fixed',
+      true,
+      'premium',
+    ],
+    [
+      'ghd-platinum-plus',
+      'ghd Platinum+ Flat Iron (1 inch plate) Black',
+      'ghd',
+      1,
+      'fixed',
+      true,
+      'premium',
+    ],
+    [
+      'ghd-gold',
+      'ghd Gold Flat Iron (1 inch plate) Black',
+      'ghd',
+      1,
+      'fixed',
+      true,
+      'premium',
+    ],
+    [
+      'ghd-original',
+      'ghd Original Flat Iron (1 inch plate) Black',
+      'ghd',
+      1,
+      'fixed',
+      true,
+      'mid-range',
+    ],
+    [
+      'ghd-chronos-max',
+      'ghd Chronos Max Flat Iron (2 inch plate) Black',
+      'ghd',
+      2,
+      'fixed',
+      true,
+      'premium',
+    ],
+    [
+      'ghd-mini',
+      'ghd Mini Flat Iron (0.60 inch plate) Black',
+      'ghd',
+      0.6,
+      'fixed',
+      true,
+      'mid-range',
+    ],
+    [
+      'ghd-unplugged',
+      'ghd Unplugged Flat Iron (0.88 inch plate) Black',
+      'ghd',
+      0.88,
+      'fixed',
+      true,
+      'premium',
+    ],
+  ].map(
+    ([
+      slug,
+      name,
+      brand,
+      plateWidthInches,
+      heatControl,
+      dualVoltage,
+      priceTier,
+    ]) =>
+      product({
+        slug: slug as string,
+        name: name as string,
+        brand: brand as string,
+        category: ProductCategory.FlatIron,
+        subtype: 'flat iron',
+        imageAlt: `${name} flat iron`,
+        priceTier: priceTier as PriceTier,
+        plateWidthInches: plateWidthInches as number,
+        heatControl: heatControl as ProductProfile['heatControl'],
+        dualVoltage: dualVoltage as boolean,
+        bestFor: [
+          plateWidthInches === 1
+            ? 'a standard-width, versatile flat iron format'
+            : 'a distinct plate width for a specific handling preference',
+        ],
+        notIdealFor: ['assuming a fixed heat setting suits every routine'],
+        officialProductUrl: 'https://www.ghdhair.com/us/flat-irons-c',
+        availability: 'available',
+        evidenceStatus: 'specification-researched',
+        verifiedFacts: [
+          fact(
+            'Plate width',
+            `${plateWidthInches} in`,
+            'https://www.ghdhair.com/us/flat-irons-c',
+          ),
+          fact(
+            'Voltage',
+            'Universal voltage stated; check the exact product instructions before travel',
+            'https://www.ghdhair.com/us/flat-irons-c',
+          ),
+        ],
+        relatedGuideSlugs: [ArticleSlug.BestFlatIrons],
+      }),
+  ),
+  product({
+    slug: 'babylisspro-nano-titanium-digital',
+    name: 'BaBylissPRO Nano Titanium 1 inch Digital Ultra-Thin Flat Iron',
+    brand: 'BaBylissPRO',
+    category: ProductCategory.FlatIron,
+    subtype: 'flat iron',
+    imageAlt: 'BaBylissPRO Nano Titanium digital flat iron',
+    priceTier: 'mid-range',
+    plateWidthInches: 1,
+    heatControl: 'presets',
+    dualVoltage: true,
+    bestFor: [
+      'five documented digital heat settings and international voltage support',
+    ],
+    notIdealFor: ['someone who wants a fixed-control tool'],
+    officialProductUrl:
+      'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Controls',
+        '5 digital heat settings: 300°F, 340°F, 380°F, 420°F and 450°F',
+        'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
+      ),
+      fact(
+        'Voltage',
+        '120 V / 240 V dual voltage stated',
+        'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
+      ),
+      fact(
+        'Automatic shutoff',
+        '60 minutes stated',
+        'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BestFlatIrons,
+      ArticleSlug.BestTravelFlatIrons,
+    ],
+  }),
+  ...[
+    [
+      'ghd-curve-classic-curl',
+      'ghd Curve Classic Curl Iron (1.25 inch barrel)',
+      'curling iron',
+      1.25,
+      'clamp',
+    ],
+    [
+      'ghd-curve-soft-curl',
+      'ghd Curve Soft Curl Iron (1.25 inch barrel)',
+      'curling iron',
+      1.25,
+      'clamp',
+    ],
+    [
+      'ghd-curve-creative-curl',
+      'ghd Curve Creative Curl Wand (0.9 inch barrel)',
+      'curling wand',
+      0.9,
+      'clipless',
+    ],
+    [
+      'ghd-curve-thin-wand',
+      'ghd Curve Thin Wand (0.55 inch barrel)',
+      'curling wand',
+      0.55,
+      'clipless',
+    ],
+    [
+      'ghd-curve-classic-wave',
+      'ghd Curve Classic Wave Wand (1.5 inch barrel)',
+      'curling wand',
+      1.5,
+      'clipless',
+    ],
+  ].map(([slug, name, subtype, barrelDiameterInches, mechanism]) =>
+    product({
+      slug: slug as string,
+      name: name as string,
+      brand: 'ghd',
+      category:
+        subtype === 'curling iron'
+          ? ProductCategory.CurlingIron
+          : ProductCategory.CurlingWand,
+      subtype: subtype as string,
+      imageAlt: `${name} styling tool`,
+      priceTier: 'premium',
+      barrelDiameterInches: barrelDiameterInches as number,
+      heatControl: 'fixed',
+      mechanism: mechanism as ProductProfile['mechanism'],
+      dualVoltage: true,
+      bestFor: [
+        'a documented barrel size when you already know the format you prefer',
+      ],
+      notIdealFor: [
+        'guaranteeing curl shape or hold from barrel diameter alone',
+      ],
+      officialProductUrl: 'https://www.ghdhair.com/us/curling-irons-c',
+      availability: 'available',
+      evidenceStatus: 'specification-researched',
+      verifiedFacts: [
+        fact(
+          'Barrel diameter',
+          `${barrelDiameterInches} in`,
+          'https://www.ghdhair.com/us/curling-irons-c',
+        ),
+        fact(
+          'Format',
+          mechanism === 'clamp' ? 'Clamp iron' : 'Clipless wand',
+          'https://www.ghdhair.com/us/curling-irons-c',
+        ),
+      ],
+      relatedGuideSlugs: [ArticleSlug.BestCurlingIrons],
+    }),
+  ),
+  product({
+    slug: 'hot-tools-24k-gold-1in',
+    name: 'Hot Tools Pro Artist 24K Gold Curling Iron, 1 inch',
+    brand: 'Hot Tools',
+    category: ProductCategory.CurlingIron,
+    subtype: 'curling iron',
+    imageAlt: 'Hot Tools 24K Gold curling iron',
+    priceTier: 'mid-range',
+    barrelDiameterInches: 1,
+    heatControl: 'adjustable',
+    mechanism: 'clamp',
+    bestFor: ['a standard 1-inch clamp iron format'],
+    notIdealFor: ['assuming a barrel material predicts styling results'],
+    officialProductUrl:
+      'https://www.hottools.com/products/pro-artist-24k-gold-curling-iron',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Barrel diameter',
+        '1 in model',
+        'https://www.hottools.com/products/pro-artist-24k-gold-curling-iron',
+      ),
+    ],
+    relatedGuideSlugs: [ArticleSlug.BestCurlingIrons],
+  }),
+  product({
+    slug: 'babylisspro-conicurl',
+    name: 'BaBylissPRO Nano Titanium ConiCurl Taper Iron',
+    brand: 'BaBylissPRO',
+    category: ProductCategory.CurlingWand,
+    subtype: 'tapered curling wand',
+    imageAlt: 'BaBylissPRO ConiCurl taper iron',
+    priceTier: 'mid-range',
+    heatControl: 'adjustable',
+    mechanism: 'clipless',
+    bestFor: ['a tapered, clipless format'],
+    notIdealFor: ['a buyer who needs one fixed documented diameter'],
+    officialProductUrl: 'https://www.babylisspro.com/',
+    supportUrl:
+      'https://babylisspro.com/on/demandware.static/-/Sites-master-us-babylisspro/default/dw1507af85/manuals/BABNT100%28125%29TBN%20IB-10524B.pdf',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Format',
+        'Taper iron instructions published by BaBylissPRO',
+        'https://babylisspro.com/on/demandware.static/-/Sites-master-us-babylisspro/default/dw1507af85/manuals/BABNT100%28125%29TBN%20IB-10524B.pdf',
+      ),
+    ],
+    relatedGuideSlugs: [ArticleSlug.CurlingIronVsWand],
+  }),
+  product({
+    slug: 't3-singlepass-curl-125',
+    name: 'T3 SinglePass Curl 1.25 inch Professional Curling Iron',
+    brand: 'T3',
+    category: ProductCategory.CurlingIron,
+    subtype: 'curling iron',
+    imageAlt: 'T3 SinglePass Curl curling iron',
+    priceTier: 'premium',
+    barrelDiameterInches: 1.25,
+    heatControl: 'adjustable',
+    mechanism: 'clamp',
+    bestFor: ['a 1.25-inch clamp-iron format with adjustable controls'],
+    notIdealFor: ['a clipless-wand preference'],
+    officialProductUrl:
+      'https://t3micro.com/products/singlepass-curl-1-25-professional-curling-iron',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      fact(
+        'Barrel diameter',
+        '1.25 in',
+        'https://t3micro.com/products/singlepass-curl-1-25-professional-curling-iron',
+      ),
+    ],
+    relatedGuideSlugs: [ArticleSlug.BestCurlingIrons],
   }),
 ];
 export const canonicalComparisons: readonly CanonicalComparison[] = [

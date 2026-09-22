@@ -14,6 +14,7 @@
     "check:generated-seo": "tsx scripts/check-generated-seo.ts",
     "check:links": "tsx ../scripts/check-internal-links.ts",
     "report:product-freshness": "tsx scripts/report-product-freshness.ts",
+    "report:us-localization": "tsx scripts/report-us-localization.ts",
     "check:seo": "npm run check:editorial-targets && npm run build && npm run check:generated-seo",
     "assets:fingerprint": "tsx scripts/fingerprint-static-assets.ts",
     "seo:generate": "tsx scripts/generate-seo.ts production",

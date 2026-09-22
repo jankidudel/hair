@@ -50,8 +50,6 @@ export const ArticleSlug = {
   BoarBristleBrushGuide: 'boar-bristle-brush-guide',
   HowToChooseHairBrush: 'how-to-choose-hair-brush',
   BestHairBrushForShortHair: 'best-hair-brush-for-short-hair',
-  BestHairBrushForThickHair: 'best-hair-brush-for-thick-hair',
-  BestHairBrushForCurlyHair: 'best-hair-brush-for-curly-hair',
   BoarBristleVsNylonBrush: 'boar-bristle-vs-nylon-brush',
   HairBrushVsComb: 'hair-brush-vs-comb',
   RoundBrushVsPaddleBrush: 'round-brush-vs-paddle-brush',

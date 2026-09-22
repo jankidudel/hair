@@ -442,20 +442,6 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   {
-    slug: ArticleSlug.BestHairBrushForThickHair,
-    group: ArticleGroupId.BrushesAndCombs,
-    order: 90,
-    enabled: true,
-    publishDate: '2026-08-31',
-  },
-  {
-    slug: ArticleSlug.BestHairBrushForCurlyHair,
-    group: ArticleGroupId.BrushesAndCombs,
-    order: 100,
-    enabled: true,
-    publishDate: '2026-08-31',
-  },
-  {
     slug: ArticleSlug.BoarBristleVsNylonBrush,
     group: ArticleGroupId.BrushesAndCombs,
     order: 110,

@@ -366,7 +366,7 @@ export const productProfiles: readonly ProductProfile[] = [
     ],
     relatedGuideSlugs: [
       ArticleSlug.BestDetanglingBrushes,
-      ArticleSlug.BestHairBrushForCurlyHair,
+      ArticleSlug.BestBrushesCurlyHair,
     ],
   }),
   product({
@@ -416,7 +416,7 @@ export const productProfiles: readonly ProductProfile[] = [
       ),
     ],
     relatedGuideSlugs: [
-      ArticleSlug.BestHairBrushForCurlyHair,
+      ArticleSlug.BestBrushesCurlyHair,
       ArticleSlug.BestDetanglingBrushes,
     ],
   }),

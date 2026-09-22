@@ -69,7 +69,7 @@ const recommendations: Record<BrushCategory, BrushRecommendation> = {
     ],
     avoidIf:
       'You need to detangle wet hair or preserve a curl pattern without dry brushing.',
-    guideSlug: 'best-hair-brush-for-thick-hair',
+    guideSlug: 'best-brushes-thick-hair',
   },
   'round-brush': {
     category: 'round-brush',

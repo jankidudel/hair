@@ -108,7 +108,12 @@ import { combReportEditorialTeam } from './editorial';
           actually use. When a link earns us a commission, we say so—without
           changing the point of view.
         </p>
-        <a routerLink="/affiliate-disclosure">How affiliate links work</a>
+        <p>
+          <a routerLink="/testing-research-methodology">How we research</a>
+          · <a routerLink="/about">About Comb Report</a> ·
+          <a routerLink="/corrections-policy">Report a correction</a> ·
+          <a routerLink="/affiliate-disclosure">How affiliate links work</a>
+        </p>
       </section>
     }
     @case ('guides') {
@@ -117,8 +122,8 @@ import { combReportEditorialTeam } from './editorial';
         <p class="eyebrow">Guides</p>
         <h1>Hair tools and routine guides</h1>
         <p class="lede">
-          Straightforward reading for choosing tools and making your routine
-          feel more considered.
+          Start with a decision tool, then use a source-linked guide for the
+          product, size, or format decision in front of you.
         </p>
       </section>
       <section class="category-hubs" aria-labelledby="category-hubs-heading">
@@ -372,8 +377,22 @@ import { combReportEditorialTeam } from './editorial';
         <p class="eyebrow">About</p>
         <h1>About Comb Report</h1>
         <p class="lede">
-          We make appearance-focused hair care easier to navigate with useful,
-          plainly written guides.
+          Comb Report is a US-focused guide to choosing hair tools for ordinary
+          grooming and styling routines.
+        </p>
+        <p>
+          We cover blow dryers, hot-air brushes, brushes and combs, flat irons,
+          and curling tools. Our goal is to make a tool decision clearer with
+          practical trade-offs and source-linked specifications—not to promise a
+          universal result or give medical advice.
+        </p>
+        <p>
+          Pages are labelled to distinguish specification research from
+          editorial guidance. We publish a named author, reviewer, or test claim
+          only when the underlying identity and evidence are available. Read our
+          <a routerLink="/testing-research-methodology">methodology</a>,
+          <a routerLink="/affiliate-disclosure">affiliate disclosure</a>, or
+          <a routerLink="/corrections-policy">corrections policy</a> for more.
         </p>
       </section>
     }
@@ -441,6 +460,13 @@ import { combReportEditorialTeam } from './editorial';
         <p>
           Prices, retailer availability, and bundles can change. We do not treat
           them as permanent facts unless they are maintained.
+        </p>
+        <h2>How we select products</h2>
+        <p>
+          We begin with the exact US model and its official product or support
+          material. A product is included only when its published details help
+          answer the page’s specific decision; unavailable or unclear facts stay
+          marked as such rather than being inferred.
         </p>
       </section>
     }

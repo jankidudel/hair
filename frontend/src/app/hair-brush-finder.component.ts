@@ -275,7 +275,7 @@ export class HairBrushFinderComponent {
     if (this.answers.texture === 'curly-coily') {
       return [
         {
-          slug: 'best-hair-brush-for-curly-hair',
+          slug: 'best-brushes-curly-hair',
           label: 'Best Hair Brushes for Curly Hair',
         },
         {
@@ -287,7 +287,7 @@ export class HairBrushFinderComponent {
     if (this.answers.thickness === 'thick') {
       return [
         {
-          slug: 'best-hair-brush-for-thick-hair',
+          slug: 'best-brushes-thick-hair',
           label: 'Best Hair Brushes for Thick Hair',
         },
         { slug: 'best-detangling-brushes', label: 'Best Detangling Brushes' },

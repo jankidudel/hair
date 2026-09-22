@@ -27,6 +27,16 @@ describe('generated editorial content', () => {
     );
   });
 
+  it('keeps one canonical brush guide for each thick- and curly-hair intent', () => {
+    const publishedSlugs = articleRegistry
+      .filter((article) => article.enabled)
+      .map((article) => article.slug);
+    expect(publishedSlugs).toContain(ArticleSlug.BestBrushesThickHair);
+    expect(publishedSlugs).toContain(ArticleSlug.BestBrushesCurlyHair);
+    expect(publishedSlugs).not.toContain('best-hair-brush-for-thick-hair');
+    expect(publishedSlugs).not.toContain('best-hair-brush-for-curly-hair');
+  });
+
   it('keeps the publishing schedule in the registry, not guide HTML', () => {
     const scheduledGuide = articleRegistry.find(
       (article) => article.slug === 'best-hair-dryer-for-short-hair',

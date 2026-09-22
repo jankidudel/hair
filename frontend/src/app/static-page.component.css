@@ -5,17 +5,22 @@
   gap: clamp(2rem, 7vw, 7rem);
 }
 .hero-copy {
-  align-self: center;
-  padding-block: 1.5rem;
+  align-self: start;
+  padding-block: 0;
+}
+.hero-copy h1 {
+  max-width: 39rem;
+  font-size: clamp(2.75rem, 4vw, 4rem);
+  line-height: 1.02;
 }
 .featured-guide {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
+  display: grid;
+  grid-template-rows: minmax(15rem, 52%) auto;
+  align-content: start;
   min-height: 30rem;
   overflow: hidden;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
+  padding: 0 0 clamp(1.5rem, 4vw, 2.5rem);
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--ink);
@@ -34,16 +39,18 @@
 }
 .featured-guide h2 {
   max-width: 12ch;
+  margin: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem) 1rem;
   font-size: clamp(2rem, 3vw, 3.1rem);
 }
 .featured-guide > p:not(.eyebrow) {
   max-width: 31rem;
+  margin: 0 clamp(1.5rem, 4vw, 2.5rem);
   color: var(--muted);
 }
 .featured-art {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 52%;
+  position: relative;
+  grid-row: 1;
+  min-height: 0;
   overflow: hidden;
   background: #e9e2d6;
 }
@@ -58,6 +65,17 @@
 .featured-art circle {
   fill: var(--terracotta);
   stroke: none;
+}
+.featured-guide > .eyebrow,
+.featured-guide > .text-link {
+  margin-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+.featured-guide > .eyebrow {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 0;
+}
+.featured-guide > .text-link {
+  margin-top: 1.5rem;
 }
 .topic-section,
 .latest-section {
@@ -297,10 +315,6 @@
   font-family: var(--sans);
   font-size: 1rem;
 }
-.listing-intro h1 {
-  max-width: 100%;
-  font-size: clamp(2.45rem, 4.25vw, 4rem);
-}
 
 @media (max-width: 48rem) {
   .home-hero,
@@ -321,6 +335,7 @@
   .featured-art {
     position: relative;
     inset: auto;
+    min-height: 0;
     height: auto;
     aspect-ratio: 16 / 9;
   }

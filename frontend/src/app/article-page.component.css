@@ -6,14 +6,6 @@
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--border);
 }
-.article-header h1 {
-  max-width: 100%;
-  font-size: clamp(2.35rem, 4.15vw, 3.9rem);
-}
-.round-brush-guide .article-header h1 {
-  max-width: 20ch;
-  font-size: clamp(2.25rem, 3.4vw, 3.25rem);
-}
 .article-byline {
   display: flex;
   flex-wrap: wrap;

@@ -18,7 +18,7 @@ import { combReportEditorialTeam } from './editorial';
     @case ('home') {
       <section class="home-hero">
         <div class="hero-copy">
-          <p class="eyebrow">US hair-tool guidance</p>
+          <p class="eyebrow">Hair appearance, simply explained</p>
           <h1>Choose hair tools with clear, specification-led guidance.</h1>
           <p class="hero-lede">
             Independent, source-linked help for comparing dryers, styling tools

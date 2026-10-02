@@ -26,9 +26,6 @@
   font-weight: 650;
   text-decoration: none;
 }
-.article-date {
-  white-space: nowrap;
-}
 .selection-guide-note {
   margin: 1.5rem 0;
   padding: 1rem 1.1rem;
@@ -85,4 +82,23 @@
 .article-faq h3 {
   margin-top: 2rem;
   font-size: 1.35rem;
+}
+.article-next-steps {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.article-next-steps h2 {
+  margin-top: 0.35rem;
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+}
+.article-next-steps ul {
+  padding-left: 1.2rem;
+}
+.article-next-steps li + li {
+  margin-top: 0.5rem;
+}
+.article-next-steps a {
+  color: var(--green);
+  font-weight: 650;
 }

@@ -54,18 +54,26 @@ export interface CanonicalComparison {
   readonly guideSlug: string;
 }
 const checked = '2026-09-20';
+const batchFiveChecked = '2026-10-02';
 const fact = (
   label: string,
   value: string,
   sourceUrl: string,
 ): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: checked });
 const product = (
-  input: Omit<ProductProfile, 'verifiedAt' | 'comparisonStatus'>,
+  input: Omit<ProductProfile, 'verifiedAt' | 'comparisonStatus'> & {
+    readonly verifiedAt?: string;
+  },
 ): ProductProfile => ({
   ...input,
-  verifiedAt: checked,
+  verifiedAt: input.verifiedAt ?? checked,
   comparisonStatus: 'specification-led',
 });
+const batchFiveFact = (
+  label: string,
+  value: string,
+  sourceUrl: string,
+): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: batchFiveChecked });
 
 export const productProfiles: readonly ProductProfile[] = [
   product({
@@ -332,6 +340,82 @@ export const productProfiles: readonly ProductProfile[] = [
       ),
     ],
     relatedGuideSlugs: [ArticleSlug.BestHotAirBrushesFineHair],
+  }),
+  product({
+    slug: 'dyson-airwrap-id-straight-wavy',
+    name: 'Dyson Airwrap i.d.™ multi-styler and dryer Straight+Wavy',
+    brand: 'Dyson',
+    category: ProductCategory.MultiStyler,
+    subtype: 'multi-styler and dryer',
+    imageAlt: 'Dyson Airwrap i.d. Straight+Wavy multi-styler and dryer',
+    priceTier: 'premium',
+    bestFor: [
+      'checking the exact US Airwrap i.d. set and compatible attachments',
+    ],
+    notIdealFor: [
+      'assuming every Airwrap i.d. variant includes the same attachments',
+    ],
+    officialProductUrl:
+      'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
+    supportUrl:
+      'https://www.dyson.com/support/hair-care/hair-stylers/airwrap-id',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedAt: batchFiveChecked,
+    verifiedFacts: [
+      batchFiveFact(
+        'Model scope',
+        'Airwrap i.d. Straight+Wavy multi-styler and dryer',
+        'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
+      ),
+      batchFiveFact(
+        'Attachment support',
+        'Dyson lists genuine Airwrap i.d. attachments and accessories separately',
+        'https://www.dyson.com/support/hair-care/hair-stylers/airwrap-id',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.DysonAirwrapVsSharkFlexstyle,
+      ArticleSlug.BestHotAirBrushes,
+    ],
+  }),
+  product({
+    slug: 'shark-flexstyle-hd430',
+    name: 'Shark FlexStyle® 4-in-1 Air Styling & Drying System (HD430)',
+    brand: 'Shark',
+    category: ProductCategory.MultiStyler,
+    subtype: 'multi-styler and dryer',
+    imageAlt: 'Shark FlexStyle HD430 air styling and drying system',
+    priceTier: 'mid-range',
+    bestFor: ['a listed five-piece HD430 in-box set'],
+    notIdealFor: ['assuming separately sold accessories are included'],
+    officialProductUrl:
+      'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedAt: batchFiveChecked,
+    verifiedFacts: [
+      batchFiveFact(
+        'Electrical specification',
+        '120 V; 1,600 W',
+        'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
+      ),
+      batchFiveFact(
+        'In the box',
+        'Main unit, two 1.25-inch Auto-Wrap Curlers, Oval Brush, Paddle Brush and Styling Concentrator',
+        'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
+      ),
+      batchFiveFact(
+        'Warranty',
+        '2-year limited warranty stated',
+        'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.DysonAirwrapVsSharkFlexstyle,
+      ArticleSlug.BestHotAirBrushes,
+      ArticleSlug.HotAirBrushVsHairDryer,
+    ],
   }),
   product({
     slug: 'tangle-teezer-ultimate-detangler',
@@ -731,6 +815,12 @@ export const canonicalComparisons: readonly CanonicalComparison[] = [
     path: `/guides/${ArticleSlug.DysonSupersonicVsSharkSpeedstyle}`,
     productSlugs: ['dyson-supersonic-nural', 'shark-speedstyle-pro'],
     guideSlug: ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
+  },
+  {
+    slug: ArticleSlug.DysonAirwrapVsSharkFlexstyle,
+    path: `/guides/${ArticleSlug.DysonAirwrapVsSharkFlexstyle}`,
+    productSlugs: ['dyson-airwrap-id-straight-wavy', 'shark-flexstyle-hd430'],
+    guideSlug: ArticleSlug.DysonAirwrapVsSharkFlexstyle,
   },
 ];
 export const productBySlug = (slug: string) =>

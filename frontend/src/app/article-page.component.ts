@@ -13,6 +13,7 @@ import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.c
 import { StraighteningBrushFinderComponent } from './straightening-brush-finder.component';
 import { HeatProtectantFinderComponent } from './heat-protectant-finder.component';
 import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.component';
+import { guideLinkMap } from './guide-link-map';
 @Component({
   imports: [
     RouterLink,
@@ -48,10 +49,6 @@ import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.compo
             routerLink="/testing-research-methodology"
             >{{ contentMethodLabel[article.contentMethod] }}</a
           >
-          <span class="article-date">Published {{ publishedDate }}</span>
-          @if (article.updatedDate) {
-            <span class="article-date">Updated {{ updatedDate }}</span>
-          }
         </p>
       </header>
       @if (article.commercialOutcome === 'selection-guide') {
@@ -92,6 +89,28 @@ import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.compo
         </aside>
       }
       <section class="article-body" [innerHTML]="article.html"></section>
+      @if (guideLinks) {
+        <nav class="article-next-steps" aria-labelledby="next-steps-heading">
+          <p class="eyebrow">Keep exploring</p>
+          <h2 id="next-steps-heading">Continue with a useful next step</h2>
+          <p>
+            Return to the category hub, then follow related guides that help
+            with the next decision in this topic.
+          </p>
+          <ul>
+            <li>
+              <a [routerLink]="guideLinks.hubPath">Browse this category</a>
+            </li>
+            @for (related of relatedGuides; track related.slug) {
+              <li>
+                <a [routerLink]="['/guides', related.slug]">{{
+                  related.heading
+                }}</a>
+              </li>
+            }
+          </ul>
+        </nav>
+      }
       @if (article.faq.length > 0) {
         <section class="article-faq">
           <h2>FAQ</h2>
@@ -112,16 +131,18 @@ export class ArticlePageComponent implements OnInit {
   readonly editorialTeam = combReportEditorialTeam;
   readonly contentMethodLabel = contentMethodLabel;
   breadcrumbs: readonly Breadcrumb[] = [];
-  publishedDate = '';
-  updatedDate = '';
+  guideLinks?: (typeof guideLinkMap)[string];
+  relatedGuides: readonly Article[] = [];
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.article = articles.find((item) => item.slug === slug);
     if (this.article) {
-      this.publishedDate = this.formatDate(this.article.publishDate);
-      this.updatedDate = this.article.updatedDate
-        ? this.formatDate(this.article.updatedDate)
-        : '';
+      this.guideLinks = guideLinkMap[this.article.slug];
+      this.relatedGuides = (this.guideLinks?.relatedSlugs ?? [])
+        .map((relatedSlug) =>
+          articles.find((item) => item.slug === relatedSlug),
+        )
+        .filter((item): item is Article => !!item);
       const category = guideCategoryById[this.article.group];
       this.breadcrumbs = [
         { label: 'Home', path: '/' },
@@ -178,14 +199,5 @@ export class ArticlePageComponent implements OnInit {
           }),
       );
     }
-  }
-
-  private formatDate(value: string): string {
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC',
-    }).format(new Date(`${value}T00:00:00Z`));
   }
 }

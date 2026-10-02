@@ -2,6 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { relative, resolve, sep } from 'node:path';
 import { unified } from 'unified';
 import rehypeParse from 'rehype-parse';
+import { removedDuplicateRoutes } from './removed-duplicate-routes.ts';
 
 const canonicalHosts = new Set(['combreport.com', 'www.combreport.com']);
 const ignoredSchemes = new Set(['mailto:', 'tel:', 'javascript:', 'data:']);
@@ -28,6 +29,7 @@ interface GeneratedPage {
   namedAnchors: Set<string>;
   links: Array<{ href: string; download: boolean }>;
   canonicals: string[];
+  noindex: boolean;
 }
 
 export interface InternalLinkFailure {
@@ -98,6 +100,7 @@ async function readGeneratedPage(
     namedAnchors: new Set(),
     links: [],
     canonicals: [],
+    noindex: false,
   };
   visit(tree, (element) => {
     const properties = element.properties ?? {};
@@ -124,6 +127,10 @@ async function readGeneratedPage(
     if (element.tagName === 'link' && hasCanonicalRel(properties['rel'])) {
       const href = propertyValue(properties['href']);
       if (href) page.canonicals.push(href);
+    }
+    if (element.tagName === 'meta' && properties['name'] === 'robots') {
+      const content = propertyValue(properties['content'])?.toLowerCase();
+      if (content?.includes('noindex')) page.noindex = true;
     }
   });
   return page;
@@ -164,8 +171,23 @@ function validateTarget(
   originalUrl: string,
   url: URL,
   pagesByRoute: Map<string, GeneratedPage>,
+  allowNoindex = false,
 ): InternalLinkFailure | undefined {
   const target = targetLabel(url);
+  if (removedDuplicateRoutes.includes(url.pathname as never))
+    return {
+      source: source.relativePath,
+      originalUrl,
+      target,
+      reason: 'removed duplicate route',
+    };
+  if (url.search)
+    return {
+      source: source.relativePath,
+      originalUrl,
+      target,
+      reason: 'query parameter link is not canonical',
+    };
   const destination = pageForPathname(pagesByRoute, url.pathname);
   if (!destination)
     return {
@@ -184,6 +206,28 @@ function validateTarget(
       originalUrl,
       target,
       reason: 'anchor not found',
+    };
+  if (destination.noindex && !allowNoindex)
+    return {
+      source: source.relativePath,
+      originalUrl,
+      target,
+      reason: 'noindex destination',
+    };
+  if (destination.canonicals.length !== 1)
+    return {
+      source: source.relativePath,
+      originalUrl,
+      target,
+      reason: 'destination does not have one canonical URL',
+    };
+  const canonical = resolveUrl(destination.canonicals[0], destination.route);
+  if (!canonical || canonical.pathname !== url.pathname)
+    return {
+      source: source.relativePath,
+      originalUrl,
+      target,
+      reason: 'noncanonical destination URL',
     };
   return undefined;
 }
@@ -239,7 +283,7 @@ export async function auditInternalLinks(
         });
         continue;
       }
-      const failure = validateTarget(page, canonical, url, pagesByRoute);
+      const failure = validateTarget(page, canonical, url, pagesByRoute, true);
       if (failure)
         failures.push({ ...failure, reason: `canonical ${failure.reason}` });
       const normalizedCanonical = `${url.origin}${url.pathname}`;

@@ -20,11 +20,11 @@ async function fixture(files: Record<string, string>): Promise<string> {
 const page = (body: string, canonical = 'https://www.combreport.com/') =>
   `<html><head><link rel="canonical" href="${canonical}"></head><body>${body}</body></html>`;
 
-test('accepts root-relative and relative generated routes with query strings and anchors', async () => {
+test('accepts root-relative and relative generated routes with anchors', async () => {
   const directory = await fixture({
-    'index.html': page('<a href="/guides/?page=1#featured">Guides</a>'),
+    'index.html': page('<a href="/guides#featured">Guides</a>'),
     'guides/index.html': page(
-      '<a id="featured"></a><a href="../about/">About</a>',
+      '<a id="featured"></a><a href="../about">About</a>',
       'https://www.combreport.com/guides',
     ),
     'about/index.html': page(
@@ -33,6 +33,27 @@ test('accepts root-relative and relative generated routes with query strings and
     ),
   });
   assert.deepEqual((await auditInternalLinks(directory)).failures, []);
+});
+
+test('rejects parameter, noindex, noncanonical, and removed-duplicate links', async () => {
+  const directory = await fixture({
+    'index.html': page(
+      '<a href="/guides?filter=brush">Parameter</a><a href="/guides/">Slash</a><a href="/contact">Contact</a><a href="/guides/best-hair-brush-for-curly-hair">Removed</a>',
+    ),
+    'guides/index.html': page('', 'https://www.combreport.com/guides'),
+    'contact/index.html':
+      '<html><head><link rel="canonical" href="https://www.combreport.com/contact"><meta name="robots" content="noindex, follow"></head></html>',
+  });
+  const { failures } = await auditInternalLinks(directory);
+  assert.deepEqual(
+    failures.map(({ reason }) => reason),
+    [
+      'query parameter link is not canonical',
+      'noncanonical destination URL',
+      'noindex destination',
+      'removed duplicate route',
+    ],
+  );
 });
 
 test('supports generated route.html output', async () => {

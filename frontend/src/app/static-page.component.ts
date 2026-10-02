@@ -251,33 +251,41 @@ import { combReportEditorialTeam } from './editorial';
             }
           </ul>
         </section>
-        <section
-          class="editorial-grid guides-grid"
-          [attr.aria-label]="category.label + ' guides'"
-        >
-          @for (article of categoryArticles; track article.slug) {
-            <a class="guide-card" [routerLink]="['/guides', article.slug]"
-              ><p class="eyebrow">{{ article.category }}</p>
-              <h2>
-                {{
-                  article.slug === articleSlug.HairDryerChooser
-                    ? 'Choose a Hair Dryer'
-                    : article.heading
-                }}
-              </h2>
-              <p>
-                {{
-                  article.slug === articleSlug.HairDryerChooser
-                    ? 'Use the feature finder, then compare dryers for your routine.'
-                    : article.description
-                }}
-              </p>
-              <span class="text-link"
-                >Read guide <span aria-hidden="true">→</span></span
-              ></a
-            >
-          }
-        </section>
+        @for (section of categoryGuideSections; track section.label) {
+          <section
+            class="category-guide-section"
+            [attr.aria-labelledby]="section.id"
+          >
+            <div class="section-heading">
+              <p class="eyebrow">{{ section.eyebrow }}</p>
+              <h2 [id]="section.id">{{ section.label }}</h2>
+            </div>
+            <div class="editorial-grid guides-grid">
+              @for (article of section.articles; track article.slug) {
+                <a class="guide-card" [routerLink]="['/guides', article.slug]"
+                  ><p class="eyebrow">{{ article.category }}</p>
+                  <h3>
+                    {{
+                      article.slug === articleSlug.HairDryerChooser
+                        ? 'Choose a Hair Dryer'
+                        : article.heading
+                    }}
+                  </h3>
+                  <p>
+                    {{
+                      article.slug === articleSlug.HairDryerChooser
+                        ? 'Use the feature finder, then compare dryers for your routine.'
+                        : article.description
+                    }}
+                  </p>
+                  <span class="text-link"
+                    >Read guide <span aria-hidden="true">→</span></span
+                  ></a
+                >
+              }
+            </div>
+          </section>
+        }
         @if (
           category.id === 'hair-dryers' ||
           category.id === 'hot-air-brushes' ||
@@ -624,6 +632,12 @@ export class StaticPageComponent implements OnInit {
   readonly latestGuides = articles.slice(0, 6);
   category?: GuideCategory;
   categoryArticles = articles;
+  categoryGuideSections: readonly {
+    id: string;
+    eyebrow: string;
+    label: string;
+    articles: typeof articles;
+  }[] = [];
   categoryStartLinks: readonly {
     label: string;
     path: string;
@@ -640,6 +654,26 @@ export class StaticPageComponent implements OnInit {
       this.categoryArticles = articles.filter(
         (article) => article.group === this.category?.id,
       );
+      const classify = (slug: string) => {
+        if (/\bvs\b/.test(slug)) return 'compare';
+        if (/^how-to|how-often|can-you-use/.test(slug)) return 'learn';
+        return 'choose';
+      };
+      const groups = [
+        ['choose', 'Choose by routine or tool', 'Selection and feature guides'],
+        ['compare', 'Compare formats and options', 'Decision frameworks'],
+        ['learn', 'Learn use and maintenance', 'Tutorials and care'],
+      ] as const;
+      this.categoryGuideSections = groups
+        .map(([id, label, eyebrow]) => ({
+          id: `${categoryId}-${id}-guides`,
+          label,
+          eyebrow,
+          articles: this.categoryArticles.filter(
+            (article) => classify(article.slug) === id,
+          ),
+        }))
+        .filter((section) => section.articles.length > 0);
       const startLinks: Record<
         string,
         readonly { label: string; path: string; description: string }[]

@@ -152,19 +152,8 @@ for (const article of articles) {
   ])
     if (html.includes(token))
       failures.push(`${route}: leaked front matter '${token}'.`);
-  if (
-    !html.includes(
-      `Published ${new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.publishDate}T00:00:00Z`))}`,
-    )
-  )
-    failures.push(`${route}: missing visible truthful published date.`);
-  if (
-    article.updatedDate &&
-    !html.includes(
-      `Updated ${new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.updatedDate}T00:00:00Z`))}`,
-    )
-  )
-    failures.push(`${route}: missing visible truthful updated date.`);
+  if (/\b(?:Published|Updated)\s+[A-Z][a-z]+\s+\d{1,2},\s+20\d{2}\b/.test(html))
+    failures.push(`${route}: publication dates must remain metadata-only.`);
   const articleSchema = [
     ...html.matchAll(/<script[^>]*data-site-jsonld[^>]*>([\s\S]*?)<\/script>/g),
   ]
@@ -224,13 +213,27 @@ for (const category of guideCategories) {
     { label: category.label, path: category.path },
   ]);
   for (const article of articles.filter(
-    (article) => article.group === category.id,
+    (article) => article.group === category.id && category.id !== 'direct-heat',
   )) {
     if (!html.includes(`href="/guides/${article.slug}"`))
       failures.push(
         `${category.path}: missing published guide '${article.slug}'.`,
       );
   }
+}
+for (const [path, matcher] of [
+  ['/flat-irons', (slug: string) => !/curling|wand/.test(slug)],
+  ['/curling-irons', (slug: string) => /curling|wand/.test(slug)],
+] as const) {
+  const html = await readFile(
+    resolve(output, path.slice(1), 'index.html'),
+    'utf8',
+  );
+  for (const article of articles.filter(
+    (article) => article.group === 'direct-heat' && matcher(article.slug),
+  ))
+    if (!html.includes(`href="/guides/${article.slug}"`))
+      failures.push(`${path}: missing direct-heat guide '${article.slug}'.`);
 }
 for (const url of sitemapUrls) {
   const slug = url.match(/\/guides\/([^/]+)$/)?.[1];

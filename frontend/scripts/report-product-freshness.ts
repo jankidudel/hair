@@ -15,6 +15,15 @@ const missingSources = productProfiles.filter(
     !item.officialProductUrl ||
     item.verifiedFacts.some((fact) => !fact.sourceUrl),
 );
+const incompleteFacts = productProfiles.filter(
+  (item) =>
+    item.verifiedFacts.some(
+      (fact) =>
+        !fact.label || !fact.value || !fact.sourceUrl || !fact.verifiedAt,
+    ) ||
+    !item.name ||
+    !item.verifiedAt,
+);
 const disabledGuides = productProfiles.flatMap((item) =>
   item.relatedGuideSlugs
     .filter(
@@ -38,6 +47,9 @@ console.log(
   `Missing official/fact source: ${missingSources.length}${missingSources.length ? ` (${missingSources.map((item) => item.slug).join(', ')})` : ''}`,
 );
 console.log(
+  `Incomplete model/fact records: ${incompleteFacts.length}${incompleteFacts.length ? ` (${incompleteFacts.map((item) => item.slug).join(', ')})` : ''}`,
+);
+console.log(
   `Products linked to disabled/missing guides: ${disabledGuides.length}${disabledGuides.length ? ` (${disabledGuides.join(', ')})` : ''}`,
 );
 console.log(
@@ -48,5 +60,10 @@ console.log(
       .join(', ') || 'none'
   }`,
 );
-if (stale.length || missingSources.length || disabledGuides.length)
+if (
+  stale.length ||
+  missingSources.length ||
+  incompleteFacts.length ||
+  disabledGuides.length
+)
   process.exitCode = 1;

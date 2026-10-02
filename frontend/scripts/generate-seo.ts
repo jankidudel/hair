@@ -67,13 +67,17 @@ if (!indexingEnabled) {
 } else
   await writeFile(
     sitemapPath,
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map((route) => {
-      const slug = route.match(/^\/guides\/([^/]+)$/)?.[1];
-      const article = slug ? articleBySlug[slug] : undefined;
-      const lastmod =
-        article?.updatedDate ?? article?.publishDate ?? staticLastModified[route];
-      return `  <url><loc>${siteUrl}${route === '/' ? '' : route}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`;
-    }).join('\n')}\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
+      .map((route) => {
+        const slug = route.match(/^\/guides\/([^/]+)$/)?.[1];
+        const article = slug ? articleBySlug[slug] : undefined;
+        const lastmod =
+          article?.updatedDate ??
+          article?.publishDate ??
+          staticLastModified[route];
+        return `  <url><loc>${siteUrl}${route === '/' ? '' : route}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`;
+      })
+      .join('\n')}\n</urlset>\n`,
   );
 function validSiteUrl(value: unknown): string | null {
   if (typeof value !== 'string' || value.length === 0) return null;

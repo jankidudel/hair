@@ -66,10 +66,19 @@ test('rewrites clean routes using CloudFront JavaScript-compatible operations', 
 
 test('permanently redirects retired duplicate guides and product comparisons', () => {
   const result = edgeHandler()({
-    request: request('www.combreport.com', '/products/dyson-airwrap-vs-shark-flexstyle'),
-  }) as { readonly statusCode: number; readonly headers: { readonly location: { readonly value: string } } };
+    request: request(
+      'www.combreport.com',
+      '/products/dyson-airwrap-vs-shark-flexstyle',
+    ),
+  }) as {
+    readonly statusCode: number;
+    readonly headers: { readonly location: { readonly value: string } };
+  };
   assert.equal(result.statusCode, 308);
-  assert.equal(result.headers.location.value, '/guides/dyson-airwrap-vs-shark-flexstyle');
+  assert.equal(
+    result.headers.location.value,
+    '/guides/dyson-airwrap-vs-shark-flexstyle',
+  );
 });
 
 test('rejects unauthenticated requests with a Basic authentication challenge', () => {

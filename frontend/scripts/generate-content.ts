@@ -265,9 +265,7 @@ for (const file of (await readdir(contentDirectory))
       ? requiredString(data, 'reviewMethod', file)
       : undefined;
   if (
-    /\b(?:dyson|shark|revlon|ghd|babyliss)\b/i.test(
-      `${title} ${body}`,
-    ) &&
+    /\b(?:dyson|shark|revlon|ghd|babyliss)\b/i.test(`${title} ${body}`) &&
     !reviewMethod
   )
     throw new Error(

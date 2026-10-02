@@ -165,6 +165,32 @@ for (const article of articles) {
     )
   )
     failures.push(`${route}: missing visible truthful updated date.`);
+  const articleSchema = [
+    ...html.matchAll(/<script[^>]*data-site-jsonld[^>]*>([\s\S]*?)<\/script>/g),
+  ]
+    .flatMap((match) => {
+      try {
+        const value = JSON.parse(match[1]) as Record<string, unknown>;
+        return Array.isArray(value['@graph']) ? value['@graph'] : [value];
+      } catch {
+        return [];
+      }
+    })
+    .find(
+      (value): value is Record<string, unknown> =>
+        !!value && typeof value === 'object' && value['@type'] === 'Article',
+    );
+  const materialDate = article.updatedDate ?? article.publishDate;
+  if (articleSchema?.['dateModified'] !== materialDate)
+    failures.push(
+      `${route}: JSON-LD dateModified does not match content data.`,
+    );
+  if (
+    !sitemap.includes(
+      `<loc>https://www.combreport.com${route}</loc><lastmod>${materialDate}</lastmod>`,
+    )
+  )
+    failures.push(`${route}: sitemap lastmod does not match content data.`);
   const category = categoryById.get(article.group);
   if (!category) failures.push(`${route}: missing category hub mapping.`);
   else
@@ -211,6 +237,25 @@ for (const url of sitemapUrls) {
   if (slug && !articles.some((article) => article.slug === slug))
     failures.push(`sitemap.xml: unpublished or unknown guide '${slug}'.`);
 }
+const sitemapLastmods = [
+  ...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g),
+].map((match) => match[1]);
+if (new Set(sitemapLastmods).size < 2)
+  failures.push(
+    'sitemap.xml: lastmod values must not all be one deployment date.',
+  );
+const unchangedGuide = articles.find(
+  (article) => article.slug === 'how-to-choose-hair-dryer',
+);
+if (
+  unchangedGuide &&
+  !sitemap.includes(
+    `<loc>https://www.combreport.com/guides/${unchangedGuide.slug}</loc><lastmod>${unchangedGuide.publishDate}</lastmod>`,
+  )
+)
+  failures.push(
+    `${unchangedGuide.slug}: unchanged guide must retain its publication lastmod.`,
+  );
 if (failures.length) {
   console.error(`Generated SEO validation failed (${failures.length} issues):`);
   for (const failure of failures) console.error(`- ${failure}`);

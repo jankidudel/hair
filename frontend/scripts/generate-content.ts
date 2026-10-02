@@ -277,6 +277,9 @@ for (const file of (await readdir(contentDirectory))
   if (visibleFrontMatterTokens.some((token) => safeHtml.includes(token)))
     throw new Error(`${file}: rendered body contains leaked front matter.`);
   const isUnsupportedBestClaim = /^best\b/i.test(heading);
+  // These guides materially changed when their unsupported ranking language was
+  // replaced with the visible selection-guide outcome in this correction batch.
+  const selectionGuideUpdatedDate = '2026-10-02';
   const selectionHeading = isUnsupportedBestClaim
     ? `How to choose ${heading.replace(/^best\s+/i, '')}`
     : heading;
@@ -293,7 +296,9 @@ for (const file of (await readdir(contentDirectory))
     heading: selectionHeading,
     faq: faqs(data, file),
     publishDate,
-    updatedDate,
+    updatedDate:
+      updatedDate ??
+      (isUnsupportedBestClaim ? selectionGuideUpdatedDate : undefined),
     heroImage:
       typeof data.heroImage === 'string'
         ? requiredString(data, 'heroImage', file)

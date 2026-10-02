@@ -107,6 +107,12 @@ function validateBreadcrumb(
 }
 if (new Set(sitemapUrls).size !== sitemapUrls.length)
   failures.push('sitemap.xml: duplicate URL.');
+if (sitemapUrls.some((url) => url.endsWith('/contact')))
+  failures.push('sitemap.xml: noindex contact route must be excluded.');
+for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+  if (!/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/.test(match[1]))
+    failures.push('sitemap.xml: every canonical entry needs a truthful lastmod.');
+}
 for (const article of articles) {
   const route = `/guides/${article.slug}`;
   if (!sitemapUrls.some((url) => url.endsWith(route)))
@@ -126,6 +132,25 @@ for (const article of articles) {
     failures.push(`${route}: missing description.`);
   if ((html.match(/<h1(?:\s|>)/g) ?? []).length !== 1)
     failures.push(`${route}: must have exactly one H1.`);
+  if (/^Best\b/i.test(article.heading))
+    failures.push(`${route}: commercial Best claim lacks a selection-guide outcome.`);
+  if (
+    article.commercialOutcome === 'selection-guide' &&
+    !html.includes('Selection guide, not a product ranking.')
+  )
+    failures.push(`${route}: selection-guide evidence label is missing.`);
+  for (const token of [
+    '--- title:',
+    'primaryIntent:',
+    'authorId:',
+    'contentMethod:',
+    'faq: - question:',
+  ])
+    if (html.includes(token)) failures.push(`${route}: leaked front matter '${token}'.`);
+  if (!html.includes(`Published ${new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.publishDate}T00:00:00Z`))}`))
+    failures.push(`${route}: missing visible truthful published date.`);
+  if (article.updatedDate && !html.includes(`Updated ${new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.updatedDate}T00:00:00Z`))}`))
+    failures.push(`${route}: missing visible truthful updated date.`);
   const category = categoryById.get(article.group);
   if (!category) failures.push(`${route}: missing category hub mapping.`);
   else

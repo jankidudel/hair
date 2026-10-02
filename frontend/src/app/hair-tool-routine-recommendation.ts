@@ -77,7 +77,7 @@ export function recommendHairToolRoutine(
               ? 'Your existing compact-friendly styling tool'
               : 'Compact dryer or lightweight styling tool',
           detail:
-            'Prioritise packable size and only the features you use away from home.',
+            'Prioritize packable size and only the features you use away from home.',
         },
       ],
       skip: 'Bulky multi-tool collections add weight without helping a low-effort travel routine.',

@@ -55,7 +55,7 @@ export function recommendHairDryer(answers: HairDryerAnswers): HairDryerResult {
   if (answers.goal === 'travel')
     return {
       heading: 'Look for a lightweight, compact dryer that stores easily',
-      explanation: `For ${hairDescription(answers)}, a travel-first choice should earn its space before it tries to copy every feature of a full-size dryer. Prioritise a foldable or compact body and check the cable and storage details that will matter on the trips you actually take.`,
+      explanation: `For ${hairDescription(answers)}, a travel-first choice should earn its space before it tries to copy every feature of a full-size dryer. Prioritize a foldable or compact body and check the cable and storage details that will matter on the trips you actually take.`,
       features: [
         'Foldable/compact design',
         'Weight',

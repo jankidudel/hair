@@ -102,7 +102,7 @@ import {
           <p>{{ result.explanation }}</p>
           <div class="result-sections">
             <section>
-              <h4>Prioritise these features</h4>
+              <h4>Prioritize these features</h4>
               <ul>
                 @for (feature of result.features; track feature) {
                   <li>{{ feature }}</li>

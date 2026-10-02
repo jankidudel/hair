@@ -2,6 +2,7 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { articles } from '../src/app/content.generated.ts';
 import { guideCategories } from '../src/app/article-registry.ts';
+import { articleBySlug } from '../src/app/content.generated.ts';
 
 type BuildConfiguration = 'development' | 'production';
 interface SiteConfig {
@@ -45,8 +46,12 @@ const entries = [
   '/testing-research-methodology',
   '/corrections-policy',
   '/authors/combreport-editorial-team',
-  '/contact',
 ];
+// Static pages do not have article front matter. These are the dates of their
+// last material editorial revision, deliberately not the generation date.
+const staticLastModified: Readonly<Record<string, string>> = Object.fromEntries(
+  entries.map((route) => [route, '2026-09-20']),
+);
 for (const { slug } of articles) entries.push(`/guides/${slug}`);
 const publicDirectory = join(root, 'public');
 await mkdir(publicDirectory, { recursive: true });
@@ -62,7 +67,13 @@ if (!indexingEnabled) {
 } else
   await writeFile(
     sitemapPath,
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map((route) => `  <url><loc>${siteUrl}${route === '/' ? '' : route}</loc></url>`).join('\n')}\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map((route) => {
+      const slug = route.match(/^\/guides\/([^/]+)$/)?.[1];
+      const article = slug ? articleBySlug[slug] : undefined;
+      const lastmod =
+        article?.updatedDate ?? article?.publishDate ?? staticLastModified[route];
+      return `  <url><loc>${siteUrl}${route === '/' ? '' : route}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`;
+    }).join('\n')}\n</urlset>\n`,
   );
 function validSiteUrl(value: unknown): string | null {
   if (typeof value !== 'string' || value.length === 0) return null;

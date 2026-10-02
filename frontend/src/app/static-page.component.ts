@@ -764,6 +764,10 @@ export class StaticPageComponent implements OnInit {
         ? [this.category.title, this.category.description, this.category.path]
         : data[this.page];
     const [title, description, path] = pageData;
+    if (this.page === 'contact') {
+      this.seo.applyNoIndex(title, description);
+      return;
+    }
     this.seo.set(
       title,
       description,

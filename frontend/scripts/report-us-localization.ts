@@ -8,6 +8,7 @@ const spellingPatterns = [
   /\btravell(?:ing|ed)\b/gi,
   /\bcentre\b/gi,
   /\bmicrofibre\b/gi,
+  /\bcolours\b/gi,
 ];
 const spellingExceptions = new Set<string>();
 const hostExceptions = new Set<string>();
@@ -45,3 +46,4 @@ console.log(
 console.log(
   'Exceptions are explicit and intentionally empty until a documented source-title or brand-name exception is needed.',
 );
+if (spellingWarnings.length > 0) process.exitCode = 1;

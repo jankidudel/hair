@@ -66,7 +66,7 @@ export function decodeHairDryerSpecs(
         wattageContext,
         'A dual- or multi-voltage dryer can be more flexible for travel only when its printed voltage range is compatible with your destination. Follow any switch or selector instructions supplied with that dryer.',
         answers.priority === 'travel-flexibility'
-          ? 'Prioritise compact size, compatible voltage marking and plug planning. Add a concentrator or diffuser only when you will use it.'
+          ? 'Prioritize compact size, compatible voltage marking and plug planning. Add a concentrator or diffuser only when you will use it.'
           : 'Once compatibility is confirmed, compare the size, weight and controls that will make it useful away from home.',
       ],
       links: [travelGuide, chooserGuide],

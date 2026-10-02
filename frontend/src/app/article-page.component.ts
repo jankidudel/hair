@@ -48,8 +48,19 @@ import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.compo
             routerLink="/testing-research-methodology"
             >{{ contentMethodLabel[article.contentMethod] }}</a
           >
+          <span class="article-date">Published {{ publishedDate }}</span>
+          @if (article.updatedDate) {
+            <span class="article-date">Updated {{ updatedDate }}</span>
+          }
         </p>
       </header>
+      @if (article.commercialOutcome === 'selection-guide') {
+        <aside class="selection-guide-note">
+          <strong>Selection guide, not a product ranking.</strong> This page
+          explains documented features and routine trade-offs to check. It does
+          not claim a universal “best” product or hands-on testing.
+        </aside>
+      }
       @switch (article.slug) {
         @case (articleSlug.RoundBrushSizeGuide) {
           <app-round-brush-size-finder />
@@ -101,10 +112,16 @@ export class ArticlePageComponent implements OnInit {
   readonly editorialTeam = combReportEditorialTeam;
   readonly contentMethodLabel = contentMethodLabel;
   breadcrumbs: readonly Breadcrumb[] = [];
+  publishedDate = '';
+  updatedDate = '';
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.article = articles.find((item) => item.slug === slug);
     if (this.article) {
+      this.publishedDate = this.formatDate(this.article.publishDate);
+      this.updatedDate = this.article.updatedDate
+        ? this.formatDate(this.article.updatedDate)
+        : '';
       const category = guideCategoryById[this.article.group];
       this.breadcrumbs = [
         { label: 'Home', path: '/' },
@@ -136,18 +153,22 @@ export class ArticlePageComponent implements OnInit {
             },
             mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
           },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: this.article.faq.map((faq) => ({
-              '@type': 'Question',
-              name: faq.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.answer,
-              },
-            })),
-          },
+          ...(this.article.faq.length
+            ? [
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: this.article.faq.map((faq) => ({
+                    '@type': 'Question',
+                    name: faq.question,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text: faq.answer,
+                    },
+                  })),
+                },
+              ]
+            : []),
         ],
         this.breadcrumbs
           .filter((item): item is Breadcrumb & { path: string } => !!item.path)
@@ -157,5 +178,14 @@ export class ArticlePageComponent implements OnInit {
           }),
       );
     }
+  }
+
+  private formatDate(value: string): string {
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(new Date(`${value}T00:00:00Z`));
   }
 }

@@ -115,6 +115,27 @@ h3 {
   background: var(--surface);
   font-family: var(--sans);
   font-size: 0.88rem;
+  -webkit-overflow-scrolling: touch;
+}
+.article-body table[tabindex='0'] th,
+.article-body table[tabindex='0'] td {
+  min-width: 10rem;
+}
+.article-body table:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.article-body .table-scroll-hint {
+  display: none;
+  margin-bottom: -1.5rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+@media (max-width: 48rem) {
+  .article-body .table-scroll-hint {
+    display: block;
+  }
 }
 .article-body thead {
   background: var(--paper);

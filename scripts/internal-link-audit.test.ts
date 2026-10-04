@@ -38,7 +38,7 @@ test('accepts root-relative and relative generated routes with anchors', async (
 test('rejects parameter, noindex, noncanonical, and removed-duplicate links', async () => {
   const directory = await fixture({
     'index.html': page(
-      '<a href="/guides?filter=brush">Parameter</a><a href="/guides/">Slash</a><a href="/contact">Contact</a><a href="/guides/best-hair-brush-for-curly-hair">Removed</a>',
+      '<a href="/guides?filter=brush">Parameter</a><a href="/guides/">Slash</a><a href="/contact">Contact</a><a href="/guides/best-hair-brush-for-curly-hair">Removed</a><a href="/guides/flat-iron-vs-straightening-brush">Reversed duplicate</a>',
     ),
     'guides/index.html': page('', 'https://www.combreport.com/guides'),
     'contact/index.html':
@@ -51,6 +51,7 @@ test('rejects parameter, noindex, noncanonical, and removed-duplicate links', as
       'query parameter link is not canonical',
       'noncanonical destination URL',
       'noindex destination',
+      'removed duplicate route',
       'removed duplicate route',
     ],
   );

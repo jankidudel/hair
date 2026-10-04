@@ -84,6 +84,7 @@ const articleHtmlSchema: Options = {
     a: ['href', 'title'],
     img: ['src', 'alt', 'title', 'width', 'height'],
     details: ['open'],
+    table: ['tabIndex', 'ariaLabel'],
     th: ['abbr', 'colSpan', 'rowSpan'],
     td: ['colSpan', 'rowSpan'],
   },
@@ -108,6 +109,18 @@ const visibleFrontMatterTokens = [
   'contentMethod:',
   'faq: - question:',
 ];
+
+function selectionGuideLabel(value: string): string {
+  const [subject, siteName] = value.replace(/^best\s+/i, '').split(' | ');
+  const phrase = subject
+    .replace(/^Hair Dryers\b/i, 'a hair dryer')
+    .replace(/^Hair Brushes\b/i, 'a hair brush')
+    .replace(/^Hair Brush\b/i, 'a hair brush')
+    .replace(/^Hot-Air Brushes\b/i, 'a hot-air brush')
+    .replace(/^Hot-Air Brush\b/i, 'a hot-air brush')
+    .replace(/\b[A-Z][a-z]+\b/g, (word) => word.toLowerCase());
+  return `How to choose ${phrase}${siteName ? ` | ${siteName}` : ''}`;
+}
 
 /**
  * A content import serialised a second front-matter/body block into source
@@ -281,10 +294,10 @@ for (const file of (await readdir(contentDirectory))
   // replaced with the visible selection-guide outcome in this correction batch.
   const selectionGuideUpdatedDate = '2026-10-02';
   const selectionHeading = isUnsupportedBestClaim
-    ? `How to choose ${heading.replace(/^best\s+/i, '')}`
+    ? selectionGuideLabel(heading)
     : heading;
   const selectionTitle = isUnsupportedBestClaim
-    ? `How to choose ${title.replace(/^best\s+/i, '')}`
+    ? selectionGuideLabel(title)
     : title;
   contentBySlug.set(slug, {
     title: selectionTitle,

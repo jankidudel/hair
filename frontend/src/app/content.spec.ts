@@ -35,6 +35,39 @@ describe('generated editorial content', () => {
     expect(publishedSlugs).toContain(ArticleSlug.BestBrushesCurlyHair);
     expect(publishedSlugs).not.toContain('best-hair-brush-for-thick-hair');
     expect(publishedSlugs).not.toContain('best-hair-brush-for-curly-hair');
+    expect(publishedSlugs).not.toContain('flat-iron-vs-straightening-brush');
+  });
+
+  it('renders readable selection-guide labels and keyboard-scrollable comparison tables', () => {
+    for (const [slug, heading] of [
+      [
+        ArticleSlug.BestHairDryersFineHair,
+        'How to choose a hair dryer for fine hair',
+      ],
+      [
+        ArticleSlug.BestHairDryersCurlyHair,
+        'How to choose a hair dryer for curly hair',
+      ],
+      [
+        ArticleSlug.BestBrushesCurlyHair,
+        'How to choose a hair brush for curly hair',
+      ],
+    ]) {
+      expect(articles.find((article) => article.slug === slug)?.heading).toBe(
+        heading,
+      );
+    }
+    for (const slug of [
+      ArticleSlug.BestHairDryersThickHair,
+      ArticleSlug.BestBrushesFineHair,
+      ArticleSlug.BestBrushesThickHair,
+      ArticleSlug.BestBrushesCurlyHair,
+    ]) {
+      const html = articles.find((article) => article.slug === slug)?.html;
+      expect(html).toContain('class="table-scroll-hint"');
+      expect(html).toMatch(/<table tabindex="0" aria-label="[^"]+">/);
+      expect(html).toContain('<th>');
+    }
   });
 
   it('keeps the publishing schedule in the registry, not guide HTML', () => {

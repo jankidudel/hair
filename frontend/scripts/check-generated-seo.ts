@@ -1,8 +1,9 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { auditInternalLinks } from '../../scripts/internal-link-audit.ts';
 import { articles } from '../src/app/content.generated.ts';
 import { guideCategories } from '../src/app/article-registry.ts';
+import { removedDuplicateRoutes } from '../../scripts/removed-duplicate-routes.ts';
 
 const output = resolve(
   import.meta.dirname,
@@ -107,6 +108,16 @@ function validateBreadcrumb(
 }
 if (new Set(sitemapUrls).size !== sitemapUrls.length)
   failures.push('sitemap.xml: duplicate URL.');
+for (const route of removedDuplicateRoutes) {
+  if (sitemapUrls.includes(`https://www.combreport.com${route}`))
+    failures.push(`${route}: removed route remains in sitemap.`);
+  try {
+    await stat(resolve(output, route.slice(1), 'index.html'));
+    failures.push(`${route}: removed route still has a generated document.`);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+  }
+}
 if (sitemapUrls.some((url) => url.endsWith('/contact')))
   failures.push('sitemap.xml: noindex contact route must be excluded.');
 for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {

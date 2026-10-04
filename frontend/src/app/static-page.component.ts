@@ -385,8 +385,8 @@ import { combReportEditorialTeam } from './editorial';
         <p class="eyebrow">About</p>
         <h1>About Comb Report</h1>
         <p class="lede">
-          Comb Report is a US-focused guide to choosing hair tools for ordinary
-          grooming and styling routines.
+          Comb Report helps readers in English-speaking markets choose hair
+          tools for ordinary grooming and styling routines.
         </p>
         <p>
           We cover blow dryers, hot-air brushes, brushes and combs, flat irons,
@@ -471,10 +471,12 @@ import { combReportEditorialTeam } from './editorial';
         </p>
         <h2>How we select products</h2>
         <p>
-          We begin with the exact US model and its official product or support
-          material. A product is included only when its published details help
-          answer the page’s specific decision; unavailable or unclear facts stay
-          marked as such rather than being inferred.
+          We begin with an exact model and its official product or support
+          material for the market named on the page. Electrical ratings, bundles
+          and availability can differ across countries. A product is included
+          only when its published details help answer the page’s specific
+          decision; unavailable or unclear facts stay marked as such rather than
+          being inferred.
         </p>
       </section>
     }
@@ -511,7 +513,25 @@ import { combReportEditorialTeam } from './editorial';
         <p class="eyebrow">Privacy</p>
         <h1>Privacy</h1>
         <p class="lede">
-          Privacy details will be published here before launch.
+          Comb Report can be read without creating an account. The browser keeps
+          your analytics choice on this device so the site can remember it.
+        </p>
+        <h2>Optional analytics</h2>
+        <p>
+          Google Analytics is loaded only after you choose “Accept analytics” in
+          the consent banner. It records page views and may use cookies to help
+          us understand site use. We configure it without Google signals or
+          ad-personalization signals. Choosing “Reject” does not load the
+          analytics script. You can change your choice by clearing this site's
+          browser storage; the banner will then appear again.
+        </p>
+        <h2>Site delivery and outside links</h2>
+        <p>
+          The site host may process technical request information needed to
+          deliver pages and protect the service. Links to manufacturers and
+          other sites take you to services with their own privacy practices. We
+          do not publish a contact form or ask you to submit personal details
+          through this site.
         </p>
       </section>
     }

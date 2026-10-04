@@ -83,7 +83,6 @@ export const ArticleSlug = {
   BestCurlingIronsFineHair: 'best-curling-irons-fine-hair',
   BestCurlingToolsShortHair: 'best-curling-tools-short-hair',
   BestCurlingToolsLongHair: 'best-curling-tools-long-hair',
-  FlatIronVsStraighteningBrush: 'flat-iron-vs-straightening-brush',
   FlatIronVsHotAirBrush: 'flat-iron-vs-hot-air-brush',
   CurlingIronVsWand: 'curling-iron-vs-curling-wand',
   FlatIronVsCurlingIron: 'flat-iron-vs-curling-iron-for-curls',

@@ -113,7 +113,6 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     ArticleSlug.BestCurlingIronsFineHair,
     ArticleSlug.BestCurlingToolsShortHair,
     ArticleSlug.BestCurlingToolsLongHair,
-    ArticleSlug.FlatIronVsStraighteningBrush,
     ArticleSlug.FlatIronVsHotAirBrush,
     ArticleSlug.CurlingIronVsWand,
     ArticleSlug.FlatIronVsCurlingIron,

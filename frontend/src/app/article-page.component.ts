@@ -147,7 +147,9 @@ export class ArticlePageComponent implements OnInit {
       this.breadcrumbs = [
         { label: 'Home', path: '/' },
         { label: 'Guides', path: '/guides' },
-        { label: category.label, path: category.path },
+        ...(category.path === '/guides'
+          ? []
+          : [{ label: category.label, path: category.path }]),
         { label: this.article.heading },
       ];
       this.seo.set(

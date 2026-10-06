@@ -88,6 +88,15 @@ export const ArticleSlug = {
   FlatIronVsCurlingIron: 'flat-iron-vs-curling-iron-for-curls',
   FlatIronPlateWidthGuide: 'flat-iron-plate-width-guide',
   CurlingIronBarrelSizeGuide: 'curling-iron-barrel-size-guide',
+  WhyBlowoutDoesNotLast: 'why-your-blowout-does-not-last',
+  HotAirBrushFrizzyHair: 'hot-air-brush-frizzy-hair',
+  HairDryerTakesTooLong: 'hair-dryer-takes-too-long',
+  WhyCurlsFallOut: 'why-curls-fall-out',
+  FlatIronSnaggingHair: 'flat-iron-snagging-hair',
+  CurlingIronLeavesCrease: 'curling-iron-leaves-crease',
+  HairDryerDiffuserCompatibility: 'hair-dryer-diffuser-compatibility',
+  RoundBrushStuckInHair: 'round-brush-stuck-in-hair',
+  StylingToolTroubleshooting: 'styling-tool-troubleshooting',
 } as const;
 
 export type ArticleSlug = (typeof ArticleSlug)[keyof typeof ArticleSlug];

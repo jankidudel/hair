@@ -81,11 +81,12 @@ const articleHtmlSchema: Options = {
   ],
   attributes: {
     p: ['className'],
+    ul: ['className'],
     a: ['href', 'title'],
     img: ['src', 'alt', 'title', 'width', 'height'],
     details: ['open'],
     table: ['tabIndex', 'ariaLabel'],
-    th: ['abbr', 'colSpan', 'rowSpan'],
+    th: ['abbr', 'colSpan', 'rowSpan', 'scope'],
     td: ['colSpan', 'rowSpan'],
   },
   protocols: {

@@ -303,3 +303,43 @@ h3 {
     animation-duration: 0.01ms !important;
   }
 }
+
+.article-body figure {
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  background: var(--surface);
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.article-body figure figcaption {
+  margin-bottom: 0.75rem;
+}
+.article-body figure ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.article-body .troubleshooting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.article-body .troubleshooting-cards li {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.article-body .troubleshooting-cards p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}

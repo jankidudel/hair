@@ -2,7 +2,10 @@ import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { auditInternalLinks } from '../../scripts/internal-link-audit.ts';
 import { articles } from '../src/app/content.generated.ts';
-import { guideCategories } from '../src/app/article-registry.ts';
+import {
+  guideCategories,
+  guideCategoryById,
+} from '../src/app/article-registry.ts';
 import { removedDuplicateRoutes } from '../../scripts/removed-duplicate-routes.ts';
 
 const output = resolve(
@@ -23,9 +26,7 @@ const failures = [
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
   (match) => match[1],
 );
-const categoryById = new Map(
-  guideCategories.map((category) => [category.id, category]),
-);
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -191,13 +192,15 @@ for (const article of articles) {
     )
   )
     failures.push(`${route}: sitemap lastmod does not match content data.`);
-  const category = categoryById.get(article.group);
+  const category = guideCategoryById[article.group];
   if (!category) failures.push(`${route}: missing category hub mapping.`);
   else
     validateBreadcrumb(html, route, [
       { label: 'Home', path: '/' },
       { label: 'Guides', path: '/guides' },
-      { label: category.label, path: category.path },
+      ...(category.path === '/guides'
+        ? []
+        : [{ label: category.label, path: category.path }]),
       { label: article.heading, path: route },
     ]);
 }

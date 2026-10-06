@@ -96,11 +96,25 @@ export const guideCategories = [
   },
 ] as const;
 
-export type GuideCategory = (typeof guideCategories)[number];
+const guidesParentCategory = {
+  id: ArticleGroupId.Guides,
+  label: 'Guides',
+  path: '/guides',
+  title: 'Hair Tool Guides | Comb Report',
+  description: 'All hair tool and routine guides.',
+  heading: 'Hair tool guides',
+  intro: 'Browse the complete guide library.',
+} as const;
+
+export type GuideCategory =
+  (typeof guideCategories)[number] | typeof guidesParentCategory;
 
 export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
   Object.fromEntries(
-    guideCategories.map((category) => [category.id, category]),
+    [...guideCategories, guidesParentCategory].map((category) => [
+      category.id,
+      category,
+    ]),
   );
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
@@ -593,5 +607,68 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     order: 20,
     enabled: true,
     publishDate: '2026-08-31',
+  },
+  {
+    slug: ArticleSlug.WhyBlowoutDoesNotLast,
+    group: ArticleGroupId.HairDryers,
+    order: 150,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.HotAirBrushFrizzyHair,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 120,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.HairDryerTakesTooLong,
+    group: ArticleGroupId.HairDryers,
+    order: 160,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.WhyCurlsFallOut,
+    group: ArticleGroupId.DirectHeat,
+    order: 60,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.FlatIronSnaggingHair,
+    group: ArticleGroupId.DirectHeat,
+    order: 70,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.CurlingIronLeavesCrease,
+    group: ArticleGroupId.DirectHeat,
+    order: 80,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.HairDryerDiffuserCompatibility,
+    group: ArticleGroupId.HairDryers,
+    order: 170,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.RoundBrushStuckInHair,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 200,
+    enabled: true,
+    publishDate: '2026-10-06',
+  },
+  {
+    slug: ArticleSlug.StylingToolTroubleshooting,
+    group: ArticleGroupId.Guides,
+    order: 1,
+    enabled: true,
+    publishDate: '2026-10-06',
   },
 ] as const;

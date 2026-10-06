@@ -178,6 +178,22 @@ import { combReportEditorialTeam } from './editorial';
           >Build a simple routine <span aria-hidden="true">→</span></a
         >
       </section>
+      <section class="category-hubs" aria-labelledby="troubleshooting-heading">
+        <div class="section-heading">
+          <p class="eyebrow">Solve a styling problem</p>
+          <h2 id="troubleshooting-heading">Styling-tool troubleshooting</h2>
+        </div>
+        <p>
+          Start with the symptom you can see: a blowout that falls, frizz during
+          brushing, a curl that drops, a snag, or an attachment that may not
+          fit.
+        </p>
+        <a
+          class="text-link"
+          [routerLink]="['/guides', articleSlug.StylingToolTroubleshooting]"
+          >Choose a troubleshooting guide <span aria-hidden="true">→</span></a
+        >
+      </section>
       <section class="editorial-grid guides-grid" aria-label="All guides">
         @for (article of guides; track article.slug; let first = $first) {
           <a

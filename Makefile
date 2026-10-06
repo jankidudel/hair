@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help install dev build lint test format format-check content-check infra-build infra-synth infra-diff-dev infra-diff-prod
+.PHONY: help install dev build lint test format format-check content-check infra-build infra-synth infra-diff-prod
 
 help:
 	@echo "Everyday Hair commands (run from the repository root):"
@@ -11,7 +11,7 @@ help:
 	@echo "  make format           Format repository files"
 	@echo "  make content-check    Check editorial safety rules"
 	@echo "  make infra-synth      Synthesize CDK templates (no AWS changes)"
-	@echo "  make infra-diff-dev   Show planned development infrastructure changes"
+	@echo "  make infra-diff-prod  Show planned production infrastructure changes"
 
 install:
 	npm install
@@ -42,9 +42,6 @@ infra-build:
 
 infra-synth:
 	npm run synth --workspace=infra
-
-infra-diff-dev:
-	npm run infra:diff:dev
 
 infra-diff-prod:
 	npm run infra:diff:prod

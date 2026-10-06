@@ -8,7 +8,7 @@ Use Node 22+ and run `npm install` from the repository root. Installation automa
 
 ## Commands
 
-`npm run check:staged-content` validates only staged guide files. `npm run check:editorial-targets` is the full, date-aware editorial check; pass `-- --date=YYYY-MM-DD` for a deterministic release date. `npm run check:seo` runs that editorial gate, builds production output, and checks sitemap, metadata, canonicals, rendered H1s and internal links. `npm run verify` is the complete local pre-push gate. Infrastructure commands are `npm run infra:build`, `npm run infra:diff:dev`, and `npm run infra:diff:prod`.
+`npm run check:staged-content` validates only staged guide files. `npm run check:editorial-targets` is the full, date-aware editorial check; pass `-- --date=YYYY-MM-DD` for a deterministic release date. `npm run check:seo` runs that editorial gate, builds production output, and checks sitemap, metadata, canonicals, rendered H1s and internal links. `npm run verify` is the complete local pre-push gate. Infrastructure commands are `npm run infra:build` and `npm run infra:diff:prod`.
 
 ## Publishing a guide
 
@@ -34,7 +34,7 @@ Hard errors block commits, pushes, pull requests and deployments; warnings ident
 - `frontend/`: Angular standalone application with static prerendering.
 - `frontend/content/`: HTML source of truth. Each `.html` guide starts with YAML front matter, followed by safe authored HTML. The build parses it with gray-matter and sanitizes the HTML before it can be rendered.
 - `api/`: minimal TypeScript Lambda health endpoint.
-- `infra/`: CDK stacks for `dev` and `prod` static hosting plus the health API.
+- `infra/`: the production CDK stack for static hosting plus the health API.
 
 Use ordinary HTML links (`<a href="https://example.com">label</a>`) and images (`<img src="/image.jpg" alt="Description">`); see `frontend/content/article-template.html`. Authored HTML is deliberately limited to editorial content. Build interactive tools, calculators, and bespoke landing pages as Angular components.
 
@@ -46,4 +46,4 @@ Deploy CDK separately after configuring AWS CLI credentials and the target accou
 
 Before the first production deployment, create the production GitHub Environment and its `AWS_DEPLOY_ROLE_ARN` variable. Once CloudFormation creates the `combreport.com` hosted zone, replace the nameservers at the domain registrar with the Route 53 nameservers shown in the `ProductionHostedZoneNameServers` output (or visible in the Route 53 console) so ACM can validate the certificate. After the distribution is deployed, select the **Free** flat-rate plan in **CloudFront → Manage plan** and attach the `combreport.com` hosted zone. The Free plan requires the production Web ACL created by this stack to remain associated.
 
-GitHub Actions uses AWS OIDC only. Pull requests verify the project. Deployments use the fixed `us-east-1` region. The content deployment workflow publishes frontend/content changes; the infrastructure deployment workflow deploys infrastructure and the packaged API. Both default pushes to `main` to `dev`; manually run either to select `dev` or `prod`. The manual `Deploy all` workflow performs both steps for a coordinated release. Configure `AWS_DEPLOY_ROLE_ARN` in both GitHub Environments, plus `SITE_BUCKET` and `CLOUDFRONT_DISTRIBUTION_ID` for frontend publishing.
+GitHub Actions uses AWS OIDC only. Pull requests verify the project. Production deployments are manual and use the fixed `us-east-1` region. The content deployment workflow publishes frontend/content changes; the infrastructure deployment workflow deploys infrastructure and the packaged API. The manual `Deploy all` workflow performs both steps for a coordinated release. Configure `AWS_DEPLOY_ROLE_ARN`, `SITE_BUCKET`, and `CLOUDFRONT_DISTRIBUTION_ID` in the production GitHub Environment.

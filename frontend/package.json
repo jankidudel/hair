@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "npm run content:generate && ng serve",
     "build": "npm run content:generate && npm run seo:generate && ng build && npm run assets:fingerprint",
-    "build:deployment-development": "npm run content:generate && npm run seo:generate:development && ng build --configuration deployment-development && npm run assets:fingerprint",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "npm run content:generate && ng test --watch=false",
@@ -17,8 +16,7 @@
     "report:us-localization": "tsx scripts/report-us-localization.ts",
     "check:seo": "npm run check:editorial-targets && npm run build && npm run check:generated-seo",
     "assets:fingerprint": "tsx scripts/fingerprint-static-assets.ts",
-    "seo:generate": "tsx scripts/generate-seo.ts production",
-    "seo:generate:development": "tsx scripts/generate-seo.ts development"
+    "seo:generate": "tsx scripts/generate-seo.ts"
   },
   "dependencies": {
     "@angular/common": "20.3.30",

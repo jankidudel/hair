@@ -8,7 +8,6 @@
     "lint": "eslint bin lib test",
     "test": "tsx --test test/**/*.test.ts",
     "synth": "npm run build --workspace=@hair/api && cdk synth",
-    "diff:dev": "npm run synth && cdk diff Hair-dev",
     "diff:prod": "npm run synth && cdk diff Hair-prod"
   },
   "dependencies": {

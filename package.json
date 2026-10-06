@@ -28,7 +28,6 @@
     "validate:prebuild": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run content:check && npm run check:editorial-targets",
     "verify": "npm run validate:prebuild && npm run build --workspace=frontend && npm run check:generated-seo && npm run check:internal-links",
     "infra:build": "npm run build --workspace=infra",
-    "infra:diff:dev": "npm run diff:dev --workspace=infra",
     "infra:diff:prod": "npm run diff:prod --workspace=infra",
     "precommit": "npm run lint && npm run content:check",
     "prepush": "npm run verify",

@@ -1,22 +1,14 @@
 name: Deploy content
 
-# Deployment is intentionally disabled until AWS infrastructure is configured.
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: GitHub Environment and AWS stage to deploy
-        required: true
-        default: dev
-        type: choice
-        options: [dev, prod]
 
 permissions:
   contents: read
   id-token: write
 
 concurrency:
-  group: deploy-content-${{ inputs.environment || 'dev' }}
+  group: deploy-content-prod
   cancel-in-progress: false
 
 jobs:
@@ -27,10 +19,9 @@ jobs:
 
   deploy:
     needs: [validate]
-    # if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
-    name: Deploy content to ${{ inputs.environment || 'dev' }}
+    name: Deploy content to prod
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment || 'dev' }}
+    environment: prod
     env:
       AWS_REGION: us-east-1
     steps:
@@ -38,12 +29,8 @@ jobs:
       - uses: actions/setup-node@v6
         with: { node-version: 24, cache: npm }
       - run: npm ci
-      - run: npm run build:deployment-development --workspace=frontend
-        if: ${{ (inputs.environment || 'dev') == 'dev' }}
       - run: npm run build --workspace=frontend
-        if: ${{ (inputs.environment || 'dev') == 'prod' }}
       - name: Check generated SEO output
-        if: ${{ (inputs.environment || 'dev') == 'prod' }}
         run: npm run check:generated-seo --workspace=frontend
       - name: Check generated internal links
         run: npm run check:internal-links

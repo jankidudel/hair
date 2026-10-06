@@ -4,25 +4,14 @@ import { articles } from '../src/app/content.generated.ts';
 import { guideCategories } from '../src/app/article-registry.ts';
 import { articleBySlug } from '../src/app/content.generated.ts';
 
-type BuildConfiguration = 'development' | 'production';
 interface SiteConfig {
   siteUrl: unknown;
   indexingEnabled: unknown;
 }
-const configuration = process.argv[2];
-if (configuration !== 'development' && configuration !== 'production')
-  throw new Error(
-    'Use either "development" or "production" SEO configuration.',
-  );
 const root = join(import.meta.dirname, '..');
 const config: SiteConfig = JSON.parse(
   await readFile(
-    join(
-      root,
-      'src',
-      'environments',
-      `site-config.${configuration as BuildConfiguration}.json`,
-    ),
+    join(root, 'src', 'environments', 'site-config.production.json'),
     'utf8',
   ),
 );

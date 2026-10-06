@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import * as cdk from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { HairStack } from '../lib/hair-stack.js';
-test('creates private static hosting and a health API', () => {
+test('creates private static hosting and a health API in production', () => {
   const app = new cdk.App();
-  const stack = new HairStack(app, 'Test', { environment: 'dev' });
+  const stack = new HairStack(app, 'Test', {
+    googleSiteVerification: 'test-verification-token',
+  });
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::S3::Bucket', 1);
   template.resourceCountIs('AWS::CloudFront::Distribution', 1);
@@ -34,35 +36,17 @@ test('creates private static hosting and a health API', () => {
     }),
   });
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
-  template.hasParameter('DevBasicAuthorization', {
-    NoEcho: true,
-    Type: 'String',
-  });
-  const developmentFunction = Object.values(
-    template.findResources('AWS::CloudFront::Function'),
-  )[0] as { Properties: { FunctionCode: unknown } };
-  assert.match(
-    JSON.stringify(developmentFunction.Properties.FunctionCode),
-    /DevBasicAuthorization/,
-  );
-  assert.match(
-    JSON.stringify(developmentFunction.Properties.FunctionCode),
-    /expectedAuthorization/,
-  );
   assert.ok(template.toJSON());
 });
 
 test('adds the production domain and required WAF protection', () => {
   const app = new cdk.App();
   const stack = new HairStack(app, 'Test', {
-    environment: 'prod',
     googleSiteVerification: 'test-verification-token',
   });
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::Route53::HostedZone', 1);
-  assert.ok(
-    !Object.hasOwn(template.toJSON().Parameters ?? {}, 'DevBasicAuthorization'),
-  );
+  assert.equal(Object.keys(template.toJSON().Parameters ?? {}).length, 1);
   template.hasResourceProperties('AWS::CertificateManager::Certificate', {
     DomainName: 'www.combreport.com',
     SubjectAlternativeNames: ['combreport.com'],

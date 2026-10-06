@@ -1,39 +1,24 @@
 name: Deploy infrastructure
 
-# Deployment is intentionally disabled until AWS infrastructure is configured.
 on:
-  push:
-    branches: [main]
-    # The root lockfile is shared by all npm workspaces. It must not make a
-    # frontend-only dependency update deploy CDK or the API.
-    paths: ['infra/**', 'api/**']
   workflow_dispatch:
-    inputs:
-      environment:
-        description: GitHub Environment and AWS stage to deploy
-        required: true
-        default: dev
-        type: choice
-        options: [dev, prod]
 
 permissions:
   contents: read
   id-token: write
 
 concurrency:
-  group: deploy-infrastructure-${{ inputs.environment || 'dev' }}
+  group: deploy-infrastructure-prod
   cancel-in-progress: false
 
 jobs:
   deploy:
-    # if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
-    name: Deploy infrastructure ${{ inputs.environment || 'dev' }}
+    name: Deploy infrastructure prod
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment || 'dev' }}
+    environment: prod
     env:
       AWS_REGION: us-east-1
       CDK_DEFAULT_REGION: us-east-1
-      STAGE: ${{ inputs.environment || 'dev' }}
       GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
     steps:
       - uses: actions/checkout@v6
@@ -41,7 +26,7 @@ jobs:
         with: { node-version: 24, cache: npm }
       - run: npm ci
       - name: Verify Google site verification configuration
-        if: ${{ env.STAGE == 'prod' && env.GOOGLE_SITE_VERIFICATION == '' }}
+        if: ${{ env.GOOGLE_SITE_VERIFICATION == '' }}
         run: |
           echo "::error::GOOGLE_SITE_VERIFICATION is not available in the prod GitHub Environment."
           exit 1
@@ -66,24 +51,10 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           retry-max-attempts: 3
       - name: Show infrastructure changes
-        run: npm run infra:diff:${{ env.STAGE }}
+        run: npm run infra:diff:prod
       - name: Deploy infrastructure and API
-        if: ${{ env.STAGE == 'dev' }}
-        working-directory: infra
-        env:
-          DEV_BASIC_AUTHORIZATION: ${{ secrets.DEV_BASIC_AUTHORIZATION }}
-        run: |
-          npm run synth
-          if [ -z "$DEV_BASIC_AUTHORIZATION" ]; then
-            echo "::error::DEV_BASIC_AUTHORIZATION is required in the dev GitHub Environment."
-            exit 1
-          fi
-          npx cdk deploy "Hair-$STAGE" --require-approval never --parameters "DevBasicAuthorization=$DEV_BASIC_AUTHORIZATION" --outputs-file cdk-outputs.json
-          cat cdk-outputs.json
-      - name: Deploy infrastructure and API
-        if: ${{ env.STAGE == 'prod' }}
         working-directory: infra
         run: |
           npm run synth
-          npx cdk deploy "Hair-$STAGE" --require-approval never --outputs-file cdk-outputs.json
+          npx cdk deploy Hair-prod --require-approval never --outputs-file cdk-outputs.json
           cat cdk-outputs.json

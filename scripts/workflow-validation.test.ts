@@ -33,11 +33,20 @@ test('pull requests validate without running on main pushes', async () => {
   assert.ok(root);
 });
 
-test('only manual workflows can deploy', async () => {
-  for (const name of ['deploy-content.yml', 'deploy-all.yml']) {
+test('production is the only deployment target and all deployments are manual', async () => {
+  for (const name of [
+    'deploy-content.yml',
+    'deploy-infrastructure.yml',
+    'deploy-all.yml',
+  ]) {
     const source = await workflow(name);
     assert.match(source, /on:\s*\n\s+workflow_dispatch:/);
     assert.doesNotMatch(source, /\n\s+push:/);
+    assert.match(source, /environment: prod/);
+    assert.doesNotMatch(
+      source,
+      /inputs\.environment|Hair-dev|DEV_BASIC_AUTHORIZATION/,
+    );
   }
 });
 
@@ -59,7 +68,7 @@ test('the all-in-one deployment builds the API package once before diffing and d
   const source = await workflow('deploy-all.yml');
   const apiBuild = 'npm run build --workspace=@hair/api';
   assert.equal(source.split(apiBuild).length - 1, 1);
-  assert.match(source, /npx cdk diff "Hair-\$STAGE"/);
+  assert.match(source, /npx cdk diff Hair-prod/);
   assert.doesNotMatch(source, /npm run infra:diff/);
   assert.doesNotMatch(source, /npm run synth/);
 });
@@ -99,9 +108,9 @@ test('deployment builds fingerprint static entry assets', async () => {
   ) as { scripts: Record<string, string> };
 
   assert.match(frontendPackage.scripts.build, /assets:fingerprint/);
-  assert.match(
+  assert.equal(
     frontendPackage.scripts['build:deployment-development'],
-    /assets:fingerprint/,
+    undefined,
   );
   const fingerprintScript = await readFile(
     new URL(

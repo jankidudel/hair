@@ -24,117 +24,68 @@ const prerenderRouteRewritePath = join(
   '../functions/prerender-route-rewrite.ts',
 );
 
-const basicAuthenticationChallenge = 'Basic realm="Development"';
-
-export function wrapViewerRequestWithBasicAuth(
-  routeRewriteCode: string,
-  expectedAuthorization: string,
-): string {
-  return `${routeRewriteCode}
-
-var expectedAuthorization = '${expectedAuthorization}';
-
-function handler(event) {
-  var request = event.request;
-  var authorization = request.headers.authorization;
-
-  if (!authorization || authorization.value !== expectedAuthorization) {
-    return {
-      statusCode: 401,
-      statusDescription: 'Unauthorized',
-      headers: {
-        'www-authenticate': {
-          value: '${basicAuthenticationChallenge}',
-        },
-      },
-    };
-  }
-
-  return rewriteOrRedirect(request);
-}
-`;
-}
-
 export interface HairStackProps extends StackProps {
-  environment: 'dev' | 'prod';
   googleSiteVerification?: string;
 }
 export class HairStack extends Stack {
   constructor(scope: Construct, id: string, props: HairStackProps) {
     super(scope, id, props);
-    const production = props.environment === 'prod';
     this.tags.setTag('Project', 'hair');
-    this.tags.setTag('Environment', props.environment);
+    this.tags.setTag('Environment', 'prod');
     const site = new s3.Bucket(this, 'SiteBucket', {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       encryption: s3.BucketEncryption.S3_MANAGED,
       enforceSSL: true,
-      removalPolicy: production ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
-      autoDeleteObjects: !production,
+      removalPolicy: RemovalPolicy.RETAIN,
     });
-    const hostedZone = production
-      ? new route53.PublicHostedZone(this, 'ProductionHostedZone', {
-          zoneName: productionApexDomain,
-        })
-      : undefined;
-    const certificate = hostedZone
-      ? new acm.Certificate(this, 'ProductionCertificate', {
-          domainName: productionCanonicalDomain,
-          subjectAlternativeNames: [productionApexDomain],
-          validation: acm.CertificateValidation.fromDns(hostedZone),
-        })
-      : undefined;
-    const productionWebAcl = production
-      ? new wafv2.CfnWebACL(this, 'ProductionWebAcl', {
-          name: 'hair-prod-cloudfront',
-          scope: 'CLOUDFRONT',
-          defaultAction: { allow: {} },
+    const hostedZone = new route53.PublicHostedZone(
+      this,
+      'ProductionHostedZone',
+      {
+        zoneName: productionApexDomain,
+      },
+    );
+    const certificate = new acm.Certificate(this, 'ProductionCertificate', {
+      domainName: productionCanonicalDomain,
+      subjectAlternativeNames: [productionApexDomain],
+      validation: acm.CertificateValidation.fromDns(hostedZone),
+    });
+    const productionWebAcl = new wafv2.CfnWebACL(this, 'ProductionWebAcl', {
+      name: 'hair-prod-cloudfront',
+      scope: 'CLOUDFRONT',
+      defaultAction: { allow: {} },
+      visibilityConfig: {
+        cloudWatchMetricsEnabled: true,
+        metricName: 'hairProdCloudFrontWebAcl',
+        sampledRequestsEnabled: true,
+      },
+      rules: [
+        {
+          name: 'RateLimitByIp',
+          priority: 0,
+          action: { block: {} },
+          statement: {
+            rateBasedStatement: {
+              aggregateKeyType: 'IP',
+              limit: cloudFrontIpRateLimit,
+              evaluationWindowSec: cloudFrontIpRateLimitWindowSeconds,
+            },
+          },
           visibilityConfig: {
             cloudWatchMetricsEnabled: true,
-            metricName: 'hairProdCloudFrontWebAcl',
+            metricName: 'hairProdCloudFrontRateLimitByIp',
             sampledRequestsEnabled: true,
           },
-          rules: [
-            {
-              name: 'RateLimitByIp',
-              priority: 0,
-              action: { block: {} },
-              statement: {
-                rateBasedStatement: {
-                  aggregateKeyType: 'IP',
-                  limit: cloudFrontIpRateLimit,
-                  evaluationWindowSec: cloudFrontIpRateLimitWindowSeconds,
-                },
-              },
-              visibilityConfig: {
-                cloudWatchMetricsEnabled: true,
-                metricName: 'hairProdCloudFrontRateLimitByIp',
-                sampledRequestsEnabled: true,
-              },
-            },
-          ],
-        })
-      : undefined;
-    productionWebAcl?.applyRemovalPolicy(RemovalPolicy.RETAIN);
-    const devBasicAuthorization = production
-      ? undefined
-      : new cdk.CfnParameter(this, 'DevBasicAuthorization', {
-          type: 'String',
-          noEcho: true,
-        });
+        },
+      ],
+    });
+    productionWebAcl.applyRemovalPolicy(RemovalPolicy.RETAIN);
     const routeRewriteCode = readFileSync(prerenderRouteRewritePath, 'utf8');
     const routeRewrite = new cloudfront.Function(
       this,
       'PrerenderRouteRewrite',
       {
-        code: devBasicAuthorization
-          ? cloudfront.FunctionCode.fromInline(
-              wrapViewerRequestWithBasicAuth(
-                routeRewriteCode,
-                devBasicAuthorization.valueAsString,
-              ),
-            )
-          : cloudfront.FunctionCode.fromInline(routeRewriteCode),
+        code: cloudfront.FunctionCode.fromInline(routeRewriteCode),
       },
     );
     const cacheableStaticAssetBehavior = {
@@ -169,10 +120,8 @@ export class HairStack extends Stack {
         '*.css': cacheableStaticAssetBehavior,
       },
       certificate,
-      domainNames: certificate
-        ? [productionCanonicalDomain, productionApexDomain]
-        : undefined,
-      webAclId: productionWebAcl?.attrArn,
+      domainNames: [productionCanonicalDomain, productionApexDomain],
+      webAclId: productionWebAcl.attrArn,
       defaultRootObject: 'index.html',
       errorResponses: [
         {

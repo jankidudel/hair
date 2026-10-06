@@ -2,13 +2,11 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { runInNewContext } from 'node:vm';
-import { wrapViewerRequestWithBasicAuth } from '../lib/hair-stack.js';
 
 interface CloudFrontRequest {
   uri: string;
   readonly headers: {
     readonly host: { readonly value: string };
-    readonly authorization?: { readonly value: string };
   };
 }
 
@@ -26,18 +24,6 @@ function edgeHandler(): CloudFrontHandler {
 
 function request(host: string, uri: string): CloudFrontRequest {
   return { uri, headers: { host: { value: host } } };
-}
-
-function devEdgeHandler(expectedAuthorization: string): CloudFrontHandler {
-  const routeRewriteCode = readFileSync(
-    new URL('../functions/prerender-route-rewrite.ts', import.meta.url),
-    'utf8',
-  );
-  const candidate = runInNewContext(
-    `${wrapViewerRequestWithBasicAuth(routeRewriteCode, expectedAuthorization)}; handler;`,
-  );
-  assert.equal(typeof candidate, 'function');
-  return candidate as CloudFrontHandler;
 }
 
 test('redirects the apex hostname to the canonical hostname', () => {
@@ -62,57 +48,4 @@ test('rewrites clean routes using CloudFront JavaScript-compatible operations', 
   const directoryRoute = request('www.combreport.com', '/guides/');
   assert.equal(edgeHandler()({ request: directoryRoute }), directoryRoute);
   assert.equal(directoryRoute.uri, '/guides/index.html');
-});
-
-test('rejects unauthenticated requests with a Basic authentication challenge', () => {
-  const result = devEdgeHandler('Basic ZGV2OnNlY3JldA==')({
-    request: request('dev.example.test', '/guides'),
-  }) as {
-    readonly statusCode: number;
-    readonly headers: {
-      readonly 'www-authenticate': { readonly value: string };
-    };
-  };
-
-  assert.equal(result.statusCode, 401);
-  assert.equal(
-    result.headers['www-authenticate'].value,
-    'Basic realm="Development"',
-  );
-});
-
-test('passes authenticated requests to the existing rewrite logic', () => {
-  const authenticatedRequest: CloudFrontRequest = {
-    uri: '/guides',
-    headers: {
-      host: { value: 'dev.example.test' },
-      authorization: { value: 'Basic ZGV2OnNlY3JldA==' },
-    },
-  };
-
-  assert.equal(
-    devEdgeHandler('Basic ZGV2OnNlY3JldA==')({
-      request: authenticatedRequest,
-    }),
-    authenticatedRequest,
-  );
-  assert.equal(authenticatedRequest.uri, '/guides/index.html');
-
-  const redirect = devEdgeHandler('Basic ZGV2OnNlY3JldA==')({
-    request: {
-      uri: '/guides',
-      headers: {
-        host: { value: 'combreport.com' },
-        authorization: { value: 'Basic ZGV2OnNlY3JldA==' },
-      },
-    },
-  }) as {
-    readonly statusCode: number;
-    readonly headers: { readonly location: { readonly value: string } };
-  };
-  assert.equal(redirect.statusCode, 301);
-  assert.equal(
-    redirect.headers.location.value,
-    'https://www.combreport.com/guides',
-  );
 });

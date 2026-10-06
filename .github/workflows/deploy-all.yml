@@ -1,22 +1,14 @@
 name: Deploy all
 
-# Deployment is intentionally disabled until AWS infrastructure is configured.
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: GitHub Environment and AWS stage to deploy
-        required: true
-        default: dev
-        type: choice
-        options: [dev, prod]
 
 permissions:
   contents: read
   id-token: write
 
 concurrency:
-  group: deploy-all-${{ inputs.environment }}
+  group: deploy-all-prod
   cancel-in-progress: false
 
 jobs:
@@ -27,14 +19,12 @@ jobs:
 
   deploy:
     needs: [validate]
-    # if: ${{ false }} # Remove when AWS infrastructure and GitHub Environments are ready.
-    name: Deploy all to ${{ inputs.environment }}
+    name: Deploy all to prod
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: prod
     env:
       AWS_REGION: us-east-1
       CDK_DEFAULT_REGION: us-east-1
-      STAGE: ${{ inputs.environment }}
       GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
     steps:
       - uses: actions/checkout@v6
@@ -42,7 +32,7 @@ jobs:
         with: { node-version: 24, cache: npm }
       - run: npm ci
       - name: Verify Google site verification configuration
-        if: ${{ env.STAGE == 'prod' && env.GOOGLE_SITE_VERIFICATION == '' }}
+        if: ${{ env.GOOGLE_SITE_VERIFICATION == '' }}
         run: |
           echo "::error::GOOGLE_SITE_VERIFICATION is not available in the prod GitHub Environment."
           exit 1
@@ -55,33 +45,15 @@ jobs:
           retry-max-attempts: 3
       - name: Show infrastructure changes
         working-directory: infra
-        run: npx cdk diff "Hair-$STAGE"
+        run: npx cdk diff Hair-prod
       - name: Deploy infrastructure and API
-        if: ${{ inputs.environment == 'dev' }}
-        working-directory: infra
-        env:
-          DEV_BASIC_AUTHORIZATION: ${{ secrets.DEV_BASIC_AUTHORIZATION }}
-        run: |
-          if [ -z "$DEV_BASIC_AUTHORIZATION" ]; then
-            echo "::error::DEV_BASIC_AUTHORIZATION is required in the dev GitHub Environment."
-            exit 1
-          fi
-          npx cdk deploy "Hair-$STAGE" --require-approval never --parameters "DevBasicAuthorization=$DEV_BASIC_AUTHORIZATION" --outputs-file cdk-outputs.json
-          cat cdk-outputs.json
-      - name: Deploy infrastructure and API
-        if: ${{ inputs.environment == 'prod' }}
         working-directory: infra
         run: |
-          npx cdk deploy "Hair-$STAGE" --require-approval never --outputs-file cdk-outputs.json
+          npx cdk deploy Hair-prod --require-approval never --outputs-file cdk-outputs.json
           cat cdk-outputs.json
-      - name: Build development frontend and articles
-        if: ${{ inputs.environment == 'dev' }}
-        run: npm run build:deployment-development --workspace=frontend
       - name: Build production frontend and articles
-        if: ${{ inputs.environment == 'prod' }}
         run: npm run build --workspace=frontend
       - name: Check generated SEO output
-        if: ${{ inputs.environment == 'prod' }}
         run: npm run check:generated-seo --workspace=frontend
       - name: Check generated internal links
         run: npm run check:internal-links

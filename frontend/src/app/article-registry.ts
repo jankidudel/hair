@@ -92,7 +92,7 @@ export const guideCategories = [
     description: 'Hair accessory guides for simple everyday styling routines.',
     heading: 'Hair accessories guides',
     intro:
-      'Discover useful guides to the accessories that support an everyday styling routine, from towels to heatless tools.',
+      'Choose clips and fasteners for styling, then explore towels and heatless tools for your routine.',
   },
 ] as const;
 
@@ -671,4 +671,28 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-10-06',
   },
+  ...[
+    ArticleSlug.CurlDefiningBrushVsDetanglingBrush,
+    ArticleSlug.CanYouUseDetanglingBrushForBlowDrying,
+    ArticleSlug.WhenToReplaceHairbrushOrComb,
+    ArticleSlug.TailCombVsWideToothComb,
+    ArticleSlug.TravelHairBrushFormats,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 210 + index * 10,
+    enabled: true,
+    publishDate: '2026-10-07',
+  })),
+  ...[
+    ArticleSlug.HowToChooseHairSectioningClips,
+    ArticleSlug.HowToChooseClawClipSize,
+    ArticleSlug.HairElasticsVsScrunchies,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.HairAccessories,
+    order: 50 + index * 10,
+    enabled: true,
+    publishDate: '2026-10-07',
+  })),
 ] as const;

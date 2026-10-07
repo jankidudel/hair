@@ -157,6 +157,9 @@ import { combReportEditorialTeam } from './editorial';
           ><a [routerLink]="['/guides', articleSlug.HowToCleanAHairBrush]"
             >How to clean a hairbrush <b>→</b></a
           ><a
+            [routerLink]="['/guides', articleSlug.WhenToReplaceHairbrushOrComb]"
+            >Inspect a brush or comb <b>→</b></a
+          ><a
             [routerLink]="[
               '/guides',
               articleSlug.WhatIsTheGreyFuzzOnMyHairbrush,
@@ -764,6 +767,43 @@ export class StaticPageComponent implements OnInit {
             label: 'Compare detangling options',
             path: '/guides/best-detangling-brushes',
             description: 'check wet-use directions, spacing and form factor',
+          },
+          {
+            label: 'Detangle with a comb or brush',
+            path: '/guides/wide-tooth-comb-vs-detangling-brush',
+            description: 'compare contact area, grip and section handling',
+          },
+          {
+            label: 'Style a curl section',
+            path: '/guides/curl-defining-brush-vs-detangling-brush',
+            description: 'separate preparation from defining',
+          },
+          {
+            label: 'Check dryer permission',
+            path: '/guides/can-you-use-detangling-brush-for-blow-drying',
+            description: 'verify exact brush guidance before using heat',
+          },
+          {
+            label: 'Maintain a manual tool',
+            path: '/guides/how-to-clean-a-hair-brush',
+            description: 'clean, inspect and decide whether to replace it',
+          },
+        ],
+        'hair-accessories': [
+          {
+            label: 'Hold working sections',
+            path: '/guides/how-to-choose-hair-sectioning-clips',
+            description: 'choose temporary clips for styling',
+          },
+          {
+            label: 'Fasten a finished style',
+            path: '/guides/how-to-choose-claw-clip-size',
+            description: 'match jaw opening and arrangement',
+          },
+          {
+            label: 'Compare hair ties',
+            path: '/guides/hair-elastics-vs-scrunchies',
+            description: 'weigh hold, bulk, removal and care',
           },
         ],
       };

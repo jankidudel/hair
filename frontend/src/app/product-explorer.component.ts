@@ -145,8 +145,9 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
           <h2 id="how-we-compare-heading">How we compare products</h2>
           <ol>
             <li>
-              Specifications come from an official US manufacturer or support
-              source, linked with each stated fact and its check date.
+              Each stated fact links to its manufacturer source and check date.
+              Check the cited page for exact model and market scope; records
+              with limited evidence are labelled.
             </li>
             <li>
               Features do not guarantee the same result for every person or
@@ -212,6 +213,12 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                 </thead>
                 <tbody>
                   <tr>
+                    <th scope="row">Market</th>
+                    @for (product of selectedProducts; track product.slug) {
+                      <td>{{ product.market }}</td>
+                    }
+                  </tr>
+                  <tr>
                     <th scope="row">Type</th>
                     @for (product of selectedProducts; track product.slug) {
                       <td>{{ product.subtype }}</td>
@@ -256,7 +263,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                           target="_blank"
                           rel="noopener noreferrer"
                           (click)="trackOutbound(product.slug)"
-                          >Official US source</a
+                          >Official {{ product.market }} source</a
                         >
                       </td>
                     }
@@ -271,7 +278,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
             @for (product of filteredProducts; track product.slug) {
               <article class="product-card">
                 <p class="eyebrow">
-                  {{ categoryLabel(product.category) }} ·
+                  {{ categoryLabel(product.category) }} · {{ product.market }} ·
                   {{ product.priceTier }}
                 </p>
                 <h2>{{ product.name }}</h2>
@@ -323,7 +330,8 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                     target="_blank"
                     rel="noopener noreferrer"
                     (click)="trackOutbound(product.slug)"
-                    >Official US source <span aria-hidden="true">↗</span></a
+                    >Official {{ product.market }} source
+                    <span aria-hidden="true">↗</span></a
                   >
                 </div>
                 <p class="related-guide">

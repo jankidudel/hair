@@ -68,13 +68,16 @@ import { combReportEditorialTeam } from './editorial';
           <a routerLink="/flat-irons"
             ><span>04</span> Explore direct-heat tools <b>→</b></a
           >
+          <a routerLink="/hair-accessories"
+            ><span>05</span> Choose heatless tools and accessories <b>→</b></a
+          >
         </div>
       </section>
       <section class="latest-section" aria-labelledby="latest-heading">
         <div class="section-heading section-heading-row">
           <div>
-            <p class="eyebrow">Recently added</p>
-            <h2 id="latest-heading">Latest guides</h2>
+            <p class="eyebrow">From the guide library</p>
+            <h2 id="latest-heading">Featured guides</h2>
           </div>
           <a class="text-link" routerLink="/guides"
             >All guides <span aria-hidden="true">→</span></a
@@ -270,6 +273,91 @@ import { combReportEditorialTeam } from './editorial';
             }
           </ul>
         </section>
+        @if (category.id === 'hair-accessories') {
+          <section
+            class="category-product-explorer"
+            aria-labelledby="accessory-tasks-heading"
+          >
+            <p class="eyebrow">Choose by the task</p>
+            <h2 id="accessory-tasks-heading">A practical accessories route</h2>
+            <p>
+              For wash day, compare a
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.MicrofiberHairTowelVsCottonTShirt,
+                ]"
+                >towel with a T-shirt</a
+              >, then use the
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseAMicrofibreHairTowel,
+                ]"
+                >towel fastening method</a
+              >
+              if a wrap fits your routine.
+            </p>
+            <p>
+              For an unheated set, start with
+              <a [routerLink]="['/guides', articleSlug.BestHeatlessCurlingSets]"
+                >format selection</a
+              >
+              and
+              <a [routerLink]="['/guides', articleSlug.VelcroVsFoamHairRollers]"
+                >individual roller closures</a
+              >. Then follow the
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseHeatlessCurlingRod,
+                ]"
+                >continuous-rod method</a
+              >, the
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseVelcroHairRollers,
+                ]"
+                >self-grip roller method</a
+              >
+              or the
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseHeatlessCurlersOnShortHair,
+                ]"
+                >short-section method</a
+              >
+              for the exact tool in hand.
+            </p>
+            <p>
+              If an attempt fails, use
+              <a [routerLink]="['/guides', articleSlug.HeatlessCurlsNotWorking]"
+                >heatless-curl troubleshooting</a
+              >. For fastening and overnight coverage, compare
+              <a
+                [routerLink]="['/guides', articleSlug.HairElasticsVsScrunchies]"
+                >ties</a
+              >,
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToChooseHairSectioningClips,
+                ]"
+                >working clips</a
+              >
+              and
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.SatinBonnetVsSatinPillowcase,
+                ]"
+                >a bonnet with a pillowcase</a
+              >.
+            </p>
+          </section>
+        }
         @for (section of categoryGuideSections; track section.label) {
           <section
             class="category-guide-section"
@@ -668,7 +756,14 @@ export class StaticPageComponent implements OnInit {
     },
   ] as const;
   readonly featuredGuide = articles[0];
-  readonly latestGuides = articles.slice(0, 6);
+  readonly latestGuides = [
+    ArticleSlug.HowToUseHeatlessCurlingRod,
+    ArticleSlug.VelcroVsFoamHairRollers,
+    ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+    ArticleSlug.GhdChronosVsPlatinumPlus,
+    ArticleSlug.CurlDefiningBrushVsDetanglingBrush,
+    ArticleSlug.HairDryerDiffuserCompatibility,
+  ].flatMap((slug) => articles.filter((article) => article.slug === slug));
   category?: GuideCategory;
   categoryArticles = articles;
   categoryGuideSections: readonly {
@@ -751,6 +846,16 @@ export class StaticPageComponent implements OnInit {
             path: '/guides/hot-air-brush-barrel-size-guide',
             description: 'match section length and styling control',
           },
+          {
+            label: 'Compare current Revlon US versions',
+            path: '/guides/revlon-one-step-volumizer-vs-plus',
+            description: 'separate fixed and detachable heads',
+          },
+          {
+            label: 'Compare two UK BaByliss models',
+            path: '/guides/babyliss-air-style-1000-vs-flawless-volume',
+            description: 'check the exact 2136U and 2764U formats',
+          },
         ],
         'brushes-and-combs': [
           {
@@ -790,6 +895,16 @@ export class StaticPageComponent implements OnInit {
           },
         ],
         'hair-accessories': [
+          {
+            label: 'Choose a heatless set',
+            path: '/guides/best-heatless-curling-sets',
+            description: 'compare ribbon, flexi and roller formats',
+          },
+          {
+            label: 'Diagnose a heatless set',
+            path: '/guides/heatless-curls-not-working',
+            description: 'change one part of the failed stage',
+          },
           {
             label: 'Hold working sections',
             path: '/guides/how-to-choose-hair-sectioning-clips',

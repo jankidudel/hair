@@ -1,6 +1,6 @@
 import { ArticleSlug } from './article-slug';
 
-/** The single US-market source of product facts for product-facing surfaces. */
+/** Shared model- and market-scoped source of product facts for product-facing surfaces. */
 export const ProductCategory = {
   HairDryer: 'hair-dryer',
   MultiStyler: 'multi-styler',
@@ -23,6 +23,7 @@ export interface VerifiedFact {
 }
 export interface ProductProfile {
   readonly slug: string;
+  readonly market: 'US' | 'UK';
   readonly name: string;
   readonly brand: string;
   readonly category: ProductCategory;
@@ -54,26 +55,28 @@ export interface CanonicalComparison {
   readonly guideSlug: string;
 }
 const checked = '2026-09-20';
-const batchFiveChecked = '2026-10-02';
+const batchEightChecked = '2026-10-08';
 const fact = (
   label: string,
   value: string,
   sourceUrl: string,
 ): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: checked });
 const product = (
-  input: Omit<ProductProfile, 'verifiedAt' | 'comparisonStatus'> & {
+  input: Omit<ProductProfile, 'verifiedAt' | 'comparisonStatus' | 'market'> & {
     readonly verifiedAt?: string;
+    readonly market?: ProductProfile['market'];
   },
 ): ProductProfile => ({
   ...input,
+  market: input.market ?? 'US',
   verifiedAt: input.verifiedAt ?? checked,
   comparisonStatus: 'specification-led',
 });
-const batchFiveFact = (
+const batchEightFact = (
   label: string,
   value: string,
   sourceUrl: string,
-): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: batchFiveChecked });
+): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: batchEightChecked });
 
 export const productProfiles: readonly ProductProfile[] = [
   product({
@@ -89,26 +92,28 @@ export const productProfiles: readonly ProductProfile[] = [
       'separate heat and airflow controls',
     ],
     notIdealFor: ['international use without checking the exact model voltage'],
-    officialProductUrl: 'https://www.dyson.com/hair-care/hair-dryers',
+    officialProductUrl:
+      'https://www.dyson.com/hair-care/hair-dryers/supersonic-nural',
     supportUrl:
       'https://www.dyson.com/support/hair-care/hair-dryers/supersonic-nural',
-    availability: 'available',
+    availability: 'availability-to-check',
     evidenceStatus: 'specification-researched',
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      fact(
-        'US electrical specification',
-        '120 V / 60 Hz; 1,600 W',
-        'https://www.dyson.com/content/dam/dyson/for-business/business-refresh/docs/us/hair-care/DysonSupersonictechspec.pdf',
+      batchEightFact(
+        'Styling features',
+        'Attachment learning remembers the last-used settings; Pause detect reduces heat and airflow when set down',
+        'https://www.dyson.com/hair-care/hair-dryers/supersonic-nural',
       ),
-      fact(
-        'Controls',
-        '3 airflow settings and 4 heat settings including cold shot',
-        'https://www.dyson.com/support/journey/guides/245739-01?machineId=201967-01',
+      batchEightFact(
+        'Attachments',
+        'Wave+Curl diffuser and wide-tooth comb are shown for this Nural range',
+        'https://www.dyson.com/hair-care/hair-dryers/supersonic-nural',
       ),
-      fact(
+      batchEightFact(
         'Warranty',
         '2-year limited warranty stated',
-        'https://www.dyson.com/hair-care/hair-dryers',
+        'https://www.dyson.com/hair-care/hair-dryers/supersonic-nural',
       ),
     ],
     relatedGuideSlugs: [
@@ -119,28 +124,31 @@ export const productProfiles: readonly ProductProfile[] = [
   }),
   product({
     slug: 'shark-speedstyle-pro',
-    name: 'Shark SpeedStyle™ Pro',
+    name: 'Shark SpeedStyle™ Pro Hair Dryer System (HD731)',
     brand: 'Shark',
     category: ProductCategory.HairDryer,
     subtype: 'full-size dryer',
     imageAlt: 'Shark SpeedStyle Pro hair dryer',
     priceTier: 'premium',
     bestFor: [
-      'comparing the exact included attachment bundle',
-      'a dedicated dryer format',
+      'a dedicated dryer with an included finishing tool, brush and concentrator',
     ],
-    notIdealFor: ['buyers who need a fixed attachment list across all bundles'],
+    notIdealFor: ['buyers expecting a diffuser in the HD731 box'],
     officialProductUrl:
-      'https://www.sharkninja.com/parts-support/beauty-parts/hair-dryers',
+      'https://www.sharkninja.com/shark-speedstyle-pro-hair-dryer-straight-wavy/HD731.html',
     availability: 'availability-to-check',
-    evidenceStatus: 'limited-specification',
-    conflictNote:
-      'Shark lists SpeedStyle family support, but exact current US bundle details should be confirmed before purchase.',
+    evidenceStatus: 'specification-researched',
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      fact(
-        'Support path',
-        'SpeedStyle family parts and support are listed by SharkNinja',
-        'https://www.sharkninja.com/parts-support/beauty-parts/hair-dryers',
+      batchEightFact(
+        'Electrical specification',
+        'HD731: 120 V; 1,750 W',
+        'https://www.sharkninja.com/shark-speedstyle-pro-hair-dryer-straight-wavy/HD731.html',
+      ),
+      batchEightFact(
+        'In the box',
+        'HD731: FrizzFighter Finishing Tool, QuickSmooth Brush and Turbo Concentrator',
+        'https://www.sharkninja.com/shark-speedstyle-pro-hair-dryer-straight-wavy/HD731.html',
       ),
     ],
     relatedGuideSlugs: [
@@ -150,7 +158,7 @@ export const productProfiles: readonly ProductProfile[] = [
   }),
   product({
     slug: 'conair-digitalaire-2',
-    name: 'InfinitiPRO by Conair® DigitalAIRE® 2.0 Hair Dryer',
+    name: 'InfinitiPRO by Conair® DigitalAIRE® 2.0 (manual models 1000/1002)',
     brand: 'Conair',
     category: ProductCategory.HairDryer,
     subtype: 'dual-voltage dryer',
@@ -162,20 +170,28 @@ export const productProfiles: readonly ProductProfile[] = [
     ],
     notIdealFor: ['a buyer who does not need travel features'],
     officialProductUrl: 'https://www.conair.com/digitalaire2.html',
+    supportUrl:
+      'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw3c012f03/Instructional%20Booklets/1000.pdf',
     availability: 'available',
     evidenceStatus: 'specification-researched',
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      fact(
+      batchEightFact(
+        'Manual scope',
+        'Conair identifies models 1000/1002 in the DigitalAIRE 2.0 instruction booklet; confirm the label on the unit offered',
+        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw3c012f03/Instructional%20Booklets/1000.pdf',
+      ),
+      batchEightFact(
         'Voltage',
         'Automatic dual voltage stated',
         'https://www.conair.com/digitalaire2.html',
       ),
-      fact(
+      batchEightFact(
         'Controls',
         '4 heat and 4 speed settings plus cold shot stated',
         'https://www.conair.com/digitalaire2.html',
       ),
-      fact(
+      batchEightFact(
         'Attachments',
         'Concentrator, diffuser and Frizz Defense attachment stated',
         'https://www.conair.com/digitalaire2.html',
@@ -188,7 +204,7 @@ export const productProfiles: readonly ProductProfile[] = [
   }),
   product({
     slug: 'conair-smoothwrap',
-    name: 'InfinitiPRO by Conair® Smoothwrap Dual Ion Hair Dryer',
+    name: 'InfinitiPRO by Conair® SmoothWrap Hair Dryer (910P)',
     brand: 'Conair',
     category: ProductCategory.HairDryer,
     subtype: 'full-size dryer',
@@ -198,21 +214,28 @@ export const productProfiles: readonly ProductProfile[] = [
     notIdealFor: [
       'international travel; the manual describes standard 110–125 V use',
     ],
-    officialProductUrl: 'https://www.conair.com/',
+    officialProductUrl:
+      'https://www.conair.com/smoothwrap-hair-dryer/910p.html',
     supportUrl:
-      'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw8c6198a6/Instructional%20Booklets/910N.pdf',
+      'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dwe0958d46/Instructional%20Booklets/910P.pdf',
     availability: 'availability-to-check',
     evidenceStatus: 'specification-researched',
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      fact(
+      batchEightFact(
         'Power and controls',
-        '1,875 W; 3 heat and 2 speed settings; cool shot',
-        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw8c6198a6/Instructional%20Booklets/910N.pdf',
+        '910P: 1,875 W; six heat and speed combinations; cool shot',
+        'https://www.conair.com/smoothwrap-hair-dryer/910p.html',
       ),
-      fact(
-        'Voltage',
-        'Standard dryers are designed for 110 to 125 V AC',
-        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw8c6198a6/Instructional%20Booklets/910N.pdf',
+      batchEightFact(
+        'Attachments',
+        '910P includes a concentrator and diffuser',
+        'https://www.conair.com/smoothwrap-hair-dryer/910p.html',
+      ),
+      batchEightFact(
+        'Electrical scope',
+        'The 910P instruction booklet states 60 Hz AC and 110–125 V for this standard dryer',
+        'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dwe0958d46/Instructional%20Booklets/910P.pdf',
       ),
     ],
     relatedGuideSlugs: [
@@ -263,23 +286,57 @@ export const productProfiles: readonly ProductProfile[] = [
       'international travel without confirming the appliance rating',
     ],
     officialProductUrl:
-      'https://www.revlonhairtools.com/dryers/one-step-volumizer-plus/',
+      'https://www.revlonhairtools.com/curling_irons/one-step-volumizer-plus/',
+    verifiedAt: batchEightChecked,
     availability: 'available',
     evidenceStatus: 'specification-researched',
     verifiedFacts: [
-      fact(
+      batchEightFact(
         'Head and controls',
         '2.4-inch oval head; low, medium, high and cool settings',
-        'https://www.revlonhairtools.com/dryers/one-step-volumizer-plus/',
+        'https://www.revlonhairtools.com/curling_irons/one-step-volumizer-plus/',
       ),
-      fact(
+      batchEightFact(
         'Warranty',
         '4-year limited warranty stated',
-        'https://www.revlonhairtools.com/dryers/one-step-volumizer-plus/',
+        'https://www.revlonhairtools.com/curling_irons/one-step-volumizer-plus/',
       ),
     ],
     relatedGuideSlugs: [
       ArticleSlug.BestHotAirBrushesFineHair,
+      ArticleSlug.BestHotAirBrushes,
+      ArticleSlug.RevlonOneStepVolumizerVsPlus,
+    ],
+  }),
+  product({
+    slug: 'revlon-salon-one-step-volumizer-us',
+    name: 'Revlon Salon One-Step Hair Dryer and Volumizer (current US listing)',
+    brand: 'Revlon',
+    category: ProductCategory.HotAirBrush,
+    subtype: 'fixed oval hot-air brush',
+    imageAlt: 'Revlon Salon One-Step Hair Dryer and Volumizer',
+    priceTier: 'mid-range',
+    bestFor: ['a non-detachable oval brush with three documented settings'],
+    notIdealFor: ['someone who needs a detachable head or a medium setting'],
+    officialProductUrl:
+      'https://www.revlonhairtools.com/dryers/salon-one-step-hair-dryer-and-volumizer/',
+    verifiedAt: batchEightChecked,
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      batchEightFact(
+        'US model scope',
+        'Current Salon One-Step Hair Dryer and Volumizer listing; non-detachable brush head',
+        'https://www.revlonhairtools.com/dryers/salon-one-step-hair-dryer-and-volumizer/',
+      ),
+      batchEightFact(
+        'US controls and rating',
+        'Three heat/speed settings; 1,100 W; designed for 120 V US outlets only',
+        'https://www.revlonhairtools.com/dryers/salon-one-step-hair-dryer-and-volumizer/',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.RevlonOneStepVolumizerVsPlus,
       ArticleSlug.BestHotAirBrushes,
     ],
   }),
@@ -359,19 +416,19 @@ export const productProfiles: readonly ProductProfile[] = [
       'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
     supportUrl:
       'https://www.dyson.com/support/hair-care/hair-stylers/airwrap-id',
-    availability: 'availability-to-check',
+    availability: 'available',
     evidenceStatus: 'specification-researched',
-    verifiedAt: batchFiveChecked,
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      batchFiveFact(
+      batchEightFact(
         'Model scope',
-        'Airwrap i.d. Straight+Wavy multi-styler and dryer',
+        'Airwrap i.d. Straight+Wavy, Plum/Copper, US page: 120 V; 1,300 W',
         'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
       ),
-      batchFiveFact(
-        'Attachment support',
-        'Dyson lists genuine Airwrap i.d. attachments and accessories separately',
-        'https://www.dyson.com/support/hair-care/hair-stylers/airwrap-id',
+      batchEightFact(
+        'In the box',
+        'Conical and 1.6-inch Airwrap barrels, Large Round Volumizing Brush, Dryer+Flyaway smoother, Fast Dryer, Anti Snag Loop Brush, filter cleaning brush and case',
+        'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
       ),
     ],
     relatedGuideSlugs: [
@@ -393,19 +450,19 @@ export const productProfiles: readonly ProductProfile[] = [
       'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
     availability: 'available',
     evidenceStatus: 'specification-researched',
-    verifiedAt: batchFiveChecked,
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      batchFiveFact(
+      batchEightFact(
         'Electrical specification',
         '120 V; 1,600 W',
         'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
       ),
-      batchFiveFact(
+      batchEightFact(
         'In the box',
         'Main unit, two 1.25-inch Auto-Wrap Curlers, Oval Brush, Paddle Brush and Styling Concentrator',
         'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
       ),
-      batchFiveFact(
+      batchEightFact(
         'Warranty',
         '2-year limited warranty stated',
         'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
@@ -455,24 +512,26 @@ export const productProfiles: readonly ProductProfile[] = [
   }),
   product({
     slug: 'wet-brush-original-detangler',
-    name: 'Wet Brush Original Detangler',
+    name: 'Wet Brush Original Detangler (Frost Black)',
     brand: 'Wet Brush',
     category: ProductCategory.HairBrush,
     subtype: 'flexible-bristle detangling brush',
     imageAlt: 'Wet Brush Original Detangler',
     priceTier: 'entry',
-    bestFor: ['a simple everyday detangling option'],
+    bestFor: ['a wet- or dry-use brush with flexible IntelliFlex bristles'],
     notIdealFor: [
       'assuming care directions without the exact package documentation',
     ],
-    officialProductUrl: 'https://wetbrush.com/',
+    officialProductUrl:
+      'https://wetbrush.com/products/original-detangler-frost-black',
     availability: 'available',
-    evidenceStatus: 'limited-specification',
+    evidenceStatus: 'specification-researched',
+    verifiedAt: batchEightChecked,
     verifiedFacts: [
-      fact(
-        'US availability',
-        'Original Detangler is listed on Wet Brush’s official US store',
-        'https://wetbrush.com/',
+      batchEightFact(
+        'Bristles and use',
+        'Frost Black Original Detangler has IntelliFlex bristles and is listed for wet or dry hair',
+        'https://wetbrush.com/products/original-detangler-frost-black',
       ),
     ],
     relatedGuideSlugs: [ArticleSlug.BestDetanglingBrushes],
@@ -590,27 +649,68 @@ export const productProfiles: readonly ProductProfile[] = [
         heatControl: heatControl as ProductProfile['heatControl'],
         dualVoltage: dualVoltage as boolean,
         bestFor: [
-          plateWidthInches === 1
-            ? 'a standard-width, versatile flat iron format'
-            : 'a distinct plate width for a specific handling preference',
+          slug === 'ghd-chronos'
+            ? 'a standard-width fixed-setting tool with a documented 10-minute inactivity shutoff'
+            : slug === 'ghd-platinum-plus'
+              ? 'a standard-width fixed-setting tool with a documented 30-minute inactivity shutoff'
+              : plateWidthInches === 1
+                ? 'a standard-width fixed-setting flat iron'
+                : 'a distinct plate width for a specific handling preference',
         ],
-        notIdealFor: ['assuming a fixed heat setting suits every routine'],
-        officialProductUrl: 'https://www.ghdhair.com/us/flat-irons-c',
+        notIdealFor: ['someone who needs an adjustable temperature control'],
+        officialProductUrl:
+          slug === 'ghd-chronos'
+            ? 'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650'
+            : slug === 'ghd-platinum-plus'
+              ? 'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453'
+              : 'https://www.ghdhair.com/us/flat-irons-c',
+        verifiedAt:
+          slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
+            ? batchEightChecked
+            : undefined,
         availability: 'available',
         evidenceStatus: 'specification-researched',
-        verifiedFacts: [
-          fact(
-            'Plate width',
-            `${plateWidthInches} in`,
-            'https://www.ghdhair.com/us/flat-irons-c',
-          ),
-          fact(
-            'Voltage',
-            'Universal voltage stated; check the exact product instructions before travel',
-            'https://www.ghdhair.com/us/flat-irons-c',
-          ),
+        verifiedFacts:
+          slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
+            ? [
+                batchEightFact(
+                  'US model and plate',
+                  'Black standard-width model; 1 in plate',
+                  slug === 'ghd-chronos'
+                    ? 'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650'
+                    : 'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453',
+                ),
+                batchEightFact(
+                  'Inactivity shutoff',
+                  slug === 'ghd-chronos' ? '10 minutes' : '30 minutes',
+                  slug === 'ghd-chronos'
+                    ? 'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650'
+                    : 'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453',
+                ),
+                batchEightFact(
+                  'US warranty',
+                  '3 years stated for this model',
+                  'https://www.ghdhair.com/us/warranty/',
+                ),
+              ]
+            : [
+                fact(
+                  'Plate width',
+                  `${plateWidthInches} in`,
+                  'https://www.ghdhair.com/us/flat-irons-c',
+                ),
+                fact(
+                  'Voltage',
+                  'Universal voltage stated; check the exact product instructions before travel',
+                  'https://www.ghdhair.com/us/flat-irons-c',
+                ),
+              ],
+        relatedGuideSlugs: [
+          ArticleSlug.BestFlatIrons,
+          ...(slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
+            ? [ArticleSlug.GhdChronosVsPlatinumPlus]
+            : []),
         ],
-        relatedGuideSlugs: [ArticleSlug.BestFlatIrons],
       }),
   ),
   product({
@@ -657,9 +757,9 @@ export const productProfiles: readonly ProductProfile[] = [
   ...[
     [
       'ghd-curve-classic-curl',
-      'ghd Curve Classic Curl Iron (1.25 inch barrel)',
+      'ghd Curve Classic Curl Iron (1 inch barrel)',
       'curling iron',
-      1.25,
+      1,
       'clamp',
     ],
     [
@@ -707,26 +807,53 @@ export const productProfiles: readonly ProductProfile[] = [
       mechanism: mechanism as ProductProfile['mechanism'],
       dualVoltage: true,
       bestFor: [
-        'a documented barrel size when you already know the format you prefer',
+        slug === 'ghd-curve-classic-curl'
+          ? 'a 1-inch clamp format documented in ghd US warranty information'
+          : slug === 'ghd-curve-soft-curl'
+            ? 'a 1.25-inch clamp format documented on the exact US product page'
+            : 'a documented barrel size when you already know the format you prefer',
       ],
       notIdealFor: [
         'guaranteeing curl shape or hold from barrel diameter alone',
       ],
-      officialProductUrl: 'https://www.ghdhair.com/us/curling-irons-c',
-      availability: 'available',
+      officialProductUrl:
+        slug === 'ghd-curve-soft-curl'
+          ? 'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302'
+          : slug === 'ghd-curve-classic-curl'
+            ? 'https://www.ghdhair.com/us/warranty/'
+            : 'https://www.ghdhair.com/us/curling-irons-c',
+      verifiedAt:
+        slug === 'ghd-curve-classic-curl' || slug === 'ghd-curve-soft-curl'
+          ? batchEightChecked
+          : undefined,
+      availability:
+        slug === 'ghd-curve-classic-curl'
+          ? 'availability-to-check'
+          : 'available',
       evidenceStatus: 'specification-researched',
-      verifiedFacts: [
-        fact(
-          'Barrel diameter',
-          `${barrelDiameterInches} in`,
-          'https://www.ghdhair.com/us/curling-irons-c',
-        ),
-        fact(
-          'Format',
-          mechanism === 'clamp' ? 'Clamp iron' : 'Clipless wand',
-          'https://www.ghdhair.com/us/curling-irons-c',
-        ),
-      ],
+      verifiedFacts:
+        slug === 'ghd-curve-classic-curl' || slug === 'ghd-curve-soft-curl'
+          ? [
+              batchEightFact(
+                'US barrel diameter',
+                `${barrelDiameterInches} in`,
+                slug === 'ghd-curve-classic-curl'
+                  ? 'https://www.ghdhair.com/us/warranty/'
+                  : 'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
+              ),
+            ]
+          : [
+              fact(
+                'Barrel diameter',
+                `${barrelDiameterInches} in`,
+                'https://www.ghdhair.com/us/curling-irons-c',
+              ),
+              fact(
+                'Format',
+                mechanism === 'clamp' ? 'Clamp iron' : 'Clipless wand',
+                'https://www.ghdhair.com/us/curling-irons-c',
+              ),
+            ],
       relatedGuideSlugs: [ArticleSlug.BestCurlingIrons],
     }),
   ),
@@ -807,6 +934,176 @@ export const productProfiles: readonly ProductProfile[] = [
       ),
     ],
     relatedGuideSlugs: [ArticleSlug.BestCurlingIrons],
+  }),
+  product({
+    slug: 'babyliss-air-style-1000-2136u-uk',
+    market: 'UK',
+    name: 'BaByliss Air Style 1000 (2136U)',
+    brand: 'BaByliss',
+    category: ProductCategory.MultiStyler,
+    subtype: 'multi-attachment hot-air styler',
+    imageAlt: 'BaByliss Air Style 1000 UK multi-attachment styler',
+    priceTier: 'mid-range',
+    bestFor: [
+      'one handle with documented drying, volumising, smoothing and curling attachments',
+    ],
+    notIdealFor: [
+      'someone who wants a single fixed brush without changing heads',
+    ],
+    officialProductUrl:
+      'https://www.babyliss.com/uk-en/air-style-1000-2136U.html',
+    supportUrl:
+      'https://www.babyliss.com/on/demandware.static/-/Sites-ml-babyliss-Library/en_GB/v1776089980931/information-booklets/2136U_IB.pdf',
+    verifiedAt: batchEightChecked,
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      batchEightFact(
+        'UK model and brush',
+        '2136U; 50 mm volumising brush',
+        'https://www.babyliss.com/uk-en/air-style-1000-2136U.html',
+      ),
+      batchEightFact(
+        'UK included parts',
+        'Drying nozzle, paddle brush, conical curler and heat glove listed',
+        'https://www.babyliss.com/uk-en/air-style-1000-2136U.html',
+      ),
+      batchEightFact(
+        'UK manual controls',
+        'Low and high heat plus cool',
+        'https://www.babyliss.com/on/demandware.static/-/Sites-ml-babyliss-Library/en_GB/v1776089980931/information-booklets/2136U_IB.pdf',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+      ArticleSlug.BestHotAirBrushes,
+    ],
+  }),
+  product({
+    slug: 'babyliss-flawless-volume-2764u-uk',
+    market: 'UK',
+    name: 'BaByliss Flawless Volume (2764U)',
+    brand: 'BaByliss',
+    category: ProductCategory.HotAirBrush,
+    subtype: 'single-head hot-air brush',
+    imageAlt: 'BaByliss Flawless Volume UK hot-air brush',
+    priceTier: 'entry',
+    bestFor: [
+      'a documented 38 mm single-brush process with low, high and cool settings',
+    ],
+    notIdealFor: ['someone who needs the Air Style 1000 attachment set'],
+    officialProductUrl:
+      'https://www.babyliss.com/uk-en/flawless-volume-2764U.html',
+    supportUrl:
+      'https://www.babyliss.com/on/demandware.static/-/Sites-ml-babyliss-Library/en_GB/v1743783094778/information-booklets/2764U_IB.pdf',
+    verifiedAt: batchEightChecked,
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      batchEightFact(
+        'UK model and brush',
+        '2764U; 38 mm barrel',
+        'https://www.babyliss.com/uk-en/flawless-volume-2764U.html',
+      ),
+      batchEightFact(
+        'UK controls',
+        'Low and high heat plus cool',
+        'https://www.babyliss.com/uk-en/flawless-volume-2764U.html',
+      ),
+      batchEightFact(
+        'UK filter care',
+        'Rear filter twists off for cleaning after unplugging and cooling',
+        'https://www.babyliss.com/on/demandware.static/-/Sites-ml-babyliss-Library/en_GB/v1743783094778/information-booklets/2764U_IB.pdf',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+      ArticleSlug.BestHotAirBrushes,
+    ],
+  }),
+  product({
+    slug: 'ghd-chronos-black-uk',
+    market: 'UK',
+    name: 'ghd Chronos (26 mm plate) Black, UK',
+    brand: 'ghd',
+    category: ProductCategory.FlatIron,
+    subtype: 'standard-width flat iron',
+    imageAlt: 'ghd Chronos black UK straightener',
+    priceTier: 'premium',
+    plateWidthInches: 1,
+    heatControl: 'fixed',
+    bestFor: [
+      'a UK 26 mm preset 185°C model with 10-minute inactivity shutoff',
+    ],
+    notIdealFor: ['someone who wants an adjustable temperature'],
+    officialProductUrl:
+      'https://www.ghdhair.com/hair-straighteners/ghd-chronos-black-styler-p-650',
+    verifiedAt: batchEightChecked,
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      batchEightFact(
+        'UK plate and control',
+        '26 mm; preset 185°C',
+        'https://www.ghdhair.com/hair-straighteners/ghd-chronos-black-styler-p-650',
+      ),
+      batchEightFact(
+        'UK inactivity shutoff',
+        '10 minutes',
+        'https://www.ghdhair.com/hair-straighteners/ghd-chronos-black-styler-p-650',
+      ),
+      batchEightFact(
+        'UK warranty',
+        '3 years stated',
+        'https://ukie.help.ghdhair.com/hc/en-gb/articles/7496039450258-WHAT-IS-THE-WARRANTY-ON-MY-PRODUCT',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.GhdChronosVsPlatinumPlus,
+      ArticleSlug.BestFlatIrons,
+    ],
+  }),
+  product({
+    slug: 'ghd-platinum-plus-black-uk',
+    market: 'UK',
+    name: 'ghd Platinum+ (26 mm plate) Black, UK',
+    brand: 'ghd',
+    category: ProductCategory.FlatIron,
+    subtype: 'standard-width flat iron',
+    imageAlt: 'ghd Platinum+ black UK straightener',
+    priceTier: 'premium',
+    plateWidthInches: 1,
+    heatControl: 'fixed',
+    bestFor: [
+      'a UK 26 mm preset 185°C model with 30-minute inactivity shutoff',
+    ],
+    notIdealFor: ['someone who wants an adjustable temperature'],
+    officialProductUrl:
+      'https://www.ghdhair.com/hair-straighteners/ghd-platinum-plus-black-styler-p-453',
+    verifiedAt: batchEightChecked,
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      batchEightFact(
+        'UK plate and control',
+        '26 mm; preset 185°C',
+        'https://www.ghdhair.com/hair-straighteners/ghd-platinum-plus-black-styler-p-453',
+      ),
+      batchEightFact(
+        'UK inactivity shutoff',
+        '30 minutes',
+        'https://www.ghdhair.com/hair-straighteners/ghd-platinum-plus-black-styler-p-453',
+      ),
+      batchEightFact(
+        'UK warranty',
+        '3 years stated',
+        'https://ukie.help.ghdhair.com/hc/en-gb/articles/7496039450258-WHAT-IS-THE-WARRANTY-ON-MY-PRODUCT',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.GhdChronosVsPlatinumPlus,
+      ArticleSlug.BestFlatIrons,
+    ],
   }),
 ];
 export const canonicalComparisons: readonly CanonicalComparison[] = [

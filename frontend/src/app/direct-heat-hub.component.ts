@@ -49,7 +49,7 @@ import { SiteSeoService } from './site-seo.service';
         </li>
         <li>
           <a routerLink="/products">Explore sourced product specifications</a> —
-          inspect exact US records and unknowns.
+          inspect exact market labels, sources and unknowns.
         </li>
       </ul>
     </section>
@@ -114,7 +114,13 @@ import { SiteSeoService } from './site-seo.service';
             <a [routerLink]="['/guides', articleSlug.BestFlatIrons]"
               >Compare researched models</a
             >
-            — inspect exact US source records.
+            — inspect exact model and market sources.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.GhdChronosVsPlatinumPlus]"
+              >Compare ghd Chronos and Platinum+</a
+            >
+            — separate two standard-width fixed-control models.
           </li>
         </ul>
       } @else {

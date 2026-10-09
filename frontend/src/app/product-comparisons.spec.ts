@@ -9,25 +9,24 @@ import {
 } from './product-comparisons';
 
 describe('product comparison data', () => {
-  it('keeps unique, source-backed US profiles across the published categories', () => {
+  it('keeps unique, source-backed profiles with explicit markets', () => {
     expect(
       productProfiles.filter(
         (product) => product.category === ProductCategory.HairDryer,
       ),
     ).toHaveLength(5);
-    expect(
-      productProfiles.filter((product) => product.priceTier === 'entry'),
-    ).toHaveLength(5);
-    expect(
-      productProfiles.filter(
-        (product) => product.category === ProductCategory.HotAirBrush,
-      ),
-    ).toHaveLength(3);
+    expect(productProfiles.some((product) => product.market === 'UK')).toBe(
+      true,
+    );
+    expect(productProfiles.some((product) => product.market === 'US')).toBe(
+      true,
+    );
     expect(new Set(productProfiles.map((product) => product.slug)).size).toBe(
       productProfiles.length,
     );
     for (const product of productProfiles) {
       expect(product.officialProductUrl).toMatch(/^https:\/\//);
+      expect(['US', 'UK']).toContain(product.market);
       expect(product.verifiedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(product.verifiedFacts.length).toBeGreaterThan(0);
       expect(
@@ -55,11 +54,11 @@ describe('product comparison data', () => {
     expect(second).toBeDefined();
     const facts = comparisonFacts(first!, second!);
     expect(
-      facts.find((fact) => fact.label === 'US electrical specification'),
+      facts.find((fact) => fact.label === 'Electrical specification'),
     ).toEqual({
-      label: 'US electrical specification',
-      first: expect.any(Object),
-      second: undefined,
+      label: 'Electrical specification',
+      first: undefined,
+      second: expect.any(Object),
     });
     expect(
       first!.verifiedFacts.find((fact) => fact.label === 'Weight'),

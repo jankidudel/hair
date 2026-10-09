@@ -580,6 +580,20 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-08-31',
   },
+  ...[
+    ArticleSlug.HowToUseHeatlessCurlingRod,
+    ArticleSlug.HeatlessCurlsNotWorking,
+    ArticleSlug.VelcroVsFoamHairRollers,
+    ArticleSlug.HowToUseVelcroHairRollers,
+    ArticleSlug.SatinBonnetVsSatinPillowcase,
+    ArticleSlug.MicrofiberHairTowelVsCottonTShirt,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.HairAccessories,
+    order: 36 + index,
+    enabled: true,
+    publishDate: '2026-10-08',
+  })),
   {
     slug: ArticleSlug.HowToUseHeatlessCurlersOnShortHair,
     group: ArticleGroupId.HairAccessories,
@@ -695,4 +709,18 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-10-07',
   })),
+  {
+    slug: ArticleSlug.GhdChronosVsPlatinumPlus,
+    group: ArticleGroupId.DirectHeat,
+    order: 14,
+    enabled: true,
+    publishDate: '2026-10-08',
+  },
+  {
+    slug: ArticleSlug.RevlonOneStepVolumizerVsPlus,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 125,
+    enabled: true,
+    publishDate: '2026-10-08',
+  },
 ] as const;

@@ -93,6 +93,16 @@ export const ArticleSlug = {
   HowOftenShouldYouWashYourHair: 'how-often-should-you-wash-your-hair',
   BestFlatIrons: 'best-flat-irons',
   GhdChronosVsPlatinumPlus: 'ghd-chronos-vs-platinum-plus',
+  CeramicVsTitaniumFlatIrons: 'ceramic-vs-titanium-flat-irons',
+  FixedVsAdjustableTemperatureHairStraighteners:
+    'fixed-vs-adjustable-temperature-hair-straighteners',
+  GhdGoldVsPlatinumPlus: 'ghd-gold-vs-platinum-plus',
+  GhdChronosVsChronosMax: 'ghd-chronos-vs-chronos-max',
+  RotatingVsFixedHotAirBrush: 'rotating-vs-fixed-hot-air-brush',
+  HowToChooseMultiStylerAttachments: 'how-to-choose-multi-styler-attachments',
+  PlugAdapterVsVoltageConverter: 'plug-adapter-vs-voltage-converter-hair-tools',
+  TangleTeezerVsWetBrushOriginal:
+    'tangle-teezer-ultimate-detangler-vs-wet-brush-original',
   BestFlatIronsFineHair: 'best-flat-irons-fine-hair',
   BestFlatIronsThickHair: 'best-flat-irons-thick-hair',
   BestTravelFlatIrons: 'best-travel-flat-irons',

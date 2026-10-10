@@ -262,7 +262,7 @@ if (new Set(sitemapLastmods).size < 2)
     'sitemap.xml: lastmod values must not all be one deployment date.',
   );
 const unchangedGuide = articles.find(
-  (article) => article.slug === 'how-to-choose-hair-dryer',
+  (article) => article.slug === 'how-to-use-hair-dryer-concentrator-nozzle',
 );
 if (
   unchangedGuide &&

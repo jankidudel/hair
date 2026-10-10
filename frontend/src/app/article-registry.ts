@@ -723,4 +723,40 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-10-08',
   },
+  ...[
+    ArticleSlug.CeramicVsTitaniumFlatIrons,
+    ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners,
+    ArticleSlug.GhdGoldVsPlatinumPlus,
+    ArticleSlug.GhdChronosVsChronosMax,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.DirectHeat,
+    order: 15 + index,
+    enabled: true,
+    publishDate: '2026-10-10',
+  })),
+  ...[
+    ArticleSlug.RotatingVsFixedHotAirBrush,
+    ArticleSlug.HowToChooseMultiStylerAttachments,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 130 + index,
+    enabled: true,
+    publishDate: '2026-10-10',
+  })),
+  {
+    slug: ArticleSlug.PlugAdapterVsVoltageConverter,
+    group: ArticleGroupId.HairDryers,
+    order: 175,
+    enabled: true,
+    publishDate: '2026-10-10',
+  },
+  {
+    slug: ArticleSlug.TangleTeezerVsWetBrushOriginal,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 260,
+    enabled: true,
+    publishDate: '2026-10-10',
+  },
 ] as const;

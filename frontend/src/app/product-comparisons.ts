@@ -56,6 +56,7 @@ export interface CanonicalComparison {
 }
 const checked = '2026-09-20';
 const batchEightChecked = '2026-10-08';
+const batchNineChecked = '2026-10-10';
 const fact = (
   label: string,
   value: string,
@@ -77,6 +78,31 @@ const batchEightFact = (
   value: string,
   sourceUrl: string,
 ): VerifiedFact => ({ label, value, sourceUrl, verifiedAt: batchEightChecked });
+
+const batchNineFact = (
+  label: string,
+  value: string,
+  sourceUrl: string,
+): VerifiedFact => ({
+  label,
+  value,
+  sourceUrl,
+  verifiedAt: batchNineChecked,
+});
+
+const ghdExactFlatIronSource: Readonly<Record<string, string>> = {
+  'ghd-chronos':
+    'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650',
+  'ghd-platinum-plus':
+    'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453',
+  'ghd-gold': 'https://www.ghdhair.com/us/flat-irons/ghd-gold-p-435',
+  'ghd-chronos-max':
+    'https://www.ghdhair.com/us/flat-irons/ghd-chronos-max-black-flat-iron-p-689',
+  'ghd-mini':
+    'https://www.ghdhair.com/us/flat-irons/ghd-mini-black-flat-iron-p-662',
+  'ghd-unplugged':
+    'https://www.ghdhair.com/us/flat-irons/ghd-unplugged-cordless-flat-iron-black-p-552',
+};
 
 export const productProfiles: readonly ProductProfile[] = [
   product({
@@ -287,16 +313,16 @@ export const productProfiles: readonly ProductProfile[] = [
     ],
     officialProductUrl:
       'https://www.revlonhairtools.com/curling_irons/one-step-volumizer-plus/',
-    verifiedAt: batchEightChecked,
+    verifiedAt: batchNineChecked,
     availability: 'available',
     evidenceStatus: 'specification-researched',
     verifiedFacts: [
-      batchEightFact(
+      batchNineFact(
         'Head and controls',
         '2.4-inch oval head; low, medium, high and cool settings',
         'https://www.revlonhairtools.com/curling_irons/one-step-volumizer-plus/',
       ),
-      batchEightFact(
+      batchNineFact(
         'Warranty',
         '4-year limited warranty stated',
         'https://www.revlonhairtools.com/curling_irons/one-step-volumizer-plus/',
@@ -320,16 +346,16 @@ export const productProfiles: readonly ProductProfile[] = [
     notIdealFor: ['someone who needs a detachable head or a medium setting'],
     officialProductUrl:
       'https://www.revlonhairtools.com/dryers/salon-one-step-hair-dryer-and-volumizer/',
-    verifiedAt: batchEightChecked,
+    verifiedAt: batchNineChecked,
     availability: 'available',
     evidenceStatus: 'specification-researched',
     verifiedFacts: [
-      batchEightFact(
+      batchNineFact(
         'US model scope',
         'Current Salon One-Step Hair Dryer and Volumizer listing; non-detachable brush head',
         'https://www.revlonhairtools.com/dryers/salon-one-step-hair-dryer-and-volumizer/',
       ),
-      batchEightFact(
+      batchNineFact(
         'US controls and rating',
         'Three heat/speed settings; 1,100 W; designed for 120 V US outlets only',
         'https://www.revlonhairtools.com/dryers/salon-one-step-hair-dryer-and-volumizer/',
@@ -475,6 +501,74 @@ export const productProfiles: readonly ProductProfile[] = [
     ],
   }),
   product({
+    slug: 'babyliss-big-hair-deluxe-as970u-uk',
+    market: 'UK',
+    name: 'BaByliss Big Hair Deluxe AS970U',
+    brand: 'BaByliss',
+    category: ProductCategory.HotAirBrush,
+    subtype: 'rotating and fixed attachment hot-air styler',
+    imageAlt: 'BaByliss Big Hair Deluxe AS970U',
+    priceTier: 'mid-range',
+    bestFor: ['a documented rotating 50 mm brush alongside fixed attachments'],
+    notIdealFor: ['assuming every attachment is powered to rotate'],
+    officialProductUrl:
+      'https://www.babyliss.com/uk-en/big-hair-deluxe-AS970U.html',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedAt: batchNineChecked,
+    verifiedFacts: [
+      batchNineFact(
+        'Attachment movement',
+        '50 mm rotating brush; 38 mm fixed brush also listed',
+        'https://www.babyliss.com/uk-en/big-hair-deluxe-AS970U.html',
+      ),
+      batchNineFact(
+        'Controls',
+        'Two temperature settings plus cool listed',
+        'https://www.babyliss.com/uk-en/big-hair-deluxe-AS970U.html',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.RotatingVsFixedHotAirBrush,
+      ArticleSlug.HotAirBrushBarrelSizeGuide,
+    ],
+  }),
+  product({
+    slug: 'tangle-teezer-ultimate-detangler-matte-uk',
+    market: 'UK',
+    name: 'Tangle Teezer The Ultimate Detangler Matte',
+    brand: 'Tangle Teezer',
+    category: ProductCategory.HairBrush,
+    subtype: 'two-tier detangling brush',
+    imageAlt: 'Tangle Teezer Ultimate Detangler Matte brush',
+    priceTier: 'entry',
+    bestFor: ['two-tier teeth and matte textured grip'],
+    notIdealFor: [
+      'heat styling; the exact maker page says keep this brush away from heat',
+    ],
+    officialProductUrl:
+      'https://tangleteezer.com/products/the-ultimate-detangler-matte',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedAt: batchNineChecked,
+    verifiedFacts: [
+      batchNineFact(
+        'Construction and use',
+        'Long and short teeth; maker describes use on shower-fresh hair',
+        'https://tangleteezer.com/products/the-ultimate-detangler-matte',
+      ),
+      batchNineFact(
+        'Care and restriction',
+        'Remove hair, wash with warm water and mild soap or shampoo, air dry; keep away from heat',
+        'https://tangleteezer.com/products/the-ultimate-detangler-matte',
+      ),
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.TangleTeezerVsWetBrushOriginal,
+      ArticleSlug.CanYouUseDetanglingBrushForBlowDrying,
+    ],
+  }),
+  product({
     slug: 'tangle-teezer-ultimate-detangler',
     name: 'Tangle Teezer The Ultimate Detangler',
     brand: 'Tangle Teezer',
@@ -526,9 +620,9 @@ export const productProfiles: readonly ProductProfile[] = [
       'https://wetbrush.com/products/original-detangler-frost-black',
     availability: 'available',
     evidenceStatus: 'specification-researched',
-    verifiedAt: batchEightChecked,
+    verifiedAt: batchNineChecked,
     verifiedFacts: [
-      batchEightFact(
+      batchNineFact(
         'Bristles and use',
         'Frost Black Original Detangler has IntelliFlex bristles and is listed for wet or dry hair',
         'https://wetbrush.com/products/original-detangler-frost-black',
@@ -647,7 +741,12 @@ export const productProfiles: readonly ProductProfile[] = [
         priceTier: priceTier as PriceTier,
         plateWidthInches: plateWidthInches as number,
         heatControl: heatControl as ProductProfile['heatControl'],
-        dualVoltage: dualVoltage as boolean,
+        dualVoltage:
+          slug === 'ghd-unplugged' ||
+          slug === 'ghd-chronos-max' ||
+          slug === 'ghd-mini'
+            ? undefined
+            : (dualVoltage as boolean),
         bestFor: [
           slug === 'ghd-chronos'
             ? 'a standard-width fixed-setting tool with a documented 10-minute inactivity shutoff'
@@ -659,56 +758,83 @@ export const productProfiles: readonly ProductProfile[] = [
         ],
         notIdealFor: ['someone who needs an adjustable temperature control'],
         officialProductUrl:
-          slug === 'ghd-chronos'
-            ? 'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650'
-            : slug === 'ghd-platinum-plus'
-              ? 'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453'
-              : 'https://www.ghdhair.com/us/flat-irons-c',
-        verifiedAt:
-          slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
-            ? batchEightChecked
-            : undefined,
+          ghdExactFlatIronSource[slug as string] ??
+          'https://www.ghdhair.com/us/flat-irons-c',
+        verifiedAt: ghdExactFlatIronSource[slug as string]
+          ? batchNineChecked
+          : undefined,
         availability: 'available',
         evidenceStatus: 'specification-researched',
-        verifiedFacts:
-          slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
-            ? [
-                batchEightFact(
-                  'US model and plate',
-                  'Black standard-width model; 1 in plate',
-                  slug === 'ghd-chronos'
-                    ? 'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650'
-                    : 'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453',
-                ),
-                batchEightFact(
-                  'Inactivity shutoff',
-                  slug === 'ghd-chronos' ? '10 minutes' : '30 minutes',
-                  slug === 'ghd-chronos'
-                    ? 'https://www.ghdhair.com/us/flat-irons/ghd-chronos-black-flat-iron-p-650'
-                    : 'https://www.ghdhair.com/us/flat-irons/ghd-platinum-plus-black-flat-iron-p-453',
-                ),
-                batchEightFact(
-                  'US warranty',
-                  '3 years stated for this model',
-                  'https://www.ghdhair.com/us/warranty/',
-                ),
-              ]
-            : [
-                fact(
-                  'Plate width',
-                  `${plateWidthInches} in`,
-                  'https://www.ghdhair.com/us/flat-irons-c',
-                ),
-                fact(
-                  'Voltage',
-                  'Universal voltage stated; check the exact product instructions before travel',
-                  'https://www.ghdhair.com/us/flat-irons-c',
-                ),
-              ],
+        verifiedFacts: ghdExactFlatIronSource[slug as string]
+          ? [
+              batchNineFact(
+                'US model and plate',
+                `Exact black model; ${plateWidthInches} in plate label`,
+                ghdExactFlatIronSource[slug as string],
+              ),
+              ...(slug === 'ghd-chronos' || slug === 'ghd-chronos-max'
+                ? [
+                    batchNineFact(
+                      'Inactivity shutoff',
+                      '10 minutes',
+                      ghdExactFlatIronSource[slug as string],
+                    ),
+                  ]
+                : slug === 'ghd-platinum-plus' ||
+                    slug === 'ghd-gold' ||
+                    slug === 'ghd-mini'
+                  ? [
+                      batchNineFact(
+                        'Inactivity shutoff',
+                        '30 minutes',
+                        ghdExactFlatIronSource[slug as string],
+                      ),
+                    ]
+                  : []),
+              ...(slug === 'ghd-unplugged'
+                ? [
+                    batchNineFact(
+                      'Operation',
+                      'Cordless; cannot be used while charging',
+                      ghdExactFlatIronSource[slug as string],
+                    ),
+                  ]
+                : []),
+              ...(slug === 'ghd-chronos-max' || slug === 'ghd-gold'
+                ? [
+                    batchNineFact(
+                      'US warranty',
+                      '2 years stated for this exact model',
+                      ghdExactFlatIronSource[slug as string],
+                    ),
+                  ]
+                : slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
+                  ? [
+                      batchNineFact(
+                        'US warranty',
+                        '3 years stated for this exact model',
+                        ghdExactFlatIronSource[slug as string],
+                      ),
+                    ]
+                  : []),
+            ]
+          : [
+              fact(
+                'Plate width',
+                `${plateWidthInches} in`,
+                'https://www.ghdhair.com/us/flat-irons-c',
+              ),
+            ],
         relatedGuideSlugs: [
           ArticleSlug.BestFlatIrons,
           ...(slug === 'ghd-chronos' || slug === 'ghd-platinum-plus'
             ? [ArticleSlug.GhdChronosVsPlatinumPlus]
+            : []),
+          ...(slug === 'ghd-gold' || slug === 'ghd-platinum-plus'
+            ? [ArticleSlug.GhdGoldVsPlatinumPlus]
+            : []),
+          ...(slug === 'ghd-chronos' || slug === 'ghd-chronos-max'
+            ? [ArticleSlug.GhdChronosVsChronosMax]
             : []),
         ],
       }),
@@ -730,20 +856,21 @@ export const productProfiles: readonly ProductProfile[] = [
     notIdealFor: ['someone who wants a fixed-control tool'],
     officialProductUrl:
       'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
+    verifiedAt: batchNineChecked,
     availability: 'available',
     evidenceStatus: 'specification-researched',
     verifiedFacts: [
-      fact(
+      batchNineFact(
         'Controls',
         '5 digital heat settings: 300°F, 340°F, 380°F, 420°F and 450°F',
         'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
       ),
-      fact(
+      batchNineFact(
         'Voltage',
         '120 V / 240 V dual voltage stated',
         'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',
       ),
-      fact(
+      batchNineFact(
         'Automatic shutoff',
         '60 minutes stated',
         'https://www.babylisspro.com/nano-titanium-1-inch-digital-ultra-thin-flat-iron/BNT4172T.html',

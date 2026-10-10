@@ -117,6 +117,23 @@ import { SiteSeoService } from './site-seo.service';
             — inspect exact model and market sources.
           </li>
           <li>
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.FixedVsAdjustableTemperatureHairStraighteners,
+              ]"
+              >Choose fixed or adjustable controls</a
+            >
+            — decide whether a selectable setting matters.
+          </li>
+          <li>
+            <a
+              [routerLink]="['/guides', articleSlug.CeramicVsTitaniumFlatIrons]"
+              >Read ceramic and titanium claims</a
+            >
+            — separate a coating from the whole plate.
+          </li>
+          <li>
             <a [routerLink]="['/guides', articleSlug.GhdChronosVsPlatinumPlus]"
               >Compare ghd Chronos and Platinum+</a
             >

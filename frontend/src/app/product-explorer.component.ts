@@ -13,6 +13,7 @@ import {
   type CanonicalComparison,
   type PriceTier,
   type ProductProfile,
+  type VerifiedFact,
 } from './product-comparisons';
 import { SiteSeoService } from './site-seo.service';
 
@@ -268,6 +269,28 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                       </td>
                     }
                   </tr>
+                  @for (label of selectedFactLabels; track label) {
+                    <tr>
+                      <th scope="row">{{ label }}</th>
+                      @for (product of selectedProducts; track product.slug) {
+                        <td>
+                          @if (selectedFact(product, label); as detail) {
+                            <a
+                              [href]="detail.sourceUrl"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              >{{ detail.value }}
+                              <span class="external-label"
+                                >Official source</span
+                              ></a
+                            >
+                          } @else {
+                            Not confirmed
+                          }
+                        </td>
+                      }
+                    </tr>
+                  }
                 </tbody>
               </table>
             </div>
@@ -395,6 +418,21 @@ export class ProductExplorerComponent implements OnInit {
     return this.selectedSlugs
       .map(productBySlug)
       .filter((product): product is ProductProfile => product !== undefined);
+  }
+  get selectedFactLabels(): readonly string[] {
+    return [
+      ...new Set(
+        this.selectedProducts.flatMap((product) =>
+          product.verifiedFacts.map((fact) => fact.label),
+        ),
+      ),
+    ];
+  }
+  selectedFact(
+    product: ProductProfile,
+    label: string,
+  ): VerifiedFact | undefined {
+    return product.verifiedFacts.find((fact) => fact.label === label);
   }
   ngOnInit(): void {
     const comparisonSlug = this.route.snapshot.paramMap.get('comparison');

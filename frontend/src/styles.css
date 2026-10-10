@@ -314,6 +314,11 @@ h3 {
   font-size: 0.98rem;
   line-height: 1.55;
 }
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 .article-body figure figcaption {
   margin-bottom: 0.75rem;
 }

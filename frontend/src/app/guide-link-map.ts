@@ -17,12 +17,32 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
     ArticleSlug.HairDryerWattageGuide,
   ],
   [ArticleSlug.DysonAirwrapVsSharkFlexstyle]: [
+    ArticleSlug.HowToChooseMultiStylerAttachments,
     ArticleSlug.BestHotAirBrushes,
-    ArticleSlug.HotAirBrushVsHairDryer,
   ],
   [ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume]: [
+    ArticleSlug.RotatingVsFixedHotAirBrush,
     ArticleSlug.HotAirBrushBarrelSizeGuide,
-    ArticleSlug.HotAirBrushVsHairDryerAndRoundBrush,
+  ],
+  [ArticleSlug.GhdChronosVsPlatinumPlus]: [
+    ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners,
+    ArticleSlug.GhdGoldVsPlatinumPlus,
+  ],
+  [ArticleSlug.RevlonOneStepVolumizerVsPlus]: [
+    ArticleSlug.BestHotAirBrushes,
+    ArticleSlug.RotatingVsFixedHotAirBrush,
+  ],
+  [ArticleSlug.GhdGoldVsPlatinumPlus]: [
+    ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners,
+    ArticleSlug.BestFlatIrons,
+  ],
+  [ArticleSlug.GhdChronosVsChronosMax]: [
+    ArticleSlug.FlatIronPlateWidthGuide,
+    ArticleSlug.GhdChronosVsPlatinumPlus,
+  ],
+  [ArticleSlug.TangleTeezerVsWetBrushOriginal]: [
+    ArticleSlug.BestDetanglingBrushes,
+    ArticleSlug.CanYouUseDetanglingBrushForBlowDrying,
   ],
 };
 

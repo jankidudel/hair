@@ -29,6 +29,8 @@ A guide is public only when its `article-registry.ts` entry is enabled and its r
 
 Hard errors block commits, pushes, pull requests and deployments; warnings identify worthwhile editorial improvements without blocking release. `git commit --no-verify` is an emergency local escape hatch only: it never permits deployment when the non-bypassable GitHub validation job fails. Add `reviewMethod` only when naming or ranking specific products; do not imply testing that did not occur. `updatedDate` is reserved for meaningful editorial changes.
 
+Each retained guide must answer its own reader decision. When adding researched material to an older page, integrate it into the finished article: remove repeated generic body sections, duplicate introductions and conclusions, and obsolete serialized front matter. Keep short shared disclosures where useful. State exact model, market and source beside claims that depend on them; a family page, regional listing or charging specification cannot silently stand in for another model, market or operating rating. Leave unsupported fields unknown and preserve the source's actual check date.
+
 ## Structure
 
 - `frontend/`: Angular standalone application with static prerendering.

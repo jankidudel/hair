@@ -829,6 +829,11 @@ export class StaticPageComponent implements OnInit {
             path: '/guides/best-travel-hair-dryers',
             description: 'start with voltage compatibility',
           },
+          {
+            label: 'Check adapter and voltage labels',
+            path: '/guides/plug-adapter-vs-voltage-converter-hair-tools',
+            description: 'separate plug fit from appliance input',
+          },
         ],
         'hot-air-brushes': [
           {
@@ -856,6 +861,16 @@ export class StaticPageComponent implements OnInit {
             path: '/guides/babyliss-air-style-1000-vs-flawless-volume',
             description: 'check the exact 2136U and 2764U formats',
           },
+          {
+            label: 'Choose powered or manual turning',
+            path: '/guides/rotating-vs-fixed-hot-air-brush',
+            description: 'identify which brush head actually rotates',
+          },
+          {
+            label: 'Plan a multi-styler bundle',
+            path: '/guides/how-to-choose-multi-styler-attachments',
+            description: 'check roles, fit and what is in the box',
+          },
         ],
         'brushes-and-combs': [
           {
@@ -872,6 +887,11 @@ export class StaticPageComponent implements OnInit {
             label: 'Compare detangling options',
             path: '/guides/best-detangling-brushes',
             description: 'check wet-use directions, spacing and form factor',
+          },
+          {
+            label: 'Compare two exact detanglers',
+            path: '/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original',
+            description: 'read tooth layout, grip and heat restrictions',
           },
           {
             label: 'Detangle with a comb or brush',

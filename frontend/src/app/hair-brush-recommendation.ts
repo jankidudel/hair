@@ -119,83 +119,57 @@ export function recommendHairBrush(answers: HairBrushAnswers): HairBrushResult {
     if (answers.texture === 'curly-coily')
       return {
         primary: pick('wide-tooth-comb'),
-        alternative: pick('flexible-detangling-brush'),
-        rationale: `For ${hair} and wet detangling, open spacing gives you controlled passes through sections while keeping your preferred texture in mind.`,
-      };
-    if (answers.thickness === 'fine')
-      return {
-        primary: pick('flexible-detangling-brush'),
-        rationale: `For fine ${textureName(answers.texture)} hair, a flexible wet-use brush is a practical way to detangle in small, controlled passes.`,
+        rationale: `For damp detangling ${hair}, open spacing lets you control each section. A styling-row brush is a separate choice for definition; this result does not imply dryer permission. Trade-off: a comb may take more passes than a broad head.`,
       };
     return {
       primary: pick('flexible-detangling-brush'),
-      alternative: pick('wide-tooth-comb'),
-      rationale: `For ${hair} and wet detangling, flexible pins make it easier to work through sections without relying on a styling brush.`,
+      rationale: `For damp detangling ${hair}, a wet-use flexible-pin format is a starting point. Work in smaller sections if density crowds the head. Trade-off: this is not automatically a brush for dryer styling.`,
     };
   }
-
   if (answers.use === 'blow-dry') {
-    if (answers.texture === 'curly-coily')
+    if (answers.goal === 'define-curls' && answers.texture === 'curly-coily')
       return {
         primary: pick('wide-tooth-comb'),
-        rationale: `For ${hair}, a wide-tooth comb can help with gentle sectioning before drying. Brushing is not required for curls; diffuser-oriented styling may better suit the finish you want.`,
+        rationale: `For a texture-focused drying routine with ${hair}, a comb can prepare sections before drying. Trade-off: it does not create a round-brush blowout; choose the exact dryer method separately.`,
       };
-    if (answers.goal === 'volume')
-      return {
-        primary: pick('round-brush'),
-        rationale: `For ${hair} and a volume-focused blow-dry, a round brush gives you the most control to lift and shape each section.`,
-      };
-    if (answers.length === 'short')
+    if (answers.length === 'short' && answers.goal !== 'volume')
       return {
         primary: pick('vent-brush'),
-        alternative: pick('round-brush'),
-        rationale: `For short ${textureName(answers.texture)} hair, a vent brush keeps blow-drying quick and manageable; use a small round brush when you want more shape.`,
+        rationale: `For short ${textureName(answers.texture)} hair with a separate dryer, a vented manual head can guide a manageable section. Trade-off: it offers less wrap for bend than a round barrel. Check the exact brush's dryer directions.`,
+      };
+    if (answers.goal === 'smooth')
+      return {
+        primary: pick('paddle-brush'),
+        rationale: `For a straighter drying path through ${hair}, a paddle head can guide sections. Trade-off: it cannot wrap a section around a barrel for pronounced bend. Check the exact model's dryer directions.`,
       };
     return {
       primary: pick('round-brush'),
-      alternative: pick('paddle-brush'),
-      rationale: `For ${hair}, a round brush adds controlled shape during a blow-dry, while a paddle brush is a simpler alternative for smoother sections.`,
+      rationale: `For shape or lift with a separate dryer, a manual round brush lets you guide ${hair} in sections. Trade-off: short pieces must reach the curve and release cleanly; high density calls for narrower sections, not automatically a bigger barrel.`,
     };
   }
-
   if (answers.texture === 'curly-coily' || answers.goal === 'define-curls')
     return {
       primary: pick('wide-tooth-comb'),
-      rationale: `For ${hair} and a texture-focused goal, a wide-tooth comb is a practical alternative to dry brushing, which can create unwanted frizz for many people.`,
-    };
-  if (answers.goal === 'volume')
-    return {
-      primary: pick('vent-brush'),
-      alternative: pick('round-brush'),
-      rationale: `For ${hair} and everyday volume, a light vent brush offers quick lift without making your routine feel like a full blow-dry.`,
+      rationale: `For dry ${hair} and a texture-focused goal, a comb can separate selected sections without making dry brushing a required step. Trade-off: it will not produce a polished blowout shape.`,
     };
   if (answers.goal === 'detangle')
     return {
       primary: pick('flexible-detangling-brush'),
-      alternative: pick('wide-tooth-comb'),
-      rationale: `For ${hair} and gentle everyday detangling, flexible pins are a useful starting point for working through small sections.`,
+      rationale: `For dry detangling ${hair}, a flexible-pin format allows smaller passes. Trade-off: a broader finishing brush may cover more surface once knots are clear.`,
     };
-  if (answers.length === 'short')
+  if (answers.goal === 'volume')
+    return {
+      primary: pick('vent-brush'),
+      rationale: `For dry grooming with a lift preference, a light vent brush is a simple manual format. Trade-off: lasting shaped root lift calls for a separate styling method.`,
+    };
+  if (answers.length === 'short' || answers.thickness === 'fine')
     return {
       primary: pick('boar-mixed-bristle'),
-      alternative: pick('vent-brush'),
-      rationale: `For short ${textureName(answers.texture)} hair and everyday grooming, a boar or mixed-bristle brush gives a neat, controlled finish without needing heat.`,
-    };
-  if (answers.thickness === 'fine')
-    return {
-      primary: pick('boar-mixed-bristle'),
-      alternative: pick('vent-brush'),
-      rationale: `For fine ${textureName(answers.texture)} hair, gentle mixed bristles or a light vent brush are usually easier to control than a heavy, dense paddle brush.`,
-    };
-  if (answers.length === 'long' && answers.thickness === 'thick')
-    return {
-      primary: pick('paddle-brush'),
-      rationale: `For long, thick ${textureName(answers.texture)} hair used for everyday grooming, a paddle brush covers larger sections for practical smoothing.`,
+      rationale: `For dry finishing ${hair}, a compact finishing brush is worth comparing. Trade-off: its bristle layout may not be the right tool for knots or a dryer-led shape; fine strands alone do not prove one brush safer.`,
     };
   return {
     primary: pick('paddle-brush'),
-    alternative: pick('boar-mixed-bristle'),
-    rationale: `For ${hair} used mainly for everyday grooming, a paddle brush gives quick smoothing without needing heat.`,
+    rationale: `For dry smoothing ${hair}, a paddle head covers a broad section. Trade-off: narrow the section when density crowds it, and use a different tool only if you also want a shaped blowout.`,
   };
 }
 

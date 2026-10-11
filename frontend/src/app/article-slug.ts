@@ -5,6 +5,13 @@ export const ArticleSlug = {
   BestHairDryersCurlyHair: 'best-hair-dryers-curly-hair',
   BestTravelHairDryers: 'best-travel-hair-dryers',
   RoundBrushSizeGuide: 'round-brush-size-guide',
+  ThermalBrushVsHotAirBrush: 'thermal-brush-vs-hot-air-brush',
+  DenmanD3VsD4: 'denman-d3-vs-d4',
+  OliviaGardenCeramicIonVsNanothermic:
+    'olivia-garden-ceramic-ion-vs-nanothermic',
+  HairRollerSizeGuide: 'hair-roller-size-guide',
+  FlexiRodsVsFoamRollers: 'flexi-rods-vs-foam-rollers',
+  HeatedRollersVsSelfGripRollers: 'heated-rollers-vs-self-grip-rollers',
   HairDryerChooser: 'how-to-choose-hair-dryer',
   HairDryerWattageGuide: 'hair-dryer-wattage-guide',
   DysonSupersonicVsSharkSpeedstyle: 'dyson-supersonic-vs-shark-speedstyle',

@@ -398,6 +398,23 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-08-31',
   },
+  ...[
+    ArticleSlug.DenmanD3VsD4,
+    ArticleSlug.OliviaGardenCeramicIonVsNanothermic,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 11 + index,
+    enabled: true,
+    publishDate: '2026-10-11',
+  })),
+  {
+    slug: ArticleSlug.ThermalBrushVsHotAirBrush,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 112,
+    enabled: true,
+    publishDate: '2026-10-11',
+  },
   {
     slug: ArticleSlug.HotAirBrushVsCurlingIron,
     group: ArticleGroupId.HotAirBrushes,
@@ -593,6 +610,17 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     order: 36 + index,
     enabled: true,
     publishDate: '2026-10-08',
+  })),
+  ...[
+    ArticleSlug.HairRollerSizeGuide,
+    ArticleSlug.FlexiRodsVsFoamRollers,
+    ArticleSlug.HeatedRollersVsSelfGripRollers,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.HairAccessories,
+    order: 43 + index,
+    enabled: true,
+    publishDate: '2026-10-11',
   })),
   {
     slug: ArticleSlug.HowToUseHeatlessCurlersOnShortHair,

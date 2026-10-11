@@ -6,6 +6,8 @@ export type StylingTime = 'under-10' | '10-20' | 'over-20';
 export type OwnedTool =
   | 'dryer'
   | 'hot-air-brush'
+  | 'heated-round-brush'
+  | 'rollers'
   | 'round-brush'
   | 'flat-iron'
   | 'curling-iron'
@@ -100,6 +102,27 @@ export function recommendHairToolRoutine(
         label: 'Learn about root volume with a round brush',
       },
     );
+    if (owns('hot-air-brush'))
+      return {
+        summary:
+          'Your existing airflow brush can cover the drying-and-shaping task when its exact directions permit your starting state.',
+        items: [
+          {
+            label: 'Start with',
+            tool: 'Your existing hot-air brush',
+            detail:
+              'Use its own starting-state and attachment directions; work in manageable sections.',
+          },
+        ],
+        skip: 'A separate dryer and manual round brush would duplicate this selected task unless you want independent nozzle and brush control.',
+        links: [
+          {
+            path: `/guides/${ArticleSlug.ThermalBrushVsHotAirBrush}`,
+            label: 'Check airflow versus heated-round stages',
+          },
+          ...links,
+        ],
+      };
     const items: RoutineItem[] = [
       {
         label: 'Start with',
@@ -107,7 +130,7 @@ export function recommendHairToolRoutine(
         detail: 'Use controllable airflow for the drying stage.',
       },
       {
-        label: 'Add when useful',
+        label: owns('round-brush') ? 'Start with' : 'Add when useful',
         tool: owns('round-brush')
           ? 'Your existing round brush'
           : 'Correctly sized round brush',
@@ -118,9 +141,12 @@ export function recommendHairToolRoutine(
       },
     ];
     return {
-      summary: owns('dryer')
-        ? 'Build around the dryer you already own and one correctly sized round brush for a shaped, fuller finish.'
-        : 'Keep the blowout setup to a controllable dryer and one correctly sized round brush.',
+      summary:
+        owns('dryer') && owns('round-brush')
+          ? 'Your existing dryer and manual round brush already cover the drying and shaping stages; no new styling tool is essential.'
+          : owns('dryer')
+            ? 'Build around the dryer you already own and one correctly sized round brush for a shaped, fuller finish.'
+            : 'Keep the blowout setup to a controllable dryer and one correctly sized round brush.',
       items: items.slice(0, 2),
       skip: 'A curling iron is not a priority when curls or waves are not part of the result you want.',
       links,
@@ -138,6 +164,11 @@ export function recommendHairToolRoutine(
         label: 'Use the Hair Dryer Finder',
       },
     );
+    if (owns('rollers'))
+      links.push({
+        path: `/guides/${ArticleSlug.HairRollerSizeGuide}`,
+        label: 'Plan sections with your existing rollers',
+      });
     return {
       summary:
         'Use a drying stage and one finishing category that matches the curls or waves you actually want to create.',
@@ -150,9 +181,12 @@ export function recommendHairToolRoutine(
         },
         {
           label: 'Add when useful',
-          tool: 'Curl or wave finishing tool category',
-          detail:
-            owns('curling-iron') || owns('curling-wand')
+          tool: owns('rollers')
+            ? 'Your existing rollers'
+            : 'Curl or wave finishing tool category',
+          detail: owns('rollers')
+            ? 'Use the exact roller directions and check whether your pack covers the intended sections; a new curling appliance is optional.'
+            : owns('curling-iron') || owns('curling-wand')
               ? 'Use your existing direct-heat curling tool when it still matches the result you want; do not add a duplicate by default.'
               : 'Choose a curling iron, curling wand, or no extra direct-heat tool for the level of definition you want rather than collecting overlapping tools.',
         },
@@ -194,6 +228,36 @@ export function recommendHairToolRoutine(
       ],
       skip: 'A separate dryer and round brush would duplicate this simple-finish setup unless you decide you want a fuller blowout.',
       links,
+    };
+  }
+  if (owns('heated-round-brush')) {
+    return {
+      summary:
+        'Your heated round brush is a dry-hair shaping option only when the exact model permits it; keep a separate drying stage if needed.',
+      items: [
+        {
+          label: 'Start with',
+          tool: owns('dryer')
+            ? 'Your existing dryer'
+            : 'A permitted drying method',
+          detail:
+            'Finish the drying stage before using a dry-only heated round brush.',
+        },
+        {
+          label: 'Add when useful',
+          tool: 'Your existing heated round brush',
+          detail:
+            'Shape already-dry sections within the exact model directions.',
+        },
+      ],
+      skip: 'An airflow brush duplicates the shaping goal unless you also need its distinct drying routine.',
+      links: [
+        {
+          path: `/guides/${ArticleSlug.ThermalBrushVsHotAirBrush}`,
+          label: 'Compare heated and airflow brush stages',
+        },
+        ...links,
+      ],
     };
   }
   const items: RoutineItem[] = [

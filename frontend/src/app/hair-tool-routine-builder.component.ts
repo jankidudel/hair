@@ -177,6 +177,8 @@ export class HairToolRoutineBuilderComponent {
   readonly ownedOptions = [
     { value: 'dryer', label: 'A dryer' },
     { value: 'hot-air-brush', label: 'A hot-air brush' },
+    { value: 'heated-round-brush', label: 'A dry-use heated round brush' },
+    { value: 'rollers', label: 'A roller set' },
     { value: 'round-brush', label: 'A round brush' },
     { value: 'flat-iron', label: 'A flat iron' },
     { value: 'curling-iron', label: 'A curling iron' },

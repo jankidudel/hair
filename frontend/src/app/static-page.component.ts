@@ -837,6 +837,11 @@ export class StaticPageComponent implements OnInit {
         ],
         'hot-air-brushes': [
           {
+            label: 'Choose heated round or airflow',
+            path: '/guides/thermal-brush-vs-hot-air-brush',
+            description: 'check heat source and the permitted routine stage',
+          },
+          {
             label: 'Choose a hot-air brush',
             path: '/guides/best-hot-air-brushes',
             description: 'compare a brush-led dryer with other tool formats',
@@ -873,6 +878,17 @@ export class StaticPageComponent implements OnInit {
           },
         ],
         'brushes-and-combs': [
+          {
+            label: 'Compare two Denman stylers',
+            path: '/guides/denman-d3-vs-d4',
+            description: 'choose the exact seven- or nine-row layout',
+          },
+          {
+            label: 'Compare Olivia Garden round brushes',
+            path: '/guides/olivia-garden-ceramic-ion-vs-nanothermic',
+            description:
+              'keep nominal labels and diameter definitions distinct',
+          },
           {
             label: 'Use the Hair Brush Finder',
             path: '/hair-brush-finder',
@@ -915,6 +931,21 @@ export class StaticPageComponent implements OnInit {
           },
         ],
         'hair-accessories': [
+          {
+            label: 'Plan roller sizes and pack coverage',
+            path: '/guides/hair-roller-size-guide',
+            description: 'check curve, working width, closures and pieces',
+          },
+          {
+            label: 'Choose bendable or snap rollers',
+            path: '/guides/flexi-rods-vs-foam-rollers',
+            description: 'compare two unheated closure paths',
+          },
+          {
+            label: 'Choose heated or self-grip rollers',
+            path: '/guides/heated-rollers-vs-self-grip-rollers',
+            description: 'separate an appliance from an unheated set',
+          },
           {
             label: 'Choose a heatless set',
             path: '/guides/best-heatless-curling-sets',

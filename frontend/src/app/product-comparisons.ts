@@ -57,6 +57,7 @@ export interface CanonicalComparison {
 const checked = '2026-09-20';
 const batchEightChecked = '2026-10-08';
 const batchNineChecked = '2026-10-10';
+const batchTenChecked = '2026-10-11';
 const fact = (
   label: string,
   value: string,
@@ -105,6 +106,100 @@ const ghdExactFlatIronSource: Readonly<Record<string, string>> = {
 };
 
 export const productProfiles: readonly ProductProfile[] = [
+  ...[
+    {
+      slug: 'denman-d3-original-7-row-uk',
+      name: 'Denman D3 The Original Curl Definer & Styler, 7 row',
+      url: 'https://denmanbrush.com/products/d3-original-styler-7-row',
+      rows: 'Seven rows; maker describes wet curl definition and precision blow-drying',
+      guide: ArticleSlug.DenmanD3VsD4,
+    },
+    {
+      slug: 'denman-d4-original-9-row-uk',
+      name: 'Denman D4 Original 9 Row Styler',
+      url: 'https://denmanbrush.com/products/d4-original-styler-9-row',
+      rows: 'Nine rows; maker describes wet curl definition and long-hair shape',
+      guide: ArticleSlug.DenmanD3VsD4,
+    },
+  ].map((brush) =>
+    product({
+      slug: brush.slug,
+      market: 'UK',
+      name: brush.name,
+      brand: 'Denman',
+      category: ProductCategory.HairBrush,
+      subtype: 'manual styling-row brush',
+      imageAlt: brush.name,
+      priceTier: 'entry',
+      bestFor: ['comparing exact row layouts for styling'],
+      notIdealFor: [
+        'claiming row count proves detangling speed or curl results',
+      ],
+      officialProductUrl: brush.url,
+      availability: 'availability-to-check',
+      evidenceStatus: 'specification-researched',
+      verifiedAt: batchTenChecked,
+      verifiedFacts: [
+        {
+          label: 'Rows and maker-described use',
+          value: brush.rows,
+          sourceUrl: brush.url,
+          verifiedAt: batchTenChecked,
+        },
+      ],
+      relatedGuideSlugs: [
+        brush.guide,
+        ArticleSlug.CurlDefiningBrushVsDetanglingBrush,
+      ],
+    }),
+  ),
+  ...[
+    {
+      slug: 'olivia-garden-ceramic-ion-thermal-ci-35-us',
+      name: 'Olivia Garden Ceramic + ion Thermal Round CI-35',
+      url: 'https://store.oliviagarden.com/products/ceramic-ion-thermal',
+      label:
+        'CI-35 is labelled 1 3/8 inches by the maker; barrel and bristle diameters are shown separately in an image',
+    },
+    {
+      slug: 'olivia-garden-nanothermic-round-thermal-nt-34-us',
+      name: 'Olivia Garden NanoThermic Round Thermal NT-34',
+      url: 'https://store.oliviagarden.com/products/nanothermic-round-thermal',
+      label:
+        'NT-34 is labelled 1 1/4 inches by the maker; barrel and bristle diameters are shown separately in an image',
+    },
+  ].map((brush) =>
+    product({
+      slug: brush.slug,
+      market: 'US',
+      name: brush.name,
+      brand: 'Olivia Garden',
+      category: ProductCategory.HairBrush,
+      subtype: 'manual thermal round brush',
+      imageAlt: brush.name,
+      priceTier: 'mid-range',
+      bestFor: ['comparing the exact nominal size and manual-brush layout'],
+      notIdealFor: [
+        'treating the model suffix as a measured millimetre diameter',
+      ],
+      officialProductUrl: brush.url,
+      availability: 'availability-to-check',
+      evidenceStatus: 'specification-researched',
+      verifiedAt: batchTenChecked,
+      verifiedFacts: [
+        {
+          label: 'Nominal label and diameter definition',
+          value: brush.label,
+          sourceUrl: brush.url,
+          verifiedAt: batchTenChecked,
+        },
+      ],
+      relatedGuideSlugs: [
+        ArticleSlug.OliviaGardenCeramicIonVsNanothermic,
+        ArticleSlug.RoundBrushSizeGuide,
+      ],
+    }),
+  ),
   product({
     slug: 'dyson-supersonic-nural',
     name: 'Dyson Supersonic Nural™ hair dryer',

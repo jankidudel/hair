@@ -21,6 +21,27 @@ interface FinderGuideLink {
 
 const questions: readonly FinderQuestion[] = [
   {
+    key: 'use',
+    prompt: 'What is the main task for this brush?',
+    options: [
+      {
+        value: 'wet',
+        label: 'Damp detangling',
+        detail: 'Prepare manageable sections; no dryer use implied',
+      },
+      {
+        value: 'blow-dry',
+        label: 'Shape with a dryer',
+        detail: 'Guide a section while using separate airflow',
+      },
+      {
+        value: 'dry',
+        label: 'Dry grooming or finishing',
+        detail: 'Tidy or style already-dry sections',
+      },
+    ],
+  },
+  {
     key: 'length',
     prompt: 'How long is your hair?',
     options: [
@@ -64,27 +85,6 @@ const questions: readonly FinderQuestion[] = [
         value: 'thick',
         label: 'Thick',
         detail: 'Dense or substantial sections',
-      },
-    ],
-  },
-  {
-    key: 'use',
-    prompt: 'When do you mainly use a brush?',
-    options: [
-      {
-        value: 'dry',
-        label: 'Dry hair / everyday grooming',
-        detail: 'Quick smoothing and tidying',
-      },
-      {
-        value: 'wet',
-        label: 'Wet hair / detangling',
-        detail: 'Working through damp sections',
-      },
-      {
-        value: 'blow-dry',
-        label: 'Blow-drying and styling',
-        detail: 'Creating shape with airflow',
       },
     ],
   },
@@ -150,17 +150,12 @@ const questions: readonly FinderQuestion[] = [
             />
           </svg>
           <h2 id="finder-question">{{ question.prompt }}</h2>
-          <div
-            class="finder-options"
-            role="radiogroup"
-            [attr.aria-label]="question.prompt"
-          >
+          <div class="finder-options" [attr.aria-label]="question.prompt">
             @for (option of question.options; track option.value) {
               <button
                 type="button"
                 class="finder-option"
-                role="radio"
-                [attr.aria-checked]="answers[question.key] === option.value"
+                [attr.aria-pressed]="answers[question.key] === option.value"
                 (click)="answer(option.value)"
               >
                 <span>{{ option.label }}</span
@@ -179,6 +174,10 @@ const questions: readonly FinderQuestion[] = [
           <p class="eyebrow">Your brush match</p>
           <h2>Your best match: {{ result.primary.name }}</h2>
           <p class="finder-rationale">{{ result.rationale }}</p>
+          <p class="finder-rationale">
+            This is a manual format for your stated task. Check the exact
+            model's wet and dryer permissions before using it in another stage.
+          </p>
           <div class="result-sections">
             <section>
               <h3>Best for</h3>
@@ -205,19 +204,26 @@ const questions: readonly FinderQuestion[] = [
               }
             </section>
           </div>
-          @if (result.primary.avoidIf) {
-            <p class="finder-avoid">
-              <strong>Avoid if:</strong> {{ result.primary.avoidIf }}
-            </p>
-          }
           <section class="buying-notes">
-            <h3>What to look for when buying</h3>
-            <ul>
-              <li>Pin flexibility that feels comfortable for your routine</li>
-              <li>Bristle density suited to your hair thickness</li>
-              <li>A handle grip that is easy to control in sections</li>
-              <li>A brush head or barrel size that suits your length</li>
-            </ul>
+            <h3>Check the exact item</h3>
+            @if (answers.use === 'wet') {
+              <p>
+                Confirm wet-use directions, tooth spacing or pin layout, and a
+                grip you can control through one damp section. Wet-use
+                permission does not establish dryer-heat permission.
+              </p>
+            } @else if (answers.use === 'blow-dry') {
+              <p>
+                Check dryer-use directions, the working width and a release path
+                for your usual section. A dense section can be divided before
+                choosing a larger head.
+              </p>
+            } @else {
+              <p>
+                Check the head size, contact feel and grip against one dry
+                section. Buy another format only for a separate task.
+              </p>
+            }
           </section>
           <section class="finder-next-steps" aria-label="Related brush guides">
             <h3>Continue reading</h3>
@@ -242,6 +248,9 @@ const questions: readonly FinderQuestion[] = [
           <p><a routerLink="/products">Compare published specifications</a></p>
           <button class="finder-restart" type="button" (click)="restart()">
             Start again
+          </button>
+          <button class="finder-back" type="button" (click)="edit()">
+            Edit answers
           </button>
           <div class="affiliate-placeholder" hidden aria-hidden="true"></div>
         </div>
@@ -271,7 +280,35 @@ export class HairBrushFinderComponent {
   get result() {
     return recommendHairBrush(this.answers as HairBrushAnswers);
   }
+  edit(): void {
+    this.complete = false;
+    this.currentQuestion = 0;
+  }
   get nextStepGuides(): readonly FinderGuideLink[] {
+    if (this.answers.use === 'wet') {
+      return [
+        {
+          slug: 'tangle-teezer-ultimate-detangler-vs-wet-brush-original',
+          label: 'Compare two exact wet-use detanglers',
+        },
+        {
+          slug: 'wide-tooth-comb-vs-detangling-brush',
+          label: 'Compare a comb and detangling brush',
+        },
+      ];
+    }
+    if (this.answers.use === 'blow-dry') {
+      return [
+        {
+          slug: 'round-brush-vs-paddle-brush',
+          label: 'Choose a brush shape for the dryer',
+        },
+        {
+          slug: 'round-brush-size-guide',
+          label: 'Check barrel and working-section geometry',
+        },
+      ];
+    }
     if (this.answers.texture === 'curly-coily') {
       return [
         {

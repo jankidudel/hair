@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-
-type Length = 'short' | 'bob' | 'medium' | 'long';
-type Goal = 'lift' | 'smooth' | 'bend' | 'curl';
-type Density = 'fine' | 'medium' | 'thick';
+import {
+  recommendRoundBrushSize,
+  type RoundBrushLength,
+  type RoundBrushGoal,
+  type RoundBrushDensity,
+} from './round-brush-size-recommendation';
 
 @Component({
   selector: 'app-round-brush-size-finder',
@@ -24,6 +26,7 @@ type Density = 'fine' | 'medium' | 'thick';
           [value]="length"
           (change)="setLength($any($event.target).value)"
         >
+          <option value="" disabled>Select a length</option>
           <option value="short">Short</option>
           <option value="bob">Bob or shoulder length</option>
           <option value="medium">Medium</option>
@@ -33,6 +36,7 @@ type Density = 'fine' | 'medium' | 'thick';
       <label
         >Desired result
         <select [value]="goal" (change)="setGoal($any($event.target).value)">
+          <option value="" disabled>Select a result</option>
           <option value="lift">Root lift</option>
           <option value="smooth">Smooth blowout</option>
           <option value="bend">Loose bend</option>
@@ -45,70 +49,47 @@ type Density = 'fine' | 'medium' | 'thick';
           [value]="density"
           (change)="setDensity($any($event.target).value)"
         >
-          <option value="fine">Fine</option>
-          <option value="medium">Medium</option>
-          <option value="thick">Thick</option>
+          <option value="" disabled>Select a density</option>
+          <option value="fine">Low density</option>
+          <option value="medium">Medium density</option>
+          <option value="thick">High density</option>
         </select></label
       >
     </div>
-    <p class="finder-rationale">
-      <strong>{{ result.size }} ({{ result.inches }})</strong> —
-      {{ result.reason }} {{ result.adjustment }}
-    </p>
+    @if (result) {
+      <p class="finder-rationale" aria-live="polite">
+        <strong>{{ result.size }}</strong> — {{ result.reason }}
+        {{ result.adjustment }}
+        <a href="/guides/how-to-use-a-round-brush-with-a-hair-dryer"
+          >Practise the section and release</a
+        >.
+      </p>
+    } @else {
+      <p class="finder-rationale">
+        Select all three inputs for a practical starting point. The guide below
+        explains the geometry without a number.
+      </p>
+    }
   </section>`,
 })
 export class RoundBrushSizeFinderComponent {
-  length: Length = 'bob';
-  goal: Goal = 'smooth';
-  density: Density = 'medium';
-  result = this.recommend();
-  setLength(value: Length): void {
+  length: RoundBrushLength | '' = '';
+  goal: RoundBrushGoal | '' = '';
+  density: RoundBrushDensity | '' = '';
+  result: ReturnType<typeof recommendRoundBrushSize> = null;
+  setLength(value: RoundBrushLength | ''): void {
     this.length = value;
     this.update();
   }
-  setGoal(value: Goal): void {
+  setGoal(value: RoundBrushGoal | ''): void {
     this.goal = value;
     this.update();
   }
-  setDensity(value: Density): void {
+  setDensity(value: RoundBrushDensity | ''): void {
     this.density = value;
     this.update();
   }
   update(): void {
-    this.result = this.recommend();
-  }
-  private recommend() {
-    const base: Record<Length, [number, number]> = {
-      short: [19, 25],
-      bob: [25, 35],
-      medium: [35, 45],
-      long: [45, 65],
-    };
-    let [low, high] = base[this.length];
-    if (this.goal === 'lift' || this.goal === 'curl') {
-      low -= 6;
-      high -= 5;
-    }
-    if (this.goal === 'smooth') {
-      low += 4;
-      high += 5;
-    }
-    if (this.density === 'thick') high += 5;
-    const roundedLow = Math.max(12, low);
-    const roundedHigh = Math.max(19, high);
-    return {
-      size: `${roundedLow}–${roundedHigh} mm`,
-      inches: `${(roundedLow / 25.4).toFixed(1)}–${(roundedHigh / 25.4).toFixed(1)} in`,
-      reason:
-        this.goal === 'smooth'
-          ? 'A broader barrel keeps the result loose while guiding the length.'
-          : this.goal === 'lift'
-            ? 'A smaller barrel reaches close to the roots for more control.'
-            : 'This range gives the section enough wrap for the shape you chose.',
-      adjustment:
-        this.density === 'thick'
-          ? 'Size up within the range for wider sections; size down if control is more important.'
-          : 'Size down for more bend or shorter face-framing pieces; size up for a looser finish.',
-    };
+    this.result = recommendRoundBrushSize(this.length, this.goal, this.density);
   }
 }

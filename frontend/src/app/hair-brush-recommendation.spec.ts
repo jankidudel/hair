@@ -23,7 +23,8 @@ describe('recommendHairBrush', () => {
       answers({ texture: 'curly-coily', use: 'wet' }),
     );
     expect(result.primary.category).toBe('wide-tooth-comb');
-    expect(result.alternative?.category).toBe('flexible-detangling-brush');
+    expect(result.alternative).toBeUndefined();
+    expect(result.rationale).toContain('does not imply dryer permission');
   });
   it('does not recommend dry brushing as required for curls', () => {
     const result = recommendHairBrush(
@@ -48,6 +49,18 @@ describe('recommendHairBrush', () => {
       recommendHairBrush(answers({ length: 'long', thickness: 'thick' }))
         .primary.category,
     ).toBe('paddle-brush');
+  });
+  it('lets the task override a broad hair-type label', () => {
+    expect(
+      recommendHairBrush(
+        answers({ thickness: 'fine', use: 'blow-dry', goal: 'smooth' }),
+      ).primary.category,
+    ).toBe('paddle-brush');
+    expect(
+      recommendHairBrush(
+        answers({ thickness: 'thick', use: 'wet', goal: 'volume' }),
+      ).primary.category,
+    ).toBe('flexible-detangling-brush');
   });
   it('always returns a complete recommendation with an enabled guide route', () => {
     const enabledSlugs = new Set(

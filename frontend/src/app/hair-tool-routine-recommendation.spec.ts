@@ -49,4 +49,20 @@ describe('recommendHairToolRoutine', () => {
     );
     expect(result.skip).toContain('large round brush');
   });
+  it('does not propose a dryer and round brush when an airflow brush covers the selected blowout task', () => {
+    const result = recommendHairToolRoutine(
+      answers({ goal: 'blowout', owned: ['hot-air-brush'] }),
+    );
+    expect(result.items.map((item) => item.tool)).toEqual([
+      'Your existing hot-air brush',
+    ]);
+    expect(result.skip).toContain('separate dryer and manual round brush');
+  });
+  it('keeps a dry-use heated brush after a separate drying stage', () => {
+    const result = recommendHairToolRoutine(
+      answers({ owned: ['heated-round-brush'] }),
+    );
+    expect(result.items[0].detail).toContain('drying stage');
+    expect(result.items[1].detail).toContain('already-dry');
+  });
 });

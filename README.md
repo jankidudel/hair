@@ -31,6 +31,8 @@ Hard errors block commits, pushes, pull requests and deployments; warnings ident
 
 Each retained guide must answer its own reader decision. When adding researched material to an older page, integrate it into the finished article: remove repeated generic body sections, duplicate introductions and conclusions, and obsolete serialized front matter. Keep short shared disclosures where useful. State exact model, market and source beside claims that depend on them; a family page, regional listing or charging specification cannot silently stand in for another model, market or operating rating. Leave unsupported fields unknown and preserve the source's actual check date.
 
+Lead a choice guide with the usable task and recommendation, then explain its trade-off and the next decision. When dimensions matter, name the measured surface: a round brush's solid barrel, its outside bristle diameter, a roller's cylinder diameter, working width and closure are different fields. Keep maker nominal labels intact, and never derive a measurement from a model suffix. Density changes the amount of hair in a working section; it does not by itself prescribe a larger diameter. When expanding an older article, move the new answer before its conclusion so the page reads as one finished guide.
+
 ## Structure
 
 - `frontend/`: Angular standalone application with static prerendering.

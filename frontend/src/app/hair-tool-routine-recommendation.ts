@@ -123,6 +123,36 @@ export function recommendHairToolRoutine(
           ...links,
         ],
       };
+    if (owns('heated-round-brush'))
+      return {
+        summary: owns('dryer')
+          ? 'Your existing dryer covers drying and your dry-use heated round brush covers a separate dry shaping stage. No new styling tool is essential for this route.'
+          : 'Your existing heated round brush covers dry-stage shaping. Plan a separate permitted drying step before using it; the brush itself is not a wet-hair dryer.',
+        items: [
+          {
+            label: 'Start with',
+            tool: owns('dryer')
+              ? 'Your existing dryer'
+              : 'A permitted drying method',
+            detail:
+              'Complete the drying stage before using the dry-only heated brush; follow the exact appliance directions.',
+          },
+          {
+            label: 'Start with',
+            tool: 'Your existing heated round brush',
+            detail:
+              'Use it for shaping already-dry sections within its exact instructions.',
+          },
+        ],
+        skip: 'A manual round brush is optional only if you want to shape damp sections with a separate dryer or prefer a different section path; it is not a required duplicate purchase.',
+        links: [
+          {
+            path: `/guides/${ArticleSlug.ThermalBrushVsHotAirBrush}`,
+            label: 'Compare drying and heated-brush stages',
+          },
+          ...links,
+        ],
+      };
     const items: RoutineItem[] = [
       {
         label: 'Start with',
@@ -170,8 +200,9 @@ export function recommendHairToolRoutine(
         label: 'Plan sections with your existing rollers',
       });
     return {
-      summary:
-        'Use a drying stage and one finishing category that matches the curls or waves you actually want to create.',
+      summary: owns('rollers')
+        ? 'Your existing rollers cover a later setting stage, subject to their exact instructions. Prepare and dry the section as required before setting; a defined result is not guaranteed.'
+        : 'Use a drying stage and one finishing category that matches the curls or waves you actually want to create.',
       items: [
         {
           label: 'Start with',
@@ -185,7 +216,7 @@ export function recommendHairToolRoutine(
             ? 'Your existing rollers'
             : 'Curl or wave finishing tool category',
           detail: owns('rollers')
-            ? 'Use the exact roller directions and check whether your pack covers the intended sections; a new curling appliance is optional.'
+            ? 'Use the exact roller directions for starting state, securing and removal. Rollers do not replace preparation or drying; a new curling appliance is optional.'
             : owns('curling-iron') || owns('curling-wand')
               ? 'Use your existing direct-heat curling tool when it still matches the result you want; do not add a duplicate by default.'
               : 'Choose a curling iron, curling wand, or no extra direct-heat tool for the level of definition you want rather than collecting overlapping tools.',

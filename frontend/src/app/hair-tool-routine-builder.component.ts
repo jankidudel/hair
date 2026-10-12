@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AnalyticsService } from './analytics/analytics.service';
@@ -36,6 +37,7 @@ import { SiteSeoService } from './site-seo.service';
               <label
                 ><input
                   type="radio"
+                  [id]="'routine-length-' + option.value"
                   name="length"
                   [value]="option.value"
                   [checked]="length === option.value"
@@ -156,6 +158,7 @@ import { SiteSeoService } from './site-seo.service';
   `,
 })
 export class HairToolRoutineBuilderComponent {
+  private readonly document = inject(DOCUMENT);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
   readonly lengthOptions = [
@@ -264,6 +267,9 @@ export class HairToolRoutineBuilderComponent {
     this.noneOrUnsure = true;
     this.resultShown = false;
     this.hasStarted = false;
+    queueMicrotask(() =>
+      this.document.getElementById('routine-length-medium')?.focus(),
+    );
   }
   linkClicked(path: string): void {
     this.analytics.track('hair_tool_routine_builder_link_clicked', {

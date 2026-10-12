@@ -647,6 +647,13 @@ export const productProfiles: readonly ProductProfile[] = [
     evidenceStatus: 'specification-researched',
     verifiedAt: batchNineChecked,
     verifiedFacts: [
+      {
+        label: 'UK grip and teeth',
+        value: 'Matte textured handle and two-tier teeth',
+        sourceUrl:
+          'https://tangleteezer.com/products/the-ultimate-detangler-matte',
+        verifiedAt: batchTenChecked,
+      },
       batchNineFact(
         'Construction and use',
         'Long and short teeth; maker describes use on shower-fresh hair',
@@ -717,6 +724,13 @@ export const productProfiles: readonly ProductProfile[] = [
     evidenceStatus: 'specification-researched',
     verifiedAt: batchNineChecked,
     verifiedFacts: [
+      {
+        label: 'US grip and pins',
+        value: 'Ergonomic handle and IntelliFlex bristles',
+        sourceUrl:
+          'https://wetbrush.com/products/original-detangler-frost-black',
+        verifiedAt: batchTenChecked,
+      },
       batchNineFact(
         'Bristles and use',
         'Frost Black Original Detangler has IntelliFlex bristles and is listed for wet or dry hair',
@@ -1327,8 +1341,184 @@ export const productProfiles: readonly ProductProfile[] = [
       ArticleSlug.BestFlatIrons,
     ],
   }),
+  ...[
+    {
+      slug: 'denman-d200-skeleton-vent-uk',
+      name: 'Denman D200 The Skeleton Vent, UK',
+      subtype: 'manual vented brush',
+      url: 'https://denmanbrush.com/products/d200-skeleton-vent',
+      detail: 'Open vented head; maker lists blow-drying and root-lift use',
+    },
+    {
+      slug: 'denman-d83-gentle-paddle-uk',
+      name: 'Denman D83 The Gentle Paddle, UK',
+      subtype: 'manual paddle brush',
+      url: 'https://denmanbrush.com/products/d83-paddle',
+      detail: 'Broad cushioned paddle; maker lists straight blow-drying use',
+    },
+  ].map(({ slug, name, subtype, url, detail }) =>
+    product({
+      slug,
+      market: 'UK',
+      name,
+      brand: 'Denman',
+      category: ProductCategory.HairBrush,
+      subtype,
+      imageAlt: name,
+      priceTier: 'entry',
+      bestFor: [detail],
+      notIdealFor: ['assuming measured drying speed from head shape'],
+      officialProductUrl: url,
+      verifiedAt: batchTenChecked,
+      availability: 'availability-to-check',
+      evidenceStatus: 'specification-researched',
+      verifiedFacts: [
+        {
+          label: 'UK head and use',
+          value: detail,
+          sourceUrl: url,
+          verifiedAt: batchTenChecked,
+        },
+      ],
+      relatedGuideSlugs: [ArticleSlug.VentedBrushVsPaddleBrush],
+    }),
+  ),
+  ...[
+    {
+      slug: 'ghd-chronos-curve-conical-wand-us',
+      name: 'ghd Chronos Curve Conical Wand, US',
+      subtype: 'tapered clipless wand',
+      url: 'https://www.ghdhair.com/us/curling-wands/ghd-chronos-curve-conical-wand-p-702',
+      detail: 'Maker-labelled 1.1–0.9 inch tapered barrel',
+    },
+    {
+      slug: 'ghd-chronos-curve-max-wand-us',
+      name: 'ghd Chronos Curve Max Wand, US',
+      subtype: 'cylindrical clipless wand',
+      url: 'https://www.ghdhair.com/us/curling-wands/ghd-chronos-curve-max-wand-p-703',
+      detail: 'Maker-labelled 1.5 inch barrel',
+    },
+  ].map(({ slug, name, subtype, url, detail }) =>
+    product({
+      slug,
+      market: 'US',
+      name,
+      brand: 'ghd',
+      category: ProductCategory.CurlingWand,
+      subtype,
+      imageAlt: name,
+      priceTier: 'premium',
+      mechanism: 'clipless',
+      bestFor: [detail],
+      notIdealFor: ['assuming the barrel label predicts a finished curl'],
+      officialProductUrl: url,
+      verifiedAt: batchTenChecked,
+      availability: 'availability-to-check',
+      evidenceStatus: 'specification-researched',
+      verifiedFacts: [
+        {
+          label: 'US barrel profile',
+          value: detail,
+          sourceUrl: url,
+          verifiedAt: batchTenChecked,
+        },
+      ],
+      relatedGuideSlugs: [ArticleSlug.TaperedVsCylindricalCurlingWand],
+    }),
+  ),
+  product({
+    slug: 'ghd-gold-26mm-black-uk',
+    market: 'UK',
+    name: 'ghd Gold (26 mm plate) Black, UK',
+    brand: 'ghd',
+    category: ProductCategory.FlatIron,
+    subtype: 'corded straightener',
+    imageAlt: 'ghd Gold black UK straightener',
+    priceTier: 'premium',
+    heatControl: 'fixed',
+    bestFor: ['a fixed styling place with a manageable cord path'],
+    notIdealFor: ['cord-free styling'],
+    officialProductUrl:
+      'https://www.ghdhair.com/hair-straighteners/ghd-gold-p-435',
+    verifiedAt: batchTenChecked,
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      {
+        label: 'UK operating format',
+        value: 'Corded; 26 mm plate label',
+        sourceUrl: 'https://www.ghdhair.com/hair-straighteners/ghd-gold-p-435',
+        verifiedAt: batchTenChecked,
+      },
+    ],
+    relatedGuideSlugs: [ArticleSlug.CordedVsCordlessHairStraighteners],
+  }),
+  product({
+    slug: 'dyson-corrale-original-blue-copper-uk',
+    market: 'UK',
+    name: 'Dyson Corrale (Prussian blue/rich copper), UK',
+    brand: 'Dyson',
+    category: ProductCategory.FlatIron,
+    subtype: 'rechargeable cordless straightener',
+    imageAlt: 'Original Dyson Corrale blue and copper straightener',
+    priceTier: 'premium',
+    heatControl: 'presets',
+    bestFor: ['cord-free handling with a planned charging stage'],
+    notIdealFor: ['assuming cable attachment bypasses battery use'],
+    officialProductUrl:
+      'https://www.dyson.co.uk/hair-care/hair-straighteners/corrale/blue-copper',
+    supportUrl:
+      'https://www.dyson.co.uk/support/hair-care/hair-straighteners/corrale',
+    verifiedAt: batchTenChecked,
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      {
+        label: 'UK cordless runtime',
+        value: 'Up to 30 minutes; actual runtime depends on use',
+        sourceUrl:
+          'https://www.dyson.co.uk/hair-care/hair-straighteners/corrale/blue-copper',
+        verifiedAt: batchTenChecked,
+      },
+      {
+        label: 'Hybrid charge mode',
+        value: 'Cable extends use while battery remains involved',
+        sourceUrl:
+          'https://www.dyson.co.uk/support/hair-care/hair-straighteners/corrale',
+        verifiedAt: batchTenChecked,
+      },
+    ],
+    relatedGuideSlugs: [ArticleSlug.CordedVsCordlessHairStraighteners],
+  }),
 ];
 export const canonicalComparisons: readonly CanonicalComparison[] = [
+  {
+    slug: ArticleSlug.VentedBrushVsPaddleBrush,
+    path: `/guides/${ArticleSlug.VentedBrushVsPaddleBrush}`,
+    productSlugs: [
+      'denman-d200-skeleton-vent-uk',
+      'denman-d83-gentle-paddle-uk',
+    ],
+    guideSlug: ArticleSlug.VentedBrushVsPaddleBrush,
+  },
+  {
+    slug: ArticleSlug.TaperedVsCylindricalCurlingWand,
+    path: `/guides/${ArticleSlug.TaperedVsCylindricalCurlingWand}`,
+    productSlugs: [
+      'ghd-chronos-curve-conical-wand-us',
+      'ghd-chronos-curve-max-wand-us',
+    ],
+    guideSlug: ArticleSlug.TaperedVsCylindricalCurlingWand,
+  },
+  {
+    slug: ArticleSlug.CordedVsCordlessHairStraighteners,
+    path: `/guides/${ArticleSlug.CordedVsCordlessHairStraighteners}`,
+    productSlugs: [
+      'ghd-gold-26mm-black-uk',
+      'dyson-corrale-original-blue-copper-uk',
+    ],
+    guideSlug: ArticleSlug.CordedVsCordlessHairStraighteners,
+  },
   {
     slug: ArticleSlug.DysonSupersonicVsSharkSpeedstyle,
     path: `/guides/${ArticleSlug.DysonSupersonicVsSharkSpeedstyle}`,

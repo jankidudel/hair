@@ -65,4 +65,31 @@ describe('recommendHairToolRoutine', () => {
     expect(result.items[0].detail).toContain('drying stage');
     expect(result.items[1].detail).toContain('already-dry');
   });
+  it('recognises owned drying and shaping stages without a duplicate purchase', () => {
+    const manual = recommendHairToolRoutine(
+      answers({ goal: 'blowout', owned: ['dryer', 'round-brush'] }),
+    );
+    expect(manual.summary).toContain('no new styling tool');
+    const heated = recommendHairToolRoutine(
+      answers({ goal: 'blowout', owned: ['dryer', 'heated-round-brush'] }),
+    );
+    expect(heated.summary).toContain('separate dry shaping stage');
+    expect(heated.items.map((item) => item.tool)).toEqual([
+      'Your existing dryer',
+      'Your existing heated round brush',
+    ]);
+    expect(heated.skip).toContain('optional');
+  });
+  it('keeps a heated brush out of the drying stage and rollers in setting', () => {
+    const heated = recommendHairToolRoutine(
+      answers({ goal: 'blowout', owned: ['heated-round-brush'] }),
+    );
+    expect(heated.items[0].tool).toBe('A permitted drying method');
+    expect(heated.items[1].detail).toContain('already-dry');
+    const rollers = recommendHairToolRoutine(
+      answers({ goal: 'curls', owned: ['rollers'] }),
+    );
+    expect(rollers.summary).toContain('later setting stage');
+    expect(rollers.items[1].detail).toContain('do not replace preparation');
+  });
 });

@@ -33,6 +33,8 @@ Each retained guide must answer its own reader decision. When adding researched 
 
 Lead a choice guide with the usable task and recommendation, then explain its trade-off and the next decision. When dimensions matter, name the measured surface: a round brush's solid barrel, its outside bristle diameter, a roller's cylinder diameter, working width and closure are different fields. Keep maker nominal labels intact, and never derive a measurement from a model suffix. Density changes the amount of hair in a working section; it does not by itself prescribe a larger diameter. When expanding an older article, move the new answer before its conclusion so the page reads as one finished guide.
 
+Exact brush shape and variant identity stay attached to a named model and market: a handled Ultimate Detangler is not a palm-held Styler, and a standard Glide+ is not Glide or Glide+ Max. Spatial explanations need an actual accessible drawing when placement, path or geometry is the decision; a table of arrows is still a text table. Keep diagram labels readable at mobile width and identify schematic, unmeasured shapes. In recommendation tools, account for what the reader already owns by stage: drying, damp shaping, dry finishing and setting are distinct; suggest another tool only for an uncovered task and explain its optional role. After changing a guide, read its introduction, table, FAQ and conclusion together for contradictory advice.
+
 ## Structure
 
 - `frontend/`: Angular standalone application with static prerendering.

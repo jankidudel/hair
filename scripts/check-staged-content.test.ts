@@ -60,7 +60,7 @@ test('allows links to registered canonical comparison guides', () => {
     file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
     source: source(entry.slug, body),
     entry,
-    today: '2026-09-20',
+    today: '2026-10-11',
   });
   assert.deepEqual(errors, []);
 });

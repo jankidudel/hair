@@ -45,6 +45,12 @@ describe('product comparison data', () => {
     expect(
       comparisonForProduct('revlon-one-step-volumizer-plus'),
     ).toBeUndefined();
+    expect(comparisonForProduct('denman-d200-skeleton-vent-uk')?.path).toBe(
+      '/guides/vented-brush-vs-paddle-brush',
+    );
+    expect(
+      comparisonForProduct('dyson-corrale-original-blue-copper-uk')?.path,
+    ).toBe('/guides/corded-vs-cordless-hair-straighteners');
   });
 
   it('keeps an absent verified fact visible as not confirmed data for the matrix', () => {

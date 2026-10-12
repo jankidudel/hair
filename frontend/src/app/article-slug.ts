@@ -1,5 +1,11 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  GhdRiseVsGlidePlus: 'ghd-rise-vs-glide-plus',
+  VentedBrushVsPaddleBrush: 'vented-brush-vs-paddle-brush',
+  TaperedVsCylindricalCurlingWand: 'tapered-vs-cylindrical-curling-wand',
+  CordedVsCordlessHairStraighteners: 'corded-vs-cordless-hair-straighteners',
+  HowToChooseHairToolHeatMatAndPouch:
+    'how-to-choose-hair-tool-heat-mat-and-pouch',
   BestHairDryersFineHair: 'best-hair-dryers-fine-hair',
   BestHairDryersThickHair: 'best-hair-dryers-thick-hair',
   BestHairDryersCurlyHair: 'best-hair-dryers-curly-hair',

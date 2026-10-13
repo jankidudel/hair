@@ -13,6 +13,14 @@ This quality-platform batch establishes an explicit editorial method and interim
 - CloudFront runs `infra/functions/prerender-route-rewrite.ts`; `infra/lib/hair-stack.ts` attaches it to viewer requests.
 - Google Analytics is consent-gated in `AnalyticsService`; tool data remains browser-local.
 
+## Durable editorial integration rules
+
+- Reconcile model identity across introductions, lists, tables, FAQs and conclusions; a corrected paragraph does not excuse a conflicting legacy list.
+- Keep older and current generations as distinct evidence records. Never relabel a legacy product from a newer product page or treat a conversion as a separate measurement.
+- A diagram must visibly show the relationship named in its caption, including contact, movement or release when those are the teaching point.
+- Curate next steps by the reader's current task; preserve a helpful hub link, but do not rely on registry adjacency when it produces an unrelated recommendation.
+- Label selected equipment as an existing tool. Reserve purchase language for a genuinely uncovered or optional stage.
+
 ## Implemented changes
 
 - Added the `ContentMethod`/author model with a transparent interim Comb Report Editorial Team profile. Generated guides receive an explicit primary intent, author, and evidence-aware content method without auto-changing dates.

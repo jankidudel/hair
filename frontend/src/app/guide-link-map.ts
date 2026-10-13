@@ -12,6 +12,26 @@ export interface GuideLinkMapEntry {
  * and comparison pages override that default with their closest decision aids.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  [ArticleSlug.GhdRiseVsGlidePlus]: [
+    ArticleSlug.ThermalBrushVsHotAirBrush,
+    ArticleSlug.WhatHairToolsDoINeed,
+  ],
+  [ArticleSlug.VentedBrushVsPaddleBrush]: [
+    ArticleSlug.HowToUseARoundBrushWithAHairDryer,
+    ArticleSlug.HowToChooseHairBrush,
+  ],
+  [ArticleSlug.TaperedVsCylindricalCurlingWand]: [
+    ArticleSlug.HowToUseACurlingWand,
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+  ],
+  [ArticleSlug.CordedVsCordlessHairStraighteners]: [
+    ArticleSlug.FlatIronPlateWidthGuide,
+    ArticleSlug.BestTravelFlatIrons,
+  ],
+  [ArticleSlug.HowToChooseHairToolHeatMatAndPouch]: [
+    ArticleSlug.BestTravelFlatIrons,
+    ArticleSlug.WhatHairToolsDoINeed,
+  ],
   [ArticleSlug.DysonSupersonicVsSharkSpeedstyle]: [
     ArticleSlug.HairDryerChooser,
     ArticleSlug.HairDryerWattageGuide,

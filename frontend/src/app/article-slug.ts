@@ -6,6 +6,11 @@ export const ArticleSlug = {
   CordedVsCordlessHairStraighteners: 'corded-vs-cordless-hair-straighteners',
   HowToChooseHairToolHeatMatAndPouch:
     'how-to-choose-hair-tool-heat-mat-and-pouch',
+  HowToUseACurlingIron: 'how-to-use-a-curling-iron',
+  HowToUseACurlingWand: 'how-to-use-a-curling-wand',
+  HowToUseAFlatIron: 'how-to-use-a-flat-iron',
+  HowToCurlHairWithAFlatIron: 'how-to-curl-hair-with-a-flat-iron',
+  WideVsNarrowHairDryerConcentrator: 'wide-vs-narrow-hair-dryer-concentrator',
   BestHairDryersFineHair: 'best-hair-dryers-fine-hair',
   BestHairDryersThickHair: 'best-hair-dryers-thick-hair',
   BestHairDryersCurlyHair: 'best-hair-dryers-curly-hair',

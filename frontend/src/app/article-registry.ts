@@ -822,4 +822,23 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-10-11',
   },
+  ...[
+    ArticleSlug.HowToUseACurlingIron,
+    ArticleSlug.HowToUseACurlingWand,
+    ArticleSlug.HowToUseAFlatIron,
+    ArticleSlug.HowToCurlHairWithAFlatIron,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.DirectHeat,
+    order: 280 + index,
+    enabled: true,
+    publishDate: '2026-10-13',
+  })),
+  {
+    slug: ArticleSlug.WideVsNarrowHairDryerConcentrator,
+    group: ArticleGroupId.HairDryers,
+    order: 280,
+    enabled: true,
+    publishDate: '2026-10-13',
+  },
 ] as const;

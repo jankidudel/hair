@@ -21,7 +21,12 @@ export interface HairToolRoutineAnswers {
 }
 
 export interface RoutineItem {
-  readonly label: 'Start with' | 'Add when useful';
+  readonly label:
+    | 'Start with'
+    | 'Existing tool'
+    | 'Preparation step'
+    | 'Optional addition'
+    | 'Add when useful';
   readonly tool: string;
   readonly detail: string;
 }
@@ -205,13 +210,13 @@ export function recommendHairToolRoutine(
         : 'Use a drying stage and one finishing category that matches the curls or waves you actually want to create.',
       items: [
         {
-          label: 'Start with',
+          label: owns('dryer') ? 'Existing tool' : 'Preparation step',
           tool: owns('dryer') ? 'Your existing dryer' : 'Hair dryer',
           detail:
             'Use it for the drying stage; a diffuser can be useful when it fits your routine.',
         },
         {
-          label: 'Add when useful',
+          label: owns('rollers') ? 'Existing tool' : 'Optional addition',
           tool: owns('rollers')
             ? 'Your existing rollers'
             : 'Curl or wave finishing tool category',

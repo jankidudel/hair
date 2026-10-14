@@ -618,27 +618,49 @@ import { combReportEditorialTeam } from './editorial';
     @case ('privacy') {
       <section class="listing-intro">
         <p class="eyebrow">Privacy</p>
-        <h1>Privacy</h1>
+        <h1>Privacy notice</h1>
         <p class="lede">
-          Comb Report can be read without creating an account. The browser keeps
-          your analytics choice on this device so the site can remember it.
+          You can read Comb Report without an account. The site has no contact
+          form and does not ask you to submit personal details through its
+          pages.
         </p>
-        <h2>Optional analytics</h2>
+        <h2>Your analytics choice</h2>
         <p>
-          Google Analytics is loaded only after you choose “Accept analytics” in
-          the consent banner. It records page views and may use cookies to help
-          us understand site use. We configure it without Google signals or
-          ad-personalization signals. Choosing “Reject” does not load the
-          analytics script. You can change your choice by clearing this site's
-          browser storage; the banner will then appear again.
+          The consent banner offers “Accept analytics” and “Reject.” Your choice
+          is stored in this browser's local storage so it can be remembered on
+          this device; the application does not set a cookie for the choice.
+          Clear this site's local storage to make the banner appear again and
+          choose again.
         </p>
-        <h2>Site delivery and outside links</h2>
+        <h2>Analytics after acceptance</h2>
         <p>
-          The site host may process technical request information needed to
-          deliver pages and protect the service. Links to manufacturers and
-          other sites take you to services with their own privacy practices. We
-          do not publish a contact form or ask you to submit personal details
-          through this site.
+          Google Analytics is loaded only after you accept. The application
+          sends page views and general interaction events, but does not send
+          finder answers, routine choices, or the identities of products you
+          select; a comparison interaction may include only the number of
+          selected items. Page-view paths omit query strings and fragments.
+          Google signals and ad-personalization signals are disabled in the
+          application configuration. Google may use cookies after analytics is
+          enabled. The cookie lifetime and Analytics data-retention settings are
+          controlled outside this codebase and have not been verified here.
+        </p>
+        <h2>Choices and product comparisons</h2>
+        <p>
+          Finder answers stay in page memory while you use a tool. A product
+          selected from the direct-heat finder is passed to the comparison
+          explorer through in-app navigation state, not the address bar. The
+          explorer's selections stay in page memory and are not saved by the
+          application. Reloading or leaving the page clears them.
+        </p>
+        <h2>Hosting and outside links</h2>
+        <p>
+          The site host necessarily receives technical requests to deliver
+          pages. This repository does not configure a separate access-log
+          destination or a retention period for provider-side request and
+          security records, so those details are not stated here. Links to
+          manufacturers and other sites take you to services with their own
+          privacy practices. No public contact address or contact form is
+          currently provided by this site.
         </p>
       </section>
     }
@@ -1007,7 +1029,11 @@ export class StaticPageComponent implements OnInit {
         '/curling-irons',
       ],
       about: ['About | Comb Report', 'About Comb Report.', '/about'],
-      privacy: ['Privacy | Comb Report', 'Privacy information.', '/privacy'],
+      privacy: [
+        'Privacy | Comb Report',
+        'How optional analytics, local tool choices, hosting requests, and outside links are handled on Comb Report.',
+        '/privacy',
+      ],
       affiliate: [
         'Affiliate Disclosure | Comb Report',
         'How affiliate links support Comb Report.',

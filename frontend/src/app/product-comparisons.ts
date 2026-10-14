@@ -1536,11 +1536,10 @@ export const productBySlug = (slug: string) =>
   productProfiles.find((item) => item.slug === slug);
 export const comparisonForProduct = (slug: string) =>
   canonicalComparisons.find((item) => item.productSlugs.includes(slug));
-export function parseProductSelection(value: string | null): readonly string[] {
-  if (!value) return [];
-  return [
-    ...new Set(value.split(',').filter((slug) => productBySlug(slug))),
-  ].slice(0, 3);
+export function parseProductSelection(value: unknown): readonly string[] {
+  if (typeof value !== 'string') return [];
+  const product = productBySlug(value);
+  return product ? [product.slug] : [];
 }
 export function comparisonFacts(
   first: ProductProfile,

@@ -53,9 +53,7 @@ import { guideLinkMap } from './guide-link-map';
       </header>
       @if (article.commercialOutcome === 'selection-guide') {
         <aside class="selection-guide-note">
-          <strong>Selection guide, not a product ranking.</strong> This page
-          explains documented features and routine trade-offs to check. It does
-          not claim a universal “best” product or hands-on testing.
+          <strong>Selection guide, not a product ranking.</strong>
         </aside>
       }
       @switch (article.slug) {
@@ -91,12 +89,7 @@ import { guideLinkMap } from './guide-link-map';
       <section class="article-body" [innerHTML]="article.html"></section>
       @if (guideLinks) {
         <nav class="article-next-steps" aria-labelledby="next-steps-heading">
-          <p class="eyebrow">Keep exploring</p>
-          <h2 id="next-steps-heading">Continue with a useful next step</h2>
-          <p>
-            Return to the category hub, then follow related guides that help
-            with the next decision in this topic.
-          </p>
+          <h2 id="next-steps-heading">Related guides</h2>
           <ul>
             <li>
               <a [routerLink]="guideLinks.hubPath">Browse this category</a>

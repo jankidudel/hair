@@ -257,12 +257,7 @@ export class HairDryerSpecsDecoderComponent {
     const answers = this.completeAnswers;
     if (!answers) return;
     this.result = decodeHairDryerSpecs(answers);
-    this.analytics.track('hair_dryer_specs_decoder_completed', {
-      location: answers.location,
-      wattage: answers.wattage,
-      voltage: answers.voltage,
-      priority: answers.priority,
-    });
+    this.analytics.track('hair_dryer_specs_decoder_completed');
   }
 
   reset(): void {

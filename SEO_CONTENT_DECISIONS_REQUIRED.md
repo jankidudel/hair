@@ -7,6 +7,7 @@ This queue separates missing owner/editor evidence from published claims. No ite
 - [ ] **Owner:** Site owner — Provide a real editor/author biography, role, photograph rights, and professional links before replacing the transparent `Comb Report Editorial Team` profile.
 - [ ] **Owner:** Site owner — Confirm a monitored public contact channel before replacing the contact-page placeholder.
 - [ ] **Owner:** Commercial owner — Confirm affiliate programs, approved US retailers, and whether any outbound retailer link is compensated before adding retailer links or `sponsored` attributes.
+- [ ] **Owner:** Site owner — Confirm the Google Analytics property retention and cookie settings, and the hosting provider's request/security-record retention, before adding specific durations to the privacy notice. These values are not configured in this repository.
 
 ## Evidence and product data
 

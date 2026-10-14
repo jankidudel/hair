@@ -20,6 +20,10 @@ This quality-platform batch establishes an explicit editorial method and interim
 - A diagram must visibly show the relationship named in its caption, including contact, movement or release when those are the teaching point.
 - Curate next steps by the reader's current task; preserve a helpful hub link, but do not rely on registry adjacency when it produces an unrelated recommendation.
 - Label selected equipment as an existing tool. Reserve purchase language for a genuinely uncovered or optional stage.
+- Do not derive related-guide recommendations from registry order. Curate a link only when it answers the reader's next question; a category hub can remain the broad discovery path.
+- State each guide's distinct reader decision in its opening and conclusion. Retitle specification-led shortlists when “best” would imply a ranking that the evidence does not support.
+- Match starting-state, settings, and attachment advice to the exact device instructions. A user-facing setting aid should explain which observable inputs shape its suggestion and avoid universal temperature charts.
+- Describe privacy from the implemented data flow: keep tool answers and selected product identities out of URLs and analytics payloads, store optional consent locally, and record external analytics/hosting retention settings as owner-confirmed gaps until verified.
 
 ## Implemented changes
 

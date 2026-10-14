@@ -121,7 +121,7 @@ import {
             @for (link of result.links; track link.slug) {
               <a
                 [routerLink]="['/guides', link.slug]"
-                (click)="trackGuideClick(link.slug)"
+                (click)="trackGuideClick()"
               >
                 {{ link.label }} <span aria-hidden="true">→</span>
               </a>
@@ -181,16 +181,10 @@ export class HairDryerFinderComponent {
       priority: this.priority,
       diffuser: this.diffuser,
     });
-    this.analytics.track('tool_completed', {
-      goal: this.goal,
-      priority: this.priority,
-      diffuser: this.diffuser,
-    });
+    this.analytics.track('tool_completed');
   }
-  trackGuideClick(slug: string): void {
-    this.analytics.track('result_to_guide_click', {
-      destination_slug: slug,
-    });
+  trackGuideClick(): void {
+    this.analytics.track('result_to_guide_click');
   }
   private trackStarted(): void {
     if (this.started) return;

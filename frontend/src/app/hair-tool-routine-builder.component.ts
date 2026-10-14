@@ -133,11 +133,11 @@ import { SiteSeoService } from './site-seo.service';
             aria-label="Relevant tools and guides"
           >
             @for (link of result.links; track link.path) {
-              <a [routerLink]="link.path" (click)="linkClicked(link.path)">{{
+              <a [routerLink]="link.path" (click)="linkClicked()">{{
                 link.label
               }}</a>
             }
-            <a routerLink="/products" (click)="linkClicked('/products')"
+            <a routerLink="/products" (click)="linkClicked()"
               >Compare published product specifications</a
             >
           </nav>
@@ -254,10 +254,7 @@ export class HairToolRoutineBuilderComponent {
     event.preventDefault();
     this.started();
     this.resultShown = true;
-    this.analytics.track('hair_tool_routine_builder_result_shown', {
-      goal: this.goal,
-      time: this.time,
-    });
+    this.analytics.track('hair_tool_routine_builder_result_shown');
   }
   reset(): void {
     this.length = 'medium';
@@ -271,9 +268,7 @@ export class HairToolRoutineBuilderComponent {
       this.document.getElementById('routine-length-medium')?.focus(),
     );
   }
-  linkClicked(path: string): void {
-    this.analytics.track('hair_tool_routine_builder_link_clicked', {
-      destination_slug: path.replace(/^\//, ''),
-    });
+  linkClicked(): void {
+    this.analytics.track('hair_tool_routine_builder_link_clicked');
   }
 }

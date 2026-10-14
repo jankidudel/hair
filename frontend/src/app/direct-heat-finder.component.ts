@@ -78,7 +78,7 @@ type Answer = 'precision' | 'general' | 'broad' | 'clamp' | 'wand' | 'varied';
               <li>
                 <a
                   [routerLink]="'/products'"
-                  [queryParams]="{ compare: product.slug }"
+                  [state]="{ compareProductSlug: product.slug }"
                   >{{ product.name }}</a
                 >
               </li>

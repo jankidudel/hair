@@ -7,11 +7,74 @@ export interface GuideLinkMapEntry {
 }
 
 /**
- * Contextual next steps are intentionally data-driven instead of being copied
- * into every article. Adjacent guides are grouped by the editorial registry,
- * and comparison pages override that default with their closest decision aids.
+ * Contextual links answer the reader's next question. Registry order is a
+ * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  [ArticleSlug.BestCurlingIronsFineHair]: [
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+    ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners,
+  ],
+  [ArticleSlug.BestCurlingIrons]: [
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+    ArticleSlug.CurlingIronVsWand,
+  ],
+  [ArticleSlug.BestCurlingToolsShortHair]: [
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+    ArticleSlug.HowToUseACurlingIron,
+  ],
+  [ArticleSlug.BestCurlingToolsLongHair]: [
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+    ArticleSlug.HowToUseACurlingIron,
+  ],
+  [ArticleSlug.FlatIronVsCurlingIron]: [
+    ArticleSlug.CurlingIronVsWand,
+    ArticleSlug.HowToUseACurlingIron,
+  ],
+  [ArticleSlug.BestHotAirBrushes]: [
+    ArticleSlug.HotAirBrushBarrelSizeGuide,
+    ArticleSlug.HowToUseHotAirBrush,
+  ],
+  [ArticleSlug.HowToUseHotAirBrush]: [
+    ArticleSlug.BestHotAirBrushes,
+    ArticleSlug.HotAirBrushFrizzyHair,
+  ],
+  [ArticleSlug.HotAirBrushVsStraighteningBrush]: [
+    ArticleSlug.HowToUseHotAirBrush,
+    ArticleSlug.HowToChooseAStraighteningBrush,
+  ],
+  [ArticleSlug.HotAirBrushVsCurlingIron]: [
+    ArticleSlug.HowToUseHotAirBrush,
+    ArticleSlug.HowToUseACurlingIron,
+  ],
+  [ArticleSlug.HairDryerSettingsGuide]: [
+    ArticleSlug.HowToUseHairDryerConcentratorNozzle,
+    ArticleSlug.HairDryerChooser,
+  ],
+  [ArticleSlug.HowToUseHairDryerConcentratorNozzle]: [
+    ArticleSlug.HairDryerDiffuserVsConcentrator,
+    ArticleSlug.HairDryerSettingsGuide,
+  ],
+  [ArticleSlug.WideToothCombVsDetanglingBrush]: [
+    ArticleSlug.HowToChooseHairBrush,
+    ArticleSlug.TangleTeezerVsWetBrushOriginal,
+  ],
+  [ArticleSlug.HowToChooseHairSectioningClips]: [
+    ArticleSlug.HowToUseHeatlessCurlingRod,
+    ArticleSlug.HowToUseVelcroHairRollers,
+  ],
+  [ArticleSlug.BestHeatlessCurlingSets]: [
+    ArticleSlug.HowToUseHeatlessCurlingRod,
+    ArticleSlug.HowToUseHeatlessCurlersOnShortHair,
+  ],
+  [ArticleSlug.HowToUseHeatlessCurlersOnShortHair]: [
+    ArticleSlug.HowToUseHeatlessCurlingRod,
+    ArticleSlug.HeatlessCurlsNotWorking,
+  ],
+  [ArticleSlug.HeatlessCurlsNotWorking]: [
+    ArticleSlug.BestHeatlessCurlingSets,
+    ArticleSlug.HowToUseHeatlessCurlersOnShortHair,
+  ],
   [ArticleSlug.GhdRiseVsGlidePlus]: [
     ArticleSlug.ThermalBrushVsHotAirBrush,
     ArticleSlug.WhatHairToolsDoINeed,
@@ -66,20 +129,8 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
   ],
 };
 
-function relatedSlugs(slug: string, group: string): readonly string[] {
-  const siblings = articleRegistry
-    .filter((entry) => entry.enabled && entry.group === group)
-    .sort((left, right) => left.order - right.order);
-  const index = siblings.findIndex((entry) => entry.slug === slug);
-  if (index < 0 || siblings.length < 3) return [];
-  const defaultLinks = [
-    siblings[(index + 1) % siblings.length].slug,
-    siblings[(index + siblings.length - 1) % siblings.length].slug,
-  ];
-  // Comparison-specific decision aids supplement the cluster links. Keeping
-  // the ring intact guarantees that every guide still receives two useful
-  // contextual paths from within its own cluster.
-  return [...new Set([...(comparisonOverrides[slug] ?? []), ...defaultLinks])];
+function relatedSlugs(slug: string): readonly string[] {
+  return comparisonOverrides[slug] ?? [];
 }
 
 export const guideLinkMap: Readonly<Record<string, GuideLinkMapEntry>> =
@@ -94,7 +145,7 @@ export const guideLinkMap: Readonly<Record<string, GuideLinkMapEntry>> =
           entry.slug,
           {
             hubPath: category.path,
-            relatedSlugs: relatedSlugs(entry.slug, entry.group),
+            relatedSlugs: relatedSlugs(entry.slug),
           },
         ];
       }),

@@ -71,15 +71,14 @@ describe('product comparison data', () => {
     ).toBeUndefined();
   });
 
-  it('caps, deduplicates, and validates shareable explorer selections', () => {
-    expect(
-      parseProductSelection(
-        'dyson-supersonic-nural,not-a-product,dyson-supersonic-nural,conair-digitalaire-2,revlon-one-step-volumizer-plus,wet-brush-original-detangler',
-      ),
-    ).toEqual([
+  it('accepts only a known product slug from local navigation state', () => {
+    expect(parseProductSelection('dyson-supersonic-nural')).toEqual([
       'dyson-supersonic-nural',
-      'conair-digitalaire-2',
-      'revlon-one-step-volumizer-plus',
     ]);
+    expect(parseProductSelection('unknown-product')).toEqual([]);
+    expect(
+      parseProductSelection('dyson-supersonic-nural,unknown-product'),
+    ).toEqual([]);
+    expect(parseProductSelection(undefined)).toEqual([]);
   });
 });

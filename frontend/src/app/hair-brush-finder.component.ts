@@ -232,7 +232,7 @@ const questions: readonly FinderQuestion[] = [
                 <li>
                   <a
                     [href]="'/guides/' + guide.slug"
-                    (click)="guideClicked(guide.slug)"
+                    (click)="guideClicked()"
                     >{{ guide.label }}</a
                   >
                 </li>
@@ -242,7 +242,7 @@ const questions: readonly FinderQuestion[] = [
           <a
             class="button"
             [routerLink]="['/guides', result.primary.guideSlug]"
-            (click)="guideClicked(result.primary.guideSlug)"
+            (click)="guideClicked()"
             >Read the buying guide</a
           >
           <p><a routerLink="/products">Compare published specifications</a></p>
@@ -357,17 +357,13 @@ export class HairBrushFinderComponent {
     }
     const key = this.question.key;
     (this.answers as Record<QuestionKey, string>)[key] = value;
-    this.analytics.track('hair_brush_finder_question_answered', {
-      question_number: this.currentQuestion + 1,
-    });
+    this.analytics.track('hair_brush_finder_question_answered');
     if (this.currentQuestion < this.questions.length - 1) {
       this.currentQuestion++;
       return;
     }
     this.complete = true;
-    this.analytics.track('tool_completed', {
-      primary_recommendation_category: this.result.primary.category,
-    });
+    this.analytics.track('tool_completed');
   }
   back(): void {
     this.currentQuestion--;
@@ -383,9 +379,7 @@ export class HairBrushFinderComponent {
     this.started = false;
     this.analytics.track('hair_brush_finder_restart');
   }
-  guideClicked(slug: string): void {
-    this.analytics.track('result_to_guide_click', {
-      destination_slug: slug,
-    });
+  guideClicked(): void {
+    this.analytics.track('result_to_guide_click');
   }
 }

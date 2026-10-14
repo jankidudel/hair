@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AnalyticsService } from './analytics/analytics.service';
 import { articles } from './content.generated';
 import {
@@ -263,7 +264,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                           [href]="product.officialProductUrl"
                           target="_blank"
                           rel="noopener noreferrer"
-                          (click)="trackOutbound(product.slug)"
+                          (click)="trackOutbound()"
                           >Official {{ product.market }} source</a
                         >
                       </td>
@@ -352,7 +353,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                     [href]="product.officialProductUrl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    (click)="trackOutbound(product.slug)"
+                    (click)="trackOutbound()"
                     >Official {{ product.market }} source
                     <span aria-hidden="true">↗</span></a
                   >
@@ -376,7 +377,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
 })
 export class ProductExplorerComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
   readonly categoryFilters: readonly {
@@ -436,10 +437,10 @@ export class ProductExplorerComponent implements OnInit {
   }
   ngOnInit(): void {
     const comparisonSlug = this.route.snapshot.paramMap.get('comparison');
+    const navigationState = this.document.defaultView?.history.state as
+      { compareProductSlug?: unknown } | undefined;
     this.selectedSlugs = [
-      ...parseProductSelection(
-        this.route.snapshot.queryParamMap.get('compare'),
-      ),
+      ...parseProductSelection(navigationState?.compareProductSlug),
     ];
     this.comparison = canonicalComparisons.find(
       (entry) => entry.slug === comparisonSlug,
@@ -482,24 +483,12 @@ export class ProductExplorerComponent implements OnInit {
     } else if (this.selectedSlugs.length < 3) {
       this.selectedSlugs = [...this.selectedSlugs, slug];
     }
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: {
-        compare: this.selectedSlugs.length
-          ? this.selectedSlugs.join(',')
-          : null,
-      },
-      queryParamsHandling: 'merge',
-      replaceUrl: true,
-    });
     this.analytics.track('product_explorer_selection', {
       selected_count: this.selectedSlugs.length,
     });
   }
-  trackOutbound(slug: string): void {
-    this.analytics.track('product_explorer_outbound_click', {
-      product_slug: slug,
-    });
+  trackOutbound(): void {
+    this.analytics.track('product_explorer_outbound_click');
   }
   categoryLabel(category: ProductCategory): string {
     return (

@@ -13,11 +13,12 @@ export interface GuideLinkMapEntry {
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
   [ArticleSlug.BestCurlingIronsFineHair]: [
     ArticleSlug.CurlingIronBarrelSizeGuide,
-    ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners,
+    ArticleSlug.CurlingIronVsWand,
   ],
   [ArticleSlug.BestCurlingIrons]: [
     ArticleSlug.CurlingIronBarrelSizeGuide,
     ArticleSlug.CurlingIronVsWand,
+    ArticleSlug.HowToUseACurlingIron,
   ],
   [ArticleSlug.BestCurlingToolsShortHair]: [
     ArticleSlug.CurlingIronBarrelSizeGuide,
@@ -56,8 +57,15 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
     ArticleSlug.HairDryerSettingsGuide,
   ],
   [ArticleSlug.WideToothCombVsDetanglingBrush]: [
-    ArticleSlug.HowToChooseHairBrush,
-    ArticleSlug.TangleTeezerVsWetBrushOriginal,
+    ArticleSlug.BestDetanglingBrushes,
+    ArticleSlug.TailCombVsWideToothComb,
+  ],
+  [ArticleSlug.SilkVsSatinPillowcaseHair]: [
+    ArticleSlug.SatinBonnetVsSatinPillowcase,
+  ],
+  [ArticleSlug.MicrofiberHairTowelVsCottonTShirt]: [
+    ArticleSlug.BestMicrofibreHairTowels,
+    ArticleSlug.HowToUseAMicrofibreHairTowel,
   ],
   [ArticleSlug.HowToChooseHairSectioningClips]: [
     ArticleSlug.HowToUseHeatlessCurlingRod,

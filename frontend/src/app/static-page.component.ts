@@ -10,9 +10,14 @@ import {
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { ArticleSlug } from './article-slug';
 import { combReportEditorialTeam } from './editorial';
+import {
+  ChooseUseFixPathwaysComponent,
+  type PathwayGroup,
+} from './choose-use-fix-pathways.component';
+import { categoryPathways } from './category-pathways';
 
 @Component({
-  imports: [RouterLink, BreadcrumbsComponent],
+  imports: [RouterLink, BreadcrumbsComponent, ChooseUseFixPathwaysComponent],
   styleUrl: 'static-page.component.css',
   template: `@switch (page) {
     @case ('home') {
@@ -53,25 +58,48 @@ import { combReportEditorialTeam } from './editorial';
       <section class="topic-section" aria-labelledby="topics-heading">
         <div class="section-heading">
           <p class="eyebrow">Start where you are</p>
-          <h2 id="topics-heading">Explore by topic</h2>
+          <h2 id="topics-heading">Choose the next useful step</h2>
         </div>
-        <div class="topic-links">
-          <a routerLink="/guides/how-to-choose-hair-dryer"
-            ><span>01</span> Find a blow dryer <b>→</b></a
-          >
-          <a routerLink="/products"
-            ><span>02</span> Compare styling tools <b>→</b></a
-          >
-          <a routerLink="/hair-brush-finder"
-            ><span>03</span> Choose a brush <b>→</b></a
-          >
-          <a routerLink="/flat-irons"
-            ><span>04</span> Explore direct-heat tools <b>→</b></a
-          >
-          <a routerLink="/hair-accessories"
-            ><span>05</span> Choose heatless tools and accessories <b>→</b></a
-          >
+        <div class="task-cards">
+          <article>
+            <p class="eyebrow">Choose</p>
+            <h3>Find the tool format that fits the job</h3>
+            <p>
+              Start with the result, section and routine you repeat, then
+              compare the features that change that task.
+            </p>
+            <a class="text-link" routerLink="/tools"
+              >Open the interactive tools →</a
+            >
+          </article>
+          <article>
+            <p class="eyebrow">Use</p>
+            <h3>Follow a complete method</h3>
+            <p>
+              Move from preparation to sectioning, tool movement, release and
+              the next useful adjustment.
+            </p>
+            <a class="text-link" routerLink="/guides">Browse use guides →</a>
+          </article>
+          <article>
+            <p class="eyebrow">Fix</p>
+            <h3>Diagnose the stage that failed</h3>
+            <p>
+              Start from the visible symptom and change one part of the routine
+              before replacing a working tool.
+            </p>
+            <a
+              class="text-link"
+              [routerLink]="['/guides', articleSlug.StylingToolTroubleshooting]"
+              >Open styling troubleshooting →</a
+            >
+          </article>
         </div>
+        <p class="named-comparison-note">
+          Comparing named products?
+          <a routerLink="/products">Use source-linked specifications</a> only
+          after you know which documented difference matters to your routine.
+        </p>
       </section>
       <section class="latest-section" aria-labelledby="latest-heading">
         <div class="section-heading section-heading-row">
@@ -222,33 +250,46 @@ import { combReportEditorialTeam } from './editorial';
         <p class="eyebrow">Interactive tools</p>
         <h1>Practical help for choosing and using hair tools</h1>
         <p class="lede">
-          Use these simple, browser-based helpers to narrow a styling choice or
-          find a comfortable starting point. They do not collect the details you
-          enter.
+          Use these browser-local helpers to choose a format, plan a routine or
+          interpret a published specification. Your answers stay in this page
+          session and are not used to build a personal profile.
         </p>
       </section>
-      <section class="tools-grid" aria-label="Hair tools">
-        @for (tool of tools; track tool.name) {
-          <a class="tool-card" [routerLink]="tool.path">
-            <p class="eyebrow">{{ tool.type }}</p>
-            <h2>{{ tool.name }}</h2>
-            <p>{{ tool.description }}</p>
-            <span class="text-link"
-              >{{ tool.action }} <span aria-hidden="true">→</span></span
-            >
-          </a>
-        }
-      </section>
-      <section class="tools-note" aria-labelledby="tools-note-heading">
-        <h2 id="tools-note-heading">Want to compare specific models?</h2>
-        <p>
-          Browse published manufacturer specifications side by side, then use
-          the related guides to weigh the trade-offs for your routine.
-        </p>
-        <a class="text-link" routerLink="/products"
-          >Explore product comparisons <span aria-hidden="true">→</span></a
-        >
-      </section>
+      @for (group of toolGroups; track group.label) {
+        <section class="tool-group" [attr.aria-labelledby]="group.id">
+          <div class="section-heading">
+            <h2 [id]="group.id">{{ group.label }}</h2>
+            <p>{{ group.description }}</p>
+          </div>
+          <div class="tools-grid">
+            @for (tool of group.tools; track tool.name) {
+              <a class="tool-card" [routerLink]="tool.path">
+                <p class="eyebrow">{{ tool.type }}</p>
+                <h3>{{ tool.name }}</h3>
+                <p>{{ tool.description }}</p>
+                <span class="text-link"
+                  >{{ tool.action }} <span aria-hidden="true">→</span></span
+                >
+              </a>
+            }
+          </div>
+          @if (group.label === 'Check a specification') {
+            <section class="tools-note" aria-labelledby="tools-note-heading">
+              <h3 id="tools-note-heading">
+                Compare exact models after choosing the job
+              </h3>
+              <p>
+                Use Product Explorer when you know which product category and
+                task you are comparing. Check the market, generation and source
+                scope before treating a difference as meaningful.
+              </p>
+              <a class="text-link" routerLink="/products"
+                >Open Product Explorer <span aria-hidden="true">→</span></a
+              >
+            </section>
+          }
+        </section>
+      }
     }
     @case ('category') {
       @if (category) {
@@ -258,105 +299,8 @@ import { combReportEditorialTeam } from './editorial';
           <h1>{{ category.heading }}</h1>
           <p class="lede">{{ category.intro }}</p>
         </section>
-        <section
-          class="category-product-explorer"
-          aria-labelledby="start-here-heading"
-        >
-          <p class="eyebrow">Start here</p>
-          <h2 id="start-here-heading">Choose your next step</h2>
-          <ul>
-            @for (link of categoryStartLinks; track link.path) {
-              <li>
-                <a [routerLink]="link.path">{{ link.label }}</a> —
-                {{ link.description }}
-              </li>
-            }
-          </ul>
-        </section>
-        @if (category.id === 'hair-accessories') {
-          <section
-            class="category-product-explorer"
-            aria-labelledby="accessory-tasks-heading"
-          >
-            <p class="eyebrow">Choose by the task</p>
-            <h2 id="accessory-tasks-heading">A practical accessories route</h2>
-            <p>
-              For wash day, compare a
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.MicrofiberHairTowelVsCottonTShirt,
-                ]"
-                >towel with a T-shirt</a
-              >, then use the
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.HowToUseAMicrofibreHairTowel,
-                ]"
-                >towel fastening method</a
-              >
-              if a wrap fits your routine.
-            </p>
-            <p>
-              For an unheated set, start with
-              <a [routerLink]="['/guides', articleSlug.BestHeatlessCurlingSets]"
-                >format selection</a
-              >
-              and
-              <a [routerLink]="['/guides', articleSlug.VelcroVsFoamHairRollers]"
-                >individual roller closures</a
-              >. Then follow the
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.HowToUseHeatlessCurlingRod,
-                ]"
-                >continuous-rod method</a
-              >, the
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.HowToUseVelcroHairRollers,
-                ]"
-                >self-grip roller method</a
-              >
-              or the
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.HowToUseHeatlessCurlersOnShortHair,
-                ]"
-                >short-section method</a
-              >
-              for the exact tool in hand.
-            </p>
-            <p>
-              If an attempt fails, use
-              <a [routerLink]="['/guides', articleSlug.HeatlessCurlsNotWorking]"
-                >heatless-curl troubleshooting</a
-              >. For fastening and overnight coverage, compare
-              <a
-                [routerLink]="['/guides', articleSlug.HairElasticsVsScrunchies]"
-                >ties</a
-              >,
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.HowToChooseHairSectioningClips,
-                ]"
-                >working clips</a
-              >
-              and
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.SatinBonnetVsSatinPillowcase,
-                ]"
-                >a bonnet with a pillowcase</a
-              >.
-            </p>
-          </section>
+        @if (categoryPathwayGroups.length) {
+          <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
         }
         @for (section of categoryGuideSections; track section.label) {
           <section
@@ -777,6 +721,41 @@ export class StaticPageComponent implements OnInit {
       action: 'Use the finder',
     },
   ] as const;
+  readonly toolGroups = [
+    {
+      id: 'tools-choose',
+      label: 'Choose',
+      description:
+        'Turn a styling job into the format and features worth checking.',
+      tools: [
+        'Flat Iron Finder',
+        'Curling Tool Finder',
+        'Hair Brush Finder',
+        'Hair Dryer Feature Finder',
+        'Round Brush Size Finder',
+        'Heat Protectant Finder',
+      ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
+    },
+    {
+      id: 'tools-use',
+      label: 'Use',
+      description: 'Build a sequence from preparation to the final pass.',
+      tools: [
+        'Hair Tool Routine Builder',
+        'Blow-Dry Routine Planner',
+        'Hair Dryer Settings Finder',
+      ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
+    },
+    {
+      id: 'tools-check',
+      label: 'Check a specification',
+      description:
+        'Translate a label or exact product record before comparing models.',
+      tools: ['Hair Dryer Specs Decoder'].flatMap((name) =>
+        this.tools.filter((tool) => tool.name === name),
+      ),
+    },
+  ] as const;
   readonly featuredGuide = articles[0];
   readonly latestGuides = [
     ArticleSlug.HowToUseHeatlessCurlingRod,
@@ -794,6 +773,7 @@ export class StaticPageComponent implements OnInit {
     label: string;
     articles: typeof articles;
   }[] = [];
+  categoryPathwayGroups: readonly PathwayGroup[] = [];
   categoryStartLinks: readonly {
     label: string;
     path: string;
@@ -807,6 +787,7 @@ export class StaticPageComponent implements OnInit {
     const categoryId = this.route.snapshot.data['category'];
     if (this.page === 'category') {
       this.category = guideCategoryById[categoryId];
+      this.categoryPathwayGroups = categoryPathways[categoryId] ?? [];
       this.categoryArticles = articles.filter(
         (article) => article.group === this.category?.id,
       );

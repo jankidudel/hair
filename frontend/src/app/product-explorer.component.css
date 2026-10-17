@@ -10,6 +10,20 @@
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
 }
+.comparison-entry {
+  max-width: 46rem;
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+  border-left: 3px solid var(--terracotta);
+  background: var(--surface);
+}
+.comparison-entry h2 {
+  margin-top: 0;
+}
+.comparison-entry p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
 .how-we-compare {
   max-width: 50rem;
 }

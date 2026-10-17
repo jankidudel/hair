@@ -1,0 +1,86 @@
+.upgrade-check {
+  margin: 3rem 0;
+  padding: clamp(1.3rem, 4vw, 2rem);
+  border: 1px solid var(--border);
+  border-left: 0.35rem solid var(--terracotta);
+  background: var(--surface);
+}
+.upgrade-check h2 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: clamp(1.7rem, 4vw, 2.35rem);
+}
+.upgrade-check fieldset {
+  display: grid;
+  gap: 0;
+  margin: 1.3rem 0 0;
+  padding: 0;
+  border: 0;
+}
+.upgrade-check label {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+}
+.upgrade-check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+  accent-color: var(--green);
+}
+.upgrade-check input:focus-visible,
+.upgrade-check button:focus-visible,
+.upgrade-result h3:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.upgrade-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.3rem;
+}
+.upgrade-actions .button {
+  margin: 0;
+}
+.secondary-button {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--green);
+  background: transparent;
+  color: var(--green);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.upgrade-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.pending {
+  margin: 1rem 0 0;
+  font-weight: 750;
+}
+.upgrade-result {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.upgrade-result h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+.result-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

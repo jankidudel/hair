@@ -1,0 +1,50 @@
+.evidence-scope {
+  margin: 2rem 0 0;
+  padding: clamp(1.2rem, 3vw, 1.7rem);
+  border: 1px solid var(--border);
+  background: #f2f0eb;
+}
+.evidence-scope h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+}
+.evidence-scope dl {
+  margin: 0;
+}
+.evidence-scope dl > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.62fr) minmax(0, 2fr);
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+}
+.evidence-scope dt {
+  font-weight: 750;
+}
+.evidence-scope dd {
+  margin: 0;
+  color: var(--muted);
+}
+.identifier {
+  font-size: 0.9em;
+}
+.evidence-scope .scope-warning {
+  color: var(--ink);
+}
+.evidence-scope .scope-warning dd {
+  color: inherit;
+  font-weight: 650;
+}
+.scope-note {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+@media (max-width: 32rem) {
+  .evidence-scope dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

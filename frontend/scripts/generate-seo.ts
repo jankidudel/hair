@@ -38,8 +38,20 @@ const entries = [
 ];
 // Static pages do not have article front matter. These are the dates of their
 // last material editorial revision, deliberately not the generation date.
+const batchFourteenStaticRoutes = new Set([
+  '/',
+  '/hair-dryers',
+  '/hot-air-brushes',
+  '/brushes-combs',
+  '/hair-accessories',
+  '/tools',
+  '/products',
+]);
 const staticLastModified: Readonly<Record<string, string>> = Object.fromEntries(
-  entries.map((route) => [route, '2026-09-20']),
+  entries.map((route) => [
+    route,
+    batchFourteenStaticRoutes.has(route) ? '2026-10-17' : '2026-09-20',
+  ]),
 );
 for (const { slug } of articles) entries.push(`/guides/${slug}`);
 const publicDirectory = join(root, 'public');

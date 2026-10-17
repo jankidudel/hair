@@ -25,6 +25,10 @@ export interface ProductProfile {
   readonly slug: string;
   readonly market: 'US' | 'UK';
   readonly name: string;
+  /** Exact public model/listing identifier when the evidence record establishes one. */
+  readonly modelIdentifier?: string;
+  /** Named generation or model family; absent means the generation is unresolved. */
+  readonly generation?: string;
   readonly brand: string;
   readonly category: ProductCategory;
   readonly subtype: string;
@@ -104,6 +108,14 @@ const ghdExactFlatIronSource: Readonly<Record<string, string>> = {
   'ghd-unplugged':
     'https://www.ghdhair.com/us/flat-irons/ghd-unplugged-cordless-flat-iron-black-p-552',
 };
+const ghdExactFlatIronIdentifier: Readonly<Record<string, string>> = {
+  'ghd-chronos': 'p-650, US black 1-inch listing',
+  'ghd-platinum-plus': 'p-453, US black 1-inch listing',
+  'ghd-gold': 'p-435, US black 1-inch listing',
+  'ghd-chronos-max': 'p-689, US black 2-inch listing',
+  'ghd-mini': 'p-662, US black 0.60-inch listing',
+  'ghd-unplugged': 'p-552, US black 0.88-inch listing',
+};
 
 export const productProfiles: readonly ProductProfile[] = [
   ...[
@@ -126,6 +138,10 @@ export const productProfiles: readonly ProductProfile[] = [
       slug: brush.slug,
       market: 'UK',
       name: brush.name,
+      modelIdentifier: brush.slug.startsWith('denman-d3')
+        ? 'D3, 7-row UK listing'
+        : 'D4, 9-row UK listing',
+      generation: brush.slug.startsWith('denman-d3') ? 'D3' : 'D4',
       brand: 'Denman',
       category: ProductCategory.HairBrush,
       subtype: 'manual styling-row brush',
@@ -203,6 +219,8 @@ export const productProfiles: readonly ProductProfile[] = [
   product({
     slug: 'dyson-supersonic-nural',
     name: 'Dyson Supersonic Nural™ hair dryer',
+    modelIdentifier: 'Supersonic Nural, current US listing',
+    generation: 'Supersonic Nural',
     brand: 'Dyson',
     category: ProductCategory.HairDryer,
     subtype: 'full-size dryer',
@@ -246,6 +264,8 @@ export const productProfiles: readonly ProductProfile[] = [
   product({
     slug: 'shark-speedstyle-pro',
     name: 'Shark SpeedStyle™ Pro Hair Dryer System (HD731)',
+    modelIdentifier: 'HD731',
+    generation: 'SpeedStyle Pro HD731',
     brand: 'Shark',
     category: ProductCategory.HairDryer,
     subtype: 'full-size dryer',
@@ -522,6 +542,8 @@ export const productProfiles: readonly ProductProfile[] = [
   product({
     slug: 'dyson-airwrap-id-straight-wavy',
     name: 'Dyson Airwrap i.d.™ multi-styler and dryer Straight+Wavy',
+    modelIdentifier: 'Airwrap i.d. Straight+Wavy, US listing',
+    generation: 'Airwrap i.d.',
     brand: 'Dyson',
     category: ProductCategory.MultiStyler,
     subtype: 'multi-styler and dryer',
@@ -560,6 +582,8 @@ export const productProfiles: readonly ProductProfile[] = [
   product({
     slug: 'shark-flexstyle-hd430',
     name: 'Shark FlexStyle® 4-in-1 Air Styling & Drying System (HD430)',
+    modelIdentifier: 'HD430',
+    generation: 'FlexStyle HD430',
     brand: 'Shark',
     category: ProductCategory.MultiStyler,
     subtype: 'multi-styler and dryer',
@@ -632,6 +656,8 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'tangle-teezer-ultimate-detangler-matte-uk',
     market: 'UK',
     name: 'Tangle Teezer The Ultimate Detangler Matte',
+    modelIdentifier: 'Ultimate Detangler Matte, UK listing',
+    generation: 'Ultimate Detangler Matte',
     brand: 'Tangle Teezer',
     category: ProductCategory.HairBrush,
     subtype: 'two-tier detangling brush',
@@ -709,6 +735,8 @@ export const productProfiles: readonly ProductProfile[] = [
   product({
     slug: 'wet-brush-original-detangler',
     name: 'Wet Brush Original Detangler (Frost Black)',
+    modelIdentifier: 'Original Detangler Frost Black, US listing',
+    generation: 'Original Detangler Frost Black',
     brand: 'Wet Brush',
     category: ProductCategory.HairBrush,
     subtype: 'flexible-bristle detangling brush',
@@ -843,6 +871,8 @@ export const productProfiles: readonly ProductProfile[] = [
       product({
         slug: slug as string,
         name: name as string,
+        modelIdentifier: ghdExactFlatIronIdentifier[slug as string],
+        generation: slug as string,
         brand: brand as string,
         category: ProductCategory.FlatIron,
         subtype: 'flat iron',
@@ -1175,6 +1205,8 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'babyliss-air-style-1000-2136u-uk',
     market: 'UK',
     name: 'BaByliss Air Style 1000 (2136U)',
+    modelIdentifier: '2136U',
+    generation: 'Air Style 1000 2136U',
     brand: 'BaByliss',
     category: ProductCategory.MultiStyler,
     subtype: 'multi-attachment hot-air styler',
@@ -1219,6 +1251,8 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'babyliss-flawless-volume-2764u-uk',
     market: 'UK',
     name: 'BaByliss Flawless Volume (2764U)',
+    modelIdentifier: '2764U',
+    generation: 'Flawless Volume 2764U',
     brand: 'BaByliss',
     category: ProductCategory.HotAirBrush,
     subtype: 'single-head hot-air brush',
@@ -1261,6 +1295,8 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'ghd-chronos-black-uk',
     market: 'UK',
     name: 'ghd Chronos (26 mm plate) Black, UK',
+    modelIdentifier: 'p-650, UK black 26 mm listing',
+    generation: 'ghd-chronos',
     brand: 'ghd',
     category: ProductCategory.FlatIron,
     subtype: 'standard-width flat iron',
@@ -1296,6 +1332,56 @@ export const productProfiles: readonly ProductProfile[] = [
     ],
     relatedGuideSlugs: [
       ArticleSlug.GhdChronosVsPlatinumPlus,
+      ArticleSlug.GhdChronosVsChronosMax,
+      ArticleSlug.BestFlatIrons,
+    ],
+  }),
+  product({
+    slug: 'ghd-chronos-max-black-uk',
+    market: 'UK',
+    name: 'ghd Chronos Max (43 mm plate) Black, UK',
+    modelIdentifier: 'p-689, UK black 43 mm listing',
+    generation: 'ghd-chronos-max',
+    brand: 'ghd',
+    category: ProductCategory.FlatIron,
+    subtype: 'wide flat iron',
+    imageAlt: 'ghd Chronos Max black UK straightener',
+    priceTier: 'premium',
+    heatControl: 'fixed',
+    bestFor: [
+      'a UK 43 mm preset 185°C model with 10-minute inactivity shutoff',
+    ],
+    notIdealFor: ['someone who wants an adjustable temperature'],
+    officialProductUrl:
+      'https://www.ghdhair.com/hair-straighteners/ghd-chronos-max-black-styler-p-689',
+    verifiedAt: '2026-10-17',
+    availability: 'available',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      {
+        label: 'UK plate and control',
+        value: '43 mm; preset 185°C',
+        sourceUrl:
+          'https://www.ghdhair.com/hair-straighteners/ghd-chronos-max-black-styler-p-689',
+        verifiedAt: '2026-10-17',
+      },
+      {
+        label: 'UK inactivity shutoff',
+        value: '10 minutes',
+        sourceUrl:
+          'https://www.ghdhair.com/hair-straighteners/ghd-chronos-max-black-styler-p-689',
+        verifiedAt: '2026-10-17',
+      },
+      {
+        label: 'UK warranty',
+        value: '2 years stated',
+        sourceUrl:
+          'https://www.ghdhair.com/hair-straighteners/ghd-chronos-max-black-styler-p-689',
+        verifiedAt: '2026-10-17',
+      },
+    ],
+    relatedGuideSlugs: [
+      ArticleSlug.GhdChronosVsChronosMax,
       ArticleSlug.BestFlatIrons,
     ],
   }),
@@ -1303,6 +1389,8 @@ export const productProfiles: readonly ProductProfile[] = [
     slug: 'ghd-platinum-plus-black-uk',
     market: 'UK',
     name: 'ghd Platinum+ (26 mm plate) Black, UK',
+    modelIdentifier: 'p-453, UK black 26 mm listing',
+    generation: 'ghd-platinum-plus',
     brand: 'ghd',
     category: ProductCategory.FlatIron,
     subtype: 'standard-width flat iron',
@@ -1534,6 +1622,26 @@ export const canonicalComparisons: readonly CanonicalComparison[] = [
 ];
 export const productBySlug = (slug: string) =>
   productProfiles.find((item) => item.slug === slug);
+export const DIFFERENT_MARKET_WARNING =
+  'These records use different markets. Plug, voltage, bundle, warranty and availability details may not be comparable.';
+export const GENERATION_WARNING =
+  'The product generations do not match or are not fully identified. Treat family-name similarities as unverified.';
+export function marketWarning(
+  products: readonly ProductProfile[],
+): string | undefined {
+  return new Set(products.map((product) => product.market)).size > 1
+    ? DIFFERENT_MARKET_WARNING
+    : undefined;
+}
+export function generationWarning(
+  products: readonly ProductProfile[],
+): string | undefined {
+  const generations = products.map((product) => product.generation);
+  return generations.some((generation) => !generation) ||
+    new Set(generations).size > 1
+    ? GENERATION_WARNING
+    : undefined;
+}
 export const comparisonForProduct = (slug: string) =>
   canonicalComparisons.find((item) => item.productSlugs.includes(slug));
 export function parseProductSelection(value: unknown): readonly string[] {

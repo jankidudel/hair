@@ -7,6 +7,8 @@ import {
   comparisonFacts,
   comparisonForProduct,
   canonicalComparisons,
+  generationWarning,
+  marketWarning,
   productBySlug,
   productProfiles,
   ProductCategory,
@@ -17,6 +19,8 @@ import {
   type VerifiedFact,
 } from './product-comparisons';
 import { SiteSeoService } from './site-seo.service';
+import { EvidenceScopeComponent } from './evidence-scope.component';
+import { UpgradeCheckComponent } from './upgrade-check.component';
 
 type CategoryFilter = ProductCategory | 'all';
 type PriceFilter = PriceTier | 'all';
@@ -39,7 +43,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
 };
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, EvidenceScopeComponent, UpgradeCheckComponent],
   styleUrl: 'product-explorer.component.css',
   template: `@if (comparison) {
       <section class="comparison-page">
@@ -49,6 +53,9 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
           This is a comparison of published manufacturer specifications, not a
           hands-on product test or ranking.
         </p>
+        @if (firstProduct && secondProduct) {
+          <app-evidence-scope [products]="[firstProduct, secondProduct]" />
+        }
         <table class="comparison-matrix">
           <thead>
             <tr>
@@ -71,7 +78,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                       <span class="external-label">Official source</span></a
                     >
                   } @else {
-                    Not confirmed
+                    Not established for this exact record
                   }
                 </td>
                 <td>
@@ -84,13 +91,14 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                       <span class="external-label">Official source</span></a
                     >
                   } @else {
-                    Not confirmed
+                    Not established for this exact record
                   }
                 </td>
               </tr>
             }
           </tbody>
         </table>
+        <app-upgrade-check />
         <section class="comparison-guidance">
           <h2>Choose this type of tool if…</h2>
           <p>{{ choiceCopy }}</p>
@@ -193,12 +201,29 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
           </div>
         </section>
         <section class="selected-comparison" aria-labelledby="selected-heading">
-          <h2 id="selected-heading">Compare up to three products</h2>
+          @if (selectedProducts.length < 2) {
+            <div class="comparison-entry">
+              <h2>Compare products that answer the same job</h2>
+              <p>
+                Select exact models from the same product category. Check the
+                market and generation before comparing dimensions, controls,
+                attachments or ownership details.
+              </p>
+            </div>
+          }
+          <h2 id="selected-heading">Compare up to two products</h2>
           <p class="product-source" aria-live="polite">
-            {{ selectedSlugs.length }} of 3 selected. The selection is stored in
-            the page URL so you can copy or bookmark it.
+            {{ selectedSlugs.length }} of 2 selected. Selections stay in this
+            page session and are not saved to the address.
           </p>
           @if (selectedProducts.length) {
+            @if (selectedProducts.length === 2) {
+              <app-evidence-scope
+                [products]="selectedProducts"
+                [marketWarning]="selectedMarketWarning"
+                [generationWarning]="selectedGenerationWarning"
+              />
+            }
             <div
               class="comparison-scroll"
               tabindex="0"
@@ -286,7 +311,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                               ></a
                             >
                           } @else {
-                            Not confirmed
+                            Not established for this exact record
                           }
                         </td>
                       }
@@ -295,6 +320,9 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                 </tbody>
               </table>
             </div>
+            @if (selectedProducts.length === 2) {
+              <app-upgrade-check />
+            }
           }
         </section>
         @if (filteredProducts.length) {
@@ -323,7 +351,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                   [class.selected]="isSelected(product.slug)"
                   [attr.aria-pressed]="isSelected(product.slug)"
                   [disabled]="
-                    !isSelected(product.slug) && selectedSlugs.length >= 3
+                    !isSelected(product.slug) && selectedSlugs.length >= 2
                   "
                   (click)="toggleProduct(product.slug)"
                 >
@@ -407,6 +435,8 @@ export class ProductExplorerComponent implements OnInit {
   secondProduct?: ProductProfile;
   facts: ReturnType<typeof comparisonFacts> = [];
   relatedGuides: readonly (typeof articles)[number][] = [];
+  private startedTracked = false;
+  private completedTracked = false;
   get filteredProducts(): readonly ProductProfile[] {
     return productProfiles.filter(
       (product) =>
@@ -428,6 +458,12 @@ export class ProductExplorerComponent implements OnInit {
         ),
       ),
     ];
+  }
+  get selectedMarketWarning(): string | undefined {
+    return marketWarning(this.selectedProducts);
+  }
+  get selectedGenerationWarning(): string | undefined {
+    return generationWarning(this.selectedProducts);
   }
   selectedFact(
     product: ProductProfile,
@@ -480,12 +516,17 @@ export class ProductExplorerComponent implements OnInit {
   toggleProduct(slug: string): void {
     if (this.isSelected(slug)) {
       this.selectedSlugs = this.selectedSlugs.filter((item) => item !== slug);
-    } else if (this.selectedSlugs.length < 3) {
+    } else if (this.selectedSlugs.length < 2) {
       this.selectedSlugs = [...this.selectedSlugs, slug];
     }
-    this.analytics.track('product_explorer_selection', {
-      selected_count: this.selectedSlugs.length,
-    });
+    if (this.selectedSlugs.length > 0 && !this.startedTracked) {
+      this.analytics.track('product_explorer_started');
+      this.startedTracked = true;
+    }
+    if (this.selectedSlugs.length === 2 && !this.completedTracked) {
+      this.analytics.track('product_explorer_comparison_completed');
+      this.completedTracked = true;
+    }
   }
   trackOutbound(): void {
     this.analytics.track('product_explorer_outbound_click');

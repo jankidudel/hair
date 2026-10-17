@@ -7,6 +7,7 @@ import {
   isPublishedOn,
   isValidCalendarDate,
 } from '../src/app/publication-date.ts';
+import { decisionSnapshots } from '../src/app/decision-support.ts';
 
 const suppliedDate = process.argv.find((argument) =>
   argument.startsWith('--date='),
@@ -91,8 +92,18 @@ for (const file of files) {
     errors.push(
       `${prefix}: article body must not include H1; generated H1 must match heading.`,
     );
-  const words =
-    parsed.content.replace(/<[^>]+>/g, ' ').match(/[\p{L}\p{N}'’-]+/gu) ?? [];
+  const decisionSnapshot = decisionSnapshots[slug];
+  const decisionText = decisionSnapshot
+    ? [
+        'Decision snapshot',
+        decisionSnapshot.heading,
+        decisionSnapshot.intro,
+        ...decisionSnapshot.rows.flatMap((row) => [row.label, row.text]),
+        'Check the exact model, market and instructions before treating a published difference as a reason to buy.',
+      ].join(' ')
+    : '';
+  const renderedEditorialText = `${decisionText} ${parsed.content.replace(/<[^>]+>/g, ' ')}`;
+  const words = renderedEditorialText.match(/[\p{L}\p{N}'’-]+/gu) ?? [];
   const opening = words.slice(0, 180).length;
   if (modernSource && opening < 80)
     errors.push(
@@ -104,7 +115,8 @@ for (const file of files) {
     warnings.push(
       `${prefix}: body is below the 800-word target (${words.length}).`,
     );
-  const h2 = (parsed.content.match(/<h2\b/gi) ?? []).length;
+  const h2 =
+    (parsed.content.match(/<h2\b/gi) ?? []).length + (decisionSnapshot ? 1 : 0);
   if (modernSource && h2 < 3)
     errors.push(`${prefix}: needs at least 3 H2 sections (${h2}).`);
   else if (h2 < 4)

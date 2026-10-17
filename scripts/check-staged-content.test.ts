@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import { decisionSnapshots } from '../frontend/src/app/decision-support.ts';
 import { articleRegistry } from '../frontend/src/app/article-registry.ts';
 import { articleSlugNameByValue } from '../frontend/src/app/article-slug.ts';
 import { canonicalComparisons } from '../frontend/src/app/product-comparisons.ts';
@@ -50,6 +52,19 @@ test('rejects a publishable guide below the hard minimum', () => {
     today: '2026-09-06',
   });
   assert.match(errors.join('\n'), /body is too short/);
+});
+
+test('decision owners retain article bodies accepted by the publication gate', () => {
+  for (const slug of Object.keys(decisionSnapshots)) {
+    const file = `frontend/content/${slug}.html`;
+    const errors = validateStagedGuide({
+      file,
+      source: readFileSync(file, 'utf8'),
+      entry: articleRegistry.find((candidate) => candidate.slug === slug),
+      today: '2026-10-17',
+    });
+    assert.deepEqual(errors, [], `${slug}: ${errors.join('; ')}`);
+  }
 });
 
 test('allows links to registered canonical comparison guides', () => {

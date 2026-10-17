@@ -1,0 +1,42 @@
+.pathways {
+  margin-top: 3rem;
+}
+.pathways > h2 {
+  margin: 0.35rem 0 1.4rem;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+}
+.pathway-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.pathway-grid section {
+  min-width: 0;
+  padding: clamp(1.2rem, 3vw, 1.7rem);
+  background: var(--surface);
+}
+.pathway-grid h3 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+.pathway-grid p {
+  color: var(--muted);
+}
+.pathway-grid ul {
+  margin: 1.2rem 0 0;
+  padding-left: 1.15rem;
+}
+.pathway-grid li + li {
+  margin-top: 0.65rem;
+}
+.pathway-grid a {
+  color: var(--green);
+  font-weight: 700;
+}
+@media (max-width: 48rem) {
+  .pathway-grid {
+    grid-template-columns: 1fr;
+  }
+}

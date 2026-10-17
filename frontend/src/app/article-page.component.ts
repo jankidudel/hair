@@ -14,6 +14,37 @@ import { StraighteningBrushFinderComponent } from './straightening-brush-finder.
 import { HeatProtectantFinderComponent } from './heat-protectant-finder.component';
 import { BlowDryRoutinePlannerComponent } from './blow-dry-routine-planner.component';
 import { guideLinkMap } from './guide-link-map';
+import { DecisionSnapshotComponent } from './decision-snapshot.component';
+import { EvidenceScopeComponent } from './evidence-scope.component';
+import { UpgradeCheckComponent } from './upgrade-check.component';
+import {
+  decisionRelatedLinks,
+  decisionSnapshots,
+  evidenceOwners,
+  type DecisionSnapshotContent,
+  type RelatedDecisionLinks,
+} from './decision-support';
+import { productBySlug, type ProductProfile } from './product-comparisons';
+
+export function splitEvidenceArticleHtml(
+  html: string,
+  upgradeBeforeHeading: string,
+): readonly [string, string, string] {
+  const tableIndex = html.indexOf('<table');
+  if (tableIndex < 0)
+    throw new Error('An evidence owner must contain a comparison table.');
+  const upgradeAnchor = `<h2>${upgradeBeforeHeading}</h2>`;
+  const upgradeIndex = html.indexOf(upgradeAnchor, tableIndex);
+  if (upgradeIndex < 0)
+    throw new Error(
+      `An evidence owner is missing the upgrade anchor '${upgradeBeforeHeading}'.`,
+    );
+  return [
+    html.slice(0, tableIndex),
+    html.slice(tableIndex, upgradeIndex),
+    html.slice(upgradeIndex),
+  ];
+}
 @Component({
   imports: [
     RouterLink,
@@ -25,6 +56,9 @@ import { guideLinkMap } from './guide-link-map';
     StraighteningBrushFinderComponent,
     HeatProtectantFinderComponent,
     BlowDryRoutinePlannerComponent,
+    DecisionSnapshotComponent,
+    EvidenceScopeComponent,
+    UpgradeCheckComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
@@ -51,6 +85,9 @@ import { guideLinkMap } from './guide-link-map';
           >
         </p>
       </header>
+      @if (decisionSnapshot) {
+        <app-decision-snapshot [content]="decisionSnapshot" />
+      }
       @if (article.commercialOutcome === 'selection-guide') {
         <aside class="selection-guide-note">
           <strong>Selection guide, not a product ranking.</strong>
@@ -86,8 +123,55 @@ import { guideLinkMap } from './guide-link-map';
           >.
         </aside>
       }
-      <section class="article-body" [innerHTML]="article.html"></section>
-      @if (guideLinks) {
+      @if (evidenceProducts.length > 0) {
+        @if (articleHtmlBeforeTable) {
+          <section
+            class="article-body"
+            [innerHTML]="articleHtmlBeforeTable"
+          ></section>
+        }
+        <app-evidence-scope
+          [products]="evidenceProducts"
+          [marketContext]="evidenceMarketContext"
+        />
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlBeforeUpgrade"
+        ></section>
+        <app-upgrade-check />
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlAfterUpgrade"
+        ></section>
+      } @else {
+        <section class="article-body" [innerHTML]="article.html"></section>
+      }
+      @if (evidenceSourceChecks.length) {
+        <section class="article-body" aria-labelledby="source-checks-heading">
+          <h2 id="source-checks-heading">Sources</h2>
+          <ul>
+            @for (source of evidenceSourceChecks; track source.key) {
+              <li>
+                <a [href]="source.url">{{ source.label }}</a>
+                — checked {{ source.date }}
+              </li>
+            }
+          </ul>
+        </section>
+      }
+      @if (decisionLinks) {
+        <nav class="article-next-steps" aria-labelledby="next-steps-heading">
+          <h2 id="next-steps-heading">Continue from this decision</h2>
+          <p>{{ decisionLinks.sentence }}</p>
+          <ul>
+            @for (link of decisionLinks.links; track link.path) {
+              <li>
+                <a [href]="link.path">{{ link.label }}</a>
+              </li>
+            }
+          </ul>
+        </nav>
+      } @else if (guideLinks) {
         <nav class="article-next-steps" aria-labelledby="next-steps-heading">
           <h2 id="next-steps-heading">Related guides</h2>
           <ul>
@@ -126,10 +210,69 @@ export class ArticlePageComponent implements OnInit {
   breadcrumbs: readonly Breadcrumb[] = [];
   guideLinks?: (typeof guideLinkMap)[string];
   relatedGuides: readonly Article[] = [];
+  decisionSnapshot?: DecisionSnapshotContent;
+  decisionLinks?: RelatedDecisionLinks;
+  evidenceProducts: readonly ProductProfile[] = [];
+  evidenceMarketContext?: string;
+  get evidenceSourceChecks(): readonly {
+    key: string;
+    url: string;
+    label: string;
+    date: string;
+  }[] {
+    const checks = this.evidenceProducts.flatMap((product) => [
+      {
+        url: product.officialProductUrl,
+        label: product.name,
+        date: product.verifiedAt,
+      },
+      ...product.verifiedFacts.map((fact) => ({
+        url: fact.sourceUrl,
+        label: `${product.name}: ${fact.label}`,
+        date: fact.verifiedAt,
+      })),
+    ]);
+    if (new Set(checks.map((check) => check.date)).size <= 1) return [];
+    return [
+      ...new Map(
+        checks.map((check) => [
+          `${check.url}|${check.date}`,
+          { ...check, key: `${check.url}|${check.date}` },
+        ]),
+      ).values(),
+    ];
+  }
+  articleHtmlBeforeTable = '';
+  articleHtmlBeforeUpgrade = '';
+  articleHtmlAfterUpgrade = '';
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.article = articles.find((item) => item.slug === slug);
     if (this.article) {
+      this.decisionSnapshot = decisionSnapshots[this.article.slug];
+      this.decisionLinks = decisionRelatedLinks[this.article.slug];
+      const evidenceOwner = evidenceOwners[this.article.slug];
+      if (evidenceOwner) {
+        this.evidenceMarketContext = evidenceOwner.marketContext;
+        this.evidenceProducts = evidenceOwner.productSlugs.map(
+          (productSlug) => {
+            const product = productBySlug(productSlug);
+            if (!product?.modelIdentifier)
+              throw new Error(
+                `Evidence owner '${this.article?.slug}' needs an exact identifier for '${productSlug}'.`,
+              );
+            return product;
+          },
+        );
+        [
+          this.articleHtmlBeforeTable,
+          this.articleHtmlBeforeUpgrade,
+          this.articleHtmlAfterUpgrade,
+        ] = splitEvidenceArticleHtml(
+          this.article.html,
+          evidenceOwner.upgradeBeforeHeading,
+        );
+      }
       this.guideLinks = guideLinkMap[this.article.slug];
       this.relatedGuides = (this.guideLinks?.relatedSlugs ?? [])
         .map((relatedSlug) =>

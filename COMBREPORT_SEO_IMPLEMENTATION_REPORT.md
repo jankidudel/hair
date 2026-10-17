@@ -24,6 +24,10 @@ This quality-platform batch establishes an explicit editorial method and interim
 - State each guide's distinct reader decision in its opening and conclusion. Retitle specification-led shortlists when “best” would imply a ranking that the evidence does not support.
 - Match starting-state, settings, and attachment advice to the exact device instructions. A user-facing setting aid should explain which observable inputs shape its suggestion and avoid universal temperature charts.
 - Describe privacy from the implemented data flow: keep tool answers and selected product identities out of URLs and analytics payloads, store optional consent locally, and record external analytics/hosting retention settings as owner-confirmed gaps until verified.
+- Put the complete answer before long analysis, then place exact product, market and evidence scope next to the comparison table it qualifies.
+- Use buying checklists to organise a documented decision, never to calculate a score, winner or recommendation.
+- Organise category hubs around choose, use and fix intent so readers can move from selection to method or troubleshooting without reconstructing the journey from a long mixed list.
+- Do not add unrelated links to satisfy a fixed count. A shorter set of task-specific next steps is preferable to a generic or off-topic link.
 
 ## Implemented changes
 

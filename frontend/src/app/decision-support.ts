@@ -1,0 +1,455 @@
+import { ArticleSlug } from './article-slug';
+
+export interface DecisionSnapshotContent {
+  readonly heading: string;
+  readonly intro: string;
+  readonly rows: readonly {
+    readonly label: string;
+    readonly text: string;
+  }[];
+}
+
+export interface RelatedDecisionLinks {
+  readonly sentence: string;
+  readonly links: readonly { readonly label: string; readonly path: string }[];
+}
+
+export interface EvidenceOwner {
+  readonly productSlugs: readonly string[];
+  readonly upgradeBeforeHeading: string;
+  readonly marketContext?: string;
+}
+
+const guide = (slug: string) => `/guides/${slug}`;
+
+export const decisionSnapshots: Readonly<
+  Record<string, DecisionSnapshotContent>
+> = {
+  [ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume]: {
+    heading: 'Choose attachments or one repeatable brush routine',
+    intro:
+      'Air Style 1000 model 2136U covers several documented jobs by changing attachments. Flawless Volume model 2764U keeps the routine centred on one 38 mm brush head.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose Air Style 1000 if you will use its drying nozzle, 50 mm brush, paddle brush or conical attachment and are willing to change and store the parts.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose Flawless Volume if one brush-led routine matches the job and you do not need interchangeable attachments.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep a working dryer-and-brush setup when it already dries and shapes the sections you normally style.',
+      },
+    ],
+  },
+  [ArticleSlug.GhdChronosVsPlatinumPlus]: {
+    heading: 'Choose from controls and ownership details',
+    intro:
+      'Both compared standard-width tools use a preset styling temperature. The clearest documented differences are the control description, inactivity shutoff and current ownership terms.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose Chronos if its 10-minute inactivity shutoff and current Chronos control design solve a real preference.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose Platinum+ if its 30-minute shutoff, current package and established control design fit your routine.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep a working standard-width straightener when neither documented difference changes the way you style.',
+      },
+    ],
+  },
+  [ArticleSlug.GhdGoldVsPlatinumPlus]: {
+    heading: 'Choose from ownership terms, not the technology name',
+    intro:
+      'The compared US black models share a 1-inch plate label, one preset 365°F setting and a 30-minute inactivity shutoff.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose Gold if its fixed control, listed plate guard and current two-year US warranty meet the purchase.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose Platinum+ if its current three-year US warranty and different maker-described monitoring system matter to you.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep either working tool when the alternative adds no documented feature you will use.',
+      },
+    ],
+  },
+  [ArticleSlug.GhdChronosVsChronosMax]: {
+    heading: 'Choose the plate width you can use consistently',
+    intro:
+      'The standard Chronos and Chronos Max belong to the same named family, but the plate-width choice changes section coverage and edge access.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose standard Chronos when a standard-width plate gives you the access and section control you need.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose Chronos Max when its documented wider plate matches the broad sections you regularly straighten.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep the current iron when changing width would not solve a section-handling problem.',
+      },
+    ],
+  },
+  [ArticleSlug.DysonSupersonicVsSharkSpeedstyle]: {
+    heading: 'Choose the exact dryer and attachment set',
+    intro:
+      'Compare the current models by controls, supplied attachments, documented weight and local package. Brand-level claims do not establish a head-to-head drying result.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose the Dyson Supersonic Nural™ hair dryer if its exact attachments and controls match the drying and finishing jobs you repeat.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose the Shark SpeedStyle™ Pro Hair Dryer System (HD731) if its exact attachments and controls cover those jobs with a package you prefer.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep a working dryer when neither package adds a documented attachment or control you need.',
+      },
+    ],
+  },
+  [ArticleSlug.DysonAirwrapVsSharkFlexstyle]: {
+    heading: 'Choose the bundle whose attachments match real jobs',
+    intro:
+      'A multi-styler bundle earns its place only when its exact attachments cover tasks you will perform. Compare the named market bundles rather than the family names alone.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose the compared Airwrap i.d. bundle if its documented barrels, brushes and drying attachment match your routine.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose the compared FlexStyle HD430 bundle if its documented attachments cover your routine and you prefer that changeover system.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep the tools you own when the new bundle mainly duplicates drying, smoothing or curling stages already covered.',
+      },
+    ],
+  },
+  [ArticleSlug.DenmanD3VsD4]: {
+    heading: 'Choose seven rows or nine rows for the section you handle',
+    intro:
+      'The useful difference is the documented row layout and the working section it creates, not a promise that one styler suits every head of hair.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose D3 if its seven-row layout gives the section size and access you want.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose D4 if its nine-row layout suits a broader working section you can still control.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep the current styler when its row layout already guides the sections you use without crowding or snagging.',
+      },
+    ],
+  },
+  [ArticleSlug.TangleTeezerVsWetBrushOriginal]: {
+    heading: 'Choose from tooth layout, grip and permitted use',
+    intro:
+      'These exact detanglers differ in contact layout and handle design. Their maker descriptions do not establish which one is universally gentler or faster.',
+    rows: [
+      {
+        label: 'Choose the first option',
+        text: 'Choose the Ultimate Detangler Matte if its documented tooth layout, handle and permitted use match your detangling stage.',
+      },
+      {
+        label: 'Choose the second option',
+        text: 'Choose the Wet Brush Original Frost Black if its documented bristle layout and grip match the sections you handle.',
+      },
+      {
+        label: 'Keep what you have',
+        text: 'Keep a sound detangler that already moves through manageable sections comfortably and is permitted for the way you use it.',
+      },
+    ],
+  },
+  [ArticleSlug.MicrofiberHairTowelVsCottonTShirt]: {
+    heading: 'Choose from coverage, fastening and laundry',
+    intro:
+      'A shaped wrap mainly changes coverage and fastening. A cotton T-shirt you already own may do the job when it covers the hair and stays in place without a tight twist.',
+    rows: [
+      {
+        label: 'Choose a purpose-made wrap',
+        text: 'Choose one when its usable fabric area and closure make the blotting step easier to secure.',
+      },
+      {
+        label: 'Use a cotton T-shirt',
+        text: 'Use a clean T-shirt when its size, seams and fabric label suit the way you gather and blot the hair.',
+      },
+      {
+        label: 'Keep the current setup',
+        text: 'Keep the item that covers the required sections, washes easily and comes off without disturbing the next step.',
+      },
+    ],
+  },
+  [ArticleSlug.SilkVsSatinPillowcaseHair]: {
+    heading: 'Read the fibre label before choosing by the word satin',
+    intro:
+      'Silk is a fibre and satin is a weave, so the labels are not mutually exclusive. Compare composition, construction, closure, feel and care on the exact pillowcase.',
+    rows: [
+      {
+        label: 'Choose by fibre',
+        text: 'Choose silk when the declared fibre and its care requirements are what you want to pay for and maintain.',
+      },
+      {
+        label: 'Choose by surface and construction',
+        text: 'Choose a non-silk satin case when its declared fibre, closure and laundry instructions fit your routine.',
+      },
+      {
+        label: 'Keep the current case',
+        text: 'Keep a case that fits, feels comfortable and washes reliably when another label does not solve a specific problem.',
+      },
+    ],
+  },
+};
+
+export const evidenceOwners: Readonly<Record<string, EvidenceOwner>> = {
+  [ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume]: {
+    productSlugs: [
+      'babyliss-air-style-1000-2136u-uk',
+      'babyliss-flawless-volume-2764u-uk',
+    ],
+    upgradeBeforeHeading: 'When to choose neither',
+  },
+  [ArticleSlug.GhdChronosVsPlatinumPlus]: {
+    productSlugs: [
+      'ghd-chronos',
+      'ghd-platinum-plus',
+      'ghd-chronos-black-uk',
+      'ghd-platinum-plus-black-uk',
+    ],
+    upgradeBeforeHeading: 'Decide from controls and ownership details',
+  },
+  [ArticleSlug.GhdGoldVsPlatinumPlus]: {
+    productSlugs: ['ghd-gold', 'ghd-platinum-plus'],
+    upgradeBeforeHeading: 'Who might choose each',
+  },
+  [ArticleSlug.GhdChronosVsChronosMax]: {
+    productSlugs: [
+      'ghd-chronos',
+      'ghd-chronos-max',
+      'ghd-chronos-black-uk',
+      'ghd-chronos-max-black-uk',
+    ],
+    upgradeBeforeHeading: 'What to compare next',
+  },
+  [ArticleSlug.DysonSupersonicVsSharkSpeedstyle]: {
+    productSlugs: ['dyson-supersonic-nural', 'shark-speedstyle-pro'],
+    upgradeBeforeHeading: 'The bottom line',
+  },
+  [ArticleSlug.DysonAirwrapVsSharkFlexstyle]: {
+    productSlugs: ['dyson-airwrap-id-straight-wavy', 'shark-flexstyle-hd430'],
+    upgradeBeforeHeading: 'Verdict by user type',
+    marketContext:
+      'US main comparison. Separate UK HD446UK and Airwrap i.d. Straight+Wavy bundle examples appear below; their details do not substitute for the US records.',
+  },
+  [ArticleSlug.DenmanD3VsD4]: {
+    productSlugs: [
+      'denman-d3-original-7-row-uk',
+      'denman-d4-original-9-row-uk',
+    ],
+    upgradeBeforeHeading: 'A small-section handling test',
+  },
+  [ArticleSlug.TangleTeezerVsWetBrushOriginal]: {
+    productSlugs: [
+      'tangle-teezer-ultimate-detangler-matte-uk',
+      'wet-brush-original-detangler',
+    ],
+    upgradeBeforeHeading: 'Let the evidence decide only the feature it covers',
+  },
+};
+
+export const decisionRelatedLinks: Readonly<
+  Record<string, RelatedDecisionLinks>
+> = {
+  [ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume]: {
+    sentence:
+      'Choose the next page from the part of the routine you still need to resolve.',
+    links: [
+      {
+        label: 'Choose a hot-air brush by task',
+        path: guide(ArticleSlug.BestHotAirBrushes),
+      },
+      {
+        label: 'Compare a hot-air brush with a dryer and round brush',
+        path: guide(ArticleSlug.HotAirBrushVsHairDryerAndRoundBrush),
+      },
+      {
+        label: 'Use a hot-air brush',
+        path: guide(ArticleSlug.HowToUseHotAirBrush),
+      },
+    ],
+  },
+  [ArticleSlug.GhdChronosVsPlatinumPlus]: {
+    sentence:
+      'Continue with the control or width decision that could change this comparison.',
+    links: [
+      {
+        label: 'Compare fixed and adjustable straightener controls',
+        path: guide(ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners),
+      },
+      {
+        label: 'Compare standard Chronos with Chronos Max',
+        path: guide(ArticleSlug.GhdChronosVsChronosMax),
+      },
+      {
+        label: 'Use the flat-iron plate-width guide',
+        path: guide(ArticleSlug.FlatIronPlateWidthGuide),
+      },
+    ],
+  },
+  [ArticleSlug.GhdGoldVsPlatinumPlus]: {
+    sentence:
+      'Continue with the control, width or alternative ghd comparison that matches the unresolved question.',
+    links: [
+      {
+        label: 'Compare fixed and adjustable straightener controls',
+        path: guide(ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners),
+      },
+      {
+        label: 'Compare Chronos and Platinum+',
+        path: guide(ArticleSlug.GhdChronosVsPlatinumPlus),
+      },
+      {
+        label: 'Use the flat-iron plate-width guide',
+        path: guide(ArticleSlug.FlatIronPlateWidthGuide),
+      },
+    ],
+  },
+  [ArticleSlug.GhdChronosVsChronosMax]: {
+    sentence:
+      'Continue with plate width, control choice or the standard-model comparison.',
+    links: [
+      {
+        label: 'Use the flat-iron plate-width guide',
+        path: guide(ArticleSlug.FlatIronPlateWidthGuide),
+      },
+      {
+        label: 'Compare fixed and adjustable controls',
+        path: guide(ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners),
+      },
+      {
+        label: 'Compare Chronos and Platinum+',
+        path: guide(ArticleSlug.GhdChronosVsPlatinumPlus),
+      },
+    ],
+  },
+  [ArticleSlug.DysonSupersonicVsSharkSpeedstyle]: {
+    sentence:
+      'Continue with the attachment, setting or travel question that still affects the dryer choice.',
+    links: [
+      {
+        label: 'Choose a hair dryer by routine',
+        path: guide(ArticleSlug.HairDryerChooser),
+      },
+      {
+        label: 'Compare diffuser and concentrator attachments',
+        path: guide(ArticleSlug.HairDryerDiffuserVsConcentrator),
+      },
+      {
+        label: 'Check plug and voltage labels before travel',
+        path: guide(ArticleSlug.PlugAdapterVsVoltageConverter),
+      },
+    ],
+  },
+  [ArticleSlug.DysonAirwrapVsSharkFlexstyle]: {
+    sentence:
+      'Continue with bundle roles, starting state or the method for the attachment you expect to use.',
+    links: [
+      {
+        label: 'Choose a multi-styler attachment bundle',
+        path: guide(ArticleSlug.HowToChooseMultiStylerAttachments),
+      },
+      {
+        label: 'Compare a hot-air brush with a curling iron',
+        path: guide(ArticleSlug.HotAirBrushVsCurlingIron),
+      },
+      {
+        label: 'Use a hot-air brush',
+        path: guide(ArticleSlug.HowToUseHotAirBrush),
+      },
+    ],
+  },
+  [ArticleSlug.DenmanD3VsD4]: {
+    sentence:
+      'Continue with section handling, defining versus detangling, or care for the exact styler.',
+    links: [
+      {
+        label: 'Compare a defining brush with a detangling brush',
+        path: guide(ArticleSlug.CurlDefiningBrushVsDetanglingBrush),
+      },
+      {
+        label: 'Choose a brush by job',
+        path: guide(ArticleSlug.HowToChooseHairBrush),
+      },
+      {
+        label: 'Clean a manual hair brush',
+        path: guide(ArticleSlug.HowToCleanAHairBrush),
+      },
+    ],
+  },
+  [ArticleSlug.TangleTeezerVsWetBrushOriginal]: {
+    sentence:
+      'Continue with wet-use permission, comb-versus-brush contact or tool condition.',
+    links: [
+      {
+        label: 'Compare a wide-tooth comb with a detangling brush',
+        path: guide(ArticleSlug.WideToothCombVsDetanglingBrush),
+      },
+      {
+        label: 'Choose a detangling brush',
+        path: guide(ArticleSlug.BestDetanglingBrushes),
+      },
+      {
+        label: 'Decide whether to replace a brush or comb',
+        path: guide(ArticleSlug.WhenToReplaceHairbrushOrComb),
+      },
+    ],
+  },
+  [ArticleSlug.MicrofiberHairTowelVsCottonTShirt]: {
+    sentence:
+      'Continue with wrap selection, fastening or the next wash-day step.',
+    links: [
+      {
+        label: 'Choose a microfiber hair towel',
+        path: guide(ArticleSlug.BestMicrofibreHairTowels),
+      },
+      {
+        label: 'Fasten a microfiber hair towel',
+        path: guide(ArticleSlug.HowToUseAMicrofibreHairTowel),
+      },
+      {
+        label: 'Choose sectioning clips for styling',
+        path: guide(ArticleSlug.HowToChooseHairSectioningClips),
+      },
+    ],
+  },
+  [ArticleSlug.SilkVsSatinPillowcaseHair]: {
+    sentence:
+      'Continue with overnight coverage, care or the fastener used before bed.',
+    links: [
+      {
+        label: 'Compare a satin bonnet with a satin pillowcase',
+        path: guide(ArticleSlug.SatinBonnetVsSatinPillowcase),
+      },
+      {
+        label: 'Compare hair elastics with scrunchies',
+        path: guide(ArticleSlug.HairElasticsVsScrunchies),
+      },
+    ],
+  },
+};

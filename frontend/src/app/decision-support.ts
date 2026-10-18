@@ -1,12 +1,14 @@
 import { ArticleSlug } from './article-slug';
 
 export interface DecisionSnapshotContent {
-  readonly heading: string;
+  readonly label?: string;
+  readonly heading?: string;
   readonly intro: string;
   readonly rows: readonly {
     readonly label: string;
     readonly text: string;
   }[];
+  readonly footer?: string;
 }
 
 export interface RelatedDecisionLinks {
@@ -25,6 +27,70 @@ const guide = (slug: string) => `/guides/${slug}`;
 export const decisionSnapshots: Readonly<
   Record<string, DecisionSnapshotContent>
 > = {
+  [ArticleSlug.HowToUseFlexiRods]: {
+    label: 'Quick answer',
+    intro:
+      'Start with the instructions for your exact rod set and any products you plan to use. Detangle each section, secure the ends, wrap with consistent tension, bend the rod only enough to hold it, and remove it by reversing the wrap after the set is ready.',
+    rows: [
+      {
+        label: 'This method may suit',
+        text: 'A heatless set where each section needs its own bendable closure.',
+      },
+      {
+        label: 'Check first',
+        text: 'Your rod maker’s starting-state, product and set-readiness instructions; these are not identical across every set.',
+      },
+    ],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseSnapClosureFoamRollers]: {
+    label: 'Quick answer',
+    intro:
+      'Follow the instructions for your exact roller set. Smooth a manageable section, place the ends on the foam, roll without twisting the section into a rope, close the frame without trapping loose hair, and open the closure fully before reversing the roll.',
+    rows: [
+      {
+        label: 'This method may suit',
+        text: 'A heatless roller set where each section is held by a built-in snap closure.',
+      },
+      {
+        label: 'Check first',
+        text: 'The set’s starting-state and product directions, plus any loose hair near the hinge or clasp.',
+      },
+    ],
+    footer: '',
+  },
+  [ArticleSlug.HowToCleanHairStraightenerPlates]: {
+    label: 'Quick answer',
+    intro:
+      'Unplug the straightener, let it cool completely and clean only as the exact model instructions allow. Keep liquid away from openings, do not scrape the plates, and stop using the tool if the heated surface or electrical parts are damaged.',
+    rows: [
+      {
+        label: 'This page covers',
+        text: 'Routine external cleaning and a visual check before the next use.',
+      },
+      {
+        label: 'Do not improvise',
+        text: 'A household cleaning hack is not a substitute for model-specific instructions.',
+      },
+    ],
+    footer: '',
+  },
+  [ArticleSlug.HowToCleanACurlingIronOrWand]: {
+    label: 'Quick answer',
+    intro:
+      'Switch off, unplug and let the tool cool completely. Follow the exact manual for the barrel and exterior, keep moisture away from openings, never scrape the finish, and stop using the tool if the barrel, clamp, housing, cord or plug is damaged.',
+    rows: [
+      {
+        label: 'This page covers',
+        text: 'Routine external cleaning of a conventional curling iron or clipless wand.',
+      },
+      {
+        label: 'Check the format',
+        text: 'A rotating, air-powered, steam or multi-styling tool may have separate maintenance instructions and should not be treated as a conventional barrel tool.',
+      },
+    ],
+    footer: '',
+  },
   [ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume]: {
     heading: 'Choose attachments or one repeatable brush routine',
     intro:

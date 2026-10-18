@@ -2,6 +2,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { auditInternalLinks } from '../../scripts/internal-link-audit.ts';
 import { articles } from '../src/app/content.generated.ts';
+import { guideEvidence } from '../src/app/guide-evidence.ts';
 import {
   guideCategories,
   guideCategoryById,
@@ -201,13 +202,88 @@ for (const article of articles) {
       ...(category.path === '/guides'
         ? []
         : [{ label: category.label, path: category.path }]),
-      { label: article.heading, path: route },
+      {
+        label: guideEvidence[article.slug]?.breadcrumbLabel ?? article.heading,
+        path: route,
+      },
     ]);
 }
 const guidesHtml = await readFile(
   resolve(output, 'guides', 'index.html'),
   'utf8',
 );
+const safetyCopies: string[] = [];
+for (const [slug, evidence] of Object.entries(guideEvidence)) {
+  const route = `/guides/${slug}`;
+  const html = await readFile(
+    resolve(output, 'guides', slug, 'index.html'),
+    'utf8',
+  );
+  const normalise = (value: string) =>
+    value
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  const safety = html.match(
+    /<app-clean-inspect-stop\b[^>]*>([\s\S]*?)<\/app-clean-inspect-stop>/,
+  )?.[1];
+  const isCare = slug.startsWith('how-to-clean-');
+  if (isCare !== !!safety)
+    failures.push(
+      `${route}: shared safety component presence does not match the task.`,
+    );
+  if (safety) safetyCopies.push(normalise(safety));
+  const body =
+    html.match(
+      /<section[^>]*class="article-body"[^>]*>([\s\S]*?)<\/section>/,
+    )?.[1] ?? '';
+  const steps = body.match(/<ol>([\s\S]*?)<\/ol>/)?.[1] ?? '';
+  const expectedSteps =
+    slug === 'how-to-clean-hair-straightener-plates' ? 8 : 9;
+  if ((steps.match(/<li>/g) ?? []).length !== expectedSteps)
+    failures.push(
+      `${route}: complete ordered steps are missing from static HTML.`,
+    );
+  const faq = html.indexOf('class="article-faq"');
+  const scope = html.indexOf('id="evidence-scope-title"');
+  const sources = html.indexOf('id="source-checks-heading"');
+  const related = html.indexOf('id="next-steps-heading"');
+  if (!(faq > 0 && faq < scope && scope < sources && sources < related))
+    failures.push(
+      `${route}: FAQ, evidence, source and related-guide order is incorrect.`,
+    );
+  if (/"@type":"(?:FAQPage|HowTo|Review|Product|AggregateRating)"/.test(html))
+    failures.push(`${route}: task guide emits unrequested structured data.`);
+  for (const source of evidence.sources)
+    if (!html.includes(`href="${source.url}"`))
+      failures.push(`${route}: source link is missing from static HTML.`);
+  if (!guidesHtml.includes(`href="${route}"`))
+    failures.push(`/guides: missing task-guide link '${route}'.`);
+  const category = slug.startsWith('how-to-clean-')
+    ? 'flat-irons'
+    : 'hair-accessories';
+  const hub = await readFile(resolve(output, category, 'index.html'), 'utf8');
+  if (!hub.includes(`href="${route}"`))
+    failures.push(`/${category}: missing task-guide link '${route}'.`);
+}
+const snaggingHtml = await readFile(
+  resolve(output, 'guides', 'flat-iron-snagging-hair', 'index.html'),
+  'utf8',
+);
+const snaggingSafety = snaggingHtml.match(
+  /<app-clean-inspect-stop\b[^>]*>([\s\S]*?)<\/app-clean-inspect-stop>/,
+)?.[1];
+if (snaggingSafety)
+  safetyCopies.push(
+    snaggingSafety
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim(),
+  );
+if (safetyCopies.length !== 3 || new Set(safetyCopies).size !== 1)
+  failures.push(
+    'CleanInspectStop must render identical copy on both care guides and the snagging guide.',
+  );
 validateBreadcrumb(guidesHtml, '/guides', [
   { label: 'Home', path: '/' },
   { label: 'Guides', path: '/guides' },

@@ -102,6 +102,8 @@ export const ArticleSlug = {
   HeatlessCurlsNotWorking: 'heatless-curls-not-working',
   VelcroVsFoamHairRollers: 'velcro-vs-foam-hair-rollers',
   HowToUseVelcroHairRollers: 'how-to-use-velcro-hair-rollers',
+  HowToUseFlexiRods: 'how-to-use-flexi-rods',
+  HowToUseSnapClosureFoamRollers: 'how-to-use-snap-closure-foam-rollers',
   SatinBonnetVsSatinPillowcase: 'satin-bonnet-vs-satin-pillowcase',
   MicrofiberHairTowelVsCottonTShirt: 'microfiber-hair-towel-vs-cotton-t-shirt',
   HowToUseHeatlessCurlersOnShortHair:
@@ -139,6 +141,8 @@ export const ArticleSlug = {
   WhyCurlsFallOut: 'why-curls-fall-out',
   FlatIronSnaggingHair: 'flat-iron-snagging-hair',
   CurlingIronLeavesCrease: 'curling-iron-leaves-crease',
+  HowToCleanHairStraightenerPlates: 'how-to-clean-hair-straightener-plates',
+  HowToCleanACurlingIronOrWand: 'how-to-clean-a-curling-iron-or-wand',
   HairDryerDiffuserCompatibility: 'hair-dryer-diffuser-compatibility',
   RoundBrushStuckInHair: 'round-brush-stuck-in-hair',
   StylingToolTroubleshooting: 'styling-tool-troubleshooting',

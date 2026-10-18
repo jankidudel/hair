@@ -64,6 +64,27 @@ describe('decision support components', () => {
     expect(element.textContent).toContain('A missing field stays unknown.');
   });
 
+  it('renders the guide evidence summary without comparison fields', () => {
+    TestBed.configureTestingModule({
+      imports: [EvidenceScopeComponent],
+      providers: [provideZonelessChangeDetection()],
+    });
+    const fixture = TestBed.createComponent(EvidenceScopeComponent);
+    fixture.componentRef.setInput(
+      'summary',
+      'The exact model manual controls the cleaning method.',
+    );
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    expect(element.querySelector('h2')?.textContent).toContain(
+      'Evidence scope',
+    );
+    expect(element.textContent).toContain(
+      'The exact model manual controls the cleaning method.',
+    );
+    expect(element.querySelector('dl')).toBeNull();
+  });
+
   it('renders all pathway links in semantic groups without hidden state', () => {
     TestBed.configureTestingModule({
       imports: [ChooseUseFixPathwaysComponent],

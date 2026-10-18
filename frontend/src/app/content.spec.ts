@@ -96,4 +96,50 @@ describe('generated editorial content', () => {
     ]);
     expect(isPublishedOn(true, '2099-01-01', '2026-09-05')).toBe(false);
   });
+
+  it('publishes the four Batch 15 task guides with exact metadata and crawlable steps', () => {
+    const expected = [
+      [
+        ArticleSlug.HowToUseFlexiRods,
+        'How to Use Flexi Rods: A Step-by-Step Set | Comb Report',
+        'Use flexi rods with a clear section, wrap, bend, set and removal sequence—plus fixes for loose ends, uneven sections and tangled removal.',
+      ],
+      [
+        ArticleSlug.HowToUseSnapClosureFoamRollers,
+        'How to Use Snap-Closure Foam Rollers | Comb Report',
+        'Use snap-closure foam rollers with a clear section, end placement, roll, close, readiness and removal sequence, plus practical troubleshooting.',
+      ],
+      [
+        ArticleSlug.HowToCleanHairStraightenerPlates,
+        'How to Clean Hair-Straightener Plates | Comb Report',
+        'Clean flat-iron plates using the exact model instructions, then inspect plate edges, coating, hinge, cord and plug before the next use.',
+      ],
+      [
+        ArticleSlug.HowToCleanACurlingIronOrWand,
+        'How to Clean a Curling Iron or Wand | Comb Report',
+        'Clean a curling iron or wand using its exact model instructions, then inspect the barrel, clamp, stand, cord and plug before reuse.',
+      ],
+    ] as const;
+
+    for (const [slug, title, description] of expected) {
+      const article = articles.find((item) => item.slug === slug);
+      expect(article?.title).toBe(title);
+      expect(article?.description).toBe(description);
+      expect(article?.html).not.toMatch(/<h1\b/i);
+      expect(article?.faq).toHaveLength(4);
+    }
+
+    const flexi = articles.find(
+      (item) => item.slug === ArticleSlug.HowToUseFlexiRods,
+    );
+    const foam = articles.find(
+      (item) => item.slug === ArticleSlug.HowToUseSnapClosureFoamRollers,
+    );
+    expect(flexi?.html.match(/<li>/g)).toHaveLength(14);
+    expect(foam?.html.match(/<li>/g)).toHaveLength(14);
+    expect(flexi?.html).toContain('<h2>A simple flexi-rod sequence</h2>');
+    expect(foam?.html).toContain(
+      '<h2>A simple snap-closure roller sequence</h2>',
+    );
+  });
 });

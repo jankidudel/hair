@@ -5,6 +5,7 @@ import { ArticleGroupId } from './article-registry';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { articles } from './content.generated';
 import { SiteSeoService } from './site-seo.service';
+import { AnalyticsService } from './analytics/analytics.service';
 
 @Component({
   imports: [RouterLink, BreadcrumbsComponent],
@@ -28,6 +29,52 @@ import { SiteSeoService } from './site-seo.service';
         }}
       </p>
     </section>
+    @if (isFlat) {
+      <section
+        class="category-guide-section"
+        aria-labelledby="heated-surface-care-heading"
+      >
+        <div class="section-heading">
+          <h2 id="heated-surface-care-heading">
+            Maintain the heated surface you already own
+          </h2>
+          <p>
+            Routine residue and visible damage require different decisions. Use
+            the exact model instructions for cleaning, then stop if a plate,
+            barrel, clamp, housing, cord or plug is damaged.
+          </p>
+        </div>
+        <div class="editorial-grid guides-grid">
+          <a
+            class="guide-card"
+            [routerLink]="[
+              '/guides',
+              articleSlug.HowToCleanHairStraightenerPlates,
+            ]"
+            (click)="trackCareLink()"
+          >
+            <h3>Clean straightener plates</h3>
+            <p>
+              Use the model manual, avoid improvised solvents and inspect the
+              plates before reconnecting power.
+            </p>
+            <span class="text-link">Open the plate-cleaning guide →</span>
+          </a>
+          <a
+            class="guide-card"
+            [routerLink]="['/guides', articleSlug.HowToCleanACurlingIronOrWand]"
+            (click)="trackCareLink()"
+          >
+            <h3>Clean a curling iron or wand</h3>
+            <p>
+              Clean a conventional barrel, then check the clamp, hinge, stand,
+              cord and plug where present.
+            </p>
+            <span class="text-link">Open the barrel-cleaning guide →</span>
+          </a>
+        </div>
+      </section>
+    }
     <section
       class="category-product-explorer"
       aria-labelledby="direct-heat-start-heading"
@@ -172,6 +219,7 @@ import { SiteSeoService } from './site-seo.service';
 export class DirectHeatHubComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
+  private readonly analytics = inject(AnalyticsService);
   readonly articleSlug = ArticleSlug;
   readonly isFlat = this.route.snapshot.data['kind'] === 'flat';
   readonly guides = articles.filter(
@@ -192,6 +240,12 @@ export class DirectHeatHubComponent {
     { label: 'Guides', path: '/guides' },
     { label: 'Flat Irons & Curling Tools' },
   ];
+  trackCareLink(): void {
+    this.analytics.track('guide_task_link_click', {
+      task_group: 'hot_tool_care',
+      destination_type: 'method',
+    });
+  }
   constructor() {
     this.seo.set(
       this.isFlat

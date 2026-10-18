@@ -11,6 +11,39 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  [ArticleSlug.HowToUseFlexiRods]: [
+    ArticleSlug.HowToUseSnapClosureFoamRollers,
+    ArticleSlug.HairRollerSizeGuide,
+    ArticleSlug.HowToUseHeatlessCurlingRod,
+    ArticleSlug.HeatlessCurlsNotWorking,
+  ],
+  [ArticleSlug.HowToUseSnapClosureFoamRollers]: [
+    ArticleSlug.VelcroVsFoamHairRollers,
+    ArticleSlug.HowToUseFlexiRods,
+    ArticleSlug.HowToUseVelcroHairRollers,
+    ArticleSlug.HairRollerSizeGuide,
+  ],
+  [ArticleSlug.HowToCleanHairStraightenerPlates]: [
+    ArticleSlug.FlatIronSnaggingHair,
+    ArticleSlug.FlatIronPlateWidthGuide,
+    ArticleSlug.BestFlatIrons,
+  ],
+  [ArticleSlug.HowToCleanACurlingIronOrWand]: [
+    ArticleSlug.CurlingIronLeavesCrease,
+    ArticleSlug.WhyCurlsFallOut,
+    ArticleSlug.BestCurlingIrons,
+    ArticleSlug.HowToCleanHairStraightenerPlates,
+  ],
+  [ArticleSlug.VelcroVsFoamHairRollers]: [
+    ArticleSlug.HowToUseFlexiRods,
+    ArticleSlug.HowToUseSnapClosureFoamRollers,
+    ArticleSlug.HowToUseVelcroHairRollers,
+  ],
+  [ArticleSlug.HowToUseVelcroHairRollers]: [
+    ArticleSlug.VelcroVsFoamHairRollers,
+    ArticleSlug.HowToUseFlexiRods,
+    ArticleSlug.HowToUseSnapClosureFoamRollers,
+  ],
   [ArticleSlug.BestCurlingIronsFineHair]: [
     ArticleSlug.CurlingIronBarrelSizeGuide,
     ArticleSlug.CurlingIronVsWand,

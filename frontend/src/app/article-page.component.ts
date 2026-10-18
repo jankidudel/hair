@@ -1,4 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  inject,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { articles, Article } from './content.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
@@ -25,6 +34,38 @@ import {
   type RelatedDecisionLinks,
 } from './decision-support';
 import { productBySlug, type ProductProfile } from './product-comparisons';
+import { CleanInspectStopComponent } from './clean-inspect-stop.component';
+import { guideEvidence, type GuideEvidence } from './guide-evidence';
+import { AnalyticsService } from './analytics/analytics.service';
+
+const safetyInsertionHeading: Readonly<Record<string, string>> = {
+  [ArticleSlug.HowToCleanHairStraightenerPlates]:
+    'What not to use unless the manual permits it',
+  [ArticleSlug.HowToCleanACurlingIronOrWand]:
+    'What not to use unless the manual permits it',
+  [ArticleSlug.FlatIronSnaggingHair]: 'When to seek support',
+};
+
+export function splitBeforeHeading(
+  html: string,
+  heading: string,
+): readonly [string, string] {
+  const anchor = `<h2>${heading}</h2>`;
+  const index = html.indexOf(anchor);
+  if (index < 0)
+    throw new Error(`Article is missing the heading '${heading}'.`);
+  return [html.slice(0, index), html.slice(index)];
+}
+
+export function splitAfterFirstParagraph(
+  html: string,
+): readonly [string, string] {
+  const paragraphEnd = html.indexOf('</p>');
+  if (paragraphEnd < 0)
+    throw new Error('A task guide is missing its introductory paragraph.');
+  const splitAt = paragraphEnd + '</p>'.length;
+  return [html.slice(0, splitAt), html.slice(splitAt)];
+}
 
 export function splitEvidenceArticleHtml(
   html: string,
@@ -59,11 +100,14 @@ export function splitEvidenceArticleHtml(
     DecisionSnapshotComponent,
     EvidenceScopeComponent,
     UpgradeCheckComponent,
+    CleanInspectStopComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
     <article
       class="article-page"
+      [class.task-guide]="!!guideEvidenceContent"
+      (click)="trackGuideTaskLink($event)"
       [class.round-brush-guide]="
         article.slug === articleSlug.RoundBrushSizeGuide
       "
@@ -72,7 +116,11 @@ export function splitEvidenceArticleHtml(
       <header class="article-header">
         <p class="eyebrow">{{ article.category }}</p>
         <h1>{{ article.heading }}</h1>
-        <p class="lede">{{ article.description }}</p>
+        @if (articleHtmlIntro) {
+          <div class="lede task-intro" [innerHTML]="articleHtmlIntro"></div>
+        } @else {
+          <p class="lede">{{ article.description }}</p>
+        }
         <p class="article-byline">
           By
           <a routerLink="/authors/combreport-editorial-team">{{
@@ -143,10 +191,46 @@ export function splitEvidenceArticleHtml(
           class="article-body"
           [innerHTML]="articleHtmlAfterUpgrade"
         ></section>
+      } @else if (articleHtmlBeforeSafety) {
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlBeforeSafety"
+        ></section>
+        <app-clean-inspect-stop />
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlAfterSafety"
+        ></section>
       } @else {
-        <section class="article-body" [innerHTML]="article.html"></section>
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlMain || article.html"
+        ></section>
       }
-      @if (evidenceSourceChecks.length) {
+      @if (guideEvidenceContent) {
+        @if (article.faq.length > 0) {
+          <section class="article-faq">
+            <h2>FAQ</h2>
+            @for (faq of article.faq; track faq.question) {
+              <h3>{{ faq.question }}</h3>
+              <p>{{ faq.answer }}</p>
+            }
+          </section>
+        }
+        <app-evidence-scope [summary]="guideEvidenceContent.summary" />
+        <section class="article-body" aria-labelledby="source-checks-heading">
+          <h2 id="source-checks-heading">Sources</h2>
+          <ul>
+            @for (source of guideEvidenceContent.sources; track source.url) {
+              <li>
+                <strong>{{ source.model }}</strong> ({{ source.market }}):
+                <a [href]="source.url">{{ source.label }}</a> — checked
+                {{ source.checkedDate }}. {{ source.scope }}
+              </li>
+            }
+          </ul>
+        </section>
+      } @else if (evidenceSourceChecks.length) {
         <section class="article-body" aria-labelledby="source-checks-heading">
           <h2 id="source-checks-heading">Sources</h2>
           <ul>
@@ -174,21 +258,24 @@ export function splitEvidenceArticleHtml(
       } @else if (guideLinks) {
         <nav class="article-next-steps" aria-labelledby="next-steps-heading">
           <h2 id="next-steps-heading">Related guides</h2>
+          @if (guideEvidenceContent) {
+            <p><a [href]="guideLinks.hubPath">Browse this category</a></p>
+          }
           <ul>
-            <li>
-              <a [routerLink]="guideLinks.hubPath">Browse this category</a>
-            </li>
+            @if (!guideEvidenceContent) {
+              <li>
+                <a [routerLink]="guideLinks.hubPath">Browse this category</a>
+              </li>
+            }
             @for (related of relatedGuides; track related.slug) {
               <li>
-                <a [routerLink]="['/guides', related.slug]">{{
-                  related.heading
-                }}</a>
+                <a [href]="'/guides/' + related.slug">{{ related.heading }}</a>
               </li>
             }
           </ul>
         </nav>
       }
-      @if (article.faq.length > 0) {
+      @if (!guideEvidenceContent && article.faq.length > 0) {
         <section class="article-faq">
           <h2>FAQ</h2>
           @for (faq of article.faq; track faq.question) {
@@ -200,9 +287,13 @@ export function splitEvidenceArticleHtml(
     </article>
   }`,
 })
-export class ArticlePageComponent implements OnInit {
+export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
+  private readonly analytics = inject(AnalyticsService);
+  private readonly host = inject(ElementRef<HTMLElement>);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private safetyObserver?: IntersectionObserver;
   article?: Article;
   readonly articleSlug = ArticleSlug;
   readonly editorialTeam = combReportEditorialTeam;
@@ -214,6 +305,7 @@ export class ArticlePageComponent implements OnInit {
   decisionLinks?: RelatedDecisionLinks;
   evidenceProducts: readonly ProductProfile[] = [];
   evidenceMarketContext?: string;
+  guideEvidenceContent?: GuideEvidence;
   get evidenceSourceChecks(): readonly {
     key: string;
     url: string;
@@ -245,12 +337,29 @@ export class ArticlePageComponent implements OnInit {
   articleHtmlBeforeTable = '';
   articleHtmlBeforeUpgrade = '';
   articleHtmlAfterUpgrade = '';
+  articleHtmlBeforeSafety = '';
+  articleHtmlAfterSafety = '';
+  articleHtmlIntro = '';
+  articleHtmlMain = '';
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.article = articles.find((item) => item.slug === slug);
     if (this.article) {
       this.decisionSnapshot = decisionSnapshots[this.article.slug];
       this.decisionLinks = decisionRelatedLinks[this.article.slug];
+      this.guideEvidenceContent = guideEvidence[this.article.slug];
+      if (this.guideEvidenceContent) {
+        [this.articleHtmlIntro, this.articleHtmlMain] =
+          splitAfterFirstParagraph(this.article.html);
+      }
+      const safetyHeading = safetyInsertionHeading[this.article.slug];
+      if (safetyHeading) {
+        [this.articleHtmlBeforeSafety, this.articleHtmlAfterSafety] =
+          splitBeforeHeading(
+            this.articleHtmlMain || this.article.html,
+            safetyHeading,
+          );
+      }
       const evidenceOwner = evidenceOwners[this.article.slug];
       if (evidenceOwner) {
         this.evidenceMarketContext = evidenceOwner.marketContext;
@@ -286,7 +395,10 @@ export class ArticlePageComponent implements OnInit {
         ...(category.path === '/guides'
           ? []
           : [{ label: category.label, path: category.path }]),
-        { label: this.article.heading },
+        {
+          label:
+            this.guideEvidenceContent?.breadcrumbLabel ?? this.article.heading,
+        },
       ];
       this.seo.set(
         this.article.title,
@@ -312,7 +424,7 @@ export class ArticlePageComponent implements OnInit {
             },
             mainEntityOfPage: `${SITE_URL}/guides/${this.article.slug}`,
           },
-          ...(this.article.faq.length
+          ...(this.article.faq.length && !this.guideEvidenceContent
             ? [
                 {
                   '@context': 'https://schema.org',
@@ -332,10 +444,86 @@ export class ArticlePageComponent implements OnInit {
         this.breadcrumbs
           .filter((item): item is Breadcrumb & { path: string } => !!item.path)
           .concat({
-            label: this.article.heading,
+            label:
+              this.guideEvidenceContent?.breadcrumbLabel ??
+              this.article.heading,
             path: `/guides/${this.article.slug}`,
           }),
       );
     }
+  }
+
+  ngAfterViewInit(): void {
+    if (!this.isBrowser || !this.article) return;
+    const safety = this.host.nativeElement.querySelector(
+      'app-clean-inspect-stop',
+    );
+    if (!safety || !('IntersectionObserver' in window)) return;
+    this.safetyObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      this.analytics.track('care_stop_guidance_view', {
+        tool_family:
+          this.article?.slug === ArticleSlug.HowToCleanACurlingIronOrWand
+            ? 'curling_tool'
+            : 'flat_iron',
+      });
+      this.safetyObserver?.disconnect();
+    });
+    this.safetyObserver.observe(safety);
+  }
+
+  trackGuideTaskLink(event: MouseEvent): void {
+    if (!this.article) return;
+    const anchor = (event.target as HTMLElement | null)?.closest('a');
+    const href = anchor?.getAttribute('href');
+    if (!href?.startsWith('/')) return;
+    const path = href.split(/[?#]/, 1)[0];
+    if (
+      !path.startsWith('/guides/') &&
+      !['/hair-accessories', '/flat-irons'].includes(path)
+    )
+      return;
+    const rollerSlugs = new Set<string>([
+      ArticleSlug.HowToUseFlexiRods,
+      ArticleSlug.HowToUseSnapClosureFoamRollers,
+      ArticleSlug.HowToUseVelcroHairRollers,
+      ArticleSlug.VelcroVsFoamHairRollers,
+      ArticleSlug.HairRollerSizeGuide,
+    ]);
+    const hotToolSlugs = new Set<string>([
+      ArticleSlug.HowToCleanHairStraightenerPlates,
+      ArticleSlug.HowToCleanACurlingIronOrWand,
+      ArticleSlug.FlatIronSnaggingHair,
+      ArticleSlug.CurlingIronLeavesCrease,
+    ]);
+    const taskGroup = rollerSlugs.has(this.article.slug as ArticleSlug)
+      ? 'roller_method'
+      : hotToolSlugs.has(this.article.slug as ArticleSlug)
+        ? 'hot_tool_care'
+        : undefined;
+    const isNewTaskDestination = [
+      ArticleSlug.HowToUseFlexiRods,
+      ArticleSlug.HowToUseSnapClosureFoamRollers,
+      ArticleSlug.HowToCleanHairStraightenerPlates,
+      ArticleSlug.HowToCleanACurlingIronOrWand,
+    ].some((slug) => path === `/guides/${slug}`);
+    if (!taskGroup || (!isNewTaskDestination && !this.guideEvidenceContent))
+      return;
+    const destinationType =
+      path === '/hair-accessories' || path === '/flat-irons'
+        ? 'category'
+        : /\bvs\b/.test(path)
+          ? 'comparison'
+          : /snag|crease|not-working|fall-out/.test(path)
+            ? 'troubleshooting'
+            : 'method';
+    this.analytics.track('guide_task_link_click', {
+      task_group: taskGroup,
+      destination_type: destinationType,
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.safetyObserver?.disconnect();
   }
 }

@@ -5,16 +5,35 @@ import {
   decisionSnapshots,
   evidenceOwners,
 } from './decision-support';
-import { splitEvidenceArticleHtml } from './article-page.component';
+import {
+  splitAfterFirstParagraph,
+  splitBeforeHeading,
+  splitEvidenceArticleHtml,
+} from './article-page.component';
+import { guideEvidence } from './guide-evidence';
 
 describe('article decision integration data', () => {
-  it('maps exactly ten decision owners and eight evidence owners', () => {
-    expect(Object.keys(decisionSnapshots)).toHaveLength(10);
+  it('maps the comparison and Batch 15 decision owners without duplicating evidence owners', () => {
+    expect(Object.keys(decisionSnapshots)).toHaveLength(14);
     expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
     expect(Object.keys(evidenceOwners)).toHaveLength(8);
+    expect(Object.keys(guideEvidence)).toHaveLength(4);
     expect(
       evidenceOwners[ArticleSlug.DysonAirwrapVsSharkFlexstyle],
     ).toBeDefined();
+  });
+
+  it('splits task-guide intros and shared safety insertion points deterministically', () => {
+    const html =
+      '<p>Intro</p><h2>Sequence</h2><p>Steps</p><h2>Stop heading</h2><p>Stop.</p>';
+    expect(splitAfterFirstParagraph(html)).toEqual([
+      '<p>Intro</p>',
+      '<h2>Sequence</h2><p>Steps</p><h2>Stop heading</h2><p>Stop.</p>',
+    ]);
+    expect(splitBeforeHeading(html, 'Stop heading')).toEqual([
+      '<p>Intro</p><h2>Sequence</h2><p>Steps</p>',
+      '<h2>Stop heading</h2><p>Stop.</p>',
+    ]);
   });
 
   it('places evidence before the first table and the checklist before the conclusion', () => {

@@ -15,6 +15,7 @@ import {
   type PathwayGroup,
 } from './choose-use-fix-pathways.component';
 import { categoryPathways } from './category-pathways';
+import { AnalyticsService } from './analytics/analytics.service';
 
 @Component({
   imports: [RouterLink, BreadcrumbsComponent, ChooseUseFixPathwaysComponent],
@@ -273,7 +274,7 @@ import { categoryPathways } from './category-pathways';
               </a>
             }
           </div>
-          @if (group.label === 'Check a specification') {
+          @if (group.id === 'tools-fix') {
             <section class="tools-note" aria-labelledby="tools-note-heading">
               <h3 id="tools-note-heading">
                 Compare exact models after choosing the job
@@ -301,6 +302,76 @@ import { categoryPathways } from './category-pathways';
         </section>
         @if (categoryPathwayGroups.length) {
           <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
+        }
+        @if (category.id === 'hair-accessories') {
+          <section
+            class="category-guide-section"
+            aria-labelledby="roller-method-heading"
+          >
+            <div class="section-heading">
+              <h2 id="roller-method-heading">
+                Follow the method for the roller you own
+              </h2>
+              <p>
+                Self-grip rollers, flexi rods and snap-closure foam rollers do
+                not secure a section in the same way. Use the method page for
+                the exact closure in your set.
+              </p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseVelcroHairRollers,
+                ]"
+                (click)="trackGuideTaskLink('roller_method', 'method')"
+              >
+                <h3>Use self-grip rollers</h3>
+                <p>
+                  Section, roll and remove a textured self-grip roller without
+                  treating it like a clasp or bendable rod.
+                </p>
+                <span class="text-link">Open the self-grip method →</span>
+              </a>
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToUseFlexiRods]"
+                (click)="trackGuideTaskLink('roller_method', 'method')"
+              >
+                <h3>Use flexi rods</h3>
+                <p>
+                  Secure the ends, wrap the section and bend the rod only enough
+                  to hold it.
+                </p>
+                <span class="text-link">Open the flexi-rod method →</span>
+              </a>
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseSnapClosureFoamRollers,
+                ]"
+                (click)="trackGuideTaskLink('roller_method', 'method')"
+              >
+                <h3>Use snap-closure foam rollers</h3>
+                <p>
+                  Roll an even section and close the built-in frame without
+                  catching loose hair.
+                </p>
+                <span class="text-link">Open the foam-roller method →</span>
+              </a>
+            </div>
+            <p>
+              Comparing a textured self-grip surface with a clasp-based foam
+              roller? Read
+              <a
+                [routerLink]="['/guides', articleSlug.VelcroVsFoamHairRollers]"
+                (click)="trackGuideTaskLink('roller_method', 'comparison')"
+                >Velcro vs foam hair rollers</a
+              >.
+            </p>
+          </section>
         }
         @for (section of categoryGuideSections; track section.label) {
           <section
@@ -623,6 +694,7 @@ import { categoryPathways } from './category-pathways';
 export class StaticPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
+  private readonly analytics = inject(AnalyticsService);
   readonly guides = articles;
   readonly articleSlug = ArticleSlug;
   readonly editorialTeam = combReportEditorialTeam;
@@ -747,10 +819,10 @@ export class StaticPageComponent implements OnInit {
       ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
     },
     {
-      id: 'tools-check',
-      label: 'Check a specification',
+      id: 'tools-fix',
+      label: 'Fix',
       description:
-        'Translate a label or exact product record before comparing models.',
+        'Translate a confusing specification before treating a working tool as the problem.',
       tools: ['Hair Dryer Specs Decoder'].flatMap((name) =>
         this.tools.filter((tool) => tool.name === name),
       ),
@@ -781,6 +853,16 @@ export class StaticPageComponent implements OnInit {
   }[] = [];
   categoryBreadcrumbs: readonly Breadcrumb[] = [];
   page = 'home';
+
+  trackGuideTaskLink(
+    taskGroup: 'roller_method' | 'hot_tool_care',
+    destinationType: 'method' | 'comparison' | 'troubleshooting' | 'category',
+  ): void {
+    this.analytics.track('guide_task_link_click', {
+      task_group: taskGroup,
+      destination_type: destinationType,
+    });
+  }
 
   ngOnInit(): void {
     this.page = this.route.snapshot.data['page'] as string;

@@ -598,10 +598,12 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-08-31',
   },
   ...[
+    ArticleSlug.HowToUseVelcroHairRollers,
+    ArticleSlug.HowToUseFlexiRods,
+    ArticleSlug.HowToUseSnapClosureFoamRollers,
     ArticleSlug.HowToUseHeatlessCurlingRod,
     ArticleSlug.HeatlessCurlsNotWorking,
     ArticleSlug.VelcroVsFoamHairRollers,
-    ArticleSlug.HowToUseVelcroHairRollers,
     ArticleSlug.SatinBonnetVsSatinPillowcase,
     ArticleSlug.MicrofiberHairTowelVsCottonTShirt,
   ].map((slug, index) => ({
@@ -609,7 +611,11 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     group: ArticleGroupId.HairAccessories,
     order: 36 + index,
     enabled: true,
-    publishDate: '2026-10-08',
+    publishDate:
+      slug === ArticleSlug.HowToUseFlexiRods ||
+      slug === ArticleSlug.HowToUseSnapClosureFoamRollers
+        ? '2026-10-18'
+        : '2026-10-08',
   })),
   ...[
     ArticleSlug.HairRollerSizeGuide,
@@ -672,23 +678,37 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     publishDate: '2026-10-06',
   },
   {
+    slug: ArticleSlug.HowToCleanHairStraightenerPlates,
+    group: ArticleGroupId.DirectHeat,
+    order: 290,
+    enabled: true,
+    publishDate: '2026-10-18',
+  },
+  {
+    slug: ArticleSlug.HowToCleanACurlingIronOrWand,
+    group: ArticleGroupId.DirectHeat,
+    order: 291,
+    enabled: true,
+    publishDate: '2026-10-18',
+  },
+  {
     slug: ArticleSlug.WhyCurlsFallOut,
     group: ArticleGroupId.DirectHeat,
-    order: 60,
+    order: 300,
     enabled: true,
     publishDate: '2026-10-06',
   },
   {
     slug: ArticleSlug.FlatIronSnaggingHair,
     group: ArticleGroupId.DirectHeat,
-    order: 70,
+    order: 310,
     enabled: true,
     publishDate: '2026-10-06',
   },
   {
     slug: ArticleSlug.CurlingIronLeavesCrease,
     group: ArticleGroupId.DirectHeat,
-    order: 80,
+    order: 320,
     enabled: true,
     publishDate: '2026-10-06',
   },

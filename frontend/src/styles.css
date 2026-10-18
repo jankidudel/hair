@@ -125,6 +125,19 @@ h3 {
   outline: 3px solid var(--terracotta);
   outline-offset: 3px;
 }
+.task-guide .article-body table {
+  display: table;
+  table-layout: fixed;
+  font-size: 1rem;
+}
+.task-guide .article-body table[tabindex='0'] th,
+.task-guide .article-body table[tabindex='0'] td {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.task-guide .article-body .table-scroll-hint {
+  display: none;
+}
 .article-body .table-scroll-hint {
   display: none;
   margin-bottom: -1.5rem;

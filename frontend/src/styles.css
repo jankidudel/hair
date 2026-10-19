@@ -361,3 +361,23 @@ h3 {
   margin: 0.35rem 0 0;
   color: var(--muted);
 }
+
+/* Keep schematic labels readable within the narrow article column. */
+.task-guide .article-body figure.accessory-schematic {
+  padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .task-guide .article-body table.accessory-table {
+    display: block;
+    table-layout: auto;
+  }
+  .task-guide .article-body table.accessory-table[tabindex='0'] th,
+  .task-guide .article-body table.accessory-table[tabindex='0'] td {
+    min-width: 9rem;
+    overflow-wrap: normal;
+  }
+  .task-guide .article-body .accessory-table-hint {
+    display: block;
+  }
+}

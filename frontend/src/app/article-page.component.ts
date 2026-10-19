@@ -480,10 +480,12 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
     const path = href.split(/[?#]/, 1)[0];
     if (
       !path.startsWith('/guides/') &&
-      !['/hair-accessories', '/flat-irons'].includes(path)
+      !['/hair-accessories', '/flat-irons', '/brushes-combs'].includes(path)
     )
       return;
     const rollerSlugs = new Set<string>([
+      ArticleSlug.HowToUseHeatedHairRollers,
+      ArticleSlug.HeatedRollersVsSelfGripRollers,
       ArticleSlug.HowToUseFlexiRods,
       ArticleSlug.HowToUseSnapClosureFoamRollers,
       ArticleSlug.HowToUseVelcroHairRollers,
@@ -500,23 +502,29 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
       ? 'roller_method'
       : hotToolSlugs.has(this.article.slug as ArticleSlug)
         ? 'hot_tool_care'
-        : undefined;
-    const isNewTaskDestination = [
-      ArticleSlug.HowToUseFlexiRods,
-      ArticleSlug.HowToUseSnapClosureFoamRollers,
-      ArticleSlug.HowToCleanHairStraightenerPlates,
-      ArticleSlug.HowToCleanACurlingIronOrWand,
-    ].some((slug) => path === `/guides/${slug}`);
+        : this.article.group === 'hair-accessories'
+          ? /how-to-(?:clean|wash)/.test(this.article.slug)
+            ? 'accessory_care'
+            : 'accessory_method'
+          : this.article.group === 'brushes-and-combs'
+            ? 'brush_comb_care'
+            : undefined;
+    const isNewTaskDestination = Object.keys(guideEvidence).some(
+      (slug) => path === `/guides/${slug}`,
+    );
     if (!taskGroup || (!isNewTaskDestination && !this.guideEvidenceContent))
       return;
-    const destinationType =
-      path === '/hair-accessories' || path === '/flat-irons'
-        ? 'category'
-        : /\bvs\b/.test(path)
-          ? 'comparison'
-          : /snag|crease|not-working|fall-out/.test(path)
-            ? 'troubleshooting'
-            : 'method';
+    const destinationType = [
+      '/hair-accessories',
+      '/flat-irons',
+      '/brushes-combs',
+    ].includes(path)
+      ? 'category'
+      : /\bvs\b/.test(path)
+        ? 'comparison'
+        : /snag|crease|not-working|fall-out/.test(path)
+          ? 'troubleshooting'
+          : 'method';
     this.analytics.track('guide_task_link_click', {
       task_group: taskGroup,
       destination_type: destinationType,

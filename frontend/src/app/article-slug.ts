@@ -1,5 +1,14 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToUseHeatedHairRollers: 'how-to-use-heated-hair-rollers',
+  BobbyPinsVsUShapedHairPins: 'bobby-pins-vs-u-shaped-hair-pins',
+  HowToUseBobbyPins: 'how-to-use-bobby-pins',
+  HowToUseAFrenchHairPin: 'how-to-use-a-french-hair-pin',
+  HowToChooseAHairBarrette: 'how-to-choose-a-hair-barrette',
+  HowToWashASatinBonnet: 'how-to-wash-a-satin-bonnet',
+  HowToCleanHairScrunchies: 'how-to-clean-hair-scrunchies',
+  HowToCleanAHairComb: 'how-to-clean-a-hair-comb',
+
   GhdRiseVsGlidePlus: 'ghd-rise-vs-glide-plus',
   VentedBrushVsPaddleBrush: 'vented-brush-vs-paddle-brush',
   TaperedVsCylindricalCurlingWand: 'tapered-vs-cylindrical-curling-wand',

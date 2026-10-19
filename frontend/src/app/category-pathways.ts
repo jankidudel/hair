@@ -172,6 +172,10 @@ export const categoryPathways: Readonly<
           path: guide(ArticleSlug.HowToCleanAHairBrush),
         },
         {
+          label: 'Clean a comb’s teeth and spine',
+          path: guide(ArticleSlug.HowToCleanAHairComb),
+        },
+        {
           label: 'Decide whether to replace a brush or comb',
           path: guide(ArticleSlug.WhenToReplaceHairbrushOrComb),
         },

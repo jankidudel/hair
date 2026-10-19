@@ -373,6 +373,104 @@ import { AnalyticsService } from './analytics/analytics.service';
             </p>
           </section>
         }
+        @if (category.id === 'hair-accessories') {
+          <section class="category-guide-section">
+            <div class="section-heading">
+              <h2>Choose the fastening, then follow its method</h2>
+              <p>
+                Pins, barrettes, claw clips and sectioning clips hold different
+                arrangements. Start with the mechanism, then use the method for
+                the accessory in your hand.
+              </p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.BobbyPinsVsUShapedHairPins,
+                ]"
+                ><h3>Compare pin shapes</h3>
+                <p>
+                  Distinguish closed bobby pins, open U pins and rigid French
+                  pins before choosing a fastening.
+                </p>
+                <span class="text-link">Compare the pins →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToUseBobbyPins]"
+                ><h3>Use a bobby pin</h3>
+                <p>
+                  Secure a small section, check the grip and slide the pin out
+                  without pulling through caught strands.
+                </p>
+                <span class="text-link">Follow the bobby-pin method →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToUseAFrenchHairPin]"
+                ><h3>Use a French hair pin</h3>
+                <p>
+                  Support the bun, guide the rigid pin and check the placement
+                  before letting go.
+                </p>
+                <span class="text-link">Follow the French-pin method →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToChooseAHairBarrette]"
+                ><h3>Choose a barrette</h3>
+                <p>
+                  Check clasp clearance and contact with the actual section
+                  instead of relying on decorative length.
+                </p>
+                <span class="text-link">Check barrette fit →</span></a
+              >
+            </div>
+          </section>
+          <section class="category-guide-section">
+            <div class="section-heading">
+              <h2>Use and care for the accessories you own</h2>
+              <p>
+                Follow a heated kit’s own handling instructions, then use each
+                fabric accessory’s care label for cleaning and drying.
+              </p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseHeatedHairRollers,
+                ]"
+                ><h3>Use heated hair rollers</h3>
+                <p>
+                  Separate kit readiness, section wrapping, hot-clip handling
+                  and removal.
+                </p>
+                <span class="text-link"
+                  >Open the heated-roller method →</span
+                ></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToWashASatinBonnet]"
+                ><h3>Wash a satin bonnet</h3>
+                <p>
+                  Check fibre, band, lining and the permitted wash and drying
+                  route.
+                </p>
+                <span class="text-link">Open bonnet care →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToCleanHairScrunchies]"
+                ><h3>Clean hair scrunchies</h3>
+                <p>
+                  Choose spot cleaning or a permitted wash without treating
+                  every fabric-and-elastic ring alike.
+                </p>
+                <span class="text-link">Open scrunchie care →</span></a
+              >
+            </div>
+          </section>
+        }
         @for (section of categoryGuideSections; track section.label) {
           <section
             class="category-guide-section"
@@ -397,7 +495,9 @@ import { AnalyticsService } from './analytics/analytics.service';
                     {{
                       article.slug === articleSlug.HairDryerChooser
                         ? 'Use the feature finder, then compare dryers for your routine.'
-                        : article.description
+                        : article.slug === articleSlug.HowToCleanAHairComb
+                          ? 'Remove debris between teeth, follow material-specific care and inspect the comb before storing it.'
+                          : article.description
                     }}
                   </p>
                   <span class="text-link"

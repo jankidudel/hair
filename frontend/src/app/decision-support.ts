@@ -27,6 +27,62 @@ const guide = (slug: string) => `/guides/${slug}`;
 export const decisionSnapshots: Readonly<
   Record<string, DecisionSnapshotContent>
 > = {
+  [ArticleSlug.HowToUseHeatedHairRollers]: {
+    label: 'Quick answer',
+    intro:
+      'Check the exact kit manual, prepare the permitted starting state, heat the rollers as directed, wrap manageable sections, secure the supplied clips and follow the kit’s removal instructions. Treat clips as potentially hot too.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.BobbyPinsVsUShapedHairPins]: {
+    label: 'Quick answer',
+    intro:
+      'A closed bobby pin grips a small section between two arms. An open U pin or rigid French pin is placed through an arranged bun or twist. Choose by the fastening action, then check the exact pin’s shape and directions.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseBobbyPins]: {
+    label: 'Quick answer',
+    intro:
+      'Use an intact closed bobby pin on a small section. For a conventional crimped pin, place the crimped side toward the scalp, slide it through the section into nearby hair and release it gently. Reposition instead of forcing a tight or slipping pin.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseAFrenchHairPin]: {
+    label: 'Quick answer',
+    intro:
+      'Form and support the bun first, then guide the rigid pin through the arranged hair using its maker’s method. Check the hold before releasing your hand. If it slips or presses, remove it and rebuild the placement rather than pushing harder.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToChooseAHairBarrette]: {
+    label: 'Quick answer',
+    intro:
+      'Gather the section as you intend to wear it, then check whether the clasp closes and releases normally around that amount of hair. Compare the fastening underneath the decoration; outside length alone does not show holding capacity.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToWashASatinBonnet]: {
+    label: 'Quick answer',
+    intro:
+      'Read the bonnet’s fibre and care label first. Follow its permitted wash and drying method, clean the band as well as the body and let every layer dry before storage. Satin describes a fabric construction, not one universal washing rule.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToCleanHairScrunchies]: {
+    label: 'Quick answer',
+    intro:
+      'Check whether the exact scrunchie permits spot cleaning, hand washing or machine washing. Treat the fabric, elastic and decoration as one item. A washable pillowcase from the same brand does not establish that its scrunchies can be washed the same way.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToCleanAHairComb]: {
+    label: 'Quick answer',
+    intro:
+      'Remove loose hair, check the material and care instructions, then clean the teeth and spine with permitted tools and products. Do not default to soaking. Dry before storage and stop using a comb with a cracked tooth or rough edge.',
+    rows: [],
+    footer: '',
+  },
   [ArticleSlug.HowToUseFlexiRods]: {
     label: 'Quick answer',
     intro:

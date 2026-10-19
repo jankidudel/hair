@@ -118,6 +118,63 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
   );
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
+  {
+    slug: ArticleSlug.HowToUseHeatedHairRollers,
+    group: ArticleGroupId.HairAccessories,
+    order: 36.5,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.BobbyPinsVsUShapedHairPins,
+    group: ArticleGroupId.HairAccessories,
+    order: 60.1,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.HowToUseBobbyPins,
+    group: ArticleGroupId.HairAccessories,
+    order: 60.3,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.HowToUseAFrenchHairPin,
+    group: ArticleGroupId.HairAccessories,
+    order: 60.4,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.HowToChooseAHairBarrette,
+    group: ArticleGroupId.HairAccessories,
+    order: 60.2,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.HowToWashASatinBonnet,
+    group: ArticleGroupId.HairAccessories,
+    order: 71,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.HowToCleanHairScrunchies,
+    group: ArticleGroupId.HairAccessories,
+    order: 72,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+  {
+    slug: ArticleSlug.HowToCleanAHairComb,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 151,
+    enabled: true,
+    publishDate: '2026-10-19',
+  },
+
   ...[
     ArticleSlug.BestFlatIrons,
     ArticleSlug.BestFlatIronsFineHair,

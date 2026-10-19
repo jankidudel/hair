@@ -11,6 +11,61 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  [ArticleSlug.HowToUseHeatedHairRollers]: [
+    ArticleSlug.HeatedRollersVsSelfGripRollers,
+    ArticleSlug.HairRollerSizeGuide,
+    ArticleSlug.HowToUseVelcroHairRollers,
+  ],
+  [ArticleSlug.BobbyPinsVsUShapedHairPins]: [
+    ArticleSlug.HowToUseBobbyPins,
+    ArticleSlug.HowToUseAFrenchHairPin,
+    ArticleSlug.HowToChooseClawClipSize,
+  ],
+  [ArticleSlug.HowToUseBobbyPins]: [
+    ArticleSlug.BobbyPinsVsUShapedHairPins,
+    ArticleSlug.HowToUseAFrenchHairPin,
+    ArticleSlug.HowToChooseAHairBarrette,
+  ],
+  [ArticleSlug.HowToUseAFrenchHairPin]: [
+    ArticleSlug.BobbyPinsVsUShapedHairPins,
+    ArticleSlug.HowToUseBobbyPins,
+    ArticleSlug.HairElasticsVsScrunchies,
+  ],
+  [ArticleSlug.HowToChooseAHairBarrette]: [
+    ArticleSlug.HowToChooseClawClipSize,
+    ArticleSlug.BobbyPinsVsUShapedHairPins,
+    ArticleSlug.HowToChooseHairSectioningClips,
+  ],
+  [ArticleSlug.HowToWashASatinBonnet]: [
+    ArticleSlug.SatinBonnetVsSatinPillowcase,
+    ArticleSlug.SilkVsSatinPillowcaseHair,
+    ArticleSlug.HowToCleanHairScrunchies,
+  ],
+  [ArticleSlug.HowToCleanHairScrunchies]: [
+    ArticleSlug.HairElasticsVsScrunchies,
+    ArticleSlug.HowToWashASatinBonnet,
+    ArticleSlug.HowToChooseClawClipSize,
+  ],
+  [ArticleSlug.HowToCleanAHairComb]: [
+    ArticleSlug.HowToCleanAHairBrush,
+    ArticleSlug.WhenToReplaceHairbrushOrComb,
+    ArticleSlug.TailCombVsWideToothComb,
+    ArticleSlug.WideToothCombVsDetanglingBrush,
+  ],
+  [ArticleSlug.HeatedRollersVsSelfGripRollers]: [
+    ArticleSlug.HowToUseHeatedHairRollers,
+    ArticleSlug.HairRollerSizeGuide,
+    ArticleSlug.HowToUseVelcroHairRollers,
+  ],
+  [ArticleSlug.SatinBonnetVsSatinPillowcase]: [
+    ArticleSlug.HowToWashASatinBonnet,
+    ArticleSlug.SilkVsSatinPillowcaseHair,
+  ],
+  [ArticleSlug.HairElasticsVsScrunchies]: [
+    ArticleSlug.HowToCleanHairScrunchies,
+    ArticleSlug.HowToChooseClawClipSize,
+    ArticleSlug.HowToChooseHairSectioningClips,
+  ],
   [ArticleSlug.HowToUseFlexiRods]: [
     ArticleSlug.HowToUseSnapClosureFoamRollers,
     ArticleSlug.HairRollerSizeGuide,

@@ -18,6 +18,162 @@ export interface GuideEvidence {
 const checkedDate = '18 October 2026';
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  [ArticleSlug.HowToUseHeatedHairRollers]: {
+    summary:
+      'This is an editorial workflow with a named US manual example. Heating, hair preparation, hot-part handling and removal timing remain specific to the exact roller kit.',
+    sources: [
+      {
+        label: 'Conair HS400 manual, US model',
+        model: 'Conair HS400 manual, US model',
+        market: 'United States',
+        url: 'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw33ed3d86/Instructional%20Booklets/HS400.pdf',
+        checkedDate: '19 October 2026',
+        scope:
+          'Named kit’s readiness, preparation, heated clips, handling and removal. Does not establish every heated kit’s timing or overseas voltage use.',
+      },
+      {
+        label: 'Conair HS400 listing',
+        model: 'Conair HS400 listing',
+        market: 'United States',
+        url: 'https://www.conair.com/ceramic-flocked-hot-rollers/HS400.html?lang=en_US',
+        checkedDate: '19 October 2026',
+        scope:
+          'Exact named product identity and current listed kit. Does not establish independent outcome measurements.',
+      },
+    ],
+  },
+  [ArticleSlug.BobbyPinsVsUShapedHairPins]: {
+    summary:
+      'This guide compares visible fastening mechanisms and manufacturer-described uses. It does not rank pin strength or claim that one format holds every hair type.',
+    sources: [
+      {
+        label: 'Kitsch clips and bobby pins',
+        model: 'Kitsch clips and bobby pins',
+        market: 'United States',
+        url: 'https://www.mykitsch.com/collections/hair-clips-bobby-pins',
+        checkedDate: '19 October 2026',
+        scope:
+          'Pin-format distinction and conventional crimped-pin orientation. Does not establish universal hold, no-damage or no-crease claims.',
+      },
+      {
+        label: 'Kitsch Hematite French Hair Pin',
+        model: 'Kitsch Hematite French Hair Pin',
+        market: 'United States',
+        url: 'https://www.mykitsch.com/collections/hair-clips-bobby-pins/products/hematite-french-hair-pin',
+        checkedDate: '19 October 2026',
+        scope:
+          'Rigid pin identity and supported-updo use sequence. Does not establish universal insertion angle or one-pin capacity.',
+      },
+      {
+        label: 'France Luxe Small Hair Pin Pair',
+        model: 'France Luxe Small Hair Pin Pair',
+        market: 'United States storefront',
+        url: 'https://franceluxe.com/products/france-luxe-small-hair-pin-pair',
+        checkedDate: '19 October 2026',
+        scope:
+          'Another named construction/format example. Does not establish interchangeability with all wire U pins.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToUseBobbyPins]: {
+    summary:
+      'The orientation example follows Kitsch’s published guidance for conventional crimped bobby pins. Section handling and troubleshooting are editorial suggestions, not measured hold claims.',
+    sources: [
+      {
+        label: 'Kitsch clips and bobby pins',
+        model: 'Kitsch clips and bobby pins',
+        market: 'United States',
+        url: 'https://www.mykitsch.com/collections/hair-clips-bobby-pins',
+        checkedDate: '19 October 2026',
+        scope:
+          'Pin-format distinction and conventional crimped-pin orientation. Does not establish universal hold, no-damage or no-crease claims.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToUseAFrenchHairPin]: {
+    summary:
+      'The named Kitsch example documents a rigid French pin used with an arranged updo. The practice sequence is editorial guidance and does not establish a universal angle, capacity or one-pin hold.',
+    sources: [
+      {
+        label: 'Kitsch Hematite French Hair Pin',
+        model: 'Kitsch Hematite French Hair Pin',
+        market: 'United States',
+        url: 'https://www.mykitsch.com/collections/hair-clips-bobby-pins/products/hematite-french-hair-pin',
+        checkedDate: '19 October 2026',
+        scope:
+          'Rigid pin identity and supported-updo use sequence. Does not establish universal insertion angle or one-pin capacity.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToChooseAHairBarrette]: {
+    summary:
+      'This is a fit framework with manufacturer-described barrette examples. No clasp capacity, hold duration or universal fine-hair or thick-hair winner was independently measured.',
+    sources: [
+      {
+        label: 'France Luxe Essence Volume Barrette',
+        model: 'France Luxe Essence Volume Barrette',
+        market: 'United States storefront',
+        url: 'https://franceluxe.com/products/france-luxe-essence-volume-barrette',
+        checkedDate: '19 October 2026',
+        scope:
+          'Maker’s fuller-section positioning and clasp format. Does not establish measured internal clearance or guaranteed hold.',
+      },
+      {
+        label: 'France Luxe Long and Skinny French Barrette',
+        model: 'France Luxe Long and Skinny French Barrette',
+        market: 'United Kingdom storefront',
+        url: 'https://franceluxe.com/en-gb/products/long-skinny-hair-barrette-french-classic',
+        checkedDate: '19 October 2026',
+        scope:
+          'Maker’s profile/fit positioning. Does not establish a universal fine-hair recommendation.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToWashASatinBonnet]: {
+    summary:
+      'The named Kitsch bonnet example provides a product-specific hand-wash method. Other fibres, linings, bands and closures may require different care; no universal wash temperature or schedule is prescribed.',
+    sources: [
+      {
+        label: 'Kitsch Blush Oversized Satin Bonnet',
+        model: 'Kitsch Blush Oversized Satin Bonnet',
+        market: 'United States',
+        url: 'https://www.mykitsch.com/products/adjustable-oversized-satin-bonnet-blush',
+        checkedDate: '19 October 2026',
+        scope:
+          'This bonnet’s hand-wash and hang-dry instruction. Does not establish every satin bonnet’s care or machine-wash permission.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToCleanHairScrunchies]: {
+    summary:
+      'Slip’s published scrunchie instruction is a named spot-cleaning example. The other routes are conditional workflows, not product-specific washing permission or a universal silk-care recipe.',
+    sources: [
+      {
+        label: 'Slip product care',
+        model: 'Slip product care',
+        market: 'United States',
+        url: 'https://www.slip.com/pages/care',
+        checkedDate: '19 October 2026',
+        scope:
+          'Scrunchie-specific spot-cleaning direction. Does not establish carrying pillowcase instructions across to scrunchies.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToCleanAHairComb]: {
+    summary:
+      'Kent’s handmade-comb aftercare provides a specific cloth-and-soft-brush example. It is not a universal instruction for wood, horn, metal, coated or composite combs.',
+    sources: [
+      {
+        label: 'Kent product aftercare, Handmade Combs section',
+        model: 'Kent product aftercare, Handmade Combs section',
+        market: 'United Kingdom',
+        url: 'https://kentbrushes.com/pages/product-after-care',
+        checkedDate: '19 October 2026',
+        scope:
+          'Cloth/soft-toothbrush care and drying limits for that family. Does not establish general soaking permission or a disinfection protocol.',
+      },
+    ],
+  },
   [ArticleSlug.HowToUseFlexiRods]: {
     summary:
       'This guide combines a conservative editorial sequence with directions published for identifiable roller sets. Product-specific preparation and timing remain with the exact set instructions.',

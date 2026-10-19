@@ -2,6 +2,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { auditInternalLinks } from '../../scripts/internal-link-audit.ts';
 import { articles } from '../src/app/content.generated.ts';
+import { guideLinkMap } from '../src/app/guide-link-map.ts';
 import { guideEvidence } from '../src/app/guide-evidence.ts';
 import {
   guideCategories,
@@ -227,7 +228,10 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
   const safety = html.match(
     /<app-clean-inspect-stop\b[^>]*>([\s\S]*?)<\/app-clean-inspect-stop>/,
   )?.[1];
-  const isCare = slug.startsWith('how-to-clean-');
+  const isCare = [
+    'how-to-clean-hair-straightener-plates',
+    'how-to-clean-a-curling-iron-or-wand',
+  ].includes(slug);
   if (isCare !== !!safety)
     failures.push(
       `${route}: shared safety component presence does not match the task.`,
@@ -238,9 +242,21 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
       /<section[^>]*class="article-body"[^>]*>([\s\S]*?)<\/section>/,
     )?.[1] ?? '';
   const steps = body.match(/<ol>([\s\S]*?)<\/ol>/)?.[1] ?? '';
-  const expectedSteps =
-    slug === 'how-to-clean-hair-straightener-plates' ? 8 : 9;
-  if ((steps.match(/<li>/g) ?? []).length !== expectedSteps)
+  const stepCounts: Readonly<Record<string, number>> = {
+    'how-to-use-flexi-rods': 9,
+    'how-to-use-snap-closure-foam-rollers': 9,
+    'how-to-clean-hair-straightener-plates': 8,
+    'how-to-clean-a-curling-iron-or-wand': 9,
+    'how-to-use-heated-hair-rollers': 9,
+    'how-to-use-bobby-pins': 6,
+    'how-to-use-a-french-hair-pin': 6,
+    'how-to-choose-a-hair-barrette': 6,
+    'how-to-wash-a-satin-bonnet': 7,
+    'how-to-clean-hair-scrunchies': 5,
+    'how-to-clean-a-hair-comb': 7,
+  };
+  const expectedSteps = stepCounts[slug];
+  if (expectedSteps && (steps.match(/<li>/g) ?? []).length !== expectedSteps)
     failures.push(
       `${route}: complete ordered steps are missing from static HTML.`,
     );
@@ -259,12 +275,82 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
       failures.push(`${route}: source link is missing from static HTML.`);
   if (!guidesHtml.includes(`href="${route}"`))
     failures.push(`/guides: missing task-guide link '${route}'.`);
-  const category = slug.startsWith('how-to-clean-')
-    ? 'flat-irons'
-    : 'hair-accessories';
+  const article = articles.find((entry) => entry.slug === slug)!;
+  const category = guideCategoryById[article.group].path.slice(1);
+  const relatedHtml = html.slice(related);
+  let previousRelated = -1;
+  for (const relatedSlug of guideLinkMap[slug].relatedSlugs) {
+    const position = relatedHtml.indexOf(`href="/guides/${relatedSlug}"`);
+    if (position <= previousRelated)
+      failures.push(`${route}: related cards missing or out of order.`);
+    previousRelated = position;
+  }
+  for (const source of evidence.sources.filter(
+    (entry) => entry.checkedDate === '19 October 2026',
+  )) {
+    if (
+      !html.slice(0, faq).includes(`href="${source.url}"`) &&
+      !source.label.includes('listing')
+    )
+      failures.push(`${route}: factual example needs a source link beside it.`);
+  }
   const hub = await readFile(resolve(output, category, 'index.html'), 'utf8');
   if (!hub.includes(`href="${route}"`))
     failures.push(`/${category}: missing task-guide link '${route}'.`);
+}
+// Editorial insertions must survive sanitizing and appear in the initial HTML.
+const accessoryIntegrations: Readonly<Record<string, readonly string[]>> = {
+  'heated-rollers-vs-self-grip-rollers': ['how-to-use-heated-hair-rollers'],
+  'hair-roller-size-guide': ['how-to-use-heated-hair-rollers'],
+  'how-to-choose-hair-sectioning-clips': [
+    'bobby-pins-vs-u-shaped-hair-pins',
+    'how-to-choose-a-hair-barrette',
+  ],
+  'how-to-choose-claw-clip-size': [
+    'how-to-choose-a-hair-barrette',
+    'how-to-use-a-french-hair-pin',
+  ],
+  'satin-bonnet-vs-satin-pillowcase': ['how-to-wash-a-satin-bonnet'],
+  'hair-elastics-vs-scrunchies': ['how-to-clean-hair-scrunchies'],
+  'how-to-clean-a-hair-brush': ['how-to-clean-a-hair-comb'],
+  'when-to-replace-hairbrush-or-comb': ['how-to-clean-a-hair-comb'],
+  'tail-comb-vs-wide-tooth-comb': ['how-to-clean-a-hair-comb'],
+};
+for (const [slug, targets] of Object.entries(accessoryIntegrations)) {
+  const html = await readFile(
+    resolve(output, 'guides', slug, 'index.html'),
+    'utf8',
+  );
+  for (const target of targets)
+    if (!html.includes(`href="/guides/${target}"`))
+      failures.push(
+        `${slug}: required contextual link to ${target} is missing.`,
+      );
+}
+for (const [slug, diagram] of [
+  ['bobby-pins-vs-u-shaped-hair-pins', 'pin-fastening-shapes'],
+  ['how-to-choose-a-hair-barrette', 'barrette-clasp-fit'],
+  ['how-to-clean-a-hair-comb', 'comb-teeth-cleaning'],
+]) {
+  const html = await readFile(
+    resolve(output, 'guides', slug, 'index.html'),
+    'utf8',
+  );
+  if (
+    !html.includes('class="accessory-schematic"') ||
+    !html.includes(`src="/diagrams/${diagram}.svg"`)
+  )
+    failures.push(`${slug}: responsive schematic is missing.`);
+  const svg = await readFile(
+    resolve(output, 'diagrams', `${diagram}.svg`),
+    'utf8',
+  );
+  if (
+    !svg.includes('viewBox=') ||
+    !svg.includes('aria-labelledby=') ||
+    !svg.includes('<title')
+  )
+    failures.push(`${diagram}: accessible scalable SVG is required.`);
 }
 const snaggingHtml = await readFile(
   resolve(output, 'guides', 'flat-iron-snagging-hair', 'index.html'),

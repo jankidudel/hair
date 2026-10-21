@@ -50,13 +50,15 @@ const batchFourteenStaticRoutes = new Set([
 const staticLastModified: Readonly<Record<string, string>> = Object.fromEntries(
   entries.map((route) => [
     route,
-    ['/guides', '/hair-accessories', '/brushes-combs'].includes(route)
-      ? '2026-10-19'
-      : ['/flat-irons', '/tools'].includes(route)
-        ? '2026-10-18'
-        : batchFourteenStaticRoutes.has(route)
-          ? '2026-10-17'
-          : '2026-09-20',
+    ['/guides', '/hair-care'].includes(route)
+      ? '2026-10-21'
+      : ['/hair-accessories', '/brushes-combs'].includes(route)
+        ? '2026-10-19'
+        : ['/flat-irons', '/tools'].includes(route)
+          ? '2026-10-18'
+          : batchFourteenStaticRoutes.has(route)
+            ? '2026-10-17'
+            : '2026-09-20',
   ]),
 );
 for (const { slug } of articles) entries.push(`/guides/${slug}`);

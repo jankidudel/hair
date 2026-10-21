@@ -27,6 +27,48 @@ const guide = (slug: string) => `/guides/${slug}`;
 export const decisionSnapshots: Readonly<
   Record<string, DecisionSnapshotContent>
 > = {
+  [ArticleSlug.HairMousseVsGel]: {
+    label: 'Quick answer',
+    intro:
+      'Choose mousse if you prefer distributing a foam through your styling sections. Choose gel if you prefer working with a non-foamed formula whose placement you can control section by section. Compare labelled hold, application state and drying directions separately.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.CurlCreamVsLeaveInConditioner]: {
+    label: 'Quick answer',
+    intro:
+      'Choose by the missing step in your routine. A leave-in may provide the conditioning or preparation you want, while a curl cream may focus on styling your existing curl pattern. Check the exact directions before deciding that both are necessary.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToApplyHairMousse]: {
+    label: 'Quick answer',
+    intro:
+      'Follow the exact container’s dispensing instructions, prepare the permitted hair state and distribute the mousse through manageable sections. Judge the result after the intended drying routine before changing the amount or adding another product.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToApplyGelToCurlyHair]: {
+    label: 'Quick answer',
+    intro:
+      'Use the gel’s permitted starting state, separate manageable sections and distribute the stated amount using its application method. Complete the intended drying routine before deciding whether coverage, quantity or the formula needs changing.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HairSerumVsHairOil]: {
+    label: 'Quick answer',
+    intro:
+      'Check what the product contains, where it is applied and whether it belongs before styling or on the finished hair. Choose the formula for the job you need; the words serum and oil do not establish purity, weight, heat protection or repair.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HairStylingProductOrder]: {
+    label: 'Quick answer',
+    intro:
+      'Check appliance restrictions first, then group compatible products by their stated application stage. Use a manufacturer’s sequence for the exact combination where available. Do not assume every routine needs leave-in, cream, mousse, gel, serum and oil.',
+    rows: [],
+    footer: '',
+  },
   [ArticleSlug.HowToUseHeatedHairRollers]: {
     label: 'Quick answer',
     intro:

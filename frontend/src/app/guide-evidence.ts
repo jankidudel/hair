@@ -17,7 +17,85 @@ export interface GuideEvidence {
 
 const checkedDate = '18 October 2026';
 
+const stylingProductSources: readonly GuideSource[] = [
+  {
+    label: 'John Frieda Curl Reviver Mousse directions',
+    model: 'John Frieda Curl Reviver Mousse',
+    market: 'United Kingdom',
+    url: 'https://www.johnfrieda.com/en-uk/products/dream-curls/stylers-refreshers/curl-reviver-mousse/',
+    checkedDate: '21 October 2026',
+    scope:
+      'Named inverted-can dispensing, damp-hair distribution and scrunching directions.',
+  },
+  {
+    label: 'Ouidad Advanced Climate Control Heat & Humidity Gel directions',
+    model: 'Ouidad Advanced Climate Control Heat & Humidity Gel',
+    market: 'United States',
+    url: 'https://www.ouidad.com/products/advanced-climate-control-heat-and-humidity-gel',
+    checkedDate: '21 October 2026',
+    scope:
+      'Named damp-section Rake & Shake method, air drying and diffuser drying.',
+  },
+  {
+    label: 'Moroccanoil Curl Defining Cream directions',
+    model: 'Moroccanoil Curl Defining Cream',
+    market: 'United Kingdom',
+    url: 'https://uk.moroccanoil.com/products/curl-defining-cream',
+    checkedDate: '21 October 2026',
+    scope:
+      'Named towel-dried application and styling directions; not a requirement to combine products.',
+  },
+  {
+    label: 'Moroccanoil All in One Leave-in Conditioner directions',
+    model: 'Moroccanoil All in One Leave-in Conditioner',
+    market: 'United Kingdom',
+    url: 'https://uk.moroccanoil.com/products/leave-in-conditioner',
+    checkedDate: '21 October 2026',
+    scope:
+      'Named clean, towel-dried application before preferred styling products.',
+  },
+  {
+    label: 'Moroccanoil Treatment Original ingredients and directions',
+    model: 'Moroccanoil Treatment Original',
+    market: 'United Kingdom',
+    url: 'https://uk.moroccanoil.com/products/moroccanoil-treatment-original',
+    checkedDate: '21 October 2026',
+    scope:
+      'Declared silicones alongside argan oil, and damp- and dry-hair application stages. The official product name does not imply a health claim.',
+  },
+];
+
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  [ArticleSlug.HairMousseVsGel]: {
+    summary:
+      'This guide compares application formats and product directions. It does not independently rank hold, weight, humidity performance or curl retention.',
+    sources: [stylingProductSources[0], stylingProductSources[1]],
+  },
+  [ArticleSlug.CurlCreamVsLeaveInConditioner]: {
+    summary:
+      'This guide separates product roles using named manufacturer directions. It does not establish that every leave-in or curl cream has the same ingredients, hold or conditioning effect.',
+    sources: [stylingProductSources[2], stylingProductSources[3]],
+  },
+  [ArticleSlug.HowToApplyHairMousse]: {
+    summary:
+      'The named product supports one dispensing example. The sectioning and comparison workflow is editorial guidance, not a universal dose or performance claim.',
+    sources: [stylingProductSources[0]],
+  },
+  [ArticleSlug.HowToApplyGelToCurlyHair]: {
+    summary:
+      'A named manufacturer method is distinguished from an editorial distribution checklist. No universal cast, quantity, hold level or layering sequence is prescribed.',
+    sources: [stylingProductSources[1]],
+  },
+  [ArticleSlug.HairSerumVsHairOil]: {
+    summary:
+      'This guide explains overlapping product labels using a named ingredient-list example. It does not rank formulas or infer concentrations, repair or heat protection from category names.',
+    sources: [stylingProductSources[4]],
+  },
+  [ArticleSlug.HairStylingProductOrder]: {
+    summary:
+      'This is an editorial planning framework with a named sequence example. It does not certify formula compatibility or replace product labels and appliance manuals.',
+    sources: [stylingProductSources[3]],
+  },
   [ArticleSlug.HowToUseHeatedHairRollers]: {
     summary:
       'This is an editorial workflow with a named US manual example. Heating, hair preparation, hot-part handling and removal timing remain specific to the exact roller kit.',

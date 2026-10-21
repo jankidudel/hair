@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 510" width="320" height="510" role="img" aria-labelledby="title desc">
+<title id="title">Compare where styling product reaches</title><desc id="desc">Upper panel: product concentrated outside a gathered section. Lower panel: product distributed through separated sections. No amount or result is prescribed.</desc>
+<rect width="320" height="510" rx="16" fill="#fffdf8"/>
+<g font-family="Arial,sans-serif" fill="#173c39" text-anchor="middle">
+<text x="160" y="33" font-size="21" font-weight="bold">Check coverage first</text>
+<rect x="16" y="52" width="288" height="193" rx="16" fill="#efe1cb"/>
+<text x="160" y="83" font-size="19" font-weight="bold">Concentrated outside</text>
+<g fill="none" stroke="#875b3c" stroke-width="7" stroke-linecap="round"><path d="M108 110 Q88 163 106 205"/><path d="M132 110 Q112 163 130 205"/><path d="M156 110 Q136 163 154 205"/><path d="M180 110 Q160 163 178 205"/><path d="M204 110 Q184 163 202 205"/></g>
+<path d="M90 124 Q82 156 91 183" stroke="#315f59" stroke-width="17" fill="none" stroke-linecap="round"/>
+<text x="160" y="230" font-size="17">First surface gets most</text>
+<rect x="16" y="260" width="288" height="193" rx="16" fill="#d9e7df"/>
+<text x="160" y="291" font-size="19" font-weight="bold">Separated sections</text>
+<g fill="none" stroke="#875b3c" stroke-width="7" stroke-linecap="round"><path d="M68 318 Q48 365 66 410"/><path d="M92 318 Q72 365 90 410"/><path d="M150 318 Q130 365 148 410"/><path d="M174 318 Q154 365 172 410"/><path d="M232 318 Q212 365 230 410"/><path d="M256 318 Q236 365 254 410"/></g>
+<g fill="none" stroke="#315f59" stroke-width="10" stroke-linecap="round"><path d="M61 343 L56 365"/><path d="M85 375 L88 396"/><path d="M143 343 L138 365"/><path d="M167 375 L170 396"/><path d="M225 343 L220 365"/><path d="M249 375 L252 396"/></g>
+<text x="160" y="438" font-size="17">Check inner areas too</text><text x="160" y="486" font-size="17">Schematic · no measured dose</text></g></svg>

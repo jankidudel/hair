@@ -303,6 +303,98 @@ import { AnalyticsService } from './analytics/analytics.service';
         @if (categoryPathwayGroups.length) {
           <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
         }
+        @if (category.id === 'hair-care') {
+          <section
+            class="category-guide-section"
+            aria-labelledby="product-role-heading"
+          >
+            <div class="section-heading">
+              <h2 id="product-role-heading">
+                Choose the product’s job, then its format
+              </h2>
+              <p>
+                Mousse, gel, curl cream, leave-in conditioner, serum and oil can
+                overlap in purpose. Compare the exact formula and directions,
+                then keep only the steps that support your routine.
+              </p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HairMousseVsGel]"
+                ><h3>Mousse or gel?</h3>
+                <p>
+                  Compare application format, labelled hold and drying
+                  directions.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.CurlCreamVsLeaveInConditioner,
+                ]"
+                ><h3>Curl cream or leave-in?</h3>
+                <p>
+                  Separate preparation and styling roles before adding both.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HairSerumVsHairOil]"
+                ><h3>Serum or oil?</h3>
+                <p>
+                  Compare the actual formula rather than treating the names as
+                  opposites.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HairStylingProductOrder]"
+                ><h3>Plan product order</h3>
+                <p>
+                  Build a sequence around compatible labels and appliance
+                  restrictions.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+            </div>
+          </section>
+          <section
+            class="category-guide-section"
+            aria-labelledby="product-application-heading"
+          >
+            <div class="section-heading">
+              <h2 id="product-application-heading">
+                Make application more consistent
+              </h2>
+              <p>
+                Work through manageable sections and compare distribution before
+                increasing the amount.
+              </p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToApplyHairMousse]"
+                ><h3>Apply hair mousse</h3>
+                <p>
+                  Check dispensing, coverage and the intended drying method.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              ><a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToApplyGelToCurlyHair]"
+                ><h3>Apply gel to curly hair</h3>
+                <p>
+                  Follow the formula’s method and distinguish coverage from
+                  quantity.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+            </div>
+          </section>
+        }
         @if (category.id === 'hair-accessories') {
           <section
             class="category-guide-section"

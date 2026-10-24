@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="360" viewBox="0 0 340 360" role="img" aria-labelledby="title desc">
+  <title id="title">Three separate styling label checks</title>
+  <desc id="desc">Read finish, hold description and starting hair state separately for each formula. These are independent questions, not product scores.</desc>
+  <rect width="340" height="360" rx="18" fill="#f7f3eb"/>
+  <g fill="#fffdf8" stroke="#d9d2c5">
+    <rect x="20" y="24" width="300" height="76" rx="12"/>
+    <rect x="20" y="116" width="300" height="76" rx="12"/>
+    <rect x="20" y="208" width="300" height="76" rx="12"/>
+  </g>
+  <g stroke="#bd7158" stroke-width="4" stroke-linecap="round">
+    <path d="M39 45 V79 M39 137 V171 M39 229 V263"/>
+  </g>
+  <g font-family="system-ui, sans-serif" fill="#264b3c">
+    <g font-size="19" font-weight="650">
+      <text x="56" y="69">Finish</text>
+      <text x="56" y="161">Hold description</text>
+      <text x="56" y="253">Starting hair state</text>
+    </g>
+    <text x="24" y="317" font-size="16">Read these separately</text>
+    <text x="24" y="340" font-size="16">for each formula</text>
+  </g>
+</svg>

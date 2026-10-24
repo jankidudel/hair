@@ -14,10 +14,10 @@ import { guideEvidence } from './guide-evidence';
 
 describe('article decision integration data', () => {
   it('maps the comparison and task-guide decision owners without duplicating evidence owners', () => {
-    expect(Object.keys(decisionSnapshots)).toHaveLength(28);
+    expect(Object.keys(decisionSnapshots)).toHaveLength(34);
     expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
     expect(Object.keys(evidenceOwners)).toHaveLength(8);
-    expect(Object.keys(guideEvidence)).toHaveLength(18);
+    expect(Object.keys(guideEvidence)).toHaveLength(24);
     expect(
       evidenceOwners[ArticleSlug.DysonAirwrapVsSharkFlexstyle],
     ).toBeDefined();

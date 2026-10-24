@@ -11,6 +11,36 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  [ArticleSlug.HowToUseHairspray]: [
+    ArticleSlug.FlexibleVsStrongHoldHairspray,
+    ArticleSlug.HairStylingProductOrder,
+    ArticleSlug.WhyCurlsFallOut,
+  ],
+  [ArticleSlug.FlexibleVsStrongHoldHairspray]: [
+    ArticleSlug.HowToUseHairspray,
+    ArticleSlug.WhyCurlsFallOut,
+    ArticleSlug.HairStylingProductOrder,
+  ],
+  [ArticleSlug.SeaSaltSprayVsTexturisingSpray]: [
+    ArticleSlug.HowToUseSeaSaltSpray,
+    ArticleSlug.HairStylingProductOrder,
+    ArticleSlug.HairMousseVsGel,
+  ],
+  [ArticleSlug.HowToUseSeaSaltSpray]: [
+    ArticleSlug.SeaSaltSprayVsTexturisingSpray,
+    ArticleSlug.HairStylingProductOrder,
+    ArticleSlug.HowToApplyHairMousse,
+  ],
+  [ArticleSlug.PomadeVsHairClay]: [
+    ArticleSlug.HowToApplyHairPomade,
+    ArticleSlug.HairMousseVsGel,
+    ArticleSlug.HairStylingProductOrder,
+  ],
+  [ArticleSlug.HowToApplyHairPomade]: [
+    ArticleSlug.PomadeVsHairClay,
+    ArticleSlug.HairStylingProductOrder,
+    ArticleSlug.HairBrushVsComb,
+  ],
   [ArticleSlug.HairMousseVsGel]: [
     ArticleSlug.HowToApplyHairMousse,
     ArticleSlug.HowToApplyGelToCurlyHair,

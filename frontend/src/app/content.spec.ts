@@ -6,6 +6,66 @@ import { guideCategories, guideCategoryById } from './article-registry';
 import { isPublishedOn } from './publication-date';
 
 describe('generated editorial content', () => {
+  it('publishes the six finishing guides with the reviewed metadata and semantic FAQ sections', () => {
+    const expected = [
+      [
+        ArticleSlug.HowToUseHairspray,
+        'How to Use Hairspray: Placement and Application | Comb Report',
+        'Use hairspray with the exact label’s distance, hair preparation and application method. Check placement before adding another layer to your finished style.',
+      ],
+      [
+        ArticleSlug.FlexibleVsStrongHoldHairspray,
+        'Flexible vs Strong Hold Hairspray: Read the Label | Comb Report',
+        'Compare flexible and strong hold hairspray by intended movement, finish and directions. Read hold labels as product positioning rather than a shared rating scale.',
+      ],
+      [
+        ArticleSlug.SeaSaltSprayVsTexturisingSpray,
+        'Sea Salt Spray vs Texturising Spray: Compare Uses | Comb Report',
+        'Compare sea salt spray and texturising spray by the exact formula, starting hair state and intended finish. The names can overlap rather than define opposites.',
+      ],
+      [
+        ArticleSlug.HowToUseSeaSaltSpray,
+        'How to Use Sea Salt Spray: Follow the Formula | Comb Report',
+        'Plan sea salt spray application around the product’s starting hair state, placement and drying directions. Review distribution before adding more spray.',
+      ],
+      [
+        ArticleSlug.PomadeVsHairClay,
+        'Pomade vs Hair Clay: Compare Finish and Method | Comb Report',
+        'Compare pomade and hair clay using the exact product’s finish, hold and application directions. Avoid assuming all pomades shine or all clays look matte.',
+      ],
+      [
+        ArticleSlug.HowToApplyHairPomade,
+        'How to Apply Hair Pomade: Prepare and Distribute | Comb Report',
+        'Apply hair pomade using its starting hair state and preparation directions. Plan section coverage before changing the amount or adding another styling product.',
+      ],
+    ] as const;
+    for (const [slug, title, description] of expected) {
+      const article = articles.find((item) => item.slug === slug);
+      expect(article?.title).toBe(title);
+      expect(article?.description).toBe(description);
+      expect(article?.group).toBe('hair-care');
+      expect(article?.html).not.toMatch(/<h1\b/);
+      expect(article?.html.match(/<h2>FAQ<\/h2>/g)).toHaveLength(1);
+      expect(article?.html.match(/<h3>/g)).toHaveLength(3);
+      expect(article?.html).toContain('class="accessory-table"');
+      expect(article?.html).toContain('tabindex="0"');
+      expect(article?.html).toContain('<th scope="col">');
+    }
+  });
+
+  it('renders the Bobby Pins crossing question as exactly one semantic H2', () => {
+    const html =
+      articles.find((article) => article.slug === ArticleSlug.HowToUseBobbyPins)
+        ?.html ?? '';
+    expect(html.match(/<h2>Should you cross two pins\?<\/h2>/g)).toHaveLength(
+      1,
+    );
+    expect(html).not.toContain('<p>Should you cross two pins?</p>');
+    expect(html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')).toContain(
+      'Should you cross two pins? Kitsch’s pin guidance describes crossing two pins for a bun anchor.',
+    );
+  });
+
   it('has one prerenderable route per article', () => {
     const today = new Date().toISOString().slice(0, 10);
     const enabledSlugs = articleRegistry

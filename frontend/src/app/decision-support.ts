@@ -27,6 +27,48 @@ const guide = (slug: string) => `/guides/${slug}`;
 export const decisionSnapshots: Readonly<
   Record<string, DecisionSnapshotContent>
 > = {
+  [ArticleSlug.HowToUseHairspray]: {
+    label: 'Quick answer',
+    intro:
+      'Read the can or bottle before spraying. Follow its hair-state instructions, distance and warnings, apply to the intended area, and let the application settle as directed before deciding whether another pass is needed.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.FlexibleVsStrongHoldHairspray]: {
+    label: 'Quick answer',
+    intro:
+      'Use flexible and strong hold as starting points for reading a product description. Compare the exact formula’s intended finish and application directions; do not assume that the same number or adjective means the same result across brands.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.SeaSaltSprayVsTexturisingSpray]: {
+    label: 'Quick answer',
+    intro:
+      'Check the intended finish and whether each product is applied to damp hair, dry hair or either. Do not assume that every texture spray is a dry finishing aerosol or that every sea salt spray follows the same method.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseSeaSaltSpray]: {
+    label: 'Quick answer',
+    intro:
+      'Check the label’s starting hair state, apply to the intended sections and follow its arranging and drying method. Review distribution and the finished result before deciding that the routine needs more product.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.PomadeVsHairClay]: {
+    label: 'Quick answer',
+    intro:
+      'Read the stated finish, hold and preparation instructions for each product. Do not choose solely on the assumption that pomade always means high shine or clay always means a matte result.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToApplyHairPomade]: {
+    label: 'Quick answer',
+    intro:
+      'Follow the exact pomade’s preparation and starting-state directions, spread it as instructed and work through the intended areas. Arrange the hair before deciding whether another application is needed.',
+    rows: [],
+    footer: '',
+  },
   [ArticleSlug.HairMousseVsGel]: {
     label: 'Quick answer',
     intro:

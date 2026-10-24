@@ -11,6 +11,7 @@ export interface GuideSource {
 
 export interface GuideEvidence {
   readonly breadcrumbLabel?: string;
+  readonly sourceFormat?: 'product-market';
   readonly summary: string;
   readonly sources: readonly GuideSource[];
 }
@@ -65,7 +66,91 @@ const stylingProductSources: readonly GuideSource[] = [
   },
 ];
 
+const finishingSources: readonly GuideSource[] = [
+  {
+    label: 'TRESemmé Extra Hold Hairspray 400ml',
+    model: 'TRESemmé Extra Hold Hairspray 400ml',
+    market: 'United Kingdom',
+    url: 'https://www.tresemme.com/uk/p/extra-hold-hair-spray-for-frizzy-hair.html/08710447299081',
+    checkedDate: '22 October 2026',
+    scope:
+      'Named dry-hair application and finishing description; not evidence of comparative lasting power.',
+  },
+  {
+    label: 'Bumble and bumble Surf Spray',
+    model: 'Bumble and bumble Surf Spray',
+    market: 'United States',
+    url: 'https://www.bumbleandbumble.com/product/19061/221/style/texture-sprays/surf-spray-for-beachy-waves',
+    checkedDate: '22 October 2026',
+    scope:
+      'Named starting states and arranging/drying method; not a guarantee of a new curl pattern.',
+  },
+  {
+    label: 'Bumble and bumble Thickening Dryspun Texture Spray',
+    model: 'Bumble and bumble Thickening Dryspun Texture Spray',
+    market: 'United Kingdom',
+    url: 'https://www.bumbleandbumble.co.uk/product/19061/126838/style/texture-sprays/thickening-dryspun-texture-spray',
+    checkedDate: '22 October 2026',
+    scope:
+      'Named dry-hair method and container warnings; no quantitative volume claim reproduced.',
+  },
+  {
+    label: 'American Crew Pomade',
+    model: 'American Crew Pomade',
+    market: 'United States',
+    url: 'https://www.americancrew.com/products/pomade',
+    checkedDate: '22 October 2026',
+    scope:
+      'Named formula positioning and application method; not a category-wide property.',
+  },
+  {
+    label: 'American Crew Molding Clay',
+    model: 'American Crew Molding Clay',
+    market: 'United States',
+    url: 'https://www.americancrew.com/products/molding-clay',
+    checkedDate: '22 October 2026',
+    scope:
+      'Named finish and preparation directions; not evidence that all clay products behave alike.',
+  },
+];
+
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  [ArticleSlug.HowToUseHairspray]: {
+    sourceFormat: 'product-market',
+    summary:
+      'This guide uses one named manufacturer’s application directions as an example. The coverage checks are editorial planning advice, not comparative performance testing.',
+    sources: [finishingSources[0]],
+  },
+  [ArticleSlug.FlexibleVsStrongHoldHairspray]: {
+    sourceFormat: 'product-market',
+    summary:
+      'This is a guide to interpreting labels and planning comparisons. It does not rank hairsprays or establish a shared numerical hold scale.',
+    sources: [finishingSources[0]],
+  },
+  [ArticleSlug.SeaSaltSprayVsTexturisingSpray]: {
+    sourceFormat: 'product-market',
+    summary:
+      'This comparison uses two named products from different regional manufacturer sites. It does not compare measured volume, lasting power or hair-health outcomes.',
+    sources: [finishingSources[1], finishingSources[2]],
+  },
+  [ArticleSlug.HowToUseSeaSaltSpray]: {
+    sourceFormat: 'product-market',
+    summary:
+      'This guide illustrates a section-planning approach using one named manufacturer method. It does not establish a universal dose, frequency of use or hair-health benefit.',
+    sources: [finishingSources[1]],
+  },
+  [ArticleSlug.PomadeVsHairClay]: {
+    sourceFormat: 'product-market',
+    summary:
+      'These are manufacturer-positioned examples, not a hands-on ranking or evidence that every pomade or clay shares their characteristics.',
+    sources: [finishingSources[3], finishingSources[4]],
+  },
+  [ArticleSlug.HowToApplyHairPomade]: {
+    sourceFormat: 'product-market',
+    summary:
+      'The named example establishes its own application directions. The section checks are editorial routine-planning advice, not measured performance findings.',
+    sources: [finishingSources[3]],
+  },
   [ArticleSlug.HairMousseVsGel]: {
     summary:
       'This guide compares application formats and product directions. It does not independently rank hold, weight, humidity performance or curl retention.',

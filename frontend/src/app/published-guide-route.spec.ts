@@ -1,6 +1,7 @@
 import { UrlSegment } from '@angular/router';
 import { describe, expect, it } from 'vitest';
 import { publishedGuideCanMatch } from './published-guide-route';
+import { ArticleSlug } from './article-slug';
 
 describe('published guide route matching', () => {
   it('matches a published guide route', () => {
@@ -17,6 +18,30 @@ describe('published guide route matching', () => {
       publishedGuideCanMatch({}, [
         new UrlSegment('guides', {}),
         new UrlSegment('markdown-syntax-example', {}),
+      ]),
+    ).toBe(false);
+  });
+
+  it('matches all six finishing guides and keeps the absent automatic-curler route unknown', () => {
+    for (const slug of [
+      ArticleSlug.HowToUseHairspray,
+      ArticleSlug.FlexibleVsStrongHoldHairspray,
+      ArticleSlug.SeaSaltSprayVsTexturisingSpray,
+      ArticleSlug.HowToUseSeaSaltSpray,
+      ArticleSlug.PomadeVsHairClay,
+      ArticleSlug.HowToApplyHairPomade,
+    ]) {
+      expect(
+        publishedGuideCanMatch({}, [
+          new UrlSegment('guides', {}),
+          new UrlSegment(slug, {}),
+        ]),
+      ).toBe(true);
+    }
+    expect(
+      publishedGuideCanMatch({}, [
+        new UrlSegment('guides', {}),
+        new UrlSegment('how-to-use-an-automatic-hair-curler', {}),
       ]),
     ).toBe(false);
   });

@@ -1,5 +1,11 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToUseHairspray: 'how-to-use-hairspray',
+  FlexibleVsStrongHoldHairspray: 'flexible-vs-strong-hold-hairspray',
+  SeaSaltSprayVsTexturisingSpray: 'sea-salt-spray-vs-texturising-spray',
+  HowToUseSeaSaltSpray: 'how-to-use-sea-salt-spray',
+  PomadeVsHairClay: 'pomade-vs-hair-clay',
+  HowToApplyHairPomade: 'how-to-apply-hair-pomade',
   HairMousseVsGel: 'hair-mousse-vs-gel',
   CurlCreamVsLeaveInConditioner: 'curl-cream-vs-leave-in-conditioner',
   HowToApplyHairMousse: 'how-to-apply-hair-mousse',

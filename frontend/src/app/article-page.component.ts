@@ -223,9 +223,15 @@ export function splitEvidenceArticleHtml(
           <ul>
             @for (source of guideEvidenceContent.sources; track source.url) {
               <li>
-                <strong>{{ source.model }}</strong> ({{ source.market }}):
-                <a [href]="source.url">{{ source.label }}</a> — checked
-                {{ source.checkedDate }}. {{ source.scope }}
+                @if (guideEvidenceContent.sourceFormat === 'product-market') {
+                  <a [href]="source.url">{{ source.label }}</a> —
+                  {{ source.market }}; checked {{ source.checkedDate }}.
+                  {{ source.scope }}
+                } @else {
+                  <strong>{{ source.model }}</strong> ({{ source.market }}):
+                  <a [href]="source.url">{{ source.label }}</a> — checked
+                  {{ source.checkedDate }}. {{ source.scope }}
+                }
               </li>
             }
           </ul>

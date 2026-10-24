@@ -1,3 +1,4 @@
+import { finishingGuideDescriptions } from './finishing-guides';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { articles } from './content.generated';
@@ -237,7 +238,11 @@ import { AnalyticsService } from './analytics/analytics.service';
             [routerLink]="['/guides', article.slug]"
             ><p class="eyebrow">{{ article.category }}</p>
             <h2>{{ article.heading }}</h2>
-            <p>{{ article.description }}</p>
+            <p>
+              {{
+                finishingGuideDescriptions[article.slug] ?? article.description
+              }}
+            </p>
             <span class="text-link"
               >Read guide <span aria-hidden="true">→</span></span
             ></a
@@ -390,6 +395,78 @@ import { AnalyticsService } from './analytics/analytics.service';
                   Follow the formula’s method and distinguish coverage from
                   quantity.
                 </p>
+                <span class="text-link">Read guide →</span></a
+              >
+            </div>
+          </section>
+        }
+        @if (category.id === 'hair-care') {
+          <section
+            class="category-guide-section"
+            aria-labelledby="finishing-texture-heading"
+          >
+            <div class="section-heading">
+              <h2 id="finishing-texture-heading">
+                Choose a finishing or texture step
+              </h2>
+              <p>
+                Compare the exact formula’s intended finish and starting hair
+                state. Choose a useful role before adding another spray or jar
+                to your routine.
+              </p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToUseHairspray]"
+                ><h3>Use hairspray deliberately</h3>
+                <p>Plan the area, follow the container and review coverage.</p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.FlexibleVsStrongHoldHairspray,
+                ]"
+                ><h3>Compare hairspray hold labels</h3>
+                <p>Read movement and finish alongside the stated hold.</p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.SeaSaltSprayVsTexturisingSpray,
+                ]"
+                ><h3>Sea salt or texture spray?</h3>
+                <p>
+                  Compare actual methods rather than treating names as
+                  opposites.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToUseSeaSaltSpray]"
+                ><h3>Apply sea salt spray</h3>
+                <p>
+                  Organise the starting state, sections and finishing method.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.PomadeVsHairClay]"
+                ><h3>Pomade or hair clay?</h3>
+                <p>Compare finish, hold and preparation for the exact jars.</p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToApplyHairPomade]"
+                ><h3>Apply hair pomade</h3>
+                <p>Track distribution before changing the amount.</p>
                 <span class="text-link">Read guide →</span></a
               >
             </div>
@@ -884,6 +961,7 @@ import { AnalyticsService } from './analytics/analytics.service';
   }`,
 })
 export class StaticPageComponent implements OnInit {
+  readonly finishingGuideDescriptions = finishingGuideDescriptions;
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
@@ -1081,7 +1159,9 @@ export class StaticPageComponent implements OnInit {
           label,
           eyebrow,
           articles: this.categoryArticles.filter(
-            (article) => classify(article.slug) === id,
+            (article) =>
+              classify(article.slug) === id &&
+              !finishingGuideDescriptions[article.slug],
           ),
         }))
         .filter((section) => section.articles.length > 0);

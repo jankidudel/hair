@@ -27,6 +27,42 @@ const guide = (slug: string) => `/guides/${slug}`;
 export const decisionSnapshots: Readonly<
   Record<string, DecisionSnapshotContent>
 > = {
+  [ArticleSlug.HowToSectionHairForStyling]: {
+    label: 'Quick answer',
+    intro:
+      'Separate an area you can reach and control, park the unused hair clear of the working path, and release only what you need next. Change the section when handling becomes awkward; there is no universal number of sections for every tool or routine.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseAWideToothComb]: {
+    label: 'Quick answer',
+    intro:
+      'Check the exact comb’s permitted use, separate a manageable section and begin at the ends. Move higher only as the lower part becomes easy to pass through. Stop and reassess a catch rather than using more force.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseACurlDefiningBrush]: {
+    label: 'Quick answer',
+    intro:
+      'Start with a section that is already manageable, check the manual brush’s directions and use a controlled styling movement with a clear release path. Stop if it catches. Compare the released section before repeating the movement across the rest of your hair.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToUseAHairPick]: {
+    label: 'Quick answer',
+    intro:
+      'Read the exact pick’s intended use, work on a prepared area and use a controlled lifting movement without dragging through a catch. Step back to inspect the outline before repeating the action. Do not assume the tool permits heat or full-length detangling.',
+    rows: [],
+    footer: '',
+  },
+  [ArticleSlug.HowToPlopHair]: {
+    label: 'Quick answer',
+    intro:
+      'Use a suitable clean towel or fabric, lower the lengths into its centre and fasten it according to its design without pulling. Unwrap carefully before continuing your routine. If the position or closure is awkward, use an upright blotting or cupping method instead.',
+    rows: [],
+    footer: '',
+  },
+
   [ArticleSlug.HowToUseHairspray]: {
     label: 'Quick answer',
     intro:

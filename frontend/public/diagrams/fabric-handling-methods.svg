@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="720" viewBox="0 0 340 720" fill="none">
+  <rect width="340" height="720" rx="16" fill="#f5f2e9"/>
+  <g fill="#fffdf7" stroke="#b9cec0" stroke-width="2">
+    <rect x="16" y="16" width="308" height="216" rx="10"/>
+    <rect x="16" y="252" width="308" height="216" rx="10"/>
+    <rect x="16" y="488" width="308" height="216" rx="10"/>
+  </g>
+  <g stroke="#244d3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M73 127Q92 203 170 205Q244 203 266 127L234 155Q169 176 106 154Z" fill="#b9cec0"/>
+    <path d="M112 100Q123 142 153 119T207 139T236 106M99 124Q121 158 146 140T199 155T246 129M132 97Q158 119 182 99T222 119"/>
+    <path d="M84 393Q88 430 122 433L155 410M256 393Q252 430 218 433L185 410" fill="#f2d48e"/>
+    <path d="M77 368Q104 411 170 417Q237 410 263 368L243 348Q213 385 170 387Q127 385 97 348Z" fill="#b9cec0"/>
+    <path d="M124 323Q128 355 150 339T188 350T215 324M111 344Q130 377 154 360T191 371T229 344"/>
+    <path d="M123 560Q133 591 124 624T132 675M146 558Q153 589 145 619T155 674M168 561Q180 589 170 621T177 675M192 562Q204 597 193 627T204 674"/>
+    <path d="M195 598L266 598L266 646L195 646Z" fill="#b9cec0"/>
+    <path d="M213 605V638M225 605V638" stroke-dasharray="3 5"/>
+  </g>
+  <g fill="#244d3c" font-family="system-ui,sans-serif" font-size="19" font-weight="600">
+    <text x="38" y="52">Supported lengths</text>
+    <text x="38" y="288">Cupped section</text>
+    <text x="38" y="524">Blotted lengths</text>
+  </g>
+</svg>

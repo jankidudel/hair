@@ -16,10 +16,10 @@ import { articles } from './content.generated';
 
 describe('article decision integration data', () => {
   it('maps the comparison and task-guide decision owners without duplicating evidence owners', () => {
-    expect(Object.keys(decisionSnapshots)).toHaveLength(34);
+    expect(Object.keys(decisionSnapshots)).toHaveLength(39);
     expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
     expect(Object.keys(evidenceOwners)).toHaveLength(8);
-    expect(Object.keys(guideEvidence)).toHaveLength(24);
+    expect(Object.keys(guideEvidence)).toHaveLength(29);
     expect(
       evidenceOwners[ArticleSlug.DysonAirwrapVsSharkFlexstyle],
     ).toBeDefined();
@@ -48,8 +48,13 @@ describe('article decision integration data', () => {
     ]);
   });
 
-  it('separates every finishing guide FAQ for the shared section while preserving its links', () => {
+  it('separates finishing and handling guide FAQs for the shared section while preserving its links', () => {
     for (const slug of [
+      ArticleSlug.HowToSectionHairForStyling,
+      ArticleSlug.HowToUseAWideToothComb,
+      ArticleSlug.HowToUseACurlDefiningBrush,
+      ArticleSlug.HowToUseAHairPick,
+      ArticleSlug.HowToPlopHair,
       ArticleSlug.HowToUseHairspray,
       ArticleSlug.FlexibleVsStrongHoldHairspray,
       ArticleSlug.SeaSaltSprayVsTexturisingSpray,

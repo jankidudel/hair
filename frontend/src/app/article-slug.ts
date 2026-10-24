@@ -1,5 +1,10 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToSectionHairForStyling: 'how-to-section-hair-for-styling',
+  HowToUseAWideToothComb: 'how-to-use-a-wide-tooth-comb',
+  HowToUseACurlDefiningBrush: 'how-to-use-a-curl-defining-brush',
+  HowToUseAHairPick: 'how-to-use-a-hair-pick',
+  HowToPlopHair: 'how-to-plop-hair',
   HowToUseHairspray: 'how-to-use-hairspray',
   FlexibleVsStrongHoldHairspray: 'flexible-vs-strong-hold-hairspray',
   SeaSaltSprayVsTexturisingSpray: 'sea-salt-spray-vs-texturising-spray',

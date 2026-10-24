@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="560" viewBox="0 0 340 560" fill="none">
+  <rect width="340" height="560" rx="16" fill="#f5f2e9"/>
+  <g stroke="#244d3c" stroke-width="3">
+    <path d="M92 282C62 217 78 107 168 94C262 91 279 203 246 284L235 425H101Z" fill="#fffdf7"/>
+    <path d="M108 276C104 210 108 139 169 132C223 135 240 205 230 277"/>
+    <path d="M106 190Q166 147 231 191L221 242Q168 218 115 241Z" fill="#b9cec0"/>
+    <path d="M111 273L148 258L153 406L113 415Z" fill="#f2d48e" stroke-dasharray="7 5"/>
+    <path d="M187 263L222 275L227 415L188 406Z" fill="#dce5de" stroke-dasharray="2 5"/>
+    <path d="M129 178L208 178" stroke-width="10"/>
+    <path d="M171 110V65H55M129 342H42V464M207 365H285V506" stroke-width="2"/>
+  </g>
+  <g fill="#244d3c" font-family="system-ui,sans-serif" font-size="18" font-weight="600">
+    <text x="24" y="49">Parked bundle</text>
+    <text x="24" y="488">Working area</text>
+    <text x="148" y="535">Already handled</text>
+  </g>
+</svg>

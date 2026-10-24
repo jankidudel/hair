@@ -10,6 +10,7 @@ export interface GuideSource {
 }
 
 export interface GuideEvidence {
+  readonly relatedOnly?: boolean;
   readonly breadcrumbLabel?: string;
   readonly sourceFormat?: 'product-market';
   readonly summary: string;
@@ -115,6 +116,109 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  [ArticleSlug.HowToSectionHairForStyling]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'This guide combines a named manufacturer’s sectioning example with editorial organisation checks. It does not prescribe a universal section size or establish that a clip is compatible with heat.',
+    sources: [
+      {
+        label: 'Tangle Teezer: How to do a bouncy blow dry',
+        model: 'Tangle Teezer: How to do a bouncy blow dry',
+        market: 'UK',
+        url: 'https://tangleteezer.com/blogs/inspiration/how-to-do-a-bouncy-blow-dry',
+        checkedDate: '24 October 2026',
+        scope:
+          'Sectioning and parking unused hair only; no universal heat or moisture instruction adopted.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToUseAWideToothComb]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'The named tutorial supports its model’s end-first method; the product listing supplies its use restrictions. Other checks organise a routine and do not establish that wide-tooth combs are faster or gentler than brushes.',
+    sources: [
+      {
+        label: 'Tangle Teezer: How to Use A Wide Tooth Comb',
+        model: 'Tangle Teezer: How to Use A Wide Tooth Comb',
+        market: 'UK',
+        url: 'https://tangleteezer.com/blogs/inspiration/how-to-use-a-wide-tooth-comb',
+        checkedDate: '24 October 2026',
+        scope:
+          'Named end-first method and dual-sided design, not a category-wide performance comparison.',
+      },
+      {
+        label: 'Tangle Teezer: Wide Tooth Comb',
+        model: 'Tangle Teezer: Wide Tooth Comb',
+        market: 'UK',
+        url: 'https://tangleteezer.com/products/wide-tooth-comb',
+        checkedDate: '24 October 2026',
+        scope: 'Exact model’s permitted uses and heat exclusion.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToUseACurlDefiningBrush]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'A current UK Denman D3 listing establishes one named styling example. This guide supplies editorial trial checks, not an independent comparison, a universal brush technique or a guaranteed curl result.',
+    sources: [
+      {
+        label: 'Denman: D3 Original Curl Definer & Styler',
+        model: 'Denman: D3 Original Curl Definer & Styler',
+        market: 'UK',
+        url: 'https://denmanbrush.com/products/d3-original-styler-7-row',
+        checkedDate: '24 October 2026',
+        scope:
+          'Named UK model’s wet-definition positioning and hand movement; no universal outcome claim.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToUseAHairPick]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'The named product listing establishes its styling role and exclusions. The outline checks are editorial planning advice, not evidence of a measured volume increase or a universal technique for every pick.',
+    sources: [
+      {
+        label: 'Tangle Teezer: Hair Pick',
+        model: 'Tangle Teezer: Hair Pick',
+        market: 'UK',
+        url: 'https://tangleteezer.com/products/hair-pick',
+        checkedDate: '24 October 2026',
+        scope:
+          'Named styling role; explicitly excludes detangling and heat. No dry-hair instruction inferred from this listing.',
+      },
+    ],
+  },
+  [ArticleSlug.HowToPlopHair]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'Two manufacturer tutorials establish examples of fabric positioning and cupping. This guide does not compare drying speed, promise a curl pattern or establish a universal duration or product sequence.',
+    sources: [
+      {
+        label: 'Bouclème: Usage — Curl Towel',
+        model: 'Bouclème: Usage — Curl Towel',
+        market: 'UK',
+        url: 'https://www.boucleme.co.uk/pages/usage-curl-towel',
+        checkedDate: '24 October 2026',
+        scope:
+          'Fabric positioning for the named towel; no universal fastening or time.',
+      },
+      {
+        label: 'Practicurl: How to use the Curl Towel',
+        model: 'Practicurl: How to use the Curl Towel',
+        market: 'UK',
+        url: 'https://www.practicurl.com/pages/how-to-use-curl-wrap-t-shirt-towel',
+        checkedDate: '24 October 2026',
+        scope:
+          'Distinguishes wrapping, plopping and micro-plopping; its times are not generalised.',
+      },
+    ],
+  },
+
   [ArticleSlug.HowToUseHairspray]: {
     sourceFormat: 'product-market',
     summary:

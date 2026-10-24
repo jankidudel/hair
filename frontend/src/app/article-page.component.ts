@@ -36,6 +36,7 @@ import {
 import { productBySlug, type ProductProfile } from './product-comparisons';
 import { CleanInspectStopComponent } from './clean-inspect-stop.component';
 import { guideEvidence, type GuideEvidence } from './guide-evidence';
+import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
 
 const safetyInsertionHeading: Readonly<Record<string, string>> = {
@@ -256,6 +257,13 @@ export function splitEvidenceArticleHtml(
           </ul>
         </section>
       }
+      @if (article && contextualIntegrations[article.slug]; as integration) {
+        <p class="article-body contextual-integration">
+          {{ integration.before
+          }}<a [href]="'/guides/' + integration.slug">{{ integration.label }}</a
+          >{{ integration.after }}
+        </p>
+      }
       @if (decisionLinks) {
         <nav class="article-next-steps" aria-labelledby="next-steps-heading">
           <h2 id="next-steps-heading">Continue from this decision</h2>
@@ -271,7 +279,7 @@ export function splitEvidenceArticleHtml(
       } @else if (guideLinks) {
         <nav class="article-next-steps" aria-labelledby="next-steps-heading">
           <h2 id="next-steps-heading">Related guides</h2>
-          @if (guideEvidenceContent) {
+          @if (guideEvidenceContent && !guideEvidenceContent.relatedOnly) {
             <p><a [href]="guideLinks.hubPath">Browse this category</a></p>
           }
           <ul>
@@ -301,6 +309,7 @@ export function splitEvidenceArticleHtml(
   }`,
 })
 export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
+  readonly contextualIntegrations = guideContextualIntegrations;
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);

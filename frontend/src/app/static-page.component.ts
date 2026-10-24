@@ -1,3 +1,5 @@
+import { HandlingRoutineNavigatorComponent } from './handling-routine-navigator.component';
+import { handlingGuideDescriptions } from './handling-guides';
 import { finishingGuideDescriptions } from './finishing-guides';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -19,7 +21,12 @@ import { categoryPathways } from './category-pathways';
 import { AnalyticsService } from './analytics/analytics.service';
 
 @Component({
-  imports: [RouterLink, BreadcrumbsComponent, ChooseUseFixPathwaysComponent],
+  imports: [
+    RouterLink,
+    BreadcrumbsComponent,
+    ChooseUseFixPathwaysComponent,
+    HandlingRoutineNavigatorComponent,
+  ],
   styleUrl: 'static-page.component.css',
   template: `@switch (page) {
     @case ('home') {
@@ -240,7 +247,9 @@ import { AnalyticsService } from './analytics/analytics.service';
             <h2>{{ article.heading }}</h2>
             <p>
               {{
-                finishingGuideDescriptions[article.slug] ?? article.description
+                handlingGuideDescriptions[article.slug] ??
+                  finishingGuideDescriptions[article.slug] ??
+                  article.description
               }}
             </p>
             <span class="text-link"
@@ -305,6 +314,12 @@ import { AnalyticsService } from './analytics/analytics.service';
           <h1>{{ category.heading }}</h1>
           <p class="lede">{{ category.intro }}</p>
         </section>
+        @if (
+          category.id === 'brushes-and-combs' ||
+          category.id === 'hair-accessories'
+        ) {
+          <app-handling-routine-navigator />
+        }
         @if (categoryPathwayGroups.length) {
           <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
         }
@@ -962,6 +977,7 @@ import { AnalyticsService } from './analytics/analytics.service';
 })
 export class StaticPageComponent implements OnInit {
   readonly finishingGuideDescriptions = finishingGuideDescriptions;
+  readonly handlingGuideDescriptions = handlingGuideDescriptions;
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
@@ -1161,7 +1177,8 @@ export class StaticPageComponent implements OnInit {
           articles: this.categoryArticles.filter(
             (article) =>
               classify(article.slug) === id &&
-              !finishingGuideDescriptions[article.slug],
+              !finishingGuideDescriptions[article.slug] &&
+              !handlingGuideDescriptions[article.slug],
           ),
         }))
         .filter((section) => section.articles.length > 0);

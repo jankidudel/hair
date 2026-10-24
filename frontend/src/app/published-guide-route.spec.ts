@@ -22,8 +22,13 @@ describe('published guide route matching', () => {
     ).toBe(false);
   });
 
-  it('matches all six finishing guides and keeps the absent automatic-curler route unknown', () => {
+  it('matches finishing and handling guides and keeps the absent automatic-curler route unknown', () => {
     for (const slug of [
+      ArticleSlug.HowToSectionHairForStyling,
+      ArticleSlug.HowToUseAWideToothComb,
+      ArticleSlug.HowToUseACurlDefiningBrush,
+      ArticleSlug.HowToUseAHairPick,
+      ArticleSlug.HowToPlopHair,
       ArticleSlug.HowToUseHairspray,
       ArticleSlug.FlexibleVsStrongHoldHairspray,
       ArticleSlug.SeaSaltSprayVsTexturisingSpray,

@@ -67,6 +67,11 @@ export function splitAfterFirstParagraph(
   return [html.slice(0, splitAt), html.slice(splitAt)];
 }
 
+export function splitInlineFaq(html: string): readonly [string, string] {
+  const index = html.indexOf('<h2>FAQ</h2>');
+  return index < 0 ? [html, ''] : [html.slice(0, index), html.slice(index)];
+}
+
 export function splitEvidenceArticleHtml(
   html: string,
   upgradeBeforeHeading: string,
@@ -208,7 +213,9 @@ export function splitEvidenceArticleHtml(
         ></section>
       }
       @if (guideEvidenceContent) {
-        @if (article.faq.length > 0) {
+        @if (articleHtmlFaq) {
+          <section class="article-faq" [innerHTML]="articleHtmlFaq"></section>
+        } @else if (article.faq.length > 0) {
           <section class="article-faq">
             <h2>FAQ</h2>
             @for (faq of article.faq; track faq.question) {
@@ -347,6 +354,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtmlAfterSafety = '';
   articleHtmlIntro = '';
   articleHtmlMain = '';
+  articleHtmlFaq = '';
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.article = articles.find((item) => item.slug === slug);
@@ -357,6 +365,9 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.guideEvidenceContent) {
         [this.articleHtmlIntro, this.articleHtmlMain] =
           splitAfterFirstParagraph(this.article.html);
+        [this.articleHtmlMain, this.articleHtmlFaq] = splitInlineFaq(
+          this.articleHtmlMain,
+        );
       }
       const safetyHeading = safetyInsertionHeading[this.article.slug];
       if (safetyHeading) {

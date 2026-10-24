@@ -9,8 +9,10 @@ import {
   splitAfterFirstParagraph,
   splitBeforeHeading,
   splitEvidenceArticleHtml,
+  splitInlineFaq,
 } from './article-page.component';
 import { guideEvidence } from './guide-evidence';
+import { articles } from './content.generated';
 
 describe('article decision integration data', () => {
   it('maps the comparison and task-guide decision owners without duplicating evidence owners', () => {
@@ -43,6 +45,31 @@ describe('article decision integration data', () => {
       '<p>Scope</p>',
       '<table><tr></tr></table><p>Analysis</p>',
       '<h2>Conclusion</h2><p>Keep it.</p>',
+    ]);
+  });
+
+  it('separates every finishing guide FAQ for the shared section while preserving its links', () => {
+    for (const slug of [
+      ArticleSlug.HowToUseHairspray,
+      ArticleSlug.FlexibleVsStrongHoldHairspray,
+      ArticleSlug.SeaSaltSprayVsTexturisingSpray,
+      ArticleSlug.HowToUseSeaSaltSpray,
+      ArticleSlug.PomadeVsHairClay,
+      ArticleSlug.HowToApplyHairPomade,
+    ]) {
+      const article = articles.find((item) => item.slug === slug)!;
+      const [intro, remainder] = splitAfterFirstParagraph(article.html);
+      const [main, faq] = splitInlineFaq(remainder);
+      expect(intro + main + faq).toBe(article.html);
+      expect(main).not.toContain('<h2>FAQ</h2>');
+      expect(faq.startsWith('<h2>FAQ</h2>')).toBe(true);
+      expect(faq.match(/<h3>/g)).toHaveLength(3);
+      if (slug === ArticleSlug.HowToUseHairspray)
+        expect(faq).toContain('href="/guides/how-to-use-bobby-pins"');
+    }
+    expect(splitInlineFaq('<p>No inline FAQ</p>')).toEqual([
+      '<p>No inline FAQ</p>',
+      '',
     ]);
   });
 });

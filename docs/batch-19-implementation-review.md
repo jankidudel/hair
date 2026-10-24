@@ -19,13 +19,14 @@ The content safety checker flags ordinary uses of “treat” and “treating”
 
 Manufacturer directions were rechecked on 22 October 2026 for all five new sources and all five Batch 18 destinations. The named methods support the supplied examples. The Bumble and bumble UK desktop retrieval initially omitted relevant content; the official UK mobile page and indexed official desktop page confirmed Dryspun's dry-hair directions. Existing source-check dates were retained; the new sources use the actual verification date.
 
-FAQs remain safe article HTML so supplied inline links are preserved. The shared source and related-guide components render after them; no new FAQ structured data is introduced. Existing pages with shared FAQ content receive their new final paragraph immediately before that component; the curl-troubleshooting addition precedes “Useful next steps”.
+FAQs remain safe article HTML so supplied inline links are preserved. The shared article page now separates the inline FAQ from the main body and renders it in its standard article-faq section before evidence, sources and related guides. No new FAQ structured data is introduced. Existing pages with shared FAQ content receive their new final paragraph immediately before that component; the curl-troubleshooting addition precedes “Useful next steps”.
 
 ## Validation passed
 
 - Content safety: all 154 HTML files pass the repository checker.
 - Content and SEO generation.
-- 17 focused tests across content, published routes, related-guide mapping and shared article integration.
+- 18 focused tests across content, published routes, related-guide mapping and shared article integration, including all six inline FAQ splits and their preserved links.
+- FAQ ordering correction (24 October): direct Angular server rendering from AOT-compiled source verifies exactly one FAQ heading/section, then evidence, sources and related guides on all six finishing guides and the existing mousse/gel guide. FAQ links remain usable. This is a focused render check, not a successful standard production build or full generated-SEO run.
 - 21 repository script tests.
 - Frontend ESLint and TypeScript checks.
 - Angular compiler with strict template checking.
@@ -47,11 +48,11 @@ The six source bodies have now been expanded with practical coverage plans, comp
 | pomade-vs-hair-clay                 |             550 |
 | sea-salt-spray-vs-texturising-spray |             548 |
 
-The working copies of all 14 staged guides pass the existing staged-content validator, using its unmodified validateStagedGuide function and current source files. Counts above exclude the shared Quick answer and other component copy. Content safety and the editorial-target check also pass. The six follow-up HTML edits and this review update are unstaged; the user’s existing staged versions were left untouched and need to be refreshed before committing.
+The working copies of all 14 staged guides pass the existing staged-content validator, using its unmodified validateStagedGuide function and current source files. Counts above exclude the shared Quick answer and other component copy. Content safety and the editorial-target check also pass. The current FAQ-order correction changes the shared article page and its regression tests; these changes and this review update are unstaged. The existing Git index was left untouched.
 
 The production Angular build aborts locally with exit 134; one attempt reports an esbuild service deadlock. Restricting Angular to one build worker did not resolve it. The normal Angular test builder also aborts. Consequently, prerendered initial HTML, postbuild SEO/link checks and 375px/1280px browser verification remain pending. A local preview was not available. Production retrieval was unavailable, and no deployment was attempted or verified.
 
-Before release, refresh the staged copies of the six edited guides, run npm run verify in a working build environment, and inspect all six guides, tables, both loaded SVGs, navigation and cookie controls at both specified widths. After the normal deployment, verify real HTTP statuses/content types, initial HTML, canonical metadata, schema, sitemap entries, exact H2 and hydration against production.
+Before release, review the unstaged FAQ-order correction, rebuild and run npm run verify in a working build environment, and inspect all six guides, tables, both loaded SVGs, navigation and cookie controls at both specified widths. After the normal deployment, verify real HTTP statuses/content types, initial HTML, canonical metadata, schema, sitemap entries, exact H2 and hydration against production.
 
 ## Added pages (canonical production destinations; not deployed in this task)
 

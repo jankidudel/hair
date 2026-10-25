@@ -67,7 +67,7 @@ test('decision owners retain article bodies accepted by the publication gate', (
   }
 });
 
-test('allows links to registered canonical comparison guides', () => {
+test('allows links to registered canonical comparison guides once published', () => {
   const body = `<p>${'Useful comparison context '.repeat(250)}</p>${canonicalComparisons
     .map((comparison) => `<a href="${comparison.path}">Compare</a>`)
     .join('')}`;
@@ -75,7 +75,15 @@ test('allows links to registered canonical comparison guides', () => {
     file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
     source: source(entry.slug, body),
     entry,
-    today: '2026-10-11',
+    today: canonicalComparisons
+      .map(
+        (comparison) =>
+          articleRegistry.find(
+            (article) => article.slug === comparison.guideSlug,
+          )!.publishDate,
+      )
+      .sort()
+      .at(-1)!,
   });
   assert.deepEqual(errors, []);
 });

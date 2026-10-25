@@ -122,4 +122,37 @@ describe('ProductExplorerComponent decision support', () => {
       ['product_explorer_comparison_completed'],
     ]);
   });
+  it('keeps researched pairs crawlable and permits only the explicit tong/wand exception', async () => {
+    const fixture = await setup();
+    const component = fixture.componentInstance;
+    const element = fixture.nativeElement as HTMLElement;
+    expect(
+      element.querySelectorAll(
+        '[aria-labelledby="researched-pairs-heading"] a',
+      ),
+    ).toHaveLength(5);
+    expect(element.textContent).toContain('Price not compared');
+    expect(
+      component.filteredProducts.some((p) => p.slug === 'ghd-air-uk'),
+    ).toBe(true);
+    component.priceFilter = 'premium';
+    expect(
+      component.filteredProducts.some((p) => p.slug === 'ghd-air-uk'),
+    ).toBe(false);
+    component.priceFilter = 'all';
+    component.toggleProduct('ghd-curve-soft-curl-tong-uk');
+    component.toggleProduct('ghd-air-uk');
+    expect(component.selectedSlugs).toHaveLength(1);
+    component.toggleProduct('ghd-curve-creative-curl-wand-uk');
+    expect(component.selectedSlugs).toHaveLength(2);
+    component.toggleProduct('ghd-curve-classic-curl');
+    expect(component.selectedSlugs).toHaveLength(2);
+    fixture.changeDetectorRef.detectChanges();
+    (
+      Array.from(element.querySelectorAll('button')).find((b) =>
+        b.textContent?.includes('Clear selection'),
+      ) as HTMLButtonElement
+    ).click();
+    expect(component.selectedSlugs).toEqual([]);
+  });
 });

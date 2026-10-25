@@ -909,6 +909,32 @@ import { AnalyticsService } from './analytics/analytics.service';
           decision; unavailable or unclear facts stay marked as such rather than
           being inferred.
         </p>
+        <h2>What our comparisons can establish</h2>
+        <p>
+          A published dimension, control or accessory list can identify a
+          difference between exact models. It does not establish a timed result,
+          comfort, damage reduction or durability unless the page supplies
+          suitable evidence for that specific claim.
+        </p>
+        <p>
+          We keep the model, variant, market, source and check date together.
+          Missing facts remain unknown. Specifications shown for a free gift,
+          related product or another generation are not transferred to the tool
+          being compared.
+        </p>
+        <p>
+          An editorial recommendation to investigate a format is not a claim
+          that we used or tested it. When a practical handling check is
+          suggested, it helps readers inspect their own fit and routine; it is
+          not presented as a controlled product test.
+        </p>
+        <h2>Changes and review dates</h2>
+        <p>
+          A source-check date records when the cited material was inspected. An
+          article’s modification date records a substantive change to that
+          article. A deployment or template rebuild does not by itself make
+          every product fact newly checked.
+        </p>
       </section>
     }
     @case ('corrections') {

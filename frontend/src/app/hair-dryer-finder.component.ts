@@ -3,8 +3,9 @@ import { RouterLink } from '@angular/router';
 import { AnalyticsService } from './analytics/analytics.service';
 import {
   recommendHairDryer,
+  dryerGoalGuidance,
   type DiffuserNeed,
-  type DryerDensity,
+  type DryerSectionAmount,
   type DryerGoal,
   type DryerLength,
   type DryerPriority,
@@ -37,25 +38,31 @@ import {
             (change)="setLength($any($event.target).value)"
           >
             <option value="short">Short</option>
-            <option value="medium">Medium</option>
+            <option value="medium" selected>Medium</option>
             <option value="long">Long</option>
           </select></label
         >
         <label
-          >Hair density
+          >Amount of hair in the working section
           <select
-            [value]="density"
-            (change)="setDensity($any($event.target).value)"
+            aria-describedby="section-amount-help"
+            [value]="sectionAmount"
+            (change)="setSectionAmount($any($event.target).value)"
           >
-            <option value="fine">Fine</option>
-            <option value="medium">Medium</option>
-            <option value="thick">Thick</option>
-          </select></label
+            <option value="lower">Less hair in the section</option>
+            <option value="medium" selected>A moderate amount</option>
+            <option value="higher">More hair in the section</option>
+          </select>
+          <small id="section-amount-help"
+            >This is about the amount you handle at once, not the thickness of
+            an individual strand. You can reduce the working section before
+            changing tools.</small
+          ></label
         >
         <label
           >Your main goal
           <select [value]="goal" (change)="setGoal($any($event.target).value)">
-            <option value="quick">Quickest everyday drying</option>
+            <option value="quick" selected>Everyday drying</option>
             <option value="smooth">Smooth blowout</option>
             <option value="diffuser">Use with a diffuser</option>
             <option value="travel">Compact travel dryer</option>
@@ -68,7 +75,7 @@ import {
             (change)="setPriority($any($event.target).value)"
           >
             <option value="lightweight">Lighter to hold</option>
-            <option value="airflow">Strongest airflow</option>
+            <option value="airflow" selected>Airflow control</option>
             <option value="price">Lower price</option>
             <option value="attachments">Flexible attachments</option>
           </select></label
@@ -81,7 +88,7 @@ import {
           >
             <option value="yes">Yes</option>
             <option value="no">No</option>
-            <option value="not-sure">Not sure</option>
+            <option value="not-sure" selected>Not sure</option>
           </select></label
         >
       </div>
@@ -90,8 +97,16 @@ import {
         type="button"
         (click)="showRecommendation()"
       >
-        Show my recommendation
+        Show features to compare
       </button>
+      <button class="button" type="button" (click)="clearChoices()">
+        Clear choices
+      </button>
+      <nav class="dryer-finder-links" aria-label="Hair dryer feature guides">
+        @for (link of coreLinks; track link.slug) {
+          <a [routerLink]="['/guides', link.slug]">{{ link.label }}</a>
+        }
+      </nav>
       @if (result) {
         <section
           class="dryer-finder-result"
@@ -100,20 +115,28 @@ import {
         >
           <h3>{{ result.heading }}</h3>
           <p>{{ result.explanation }}</p>
-          <div class="result-sections">
-            <section>
-              <h4>Prioritize these features</h4>
-              <ul>
-                @for (feature of result.features; track feature) {
-                  <li>{{ feature }}</li>
-                }
-              </ul>
-            </section>
-            <section>
-              <h4>Keep in mind</h4>
-              <p>{{ result.caution }}</p>
-            </section>
-          </div>
+          <p>{{ result.priority }}</p>
+          @if (result.diffuserNote === 'yes') {
+            <p>
+              You also selected diffuser use: verify that attachment’s
+              <a routerLink="/guides/hair-dryer-diffuser-compatibility"
+                >exact compatibility and box contents</a
+              >.
+            </p>
+          } @else if (result.diffuserNote === 'not-sure') {
+            <p>
+              Decide whether a diffuser serves a routine you intend to use
+              before paying for a kit.
+            </p>
+          }
+          @if (result.smallerSection) {
+            <p>
+              <a routerLink="/guides/how-to-section-hair-for-styling"
+                >Try releasing a smaller working area before using section
+                volume as a reason to replace a tool.</a
+              >
+            </p>
+          }
           <nav
             class="dryer-finder-links"
             aria-label="Related hair dryer guides"
@@ -145,19 +168,28 @@ import {
 export class HairDryerFinderComponent {
   private readonly analytics = inject(AnalyticsService);
   length: DryerLength = 'medium';
-  density: DryerDensity = 'medium';
+  sectionAmount: DryerSectionAmount = 'medium';
   goal: DryerGoal = 'quick';
-  priority: DryerPriority = 'lightweight';
+  priority: DryerPriority = 'airflow';
   diffuser: DiffuserNeed = 'not-sure';
   result?: HairDryerResult;
   private started = false;
+  readonly coreLinks = Object.values(dryerGoalGuidance);
+  clearChoices(): void {
+    this.length = 'medium';
+    this.sectionAmount = 'medium';
+    this.goal = 'quick';
+    this.priority = 'airflow';
+    this.diffuser = 'not-sure';
+    this.result = undefined;
+  }
 
   setLength(value: DryerLength): void {
     this.length = value;
     this.trackStarted();
   }
-  setDensity(value: DryerDensity): void {
-    this.density = value;
+  setSectionAmount(value: DryerSectionAmount): void {
+    this.sectionAmount = value;
     this.trackStarted();
   }
   setGoal(value: DryerGoal): void {
@@ -176,7 +208,7 @@ export class HairDryerFinderComponent {
     this.trackStarted();
     this.result = recommendHairDryer({
       length: this.length,
-      density: this.density,
+      sectionAmount: this.sectionAmount,
       goal: this.goal,
       priority: this.priority,
       diffuser: this.diffuser,

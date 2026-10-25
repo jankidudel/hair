@@ -228,6 +228,9 @@ export function splitEvidenceArticleHtml(
         <app-evidence-scope [summary]="guideEvidenceContent.summary" />
         <section class="article-body" aria-labelledby="source-checks-heading">
           <h2 id="source-checks-heading">Sources</h2>
+          @if (guideEvidenceContent.sourceIntro) {
+            <p>{{ guideEvidenceContent.sourceIntro }}</p>
+          }
           <ul>
             @for (source of guideEvidenceContent.sources; track source.url) {
               <li>
@@ -276,7 +279,7 @@ export function splitEvidenceArticleHtml(
             }
           </ul>
         </nav>
-      } @else if (guideLinks) {
+      } @else if (guideLinks && relatedGuides.length > 0) {
         <nav class="article-next-steps" aria-labelledby="next-steps-heading">
           <h2 id="next-steps-heading">Related guides</h2>
           @if (guideEvidenceContent && !guideEvidenceContent.relatedOnly) {
@@ -295,6 +298,11 @@ export function splitEvidenceArticleHtml(
             }
           </ul>
         </nav>
+      }
+      @if (guideLinks && relatedGuides.length === 0 && !decisionLinks) {
+        <p class="article-body">
+          <a [href]="guideLinks.hubPath">Browse this category</a>
+        </p>
       }
       @if (!guideEvidenceContent && article.faq.length > 0) {
         <section class="article-faq">
@@ -434,7 +442,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
           {
             '@context': 'https://schema.org',
             '@type': 'Article',
-            headline: this.article.title,
+            headline: this.article.heading,
             description: this.article.description,
             datePublished: this.article.publishDate,
             dateModified: this.article.updatedDate ?? this.article.publishDate,

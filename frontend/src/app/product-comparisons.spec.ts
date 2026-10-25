@@ -14,7 +14,7 @@ describe('product comparison data', () => {
       productProfiles.filter(
         (product) => product.category === ProductCategory.HairDryer,
       ),
-    ).toHaveLength(5);
+    ).toHaveLength(9);
     expect(productProfiles.some((product) => product.market === 'UK')).toBe(
       true,
     );
@@ -26,7 +26,7 @@ describe('product comparison data', () => {
     );
     for (const product of productProfiles) {
       expect(product.officialProductUrl).toMatch(/^https:\/\//);
-      expect(['US', 'UK']).toContain(product.market);
+      expect(['US', 'UK', 'International English']).toContain(product.market);
       expect(product.verifiedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(product.verifiedFacts.length).toBeGreaterThan(0);
       expect(

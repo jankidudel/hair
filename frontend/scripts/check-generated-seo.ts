@@ -187,6 +187,13 @@ for (const article of articles) {
       (value): value is Record<string, unknown> =>
         !!value && typeof value === 'object' && value['@type'] === 'Article',
     );
+  if (
+    articleSchema?.['headline'] !== article.heading ||
+    articleSchema?.['description'] !== article.description
+  )
+    failures.push(
+      `${route}: Article headline/description does not match visible content.`,
+    );
   const materialDate = article.updatedDate ?? article.publishDate;
   if (articleSchema?.['dateModified'] !== materialDate)
     failures.push(

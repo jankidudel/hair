@@ -3,52 +3,52 @@ import {
   recommendHairDryer,
   type HairDryerAnswers,
 } from './hair-dryer-recommendation';
-
 const answers = (
   overrides: Partial<HairDryerAnswers> = {},
 ): HairDryerAnswers => ({
   length: 'medium',
-  density: 'medium',
+  sectionAmount: 'medium',
   goal: 'quick',
   priority: 'airflow',
   diffuser: 'not-sure',
   ...overrides,
 });
-
-describe('recommendHairDryer', () => {
-  it('recommends a concentrator and controls for fine-hair blowouts', () => {
-    const result = recommendHairDryer(
-      answers({ density: 'fine', goal: 'smooth', diffuser: 'no' }),
-    );
-    expect(result.features).toContain('Concentrator nozzle');
-    expect(result.features).toContain('Cool-shot button');
+describe('dryer feature guidance', () => {
+  it('changes section planning without changing the primary guidance or prescribing heat', () => {
+    for (const goal of ['quick', 'smooth', 'diffuser', 'travel'] as const) {
+      const lower = recommendHairDryer(
+        answers({ goal, sectionAmount: 'lower' }),
+      );
+      const higher = recommendHairDryer(
+        answers({ goal, sectionAmount: 'higher' }),
+      );
+      expect(higher.explanation).toBe(lower.explanation);
+      expect(higher.links).toEqual(lower.links);
+      expect(lower.smallerSection).toBe(false);
+      expect(higher.smallerSection).toBe(true);
+    }
   });
-  it('prioritises airflow for thick, long hair and quick drying', () => {
+  it('retains travel electrical guidance when a diffuser is also requested', () => {
     const result = recommendHairDryer(
-      answers({ density: 'thick', length: 'long' }),
+      answers({ goal: 'travel', diffuser: 'yes' }),
     );
-    expect(result.features).toContain('Airflow/motor');
-    expect(result.links[0].slug).toBe('best-hair-dryers-thick-hair');
+    expect(result.explanation).toContain('operating input');
+    expect(result.links[0].slug).toBe(
+      'plug-adapter-vs-voltage-converter-hair-tools',
+    );
+    expect(result.diffuserNote).toBe('yes');
   });
-  it('puts a compatible diffuser first for diffuser styling', () => {
-    const result = recommendHairDryer(
-      answers({ goal: 'diffuser', diffuser: 'yes' }),
-    );
-    expect(result.features).toEqual(
-      expect.arrayContaining(['Diffuser', 'Attachment compatibility']),
-    );
-  });
-  it('keeps compactness first for low-weight travel choices', () => {
-    const result = recommendHairDryer(
-      answers({ goal: 'travel', priority: 'lightweight' }),
-    );
-    expect(result.features[0]).toBe('Foldable/compact design');
-  });
-  it('lets the main goal win when choices conflict', () => {
-    const result = recommendHairDryer(
-      answers({ goal: 'smooth', diffuser: 'yes', priority: 'attachments' }),
-    );
-    expect(result.features).toContain('Concentrator nozzle');
-    expect(result.heading).toContain('concentrator nozzle');
+  it('keeps the goal primary and avoids repeating the diffuser compatibility result', () => {
+    expect(
+      recommendHairDryer(answers({ goal: 'smooth', diffuser: 'yes' }))
+        .diffuserNote,
+    ).toBe('yes');
+    expect(
+      recommendHairDryer(answers({ goal: 'diffuser', diffuser: 'yes' }))
+        .diffuserNote,
+    ).toBeUndefined();
+    expect(
+      recommendHairDryer(answers({ diffuser: 'no' })).diffuserNote,
+    ).toBeUndefined();
   });
 });

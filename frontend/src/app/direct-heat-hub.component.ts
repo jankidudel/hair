@@ -181,9 +181,9 @@ import {
           </li>
           <li>
             <a [routerLink]="['/guides', articleSlug.BestFlatIrons]"
-              >Compare researched models</a
+              >Choose a flat iron</a
             >
-            — inspect exact model and market sources.
+            — settle width and controls before comparing exact models.
           </li>
           <li>
             <a
@@ -224,11 +224,20 @@ import {
           </li>
           <li>
             <a [routerLink]="['/guides', articleSlug.BestCurlingIrons]"
-              >Compare researched models</a
+              >Choose a curling iron or wand</a
             >
-            — inspect exact US source records.
+            — settle holding action, barrel profile and controls.
           </li>
         </ul>
+      }
+      @if (isFlat) {
+        <p>
+          Choosing a curling format?
+          <a [routerLink]="['/guides', articleSlug.BestCurlingIrons]"
+            >Choose a curling iron or wand</a
+          >, or
+          <a routerLink="/curling-irons">browse curling tools and methods</a>.
+        </p>
       }
       <p>
         Specifications are researched from official sources. Follow the exact

@@ -23,7 +23,7 @@ export interface VerifiedFact {
 }
 export interface ProductProfile {
   readonly slug: string;
-  readonly market: 'US' | 'UK';
+  readonly market: 'US' | 'UK' | 'International English';
   readonly name: string;
   /** Exact public model/listing identifier when the evidence record establishes one. */
   readonly modelIdentifier?: string;
@@ -33,7 +33,7 @@ export interface ProductProfile {
   readonly category: ProductCategory;
   readonly subtype: string;
   readonly imageAlt: string;
-  readonly priceTier: PriceTier;
+  readonly priceTier: PriceTier | null;
   readonly bestFor: readonly string[];
   readonly notIdealFor: readonly string[];
   readonly verifiedFacts: readonly VerifiedFact[];
@@ -118,6 +118,291 @@ const ghdExactFlatIronIdentifier: Readonly<Record<string, string>> = {
 };
 
 export const productProfiles: readonly ProductProfile[] = [
+  product({
+    slug: 'ghd-air-uk',
+    name: 'ghd Air',
+    market: 'UK',
+    brand: 'ghd',
+    category: ProductCategory.HairDryer,
+    modelIdentifier: 'ghd-air-p-248',
+    subtype: 'dedicated hair dryer',
+    imageAlt: 'ghd Air',
+    priceTier: null,
+    bestFor: [
+      'comparing the UK nozzle, controls and documented ownership details',
+    ],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Attachment',
+        value: 'Precision nozzle',
+        sourceUrl: 'https://www.ghdhair.com/hair-dryers/ghd-air-p-248',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl: 'https://www.ghdhair.com/hair-dryers/ghd-air-p-248',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.GhdAirVsHelios],
+  }),
+  product({
+    slug: 'ghd-helios-black-uk',
+    name: 'ghd Helios in black',
+    market: 'UK',
+    brand: 'ghd',
+    category: ProductCategory.HairDryer,
+    modelIdentifier: 'ghd-black-helios-p-497',
+    subtype: 'dedicated hair dryer',
+    imageAlt: 'ghd Helios in black',
+    priceTier: null,
+    bestFor: [
+      'comparing the UK nozzle, controls and documented ownership details',
+    ],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Attachment',
+        value: 'Bespoke contoured nozzle',
+        sourceUrl: 'https://www.ghdhair.com/hair-dryers/ghd-black-helios-p-497',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl:
+      'https://www.ghdhair.com/hair-dryers/ghd-black-helios-p-497',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.GhdAirVsHelios],
+  }),
+  product({
+    slug: 'parlux-alyon-international',
+    name: 'Parlux Alyon',
+    market: 'International English',
+    brand: 'Parlux',
+    category: ProductCategory.HairDryer,
+    modelIdentifier: 'parlux-alyon',
+    subtype: 'dedicated hair dryer',
+    imageAlt: 'Parlux Alyon',
+    priceTier: null,
+    bestFor: [
+      'comparing published model specifications and the selected attachment pack',
+    ],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Motor description',
+        value: 'K-ADVANCE PLUS AC motor; maker description',
+        sourceUrl: 'https://www.parlux.it/en/products/parlux-alyon',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl: 'https://www.parlux.it/en/products/parlux-alyon',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.ParluxAlyonVsDigitalyon],
+  }),
+  product({
+    slug: 'parlux-digitalyon-international',
+    name: 'Parlux Digitalyon',
+    market: 'International English',
+    brand: 'Parlux',
+    category: ProductCategory.HairDryer,
+    modelIdentifier: 'parlux-digitalyon',
+    subtype: 'dedicated hair dryer',
+    imageAlt: 'Parlux Digitalyon',
+    priceTier: null,
+    bestFor: [
+      'comparing published model specifications and the selected attachment pack',
+    ],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Motor description',
+        value: 'E-LYON digital motor; maker description',
+        sourceUrl: 'https://www.parlux.it/en/products/parlux-digitalyon',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl: 'https://www.parlux.it/en/products/parlux-digitalyon',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.ParluxAlyonVsDigitalyon],
+  }),
+  product({
+    slug: 'cloud-nine-original-iron-uk',
+    name: 'CLOUD NINE The Original Iron',
+    market: 'UK',
+    brand: 'CLOUD NINE',
+    category: ProductCategory.FlatIron,
+    modelIdentifier: 'the-original-iron',
+    subtype: 'flat iron',
+    imageAlt: 'CLOUD NINE The Original Iron',
+    priceTier: null,
+    bestFor: ['comparing current plate formats and shared control options'],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Plate format',
+        value: 'Standard plates; current Original Iron listing',
+        sourceUrl: 'https://www.cloudninehair.com/products/the-original-iron',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl:
+      'https://www.cloudninehair.com/products/the-original-iron',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.CloudNineOriginalIronVsWideIron],
+  }),
+  product({
+    slug: 'cloud-nine-wide-iron-uk',
+    name: 'CLOUD NINE The Wide Iron',
+    market: 'UK',
+    brand: 'CLOUD NINE',
+    category: ProductCategory.FlatIron,
+    modelIdentifier: 'the-wide-iron',
+    subtype: 'flat iron',
+    imageAlt: 'CLOUD NINE The Wide Iron',
+    priceTier: null,
+    bestFor: ['comparing current plate formats and shared control options'],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Plate format',
+        value: 'Wide plates; current Wide Iron listing',
+        sourceUrl: 'https://www.cloudninehair.com/products/the-wide-iron',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl: 'https://www.cloudninehair.com/products/the-wide-iron',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.CloudNineOriginalIronVsWideIron],
+  }),
+  product({
+    slug: 'ghd-curve-soft-curl-tong-uk',
+    name: 'ghd Curve Soft Curl Tong',
+    market: 'UK',
+    brand: 'ghd',
+    category: ProductCategory.CurlingIron,
+    modelIdentifier: 'ghd-curve-soft-curl-tong-p-302',
+    generation: 'original Curve',
+    subtype: 'clamp curling tong',
+    imageAlt: 'ghd Curve Soft Curl Tong',
+    priceTier: null,
+    bestFor: ['comparing clamp action with a tapered wand profile'],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Holding format',
+        value: 'Clamp tong; original Curve range',
+        sourceUrl:
+          'https://www.ghdhair.com/curling-tongs/ghd-curve-soft-curl-tong-p-302',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl:
+      'https://www.ghdhair.com/curling-tongs/ghd-curve-soft-curl-tong-p-302',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand],
+  }),
+  product({
+    slug: 'ghd-curve-creative-curl-wand-uk',
+    name: 'ghd Curve Creative Curl Wand',
+    market: 'UK',
+    brand: 'ghd',
+    category: ProductCategory.CurlingWand,
+    modelIdentifier: 'ghd-curve-creative-curl-wand-p-303',
+    generation: 'original Curve',
+    subtype: 'tapered curling wand',
+    imageAlt: 'ghd Curve Creative Curl Wand',
+    priceTier: null,
+    bestFor: ['comparing clamp action with a tapered wand profile'],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Holding format',
+        value: 'Clipless tapered wand; original Curve range',
+        sourceUrl:
+          'https://www.ghdhair.com/curling-wands/ghd-curve-creative-curl-wand-p-303',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl:
+      'https://www.ghdhair.com/curling-wands/ghd-curve-creative-curl-wand-p-303',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand],
+  }),
+  product({
+    slug: 'tangle-teezer-ultimate-detangler-standard-uk',
+    name: 'Tangle Teezer Ultimate Detangler',
+    market: 'UK',
+    brand: 'Tangle Teezer',
+    category: ProductCategory.HairBrush,
+    modelIdentifier: 'the-ultimate-detangler',
+    subtype: 'handled detangling brush',
+    imageAlt: 'Tangle Teezer Ultimate Detangler',
+    priceTier: null,
+    bestFor: [
+      'comparing the maker-described tooth-flex difference within the handled range',
+    ],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Tooth description',
+        value: 'Standard handled Ultimate Detangler; keep away from heat',
+        sourceUrl: 'https://tangleteezer.com/products/the-ultimate-detangler',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl:
+      'https://tangleteezer.com/products/the-ultimate-detangler',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile],
+  }),
+  product({
+    slug: 'tangle-teezer-ultimate-detangler-fine-fragile-uk',
+    name: 'Tangle Teezer Ultimate Detangler Fine & Fragile',
+    market: 'UK',
+    brand: 'Tangle Teezer',
+    category: ProductCategory.HairBrush,
+    modelIdentifier: 'the-ultimate-detangler-fine-fragile',
+    subtype:
+      'Maker describes teeth a grade softer than standard Ultimate Detangler; keep away from heat',
+    imageAlt: 'Tangle Teezer Ultimate Detangler Fine & Fragile',
+    priceTier: null,
+    bestFor: [
+      'comparing the maker-described tooth-flex difference within the handled range',
+    ],
+    notIdealFor: ['assuming a documented feature guarantees a result'],
+    verifiedFacts: [
+      {
+        label: 'Tooth description',
+        value:
+          'Maker describes teeth a grade softer than standard Ultimate Detangler; keep away from heat',
+        sourceUrl:
+          'https://tangleteezer.com/products/the-ultimate-detangler-fine-fragile',
+        verifiedAt: '2026-10-25',
+      },
+    ],
+    officialProductUrl:
+      'https://tangleteezer.com/products/the-ultimate-detangler-fine-fragile',
+    verifiedAt: '2026-10-25',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    relatedGuideSlugs: [ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile],
+  }),
   ...[
     {
       slug: 'denman-d3-original-7-row-uk',
@@ -1581,6 +1866,45 @@ export const productProfiles: readonly ProductProfile[] = [
 ];
 export const canonicalComparisons: readonly CanonicalComparison[] = [
   {
+    slug: ArticleSlug.GhdAirVsHelios,
+    path: '/guides/' + ArticleSlug.GhdAirVsHelios,
+    productSlugs: ['ghd-air-uk', 'ghd-helios-black-uk'],
+    guideSlug: ArticleSlug.GhdAirVsHelios,
+  },
+  {
+    slug: ArticleSlug.ParluxAlyonVsDigitalyon,
+    path: '/guides/' + ArticleSlug.ParluxAlyonVsDigitalyon,
+    productSlugs: [
+      'parlux-alyon-international',
+      'parlux-digitalyon-international',
+    ],
+    guideSlug: ArticleSlug.ParluxAlyonVsDigitalyon,
+  },
+  {
+    slug: ArticleSlug.CloudNineOriginalIronVsWideIron,
+    path: '/guides/' + ArticleSlug.CloudNineOriginalIronVsWideIron,
+    productSlugs: ['cloud-nine-original-iron-uk', 'cloud-nine-wide-iron-uk'],
+    guideSlug: ArticleSlug.CloudNineOriginalIronVsWideIron,
+  },
+  {
+    slug: ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand,
+    path: '/guides/' + ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand,
+    productSlugs: [
+      'ghd-curve-soft-curl-tong-uk',
+      'ghd-curve-creative-curl-wand-uk',
+    ],
+    guideSlug: ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand,
+  },
+  {
+    slug: ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile,
+    path: '/guides/' + ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile,
+    productSlugs: [
+      'tangle-teezer-ultimate-detangler-standard-uk',
+      'tangle-teezer-ultimate-detangler-fine-fragile-uk',
+    ],
+    guideSlug: ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile,
+  },
+  {
     slug: ArticleSlug.VentedBrushVsPaddleBrush,
     path: `/guides/${ArticleSlug.VentedBrushVsPaddleBrush}`,
     productSlugs: [
@@ -1666,3 +1990,25 @@ export function comparisonFacts(
     second: second.verifiedFacts.find((item) => item.label === label),
   }));
 }
+
+/** Same-category selection plus only explicitly researched cross-format pairs. */
+export function canCompareProducts(
+  first: ProductProfile,
+  second: ProductProfile,
+): boolean {
+  return (
+    first.category === second.category ||
+    canonicalComparisons.some(
+      (pair) =>
+        pair.productSlugs.includes(first.slug) &&
+        pair.productSlugs.includes(second.slug),
+    )
+  );
+}
+export const researchedPairSlugs = [
+  ArticleSlug.GhdAirVsHelios,
+  ArticleSlug.ParluxAlyonVsDigitalyon,
+  ArticleSlug.CloudNineOriginalIronVsWideIron,
+  ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand,
+  ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile,
+] as const;

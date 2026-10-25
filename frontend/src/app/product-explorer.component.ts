@@ -5,6 +5,8 @@ import { AnalyticsService } from './analytics/analytics.service';
 import { articles } from './content.generated';
 import {
   comparisonFacts,
+  canCompareProducts,
+  researchedPairSlugs,
   comparisonForProduct,
   canonicalComparisons,
   generationWarning,
@@ -164,14 +166,34 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
               routine.
             </li>
             <li>
-              Prices and availability change, so we use broad price tiers rather
-              than treating them as permanent facts.
+              Prices and availability change. A missing or unmaintained price
+              comparison is shown as “Price not compared”; verify the current
+              complete offer before buying.
             </li>
             <li>
               Official specifications describe the product; our editorial guides
               explain the routine trade-offs.
             </li>
           </ol>
+        </section>
+        <section
+          class="how-we-compare"
+          aria-labelledby="researched-pairs-heading"
+        >
+          <h2 id="researched-pairs-heading">Start with a researched pair</h2>
+          <p>
+            These comparisons keep the exact model, market and source scope
+            together. Choose one when it matches the decision you are making.
+          </p>
+          <ul>
+            @for (guide of researchedPairs; track guide.slug) {
+              <li>
+                <a [routerLink]="['/guides', guide.slug]">{{
+                  guide.heading
+                }}</a>
+              </li>
+            }
+          </ul>
         </section>
         <section class="product-filters" aria-labelledby="filter-heading">
           <h2 id="filter-heading">Explore by tool type</h2>
@@ -205,9 +227,10 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
             <div class="comparison-entry">
               <h2>Compare products that answer the same job</h2>
               <p>
-                Select exact models from the same product category. Check the
-                market and generation before comparing dimensions, controls,
-                attachments or ownership details.
+                Select models for the same task. Supported researched pairs may
+                span closely related formats, such as a curling tong and wand.
+                Check the market and generation before comparing dimensions,
+                controls, attachments or ownership details.
               </p>
             </div>
           }
@@ -217,6 +240,9 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
             page session and are not saved to the address.
           </p>
           @if (selectedProducts.length) {
+            <button class="button" type="button" (click)="selectedSlugs = []">
+              Clear selection
+            </button>
             @if (selectedProducts.length === 2) {
               <app-evidence-scope
                 [products]="selectedProducts"
@@ -331,7 +357,7 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
               <article class="product-card">
                 <p class="eyebrow">
                   {{ categoryLabel(product.category) }} · {{ product.market }} ·
-                  {{ product.priceTier }}
+                  {{ product.priceTier ?? 'Price not compared' }}
                 </p>
                 <h2>{{ product.name }}</h2>
                 <p class="product-source">
@@ -351,7 +377,10 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
                   [class.selected]="isSelected(product.slug)"
                   [attr.aria-pressed]="isSelected(product.slug)"
                   [disabled]="
-                    !isSelected(product.slug) && selectedSlugs.length >= 2
+                    !isSelected(product.slug) &&
+                    (selectedSlugs.length >= 2 ||
+                      (selectedProducts[0] &&
+                        !canCompare(selectedProducts[0], product)))
                   "
                   (click)="toggleProduct(product.slug)"
                 >
@@ -421,6 +450,9 @@ export class ProductExplorerComponent implements OnInit {
     { label: 'Curling Irons', value: ProductCategory.CurlingIron },
     { label: 'Curling Wands', value: ProductCategory.CurlingWand },
   ];
+  readonly researchedPairs = researchedPairSlugs.map((slug) =>
+    articles.find((article) => article.slug === slug)!,
+  );
   readonly priceFilters: readonly { label: string; value: PriceFilter }[] = [
     { label: 'All price tiers', value: 'all' },
     { label: 'Entry', value: 'entry' },
@@ -510,6 +542,7 @@ export class ProductExplorerComponent implements OnInit {
   comparisonForProduct(slug: string): CanonicalComparison | undefined {
     return comparisonForProduct(slug);
   }
+  readonly canCompare = canCompareProducts;
   isSelected(slug: string): boolean {
     return this.selectedSlugs.includes(slug);
   }
@@ -517,6 +550,13 @@ export class ProductExplorerComponent implements OnInit {
     if (this.isSelected(slug)) {
       this.selectedSlugs = this.selectedSlugs.filter((item) => item !== slug);
     } else if (this.selectedSlugs.length < 2) {
+      const candidate = productBySlug(slug);
+      if (
+        !candidate ||
+        (this.selectedProducts[0] &&
+          !canCompareProducts(this.selectedProducts[0], candidate))
+      )
+        return;
       this.selectedSlugs = [...this.selectedSlugs, slug];
     }
     if (this.selectedSlugs.length > 0 && !this.startedTracked) {

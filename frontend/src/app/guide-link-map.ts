@@ -1,4 +1,5 @@
 import { ArticleSlug } from './article-slug';
+import { coreGuideRelated } from './core-guide-quality';
 import { articleRegistry, guideCategoryById } from './article-registry';
 
 export interface GuideLinkMapEntry {
@@ -11,6 +12,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...coreGuideRelated,
   [ArticleSlug.GhdAirVsHelios]: [
     ArticleSlug.HairDryerChooser,
     ArticleSlug.HairDryerWattageGuide,
@@ -213,11 +215,6 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
   [ArticleSlug.BestCurlingIronsFineHair]: [
     ArticleSlug.CurlingIronBarrelSizeGuide,
     ArticleSlug.CurlingIronVsWand,
-  ],
-  [ArticleSlug.BestCurlingIrons]: [
-    ArticleSlug.CurlingIronBarrelSizeGuide,
-    ArticleSlug.CurlingIronVsWand,
-    ArticleSlug.HowToUseACurlingIron,
   ],
   [ArticleSlug.BestCurlingToolsShortHair]: [
     ArticleSlug.CurlingIronBarrelSizeGuide,

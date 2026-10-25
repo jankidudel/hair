@@ -19,7 +19,7 @@ describe('article decision integration data', () => {
     expect(Object.keys(decisionSnapshots)).toHaveLength(39);
     expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
     expect(Object.keys(evidenceOwners)).toHaveLength(8);
-    expect(Object.keys(guideEvidence)).toHaveLength(34);
+    expect(Object.keys(guideEvidence)).toHaveLength(39);
     expect(
       evidenceOwners[ArticleSlug.DysonAirwrapVsSharkFlexstyle],
     ).toBeDefined();

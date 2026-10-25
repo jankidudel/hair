@@ -1,4 +1,5 @@
 import { ArticleSlug } from './article-slug';
+import { coreGuideEvidence } from './core-guide-quality';
 
 export interface GuideSource {
   readonly label: string;
@@ -11,6 +12,7 @@ export interface GuideSource {
 
 export interface GuideEvidence {
   readonly relatedOnly?: boolean;
+  readonly sourceIntro?: string;
   readonly breadcrumbLabel?: string;
   readonly sourceFormat?: 'product-market';
   readonly summary: string;
@@ -116,6 +118,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...coreGuideEvidence,
   [ArticleSlug.GhdAirVsHelios]: {
     sourceFormat: 'product-market',
     relatedOnly: true,

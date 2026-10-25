@@ -1,5 +1,9 @@
 import { HandlingRoutineNavigatorComponent } from './handling-routine-navigator.component';
 import { handlingGuideDescriptions } from './handling-guides';
+import {
+  modelComparisonDescriptions,
+  modelComparisonGroups,
+} from './model-comparison-guides';
 import { finishingGuideDescriptions } from './finishing-guides';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -247,7 +251,8 @@ import { AnalyticsService } from './analytics/analytics.service';
             <h2>{{ article.heading }}</h2>
             <p>
               {{
-                handlingGuideDescriptions[article.slug] ??
+                modelComparisonDescriptions[article.slug] ??
+                  handlingGuideDescriptions[article.slug] ??
                   finishingGuideDescriptions[article.slug] ??
                   article.description
               }}
@@ -319,6 +324,26 @@ import { AnalyticsService } from './analytics/analytics.service';
           category.id === 'hair-accessories'
         ) {
           <app-handling-routine-navigator />
+        }
+        @if (modelComparisonGroups[category.id]; as comparisons) {
+          <section
+            class="category-guide-section"
+            aria-labelledby="model-comparisons-heading"
+          >
+            <div class="section-heading">
+              <h2 id="model-comparisons-heading">{{ comparisons.heading }}</h2>
+              <p>{{ comparisons.intro }}</p>
+            </div>
+            <div class="editorial-grid guides-grid">
+              @for (card of comparisons.cards; track card.slug) {
+                <a class="guide-card" [routerLink]="['/guides', card.slug]">
+                  <h3>{{ card.label }}</h3>
+                  <p>{{ modelComparisonDescriptions[card.slug] }}</p>
+                  <span class="text-link">Read guide →</span>
+                </a>
+              }
+            </div>
+          </section>
         }
         @if (categoryPathwayGroups.length) {
           <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
@@ -976,6 +1001,8 @@ import { AnalyticsService } from './analytics/analytics.service';
   }`,
 })
 export class StaticPageComponent implements OnInit {
+  readonly modelComparisonDescriptions = modelComparisonDescriptions;
+  readonly modelComparisonGroups = modelComparisonGroups;
   readonly finishingGuideDescriptions = finishingGuideDescriptions;
   readonly handlingGuideDescriptions = handlingGuideDescriptions;
   private readonly route = inject(ActivatedRoute);
@@ -1178,7 +1205,8 @@ export class StaticPageComponent implements OnInit {
             (article) =>
               classify(article.slug) === id &&
               !finishingGuideDescriptions[article.slug] &&
-              !handlingGuideDescriptions[article.slug],
+              !handlingGuideDescriptions[article.slug] &&
+              !modelComparisonDescriptions[article.slug],
           ),
         }))
         .filter((section) => section.articles.length > 0);

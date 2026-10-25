@@ -172,6 +172,12 @@ export const ArticleSlug = {
   HairDryerDiffuserCompatibility: 'hair-dryer-diffuser-compatibility',
   RoundBrushStuckInHair: 'round-brush-stuck-in-hair',
   StylingToolTroubleshooting: 'styling-tool-troubleshooting',
+  GhdAirVsHelios: 'ghd-air-vs-helios',
+  ParluxAlyonVsDigitalyon: 'parlux-alyon-vs-digitalyon',
+  CloudNineOriginalIronVsWideIron: 'cloud-nine-original-iron-vs-wide-iron',
+  GhdSoftCurlTongVsCreativeCurlWand: 'ghd-soft-curl-tong-vs-creative-curl-wand',
+  TangleTeezerUltimateDetanglerVsFineFragile:
+    'tangle-teezer-ultimate-detangler-vs-fine-fragile',
 } as const;
 
 export type ArticleSlug = (typeof ArticleSlug)[keyof typeof ArticleSlug];

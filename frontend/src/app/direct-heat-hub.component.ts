@@ -6,6 +6,10 @@ import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { articles } from './content.generated';
 import { SiteSeoService } from './site-seo.service';
 import { AnalyticsService } from './analytics/analytics.service';
+import {
+  modelComparisonDescriptions,
+  modelComparisonGroups,
+} from './model-comparison-guides';
 
 @Component({
   imports: [RouterLink, BreadcrumbsComponent],
@@ -30,6 +34,24 @@ import { AnalyticsService } from './analytics/analytics.service';
       </p>
     </section>
     @if (isFlat) {
+      <section
+        class="category-guide-section"
+        aria-labelledby="model-comparisons-heading"
+      >
+        <div class="section-heading">
+          <h2 id="model-comparisons-heading">{{ modelComparisons.heading }}</h2>
+          <p>{{ modelComparisons.intro }}</p>
+        </div>
+        <div class="editorial-grid guides-grid">
+          @for (card of modelComparisons.cards; track card.slug) {
+            <a class="guide-card" [routerLink]="['/guides', card.slug]">
+              <h3>{{ card.label }}</h3>
+              <p>{{ modelComparisonDescriptions[card.slug] }}</p>
+              <span class="text-link">Read guide →</span>
+            </a>
+          }
+        </div>
+      </section>
       <section
         class="category-guide-section"
         aria-labelledby="heated-surface-care-heading"
@@ -217,6 +239,8 @@ import { AnalyticsService } from './analytics/analytics.service';
   `,
 })
 export class DirectHeatHubComponent {
+  readonly modelComparisons = modelComparisonGroups['direct-heat']!;
+  readonly modelComparisonDescriptions = modelComparisonDescriptions;
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
@@ -225,6 +249,7 @@ export class DirectHeatHubComponent {
   readonly guides = articles.filter(
     (article) =>
       article.group === ArticleGroupId.DirectHeat &&
+      !(this.isFlat && modelComparisonDescriptions[article.slug]) &&
       (this.isFlat
         ? !/curling|wand/.test(article.slug)
         : /curling|wand/.test(article.slug)),

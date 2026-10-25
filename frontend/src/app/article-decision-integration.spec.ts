@@ -19,7 +19,7 @@ describe('article decision integration data', () => {
     expect(Object.keys(decisionSnapshots)).toHaveLength(39);
     expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
     expect(Object.keys(evidenceOwners)).toHaveLength(8);
-    expect(Object.keys(guideEvidence)).toHaveLength(29);
+    expect(Object.keys(guideEvidence)).toHaveLength(34);
     expect(
       evidenceOwners[ArticleSlug.DysonAirwrapVsSharkFlexstyle],
     ).toBeDefined();
@@ -51,6 +51,11 @@ describe('article decision integration data', () => {
   it('separates finishing and handling guide FAQs for the shared section while preserving its links', () => {
     for (const slug of [
       ArticleSlug.HowToSectionHairForStyling,
+      ArticleSlug.GhdAirVsHelios,
+      ArticleSlug.ParluxAlyonVsDigitalyon,
+      ArticleSlug.CloudNineOriginalIronVsWideIron,
+      ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand,
+      ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile,
       ArticleSlug.HowToUseAWideToothComb,
       ArticleSlug.HowToUseACurlDefiningBrush,
       ArticleSlug.HowToUseAHairPick,

@@ -1,0 +1,65 @@
+import { ArticleSlug } from './article-slug';
+
+export const modelComparisonDescriptions: Readonly<
+  Partial<Record<string, string>>
+> = {
+  [ArticleSlug.GhdAirVsHelios]:
+    'Compare the UK nozzle, control and ownership details.',
+  [ArticleSlug.ParluxAlyonVsDigitalyon]:
+    'Separate model specifications from the selected attachment pack.',
+  [ArticleSlug.CloudNineOriginalIronVsWideIron]:
+    'Compare the current plate formats and shared controls.',
+  [ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand]:
+    'Choose between the original Curve clamp and tapered-wand formats.',
+  [ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile]:
+    'Keep the handled versions separate from palm-held Original and other variants.',
+};
+
+interface ComparisonGroup {
+  readonly heading: string;
+  readonly intro: string;
+  readonly cards: readonly { readonly label: string; readonly slug: string }[];
+}
+
+export const modelComparisonGroups: Readonly<
+  Partial<Record<string, ComparisonGroup>>
+> = {
+  'hair-dryers': {
+    heading: 'Compare the exact dryer and attachment offer',
+    intro:
+      'Use published controls, motor descriptions and box contents to compare the models you are considering. A higher input figure is not a timed result for your routine.',
+    cards: [
+      { label: 'ghd Air or Helios?', slug: ArticleSlug.GhdAirVsHelios },
+      {
+        label: 'Parlux Alyon or Digitalyon?',
+        slug: ArticleSlug.ParluxAlyonVsDigitalyon,
+      },
+    ],
+  },
+  'direct-heat': {
+    heading: 'Compare width, barrel and holding action',
+    intro:
+      'Start with the section you need to reach and the movement you want to use. Then check the exact named model rather than a similar-looking variant.',
+    cards: [
+      {
+        label: 'CLOUD NINE Original or Wide Iron?',
+        slug: ArticleSlug.CloudNineOriginalIronVsWideIron,
+      },
+      {
+        label: 'ghd Soft Curl Tong or Creative Curl Wand?',
+        slug: ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand,
+      },
+    ],
+  },
+  'brushes-and-combs': {
+    heading: 'Compare tooth feel within one brush range',
+    intro:
+      'A softer-tooth option is a specific design difference to assess, not a reason to replace a brush that already prepares your sections comfortably.',
+    cards: [
+      {
+        label: 'Ultimate Detangler or Fine & Fragile?',
+        slug: ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile,
+      },
+    ],
+  },
+};

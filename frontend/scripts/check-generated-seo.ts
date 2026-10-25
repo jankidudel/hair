@@ -142,9 +142,13 @@ for (const article of articles) {
     failures.push(`${route}: missing or incorrect canonical.`);
   if (!html.includes(`<meta name="robots" content="index, follow">`))
     failures.push(`${route}: unexpectedly noindex.`);
-  if (!html.includes(`<title>${article.title}</title>`))
+  if (!html.includes(`<title>${escapeHtml(article.title)}</title>`))
     failures.push(`${route}: missing title.`);
-  if (!html.includes(`name="description" content="${article.description}"`))
+  if (
+    !html.includes(
+      `name="description" content="${escapeHtml(article.description).replace(/"/g, '&quot;')}"`,
+    )
+  )
     failures.push(`${route}: missing description.`);
   if ((html.match(/<h1(?:\s|>)/g) ?? []).length !== 1)
     failures.push(`${route}: must have exactly one H1.`);
@@ -300,6 +304,21 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
 }
 // Editorial insertions must survive sanitizing and appear in the initial HTML.
 const accessoryIntegrations: Readonly<Record<string, readonly string[]>> = {
+  'how-to-choose-hair-dryer': [
+    'ghd-air-vs-helios',
+    'parlux-alyon-vs-digitalyon',
+  ],
+  'hair-dryer-wattage-guide': ['parlux-alyon-vs-digitalyon'],
+  'best-flat-irons': ['cloud-nine-original-iron-vs-wide-iron'],
+  'flat-iron-plate-width-guide': ['cloud-nine-original-iron-vs-wide-iron'],
+  'best-curling-irons': ['ghd-soft-curl-tong-vs-creative-curl-wand'],
+  'curling-iron-vs-curling-wand': ['ghd-soft-curl-tong-vs-creative-curl-wand'],
+  'best-detangling-brushes': [
+    'tangle-teezer-ultimate-detangler-vs-fine-fragile',
+  ],
+  'best-brushes-fine-hair': [
+    'tangle-teezer-ultimate-detangler-vs-fine-fragile',
+  ],
   'heated-rollers-vs-self-grip-rollers': ['how-to-use-heated-hair-rollers'],
   'hair-roller-size-guide': ['how-to-use-heated-hair-rollers'],
   'how-to-choose-hair-sectioning-clips': [
@@ -328,6 +347,8 @@ for (const [slug, targets] of Object.entries(accessoryIntegrations)) {
       );
 }
 for (const [slug, diagram] of [
+  ['cloud-nine-original-iron-vs-wide-iron', 'cloud-nine-plate-widths'],
+  ['ghd-soft-curl-tong-vs-creative-curl-wand', 'original-ghd-curve-profiles'],
   ['bobby-pins-vs-u-shaped-hair-pins', 'pin-fastening-shapes'],
   ['how-to-choose-a-hair-barrette', 'barrette-clasp-fit'],
   ['how-to-clean-a-hair-comb', 'comb-teeth-cleaning'],

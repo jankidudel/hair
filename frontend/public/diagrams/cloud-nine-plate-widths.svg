@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="480" viewBox="0 0 360 480" role="img" aria-labelledby="title desc">
+  <title id="title">CLOUD NINE plate widths</title>
+  <desc id="desc">Equal illustrative lengths with transverse widths in a one to one-and-a-half ratio. Plate length and body shape are schematic.</desc>
+  <rect width="360" height="480" rx="16" fill="#f4f0e8"/>
+  <g font-family="Arial, sans-serif" fill="#203c32">
+    <text x="24" y="35" font-size="20" font-weight="700">Compare plate width</text>
+    <text x="24" y="78" font-size="18">Original: 1 inch</text>
+    <rect x="72" y="100" width="180" height="64" rx="4" fill="#d3dfd5" stroke="#315548" stroke-width="2"/>
+    <path d="M276 100v64m-6-64h12m-12 64h12" fill="none" stroke="#315548" stroke-width="2"/>
+    <text x="24" y="232" font-size="18">Wide: 1.5 inches</text>
+    <rect x="72" y="255" width="180" height="96" rx="4" fill="#d3dfd5" stroke="#315548" stroke-width="2"/>
+    <path d="M276 255v96m-6-96h12m-12 96h12" fill="none" stroke="#315548" stroke-width="2"/>
+    <text x="24" y="410" font-size="16">Plate length and body shape</text>
+    <text x="24" y="433" font-size="16">are schematic</text>
+    <text x="24" y="459" font-size="14">Width ratio 1:1.5 · no styling-speed claim</text>
+  </g>
+</svg>

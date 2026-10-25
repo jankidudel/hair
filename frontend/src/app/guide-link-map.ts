@@ -11,6 +11,31 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  [ArticleSlug.GhdAirVsHelios]: [
+    ArticleSlug.HairDryerChooser,
+    ArticleSlug.HairDryerWattageGuide,
+    ArticleSlug.HairDryerDiffuserCompatibility,
+  ],
+  [ArticleSlug.ParluxAlyonVsDigitalyon]: [
+    ArticleSlug.HairDryerChooser,
+    ArticleSlug.HairDryerDiffuserVsConcentrator,
+    ArticleSlug.HowToCleanHairDryerFilter,
+  ],
+  [ArticleSlug.CloudNineOriginalIronVsWideIron]: [
+    ArticleSlug.FlatIronPlateWidthGuide,
+    ArticleSlug.BestFlatIrons,
+    ArticleSlug.HowToUseAFlatIron,
+  ],
+  [ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand]: [
+    ArticleSlug.CurlingIronVsWand,
+    ArticleSlug.CurlingIronBarrelSizeGuide,
+    ArticleSlug.HowToUseACurlingWand,
+  ],
+  [ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile]: [
+    ArticleSlug.BestDetanglingBrushes,
+    ArticleSlug.HowToSectionHairForStyling,
+    ArticleSlug.CanYouUseDetanglingBrushForBlowDrying,
+  ],
   [ArticleSlug.HowToSectionHairForStyling]: [
     ArticleSlug.HowToUseAWideToothComb,
     ArticleSlug.HowToUseACurlDefiningBrush,

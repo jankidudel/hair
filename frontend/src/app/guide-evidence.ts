@@ -116,6 +116,144 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  [ArticleSlug.GhdAirVsHelios]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'This compares current UK manufacturer product and support pages. It does not include hands-on drying, noise, comfort or durability testing. Warranty terms and accessories must be confirmed for the actual purchase.',
+    sources: [
+      {
+        label: 'ghd Air product page',
+        model: 'ghd Air product page',
+        market: 'UK',
+        url: 'https://www.ghdhair.com/hair-dryers/ghd-air-p-248',
+        checkedDate: '25 October 2026',
+        scope:
+          'Model controls, concentrator, cable and currently displayed warranty; no independent result claim.',
+      },
+      {
+        label: 'ghd black Helios product page',
+        model: 'ghd black Helios product page',
+        market: 'UK',
+        url: 'https://www.ghdhair.com/hair-dryers/ghd-black-helios-p-497',
+        checkedDate: '25 October 2026',
+        scope:
+          'Named motor, contoured nozzle, controls, cable and currently displayed warranty.',
+      },
+      {
+        label: 'ghd: What is the wattage of the ghd hair dryers?',
+        model: 'ghd: What is the wattage of the ghd hair dryers?',
+        market: 'UK support',
+        url: 'https://ukie.help.ghdhair.com/hc/en-gb/articles/7497912716946-WHAT-IS-THE-WATTAGE-OF-THE-GHD-HAIR-DRYERS',
+        checkedDate: '25 October 2026',
+        scope:
+          'Published input ranges, not measured drying speed or travel compatibility.',
+      },
+    ],
+  },
+  [ArticleSlug.ParluxAlyonVsDigitalyon]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'This uses Parlux’s international English model pages. Published figures are not independent measurements, and local plug, voltage, warranty and bundle entitlement remain separate checks.',
+    sources: [
+      {
+        label: 'Parlux Alyon',
+        model: 'Parlux Alyon',
+        market: 'International English',
+        url: 'https://www.parlux.it/en/products/parlux-alyon',
+        checkedDate: '25 October 2026',
+        scope:
+          'Published motor, input, airflow, cable and control specifications; local sale details not established.',
+      },
+      {
+        label: 'Parlux Digitalyon',
+        model: 'Parlux Digitalyon',
+        market: 'International English',
+        url: 'https://www.parlux.it/en/products/parlux-digitalyon',
+        checkedDate: '25 October 2026',
+        scope:
+          'Published specifications and Standard versus diffuser-pack distinction.',
+      },
+    ],
+  },
+  [ArticleSlug.CloudNineOriginalIronVsWideIron]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'This compares current UK manufacturer specifications for the two named irons. It does not establish reduced damage, faster styling, improved comfort or any measured effect of Revive Mode.',
+    sources: [
+      {
+        label: 'CLOUD NINE The Original Iron',
+        model: 'CLOUD NINE The Original Iron',
+        market: 'UK',
+        url: 'https://www.cloudninehair.com/products/the-original-iron',
+        checkedDate: '25 October 2026',
+        scope:
+          'Current model’s plate width, shared features and weight explicitly excluding cord.',
+      },
+      {
+        label: 'CLOUD NINE The Wide Iron',
+        model: 'CLOUD NINE The Wide Iron',
+        market: 'UK',
+        url: 'https://www.cloudninehair.com/products/the-wide-iron',
+        checkedDate: '25 October 2026',
+        scope:
+          'Current model’s plate width, shared features and weight explicitly excluding cord.',
+      },
+    ],
+  },
+  [ArticleSlug.GhdSoftCurlTongVsCreativeCurlWand]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'This compares the named original UK Curve models from ghd’s current pages. No hands-on curl retention, ease-of-use, safety or damage comparison is claimed.',
+    sources: [
+      {
+        label: 'ghd Curve Soft Curl Tong',
+        model: 'ghd Curve Soft Curl Tong',
+        market: 'UK',
+        url: 'https://www.ghdhair.com/curling-tongs/ghd-curve-soft-curl-tong-p-302',
+        checkedDate: '25 October 2026',
+        scope:
+          'Original Curve barrel, lever, listed temperature, stand and sleep feature.',
+      },
+      {
+        label: 'ghd Curve Creative Curl Wand',
+        model: 'ghd Curve Creative Curl Wand',
+        market: 'UK',
+        url: 'https://www.ghdhair.com/curling-wands/ghd-curve-creative-curl-wand-p-303',
+        checkedDate: '25 October 2026',
+        scope:
+          'Original Curve tapered barrel and wrapping method; no retention or damage claim reproduced.',
+      },
+    ],
+  },
+  [ArticleSlug.TangleTeezerUltimateDetanglerVsFineFragile]: {
+    sourceFormat: 'product-market',
+    relatedOnly: true,
+    summary:
+      'This uses current UK product descriptions for two specifically named handled brushes. Tooth softness is manufacturer-described; pulling, comfort and breakage outcomes were not independently tested.',
+    sources: [
+      {
+        label: 'Tangle Teezer The Ultimate Detangler',
+        model: 'Tangle Teezer The Ultimate Detangler',
+        market: 'UK',
+        url: 'https://tangleteezer.com/products/the-ultimate-detangler',
+        checkedDate: '25 October 2026',
+        scope: 'Named handled brush’s positioning and heat exclusion.',
+      },
+      {
+        label: 'Tangle Teezer The Ultimate Detangler Fine & Fragile',
+        model: 'Tangle Teezer The Ultimate Detangler Fine & Fragile',
+        market: 'UK',
+        url: 'https://tangleteezer.com/products/the-ultimate-detangler-fine-fragile',
+        checkedDate: '25 October 2026',
+        scope:
+          'Softer-tooth description relative to the handled standard model and heat exclusion.',
+      },
+    ],
+  },
   [ArticleSlug.HowToSectionHairForStyling]: {
     sourceFormat: 'product-market',
     relatedOnly: true,

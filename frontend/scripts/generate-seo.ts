@@ -1,8 +1,14 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { articles } from '../src/app/content.generated.ts';
-import { guideCategories } from '../src/app/article-registry.ts';
-import { articleBySlug } from '../src/app/content.generated.ts';
+import {
+  seoRoutesForArticles,
+  routePatternPolicies,
+} from '../src/app/seo-route-policy.ts';
+import {
+  registeredRouterPaths,
+  routeClassificationErrors,
+} from '../../scripts/seo/route-coverage.ts';
 
 interface SiteConfig {
   siteUrl: unknown;
@@ -17,61 +23,20 @@ const config: SiteConfig = JSON.parse(
 );
 const siteUrl = validSiteUrl(config.siteUrl);
 const indexingEnabled = config.indexingEnabled === true && siteUrl !== null;
-const entries = [
-  '/',
-  '/hair-care',
-  ...guideCategories
-    .filter((category) => category.path !== '/hair-care')
-    .map((category) => category.path),
-  '/guides',
-  '/tools',
-  '/hair-brush-finder',
-  '/hair-tool-routine-builder',
-  '/products',
-  '/about',
-  '/privacy',
-  '/affiliate-disclosure',
-  '/editorial-policy',
-  '/testing-research-methodology',
-  '/corrections-policy',
-  '/authors/combreport-editorial-team',
-];
-// Static pages do not have article front matter. These are the dates of their
-// last material editorial revision, deliberately not the generation date.
-const batchFourteenStaticRoutes = new Set([
-  '/',
-  '/hair-dryers',
-  '/hot-air-brushes',
-  '/brushes-combs',
-  '/hair-accessories',
-  '/tools',
-  '/products',
-]);
-const staticLastModified: Readonly<Record<string, string>> = Object.fromEntries(
-  entries.map((route) => [
-    route,
-    [
-      '/guides',
-      '/products',
-      '/testing-research-methodology',
-      '/hair-dryers',
-      '/brushes-combs',
-      '/flat-irons',
-      '/curling-irons',
-    ].includes(route)
-      ? '2026-10-25'
-      : ['/hair-care'].includes(route)
-        ? '2026-10-21'
-        : ['/hair-accessories', '/brushes-combs'].includes(route)
-          ? '2026-10-19'
-          : ['/tools'].includes(route)
-            ? '2026-10-18'
-            : batchFourteenStaticRoutes.has(route)
-              ? '2026-10-17'
-              : '2026-09-20',
-  ]),
+const policies = seoRoutesForArticles(articles);
+const router = registeredRouterPaths(
+  await readFile(join(root, 'src/app/app.routes.ts'), 'utf8'),
 );
-for (const { slug } of articles) entries.push(`/guides/${slug}`);
+const classificationErrors = routeClassificationErrors(
+  router,
+  policies,
+  routePatternPolicies,
+);
+if (classificationErrors.length)
+  throw new Error(classificationErrors.join('\n'));
+const entries = policies.filter(
+  (policy) => policy.disposition === 'indexable-canonical',
+);
 const publicDirectory = join(root, 'public');
 await mkdir(publicDirectory, { recursive: true });
 await writeFile(
@@ -87,15 +52,10 @@ if (!indexingEnabled) {
   await writeFile(
     sitemapPath,
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
-      .map((route) => {
-        const slug = route.match(/^\/guides\/([^/]+)$/)?.[1];
-        const article = slug ? articleBySlug[slug] : undefined;
-        const lastmod =
-          article?.updatedDate ??
-          article?.publishDate ??
-          staticLastModified[route];
-        return `  <url><loc>${siteUrl}${route === '/' ? '' : route}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`;
-      })
+      .map(
+        ({ path, lastmod }) =>
+          `  <url><loc>${siteUrl}${path === '/' ? '' : path}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`,
+      )
       .join('\n')}\n</urlset>\n`,
   );
 function validSiteUrl(value: unknown): string | null {

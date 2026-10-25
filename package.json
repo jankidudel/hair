@@ -32,7 +32,9 @@
     "precommit": "npm run lint && npm run content:check",
     "prepush": "npm run verify",
     "prepare": "npm run content:generate --workspace=frontend && npm run hooks:install",
-    "hooks:install": "git config core.hooksPath .githooks"
+    "hooks:install": "git config core.hooksPath .githooks",
+    "seo:audit": "tsx scripts/seo/audit-built-routes.ts",
+    "seo:verify-production": "tsx scripts/seo/verify-production-routes.ts"
   },
   "devDependencies": {
     "@types/node": "24.13.3",

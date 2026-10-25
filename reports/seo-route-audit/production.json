@@ -1,0 +1,1152 @@
+{
+  "checkedAt": "2026-10-25T23:24:42.382Z",
+  "scope": "Actual read-only HTTP observations. Network failures are not evidence of a production outage.",
+  "preflight": {
+    "home": {
+      "requestedUrl": "https://www.combreport.com/",
+      "finalUrl": null,
+      "status": null,
+      "contentType": null,
+      "xRobotsTag": null,
+      "redirectChain": [],
+      "networkError": "fetch failed: Error: getaddrinfo ENOTFOUND www.combreport.com"
+    },
+    "robots": {
+      "requestedUrl": "https://www.combreport.com/robots.txt",
+      "finalUrl": null,
+      "status": null,
+      "contentType": null,
+      "xRobotsTag": null,
+      "redirectChain": [],
+      "networkError": "fetch failed: Error: getaddrinfo ENOTFOUND www.combreport.com"
+    },
+    "sitemap": {
+      "requestedUrl": "https://www.combreport.com/sitemap.xml",
+      "finalUrl": null,
+      "status": null,
+      "contentType": null,
+      "xRobotsTag": null,
+      "redirectChain": [],
+      "networkError": "fetch failed: Error: getaddrinfo ENOTFOUND www.combreport.com"
+    }
+  },
+  "verification": "blocked by network access; full production crawl and release verification remain unverified",
+  "routes": [
+    {
+      "path": "/",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/hair-care",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/hair-dryers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/hot-air-brushes",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/brushes-combs",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/hair-accessories",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/hair-brush-finder",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/flat-irons",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/curling-irons",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/flat-iron-finder",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/curling-tool-finder",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/hair-tool-routine-builder",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/tools",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/products",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/about",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/authors/combreport-editorial-team",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/editorial-policy",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/testing-research-methodology",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/corrections-policy",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/privacy",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/affiliate-disclosure",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/contact",
+      "expectedDisposition": "non-indexable-utility",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/404",
+      "expectedDisposition": "not-found",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-hair-dryer",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hair-dryers-fine-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hair-dryers-thick-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hair-dryers-curly-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-travel-hair-dryers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-dryer-wattage-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/dyson-supersonic-vs-shark-speedstyle",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hair-dryer-for-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-dryer-diffuser-vs-concentrator",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-hair-dryer-diffuser",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-diffuse-wavy-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ionic-vs-ceramic-hair-dryer",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-dryer-heat-and-speed-settings-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-hair-dryer-concentrator-nozzle",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-hair-dryer-filter",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-blow-dry-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/why-your-blowout-does-not-last",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-dryer-takes-too-long",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-dryer-diffuser-compatibility",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/plug-adapter-vs-voltage-converter-hair-tools",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/wide-vs-narrow-hair-dryer-concentrator",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ghd-air-vs-helios",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/parlux-alyon-vs-digitalyon",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hot-air-brushes",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hot-air-brushes-fine-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hot-air-brushes-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/dyson-airwrap-vs-shark-flexstyle",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/babyliss-air-style-1000-vs-flawless-volume",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hot-air-brush-vs-hair-dryer",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-hot-air-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hot-air-brush-vs-straightening-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-hot-air-brush-on-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-hot-air-brush-on-long-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-hot-air-brush-on-fine-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hot-air-brush-for-thick-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-a-straightening-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-straightening-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-straightening-brush-on-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/straightening-brush-vs-flat-iron",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-hot-air-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hot-air-brush-barrel-size-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hot-air-brush-vs-curling-iron",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/can-you-use-hot-air-brush-on-dry-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hot-air-brush-vs-hair-dryer-and-round-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/thermal-brush-vs-hot-air-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hot-air-brush-frizzy-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/revlon-one-step-volumizer-vs-plus",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/rotating-vs-fixed-hot-air-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-multi-styler-attachments",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ghd-rise-vs-glide-plus",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-detangling-brushes",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/denman-d3-vs-d4",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/olivia-garden-ceramic-ion-vs-nanothermic",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-brushes-thick-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-brushes-curly-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-brushes-fine-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/wide-tooth-comb-vs-detangling-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/boar-bristle-brush-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-hair-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-hair-brush-for-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/boar-bristle-vs-nylon-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-brush-vs-comb",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/round-brush-vs-paddle-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/round-brush-size-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-a-hair-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/what-hair-tools-do-i-need",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-a-hair-comb",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/what-is-the-grey-fuzz-on-my-hairbrush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-round-brush-with-a-hair-dryer",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-get-root-volume-with-a-round-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-blow-dry-a-bob-with-a-round-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-blow-dry-long-hair-with-a-round-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/round-brush-stuck-in-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/curl-defining-brush-vs-detangling-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/can-you-use-detangling-brush-for-blow-drying",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/when-to-replace-hairbrush-or-comb",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/tail-comb-vs-wide-tooth-comb",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/travel-hair-brush-formats",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/vented-brush-vs-paddle-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-section-hair-for-styling",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-wide-tooth-comb",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-curl-defining-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-hair-pick",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-heat-protectants",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/cold-water-for-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/heat-protectant-spray-vs-cream",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-leave-in-conditioners-dry-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-often-should-you-wash-your-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-mousse-vs-gel",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/curl-cream-vs-leave-in-conditioner",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-apply-hair-mousse",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-apply-gel-to-curly-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-serum-vs-hair-oil",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-styling-product-order",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-hairspray",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/flexible-vs-strong-hold-hairspray",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/sea-salt-spray-vs-texturising-spray",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-sea-salt-spray",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/pomade-vs-hair-clay",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-apply-hair-pomade",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-microfibre-hair-towels",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/silk-vs-satin-pillowcase-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-heatless-curling-sets",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-heatless-curlers-on-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-velcro-hair-rollers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-heated-hair-rollers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-flexi-rods",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-snap-closure-foam-rollers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-heatless-curling-rod",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/heatless-curls-not-working",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-microfibre-hair-towel",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/velcro-vs-foam-hair-rollers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/satin-bonnet-vs-satin-pillowcase",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/microfiber-hair-towel-vs-cotton-t-shirt",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-roller-size-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/flexi-rods-vs-foam-rollers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/heated-rollers-vs-self-grip-rollers",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-hair-sectioning-clips",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-claw-clip-size",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/bobby-pins-vs-u-shaped-hair-pins",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-a-hair-barrette",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-bobby-pins",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-french-hair-pin",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/hair-elastics-vs-scrunchies",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-wash-a-satin-bonnet",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-hair-scrunchies",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-choose-hair-tool-heat-mat-and-pouch",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-plop-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/styling-tool-troubleshooting",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-flat-irons",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-flat-irons-fine-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-flat-irons-thick-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-travel-flat-irons",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-curling-irons",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-curling-irons-fine-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-curling-tools-short-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/best-curling-tools-long-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/flat-iron-vs-hot-air-brush",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/curling-iron-vs-curling-wand",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/flat-iron-vs-curling-iron-for-curls",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/flat-iron-plate-width-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/curling-iron-barrel-size-guide",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ghd-chronos-vs-platinum-plus",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ceramic-vs-titanium-flat-irons",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/fixed-vs-adjustable-temperature-hair-straighteners",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ghd-gold-vs-platinum-plus",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ghd-chronos-vs-chronos-max",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/tapered-vs-cylindrical-curling-wand",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/corded-vs-cordless-hair-straighteners",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-curling-iron",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-curling-wand",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-use-a-flat-iron",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-curl-hair-with-a-flat-iron",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-hair-straightener-plates",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/how-to-clean-a-curling-iron-or-wand",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/why-curls-fall-out",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/flat-iron-snagging-hair",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/curling-iron-leaves-crease",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/cloud-nine-original-iron-vs-wide-iron",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    },
+    {
+      "path": "/guides/ghd-soft-curl-tong-vs-creative-curl-wand",
+      "expectedDisposition": "indexable-canonical",
+      "status": null,
+      "verification": "not fetched because homepage network preflight failed"
+    }
+  ]
+}

@@ -8,6 +8,17 @@ import {
   guideCategories,
   guideCategoryById,
 } from '../src/app/article-registry.ts';
+import {
+  seoRoutesForArticles,
+  routePatternPolicies,
+} from '../src/app/seo-route-policy.ts';
+import {
+  registeredRouterPaths,
+  routeClassificationErrors,
+  sitemapParityErrors,
+  parseSitemap,
+  builtRouteCoverageErrors,
+} from '../../scripts/seo/route-coverage.ts';
 import { removedDuplicateRoutes } from '../../scripts/removed-duplicate-routes.ts';
 
 const output = resolve(
@@ -25,6 +36,21 @@ const failures = [
       `${failure.source}: ${failure.reason} (${failure.originalUrl})`,
   ),
 ];
+const routePolicies = seoRoutesForArticles(articles);
+failures.push(
+  ...routeClassificationErrors(
+    registeredRouterPaths(
+      await readFile(
+        resolve(import.meta.dirname, '../src/app/app.routes.ts'),
+        'utf8',
+      ),
+    ),
+    routePolicies,
+    routePatternPolicies,
+  ),
+  ...sitemapParityErrors(routePolicies, parseSitemap(sitemap).entries),
+  ...(await builtRouteCoverageErrors(output, routePolicies)),
+);
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
   (match) => match[1],
 );
@@ -124,9 +150,12 @@ for (const route of removedDuplicateRoutes) {
 if (sitemapUrls.some((url) => url.endsWith('/contact')))
   failures.push('sitemap.xml: noindex contact route must be excluded.');
 for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
-  if (!/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/.test(match[1]))
+  if (
+    match[1].includes('<lastmod>') &&
+    !/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/.test(match[1])
+  )
     failures.push(
-      'sitemap.xml: every canonical entry needs a truthful lastmod.',
+      'sitemap.xml: a supplied lastmod must be a valid maintained date.',
     );
 }
 for (const article of articles) {

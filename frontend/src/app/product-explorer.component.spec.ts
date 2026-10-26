@@ -130,7 +130,7 @@ describe('ProductExplorerComponent decision support', () => {
       element.querySelectorAll(
         '[aria-labelledby="researched-pairs-heading"] a',
       ),
-    ).toHaveLength(5);
+    ).toHaveLength(7);
     expect(element.textContent).toContain('Price not compared');
     expect(
       component.filteredProducts.some((p) => p.slug === 'ghd-air-uk'),
@@ -154,5 +154,24 @@ describe('ProductExplorerComponent decision support', () => {
       ) as HTMLButtonElement
     ).click();
     expect(component.selectedSlugs).toEqual([]);
+  });
+  it('routes only the exact new US pairs to their researched comparisons', async () => {
+    const fixture = await setup();
+    const component = fixture.componentInstance;
+    const element = fixture.nativeElement as HTMLElement;
+    const links = Array.from(
+      element.querySelectorAll(
+        '[aria-labelledby="researched-pairs-heading"] a',
+      ),
+    ).map((a) => a.getAttribute('href'));
+    expect(links).toContain('/guides/t3-airebrush-vs-airebrush-round');
+    expect(links).toContain('/guides/t3-singlepass-curl-x-vs-ghd-soft-curl');
+    component.selectedSlugs = ['t3-airebrush-oval-us', 't3-airebrush-round-us'];
+    fixture.detectChanges();
+    expect(
+      element.querySelector(
+        'a[href="/guides/t3-airebrush-vs-airebrush-round"]',
+      ),
+    ).not.toBeNull();
   });
 });

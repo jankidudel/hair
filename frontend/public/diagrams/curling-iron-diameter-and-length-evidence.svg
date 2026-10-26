@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 540" role="img" aria-labelledby="title desc"><title id="title">Diameter and working-length evidence</title><desc id="desc">Two equally drawn generic clamp barrels share a nominal diameter label. One has a published barrel-length label; an equivalent length for the second is not established. No measured difference is drawn.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse"><path d="M0 0 7 3.5 0 7" fill="none" stroke="#31594b"/></marker></defs>
+<rect width="480" height="540" rx="18" fill="#f4f7f3"/>
+<g font-family="system-ui,sans-serif" fill="#203f34" text-anchor="middle" font-size="19">
+<text x="240" y="38" font-size="23">Shared nominal diameter</text>
+<g stroke="#31594b" stroke-width="3" fill="#d8e6dc"><circle cx="240" cy="100" r="33"/><rect x="95" y="158" width="290" height="48" rx="15"/><path d="M132 170H350M350 170l18-16" fill="none"/></g>
+<path d="M207 100H273" stroke="#31594b" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="240" y="246">Published barrel-length label</text>
+<g stroke="#31594b" stroke-width="3" fill="#d8e6dc"><circle cx="240" cy="320" r="33"/><rect x="95" y="378" width="290" height="48" rx="15"/><path d="M132 390H350M350 390l18-16" fill="none"/></g>
+<path d="M207 320H273" stroke="#31594b" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="240" y="466">Equivalent length not established</text><text x="240" y="510" font-size="28">?</text>
+</g></svg>

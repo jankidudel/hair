@@ -119,6 +119,162 @@ const ghdExactFlatIronIdentifier: Readonly<Record<string, string>> = {
 
 export const productProfiles: readonly ProductProfile[] = [
   product({
+    slug: 't3-airebrush-oval-us',
+    name: 'T3 AireBrush oval, 76656',
+    market: 'US',
+    brand: 'T3',
+    category: 'hot-air-brush',
+    subtype: 'oval airflow brush',
+    modelIdentifier: '76656',
+    generation: 'AireBrush',
+    imageAlt: 'T3 AireBrush oval, 76656 US styling appliance',
+    priceTier: null,
+    bestFor: [
+      'comparing an oval airflow-brush head with the named round alternative',
+    ],
+    notIdealFor: [
+      'transferring US specifications to a different local version',
+      'inferring styling performance from published dimensions',
+    ],
+    officialProductUrl:
+      'https://t3micro.com/products/airebrush-one-step-smoothing-volumizing-hair-dryer-brush',
+    verifiedAt: '2026-10-26',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      {
+        label: 'Head description',
+        value: 'Oval',
+        sourceUrl:
+          'https://t3micro.com/products/airebrush-one-step-smoothing-volumizing-hair-dryer-brush',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'Heat and speed choices',
+        value: 'Three heat, two speed; cool shot',
+        sourceUrl:
+          'https://t3micro.com/products/airebrush-one-step-smoothing-volumizing-hair-dryer-brush',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'US voltage listing',
+        value: '125V',
+        sourceUrl:
+          'https://t3micro.com/products/airebrush-one-step-smoothing-volumizing-hair-dryer-brush',
+        verifiedAt: '2026-10-26',
+      },
+    ],
+    relatedGuideSlugs: ['t3-airebrush-vs-airebrush-round'],
+  }),
+  product({
+    slug: 't3-airebrush-round-us',
+    name: 'T3 AireBrush Round, 76657',
+    market: 'US',
+    brand: 'T3',
+    category: 'hot-air-brush',
+    subtype: 'round airflow brush',
+    modelIdentifier: '76657',
+    generation: 'AireBrush',
+    imageAlt: 'T3 AireBrush Round, 76657 US styling appliance',
+    priceTier: null,
+    bestFor: [
+      'comparing a round airflow-brush head with the named oval alternative',
+    ],
+    notIdealFor: [
+      'transferring US specifications to a different local version',
+      'inferring styling performance from published dimensions',
+    ],
+    officialProductUrl: 'https://t3micro.com/products/airebrush-round',
+    verifiedAt: '2026-10-26',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      {
+        label: 'Head description',
+        value: '2.5-inch round',
+        sourceUrl: 'https://t3micro.com/products/airebrush-round',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'Heat and speed choices',
+        value: 'Three heat, two speed; cool shot',
+        sourceUrl: 'https://t3micro.com/products/airebrush-round',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'US voltage listing',
+        value: '125V',
+        sourceUrl: 'https://t3micro.com/products/airebrush-round',
+        verifiedAt: '2026-10-26',
+      },
+    ],
+    relatedGuideSlugs: ['t3-airebrush-vs-airebrush-round'],
+  }),
+  product({
+    slug: 't3-singlepass-curl-x-125-us',
+    name: 'T3 SinglePass Curl X, 1.25 inch',
+    market: 'US',
+    brand: 'T3',
+    category: 'curling-iron',
+    subtype: 'clamp iron',
+    generation: 'SinglePass Curl X',
+    imageAlt: 'T3 SinglePass Curl X, 1.25 inch US styling appliance',
+    priceTier: null,
+    bestFor: [
+      'comparing selectable settings and published barrel evidence on a US clamp iron',
+    ],
+    notIdealFor: [
+      'transferring US specifications to a different local version',
+      'inferring styling performance from published dimensions',
+    ],
+    officialProductUrl:
+      'https://t3micro.com/products/singlepass-curl-x-1-ceramic-extra-long-barrel-curling-iron',
+    verifiedAt: '2026-10-26',
+    availability: 'availability-to-check',
+    evidenceStatus: 'specification-researched',
+    verifiedFacts: [
+      {
+        label: 'Nominal barrel diameter',
+        value: '1.25 in',
+        sourceUrl:
+          'https://t3micro.com/products/singlepass-curl-x-1-ceramic-extra-long-barrel-curling-iron',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'Controls',
+        value: 'Nine heat settings',
+        sourceUrl:
+          'https://t3micro.com/products/singlepass-curl-x-1-ceramic-extra-long-barrel-curling-iron',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'Published barrel-length label',
+        value: '6.5 inches; not independently measured usable span',
+        sourceUrl:
+          'https://t3micro.com/products/singlepass-curl-x-1-ceramic-extra-long-barrel-curling-iron',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'Variant-specific identifier',
+        value: 'Not established by cited listing',
+        sourceUrl:
+          'https://t3micro.com/products/singlepass-curl-x-1-ceramic-extra-long-barrel-curling-iron',
+        verifiedAt: '2026-10-26',
+      },
+      {
+        label: 'Auto off',
+        value: 'One hour',
+        sourceUrl:
+          'https://t3micro.com/products/singlepass-curl-x-1-ceramic-extra-long-barrel-curling-iron',
+        verifiedAt: '2026-10-26',
+      },
+    ],
+    relatedGuideSlugs: ['t3-singlepass-curl-x-vs-ghd-soft-curl'],
+    barrelDiameterInches: 1.25,
+    heatControl: 'adjustable',
+    mechanism: 'clamp',
+  }),
+  product({
     slug: 'ghd-air-uk',
     name: 'ghd Air',
     market: 'UK',
@@ -1352,17 +1508,23 @@ export const productProfiles: readonly ProductProfile[] = [
           : ProductCategory.CurlingWand,
       subtype: subtype as string,
       imageAlt: `${name} styling tool`,
-      priceTier: 'premium',
+      priceTier: slug === 'ghd-curve-soft-curl' ? null : 'premium',
+      generation:
+        slug === 'ghd-curve-soft-curl'
+          ? 'Original Curve Soft Curl, US 1.25 inch'
+          : undefined,
       barrelDiameterInches: barrelDiameterInches as number | undefined,
       heatControl: 'fixed',
       mechanism: mechanism as ProductProfile['mechanism'],
       dualVoltage: true,
       bestFor: [
-        slug === 'ghd-curve-classic-curl'
-          ? 'a 1-inch clamp format documented in ghd US warranty information'
-          : slug === 'ghd-curve-soft-curl'
-            ? 'a 1.25-inch clamp format documented on the exact US product page'
-            : 'a documented barrel size when you already know the format you prefer',
+        slug === 'ghd-curve-soft-curl'
+          ? 'comparing a preset control with the named selectable-setting clamp iron'
+          : slug === 'ghd-curve-classic-curl'
+            ? 'a 1-inch clamp format documented in ghd US warranty information'
+            : slug === 'ghd-curve-soft-curl'
+              ? 'a 1.25-inch clamp format documented on the exact US product page'
+              : 'a documented barrel size when you already know the format you prefer',
       ],
       notIdealFor: [
         'guaranteeing curl shape or hold from barrel diameter alone',
@@ -1374,38 +1536,77 @@ export const productProfiles: readonly ProductProfile[] = [
             ? 'https://www.ghdhair.com/us/warranty/'
             : 'https://www.ghdhair.com/us/curling-irons-c',
       verifiedAt:
-        slug === 'ghd-curve-classic-curl' || slug === 'ghd-curve-soft-curl'
-          ? batchEightChecked
-          : undefined,
+        slug === 'ghd-curve-soft-curl'
+          ? '2026-10-26'
+          : slug === 'ghd-curve-classic-curl'
+            ? batchEightChecked
+            : undefined,
       availability:
         slug === 'ghd-curve-classic-curl'
           ? 'availability-to-check'
           : 'available',
       evidenceStatus: 'specification-researched',
       verifiedFacts:
-        slug === 'ghd-curve-classic-curl' || slug === 'ghd-curve-soft-curl'
+        slug === 'ghd-curve-soft-curl'
           ? [
-              batchEightFact(
-                'US barrel diameter',
-                `${barrelDiameterInches} in`,
-                slug === 'ghd-curve-classic-curl'
-                  ? 'https://www.ghdhair.com/us/warranty/'
-                  : 'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
-              ),
+              {
+                label: 'Nominal barrel diameter',
+                value: '1.25 in',
+                sourceUrl:
+                  'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
+                verifiedAt: '2026-10-26',
+              },
+              {
+                label: 'Controls',
+                value: 'Preset 365°F; not a personal setting recommendation',
+                sourceUrl:
+                  'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
+                verifiedAt: '2026-10-26',
+              },
+              {
+                label: 'Published barrel-length label',
+                value: 'Equivalent numeric length not established',
+                sourceUrl:
+                  'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
+                verifiedAt: '2026-10-26',
+              },
+              {
+                label: 'Auto off',
+                value: 'After 30 minutes of non-use',
+                sourceUrl:
+                  'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
+                verifiedAt: '2026-10-26',
+              },
             ]
-          : [
-              fact(
-                'Barrel diameter',
-                `${barrelDiameterInches} in`,
-                'https://www.ghdhair.com/us/curling-irons-c',
-              ),
-              fact(
-                'Format',
-                mechanism === 'clamp' ? 'Clamp iron' : 'Clipless wand',
-                'https://www.ghdhair.com/us/curling-irons-c',
-              ),
-            ],
-      relatedGuideSlugs: [ArticleSlug.BestCurlingIrons],
+          : slug === 'ghd-curve-classic-curl' || slug === 'ghd-curve-soft-curl'
+            ? [
+                batchEightFact(
+                  'US barrel diameter',
+                  `${barrelDiameterInches} in`,
+                  slug === 'ghd-curve-classic-curl'
+                    ? 'https://www.ghdhair.com/us/warranty/'
+                    : 'https://www.ghdhair.com/us/curl-irons/ghd-soft-curl-curling-iron-p-302',
+                ),
+              ]
+            : [
+                fact(
+                  'Barrel diameter',
+                  `${barrelDiameterInches} in`,
+                  'https://www.ghdhair.com/us/curling-irons-c',
+                ),
+                fact(
+                  'Format',
+                  mechanism === 'clamp' ? 'Clamp iron' : 'Clipless wand',
+                  'https://www.ghdhair.com/us/curling-irons-c',
+                ),
+              ],
+      relatedGuideSlugs:
+        slug === 'ghd-curve-soft-curl'
+          ? [
+              ArticleSlug.BestCurlingIrons,
+              ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+            ]
+          : [ArticleSlug.BestCurlingIrons],
     }),
   ),
   product({
@@ -1866,6 +2067,18 @@ export const productProfiles: readonly ProductProfile[] = [
 ];
 export const canonicalComparisons: readonly CanonicalComparison[] = [
   {
+    slug: ArticleSlug.T3AirebrushVsAirebrushRound,
+    path: '/guides/' + ArticleSlug.T3AirebrushVsAirebrushRound,
+    productSlugs: ['t3-airebrush-oval-us', 't3-airebrush-round-us'],
+    guideSlug: ArticleSlug.T3AirebrushVsAirebrushRound,
+  },
+  {
+    slug: ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+    path: '/guides/' + ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+    productSlugs: ['t3-singlepass-curl-x-125-us', 'ghd-curve-soft-curl'],
+    guideSlug: ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+  },
+  {
     slug: ArticleSlug.GhdAirVsHelios,
     path: '/guides/' + ArticleSlug.GhdAirVsHelios,
     productSlugs: ['ghd-air-uk', 'ghd-helios-black-uk'],
@@ -2006,6 +2219,8 @@ export function canCompareProducts(
   );
 }
 export const researchedPairSlugs = [
+  ArticleSlug.T3AirebrushVsAirebrushRound,
+  ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
   ArticleSlug.GhdAirVsHelios,
   ArticleSlug.ParluxAlyonVsDigitalyon,
   ArticleSlug.CloudNineOriginalIronVsWideIron,

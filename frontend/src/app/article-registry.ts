@@ -119,6 +119,20 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.T3AirebrushVsAirebrushRound,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 900,
+    enabled: true,
+    publishDate: '2026-10-26',
+  },
+  {
+    slug: ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+    group: ArticleGroupId.DirectHeat,
+    order: 901,
+    enabled: true,
+    publishDate: '2026-10-26',
+  },
+  {
     slug: ArticleSlug.HowToUseHeatedHairRollers,
     group: ArticleGroupId.HairAccessories,
     order: 36.5,

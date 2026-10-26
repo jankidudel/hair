@@ -1,0 +1,96 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+section {
+  margin-block: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid #c8d4ce;
+  border-radius: 1rem;
+  background: #f4f7f4;
+  scroll-margin-top: 2rem;
+}
+.heads {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+fieldset {
+  min-width: 0;
+  border: 1px solid #a7b8ad;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+legend,
+label {
+  font-weight: 600;
+}
+label {
+  display: block;
+  margin-top: 1rem;
+}
+input,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin-top: 0.4rem;
+  padding: 0.65rem;
+  font: inherit;
+  background: white;
+  color: #172c25;
+  border: 1px solid #72877c;
+  border-radius: 0.3rem;
+}
+.help {
+  font-size: 0.875rem;
+  margin-top: 0.4rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+button {
+  padding: 0.75rem 1rem;
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #35594a;
+  border-radius: 0.4rem;
+  background: #fff;
+  color: #172c25;
+}
+button[type='submit'] {
+  background: #244f3e;
+  color: white;
+}
+:focus-visible {
+  outline: 3px solid #a85c18;
+  outline-offset: 3px;
+}
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 30rem;
+}
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #bacac0;
+  overflow-wrap: anywhere;
+}
+li {
+  margin-block: 0.5rem;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .heads {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

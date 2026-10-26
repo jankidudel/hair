@@ -1,13 +1,13 @@
 {
   "scope": "Built initial HTML and published source registry. HTTP status, production 404 response, layout and private GSC performance are not verified by this audit.",
-  "generatedAt": "2026-10-25T23:29:44.062Z",
+  "generatedAt": "2026-10-26T12:17:19.469Z",
   "coverage": {
     "counts": {
-      "registered": 186,
-      "generated": 186,
-      "linked": 184,
-      "intendedIndexable": 184,
-      "sitemap": 184
+      "registered": 188,
+      "generated": 188,
+      "linked": 186,
+      "intendedIndexable": 186,
+      "sitemap": 186
     },
     "newlyIncludedRoutes": [
       "/curling-irons",
@@ -34,6 +34,16 @@
       }
     ],
     "productComparisonRoutes": [
+      {
+        "id": "t3-airebrush-vs-airebrush-round",
+        "path": "/guides/t3-airebrush-vs-airebrush-round",
+        "guideSlug": "t3-airebrush-vs-airebrush-round"
+      },
+      {
+        "id": "t3-singlepass-curl-x-vs-ghd-soft-curl",
+        "path": "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
+        "guideSlug": "t3-singlepass-curl-x-vs-ghd-soft-curl"
+      },
       {
         "id": "ghd-air-vs-helios",
         "path": "/guides/ghd-air-vs-helios",
@@ -109,7 +119,6 @@
       "https://www.combreport.com/guides/how-to-blow-dry-a-bob-with-a-round-brush",
       "https://www.combreport.com/guides/how-to-blow-dry-long-hair-with-a-round-brush",
       "https://www.combreport.com/guides/how-to-diffuse-wavy-hair",
-      "https://www.combreport.com/guides/how-to-use-a-hot-air-brush-on-fine-hair",
       "https://www.combreport.com/guides/how-to-use-a-straightening-brush-on-short-hair",
       "https://www.combreport.com/guides/wide-vs-narrow-hair-dryer-concentrator"
     ],
@@ -166,7 +175,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/404",
@@ -329,6 +338,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -448,7 +459,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -611,6 +622,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -685,7 +698,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -848,6 +861,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -923,7 +938,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 162,
+      "allInternalIncomingCount": 164,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
@@ -1073,6 +1088,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -1299,7 +1316,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -1462,6 +1479,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -1586,12 +1605,11 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 9,
-      "contextualIncomingCount": 7,
+      "allInternalIncomingCount": 8,
+      "contextualIncomingCount": 6,
       "incomingInternalPages": [
         "/curling-irons",
         "/guides/best-curling-irons-fine-hair",
-        "/guides/best-curling-tools-long-hair",
         "/guides/best-curling-tools-short-hair",
         "/guides/curling-iron-barrel-size-guide",
         "/guides/curling-iron-vs-curling-wand",
@@ -1601,7 +1619,6 @@
       ],
       "incomingContextualArticlePages": [
         "/guides/best-curling-irons-fine-hair",
-        "/guides/best-curling-tools-long-hair",
         "/guides/best-curling-tools-short-hair",
         "/guides/curling-iron-barrel-size-guide",
         "/guides/curling-iron-vs-curling-wand",
@@ -1655,7 +1672,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -1818,6 +1835,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -1959,7 +1978,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 32,
+      "allInternalIncomingCount": 33,
       "contextualIncomingCount": 24,
       "incomingInternalPages": [
         "/guides",
@@ -1992,6 +2011,7 @@
         "/guides/how-to-use-a-curling-iron",
         "/guides/how-to-use-a-curling-wand",
         "/guides/how-to-use-a-flat-iron",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tapered-vs-cylindrical-curling-wand",
         "/guides/why-curls-fall-out"
       ],
@@ -2068,7 +2088,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 1,
       "incomingInternalPages": [
         "/",
@@ -2231,6 +2251,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -2314,18 +2336,22 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 6,
-      "contextualIncomingCount": 2,
+      "allInternalIncomingCount": 8,
+      "contextualIncomingCount": 4,
       "incomingInternalPages": [
         "/",
         "/guides",
         "/guides/best-hot-air-brushes",
+        "/guides/best-hot-air-brushes-short-hair",
+        "/guides/how-to-use-a-hot-air-brush-on-short-hair",
         "/guides/rotating-vs-fixed-hot-air-brush",
         "/hot-air-brushes",
         "/products"
       ],
       "incomingContextualArticlePages": [
         "/guides/best-hot-air-brushes",
+        "/guides/best-hot-air-brushes-short-hair",
+        "/guides/how-to-use-a-hot-air-brush-on-short-hair",
         "/guides/rotating-vs-fixed-hot-air-brush"
       ]
     },
@@ -2540,7 +2566,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/best-curling-irons",
-      "lastmod": "2026-10-25",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/best-curling-irons/index.html",
       "discoverySources": [
@@ -2703,14 +2729,18 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 3,
-      "contextualIncomingCount": 1,
+      "allInternalIncomingCount": 4,
+      "contextualIncomingCount": 2,
       "incomingInternalPages": [
         "/curling-irons",
         "/guides",
-        "/guides/best-curling-irons"
+        "/guides/best-curling-irons",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl"
       ],
-      "incomingContextualArticlePages": ["/guides/best-curling-irons"]
+      "incomingContextualArticlePages": [
+        "/guides/best-curling-irons",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl"
+      ]
     },
     {
       "url": "https://www.combreport.com/guides/best-curling-tools-short-hair",
@@ -3293,17 +3323,15 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 5,
-      "contextualIncomingCount": 2,
+      "allInternalIncomingCount": 4,
+      "contextualIncomingCount": 1,
       "incomingInternalPages": [
         "/guides",
-        "/guides/best-hot-air-brushes-fine-hair",
         "/guides/dyson-supersonic-vs-shark-speedstyle",
         "/hair-dryers",
         "/products"
       ],
       "incomingContextualArticlePages": [
-        "/guides/best-hot-air-brushes-fine-hair",
         "/guides/dyson-supersonic-vs-shark-speedstyle"
       ]
     },
@@ -3535,7 +3563,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/best-hot-air-brush-for-thick-hair",
-      "lastmod": "2026-10-11",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/best-hot-air-brush-for-thick-hair/index.html",
       "discoverySources": [
@@ -3556,34 +3584,30 @@
       "registryArticle": true,
       "documentStatus": "generated document present",
       "httpStatus": null,
-      "title": "How to choose a hot-air brush for thick hair | Comb Report",
-      "description": "Choose a hot-air brush for thick hair by comparing barrel size, heat and air settings, tension, sectioning time and the finish you want.",
-      "h1": ["How to choose a hot-air brush for thick hair"],
+      "title": "Hot-Air Brushes for Thick Hair: Compare the Task | Comb Report",
+      "description": "Separate strand thickness from section density, check the permitted starting state and compare head access. Review a difficult section before replacing your hot-air brush.",
+      "h1": ["How to choose a hot-air brush for thick or dense hair"],
       "canonicals": [
         "https://www.combreport.com/guides/best-hot-air-brush-for-thick-hair"
       ],
       "robots": ["index, follow"],
       "indexable": true,
-      "schemaTypes": [
-        "Article",
-        "Organization",
-        "FAQPage",
-        "Question",
-        "Answer",
-        "BreadcrumbList",
-        "ListItem"
-      ],
+      "schemaTypes": ["Article", "Organization", "BreadcrumbList", "ListItem"],
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 3,
-      "contextualIncomingCount": 1,
+      "allInternalIncomingCount": 4,
+      "contextualIncomingCount": 2,
       "incomingInternalPages": [
         "/guides",
         "/guides/best-hot-air-brushes",
+        "/guides/hot-air-brush-barrel-size-guide",
         "/hot-air-brushes"
       ],
-      "incomingContextualArticlePages": ["/guides/best-hot-air-brushes"]
+      "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brushes",
+        "/guides/hot-air-brush-barrel-size-guide"
+      ]
     },
     {
       "url": "https://www.combreport.com/guides/best-hot-air-brushes",
@@ -3599,7 +3623,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/best-hot-air-brushes",
-      "lastmod": "2026-10-14",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/best-hot-air-brushes/index.html",
       "discoverySources": [
@@ -3643,7 +3667,6 @@
       "incomingInternalPages": [
         "/guides",
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
-        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/best-hot-air-brushes-fine-hair",
         "/guides/best-travel-hair-dryers",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
@@ -3656,11 +3679,11 @@
         "/guides/how-to-use-a-hot-air-brush-on-long-hair",
         "/guides/how-to-use-hot-air-brush",
         "/guides/revlon-one-step-volumizer-vs-plus",
+        "/guides/t3-airebrush-vs-airebrush-round",
         "/hot-air-brushes"
       ],
       "incomingContextualArticlePages": [
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
-        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/best-hot-air-brushes-fine-hair",
         "/guides/best-travel-hair-dryers",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
@@ -3672,7 +3695,8 @@
         "/guides/how-to-clean-hot-air-brush",
         "/guides/how-to-use-a-hot-air-brush-on-long-hair",
         "/guides/how-to-use-hot-air-brush",
-        "/guides/revlon-one-step-volumizer-vs-plus"
+        "/guides/revlon-one-step-volumizer-vs-plus",
+        "/guides/t3-airebrush-vs-airebrush-round"
       ]
     },
     {
@@ -3689,7 +3713,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/best-hot-air-brushes-fine-hair",
-      "lastmod": "2026-10-11",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/best-hot-air-brushes-fine-hair/index.html",
       "discoverySources": [
@@ -3710,23 +3734,15 @@
       "registryArticle": true,
       "documentStatus": "generated document present",
       "httpStatus": null,
-      "title": "How to choose a hot-air brush for fine hair | Comb Report",
-      "description": "Find a hot-air brush for fine hair by prioritizing lower heat options, manageable barrel size, useful airflow and a routine that avoids overworking sections.",
+      "title": "Hot-Air Brushes for Fine Hair: What to Compare | Comb Report",
+      "description": "Separate fine strands from section density, then compare head access, controls and the finish you want. Keep a working tool when another head adds no useful option.",
       "h1": ["How to choose a hot-air brush for fine hair"],
       "canonicals": [
         "https://www.combreport.com/guides/best-hot-air-brushes-fine-hair"
       ],
       "robots": ["index, follow"],
       "indexable": true,
-      "schemaTypes": [
-        "Article",
-        "Organization",
-        "FAQPage",
-        "Question",
-        "Answer",
-        "BreadcrumbList",
-        "ListItem"
-      ],
+      "schemaTypes": ["Article", "Organization", "BreadcrumbList", "ListItem"],
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
@@ -3758,7 +3774,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/best-hot-air-brushes-short-hair",
-      "lastmod": "2026-10-11",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/best-hot-air-brushes-short-hair/index.html",
       "discoverySources": [
@@ -3779,34 +3795,34 @@
       "registryArticle": true,
       "documentStatus": "generated document present",
       "httpStatus": null,
-      "title": "How to choose a hot-air brush for short hair | Comb Report",
-      "description": "Choose a hot-air brush for short hair with the right barrel size, manageable shape, heat control and attachments for styling close to the roots.",
+      "title": "Hot-Air Brushes for Short Hair: Check Access | Comb Report",
+      "description": "Choose a hot-air brush for short hair by checking nape, side and face-frame access, body clearance and release. Compare the actual head before buying a larger kit.",
       "h1": ["How to choose a hot-air brush for short hair"],
       "canonicals": [
         "https://www.combreport.com/guides/best-hot-air-brushes-short-hair"
       ],
       "robots": ["index, follow"],
       "indexable": true,
-      "schemaTypes": [
-        "Article",
-        "Organization",
-        "FAQPage",
-        "Question",
-        "Answer",
-        "BreadcrumbList",
-        "ListItem"
-      ],
+      "schemaTypes": ["Article", "Organization", "BreadcrumbList", "ListItem"],
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 3,
-      "contextualIncomingCount": 1,
+      "allInternalIncomingCount": 6,
+      "contextualIncomingCount": 4,
       "incomingInternalPages": [
         "/guides",
         "/guides/best-hot-air-brushes",
+        "/guides/hot-air-brush-barrel-size-guide",
+        "/guides/how-to-use-a-hot-air-brush-on-short-hair",
+        "/guides/t3-airebrush-vs-airebrush-round",
         "/hot-air-brushes"
       ],
-      "incomingContextualArticlePages": ["/guides/best-hot-air-brushes"]
+      "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brushes",
+        "/guides/hot-air-brush-barrel-size-guide",
+        "/guides/how-to-use-a-hot-air-brush-on-short-hair",
+        "/guides/t3-airebrush-vs-airebrush-round"
+      ]
     },
     {
       "url": "https://www.combreport.com/guides/best-leave-in-conditioners-dry-hair",
@@ -4788,7 +4804,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/curling-iron-barrel-size-guide",
-      "lastmod": "2026-10-10",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/curling-iron-barrel-size-guide/index.html",
       "discoverySources": [
@@ -4829,8 +4845,8 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 13,
-      "contextualIncomingCount": 11,
+      "allInternalIncomingCount": 14,
+      "contextualIncomingCount": 12,
       "incomingInternalPages": [
         "/curling-irons",
         "/guides",
@@ -4843,6 +4859,7 @@
         "/guides/ghd-soft-curl-tong-vs-creative-curl-wand",
         "/guides/how-to-use-a-curling-iron",
         "/guides/how-to-use-a-curling-wand",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tapered-vs-cylindrical-curling-wand",
         "/guides/why-curls-fall-out"
       ],
@@ -4856,6 +4873,7 @@
         "/guides/ghd-soft-curl-tong-vs-creative-curl-wand",
         "/guides/how-to-use-a-curling-iron",
         "/guides/how-to-use-a-curling-wand",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tapered-vs-cylindrical-curling-wand",
         "/guides/why-curls-fall-out"
       ]
@@ -7047,7 +7065,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/hot-air-brush-barrel-size-guide",
-      "lastmod": "2026-10-10",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/hot-air-brush-barrel-size-guide/index.html",
       "discoverySources": [
@@ -7068,45 +7086,51 @@
       "registryArticle": true,
       "documentStatus": "generated document present",
       "httpStatus": null,
-      "title": "Hot-Air Brush Barrel Size Guide | Comb Report",
-      "description": "Choose a hot-air brush barrel size for your hair length and styling goal, from root lift and bend to smoothing and loose movement.",
-      "h1": ["Hot-Air Brush Barrel Size Guide"],
+      "title": "Hot-Air Brush Sizes: Measure and Compare Heads | Comb Report",
+      "description": "Understand round diameter, oval axes, bristle span and working length. Use a head-fit worksheet to compare published dimensions and your own access observations.",
+      "h1": ["Hot-air brush size guide: compare the working head"],
       "canonicals": [
         "https://www.combreport.com/guides/hot-air-brush-barrel-size-guide"
       ],
       "robots": ["index, follow"],
       "indexable": true,
-      "schemaTypes": [
-        "Article",
-        "Organization",
-        "FAQPage",
-        "Question",
-        "Answer",
-        "BreadcrumbList",
-        "ListItem"
-      ],
+      "schemaTypes": ["Article", "Organization", "BreadcrumbList", "ListItem"],
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 8,
-      "contextualIncomingCount": 6,
+      "allInternalIncomingCount": 15,
+      "contextualIncomingCount": 13,
       "incomingInternalPages": [
         "/guides",
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
+        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/best-hot-air-brushes",
+        "/guides/best-hot-air-brushes-fine-hair",
+        "/guides/best-hot-air-brushes-short-hair",
+        "/guides/hot-air-brush-frizzy-hair",
         "/guides/hot-air-brush-vs-hair-dryer-and-round-brush",
+        "/guides/how-to-use-a-hot-air-brush-on-long-hair",
+        "/guides/how-to-use-hot-air-brush",
         "/guides/revlon-one-step-volumizer-vs-plus",
         "/guides/rotating-vs-fixed-hot-air-brush",
         "/guides/round-brush-size-guide",
+        "/guides/t3-airebrush-vs-airebrush-round",
         "/hot-air-brushes"
       ],
       "incomingContextualArticlePages": [
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
+        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/best-hot-air-brushes",
+        "/guides/best-hot-air-brushes-fine-hair",
+        "/guides/best-hot-air-brushes-short-hair",
+        "/guides/hot-air-brush-frizzy-hair",
         "/guides/hot-air-brush-vs-hair-dryer-and-round-brush",
+        "/guides/how-to-use-a-hot-air-brush-on-long-hair",
+        "/guides/how-to-use-hot-air-brush",
         "/guides/revlon-one-step-volumizer-vs-plus",
         "/guides/rotating-vs-fixed-hot-air-brush",
-        "/guides/round-brush-size-guide"
+        "/guides/round-brush-size-guide",
+        "/guides/t3-airebrush-vs-airebrush-round"
       ]
     },
     {
@@ -7123,8 +7147,8 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/hot-air-brush-frizzy-hair",
-      "lastmod": "2026-10-06",
-      "lastmodSource": "Registry publishDate",
+      "lastmod": "2026-10-26",
+      "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/hot-air-brush-frizzy-hair/index.html",
       "discoverySources": [
         "generated-output",
@@ -7156,18 +7180,22 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 6,
-      "contextualIncomingCount": 4,
+      "allInternalIncomingCount": 8,
+      "contextualIncomingCount": 6,
       "incomingInternalPages": [
         "/guides",
+        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
+        "/guides/hot-air-brush-barrel-size-guide",
         "/guides/how-to-clean-hot-air-brush",
         "/guides/how-to-use-hot-air-brush",
         "/guides/styling-tool-troubleshooting",
         "/hot-air-brushes"
       ],
       "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
+        "/guides/hot-air-brush-barrel-size-guide",
         "/guides/how-to-clean-hot-air-brush",
         "/guides/how-to-use-hot-air-brush",
         "/guides/styling-tool-troubleshooting"
@@ -7302,12 +7330,10 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 8,
-      "contextualIncomingCount": 6,
+      "allInternalIncomingCount": 6,
+      "contextualIncomingCount": 4,
       "incomingInternalPages": [
         "/guides",
-        "/guides/best-hot-air-brush-for-thick-hair",
-        "/guides/best-hot-air-brushes-short-hair",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
         "/guides/hot-air-brush-vs-straightening-brush",
         "/guides/how-to-use-a-hot-air-brush-on-fine-hair",
@@ -7315,8 +7341,6 @@
         "/hot-air-brushes"
       ],
       "incomingContextualArticlePages": [
-        "/guides/best-hot-air-brush-for-thick-hair",
-        "/guides/best-hot-air-brushes-short-hair",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
         "/guides/hot-air-brush-vs-straightening-brush",
         "/guides/how-to-use-a-hot-air-brush-on-fine-hair",
@@ -8475,14 +8499,16 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 3,
-      "contextualIncomingCount": 1,
+      "allInternalIncomingCount": 4,
+      "contextualIncomingCount": 2,
       "incomingInternalPages": [
         "/guides",
+        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/dyson-airwrap-vs-shark-flexstyle",
         "/hot-air-brushes"
       ],
       "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/dyson-airwrap-vs-shark-flexstyle"
       ]
     },
@@ -9269,13 +9295,15 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 10,
-      "contextualIncomingCount": 7,
+      "allInternalIncomingCount": 12,
+      "contextualIncomingCount": 9,
       "incomingInternalPages": [
         "/brushes-combs",
         "/guides",
         "/guides/best-brushes-fine-hair",
         "/guides/best-detangling-brushes",
+        "/guides/best-hot-air-brush-for-thick-hair",
+        "/guides/best-hot-air-brushes-fine-hair",
         "/guides/how-to-apply-gel-to-curly-hair",
         "/guides/how-to-choose-hair-sectioning-clips",
         "/guides/how-to-use-a-curl-defining-brush",
@@ -9286,6 +9314,8 @@
       "incomingContextualArticlePages": [
         "/guides/best-brushes-fine-hair",
         "/guides/best-detangling-brushes",
+        "/guides/best-hot-air-brush-for-thick-hair",
+        "/guides/best-hot-air-brushes-fine-hair",
         "/guides/how-to-apply-gel-to-curly-hair",
         "/guides/how-to-choose-hair-sectioning-clips",
         "/guides/how-to-use-a-curl-defining-brush",
@@ -9372,7 +9402,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/how-to-use-a-curling-iron",
-      "lastmod": "2026-10-13",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/how-to-use-a-curling-iron/index.html",
       "discoverySources": [
@@ -9413,8 +9443,8 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 8,
-      "contextualIncomingCount": 6,
+      "allInternalIncomingCount": 9,
+      "contextualIncomingCount": 7,
       "incomingInternalPages": [
         "/curling-irons",
         "/guides",
@@ -9423,7 +9453,8 @@
         "/guides/best-curling-tools-short-hair",
         "/guides/flat-iron-vs-curling-iron-for-curls",
         "/guides/ghd-soft-curl-tong-vs-creative-curl-wand",
-        "/guides/hot-air-brush-vs-curling-iron"
+        "/guides/hot-air-brush-vs-curling-iron",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl"
       ],
       "incomingContextualArticlePages": [
         "/guides/best-curling-irons",
@@ -9431,7 +9462,8 @@
         "/guides/best-curling-tools-short-hair",
         "/guides/flat-iron-vs-curling-iron-for-curls",
         "/guides/ghd-soft-curl-tong-vs-creative-curl-wand",
-        "/guides/hot-air-brush-vs-curling-iron"
+        "/guides/hot-air-brush-vs-curling-iron",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl"
       ]
     },
     {
@@ -9832,10 +9864,16 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 2,
-      "contextualIncomingCount": 0,
-      "incomingInternalPages": ["/guides", "/hot-air-brushes"],
-      "incomingContextualArticlePages": []
+      "allInternalIncomingCount": 3,
+      "contextualIncomingCount": 1,
+      "incomingInternalPages": [
+        "/guides",
+        "/guides/best-hot-air-brushes-fine-hair",
+        "/hot-air-brushes"
+      ],
+      "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brushes-fine-hair"
+      ]
     },
     {
       "url": "https://www.combreport.com/guides/how-to-use-a-hot-air-brush-on-long-hair",
@@ -9851,7 +9889,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/how-to-use-a-hot-air-brush-on-long-hair",
-      "lastmod": "2026-10-11",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/how-to-use-a-hot-air-brush-on-long-hair/index.html",
       "discoverySources": [
@@ -9915,7 +9953,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/how-to-use-a-hot-air-brush-on-short-hair",
-      "lastmod": "2026-10-11",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/how-to-use-a-hot-air-brush-on-short-hair/index.html",
       "discoverySources": [
@@ -10786,7 +10824,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/how-to-use-hot-air-brush",
-      "lastmod": "2026-10-14",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/how-to-use-hot-air-brush/index.html",
       "discoverySources": [
@@ -10827,17 +10865,15 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 14,
-      "contextualIncomingCount": 12,
+      "allInternalIncomingCount": 12,
+      "contextualIncomingCount": 10,
       "incomingInternalPages": [
         "/guides",
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
         "/guides/best-heat-protectants",
         "/guides/best-hot-air-brushes",
-        "/guides/best-hot-air-brushes-short-hair",
         "/guides/best-microfibre-hair-towels",
         "/guides/dyson-airwrap-vs-shark-flexstyle",
-        "/guides/hot-air-brush-barrel-size-guide",
         "/guides/hot-air-brush-frizzy-hair",
         "/guides/hot-air-brush-vs-curling-iron",
         "/guides/hot-air-brush-vs-straightening-brush",
@@ -10849,10 +10885,8 @@
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
         "/guides/best-heat-protectants",
         "/guides/best-hot-air-brushes",
-        "/guides/best-hot-air-brushes-short-hair",
         "/guides/best-microfibre-hair-towels",
         "/guides/dyson-airwrap-vs-shark-flexstyle",
-        "/guides/hot-air-brush-barrel-size-guide",
         "/guides/hot-air-brush-frizzy-hair",
         "/guides/hot-air-brush-vs-curling-iron",
         "/guides/hot-air-brush-vs-straightening-brush",
@@ -11496,7 +11530,7 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Enabled, published article from the existing publication gate.",
       "canonicalPolicy": "https://www.combreport.com/guides/revlon-one-step-volumizer-vs-plus",
-      "lastmod": "2026-10-10",
+      "lastmod": "2026-10-26",
       "lastmodSource": "Article front matter updatedDate",
       "generatedOutput": "frontend/dist/hair-frontend/browser/guides/revlon-one-step-volumizer-vs-plus/index.html",
       "discoverySources": [
@@ -11590,18 +11624,22 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 5,
-      "contextualIncomingCount": 2,
+      "allInternalIncomingCount": 7,
+      "contextualIncomingCount": 4,
       "incomingInternalPages": [
         "/guides",
+        "/guides/best-hot-air-brushes-short-hair",
         "/guides/flat-iron-vs-hot-air-brush",
         "/guides/revlon-one-step-volumizer-vs-plus",
+        "/guides/t3-airebrush-vs-airebrush-round",
         "/hot-air-brushes",
         "/products"
       ],
       "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brushes-short-hair",
         "/guides/flat-iron-vs-hot-air-brush",
-        "/guides/revlon-one-step-volumizer-vs-plus"
+        "/guides/revlon-one-step-volumizer-vs-plus",
+        "/guides/t3-airebrush-vs-airebrush-round"
       ]
     },
     {
@@ -12162,6 +12200,143 @@
         "/guides/round-brush-stuck-in-hair",
         "/guides/why-curls-fall-out",
         "/guides/why-your-blowout-does-not-last"
+      ]
+    },
+    {
+      "url": "https://www.combreport.com/guides/t3-airebrush-vs-airebrush-round",
+      "route": "/guides/t3-airebrush-vs-airebrush-round",
+      "stableId": "article:t3-airebrush-vs-airebrush-round",
+      "diagnosis": "Existing public canonical page.",
+      "actionTaken": "Preserved inclusion; registered explicit policy and verified built output.",
+      "remainingLimitation": "Production HTTP delivery, response headers and robots access remain unverified by this built-output audit.",
+      "verificationResult": "Generated document inspected; see coverage.classificationErrors for any failing delivery or metadata assertion.",
+      "pageType": "guide",
+      "category": "hot-air-brushes",
+      "intendedIndexability": true,
+      "disposition": "indexable-canonical",
+      "dispositionReason": "Enabled, published article from the existing publication gate.",
+      "canonicalPolicy": "https://www.combreport.com/guides/t3-airebrush-vs-airebrush-round",
+      "lastmod": "2026-10-26",
+      "lastmodSource": "Article front matter updatedDate",
+      "generatedOutput": "frontend/dist/hair-frontend/browser/guides/t3-airebrush-vs-airebrush-round/index.html",
+      "discoverySources": [
+        "generated-output",
+        "comparison-registry",
+        "article-registry",
+        "sitemap",
+        "internal-link"
+      ],
+      "responseStatus": null,
+      "redirectChain": null,
+      "finalUrl": null,
+      "responseContentType": null,
+      "xRobotsTag": null,
+      "robotsTxtAccess": null,
+      "productionVerification": "Not fetched by this network-free built audit.",
+      "initialHtmlContent": "page-specific initial content",
+      "sitemapEntryCount": 1,
+      "registryArticle": true,
+      "documentStatus": "generated document present",
+      "httpStatus": null,
+      "title": "T3 AireBrush vs AireBrush Round: US Models | Comb Report",
+      "description": "Compare the US T3 AireBrush oval and AireBrush Round by head shape, shared controls and model scope. Check section access before buying a second brush.",
+      "h1": ["T3 AireBrush vs AireBrush Round"],
+      "canonicals": [
+        "https://www.combreport.com/guides/t3-airebrush-vs-airebrush-round"
+      ],
+      "robots": ["index, follow"],
+      "indexable": true,
+      "schemaTypes": ["Article", "Organization", "BreadcrumbList", "ListItem"],
+      "emptyRelatedGuideShell": false,
+      "dryerChooserInitialValues": null,
+      "sitemapIncluded": true,
+      "allInternalIncomingCount": 9,
+      "contextualIncomingCount": 6,
+      "incomingInternalPages": [
+        "/guides",
+        "/guides/best-hot-air-brush-for-thick-hair",
+        "/guides/best-hot-air-brushes",
+        "/guides/best-hot-air-brushes-fine-hair",
+        "/guides/best-hot-air-brushes-short-hair",
+        "/guides/hot-air-brush-barrel-size-guide",
+        "/guides/revlon-one-step-volumizer-vs-plus",
+        "/hot-air-brushes",
+        "/products"
+      ],
+      "incomingContextualArticlePages": [
+        "/guides/best-hot-air-brush-for-thick-hair",
+        "/guides/best-hot-air-brushes",
+        "/guides/best-hot-air-brushes-fine-hair",
+        "/guides/best-hot-air-brushes-short-hair",
+        "/guides/hot-air-brush-barrel-size-guide",
+        "/guides/revlon-one-step-volumizer-vs-plus"
+      ]
+    },
+    {
+      "url": "https://www.combreport.com/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
+      "route": "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
+      "stableId": "article:t3-singlepass-curl-x-vs-ghd-soft-curl",
+      "diagnosis": "Existing public canonical page.",
+      "actionTaken": "Preserved inclusion; registered explicit policy and verified built output.",
+      "remainingLimitation": "Production HTTP delivery, response headers and robots access remain unverified by this built-output audit.",
+      "verificationResult": "Generated document inspected; see coverage.classificationErrors for any failing delivery or metadata assertion.",
+      "pageType": "guide",
+      "category": "direct-heat",
+      "intendedIndexability": true,
+      "disposition": "indexable-canonical",
+      "dispositionReason": "Enabled, published article from the existing publication gate.",
+      "canonicalPolicy": "https://www.combreport.com/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
+      "lastmod": "2026-10-26",
+      "lastmodSource": "Article front matter updatedDate",
+      "generatedOutput": "frontend/dist/hair-frontend/browser/guides/t3-singlepass-curl-x-vs-ghd-soft-curl/index.html",
+      "discoverySources": [
+        "generated-output",
+        "comparison-registry",
+        "article-registry",
+        "sitemap",
+        "internal-link"
+      ],
+      "responseStatus": null,
+      "redirectChain": null,
+      "finalUrl": null,
+      "responseContentType": null,
+      "xRobotsTag": null,
+      "robotsTxtAccess": null,
+      "productionVerification": "Not fetched by this network-free built audit.",
+      "initialHtmlContent": "page-specific initial content",
+      "sitemapEntryCount": 1,
+      "registryArticle": true,
+      "documentStatus": "generated document present",
+      "httpStatus": null,
+      "title": "T3 Curl X vs ghd Soft Curl: 1.25-inch US Irons | Comb Report",
+      "description": "Compare the US 1.25-inch T3 SinglePass Curl X and original ghd Soft Curl by controls, published barrel evidence and ownership checks, without a performance ranking.",
+      "h1": ["T3 SinglePass Curl X vs ghd Soft Curl"],
+      "canonicals": [
+        "https://www.combreport.com/guides/t3-singlepass-curl-x-vs-ghd-soft-curl"
+      ],
+      "robots": ["index, follow"],
+      "indexable": true,
+      "schemaTypes": ["Article", "Organization", "BreadcrumbList", "ListItem"],
+      "emptyRelatedGuideShell": false,
+      "dryerChooserInitialValues": null,
+      "sitemapIncluded": true,
+      "allInternalIncomingCount": 8,
+      "contextualIncomingCount": 4,
+      "incomingInternalPages": [
+        "/curling-irons",
+        "/flat-irons",
+        "/guides",
+        "/guides/best-curling-irons",
+        "/guides/best-curling-tools-long-hair",
+        "/guides/curling-iron-barrel-size-guide",
+        "/guides/how-to-use-a-curling-iron",
+        "/products"
+      ],
+      "incomingContextualArticlePages": [
+        "/guides/best-curling-irons",
+        "/guides/best-curling-tools-long-hair",
+        "/guides/curling-iron-barrel-size-guide",
+        "/guides/how-to-use-a-curling-iron"
       ]
     },
     {
@@ -13372,7 +13547,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 17,
       "incomingInternalPages": [
         "/",
@@ -13536,6 +13711,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -13784,8 +13961,8 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 28,
-      "contextualIncomingCount": 25,
+      "allInternalIncomingCount": 29,
+      "contextualIncomingCount": 21,
       "incomingInternalPages": [
         "/guides",
         "/guides/babyliss-air-style-1000-vs-flawless-volume",
@@ -13814,16 +13991,13 @@
         "/guides/revlon-one-step-volumizer-vs-plus",
         "/guides/rotating-vs-fixed-hot-air-brush",
         "/guides/straightening-brush-vs-flat-iron",
+        "/guides/t3-airebrush-vs-airebrush-round",
         "/guides/thermal-brush-vs-hot-air-brush"
       ],
       "incomingContextualArticlePages": [
-        "/guides/best-hot-air-brush-for-thick-hair",
         "/guides/best-hot-air-brushes",
-        "/guides/best-hot-air-brushes-fine-hair",
-        "/guides/best-hot-air-brushes-short-hair",
         "/guides/can-you-use-hot-air-brush-on-dry-hair",
         "/guides/ghd-rise-vs-glide-plus",
-        "/guides/hot-air-brush-barrel-size-guide",
         "/guides/hot-air-brush-frizzy-hair",
         "/guides/hot-air-brush-vs-curling-iron",
         "/guides/hot-air-brush-vs-hair-dryer",
@@ -13890,7 +14064,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -14054,6 +14228,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -14127,7 +14303,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 7,
       "incomingInternalPages": [
         "/",
@@ -14291,6 +14467,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -14372,7 +14550,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -14536,6 +14714,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
@@ -14608,7 +14788,7 @@
       "emptyRelatedGuideShell": false,
       "dryerChooserInitialValues": null,
       "sitemapIncluded": true,
-      "allInternalIncomingCount": 185,
+      "allInternalIncomingCount": 187,
       "contextualIncomingCount": 0,
       "incomingInternalPages": [
         "/",
@@ -14772,6 +14952,8 @@
         "/guides/silk-vs-satin-pillowcase-hair",
         "/guides/straightening-brush-vs-flat-iron",
         "/guides/styling-tool-troubleshooting",
+        "/guides/t3-airebrush-vs-airebrush-round",
+        "/guides/t3-singlepass-curl-x-vs-ghd-soft-curl",
         "/guides/tail-comb-vs-wide-tooth-comb",
         "/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile",
         "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",

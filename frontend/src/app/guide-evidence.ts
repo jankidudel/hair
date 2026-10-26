@@ -1,3 +1,4 @@
+import { headFormatEvidence } from './head-format-guides';
 import { ArticleSlug } from './article-slug';
 import { coreGuideEvidence } from './core-guide-quality';
 
@@ -119,6 +120,7 @@ const finishingSources: readonly GuideSource[] = [
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
   ...coreGuideEvidence,
+  ...headFormatEvidence,
   [ArticleSlug.GhdAirVsHelios]: {
     sourceFormat: 'product-market',
     relatedOnly: true,

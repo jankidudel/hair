@@ -1,5 +1,7 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  T3AirebrushVsAirebrushRound: 't3-airebrush-vs-airebrush-round',
+  T3SinglepassCurlXVsGhdSoftCurl: 't3-singlepass-curl-x-vs-ghd-soft-curl',
   HowToSectionHairForStyling: 'how-to-section-hair-for-styling',
   HowToUseAWideToothComb: 'how-to-use-a-wide-tooth-comb',
   HowToUseACurlDefiningBrush: 'how-to-use-a-curl-defining-brush',

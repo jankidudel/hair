@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 740" role="img" aria-labelledby="title desc">
+<title id="title">Head profiles and separate body clearance</title><desc id="desc">A round core and dotted bristle envelope, an oval with long and short axes, and a separate tool body outline. Generic shapes without measured scale.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse"><path d="M0 0 7 3.5 0 7" fill="none" stroke="#31594b"/></marker></defs>
+<rect width="480" height="740" rx="18" fill="#f4f7f3"/>
+<g font-family="system-ui,sans-serif" fill="#203f34" text-anchor="middle" font-size="18">
+<text x="240" y="38" font-size="23">Round cross-section</text>
+<circle cx="240" cy="133" r="65" fill="#d8e6dc" stroke="#31594b" stroke-width="3"/><circle cx="240" cy="133" r="83" fill="none" stroke="#667d70" stroke-width="3" stroke-dasharray="3 7"/>
+<path d="M175 133H305" stroke="#31594b" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="240" y="246">Crosswise size: check definition</text>
+<text x="240" y="308" font-size="23">Oval cross-section</text>
+<ellipse cx="240" cy="411" rx="100" ry="55" fill="#d8e6dc" stroke="#31594b" stroke-width="3"/><ellipse cx="240" cy="411" rx="120" ry="75" fill="none" stroke="#667d70" stroke-width="3" stroke-dasharray="3 7"/>
+<path d="M140 411H340 M240 356V466" stroke="#31594b" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="240" y="518">Long axis</text><text x="395" y="415" font-size="16">Short axis</text>
+<rect x="188" y="571" width="104" height="48" rx="18" fill="#d8e6dc" stroke="#31594b" stroke-width="3"/><rect x="219" y="619" width="42" height="50" rx="8" fill="#d8e6dc" stroke="#31594b" stroke-width="3"/>
+<text x="240" y="710">Body clearance is a separate check</text>
+</g></svg>

@@ -1,3 +1,4 @@
+import { HeadFitWorksheetComponent } from './head-fit-worksheet.component';
 import {
   AfterViewInit,
   Component,
@@ -107,6 +108,7 @@ export function splitEvidenceArticleHtml(
     EvidenceScopeComponent,
     UpgradeCheckComponent,
     CleanInspectStopComponent,
+    HeadFitWorksheetComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
@@ -212,6 +214,9 @@ export function splitEvidenceArticleHtml(
           class="article-body"
           [innerHTML]="articleHtmlMain || article.html"
         ></section>
+      }
+      @if (article.slug === articleSlug.HotAirBrushBarrelSizeGuide) {
+        <app-head-fit-worksheet />
       }
       @if (guideEvidenceContent) {
         @if (articleHtmlFaq) {

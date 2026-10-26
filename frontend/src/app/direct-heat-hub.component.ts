@@ -260,8 +260,10 @@ export class DirectHeatHubComponent {
       article.group === ArticleGroupId.DirectHeat &&
       !(this.isFlat && modelComparisonDescriptions[article.slug]) &&
       (this.isFlat
-        ? !/curling|wand/.test(article.slug)
-        : /curling|wand/.test(article.slug)),
+        ? !/curling|wand/.test(article.slug) ||
+          article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl
+        : /curling|wand/.test(article.slug) ||
+          article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl),
   );
   readonly comparisonGuides = this.guides.filter((guide) =>
     /\bvs\b/.test(guide.slug),

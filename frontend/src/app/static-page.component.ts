@@ -348,6 +348,13 @@ import { AnalyticsService } from './analytics/analytics.service';
         @if (categoryPathwayGroups.length) {
           <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
         }
+        @if (category.id === 'hot-air-brushes') {
+          <p>
+            <a href="/guides/hot-air-brush-barrel-size-guide#head-fit-worksheet"
+              >Compare two head-fit records</a
+            >
+          </p>
+        }
         @if (category.id === 'hair-care') {
           <section
             class="category-guide-section"

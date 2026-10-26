@@ -1,3 +1,4 @@
+import { headFormatRelated } from './head-format-guides';
 import { ArticleSlug } from './article-slug';
 import { coreGuideRelated } from './core-guide-quality';
 import { articleRegistry, guideCategoryById } from './article-registry';
@@ -13,6 +14,7 @@ export interface GuideLinkMapEntry {
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
   ...coreGuideRelated,
+  ...headFormatRelated,
   [ArticleSlug.GhdAirVsHelios]: [
     ArticleSlug.HairDryerChooser,
     ArticleSlug.HairDryerWattageGuide,

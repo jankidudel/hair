@@ -114,3 +114,36 @@ test('URL parsing preserves query state, case and encoded slash while normalizin
     [{ url: 'https://www.combreport.com/curling-irons' }],
   );
 });
+
+test('head-format comparisons retain unique sitemap identities and substantive source pages', () => {
+  const paths = [
+    '/guides/t3-airebrush-vs-airebrush-round',
+    '/guides/t3-singlepass-curl-x-vs-ghd-soft-curl',
+  ];
+  const policies = seoRoutesForArticles(articles);
+  const entries = policies
+    .filter((p) => p.disposition === 'indexable-canonical')
+    .map((p) => ({
+      url: p.canonical!,
+      ...(p.lastmod ? { lastmod: p.lastmod } : {}),
+    }));
+  for (const path of paths) {
+    assert.equal(
+      entries.filter((p) => p.url === `https://www.combreport.com${path}`)
+        .length,
+      1,
+    );
+    const article = articles.find((a) => `/guides/${a.slug}` === path)!;
+    assert.ok(article.html.includes('<table'));
+    assert.ok(article.html.includes('/diagrams/'));
+    assert.equal(article.contentMethod, 'specification-researched');
+    assert.match(
+      sitemapParityErrors(
+        policies,
+        entries.filter((e) => e.url !== `https://www.combreport.com${path}`),
+      ).join('\n'),
+      /expected exactly one/,
+    );
+  }
+  assert.ok(!entries.some((e) => e.url.includes('#head-fit-worksheet')));
+});

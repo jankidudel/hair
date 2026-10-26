@@ -3,6 +3,10 @@ import { ArticleSlug } from './article-slug';
 export const modelComparisonDescriptions: Readonly<
   Partial<Record<string, string>>
 > = {
+  [ArticleSlug.T3AirebrushVsAirebrushRound]:
+    'Compare exact US oval and round heads, shared controls and the access question that would justify another brush.',
+  [ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl]:
+    'Compare the US 1.25-inch T3 SinglePass Curl X and original ghd Soft Curl by controls, published barrel evidence and ownership checks, without a performance ranking.',
   [ArticleSlug.GhdAirVsHelios]:
     'Compare the UK nozzle, control and ownership details.',
   [ArticleSlug.ParluxAlyonVsDigitalyon]:
@@ -36,11 +40,25 @@ export const modelComparisonGroups: Readonly<
       },
     ],
   },
+  'hot-air-brushes': {
+    heading: 'Compare exact hot-air brush models',
+    intro: 'Keep model, market and head-format evidence together.',
+    cards: [
+      {
+        label: 'T3 AireBrush vs AireBrush Round',
+        slug: ArticleSlug.T3AirebrushVsAirebrushRound,
+      },
+    ],
+  },
   'direct-heat': {
     heading: 'Compare width, barrel and holding action',
     intro:
       'Start with the section you need to reach and the movement you want to use. Then check the exact named model rather than a similar-looking variant.',
     cards: [
+      {
+        label: 'T3 SinglePass Curl X vs ghd Soft Curl',
+        slug: ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+      },
       {
         label: 'CLOUD NINE Original or Wide Iron?',
         slug: ArticleSlug.CloudNineOriginalIronVsWideIron,

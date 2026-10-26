@@ -19,7 +19,19 @@ describe('article decision integration data', () => {
     expect(Object.keys(decisionSnapshots)).toHaveLength(39);
     expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
     expect(Object.keys(evidenceOwners)).toHaveLength(8);
-    expect(Object.keys(guideEvidence)).toHaveLength(39);
+    expect(Object.keys(guideEvidence)).toHaveLength(45);
+    for (const slug of [
+      ArticleSlug.T3AirebrushVsAirebrushRound,
+      ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,
+      ArticleSlug.BestHotAirBrushesFineHair,
+      ArticleSlug.BestHotAirBrushesShortHair,
+      ArticleSlug.BestHotAirBrushForThickHair,
+      ArticleSlug.HotAirBrushBarrelSizeGuide,
+    ]) {
+      expect(articles.some((article) => article.slug === slug)).toBe(true);
+      expect(guideEvidence[slug]?.sources.length).toBeGreaterThan(0);
+      expect(evidenceOwners[slug]).toBeUndefined();
+    }
     expect(
       evidenceOwners[ArticleSlug.DysonAirwrapVsSharkFlexstyle],
     ).toBeDefined();

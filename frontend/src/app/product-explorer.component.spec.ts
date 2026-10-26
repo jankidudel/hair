@@ -7,6 +7,7 @@ import { AnalyticsService } from './analytics/analytics.service';
 import {
   DIFFERENT_MARKET_WARNING,
   GENERATION_WARNING,
+  productBySlug,
 } from './product-comparisons';
 import { ProductExplorerComponent } from './product-explorer.component';
 import { SiteSeoService } from './site-seo.service';
@@ -166,12 +167,41 @@ describe('ProductExplorerComponent decision support', () => {
     ).map((a) => a.getAttribute('href'));
     expect(links).toContain('/guides/t3-airebrush-vs-airebrush-round');
     expect(links).toContain('/guides/t3-singlepass-curl-x-vs-ghd-soft-curl');
-    component.selectedSlugs = ['t3-airebrush-oval-us', 't3-airebrush-round-us'];
-    fixture.detectChanges();
+    for (const [slugs, path] of [
+      [
+        ['t3-airebrush-oval-us', 't3-airebrush-round-us'],
+        '/guides/t3-airebrush-vs-airebrush-round',
+      ],
+      [
+        ['t3-singlepass-curl-x-125-us', 'ghd-curve-soft-curl'],
+        '/guides/t3-singlepass-curl-x-vs-ghd-soft-curl',
+      ],
+    ] as const) {
+      for (const slug of slugs) {
+        const card = Array.from(element.querySelectorAll('.product-card')).find(
+          (candidate) =>
+            candidate.querySelector('h2')?.textContent?.trim() ===
+            productBySlug(slug)!.name,
+        )!;
+        expect(
+          card.querySelector('.product-actions a.button')?.getAttribute('href'),
+        ).toBe(path);
+        (card.querySelector('.compare-toggle') as HTMLButtonElement).click();
+        await fixture.whenStable();
+      }
+      expect(component.selectedSlugs).toEqual([...slugs]);
+      expect(
+        element.querySelectorAll('.comparison-matrix thead th'),
+      ).toHaveLength(3);
+      const clear = Array.from(element.querySelectorAll('button')).find(
+        (button) => button.textContent?.trim() === 'Clear selection',
+      )!;
+      clear.click();
+      await fixture.whenStable();
+      expect(component.selectedSlugs).toEqual([]);
+    }
     expect(
-      element.querySelector(
-        'a[href="/guides/t3-airebrush-vs-airebrush-round"]',
-      ),
-    ).not.toBeNull();
+      component.comparisonForProduct('ghd-curve-soft-curl-tong-uk')?.path,
+    ).toBe('/guides/ghd-soft-curl-tong-vs-creative-curl-wand');
   });
 });

@@ -358,6 +358,151 @@ import { AnalyticsService } from './analytics/analytics.service';
         @if (category.id === 'hair-care') {
           <section
             class="category-guide-section"
+            aria-labelledby="care-method-heading"
+          >
+            <h2 id="care-method-heading">
+              Choose a step, then follow its method
+            </h2>
+            <p>
+              Start with the question you need to answer. Washing, choosing a
+              formula and carrying out its application are separate decisions.
+            </p>
+            <h3>Washing and rinsing</h3>
+            <ul>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowOftenShouldYouWashYourHair,
+                  ]"
+                  >How often should you wash your hair?</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.ColdWaterForHair]"
+                  >Cold water for hair: what does a final rinse change?</a
+                >
+              </li>
+            </ul>
+            <h3>Leave-in role and application</h3>
+            <ul>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.BestLeaveInConditionersDryHair,
+                  ]"
+                  >How to choose a leave-in conditioner for your routine</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.CurlCreamVsLeaveInConditioner,
+                  ]"
+                  >Curl cream vs leave-in conditioner</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToApplyLeaveInConditioner,
+                  ]"
+                  >How to apply leave-in conditioner</a
+                >
+              </li>
+            </ul>
+            <h3>Heat-styling preparation</h3>
+            <ul>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.BestHeatProtectants]"
+                  >How to choose a heat protectant for your styling routine</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HeatProtectantSprayVsCream,
+                  ]"
+                  >Heat Protectant Spray vs Cream</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToApplyHeatProtectant,
+                  ]"
+                  >How to apply heat protectant</a
+                >
+              </li>
+            </ul>
+          </section>
+        }
+        @if (category.id === 'brushes-and-combs') {
+          <section
+            class="category-guide-section"
+            aria-labelledby="manual-care-heading"
+          >
+            <h2 id="manual-care-heading">
+              Choose, maintain or inspect a manual tool
+            </h2>
+            <p>
+              Keep the handling task separate from the material and its care.
+              Start with what you need to do next.
+            </p>
+            <ul>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.HairBrushVsComb]"
+                  >Hair brush vs comb: which task are you doing?</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.BestHairBrushForShortHair,
+                  ]"
+                  >How to choose a hair brush for short hair</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.BoarBristleBrushGuide]"
+                  >Boar-bristle brushes: what should you compare?</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.HowToCleanAHairBrush]"
+                  >How to Clean a Hair Brush Properly</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToCleanABoarBristleHairbrush,
+                  ]"
+                  >How to clean a boar-bristle hairbrush</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.WhenToReplaceHairbrushOrComb,
+                  ]"
+                  >When should you replace a hairbrush or comb?</a
+                >
+              </li>
+            </ul>
+          </section>
+        }
+        @if (category.id === 'hair-care') {
+          <section
+            class="category-guide-section"
             aria-labelledby="product-role-heading"
           >
             <div class="section-heading">
@@ -1132,10 +1277,10 @@ export class StaticPageComponent implements OnInit {
     },
     {
       name: 'Heat Protectant Finder',
-      type: 'Choose an application format',
+      type: 'Review product directions',
       description:
-        'Use your styling routine and the product directions to choose a practical format and application point.',
-      path: '/guides/heat-protectant-spray-vs-cream',
+        'Record your planned application and product-label starting states, then review direction and readiness checks.',
+      path: '/guides/' + ArticleSlug.HeatProtectantSprayVsCream,
       action: 'Use the finder',
     },
   ] as const;

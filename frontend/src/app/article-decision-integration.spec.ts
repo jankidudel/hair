@@ -16,10 +16,18 @@ import { articles } from './content.generated';
 
 describe('article decision integration data', () => {
   it('maps the comparison and task-guide decision owners without duplicating evidence owners', () => {
-    expect(Object.keys(decisionSnapshots)).toHaveLength(39);
-    expect(Object.keys(decisionRelatedLinks)).toHaveLength(10);
-    expect(Object.keys(evidenceOwners)).toHaveLength(8);
-    expect(Object.keys(guideEvidence)).toHaveLength(45);
+    const registered = new Set(articles.map((article) => article.slug));
+    for (const collection of [
+      decisionSnapshots,
+      decisionRelatedLinks,
+      evidenceOwners,
+      guideEvidence,
+    ]) {
+      for (const slug of Object.keys(collection))
+        expect(registered.has(slug), slug).toBe(true);
+    }
+    for (const slug of Object.keys(guideEvidence))
+      expect(evidenceOwners[slug], slug).toBeUndefined();
     for (const slug of [
       ArticleSlug.T3AirebrushVsAirebrushRound,
       ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl,

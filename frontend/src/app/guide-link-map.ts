@@ -1,3 +1,4 @@
+import { careMethodRelated } from './care-method-guides';
 import { headFormatRelated } from './head-format-guides';
 import { ArticleSlug } from './article-slug';
 import { coreGuideRelated } from './core-guide-quality';
@@ -13,6 +14,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...careMethodRelated,
   ...coreGuideRelated,
   ...headFormatRelated,
   [ArticleSlug.GhdAirVsHelios]: [

@@ -46,16 +46,16 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-care',
     'hub',
-    '2026-10-21',
-    'Existing explicit Hair Care hub revision record',
+    '2026-10-27',
+    'Batch 24 care methods and direction-check discovery',
   ),
   page('/hair-dryers', 'hub', '2026-10-25', 'Batch 22 descriptive guide cards'),
   page('/hot-air-brushes', 'hub', '2026-10-17', 'Batch 14 category revision'),
   page(
     '/brushes-combs',
     'hub',
-    '2026-10-25',
-    'Batch 22 descriptive guide cards',
+    '2026-10-27',
+    'Batch 24 care methods and direction-check discovery',
   ),
   page(
     '/hair-accessories',
@@ -66,8 +66,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-10-25',
-    'Batch 22 guide titles and descriptions',
+    '2026-10-27',
+    'Batch 24 care methods and direction-check discovery',
   ),
   page('/hair-brush-finder', 'tool'),
   page(
@@ -88,8 +88,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/tools',
     'hub',
-    '2026-10-18',
-    'Existing explicit tools-index revision record',
+    '2026-10-27',
+    'Batch 24 care methods and direction-check discovery',
   ),
   page(
     '/products',

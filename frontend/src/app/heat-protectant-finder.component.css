@@ -52,3 +52,23 @@ select:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+.finder-options > div {
+  min-width: 0;
+}
+.finder-options p {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.finder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+button:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.finder-actions button {
+  margin: 0;
+}

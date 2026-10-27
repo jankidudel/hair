@@ -1,3 +1,4 @@
+import { careMethodSlugs } from '../frontend/src/app/care-method-guides.ts';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import matter from 'gray-matter';
@@ -103,7 +104,8 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
   )
     return errors;
   if (
-    input.entry.publishDate >= '2026-09-05' &&
+    (input.entry.publishDate >= '2026-09-05' ||
+      (slug && careMethodSlugs.includes(slug))) &&
     wordCount(parsed.content) < hardMinimumWords
   )
     errors.push(

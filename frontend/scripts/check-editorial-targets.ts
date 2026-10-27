@@ -1,3 +1,5 @@
+import { careMethodSlugs } from '../src/app/care-method-guides.ts';
+import { guideBodyErrors } from '../../scripts/guide-body-validation.ts';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import matter from 'gray-matter';
@@ -74,9 +76,9 @@ for (const file of files) {
     typeof data.heading === 'string' ? data.heading.trim() : title;
   const canonical = `/guides/${slug}`;
   const prefix = `${file} (${slug})`;
-  // Established articles retain their original editorial contract; scheduled
-  // registry entries are held to the new editorial target.
-  const modernSource = entry.publishDate >= '2026-09-05';
+  // Repaired legacy owners now meet the current contract without changing their schedule.
+  const modernSource =
+    entry.publishDate >= '2026-09-05' || careMethodSlugs.includes(slug);
   if (!title || !description || !heading)
     errors.push(`${prefix}: title, description, and heading are required.`);
   if (seenTitles.has(title)) errors.push(`${prefix}: duplicate title.`);
@@ -91,6 +93,10 @@ for (const file of files) {
   if (modernSource && h1.length > 0)
     errors.push(
       `${prefix}: article body must not include H1; generated H1 must match heading.`,
+    );
+  if (careMethodSlugs.includes(slug))
+    errors.push(
+      ...guideBodyErrors(parsed.content).map((error) => `${prefix}: ${error}`),
     );
   const decisionSnapshot = decisionSnapshots[slug];
   const decisionText = decisionSnapshot

@@ -1,3 +1,11 @@
+import { ArticleSlug } from '../src/app/article-slug.ts';
+import { writeFile } from 'node:fs/promises';
+import { careMethodSlugs } from '../src/app/care-method-guides.ts';
+import {
+  guideBodyStats,
+  renderedGuideBody,
+  renderedGuideErrors,
+} from '../../scripts/guide-body-validation.ts';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { auditInternalLinks } from '../../scripts/internal-link-audit.ts';
@@ -158,6 +166,7 @@ for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
       'sitemap.xml: a supplied lastmod must be a valid maintained date.',
     );
 }
+const substanceRows: string[] = [];
 for (const article of articles) {
   const route = `/guides/${article.slug}`;
   if (!sitemapUrls.some((url) => url.endsWith(route)))
@@ -166,6 +175,37 @@ for (const article of articles) {
     resolve(output, 'guides', article.slug, 'index.html'),
     'utf8',
   );
+  const renderedBody = renderedGuideBody(html);
+  const bodyStats = guideBodyStats(renderedBody.intro + renderedBody.body);
+  const evidenceRecord = guideEvidence[article.slug];
+  const hasEvidence = html.includes('id="evidence-scope-title"');
+  const sourceCount = (
+    html
+      .match(
+        /<section[^>]*aria-labelledby="source-checks-heading"[^>]*>([^]*?)<\/section>/,
+      )?.[1]
+      .match(/<a /g) ?? []
+  ).length;
+  substanceRows.push(
+    `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
+  );
+  if (
+    careMethodSlugs.includes(article.slug as (typeof careMethodSlugs)[number])
+  ) {
+    if (!evidenceRecord?.sources.length)
+      failures.push(`${route}: required evidence/source model is missing.`);
+    failures.push(
+      ...renderedGuideErrors(html, {
+        heading: article.heading,
+        body: article.html,
+        faqs: article.faq,
+        sourceUrls: evidenceRecord?.sources.map((s) => s.url) ?? [],
+        relatedPaths:
+          guideLinkMap[article.slug]?.relatedSlugs.map((s) => '/guides/' + s) ??
+          [],
+      }).map((error) => `${route}: ${error}`),
+    );
+  }
   const canonical = `https://www.combreport.com${route}`;
   if (!html.includes(`<link rel="canonical" href="${canonical}">`))
     failures.push(`${route}: missing or incorrect canonical.`);
@@ -338,6 +378,49 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
   if (!hub.includes(`href="${route}"`))
     failures.push(`/${category}: missing task-guide link '${route}'.`);
 }
+const methodAdditions = [
+  ArticleSlug.HowToApplyHeatProtectant,
+  ArticleSlug.HowToApplyLeaveInConditioner,
+  ArticleSlug.HowToCleanABoarBristleHairbrush,
+];
+for (const slug of methodAdditions) {
+  const incoming = articles.filter(
+    (article) =>
+      article.slug !== slug && article.html.includes(`href="/guides/${slug}"`),
+  );
+  if (incoming.length < 2)
+    failures.push(
+      `/guides/${slug}: needs two contextual incoming article links.`,
+    );
+}
+const finderOwner = await readFile(
+  resolve(
+    output,
+    'guides',
+    ArticleSlug.HeatProtectantSprayVsCream,
+    'index.html',
+  ),
+  'utf8',
+);
+const finder =
+  finderOwner.match(
+    /<app-heat-protectant-finder[^>]*>([^]*?)<\/app-heat-protectant-finder>/,
+  )?.[1] ?? '';
+if (
+  !finder.includes('interactive direction checks need JavaScript') ||
+  /<(?:form|button)\b/.test(finder)
+)
+  failures.push(
+    'Heat Protectant Finder: initial HTML must retain its honest inactive fallback.',
+  );
+for (const slug of [
+  ArticleSlug.HowToApplyHeatProtectant,
+  ArticleSlug.BestHeatProtectants,
+])
+  if (!finder.includes(`href="/guides/${slug}"`))
+    failures.push(
+      `Heat Protectant Finder: missing static method link '${slug}'.`,
+    );
 // Editorial insertions must survive sanitizing and appear in the initial HTML.
 const accessoryIntegrations: Readonly<Record<string, readonly string[]>> = {
   'how-to-choose-hair-dryer': [
@@ -492,6 +575,12 @@ if (
   failures.push(
     `${unchangedGuide.slug}: unchanged guide must retain its publication lastmod.`,
   );
+await writeFile(
+  resolve(output, '..', 'guide-substance-review.md'),
+  '# Guide substance review\n\nMain-body counts are review signals, not ranking thresholds. Build identity is checked against each registered article heading.\n\n| Route | Build identity | Main-body words | Main H2 headings | Evidence scope | Sources | Review signal |\n| --- | --- | ---: | --- | --- | ---: | --- |\n' +
+    substanceRows.join('\n') +
+    '\n',
+);
 if (failures.length) {
   console.error(`Generated SEO validation failed (${failures.length} issues):`);
   for (const failure of failures) console.error(`- ${failure}`);

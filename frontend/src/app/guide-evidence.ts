@@ -1,3 +1,4 @@
+import { careMethodEvidence } from './care-method-guides';
 import { headFormatEvidence } from './head-format-guides';
 import { ArticleSlug } from './article-slug';
 import { coreGuideEvidence } from './core-guide-quality';
@@ -119,6 +120,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...careMethodEvidence,
   ...coreGuideEvidence,
   ...headFormatEvidence,
   [ArticleSlug.GhdAirVsHelios]: {

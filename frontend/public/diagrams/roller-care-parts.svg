@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="530" viewBox="0 0 340 530" fill="none">
+  <title>Separate roller care decisions</title>
+  <rect width="340" height="530" rx="16" fill="#f5f2e9"/>
+  <g fill="#fffdf7" stroke="#b9cec0" stroke-width="2">
+    <rect x="12" y="12" width="316" height="246" rx="12"/>
+    <rect x="12" y="274" width="316" height="244" rx="12"/>
+  </g>
+  <g stroke="#244d3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="32" y="132" width="164" height="84" rx="16" fill="#b9cec0"/>
+    <path d="M48 132V108H180V132M60 156H168M60 174H168M196 194H220V216H241"/>
+    <rect x="241" y="204" width="20" height="24" rx="3" fill="#f2d48e"/>
+    <path d="M249 204V194M256 204V194"/>
+    <rect x="284" y="126" width="27" height="40" rx="4"/>
+    <path d="M293 139V146M302 139V146"/>
+    <rect x="48" y="349" width="95" height="64" rx="12" fill="#b9cec0"/>
+    <ellipse cx="143" cy="381" rx="12" ry="32" fill="#fffdf7"/>
+    <path d="M64 362H126M64 379H126M64 396H126"/>
+    <path d="M244 372Q277 340 293 374L256 405Q242 410 246 395L280 366"/>
+  </g>
+  <g fill="#244d3c" font-family="system-ui,sans-serif" font-size="17" font-weight="600">
+    <text x="28" y="43"><tspan x="28">Powered setter: follow its own</tspan><tspan x="28" dy="23">maintenance instructions</tspan></text>
+    <text x="28" y="92" font-size="15">Cooled · disconnected</text>
+    <text x="28" y="305"><tspan x="28">Removable roller: check its</tspan><tspan x="28" dy="23">core and covering</tspan></text>
+    <text x="28" y="459"><tspan x="28">Fastener: check its finish</tspan><tspan x="28" dy="23">and mechanism</tspan></text>
+  </g>
+</svg>

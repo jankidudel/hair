@@ -574,6 +574,27 @@ import { AnalyticsService } from './analytics/analytics.service';
             <div class="editorial-grid guides-grid">
               <a
                 class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToApplyHairClay]"
+                ><h3>How to apply hair clay</h3>
+                <p>
+                  Check the jar's preparation, distribute the product and shape
+                  the intended area.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToUseTexturisingSpray]"
+                ><h3>How to use texturising spray</h3>
+                <p>
+                  Choose the target area and follow the exact container's
+                  starting state and distance.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+
+              <a
+                class="guide-card"
                 [routerLink]="['/guides', articleSlug.HowToApplyHairMousse]"
                 ><h3>Apply hair mousse</h3>
                 <p>
@@ -797,6 +818,43 @@ import { AnalyticsService } from './analytics/analytics.service';
               </p>
             </div>
             <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToCleanHairRollers]"
+                ><h3>How to clean hair rollers</h3>
+                <p>
+                  Identify the construction and separate roller care from the
+                  electrical setter.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToCleanHairClipsAndPins,
+                ]"
+                ><h3>How to clean clips and pins</h3>
+                <p>
+                  Check the finish and mechanism before choosing permitted
+                  surface care.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToPackHairToolsForTravel,
+                ]"
+                ><h3>How to pack hair tools for travel</h3>
+                <p>
+                  Plan a cooled kit with room for the cord, plug and
+                  attachments.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+
               <a
                 class="guide-card"
                 [routerLink]="[

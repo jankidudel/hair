@@ -4,6 +4,7 @@ import { careMethodSlugs } from '../frontend/src/app/care-method-guides.ts';
 import { articles } from '../frontend/src/app/content.generated.ts';
 import {
   guideBodyErrors,
+  renderedEditorialCopyErrors,
   renderedGuideErrors,
 } from './guide-body-validation.ts';
 import { validateStagedGuide } from './check-staged-content.ts';
@@ -95,6 +96,36 @@ test('shared evidence, source and related sections stay required when the fragme
   const tail = `<section><h2 id="evidence-scope-title">Evidence scope</h2></section><section class="article-body" aria-labelledby="source-checks-heading"><h2 id="source-checks-heading">Sources</h2><a href="${sourceUrl}">Directions</a></section><nav><h2 id="next-steps-heading">Related guides</h2><a href="${relatedPath}">Selection</a></nav>`;
   assert.deepEqual(
     renderedGuideErrors(main + faq + tail + '</article>', expected),
+    [],
+  );
+  const record = {
+    route: '/guides/how-to-choose-claw-clip-size',
+    placement: 'after fit/hold selection, before FAQ',
+    publicText:
+      '<p>Once the jaw fit suits the intended amount, follow <a href="/guides/how-to-use-a-claw-clip">how to use a claw clip</a>.</p>',
+  };
+  const rendered = (paragraph: string) =>
+    main.replace('</section>', paragraph + '</section>') +
+    faq +
+    tail +
+    '</article>';
+  const publicBody = { ...expected, body: expected.body + record.publicText };
+  assert.deepEqual(
+    renderedGuideErrors(rendered(record.publicText), publicBody),
+    [],
+  );
+  const leaked = `<p>${record.route}<code>— ${record.placement} |</code>${record.publicText.replace(/<\/?p>/g, '')}</p>`;
+  // Even matching authored contamination must fail the real rendered-output check.
+  assert.ok(
+    renderedGuideErrors(rendered(leaked), {
+      ...expected,
+      body: expected.body + leaked,
+    }).some((error) => error.includes('editorial placement metadata')),
+  );
+  assert.deepEqual(
+    renderedEditorialCopyErrors(
+      '<p>Follow <a href="/guides/how-to-use-a-claw-clip">the method</a> before storing it.</p><pre><code>/guides/example — before FAQ | example</code></pre>',
+    ),
     [],
   );
   assert.deepEqual(

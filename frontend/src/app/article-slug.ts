@@ -1,5 +1,10 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToCleanHairRollers: 'how-to-clean-hair-rollers',
+  HowToCleanHairClipsAndPins: 'how-to-clean-hair-clips-and-pins',
+  HowToPackHairToolsForTravel: 'how-to-pack-hair-tools-for-travel',
+  HowToApplyHairClay: 'how-to-apply-hair-clay',
+  HowToUseTexturisingSpray: 'how-to-use-texturising-spray',
   HowToUseAClawClip: 'how-to-use-a-claw-clip',
   HowToUseSnapHairClips: 'how-to-use-snap-hair-clips',
   HowToUseSpiralHairTies: 'how-to-use-spiral-hair-ties',

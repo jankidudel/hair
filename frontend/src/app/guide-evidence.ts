@@ -1,3 +1,4 @@
+import { carePackingEvidence } from './care-packing-guides';
 import { fastenerEvidence } from './fastener-guides';
 import { careMethodEvidence } from './care-method-guides';
 import { headFormatEvidence } from './head-format-guides';
@@ -121,6 +122,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...carePackingEvidence,
   ...fastenerEvidence,
   ...careMethodEvidence,
   ...coreGuideEvidence,

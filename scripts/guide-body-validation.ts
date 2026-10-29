@@ -47,6 +47,29 @@ export function renderedGuideBody(html: string): {
   return { intro, body };
 }
 
+/** Placement metadata must never become visible article copy. Link targets
+ * and standalone code examples are deliberately outside this paragraph check. */
+export function renderedEditorialCopyErrors(html: string): string[] {
+  const paragraphs = [...html.matchAll(/<p\b[^>]*>([^]*?)<\/p>/gi)];
+  for (const [, paragraph] of paragraphs) {
+    const visible = paragraph
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&(?:mdash|#8212|#x2014);/gi, '—')
+      .replace(/&(?:vert|#124|#x7c);/gi, '|')
+      .replace(/\s+/g, ' ');
+    if (
+      /\/guides\/\S+\s*(?:—|–|--?)\s*(?:after|before|in|alongside)\b[^|]*\|/i.test(
+        visible,
+      ) ||
+      /(?:COPY (?:START|END)|(?:Owner|Placement):\s*\/guides\/)/.test(visible)
+    )
+      return [
+        'visible article paragraph contains editorial placement metadata.',
+      ];
+  }
+  return [];
+}
+
 /** Inspect the actual prerendered article; a homepage/not-found shell cannot pass. */
 export function renderedGuideErrors(
   html: string,
@@ -72,6 +95,7 @@ export function renderedGuideErrors(
     errors.push('missing expected article identity.');
   const { intro, body } = renderedGuideBody(article);
   errors.push(...guideBodyErrors(intro + body));
+  errors.push(...renderedEditorialCopyErrors(intro + body));
   // Compare body text, not just metadata or a coincidentally matching H1.
   const normal = (s: string) =>
     s

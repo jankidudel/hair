@@ -1,4 +1,8 @@
 import { fastenerSlugs } from '../src/app/fastener-guides.ts';
+import {
+  carePackingSlugs,
+  carePackingIncoming,
+} from '../src/app/care-packing-guides.ts';
 import { ArticleSlug } from '../src/app/article-slug.ts';
 import { writeFile } from 'node:fs/promises';
 import { careMethodSlugs } from '../src/app/care-method-guides.ts';
@@ -6,6 +10,7 @@ import {
   guideBodyStats,
   renderedGuideBody,
   renderedGuideErrors,
+  renderedEditorialCopyErrors,
 } from '../../scripts/guide-body-validation.ts';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -177,6 +182,11 @@ for (const article of articles) {
     'utf8',
   );
   const renderedBody = renderedGuideBody(html);
+  failures.push(
+    ...renderedEditorialCopyErrors(renderedBody.intro + renderedBody.body).map(
+      (error) => `${route}: ${error}`,
+    ),
+  );
   const bodyStats = guideBodyStats(renderedBody.intro + renderedBody.body);
   const evidenceRecord = guideEvidence[article.slug];
   const hasEvidence = html.includes('id="evidence-scope-title"');
@@ -194,7 +204,8 @@ for (const article of articles) {
     careMethodSlugs.includes(
       article.slug as (typeof careMethodSlugs)[number],
     ) ||
-    fastenerSlugs.includes(article.slug as (typeof fastenerSlugs)[number])
+    fastenerSlugs.includes(article.slug as (typeof fastenerSlugs)[number]) ||
+    carePackingSlugs.includes(article.slug as (typeof carePackingSlugs)[number])
   ) {
     if (!evidenceRecord?.sources.length)
       failures.push(`${route}: required evidence/source model is missing.`);
@@ -268,6 +279,10 @@ for (const article of articles) {
       `${route}: Article headline/description does not match visible content.`,
     );
   const materialDate = article.updatedDate ?? article.publishDate;
+  if (articleSchema?.['datePublished'] !== article.publishDate)
+    failures.push(
+      `${route}: JSON-LD datePublished differs from original publication.`,
+    );
   if (articleSchema?.['dateModified'] !== materialDate)
     failures.push(
       `${route}: JSON-LD dateModified does not match content data.`,
@@ -570,6 +585,27 @@ if (new Set(sitemapLastmods).size < 2)
 const unchangedGuide = articles.find(
   (article) => article.slug === 'how-to-diffuse-wavy-hair',
 );
+for (const [target, owners] of Object.entries(carePackingIncoming)) {
+  for (const owner of owners) {
+    const source = articles.find((article) => article.slug === owner);
+    const rendered = renderedGuideBody(
+      await readFile(resolve(output, 'guides', owner, 'index.html'), 'utf8'),
+    );
+    const link = `href="/guides/${target}"`;
+    for (const [stage, html] of [
+      ['authored', source?.html ?? ''],
+      ['rendered', rendered.intro + rendered.body],
+    ]) {
+      const paragraphs = [...html.matchAll(/<p\b[^>]*>([^]*?)<\/p>/g)].filter(
+        (match) => match[1].includes(link),
+      );
+      if (paragraphs.length !== 1)
+        failures.push(
+          `${owner}: expected one ${stage} contextual paragraph linking to '${target}'.`,
+        );
+    }
+  }
+}
 if (
   unchangedGuide &&
   !sitemap.includes(

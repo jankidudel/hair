@@ -189,6 +189,14 @@ export const categoryPathways: Readonly<
         'Choose the closure, coverage and format before choosing a material claim.',
       links: [
         {
+          label: 'Creaseless clips vs sectioning clips',
+          path: guide(ArticleSlug.CreaselessClipsVsSectioningClips),
+        },
+        {
+          label: 'Hair elastics vs scrunchies',
+          path: guide(ArticleSlug.HairElasticsVsScrunchies),
+        },
+        {
           label: 'Choose a heatless curling set',
           path: guide(ArticleSlug.BestHeatlessCurlingSets),
         },

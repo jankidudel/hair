@@ -1,3 +1,4 @@
+import { fastenerRelated } from './fastener-guides';
 import { careMethodRelated } from './care-method-guides';
 import { headFormatRelated } from './head-format-guides';
 import { ArticleSlug } from './article-slug';
@@ -14,6 +15,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...fastenerRelated,
   ...careMethodRelated,
   ...coreGuideRelated,
   ...headFormatRelated,
@@ -178,11 +180,7 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
     ArticleSlug.HowToWashASatinBonnet,
     ArticleSlug.SilkVsSatinPillowcaseHair,
   ],
-  [ArticleSlug.HairElasticsVsScrunchies]: [
-    ArticleSlug.HowToCleanHairScrunchies,
-    ArticleSlug.HowToChooseClawClipSize,
-    ArticleSlug.HowToChooseHairSectioningClips,
-  ],
+
   [ArticleSlug.HowToUseFlexiRods]: [
     ArticleSlug.HowToUseSnapClosureFoamRollers,
     ArticleSlug.HairRollerSizeGuide,
@@ -267,10 +265,7 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
     ArticleSlug.BestMicrofibreHairTowels,
     ArticleSlug.HowToUseAMicrofibreHairTowel,
   ],
-  [ArticleSlug.HowToChooseHairSectioningClips]: [
-    ArticleSlug.HowToUseHeatlessCurlingRod,
-    ArticleSlug.HowToUseVelcroHairRollers,
-  ],
+
   [ArticleSlug.BestHeatlessCurlingSets]: [
     ArticleSlug.HowToUseHeatlessCurlingRod,
     ArticleSlug.HowToUseHeatlessCurlersOnShortHair,

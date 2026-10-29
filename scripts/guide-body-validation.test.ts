@@ -97,6 +97,16 @@ test('shared evidence, source and related sections stay required when the fragme
     renderedGuideErrors(main + faq + tail + '</article>', expected),
     [],
   );
+  assert.deepEqual(
+    renderedGuideErrors(
+      main.replace('</section>', '<p>Pins &amp; clips</p></section>') +
+        faq +
+        tail +
+        '</article>',
+      { ...expected, body: expected.body + '<p>Pins &#x26; clips</p>' },
+    ),
+    [],
+  );
   assert.ok(
     renderedGuideErrors(main + faq + '</article>', expected).some((e) =>
       e.includes('tail'),

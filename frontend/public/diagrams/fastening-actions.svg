@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="482" viewBox="0 0 320 482" role="img" aria-labelledby="title desc">
+  <title id="title">Three fastening actions</title>
+  <desc id="desc">Claw handles open jaws; a snap body flexes; a continuous spiral wraps around gathered hair.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0 0L6 3.5L0 7" fill="none" stroke="#536d65" />
+    </marker>
+  </defs>
+  <rect x="8" y="8" width="304" height="146" rx="12" fill="#f8f5ef" stroke="#687675" />
+  <text x="20" y="36" font-family="Arial, sans-serif" font-size="16" fill="#223239">Claw: operate the handles</text>
+  <rect x="8" y="166" width="304" height="146" rx="12" fill="#f8f5ef" stroke="#687675" />
+  <text x="20" y="194" font-family="Arial, sans-serif" font-size="16" fill="#223239">Snap: flex the clip body</text>
+  <rect x="8" y="324" width="304" height="146" rx="12" fill="#f8f5ef" stroke="#687675" />
+  <text x="20" y="352" font-family="Arial, sans-serif" font-size="16" fill="#223239">Spiral: wrap the continuous ring</text>
+  <g aria-hidden="true">
+    <path d="M160 65V137M174 66V137" fill="none" stroke="#9b744d" stroke-width="7" stroke-linecap="round" />
+    <path d="M108 74L141 100L120 134M222 74L189 100L210 134" fill="none" stroke="#344b57" stroke-width="5" stroke-linecap="round" />
+    <circle cx="165" cy="100" r="8" fill="#344b57" />
+    <path marker-end="url(#arrow)" d="M86 78L117 89M244 78L213 89" fill="none" stroke="#536d65" stroke-width="2" />
+    <path marker-end="url(#arrow)" d="M132 114L105 135M198 114L225 135" fill="none" stroke="#536d65" stroke-width="2" />
+    <path d="M48 278Q100 218 151 278Q99 296 48 278ZM184 278Q235 311 286 278Q235 270 184 278Z" fill="none" stroke="#344b57" stroke-width="5" stroke-linecap="round" />
+    <path marker-end="url(#arrow)" d="M103 268V248M156 267H177" fill="none" stroke="#536d65" stroke-width="2" />
+    <path d="M152 385V451M167 385V451M181 385V451" fill="none" stroke="#9b744d" stroke-width="7" stroke-linecap="round" />
+    <path d="M132 410C111 390 135 384 148 401S169 418 176 401S207 389 197 410S169 434 153 417S127 433 132 410Z" fill="none" stroke="#344b57" stroke-width="5" stroke-linecap="round" />
+    <path marker-end="url(#arrow)" d="M220 393Q249 424 218 444" fill="none" stroke="#536d65" stroke-width="2" />
+  </g>
+</svg>

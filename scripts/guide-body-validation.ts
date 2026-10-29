@@ -76,7 +76,7 @@ export function renderedGuideErrors(
   const normal = (s: string) =>
     s
       .replace(/<[^>]+>/g, ' ')
-      .replace(/&(?:amp|#38);/g, '&')
+      .replace(/&(?:amp|#38|#x26);/gi, '&')
       .replace(/&#(?:39|x27);/g, "'")
       .replace(/&quot;/g, '"')
       .replace(/\s+/g, ' ')

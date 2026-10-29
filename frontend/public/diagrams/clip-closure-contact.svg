@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="508" viewBox="0 0 320 508" role="img" aria-labelledby="title desc">
+  <title id="title">Closure and contact checks</title>
+  <desc id="desc">An overloaded jaw needs a rebuilt bundle; a closed clip with clearance needs a contact and placement check.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0 0L6 3.5L0 7" fill="none" stroke="#536d65" />
+    </marker>
+  </defs>
+  <rect x="8" y="8" width="304" height="240" rx="12" fill="#f8f5ef" stroke="#687675" />
+  <text x="20" y="36" font-family="Arial, sans-serif" font-size="16" fill="#223239">Jaws cannot close normally</text>
+  <g aria-hidden="true">
+    <path d="M161 66V141" fill="none" stroke="#9b744d" stroke-width="46" stroke-linecap="round" />
+    <path d="M86 72L118 104L95 139M236 72L204 104L227 139" fill="none" stroke="#344b57" stroke-width="5" stroke-linecap="round" />
+    <path marker-end="url(#arrow)" d="M162 151V175" fill="none" stroke="#536d65" stroke-width="2" />
+  </g>
+  <text x="20" y="200" font-family="Arial, sans-serif" font-size="16" fill="#223239">Support, reopen and reduce</text>
+  <text x="20" y="224" font-family="Arial, sans-serif" font-size="16" fill="#223239">or rebuild the bundle</text>
+  <rect x="8" y="260" width="304" height="240" rx="12" fill="#f8f5ef" stroke="#687675" />
+  <text x="20" y="288" font-family="Arial, sans-serif" font-size="16" fill="#223239">Jaws close but hair moves</text>
+  <g aria-hidden="true">
+    <path d="M157 317V393M168 317V393" fill="none" stroke="#9b744d" stroke-width="7" stroke-linecap="round" />
+    <path d="M111 325Q80 356 111 389H212Q244 356 212 325Z" fill="none" stroke="#344b57" stroke-width="5" stroke-linecap="round" />
+    <path marker-end="url(#arrow)" d="M162 401V427" fill="none" stroke="#536d65" stroke-width="2" />
+  </g>
+  <text x="20" y="454" font-family="Arial, sans-serif" font-size="16" fill="#223239">Inspect contact and reposition</text>
+  <text x="20" y="478" font-family="Arial, sans-serif" font-size="16" fill="#223239">before reducing the section</text>
+</svg>

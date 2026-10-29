@@ -1,3 +1,4 @@
+import { everydayFastenerSlugs, fastenerDescriptions } from './fastener-guides';
 import { HandlingRoutineNavigatorComponent } from './handling-routine-navigator.component';
 import { handlingGuideDescriptions } from './handling-guides';
 import {
@@ -858,7 +859,8 @@ import { AnalyticsService } from './analytics/analytics.service';
                         ? 'Use the feature finder, then compare dryers for your routine.'
                         : article.slug === articleSlug.HowToCleanAHairComb
                           ? 'Remove debris between teeth, follow material-specific care and inspect the comb before storing it.'
-                          : article.description
+                          : (fastenerDescriptions[article.slug] ??
+                            article.description)
                     }}
                   </p>
                   <span class="text-link"
@@ -1188,6 +1190,8 @@ export class StaticPageComponent implements OnInit {
   private readonly analytics = inject(AnalyticsService);
   readonly guides = articles;
   readonly articleSlug = ArticleSlug;
+  readonly fastenerDescriptions: Readonly<Partial<Record<string, string>>> =
+    fastenerDescriptions;
   readonly editorialTeam = combReportEditorialTeam;
   readonly categories = guideCategories;
   readonly guidesBreadcrumbs: readonly Breadcrumb[] = [
@@ -1382,12 +1386,26 @@ export class StaticPageComponent implements OnInit {
           articles: this.categoryArticles.filter(
             (article) =>
               classify(article.slug) === id &&
+              !everydayFastenerSlugs.includes(article.slug as ArticleSlug) &&
               !finishingGuideDescriptions[article.slug] &&
               !handlingGuideDescriptions[article.slug] &&
               !modelComparisonDescriptions[article.slug],
           ),
         }))
         .filter((section) => section.articles.length > 0);
+      if (categoryId === 'hair-accessories') {
+        this.categoryGuideSections = [
+          ...this.categoryGuideSections,
+          {
+            id: 'everyday-fastening-methods',
+            label: 'Everyday fastening methods',
+            eyebrow: 'Use',
+            articles: everydayFastenerSlugs.flatMap((slug) =>
+              this.categoryArticles.filter((article) => article.slug === slug),
+            ),
+          },
+        ];
+      }
       const startLinks: Record<
         string,
         readonly { label: string; path: string; description: string }[]

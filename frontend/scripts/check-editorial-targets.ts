@@ -1,3 +1,4 @@
+import { fastenerSlugs } from '../src/app/fastener-guides.ts';
 import { careMethodSlugs } from '../src/app/care-method-guides.ts';
 import { guideBodyErrors } from '../../scripts/guide-body-validation.ts';
 import { readdir, readFile } from 'node:fs/promises';
@@ -94,7 +95,7 @@ for (const file of files) {
     errors.push(
       `${prefix}: article body must not include H1; generated H1 must match heading.`,
     );
-  if (careMethodSlugs.includes(slug))
+  if (careMethodSlugs.includes(slug) || fastenerSlugs.includes(slug))
     errors.push(
       ...guideBodyErrors(parsed.content).map((error) => `${prefix}: ${error}`),
     );

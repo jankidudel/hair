@@ -1,3 +1,4 @@
+import { fastenerSlugs } from '../src/app/fastener-guides.ts';
 import { ArticleSlug } from '../src/app/article-slug.ts';
 import { writeFile } from 'node:fs/promises';
 import { careMethodSlugs } from '../src/app/care-method-guides.ts';
@@ -190,7 +191,10 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
-    careMethodSlugs.includes(article.slug as (typeof careMethodSlugs)[number])
+    careMethodSlugs.includes(
+      article.slug as (typeof careMethodSlugs)[number],
+    ) ||
+    fastenerSlugs.includes(article.slug as (typeof fastenerSlugs)[number])
   ) {
     if (!evidenceRecord?.sources.length)
       failures.push(`${route}: required evidence/source model is missing.`);

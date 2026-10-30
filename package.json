@@ -34,7 +34,8 @@
     "prepare": "npm run content:generate --workspace=frontend && npm run hooks:install",
     "hooks:install": "git config core.hooksPath .githooks",
     "seo:audit": "tsx scripts/seo/audit-built-routes.ts",
-    "seo:verify-production": "tsx scripts/seo/verify-production-routes.ts"
+    "seo:verify-production": "tsx scripts/seo/verify-production-routes.ts",
+    "seo:smoke-release": "tsx scripts/seo/release-smoke.ts"
   },
   "devDependencies": {
     "@types/node": "24.13.3",

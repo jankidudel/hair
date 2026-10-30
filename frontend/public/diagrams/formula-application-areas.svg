@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="650" viewBox="0 0 340 650" fill="none">
+  <title>Application areas belong to exact formulas</title>
+  <desc>Two named examples distinguish towel-dried mid-lengths and ends from dry-hair root-area placement. No universal dose is shown.</desc>
+  <rect width="340" height="650" rx="16" fill="#f5f2e9"/>
+  <g fill="#fffdf7" stroke="#b9cec0" stroke-width="2">
+    <rect x="12" y="12" width="316" height="306" rx="12"/>
+    <rect x="12" y="332" width="316" height="306" rx="12"/>
+  </g>
+  <g stroke="#244d3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M94 286V177Q94 127 170 127Q246 127 246 177V286Z" fill="#fffdf7"/>
+    <path d="M95 211H245V286H95Z" fill="#f2d48e" stroke="none"/>
+    <path d="M94 286V177Q94 127 170 127Q246 127 246 177V286M120 165Q112 211 117 283M145 151Q136 212 140 283M170 146V283M195 151Q202 212 200 283M220 165Q228 211 223 283"/>
+    <path d="M94 606V497Q94 447 170 447Q246 447 246 497V606Z" fill="#fffdf7"/>
+    <path d="M95 501V497Q95 447 170 447Q245 447 245 497V501Q170 474 95 501Z" fill="#b9cec0" stroke="none"/>
+    <path d="M94 606V497Q94 447 170 447Q246 447 246 497V606M120 485Q112 531 117 603M145 471Q136 532 140 603M170 466V603M195 471Q202 532 200 603M220 485Q228 531 223 603"/>
+    <path d="M95 211H245M95 501Q170 474 245 501" stroke-dasharray="4 5"/>
+  </g>
+  <g fill="#244d3c" font-family="system-ui,sans-serif" font-size="17" font-weight="600">
+    <text x="27" y="43"><tspan x="27">Moroccanoil Treatment Original </tspan><tspan x="27" dy="23">example: mid-lengths and ends </tspan><tspan x="27" dy="23">on towel-dried hair</tspan></text>
+    <text x="27" y="364"><tspan x="27">American Crew Boost Powder </tspan><tspan x="27" dy="23">example: dry-hair root-area </tspan><tspan x="27" dy="23">placement</tspan></text>
+  </g>
+</svg>

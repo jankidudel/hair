@@ -123,3 +123,15 @@ test('deployment builds fingerprint static entry assets', async () => {
   assert.match(fingerprintScript, /styles\.css/);
   assert.match(fingerprintScript, /createHash\('sha256'\)/);
 });
+
+test('manual frontend deployments verify the actual published release after upload', async () => {
+  for (const name of ['deploy-content.yml', 'deploy-all.yml']) {
+    const source = await workflow(name);
+    const upload = source.indexOf(
+      'run: bash .github/scripts/deploy-frontend-assets.sh',
+    );
+    const smoke = source.indexOf('run: npm run seo:smoke-release');
+    assert.ok(upload >= 0 && smoke > upload, name);
+    assert.doesNotMatch(source.slice(smoke), /continue-on-error|\|\|\s*true/);
+  }
+});

@@ -1,5 +1,9 @@
 import { fastenerSlugs } from '../src/app/fastener-guides.ts';
 import {
+  finishingMethodSlugs,
+  finishingMethodIncoming,
+} from '../src/app/finishing-method-guides.ts';
+import {
   carePackingSlugs,
   carePackingIncoming,
 } from '../src/app/care-packing-guides.ts';
@@ -205,7 +209,12 @@ for (const article of articles) {
       article.slug as (typeof careMethodSlugs)[number],
     ) ||
     fastenerSlugs.includes(article.slug as (typeof fastenerSlugs)[number]) ||
-    carePackingSlugs.includes(article.slug as (typeof carePackingSlugs)[number])
+    carePackingSlugs.includes(
+      article.slug as (typeof carePackingSlugs)[number],
+    ) ||
+    finishingMethodSlugs.includes(
+      article.slug as (typeof finishingMethodSlugs)[number],
+    )
   ) {
     if (!evidenceRecord?.sources.length)
       failures.push(`${route}: required evidence/source model is missing.`);
@@ -585,7 +594,10 @@ if (new Set(sitemapLastmods).size < 2)
 const unchangedGuide = articles.find(
   (article) => article.slug === 'how-to-diffuse-wavy-hair',
 );
-for (const [target, owners] of Object.entries(carePackingIncoming)) {
+for (const [target, owners] of Object.entries({
+  ...carePackingIncoming,
+  ...finishingMethodIncoming,
+})) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);
     const rendered = renderedGuideBody(

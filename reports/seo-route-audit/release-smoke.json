@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-10-30T21:45:25.671Z",
+  "origin": "https://www.combreport.com",
+  "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
+  "sourceCommit": "9245c71dfee0ed3d11771622f3c86996574c2a6f",
+  "sourceTreeDirty": true,
+  "artifactSha256": "561edfb2b05a2ff482e4870e731a8a23ddcfe905a3e60dce356272bc38e2958a",
+  "artifactScope": "sitemap.xml and the intended rendered article documents",
+  "releaseRun": {
+    "id": null,
+    "attempt": null
+  },
+  "mode": "artifact-only",
+  "expectedOwners": [
+    "how-to-clean-hair-rollers",
+    "how-to-clean-hair-clips-and-pins",
+    "how-to-pack-hair-tools-for-travel",
+    "how-to-apply-hair-clay",
+    "how-to-use-texturising-spray",
+    "how-to-apply-hair-serum-or-oil",
+    "how-to-apply-curl-cream",
+    "how-to-use-hair-styling-powder",
+    "how-to-clean-a-straightening-brush",
+    "hair-styling-powder-vs-dry-shampoo",
+    "how-to-clean-hot-air-brush"
+  ],
+  "observations": [
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-hair-rollers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-hair-clips-and-pins",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-pack-hair-tools-for-travel",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-hair-clay",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-texturising-spray",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-hair-serum-or-oil",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-curl-cream",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-hair-styling-powder",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-a-straightening-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-styling-powder-vs-dry-shampoo",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-hot-air-brush",
+      "errors": []
+    }
+  ],
+  "failures": [],
+  "verified": true
+}

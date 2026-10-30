@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="650" viewBox="0 0 340 650" fill="none">
+  <title>Electrical brushes have different care areas</title>
+  <desc>External Duet Blowdry rear filter and barrel air outlets are separate from the original glide contact surface and bristle gaps. The named Duet rear filter is not removable.</desc>
+  <rect width="340" height="650" rx="16" fill="#f5f2e9"/>
+  <g fill="#fffdf7" stroke="#b9cec0" stroke-width="2">
+    <rect x="12" y="12" width="316" height="306" rx="12"/>
+    <rect x="12" y="332" width="316" height="306" rx="12"/>
+  </g>
+  <g stroke="#244d3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="39" y="143" width="142" height="67" rx="28" fill="#b9cec0"/>
+    <path d="M181 158H275Q292 158 292 176Q292 194 275 194H181Z" fill="#fffdf7"/>
+    <path d="M57 156H159M57 176H159M57 196H159M267 161V192M277 161V192M292 176H308M73 134V144M97 134V144M121 134V144M145 134V144M73 210V220M97 210V220M121 210V220M145 210V220"/>
+    <path d="M52 503Q52 478 77 478H161Q186 478 186 503V544Q186 565 161 565H77Q52 565 52 544Z" fill="#b9cec0"/>
+    <path d="M186 507H277Q291 507 291 521Q291 535 277 535H186Z" fill="#fffdf7"/>
+    <path d="M291 521H308"/>
+    <path d="M73 495V548M96 495V548M119 495V548M142 495V548M165 495V548" stroke="#fffdf7" stroke-width="6"/>
+    <path d="M73 501V512M96 524V535M119 501V512M142 524V535M165 501V512"/>
+  </g>
+  <g fill="#244d3c" font-family="system-ui,sans-serif" font-size="17" font-weight="600">
+    <text x="27" y="43"><tspan x="27">Airflow brush example: Duet </tspan><tspan x="27" dy="23">Blowdry rear filter and barrel </tspan><tspan x="27" dy="23">air outlets</tspan></text>
+    <text x="27" y="260" font-size="16"><tspan x="27">Rear filter is not removable </tspan><tspan x="27" dy="22">on this named model</tspan></text>
+    <text x="27" y="364"><tspan x="27">Heated smoothing brush </tspan><tspan x="27" dy="23">example: original glide contact </tspan><tspan x="27" dy="23">surface and bristle gaps</tspan></text>
+    <text x="27" y="607" font-size="15">External surfaces only · unplugged</text>
+  </g>
+</svg>

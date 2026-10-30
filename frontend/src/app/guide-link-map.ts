@@ -1,3 +1,4 @@
+import { finishingMethodRelated } from './finishing-method-guides';
 import { carePackingRelated } from './care-packing-guides';
 import { fastenerRelated } from './fastener-guides';
 import { careMethodRelated } from './care-method-guides';
@@ -16,6 +17,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...finishingMethodRelated,
   ...carePackingRelated,
   ...fastenerRelated,
   ...careMethodRelated,

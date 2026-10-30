@@ -1,3 +1,4 @@
+import { finishingMethodDescriptions } from './finishing-method-guides';
 import { everydayFastenerSlugs, fastenerDescriptions } from './fastener-guides';
 import { HandlingRoutineNavigatorComponent } from './handling-routine-navigator.component';
 import { handlingGuideDescriptions } from './handling-guides';
@@ -574,6 +575,39 @@ import { AnalyticsService } from './analytics/analytics.service';
             <div class="editorial-grid guides-grid">
               <a
                 class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToApplyHairSerumOrOil]"
+                ><h3>How to apply hair serum or oil</h3>
+                <p>
+                  Choose the formula's stage and placement, then check
+                  distribution.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="['/guides', articleSlug.HowToApplyCurlCream]"
+                ><h3>How to apply curl cream</h3>
+                <p>
+                  Prepare, distribute and follow the permitted drying route.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToUseHairStylingPowder,
+                ]"
+                ><h3>How to use hair styling powder</h3>
+                <p>
+                  Check the dispenser and target a deliberate styling
+                  application.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+
+              <a
+                class="guide-card"
                 [routerLink]="['/guides', articleSlug.HowToApplyHairClay]"
                 ><h3>How to apply hair clay</h3>
                 <p>
@@ -630,6 +664,20 @@ import { AnalyticsService } from './analytics/analytics.service';
               </p>
             </div>
             <div class="editorial-grid guides-grid">
+              <a
+                class="guide-card"
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HairStylingPowderVsDryShampoo,
+                ]"
+                ><h3>Styling powder vs dry shampoo</h3>
+                <p>
+                  Compare product roles and application formats before adding
+                  another layer.
+                </p>
+                <span class="text-link">Read guide →</span></a
+              >
+
               <a
                 class="guide-card"
                 [routerLink]="['/guides', articleSlug.HowToUseHairspray]"
@@ -917,7 +965,8 @@ import { AnalyticsService } from './analytics/analytics.service';
                         ? 'Use the feature finder, then compare dryers for your routine.'
                         : article.slug === articleSlug.HowToCleanAHairComb
                           ? 'Remove debris between teeth, follow material-specific care and inspect the comb before storing it.'
-                          : (fastenerDescriptions[article.slug] ??
+                          : (finishingMethodDescriptions[article.slug] ??
+                            fastenerDescriptions[article.slug] ??
                             article.description)
                     }}
                   </p>
@@ -1248,6 +1297,7 @@ export class StaticPageComponent implements OnInit {
   private readonly analytics = inject(AnalyticsService);
   readonly guides = articles;
   readonly articleSlug = ArticleSlug;
+  readonly finishingMethodDescriptions = finishingMethodDescriptions;
   readonly fastenerDescriptions: Readonly<Partial<Record<string, string>>> =
     fastenerDescriptions;
   readonly editorialTeam = combReportEditorialTeam;

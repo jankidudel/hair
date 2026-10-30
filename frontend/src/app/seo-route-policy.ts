@@ -46,11 +46,16 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-care',
     'hub',
-    '2026-10-29',
-    'Batch 26 clay and texturising application methods',
+    '2026-10-30',
+    'Batch 27 finishing methods and powder comparison',
   ),
   page('/hair-dryers', 'hub', '2026-10-25', 'Batch 22 descriptive guide cards'),
-  page('/hot-air-brushes', 'hub', '2026-10-17', 'Batch 14 category revision'),
+  page(
+    '/hot-air-brushes',
+    'hub',
+    '2026-10-30',
+    'Batch 27 electrical brush care discovery',
+  ),
   page(
     '/brushes-combs',
     'hub',
@@ -66,8 +71,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-10-29',
-    'Batch 26 five new care, packing and styling methods',
+    '2026-10-30',
+    'Batch 27 five new finishing and electrical-brush care guides',
   ),
   page('/hair-brush-finder', 'tool'),
   page(

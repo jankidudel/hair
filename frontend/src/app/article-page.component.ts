@@ -37,6 +37,7 @@ import {
 import { productBySlug, type ProductProfile } from './product-comparisons';
 import { CleanInspectStopComponent } from './clean-inspect-stop.component';
 import { guideEvidence, type GuideEvidence } from './guide-evidence';
+import { additionalGuideSources } from './current-model-comparison-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
 
@@ -252,7 +253,7 @@ export function splitEvidenceArticleHtml(
             }
           </ul>
         </section>
-      } @else if (evidenceSourceChecks.length) {
+      } @else if (evidenceSourceChecks.length || supplementarySources.length) {
         <section class="article-body" aria-labelledby="source-checks-heading">
           <h2 id="source-checks-heading">Sources</h2>
           <ul>
@@ -260,6 +261,13 @@ export function splitEvidenceArticleHtml(
               <li>
                 <a [href]="source.url">{{ source.label }}</a>
                 — checked {{ source.date }}
+              </li>
+            }
+            @for (source of supplementarySources; track source.url) {
+              <li>
+                <a [href]="source.url">{{ source.label }}</a> —
+                {{ source.market }}; checked {{ source.checkedDate }}.
+                {{ source.scope }}
               </li>
             }
           </ul>
@@ -341,6 +349,11 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   evidenceProducts: readonly ProductProfile[] = [];
   evidenceMarketContext?: string;
   guideEvidenceContent?: GuideEvidence;
+  get supplementarySources() {
+    return this.article
+      ? (additionalGuideSources[this.article.slug] ?? [])
+      : [];
+  }
   get evidenceSourceChecks(): readonly {
     key: string;
     url: string;

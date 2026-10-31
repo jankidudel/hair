@@ -1,5 +1,9 @@
 import { fastenerSlugs } from '../src/app/fastener-guides.ts';
 import {
+  currentModelSlugs,
+  currentModelIncoming,
+} from '../src/app/current-model-comparison-guides.ts';
+import {
   finishingMethodSlugs,
   finishingMethodIncoming,
 } from '../src/app/finishing-method-guides.ts';
@@ -205,6 +209,7 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    currentModelSlugs.includes(article.slug) ||
     careMethodSlugs.includes(
       article.slug as (typeof careMethodSlugs)[number],
     ) ||
@@ -499,6 +504,8 @@ for (const [slug, diagram] of [
   ['bobby-pins-vs-u-shaped-hair-pins', 'pin-fastening-shapes'],
   ['how-to-choose-a-hair-barrette', 'barrette-clasp-fit'],
   ['how-to-clean-a-hair-comb', 'comb-teeth-cleaning'],
+  [ArticleSlug.DysonAirstraitVsGhdDuetStyle, 'wet-to-dry-mode-boundaries'],
+  [ArticleSlug.DysonAirwrapIdVsCoAnda2x, 'airwrap-generation-fit'],
 ]) {
   const html = await readFile(
     resolve(output, 'guides', slug, 'index.html'),
@@ -597,6 +604,7 @@ const unchangedGuide = articles.find(
 for (const [target, owners] of Object.entries({
   ...carePackingIncoming,
   ...finishingMethodIncoming,
+  ...currentModelIncoming,
 })) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);

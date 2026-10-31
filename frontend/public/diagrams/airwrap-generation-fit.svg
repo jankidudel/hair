@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="520" viewBox="0 0 340 520" role="img" aria-labelledby="title desc">
+  <title id="title">Attachment fit before bundle contents</title>
+  <desc id="desc">Earlier Airwrap and i.d. share a system subject to exact part checks. Parts do not interchange with the separate Co-anda2x system. Then check the selected retail box.</desc>
+  <style>
+    .bg { fill: #f7f3eb; } .box { fill: #fffdf8; stroke: #817b71; }
+    text { fill: #264b3c; font-family: system-ui, sans-serif; font-size: 16px; }
+    .heading { font-size: 19px; font-weight: 650; } .line { stroke: #264b3c; fill: none; stroke-width: 2; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #17251f; } .box { fill: #21372c; stroke: #a9baad; }
+      text { fill: #f7f3eb; } .line { stroke: #f7f3eb; }
+    }
+  </style>
+  <rect class="bg" width="340" height="520" rx="16"/>
+  <text class="heading" x="20" y="35">1. Check generation fit</text>
+  <rect class="box" x="14" y="58" width="312" height="112" rx="12"/>
+  <text class="heading" x="30" y="90">Earlier Airwrap / i.d. system</text>
+  <text x="30" y="126">Check exact compatible part</text>
+  <path class="line" stroke-dasharray="4 5" d="M170 176v44m0 34v22"/>
+  <path class="line" d="m159 226 22 22m0-22-22 22"/>
+  <text x="30" y="204">Parts do not interchange</text>
+  <rect class="box" x="14" y="282" width="312" height="88" rx="12"/>
+  <text class="heading" x="30" y="318">Co-anda2x system</text>
+  <text x="30" y="346">Separate generation</text>
+  <text class="heading" x="20" y="412">2. Check inclusion separately</text>
+  <rect class="box" x="14" y="434" width="312" height="66" rx="12"/>
+  <text x="30" y="461">Then check the selected</text>
+  <text x="30" y="485">retail box</text>
+</svg>

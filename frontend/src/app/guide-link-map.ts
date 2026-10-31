@@ -1,3 +1,4 @@
+import { currentModelRelated } from './current-model-comparison-guides';
 import { finishingMethodRelated } from './finishing-method-guides';
 import { carePackingRelated } from './care-packing-guides';
 import { fastenerRelated } from './fastener-guides';
@@ -17,6 +18,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...currentModelRelated,
   ...finishingMethodRelated,
   ...carePackingRelated,
   ...fastenerRelated,

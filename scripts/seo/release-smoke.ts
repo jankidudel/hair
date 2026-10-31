@@ -6,6 +6,7 @@ import { gunzipSync } from 'node:zlib';
 import { articles } from '../../frontend/src/app/content.generated.ts';
 import { carePackingSlugs } from '../../frontend/src/app/care-packing-guides.ts';
 import { finishingMethodSlugs } from '../../frontend/src/app/finishing-method-guides.ts';
+import { currentModelSlugs } from '../../frontend/src/app/current-model-comparison-guides.ts';
 import { guideEvidence } from '../../frontend/src/app/guide-evidence.ts';
 import { guideLinkMap } from '../../frontend/src/app/guide-link-map.ts';
 import { parseSitemap } from './route-coverage.ts';
@@ -27,7 +28,11 @@ const origin = 'https://www.combreport.com';
 const failures: string[] = [];
 const observations: { stage: string; path: string; errors: string[] }[] = [];
 const intended = [
-  ...new Set([...carePackingSlugs, ...finishingMethodSlugs]),
+  ...new Set([
+    ...carePackingSlugs,
+    ...finishingMethodSlugs,
+    ...currentModelSlugs,
+  ]),
 ].flatMap((slug) => {
   const article = articles.find((value) => value.slug === slug);
   if (!article)
@@ -98,7 +103,7 @@ if (!artifactOnly && failures.length === 0) {
     const sitemap = await request('/sitemap.xml');
     if (sitemap.status !== 200) throw Error(`Sitemap HTTP ${sitemap.status}`);
     const entries = parseSitemap(sitemap.text).entries;
-    // Small, fixed batch: the eleven carried/new/replaced owners plus sitemap.
+    // Bounded release owners from the maintained batches, plus the sitemap.
     for (const article of intended) {
       const path = `/guides/${article.slug}`;
       try {

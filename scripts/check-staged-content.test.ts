@@ -55,13 +55,15 @@ test('rejects a publishable guide below the hard minimum', () => {
 });
 
 test('decision owners retain article bodies accepted by the publication gate', () => {
+  // These are current working-tree articles, not a historical content snapshot.
+  const today = new Date().toISOString().slice(0, 10);
   for (const slug of Object.keys(decisionSnapshots)) {
     const file = `frontend/content/${slug}.html`;
     const errors = validateStagedGuide({
       file,
       source: readFileSync(file, 'utf8'),
       entry: articleRegistry.find((candidate) => candidate.slug === slug),
-      today: '2026-10-17',
+      today,
     });
     assert.deepEqual(errors, [], `${slug}: ${errors.join('; ')}`);
   }

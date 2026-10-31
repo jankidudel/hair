@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-30T21:45:25.671Z",
+  "checkedAt": "2026-10-31T15:51:50.554Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "9245c71dfee0ed3d11771622f3c86996574c2a6f",
+  "sourceCommit": "74bd99fa16d2177b638e66656e6b18f5a2827e51",
   "sourceTreeDirty": true,
-  "artifactSha256": "561edfb2b05a2ff482e4870e731a8a23ddcfe905a3e60dce356272bc38e2958a",
+  "artifactSha256": "64e357e01193e25c07a4950728e4ab80d03066fdc9a737aa224045faaba2949f",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -22,7 +22,12 @@
     "how-to-use-hair-styling-powder",
     "how-to-clean-a-straightening-brush",
     "hair-styling-powder-vs-dry-shampoo",
-    "how-to-clean-hot-air-brush"
+    "how-to-clean-hot-air-brush",
+    "ghd-speed-vs-helios",
+    "ghd-glide-plus-vs-glide-plus-max",
+    "dyson-supersonic-nural-vs-supersonic-r",
+    "dyson-airstrait-vs-ghd-duet-style",
+    "dyson-airwrap-id-vs-co-anda2x"
   ],
   "observations": [
     {
@@ -78,6 +83,31 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-clean-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-speed-vs-helios",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-glide-plus-vs-glide-plus-max",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-supersonic-nural-vs-supersonic-r",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airstrait-vs-ghd-duet-style",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airwrap-id-vs-co-anda2x",
       "errors": []
     }
   ],

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="690" viewBox="0 0 340 690" role="img" aria-labelledby="title desc">
+  <title id="title">Keep mode and starting hair state together</title>
+  <desc id="desc">Airstrait has separate wet-stage and dry-refresh instructions. Duet Style wet styling leads to dry hair before optional dry-only Shine Shot. This schematic is not a full operating tutorial.</desc>
+  <style>
+    .bg { fill: #f7f3eb; } .box { fill: #fffdf8; stroke: #817b71; }
+    text { fill: #264b3c; font-family: system-ui, sans-serif; font-size: 16px; }
+    .heading { font-size: 19px; font-weight: 650; } .line { stroke: #264b3c; fill: none; stroke-width: 2; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #17251f; } .box { fill: #21372c; stroke: #a9baad; }
+      text { fill: #f7f3eb; } .line { stroke: #f7f3eb; }
+    }
+  </style>
+  <rect class="bg" width="340" height="690" rx="16"/>
+  <text class="heading" x="20" y="34">Mode + starting state</text>
+  <rect class="box" x="14" y="58" width="312" height="112" rx="12"/>
+  <text class="heading" x="30" y="88">Airstrait: wet stage</text>
+  <text x="30" y="118">Follow its wet-stage</text>
+  <text x="30" y="142">instructions.</text>
+  <rect class="box" x="14" y="188" width="312" height="112" rx="12"/>
+  <text class="heading" x="30" y="218">Airstrait: dry refresh</text>
+  <text x="30" y="248">Use its separate</text>
+  <text x="30" y="272">dry-refresh method.</text>
+  <rect class="box" x="14" y="318" width="312" height="350" rx="12"/>
+  <text class="heading" x="30" y="349">Duet Style: distinct modes</text>
+  <text x="30" y="377">Wet styling and dry-only</text>
+  <text x="30" y="401">Shine Shot are different.</text>
+  <rect class="box" x="40" y="424" width="260" height="44" rx="8"/>
+  <text x="64" y="451">Wet styling</text>
+  <path class="line" d="M170 468v26m-6-6 6 6 6-6"/>
+  <rect class="box" x="40" y="496" width="260" height="44" rx="8"/>
+  <text x="64" y="523">Hair dry</text>
+  <path class="line" d="M170 540v26m-6-6 6 6 6-6"/>
+  <rect class="box" x="40" y="568" width="260" height="74" rx="8" stroke-dasharray="5 4"/>
+  <text x="64" y="596">Optional dry-only</text>
+  <text x="64" y="620">Shine Shot</text>
+</svg>

@@ -1,5 +1,10 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  GhdSpeedVsHelios: 'ghd-speed-vs-helios',
+  GhdGlidePlusVsGlidePlusMax: 'ghd-glide-plus-vs-glide-plus-max',
+  DysonSupersonicNuralVsSupersonicR: 'dyson-supersonic-nural-vs-supersonic-r',
+  DysonAirstraitVsGhdDuetStyle: 'dyson-airstrait-vs-ghd-duet-style',
+  DysonAirwrapIdVsCoAnda2x: 'dyson-airwrap-id-vs-co-anda2x',
   HowToApplyHairSerumOrOil: 'how-to-apply-hair-serum-or-oil',
   HowToApplyCurlCream: 'how-to-apply-curl-cream',
   HowToUseHairStylingPowder: 'how-to-use-hair-styling-powder',

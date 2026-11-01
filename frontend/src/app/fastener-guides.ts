@@ -150,6 +150,8 @@ export const fastenerDescriptions: Readonly<
     'Compare temporary surface holding with parking working layers; the labels can overlap.',
 };
 export const everydayFastenerSlugs: readonly ArticleSlug[] = [
+  ArticleSlug.HowToUseAHairBarrette,
+  ArticleSlug.HowToUseCreaselessHairClips,
   ArticleSlug.HowToUseAClawClip,
   ArticleSlug.HowToUseSnapHairClips,
   ArticleSlug.HowToUseSpiralHairTies,

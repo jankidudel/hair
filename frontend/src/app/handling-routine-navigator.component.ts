@@ -24,6 +24,7 @@ import { handlingGuideCards } from './handling-guides';
         >
       }
     </div>
+    <ng-content />
     <p class="handling-footer">
       A tool’s exact directions still govern wet use, heat and product
       compatibility.

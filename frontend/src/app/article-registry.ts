@@ -119,6 +119,41 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.HowToBlowDryAFringe,
+    group: ArticleGroupId.HairDryers,
+    order: 410,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.HowToBrushOutCurls,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 411,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.HowToUseAHairBarrette,
+    group: ArticleGroupId.HairAccessories,
+    order: 412,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.HowToUseCreaselessHairClips,
+    group: ArticleGroupId.HairAccessories,
+    order: 413,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.HowToUseDryShampoo,
+    group: ArticleGroupId.HairCare,
+    order: 414,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
     slug: ArticleSlug.GhdSpeedVsHelios,
     group: ArticleGroupId.HairDryers,
     order: 400,

@@ -1,5 +1,10 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToBlowDryAFringe: 'how-to-blow-dry-a-fringe',
+  HowToBrushOutCurls: 'how-to-brush-out-curls',
+  HowToUseAHairBarrette: 'how-to-use-a-hair-barrette',
+  HowToUseCreaselessHairClips: 'how-to-use-creaseless-hair-clips',
+  HowToUseDryShampoo: 'how-to-use-dry-shampoo',
   GhdSpeedVsHelios: 'ghd-speed-vs-helios',
   GhdGlidePlusVsGlidePlusMax: 'ghd-glide-plus-vs-glide-plus-max',
   DysonSupersonicNuralVsSupersonicR: 'dyson-supersonic-nural-vs-supersonic-r',

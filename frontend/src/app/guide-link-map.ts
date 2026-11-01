@@ -1,3 +1,4 @@
+import { everydayMethodRelated } from './everyday-method-guides';
 import { currentModelRelated } from './current-model-comparison-guides';
 import { finishingMethodRelated } from './finishing-method-guides';
 import { carePackingRelated } from './care-packing-guides';
@@ -18,6 +19,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...everydayMethodRelated,
   ...currentModelRelated,
   ...finishingMethodRelated,
   ...carePackingRelated,

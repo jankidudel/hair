@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="700" viewBox="0 0 340 700" role="img" aria-labelledby="title desc">
+  <title id="title">Fringe boundary and manual-brush release</title>
+  <desc id="desc">Separate the fringe from surrounding hair, choose a resting direction, then rehearse a shallow reversible brush path without the dryer running.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#a45339" stroke-width="2"/></marker>
+  </defs>
+  <rect width="340" height="700" rx="16" fill="#f8f4ed"/>
+  <g fill="#fffdf9" stroke="#c9c7bc"><rect x="10" y="10" width="320" height="220" rx="12"/><rect x="10" y="240" width="320" height="220" rx="12"/><rect x="10" y="470" width="320" height="220" rx="12"/></g>
+  <g font-family="system-ui, sans-serif" fill="#244638" text-anchor="middle">
+    <text x="170" y="40" font-size="19" font-weight="700">Separate the fringe</text>
+    <g fill="none" stroke="#244638" stroke-width="2.5" stroke-linecap="round">
+      <path d="M101 170 C76 87 109 58 165 60 C224 58 260 93 239 171"/>
+      <path d="M117 128 C115 175 137 191 167 192 C198 192 220 171 219 126"/>
+      <path d="M105 163 Q113 107 123 95 M234 163 Q228 111 214 95" stroke-dasharray="5 5"/>
+      <path d="M126 81 Q167 65 211 82 L201 119 Q167 135 133 119 Z" fill="#ead7b7"/>
+    </g>
+    <path d="M170 126 L170 136" stroke="#244638" stroke-width="2"/>
+    <text x="170" y="149" font-size="14" font-weight="650"><tspan x="170">Working</tspan><tspan x="170" dy="18">section</tspan></text>
+    <text x="170" y="215" font-size="15">Surrounding hair stays clear</text>
+    <text x="170" y="272" font-size="18" font-weight="700">Choose the resting direction</text>
+    <g fill="none" stroke="#244638" stroke-width="2.5" stroke-linecap="round">
+      <path d="M47 357 Q44 302 92 300 Q135 302 133 357 M67 322 Q88 310 112 322 M64 352 Q90 381 116 352"/>
+      <path d="M207 357 Q202 302 246 300 Q291 302 291 357 M220 352 Q246 381 275 352"/>
+      <path d="M244 318 Q230 318 222 343 M249 318 Q266 318 277 343"/>
+    </g>
+    <g fill="none" stroke="#a45339" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M85 325 L85 351 M96 323 Q111 334 120 340"/>
+      <path d="M239 327 Q222 335 212 349 M255 327 Q273 335 284 349"/>
+    </g>
+    <text x="92" y="402" font-size="15">Forward or side</text>
+    <text x="246" y="402" font-size="15"><tspan x="246">Curtain pieces:</tspan><tspan x="246" dy="21">outward</tspan></text>
+    <text x="170" y="503" font-size="19" font-weight="700">Keep a clear release path</text>
+    <text x="170" y="534" font-size="15">Rehearse without the dryer running</text>
+    <g fill="none" stroke="#244638" stroke-width="3" stroke-linecap="round">
+      <path d="M65 557 Q106 548 136 573 Q163 600 188 583"/>
+      <circle cx="172" cy="602" r="23" fill="#ead7b7"/>
+      <path d="M190 619 L230 654 M160 575 L158 580 M177 575 L177 579 M196 588 L192 590 M145 603 L149 603 M151 621 L154 618 M178 629 L177 625"/>
+    </g>
+    <path d="M126 608 Q118 558 172 551 Q218 548 220 592" fill="none" stroke="#a45339" stroke-width="2.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="170" y="675" font-size="16">Reverse a shallow wrap</text>
+  </g>
+</svg>

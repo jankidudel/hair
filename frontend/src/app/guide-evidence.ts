@@ -1,3 +1,4 @@
+import { everydayMethodEvidence } from './everyday-method-guides';
 import { currentModelEvidence } from './current-model-comparison-guides';
 import { finishingMethodEvidence } from './finishing-method-guides';
 import { carePackingEvidence } from './care-packing-guides';
@@ -124,6 +125,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...everydayMethodEvidence,
   ...currentModelEvidence,
   ...finishingMethodEvidence,
   ...carePackingEvidence,

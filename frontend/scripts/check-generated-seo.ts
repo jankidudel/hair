@@ -1,3 +1,7 @@
+import {
+  everydayMethodSlugs,
+  everydayMethodIncoming,
+} from '../src/app/everyday-method-guides';
 import { fastenerSlugs } from '../src/app/fastener-guides.ts';
 import {
   currentModelSlugs,
@@ -209,6 +213,7 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    everydayMethodSlugs.includes(article.slug) ||
     currentModelSlugs.includes(article.slug) ||
     careMethodSlugs.includes(
       article.slug as (typeof careMethodSlugs)[number],
@@ -605,6 +610,7 @@ for (const [target, owners] of Object.entries({
   ...carePackingIncoming,
   ...finishingMethodIncoming,
   ...currentModelIncoming,
+  ...everydayMethodIncoming,
 })) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);

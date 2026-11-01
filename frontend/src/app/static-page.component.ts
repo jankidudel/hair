@@ -1,3 +1,4 @@
+import { everydayMethodDescriptions } from './everyday-method-guides';
 import { finishingMethodDescriptions } from './finishing-method-guides';
 import { everydayFastenerSlugs, fastenerDescriptions } from './fastener-guides';
 import { HandlingRoutineNavigatorComponent } from './handling-routine-navigator.component';
@@ -253,7 +254,8 @@ import { AnalyticsService } from './analytics/analytics.service';
             <h2>{{ article.heading }}</h2>
             <p>
               {{
-                modelComparisonDescriptions[article.slug] ??
+                everydayMethodDescriptions[article.slug] ??
+                  modelComparisonDescriptions[article.slug] ??
                   handlingGuideDescriptions[article.slug] ??
                   finishingGuideDescriptions[article.slug] ??
                   article.description
@@ -325,7 +327,19 @@ import { AnalyticsService } from './analytics/analytics.service';
           category.id === 'brushes-and-combs' ||
           category.id === 'hair-accessories'
         ) {
-          <app-handling-routine-navigator />
+          <app-handling-routine-navigator>
+            @if (category.id === 'brushes-and-combs') {
+              <p>
+                After forming a styled curl set, use
+                <a [routerLink]="['/guides', articleSlug.HowToBrushOutCurls]"
+                  >how to brush out curls</a
+                >
+                to choose the amount of separation. This finishing method starts
+                with dry, cooled styled curls; natural-curl detangling remains a
+                different task.
+              </p>
+            }
+          </app-handling-routine-navigator>
         }
         @if (modelComparisonGroups[category.id]; as comparisons) {
           <section
@@ -368,6 +382,14 @@ import { AnalyticsService } from './analytics/analytics.service';
             <p>
               Start with the question you need to answer. Washing, choosing a
               formula and carrying out its application are separate decisions.
+            </p>
+            <p>
+              For a chosen root-refresh product, follow
+              <a [routerLink]="['/guides', articleSlug.HowToUseDryShampoo]"
+                >how to use dry shampoo</a
+              >. Keep the exact aerosol or powder directions together instead of
+              copying preparation, distance or blending from a different
+              container.
             </p>
             <h3>Washing and rinsing</h3>
             <ul>
@@ -948,6 +970,31 @@ import { AnalyticsService } from './analytics/analytics.service';
               <p class="eyebrow">{{ section.eyebrow }}</p>
               <h2 [id]="section.id">{{ section.label }}</h2>
             </div>
+            @if (section.id === 'hair-dryers-learn-guides') {
+              <p>
+                For the small front section, follow
+                <a [routerLink]="['/guides', articleSlug.HowToBlowDryAFringe]"
+                  >how to blow-dry a fringe</a
+                >. Choose a forward, side or curtain direction and check the
+                brush's release before repeating a pass.
+              </p>
+            }
+            @if (section.id === 'everyday-fastening-methods') {
+              <p>
+                For a finished clasp fastening, follow
+                <a [routerLink]="['/guides', articleSlug.HowToUseAHairBarrette]"
+                  >barrette placement and release</a
+                >. For a temporary surface section while getting ready, use
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToUseCreaselessHairClips,
+                  ]"
+                  >creaseless-clip placement</a
+                >. Choose the actual job before applying another accessory's
+                opening action.
+              </p>
+            }
             <div class="editorial-grid guides-grid">
               @for (article of section.articles; track article.slug) {
                 <a class="guide-card" [routerLink]="['/guides', article.slug]"
@@ -965,7 +1012,8 @@ import { AnalyticsService } from './analytics/analytics.service';
                         ? 'Use the feature finder, then compare dryers for your routine.'
                         : article.slug === articleSlug.HowToCleanAHairComb
                           ? 'Remove debris between teeth, follow material-specific care and inspect the comb before storing it.'
-                          : (finishingMethodDescriptions[article.slug] ??
+                          : (everydayMethodDescriptions[article.slug] ??
+                            finishingMethodDescriptions[article.slug] ??
                             fastenerDescriptions[article.slug] ??
                             article.description)
                     }}
@@ -1297,6 +1345,7 @@ export class StaticPageComponent implements OnInit {
   private readonly analytics = inject(AnalyticsService);
   readonly guides = articles;
   readonly articleSlug = ArticleSlug;
+  readonly everydayMethodDescriptions = everydayMethodDescriptions;
   readonly finishingMethodDescriptions = finishingMethodDescriptions;
   readonly fastenerDescriptions: Readonly<Partial<Record<string, string>>> =
     fastenerDescriptions;

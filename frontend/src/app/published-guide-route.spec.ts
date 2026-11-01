@@ -1,3 +1,4 @@
+import { toolChoiceSlugs } from './tool-choice-guides';
 import { UrlSegment } from '@angular/router';
 import { describe, expect, it } from 'vitest';
 import { publishedGuideCanMatch } from './published-guide-route';
@@ -24,6 +25,7 @@ describe('published guide route matching', () => {
 
   it('matches finishing and handling guides and keeps the absent automatic-curler route unknown', () => {
     for (const slug of [
+      ...toolChoiceSlugs,
       ArticleSlug.HowToSectionHairForStyling,
       ArticleSlug.HowToUseAWideToothComb,
       ArticleSlug.HowToUseACurlDefiningBrush,

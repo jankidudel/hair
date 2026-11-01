@@ -1,3 +1,4 @@
+import { toolChoiceEvidence } from './tool-choice-guides';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import {
@@ -55,6 +56,16 @@ describe('supplementary model-specific article sources', () => {
             `a[href="${currentModelSources.S9.url}"]`,
           ),
         ).not.toBeNull();
+      }
+      if (slug === ArticleSlug.HowToChooseMultiStylerAttachments) {
+        for (const source of toolChoiceEvidence[
+          ArticleSlug.SharkGlamVsFlexstyle
+        ]!.sources)
+          expect(
+            sourceLists[0].querySelector(`a[href="${source.url}"]`),
+          ).not.toBeNull();
+        expect(element.textContent).toContain('HD430');
+        expect(element.textContent).toContain('HD446UK');
       }
       fixture.destroy();
     },

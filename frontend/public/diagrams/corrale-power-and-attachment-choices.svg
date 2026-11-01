@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="640" viewBox="0 0 340 640" role="img" aria-labelledby="title desc">
+  <title id="title">Corrale power and attachment choices</title>
+  <desc id="desc">Separate panels distinguish corded CoolShine with its removable cooling feature from original rechargeable Corrale. No part interchange or runtime is shown.</desc>
+  <rect width="340" height="640" rx="16" fill="#f6f1e8"/>
+  <g font-family="Arial, sans-serif" fill="#244336">
+    <rect x="12" y="12" width="316" height="300" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="28" y="44" font-size="20" font-weight="700">Corrale CoolShine</text>
+    <text x="28" y="72" font-size="16">Corded operation</text>
+    <g fill="none" stroke="#244336" stroke-width="5" stroke-linecap="round">
+      <path d="M55 121 L205 104 Q218 103 218 114 L218 125 L58 143 Q46 142 48 132 Z"/>
+      <path d="M58 143 L212 154 Q225 154 225 165 L225 174 L55 161 Q45 158 48 149"/>
+      <path d="M48 149 C16 177 53 187 69 180 S98 193 83 204" stroke-width="3"/>
+      <rect x="266" y="112" width="32" height="53" rx="5" stroke="#b3684b" stroke-width="3"/>
+      <path d="M274 123 H290 M274 133 H290 M274 143 H290" stroke="#b3684b" stroke-width="2"/>
+    </g>
+    <text x="28" y="232" font-size="16">Separate removable</text>
+    <text x="28" y="254" font-size="16">cooling feature</text>
+    <text x="28" y="286" font-size="14">Check its own fitting instructions</text>
+    <rect x="12" y="328" width="316" height="300" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="28" y="362" font-size="20" font-weight="700">Original Corrale</text>
+    <text x="28" y="390" font-size="16">Rechargeable battery</text>
+    <g fill="none" stroke="#244336" stroke-width="5" stroke-linecap="round">
+      <path d="M55 439 L205 422 Q218 421 218 432 L218 443 L58 461 Q46 460 48 450 Z"/>
+      <path d="M58 461 L212 472 Q225 472 225 483 L225 492 L55 479 Q45 476 48 467"/>
+      <rect x="265" y="430" width="32" height="49" rx="4" stroke-width="3"/>
+      <path d="M275 424 H287 M273 446 H289 M281 438 V454" stroke-width="3"/>
+      <path d="M35 508 H76 M44 508 V490 M67 508 V490" stroke="#b3684b" stroke-width="3"/>
+    </g>
+    <text x="28" y="548" font-size="16">Hybrid use still draws</text>
+    <text x="28" y="570" font-size="16">battery power</text>
+    <text x="28" y="605" font-size="14">Check charge before the session</text>
+  </g>
+</svg>

@@ -1,3 +1,4 @@
+import { toolChoiceCards } from './tool-choice-guides';
 import { everydayMethodDescriptions } from './everyday-method-guides';
 import { finishingMethodDescriptions } from './finishing-method-guides';
 import { everydayFastenerSlugs, fastenerDescriptions } from './fastener-guides';
@@ -139,7 +140,9 @@ import { AnalyticsService } from './analytics/analytics.service';
               [routerLink]="['/guides', article.slug]"
             >
               <p class="eyebrow">{{ article.category }}</p>
-              <h3>{{ article.heading }}</h3>
+              <h3>
+                {{ toolChoiceCards[article.slug]?.title ?? article.heading }}
+              </h3>
               <p>{{ article.description }}</p>
               <span class="text-link"
                 >Read guide <span aria-hidden="true">→</span></span
@@ -251,10 +254,13 @@ import { AnalyticsService } from './analytics/analytics.service';
             [class.guide-card-featured]="first"
             [routerLink]="['/guides', article.slug]"
             ><p class="eyebrow">{{ article.category }}</p>
-            <h2>{{ article.heading }}</h2>
+            <h2>
+              {{ toolChoiceCards[article.slug]?.title ?? article.heading }}
+            </h2>
             <p>
               {{
-                everydayMethodDescriptions[article.slug] ??
+                toolChoiceCards[article.slug]?.description ??
+                  everydayMethodDescriptions[article.slug] ??
                   modelComparisonDescriptions[article.slug] ??
                   handlingGuideDescriptions[article.slug] ??
                   finishingGuideDescriptions[article.slug] ??
@@ -349,6 +355,24 @@ import { AnalyticsService } from './analytics/analytics.service';
             <div class="section-heading">
               <h2 id="model-comparisons-heading">{{ comparisons.heading }}</h2>
               <p>{{ comparisons.intro }}</p>
+              @if (category.id === 'hot-air-brushes') {
+                <p>
+                  For one brush-led routine, compare
+                  <a
+                    [routerLink]="[
+                      '/guides',
+                      articleSlug.DysonAirsmoothVsGhdDuetBlowdry,
+                    ]"
+                    >Airsmooth and Duet Blowdry</a
+                  >. For several attachment jobs, compare
+                  <a
+                    [routerLink]="['/guides', articleSlug.SharkGlamVsFlexstyle]"
+                    >Shark Glam and FlexStyle</a
+                  >. Confirm the exact body, permitted mode and selected box
+                  before treating either route as a replacement for the tools
+                  you own.
+                </p>
+              }
             </div>
             <div class="editorial-grid guides-grid">
               @for (card of comparisons.cards; track card.slug) {
@@ -1003,7 +1027,8 @@ import { AnalyticsService } from './analytics/analytics.service';
                     {{
                       article.slug === articleSlug.HairDryerChooser
                         ? 'Choose a Hair Dryer'
-                        : article.heading
+                        : (toolChoiceCards[article.slug]?.title ??
+                          article.heading)
                     }}
                   </h3>
                   <p>
@@ -1012,7 +1037,8 @@ import { AnalyticsService } from './analytics/analytics.service';
                         ? 'Use the feature finder, then compare dryers for your routine.'
                         : article.slug === articleSlug.HowToCleanAHairComb
                           ? 'Remove debris between teeth, follow material-specific care and inspect the comb before storing it.'
-                          : (everydayMethodDescriptions[article.slug] ??
+                          : (toolChoiceCards[article.slug]?.description ??
+                            everydayMethodDescriptions[article.slug] ??
                             finishingMethodDescriptions[article.slug] ??
                             fastenerDescriptions[article.slug] ??
                             article.description)
@@ -1336,6 +1362,7 @@ import { AnalyticsService } from './analytics/analytics.service';
   }`,
 })
 export class StaticPageComponent implements OnInit {
+  readonly toolChoiceCards = toolChoiceCards;
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;
   readonly finishingGuideDescriptions = finishingGuideDescriptions;

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="750" viewBox="0 0 340 750" role="img" aria-labelledby="title desc">
+  <title id="title">Three curl-wrapping mechanisms</title>
+  <desc id="desc">Independent panels show a motor-wrapped enclosed chamber, an exposed hand-wrapped wand and an airflow-attraction barrel. These are different mechanisms, not steps in a sequence.</desc>
+  <rect width="340" height="750" rx="16" fill="#f6f1e8"/>
+  <g font-family="Arial, sans-serif" fill="#244336">
+    <rect x="12" y="12" width="316" height="230" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="28" y="45" font-size="19" font-weight="700">Motor-wrapped chamber</text>
+    <g fill="none" stroke="#244336" stroke-width="3">
+      <rect x="114" y="77" width="72" height="91" rx="18"/>
+      <rect x="137" y="168" width="26" height="30" rx="5"/>
+      <ellipse cx="150" cy="105" rx="19" ry="10"/>
+      <circle cx="240" cy="127" r="22"/>
+    </g>
+    <text x="232" y="133" font-size="17">M</text>
+    <text x="221" y="169" font-size="14">Motor</text>
+    <text x="28" y="221" font-size="15">Load as the exact manual directs</text>
+    <rect x="12" y="258" width="316" height="234" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="28" y="291" font-size="19" font-weight="700">Hand-wrapped wand</text>
+    <rect x="102" y="340" width="115" height="23" rx="8" fill="#e7c5ad" stroke="#244336" stroke-width="3"/>
+    <rect x="217" y="337" width="50" height="29" rx="7" fill="#244336"/>
+    <path d="M45 325 C72 310 84 320 91 343 S111 390 125 377 S125 317 146 324 S153 389 176 376 S179 321 202 321" fill="none" stroke="#b3684b" stroke-width="3"/>
+    <text x="28" y="443" font-size="15">Follow the tool's</text>
+    <text x="28" y="465" font-size="15">hand-protection method</text>
+    <rect x="12" y="508" width="316" height="230" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="28" y="541" font-size="19" font-weight="700">Airflow-attraction barrel</text>
+    <g fill="none" stroke="#244336" stroke-width="3">
+      <rect x="137" y="566" width="36" height="104" rx="12"/>
+      <path d="M147 581 V650 M163 581 V650" stroke-dasharray="3 6" stroke-width="2"/>
+      <path d="M65 580 C100 557 116 582 115 605 M65 616 C99 592 112 623 115 641 M198 582 C221 555 252 581 252 599 M199 622 C221 598 251 621 252 641" stroke="#b3684b"/>
+    </g>
+    <text x="28" y="714" font-size="16">A separate mechanism</text>
+  </g>
+</svg>

@@ -1,3 +1,4 @@
+import { toolChoiceEvidence } from './tool-choice-guides';
 import { everydayMethodEvidence } from './everyday-method-guides';
 import { currentModelEvidence } from './current-model-comparison-guides';
 import { finishingMethodEvidence } from './finishing-method-guides';
@@ -125,6 +126,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...toolChoiceEvidence,
   ...everydayMethodEvidence,
   ...currentModelEvidence,
   ...finishingMethodEvidence,

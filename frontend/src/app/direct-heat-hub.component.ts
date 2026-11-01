@@ -1,3 +1,4 @@
+import { toolChoiceCards } from './tool-choice-guides';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ArticleSlug } from './article-slug';
@@ -108,6 +109,34 @@ import {
         dimensions and controls can narrow a choice, but do not guarantee the
         same result for every routine.
       </p>
+      @if (isFlat) {
+        <p>
+          For a standard-width control comparison, use
+          <a [routerLink]="['/guides', articleSlug.GhdSculptVsChronos]"
+            >Sculpt versus Chronos</a
+          >. For a corded model versus an original rechargeable system, use
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.DysonCorraleCoolshineVsCorrale,
+            ]"
+            >Corrale CoolShine versus original Corrale</a
+          >. Keep user controls, internal regulation and power arrangements as
+          separate choices.
+        </p>
+      } @else {
+        <p>
+          If you want to change how the section is wrapped, compare
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.AutomaticHairCurlerVsCurlingWand,
+            ]"
+            >automatic curlers and curling wands</a
+          >. A motor-wrapped chamber, hand-guided barrel and airflow-attraction
+          tool have different loading and release questions.
+        </p>
+      }
       <ul>
         <li>
           <a
@@ -134,8 +163,12 @@ import {
         @for (guide of comparisonGuides; track guide.slug) {
           <a class="guide-card" [routerLink]="['/guides', guide.slug]">
             <p class="eyebrow">{{ guide.category }}</p>
-            <h2>{{ guide.heading }}</h2>
-            <p>{{ guide.description }}</p>
+            <h2>{{ toolChoiceCards[guide.slug]?.title ?? guide.heading }}</h2>
+            <p>
+              {{
+                toolChoiceCards[guide.slug]?.description ?? guide.description
+              }}
+            </p>
             <span class="text-link"
               >Read guide <span aria-hidden="true">→</span></span
             >
@@ -155,8 +188,12 @@ import {
         @for (guide of routineGuides; track guide.slug) {
           <a class="guide-card" [routerLink]="['/guides', guide.slug]">
             <p class="eyebrow">{{ guide.category }}</p>
-            <h3>{{ guide.heading }}</h3>
-            <p>{{ guide.description }}</p>
+            <h3>{{ toolChoiceCards[guide.slug]?.title ?? guide.heading }}</h3>
+            <p>
+              {{
+                toolChoiceCards[guide.slug]?.description ?? guide.description
+              }}
+            </p>
             <span class="text-link"
               >Read guide <span aria-hidden="true">→</span></span
             >
@@ -248,6 +285,7 @@ import {
   `,
 })
 export class DirectHeatHubComponent {
+  readonly toolChoiceCards = toolChoiceCards;
   readonly modelComparisons = modelComparisonGroups['direct-heat']!;
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   private readonly route = inject(ActivatedRoute);

@@ -119,6 +119,41 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.GhdSculptVsChronos,
+    group: ArticleGroupId.DirectHeat,
+    order: 420,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.DysonCorraleCoolshineVsCorrale,
+    group: ArticleGroupId.DirectHeat,
+    order: 421,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.DysonAirsmoothVsGhdDuetBlowdry,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 422,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.SharkGlamVsFlexstyle,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 423,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
+    slug: ArticleSlug.AutomaticHairCurlerVsCurlingWand,
+    group: ArticleGroupId.DirectHeat,
+    order: 424,
+    enabled: true,
+    publishDate: '2026-11-01',
+  },
+  {
     slug: ArticleSlug.HowToBlowDryAFringe,
     group: ArticleGroupId.HairDryers,
     order: 410,

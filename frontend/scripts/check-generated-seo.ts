@@ -1,4 +1,8 @@
 import {
+  toolChoiceSlugs,
+  toolChoiceIncoming,
+} from '../src/app/tool-choice-guides.ts';
+import {
   everydayMethodSlugs,
   everydayMethodIncoming,
 } from '../src/app/everyday-method-guides';
@@ -213,6 +217,7 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    toolChoiceSlugs.includes(article.slug) ||
     everydayMethodSlugs.includes(article.slug) ||
     currentModelSlugs.includes(article.slug) ||
     careMethodSlugs.includes(
@@ -394,7 +399,10 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
   if (!guidesHtml.includes(`href="${route}"`))
     failures.push(`/guides: missing task-guide link '${route}'.`);
   const article = articles.find((entry) => entry.slug === slug)!;
-  const category = guideCategoryById[article.group].path.slice(1);
+  const category =
+    slug === ArticleSlug.AutomaticHairCurlerVsCurlingWand
+      ? 'curling-irons'
+      : guideCategoryById[article.group].path.slice(1);
   const relatedHtml = html.slice(related);
   let previousRelated = -1;
   for (const relatedSlug of guideLinkMap[slug].relatedSlugs) {
@@ -504,6 +512,11 @@ for (const [slug, targets] of Object.entries(accessoryIntegrations)) {
       );
 }
 for (const [slug, diagram] of [
+  [
+    ArticleSlug.DysonCorraleCoolshineVsCorrale,
+    'corrale-power-and-attachment-choices',
+  ],
+  [ArticleSlug.AutomaticHairCurlerVsCurlingWand, 'curl-wrapping-mechanisms'],
   ['cloud-nine-original-iron-vs-wide-iron', 'cloud-nine-plate-widths'],
   ['ghd-soft-curl-tong-vs-creative-curl-wand', 'original-ghd-curve-profiles'],
   ['bobby-pins-vs-u-shaped-hair-pins', 'pin-fastening-shapes'],
@@ -611,6 +624,7 @@ for (const [target, owners] of Object.entries({
   ...finishingMethodIncoming,
   ...currentModelIncoming,
   ...everydayMethodIncoming,
+  ...toolChoiceIncoming,
 })) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);
@@ -622,12 +636,15 @@ for (const [target, owners] of Object.entries({
       ['authored', source?.html ?? ''],
       ['rendered', rendered.intro + rendered.body],
     ]) {
-      const paragraphs = [...html.matchAll(/<p\b[^>]*>([^]*?)<\/p>/g)].filter(
-        (match) => match[1].includes(link),
+      const contextualPattern = Object.hasOwn(toolChoiceIncoming, target)
+        ? /<(p|td)\b[^>]*>([^]*?)<\/\1>/g
+        : /<(p)\b[^>]*>([^]*?)<\/\1>/g;
+      const paragraphs = [...html.matchAll(contextualPattern)].filter((match) =>
+        match[2].includes(link),
       );
       if (paragraphs.length !== 1)
         failures.push(
-          `${owner}: expected one ${stage} contextual paragraph linking to '${target}'.`,
+          `${owner}: expected one ${stage} contextual paragraph or cell linking to '${target}'.`,
         );
     }
   }

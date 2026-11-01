@@ -1,3 +1,4 @@
+import { toolChoiceEvidence } from './tool-choice-guides';
 import { ArticleSlug } from './article-slug';
 import type { GuideEvidence, GuideSource } from './guide-evidence';
 
@@ -241,5 +242,8 @@ export const additionalGuideSources: Readonly<
     currentModelSources.S9,
     currentModelSources.S13,
   ],
-  [ArticleSlug.HowToChooseMultiStylerAttachments]: [currentModelSources.S11],
+  [ArticleSlug.HowToChooseMultiStylerAttachments]: [
+    currentModelSources.S11,
+    ...toolChoiceEvidence[ArticleSlug.SharkGlamVsFlexstyle]!.sources,
+  ],
 };

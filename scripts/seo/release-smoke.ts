@@ -1,3 +1,4 @@
+import { toolChoiceSlugs } from '../../frontend/src/app/tool-choice-guides.ts';
 import { everydayMethodSlugs } from '../../frontend/src/app/everyday-method-guides.ts';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -34,6 +35,7 @@ const intended = [
     ...finishingMethodSlugs,
     ...currentModelSlugs,
     ...everydayMethodSlugs,
+    ...toolChoiceSlugs,
   ]),
 ].flatMap((slug) => {
   const article = articles.find((value) => value.slug === slug);

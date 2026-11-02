@@ -1,4 +1,8 @@
 import {
+  airflowMethodSlugs,
+  airflowMethodIncoming,
+} from '../src/app/airflow-method-guides.ts';
+import {
   waveMethodSlugs,
   waveMethodIncoming,
 } from '../src/app/wave-method-guides.ts';
@@ -221,6 +225,7 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    airflowMethodSlugs.includes(article.slug as ArticleSlug) ||
     waveMethodSlugs.includes(article.slug) ||
     toolChoiceSlugs.includes(article.slug) ||
     everydayMethodSlugs.includes(article.slug) ||
@@ -518,6 +523,11 @@ for (const [slug, targets] of Object.entries(accessoryIntegrations)) {
       );
 }
 for (const [slug, diagram] of [
+  [ArticleSlug.HowToUseAirflowCurlingBarrels, 'airflow-wrap-control-stages'],
+  [
+    ArticleSlug.HairDryerCombAttachmentVsConcentrator,
+    'dryer-comb-and-concentrator-paths',
+  ],
   [
     ArticleSlug.HowToCleanAnAutomaticHairCurler,
     'automatic-curler-care-boundaries',
@@ -643,6 +653,7 @@ for (const [target, owners] of Object.entries({
   ...everydayMethodIncoming,
   ...toolChoiceIncoming,
   ...waveMethodIncoming,
+  ...airflowMethodIncoming,
 })) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);

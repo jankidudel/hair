@@ -1,5 +1,12 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  AirflowCurlingBarrelVsCurlingWand: 'airflow-curling-barrel-vs-curling-wand',
+  HairDryerCombAttachmentVsConcentrator:
+    'hair-dryer-comb-attachment-vs-concentrator',
+  HowToUseAHairDryerFlyawayAttachment:
+    'how-to-use-a-hair-dryer-flyaway-attachment',
+  HowToUseAirflowCurlingBarrels: 'how-to-use-airflow-curling-barrels',
+  HowToUseARotatingHotAirBrush: 'how-to-use-a-rotating-hot-air-brush',
   HowToUseAnAutomaticHairCurler: 'how-to-use-an-automatic-hair-curler',
   HowToCleanAnAutomaticHairCurler: 'how-to-clean-an-automatic-hair-curler',
   HairWaverVsCurlingIron: 'hair-waver-vs-curling-iron',

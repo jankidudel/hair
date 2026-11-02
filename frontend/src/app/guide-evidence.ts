@@ -1,3 +1,4 @@
+import { airflowMethodEvidence } from './airflow-method-guides';
 import { waveMethodEvidence } from './wave-method-guides';
 import { toolChoiceEvidence } from './tool-choice-guides';
 import { everydayMethodEvidence } from './everyday-method-guides';
@@ -137,6 +138,7 @@ export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
   ...careMethodEvidence,
   ...coreGuideEvidence,
   ...headFormatEvidence,
+  ...airflowMethodEvidence,
   [ArticleSlug.GhdAirVsHelios]: {
     sourceFormat: 'product-market',
     relatedOnly: true,

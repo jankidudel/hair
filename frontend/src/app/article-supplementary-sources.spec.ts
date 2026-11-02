@@ -1,4 +1,5 @@
 import { waveMethodEvidence } from './wave-method-guides';
+import { airflowSources } from './airflow-method-guides';
 import { toolChoiceEvidence } from './tool-choice-guides';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -17,6 +18,7 @@ describe('supplementary model-specific article sources', () => {
   afterEach(() => TestBed.resetTestingModule());
 
   it.each([
+    [ArticleSlug.RotatingVsFixedHotAirBrush, airflowSources.S1.url],
     [
       ArticleSlug.CurlingIronLeavesCrease,
       waveMethodEvidence[ArticleSlug.CurlingIronLeavesCrease]!.sources[0].url,
@@ -50,6 +52,21 @@ describe('supplementary model-specific article sources', () => {
       expect(sourceLists).toHaveLength(1);
       expect(sourceLists[0].querySelector(`a[href="${url}"]`)).not.toBeNull();
       expect(element.innerHTML).not.toContain('587990-01.pdf');
+      if (slug === ArticleSlug.RotatingVsFixedHotAirBrush) {
+        expect(sourceLists[0].querySelectorAll('a')).toHaveLength(1);
+        expect(element.querySelector('a[href*="AS970U"]')).toBeNull();
+        expect(fixture.componentInstance.article?.publishDate).toBe(
+          '2026-10-10',
+        );
+        expect(fixture.componentInstance.article?.contentMethod).toBe(
+          'editorial-guide',
+        );
+        expect(element.querySelectorAll('.article-faq')).toHaveLength(1);
+        expect(element.querySelectorAll('.article-faq h3')).toHaveLength(3);
+        expect(
+          element.querySelector('.article-faq app-evidence-scope'),
+        ).toBeNull();
+      }
       if (slug === ArticleSlug.DysonAirwrapVsSharkFlexstyle) {
         expect(
           fixture.componentInstance.evidenceProducts.map(

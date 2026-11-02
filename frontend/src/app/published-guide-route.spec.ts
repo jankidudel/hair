@@ -1,3 +1,4 @@
+import { airflowMethodSlugs } from './airflow-method-guides';
 import { waveMethodSlugs } from './wave-method-guides';
 import { toolChoiceSlugs } from './tool-choice-guides';
 import { UrlSegment } from '@angular/router';
@@ -28,6 +29,7 @@ describe('published guide route matching', () => {
     for (const slug of [
       ...toolChoiceSlugs,
       ...waveMethodSlugs,
+      ...airflowMethodSlugs,
       ArticleSlug.HowToSectionHairForStyling,
       ArticleSlug.HowToUseAWideToothComb,
       ArticleSlug.HowToUseACurlDefiningBrush,

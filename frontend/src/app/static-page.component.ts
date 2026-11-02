@@ -1,3 +1,4 @@
+import { airflowMethodCards } from './airflow-method-guides';
 import { waveMethodCards } from './wave-method-guides';
 import { toolChoiceCards } from './tool-choice-guides';
 import { everydayMethodDescriptions } from './everyday-method-guides';
@@ -1051,6 +1052,71 @@ import { AnalyticsService } from './analytics/analytics.service';
                 >
               }
             </div>
+            @if (section.id === 'hot-air-brushes-compare-guides') {
+              <p>
+                Compare
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.RotatingVsFixedHotAirBrush,
+                  ]"
+                  >rotating and fixed brush heads</a
+                >
+                when the turning movement is the decision. Compare
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.AirflowCurlingBarrelVsCurlingWand,
+                  ]"
+                  >airflow curling barrels with wands</a
+                >
+                when the question is how hair wraps. A mode-changing body, a
+                powered brush and an airflow barrel describe different
+                functions.
+              </p>
+            }
+            @if (section.id === 'hot-air-brushes-learn-guides') {
+              <p>
+                For the selected method, use
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToUseARotatingHotAirBrush,
+                  ]"
+                  >rotating-brush operation</a
+                >
+                or
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToUseAirflowCurlingBarrels,
+                  ]"
+                  >airflow-barrel use</a
+                >. Keep the actual head, starting condition and release sequence
+                together rather than borrowing controls from another attachment
+                in the same box.
+              </p>
+            }
+            @if (section.id === 'hair-dryers-learn-guides') {
+              <p>
+                For a different contact path, compare
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HairDryerCombAttachmentVsConcentrator,
+                  ]"
+                  >a comb attachment with a concentrator</a
+                >. For an already suitable style's finishing step, use
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToUseAHairDryerFlyawayAttachment,
+                  ]"
+                  >flyaway-attachment guidance</a
+                >. The attachment's own directions determine which stage and
+                movement it permits.
+              </p>
+            }
           </section>
         }
         @if (
@@ -1363,7 +1429,11 @@ import { AnalyticsService } from './analytics/analytics.service';
   }`,
 })
 export class StaticPageComponent implements OnInit {
-  readonly toolChoiceCards = { ...toolChoiceCards, ...waveMethodCards };
+  readonly toolChoiceCards = {
+    ...toolChoiceCards,
+    ...waveMethodCards,
+    ...airflowMethodCards,
+  };
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;
   readonly finishingGuideDescriptions = finishingGuideDescriptions;

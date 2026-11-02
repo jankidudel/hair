@@ -119,6 +119,41 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.HowToUseARotatingHotAirBrush,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 440,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HowToUseAirflowCurlingBarrels,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 441,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HowToUseAHairDryerFlyawayAttachment,
+    group: ArticleGroupId.HairDryers,
+    order: 442,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HairDryerCombAttachmentVsConcentrator,
+    group: ArticleGroupId.HairDryers,
+    order: 443,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.AirflowCurlingBarrelVsCurlingWand,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 444,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
     slug: ArticleSlug.HowToUseAnAutomaticHairCurler,
     group: ArticleGroupId.DirectHeat,
     order: 430,

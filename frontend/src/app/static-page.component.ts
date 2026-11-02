@@ -1,3 +1,4 @@
+import { waveMethodCards } from './wave-method-guides';
 import { toolChoiceCards } from './tool-choice-guides';
 import { everydayMethodDescriptions } from './everyday-method-guides';
 import { finishingMethodDescriptions } from './finishing-method-guides';
@@ -1362,7 +1363,7 @@ import { AnalyticsService } from './analytics/analytics.service';
   }`,
 })
 export class StaticPageComponent implements OnInit {
-  readonly toolChoiceCards = toolChoiceCards;
+  readonly toolChoiceCards = { ...toolChoiceCards, ...waveMethodCards };
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;
   readonly finishingGuideDescriptions = finishingGuideDescriptions;

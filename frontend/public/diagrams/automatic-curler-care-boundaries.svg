@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="660" viewBox="0 0 340 660" role="img" aria-labelledby="title desc">
+  <title id="title">Automatic-curler care boundaries</title>
+  <desc id="desc">Three independent panels separate a documented removable cover, accessible chamber care and a closed electrical body. The illustration applies only to disconnected, cooled maintenance.</desc>
+  <rect width="340" height="660" rx="16" fill="#f6f1e8"/>
+  <g font-family="Arial, sans-serif" fill="#244336">
+    <rect x="12" y="12" width="316" height="202" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="26" y="43" font-size="18" font-weight="700">Identify the documented cover</text>
+    <g fill="none" stroke="#244336" stroke-width="3">
+      <path d="M66 133 V100 Q66 79 91 79 H105 Q130 79 130 100 V133 Z" stroke="#b3684b"/>
+      <rect x="200" y="79" width="59" height="71" rx="18"/>
+      <path d="M216 150 V166 H243 V150"/>
+    </g>
+    <text x="26" y="180" font-size="14">Removal only when</text>
+    <text x="26" y="199" font-size="14">the manual permits it</text>
+    <rect x="12" y="230" width="316" height="202" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="26" y="261" font-size="17" font-weight="700">Check accessible chamber care</text>
+    <g fill="none" stroke-width="3">
+      <path d="M66 340 Q114 312 162 340 L162 359 Q114 331 66 359 Z" stroke="#244336"/>
+      <path d="M211 300 L265 312 L253 353 L199 341 Z" stroke="#b3684b"/>
+      <path d="M211 300 L224 326 L253 353" stroke="#b3684b" stroke-width="2"/>
+    </g>
+    <text x="26" y="408" font-size="14">Use the specified cloth method</text>
+    <rect x="12" y="448" width="316" height="200" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="26" y="479" font-size="18" font-weight="700">Keep the electrical body closed</text>
+    <g fill="none" stroke="#244336" stroke-width="3" stroke-linecap="round">
+      <rect x="113" y="505" width="57" height="79" rx="19"/>
+      <path d="M128 584 V601 H155 V584"/>
+      <path d="M155 601 C179 610 198 591 211 583 S244 581 252 590" stroke="#b3684b"/>
+    </g>
+    <text x="26" y="628" font-size="14">External care is not disassembly</text>
+  </g>
+</svg>

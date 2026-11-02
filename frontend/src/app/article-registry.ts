@@ -119,6 +119,41 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.HowToUseAnAutomaticHairCurler,
+    group: ArticleGroupId.DirectHeat,
+    order: 430,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HowToCleanAnAutomaticHairCurler,
+    group: ArticleGroupId.DirectHeat,
+    order: 431,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HairWaverVsCurlingIron,
+    group: ArticleGroupId.DirectHeat,
+    order: 432,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HowToUseAHairWaver,
+    group: ArticleGroupId.DirectHeat,
+    order: 433,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
+    slug: ArticleSlug.HairCrimperVsHairWaver,
+    group: ArticleGroupId.DirectHeat,
+    order: 434,
+    enabled: true,
+    publishDate: '2026-11-02',
+  },
+  {
     slug: ArticleSlug.GhdSculptVsChronos,
     group: ArticleGroupId.DirectHeat,
     order: 420,

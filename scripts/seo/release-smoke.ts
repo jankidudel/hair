@@ -1,3 +1,4 @@
+import { waveMethodSlugs } from '../../frontend/src/app/wave-method-guides.ts';
 import { toolChoiceSlugs } from '../../frontend/src/app/tool-choice-guides.ts';
 import { everydayMethodSlugs } from '../../frontend/src/app/everyday-method-guides.ts';
 import { execFileSync } from 'node:child_process';
@@ -36,6 +37,7 @@ const intended = [
     ...currentModelSlugs,
     ...everydayMethodSlugs,
     ...toolChoiceSlugs,
+    ...waveMethodSlugs,
   ]),
 ].flatMap((slug) => {
   const article = articles.find((value) => value.slug === slug);

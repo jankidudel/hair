@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="700" viewBox="0 0 340 700" role="img" aria-labelledby="title desc">
+  <title id="title">Waver release between placements</title>
+  <desc id="desc">Three stacked panels show placing a section, opening the working surfaces and moving to a new position with the tool open. No contact time or overlap interval is specified.</desc>
+  <rect width="340" height="700" rx="16" fill="#f6f1e8"/>
+  <g font-family="Arial, sans-serif" fill="#244336">
+    <rect x="12" y="12" width="316" height="212" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="26" y="46" font-size="20" font-weight="700">Place the working section</text>
+    <g fill="none" stroke-width="3" stroke-linejoin="round">
+      <path d="M72 92 Q90 77 108 92 T144 92 T180 92 L180 111 Q162 126 144 111 T108 111 T72 111 Z" stroke="#244336"/>
+      <path d="M72 133 Q90 118 108 133 T144 133 T180 133 L180 147 H72 Z" stroke="#244336"/>
+      <path d="M40 121 H236" stroke="#b3684b"/>
+      <path d="M180 98 H257 M180 142 H257" stroke="#244336" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <text x="26" y="188" font-size="14">Follow the exact tool's</text>
+    <text x="26" y="208" font-size="14">contact instructions</text>
+    <rect x="12" y="240" width="316" height="212" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="26" y="274" font-size="20" font-weight="700">Open and release</text>
+    <g fill="none" stroke-width="3" stroke-linejoin="round">
+      <path d="M72 308 Q90 293 108 308 T144 308 T180 308 L180 325 Q162 340 144 325 T108 325 T72 325 Z" stroke="#244336"/>
+      <path d="M72 384 Q90 369 108 384 T144 384 T180 384 L180 398 H72 Z" stroke="#244336"/>
+      <path d="M40 357 Q64 345 88 357 T136 357 T184 357 L245 357" stroke="#b3684b"/>
+      <path d="M180 313 H257 M180 393 H257" stroke="#244336" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <text x="26" y="432" font-size="14">Free the section before moving</text>
+    <rect x="12" y="468" width="316" height="220" rx="12" fill="#fffdf8" stroke="#244336"/>
+    <text x="26" y="502" font-size="20" font-weight="700">Reposition as instructed</text>
+    <g fill="none" stroke-width="3" stroke-linejoin="round">
+      <path d="M45 540 H113 V559 H45 Z M45 604 H113 V620 H45 Z" stroke="#244336" stroke-dasharray="5 5" stroke-width="2"/>
+      <path d="M188 540 Q203 526 218 540 T248 540 L248 558 Q233 572 218 558 T188 558 Z" stroke="#244336"/>
+      <path d="M188 605 Q203 591 218 605 T248 605 L248 620 H188 Z" stroke="#244336"/>
+      <path d="M248 546 H293 M248 614 H293" stroke="#244336" stroke-width="7" stroke-linecap="round"/>
+      <path d="M35 585 Q61 571 87 585 T139 585 L293 585" stroke="#b3684b"/>
+    </g>
+    <text x="26" y="663" font-size="14">No universal overlap distance</text>
+  </g>
+</svg>

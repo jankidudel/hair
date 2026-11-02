@@ -1,3 +1,4 @@
+import { waveMethodEvidence } from './wave-method-guides';
 import { toolChoiceEvidence } from './tool-choice-guides';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -16,6 +17,10 @@ describe('supplementary model-specific article sources', () => {
   afterEach(() => TestBed.resetTestingModule());
 
   it.each([
+    [
+      ArticleSlug.CurlingIronLeavesCrease,
+      waveMethodEvidence[ArticleSlug.CurlingIronLeavesCrease]!.sources[0].url,
+    ],
     [ArticleSlug.DysonAirwrapVsSharkFlexstyle, currentModelSources.S13.url],
     [
       ArticleSlug.HowToChooseMultiStylerAttachments,
@@ -66,6 +71,18 @@ describe('supplementary model-specific article sources', () => {
           ).not.toBeNull();
         expect(element.textContent).toContain('HD430');
         expect(element.textContent).toContain('HD446UK');
+      }
+      if (slug === ArticleSlug.CurlingIronLeavesCrease) {
+        expect(element.querySelector('a[href$="/CD706.pdf"]')).toBeNull();
+        expect(
+          toolChoiceEvidence[
+            ArticleSlug.AutomaticHairCurlerVsCurlingWand
+          ]!.sources.some((source) => source.url.endsWith('/CD706.pdf')),
+        ).toBe(true);
+        expect(element.querySelectorAll('.article-faq')).toHaveLength(1);
+        expect(
+          element.querySelector('.article-faq app-evidence-scope'),
+        ).toBeNull();
       }
       fixture.destroy();
     },

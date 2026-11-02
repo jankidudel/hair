@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-01T19:34:55.019Z",
+  "checkedAt": "2026-11-02T19:19:24.482Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "25abbe2f5f4c5759202901207c9ecde47a337212",
+  "sourceCommit": "72026c6417696e755bfc014c196b5618f9036f87",
   "sourceTreeDirty": true,
-  "artifactSha256": "092f75802075b7a7cd17c135e8c3f818a33a9ad9ab11b082362458e821fd8a1d",
+  "artifactSha256": "85c6256993afb878202fd8a377b6de57e443e642c8ea48256e906bf5de34606d",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -39,7 +39,13 @@
     "dyson-airsmooth-vs-ghd-duet-blowdry",
     "shark-glam-vs-flexstyle",
     "automatic-hair-curler-vs-curling-wand",
-    "fixed-vs-adjustable-temperature-hair-straighteners"
+    "fixed-vs-adjustable-temperature-hair-straighteners",
+    "how-to-use-an-automatic-hair-curler",
+    "how-to-clean-an-automatic-hair-curler",
+    "hair-waver-vs-curling-iron",
+    "how-to-use-a-hair-waver",
+    "hair-crimper-vs-hair-waver",
+    "curling-iron-leaves-crease"
   ],
   "observations": [
     {
@@ -180,6 +186,36 @@
     {
       "stage": "artifact",
       "path": "/guides/fixed-vs-adjustable-temperature-hair-straighteners",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-an-automatic-hair-curler",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-an-automatic-hair-curler",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-waver-vs-curling-iron",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-hair-waver",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-crimper-vs-hair-waver",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/curling-iron-leaves-crease",
       "errors": []
     }
   ],

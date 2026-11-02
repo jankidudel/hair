@@ -1,3 +1,4 @@
+import { waveMethodSlugs } from './wave-method-guides';
 import { toolChoiceSlugs } from './tool-choice-guides';
 import { UrlSegment } from '@angular/router';
 import { describe, expect, it } from 'vitest';
@@ -23,9 +24,10 @@ describe('published guide route matching', () => {
     ).toBe(false);
   });
 
-  it('matches finishing and handling guides and keeps the absent automatic-curler route unknown', () => {
+  it('matches published method guides and keeps unknown routes excluded', () => {
     for (const slug of [
       ...toolChoiceSlugs,
+      ...waveMethodSlugs,
       ArticleSlug.HowToSectionHairForStyling,
       ArticleSlug.HowToUseAWideToothComb,
       ArticleSlug.HowToUseACurlDefiningBrush,
@@ -48,7 +50,7 @@ describe('published guide route matching', () => {
     expect(
       publishedGuideCanMatch({}, [
         new UrlSegment('guides', {}),
-        new UrlSegment('how-to-use-an-automatic-hair-curler', {}),
+        new UrlSegment('how-to-use-an-unpublished-hair-tool', {}),
       ]),
     ).toBe(false);
   });

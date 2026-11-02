@@ -1,4 +1,8 @@
 import {
+  waveMethodSlugs,
+  waveMethodIncoming,
+} from '../src/app/wave-method-guides.ts';
+import {
   toolChoiceSlugs,
   toolChoiceIncoming,
 } from '../src/app/tool-choice-guides.ts';
@@ -217,6 +221,7 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    waveMethodSlugs.includes(article.slug) ||
     toolChoiceSlugs.includes(article.slug) ||
     everydayMethodSlugs.includes(article.slug) ||
     currentModelSlugs.includes(article.slug) ||
@@ -400,6 +405,7 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
     failures.push(`/guides: missing task-guide link '${route}'.`);
   const article = articles.find((entry) => entry.slug === slug)!;
   const category =
+    waveMethodSlugs.includes(slug as ArticleSlug) ||
     slug === ArticleSlug.AutomaticHairCurlerVsCurlingWand
       ? 'curling-irons'
       : guideCategoryById[article.group].path.slice(1);
@@ -513,6 +519,11 @@ for (const [slug, targets] of Object.entries(accessoryIntegrations)) {
 }
 for (const [slug, diagram] of [
   [
+    ArticleSlug.HowToCleanAnAutomaticHairCurler,
+    'automatic-curler-care-boundaries',
+  ],
+  [ArticleSlug.HowToUseAHairWaver, 'waver-step-and-release'],
+  [
     ArticleSlug.DysonCorraleCoolshineVsCorrale,
     'corrale-power-and-attachment-choices',
   ],
@@ -591,8 +602,14 @@ for (const category of guideCategories) {
   }
 }
 for (const [path, matcher] of [
-  ['/flat-irons', (slug: string) => !/curling|wand/.test(slug)],
-  ['/curling-irons', (slug: string) => /curling|wand/.test(slug)],
+  [
+    '/flat-irons',
+    (slug: string) => !/curling|curler|waver|crimper|wand/.test(slug),
+  ],
+  [
+    '/curling-irons',
+    (slug: string) => /curling|curler|waver|crimper|wand/.test(slug),
+  ],
 ] as const) {
   const html = await readFile(
     resolve(output, path.slice(1), 'index.html'),
@@ -625,6 +642,7 @@ for (const [target, owners] of Object.entries({
   ...currentModelIncoming,
   ...everydayMethodIncoming,
   ...toolChoiceIncoming,
+  ...waveMethodIncoming,
 })) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);
@@ -636,9 +654,11 @@ for (const [target, owners] of Object.entries({
       ['authored', source?.html ?? ''],
       ['rendered', rendered.intro + rendered.body],
     ]) {
-      const contextualPattern = Object.hasOwn(toolChoiceIncoming, target)
-        ? /<(p|td)\b[^>]*>([^]*?)<\/\1>/g
-        : /<(p)\b[^>]*>([^]*?)<\/\1>/g;
+      const contextualPattern =
+        Object.hasOwn(toolChoiceIncoming, target) ||
+        Object.hasOwn(waveMethodIncoming, target)
+          ? /<(p|td)\b[^>]*>([^]*?)<\/\1>/g
+          : /<(p)\b[^>]*>([^]*?)<\/\1>/g;
       const paragraphs = [...html.matchAll(contextualPattern)].filter((match) =>
         match[2].includes(link),
       );

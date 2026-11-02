@@ -1,3 +1,4 @@
+import { waveMethodCards } from './wave-method-guides';
 import { toolChoiceCards } from './tool-choice-guides';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -65,6 +66,18 @@ import {
             Routine residue and visible damage require different decisions. Use
             the exact model instructions for cleaning, then stop if a plate,
             barrel, clamp, housing, cord or plug is damaged.
+          </p>
+          <p>
+            For a motor-wrapped chamber, use
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.HowToCleanAnAutomaticHairCurler,
+              ]"
+              >automatic-curler cleaning</a
+            >. A removable care cover, accessible chamber surface and electrical
+            body have different permission checks; an ordinary exposed-barrel
+            cleaning method does not establish those access rules.
           </p>
         </div>
         <div class="editorial-grid guides-grid">
@@ -136,6 +149,16 @@ import {
           >. A motor-wrapped chamber, hand-guided barrel and airflow-attraction
           tool have different loading and release questions.
         </p>
+        <p>
+          For a repeated press pattern, compare
+          <a [routerLink]="['/guides', articleSlug.HairWaverVsCurlingIron]"
+            >waver and curling-iron actions</a
+          >. For two patterned-contact formats, compare
+          <a [routerLink]="['/guides', articleSlug.HairCrimperVsHairWaver]"
+            >crimpers and wavers</a
+          >. Decide which movement and contact pattern you want before
+          interpreting a size label.
+        </p>
       }
       <ul>
         <li>
@@ -183,6 +206,30 @@ import {
       <div class="section-heading">
         <p class="eyebrow">Choose by routine</p>
         <h2 id="direct-heat-learn-heading">Selection, size and use guides</h2>
+        @if (!isFlat) {
+          <p>
+            For the selected mechanism, follow
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.HowToUseAnAutomaticHairCurler,
+              ]"
+              >automatic-curler operation</a
+            >
+            or
+            <a [routerLink]="['/guides', articleSlug.HowToUseAHairWaver]"
+              >waver use</a
+            >. For a cooled motor-wrapped appliance,
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.HowToCleanAnAutomaticHairCurler,
+              ]"
+              >automatic-curler care</a
+            >
+            keeps chamber and cover access separate from the electrical body.
+          </p>
+        }
       </div>
       <div class="editorial-grid guides-grid">
         @for (guide of routineGuides; track guide.slug) {
@@ -285,7 +332,7 @@ import {
   `,
 })
 export class DirectHeatHubComponent {
-  readonly toolChoiceCards = toolChoiceCards;
+  readonly toolChoiceCards = { ...toolChoiceCards, ...waveMethodCards };
   readonly modelComparisons = modelComparisonGroups['direct-heat']!;
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   private readonly route = inject(ActivatedRoute);
@@ -298,9 +345,9 @@ export class DirectHeatHubComponent {
       article.group === ArticleGroupId.DirectHeat &&
       !(this.isFlat && modelComparisonDescriptions[article.slug]) &&
       (this.isFlat
-        ? !/curling|wand/.test(article.slug) ||
+        ? !/curling|curler|waver|crimper|wand/.test(article.slug) ||
           article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl
-        : /curling|wand/.test(article.slug) ||
+        : /curling|curler|waver|crimper|wand/.test(article.slug) ||
           article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl),
   );
   readonly comparisonGuides = this.guides.filter((guide) =>

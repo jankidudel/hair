@@ -1,3 +1,4 @@
+import { waveMethodRelated } from './wave-method-guides';
 import { toolChoiceRelated } from './tool-choice-guides';
 import { everydayMethodRelated } from './everyday-method-guides';
 import { currentModelRelated } from './current-model-comparison-guides';
@@ -20,6 +21,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...waveMethodRelated,
   ...toolChoiceRelated,
   ...everydayMethodRelated,
   ...currentModelRelated,

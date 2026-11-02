@@ -1,5 +1,10 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToUseAnAutomaticHairCurler: 'how-to-use-an-automatic-hair-curler',
+  HowToCleanAnAutomaticHairCurler: 'how-to-clean-an-automatic-hair-curler',
+  HairWaverVsCurlingIron: 'hair-waver-vs-curling-iron',
+  HowToUseAHairWaver: 'how-to-use-a-hair-waver',
+  HairCrimperVsHairWaver: 'hair-crimper-vs-hair-waver',
   GhdSculptVsChronos: 'ghd-sculpt-vs-chronos',
   DysonCorraleCoolshineVsCorrale: 'dyson-corrale-coolshine-vs-corrale',
   DysonAirsmoothVsGhdDuetBlowdry: 'dyson-airsmooth-vs-ghd-duet-blowdry',

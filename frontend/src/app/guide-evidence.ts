@@ -1,3 +1,4 @@
+import { supportedUpdoEvidence } from './supported-updo-guides';
 import { shapingMethodEvidence } from './shaping-method-guides';
 import { airflowMethodEvidence } from './airflow-method-guides';
 import { waveMethodEvidence } from './wave-method-guides';
@@ -141,6 +142,7 @@ export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
   ...headFormatEvidence,
   ...airflowMethodEvidence,
   ...shapingMethodEvidence,
+  ...supportedUpdoEvidence,
   [ArticleSlug.GhdAirVsHelios]: {
     sourceFormat: 'product-market',
     relatedOnly: true,

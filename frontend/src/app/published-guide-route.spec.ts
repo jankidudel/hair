@@ -1,3 +1,4 @@
+import { supportedUpdoSlugs } from './supported-updo-guides';
 import { shapingMethodSlugs } from './shaping-method-guides';
 import { airflowMethodSlugs } from './airflow-method-guides';
 import { waveMethodSlugs } from './wave-method-guides';
@@ -32,6 +33,8 @@ describe('published guide route matching', () => {
       ...waveMethodSlugs,
       ...airflowMethodSlugs,
       ...shapingMethodSlugs,
+      ...supportedUpdoSlugs,
+      ArticleSlug.HowToChooseClawClipSize,
       ArticleSlug.HowToSectionHairForStyling,
       ArticleSlug.HowToUseAWideToothComb,
       ArticleSlug.HowToUseACurlDefiningBrush,

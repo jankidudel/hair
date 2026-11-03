@@ -1,4 +1,8 @@
 import {
+  supportedUpdoSlugs,
+  supportedUpdoIncoming,
+} from '../src/app/supported-updo-guides.ts';
+import {
   shapingMethodSlugs,
   shapingMethodIncoming,
 } from '../src/app/shaping-method-guides.ts';
@@ -229,6 +233,8 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    supportedUpdoSlugs.includes(article.slug as ArticleSlug) ||
+    article.slug === ArticleSlug.HowToChooseClawClipSize ||
     shapingMethodSlugs.includes(article.slug as ArticleSlug) ||
     airflowMethodSlugs.includes(article.slug as ArticleSlug) ||
     waveMethodSlugs.includes(article.slug) ||
@@ -318,6 +324,16 @@ for (const article of articles) {
       `${route}: Article headline/description does not match visible content.`,
     );
   const materialDate = article.updatedDate ?? article.publishDate;
+  if (
+    article.slug === ArticleSlug.HowToChooseClawClipSize &&
+    (article.publishDate !== '2026-10-07' ||
+      evidenceRecord?.sources.length !== 1 ||
+      evidenceRecord.sources[0].url !==
+        'https://franceluxe.com/products/france-luxe-jumbo-couture-jaw-classic')
+  )
+    failures.push(
+      `${route}: preserve the original publication and the current exact-product source.`,
+    );
   if (articleSchema?.['datePublished'] !== article.publishDate)
     failures.push(
       `${route}: JSON-LD datePublished differs from original publication.`,
@@ -528,6 +544,8 @@ for (const [slug, targets] of Object.entries(accessoryIntegrations)) {
       );
 }
 for (const [slug, diagram] of [
+  [ArticleSlug.BananaClipVsClawClip, 'banana-clip-and-claw-closure'],
+  [ArticleSlug.HowToUseAHairBungee, 'hair-bungee-anchoring-sequence'],
   [ArticleSlug.HairPasteVsHairClay, 'styling-label-comparison-fields'],
   [ArticleSlug.HowToSlickBackHairWithGel, 'slick-back-gel-stages'],
   [ArticleSlug.HowToUseAirflowCurlingBarrels, 'airflow-wrap-control-stages'],
@@ -662,6 +680,7 @@ for (const [target, owners] of Object.entries({
   ...waveMethodIncoming,
   ...airflowMethodIncoming,
   ...shapingMethodIncoming,
+  ...supportedUpdoIncoming,
 })) {
   for (const owner of owners) {
     const source = articles.find((article) => article.slug === owner);

@@ -65,19 +65,19 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
     '/brushes-combs',
     'hub',
     '2026-11-03',
-    'Batch 33 wax, paste and slick-back discovery',
+    'Batch 34 fastening mechanisms and supported updos',
   ),
   page(
     '/hair-accessories',
     'hub',
-    '2026-11-01',
-    'Batch 29 fringe, curl finishing and everyday methods',
+    '2026-11-03',
+    'Batch 34 fastening mechanisms and supported updos',
   ),
   page(
     '/guides',
     'hub',
     '2026-11-03',
-    'Batch 33 wax, paste and slick-back discovery',
+    'Batch 34 fastening mechanisms and supported updos',
   ),
   page('/hair-brush-finder', 'tool'),
   page(

@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-03T07:58:59.541Z",
+  "checkedAt": "2026-11-03T13:22:12.159Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "3f3844eedc43ffc1e3d8ad9b8e65f1adf97b8625",
+  "sourceCommit": "c41dccca3c3f9c916444f3feac43d0bc430cb369",
   "sourceTreeDirty": true,
-  "artifactSha256": "92cff3677f650525ad5885058adffa7734647c8cbf09751e715b5320d9bba41a",
+  "artifactSha256": "587f28b0ad139f373d0a30527611c799f109794d5cae9935bcdb40f670b1f730",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -56,7 +56,13 @@
     "how-to-apply-hair-wax",
     "hair-paste-vs-hair-clay",
     "how-to-apply-hair-paste",
-    "how-to-slick-back-hair-with-gel"
+    "how-to-slick-back-hair-with-gel",
+    "how-to-use-a-banana-clip",
+    "banana-clip-vs-claw-clip",
+    "how-to-use-a-hair-bungee",
+    "hair-bungee-vs-hair-elastic",
+    "how-to-use-hair-sticks",
+    "how-to-choose-claw-clip-size"
   ],
   "observations": [
     {
@@ -282,6 +288,36 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-slick-back-hair-with-gel",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-banana-clip",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/banana-clip-vs-claw-clip",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-hair-bungee",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-bungee-vs-hair-elastic",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-hair-sticks",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-claw-clip-size",
       "errors": []
     }
   ],

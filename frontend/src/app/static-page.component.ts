@@ -1,3 +1,4 @@
+import { supportedUpdoCards } from './supported-updo-guides';
 import { shapingMethodCards } from './shaping-method-guides';
 import { airflowMethodCards } from './airflow-method-guides';
 import { waveMethodCards } from './wave-method-guides';
@@ -562,6 +563,16 @@ import { AnalyticsService } from './analytics/analytics.service';
               product's setting directions and the tool's own care permissions
               remain separate checks.
             </p>
+            <p>
+              For an arranged bun,
+              <a [routerLink]="['/guides', articleSlug.HowToUseHairSticks]"
+                >hair-stick use</a
+              >
+              begins after preparation and keeps the bun supported during
+              placement. The stick's point is not a detangling tool. Choose the
+              right contact and movement before trying to carry a styling
+              accessory through resistance.
+            </p>
           </section>
         }
         @if (category.id === 'hair-care') {
@@ -951,6 +962,19 @@ import { AnalyticsService } from './analytics/analytics.service';
                 <span class="text-link">Check barrette fit →</span></a
               >
             </div>
+            <p>
+              Compare
+              <a [routerLink]="['/guides', articleSlug.BananaClipVsClawClip]"
+                >banana and claw closures</a
+              >
+              for toothed accessories, or
+              <a [routerLink]="['/guides', articleSlug.HairBungeeVsHairElastic]"
+                >bungees and closed elastics</a
+              >
+              for a gathered tail. Opening, placement and removal are different
+              tasks; a similar material or size name does not make the methods
+              interchangeable.
+            </p>
           </section>
           <section class="category-guide-section">
             <div class="section-heading">
@@ -1066,6 +1090,22 @@ import { AnalyticsService } from './analytics/analytics.service';
                   >creaseless-clip placement</a
                 >. Choose the actual job before applying another accessory's
                 opening action.
+              </p>
+              <p>
+                Use
+                <a [routerLink]="['/guides', articleSlug.HowToUseABananaClip]"
+                  >banana-clip operation</a
+                >,
+                <a [routerLink]="['/guides', articleSlug.HowToUseAHairBungee]"
+                  >hair-bungee operation</a
+                >
+                or
+                <a [routerLink]="['/guides', articleSlug.HowToUseHairSticks]"
+                  >hair-stick placement</a
+                >
+                for the selected construction. Begin with the intended section
+                supported and keep the closure or insertion route clear before
+                releasing the style.
               </p>
             }
             <div class="editorial-grid guides-grid">
@@ -1481,6 +1521,7 @@ export class StaticPageComponent implements OnInit {
     ...waveMethodCards,
     ...airflowMethodCards,
     ...shapingMethodCards,
+    ...supportedUpdoCards,
   };
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;

@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-02T19:19:24.482Z",
+  "checkedAt": "2026-11-03T07:58:59.541Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "72026c6417696e755bfc014c196b5618f9036f87",
+  "sourceCommit": "3f3844eedc43ffc1e3d8ad9b8e65f1adf97b8625",
   "sourceTreeDirty": true,
-  "artifactSha256": "85c6256993afb878202fd8a377b6de57e443e642c8ea48256e906bf5de34606d",
+  "artifactSha256": "92cff3677f650525ad5885058adffa7734647c8cbf09751e715b5320d9bba41a",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -45,7 +45,18 @@
     "hair-waver-vs-curling-iron",
     "how-to-use-a-hair-waver",
     "hair-crimper-vs-hair-waver",
-    "curling-iron-leaves-crease"
+    "curling-iron-leaves-crease",
+    "how-to-use-a-rotating-hot-air-brush",
+    "how-to-use-airflow-curling-barrels",
+    "how-to-use-a-hair-dryer-flyaway-attachment",
+    "hair-dryer-comb-attachment-vs-concentrator",
+    "airflow-curling-barrel-vs-curling-wand",
+    "rotating-vs-fixed-hot-air-brush",
+    "hair-wax-vs-hair-gel",
+    "how-to-apply-hair-wax",
+    "hair-paste-vs-hair-clay",
+    "how-to-apply-hair-paste",
+    "how-to-slick-back-hair-with-gel"
   ],
   "observations": [
     {
@@ -216,6 +227,61 @@
     {
       "stage": "artifact",
       "path": "/guides/curling-iron-leaves-crease",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-rotating-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-airflow-curling-barrels",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-hair-dryer-flyaway-attachment",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-comb-attachment-vs-concentrator",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/airflow-curling-barrel-vs-curling-wand",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/rotating-vs-fixed-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-wax-vs-hair-gel",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-hair-wax",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-paste-vs-hair-clay",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-hair-paste",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-slick-back-hair-with-gel",
       "errors": []
     }
   ],

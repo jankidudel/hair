@@ -1,3 +1,4 @@
+import { shapingMethodSlugs } from '../../frontend/src/app/shaping-method-guides.ts';
 import { airflowMethodSlugs } from '../../frontend/src/app/airflow-method-guides.ts';
 import { waveMethodSlugs } from '../../frontend/src/app/wave-method-guides.ts';
 import { toolChoiceSlugs } from '../../frontend/src/app/tool-choice-guides.ts';
@@ -40,6 +41,7 @@ const intended = [
     ...toolChoiceSlugs,
     ...waveMethodSlugs,
     ...airflowMethodSlugs,
+    ...shapingMethodSlugs,
   ]),
 ].flatMap((slug) => {
   const article = articles.find((value) => value.slug === slug);

@@ -1,3 +1,4 @@
+import { shapingMethodSlugs } from './shaping-method-guides';
 import { airflowMethodSlugs } from './airflow-method-guides';
 import { waveMethodSlugs } from './wave-method-guides';
 import { toolChoiceSlugs } from './tool-choice-guides';
@@ -30,6 +31,7 @@ describe('published guide route matching', () => {
       ...toolChoiceSlugs,
       ...waveMethodSlugs,
       ...airflowMethodSlugs,
+      ...shapingMethodSlugs,
       ArticleSlug.HowToSectionHairForStyling,
       ArticleSlug.HowToUseAWideToothComb,
       ArticleSlug.HowToUseACurlDefiningBrush,

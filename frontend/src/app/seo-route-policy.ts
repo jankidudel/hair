@@ -46,8 +46,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-care',
     'hub',
-    '2026-11-01',
-    'Batch 29 fringe, curl finishing and everyday methods',
+    '2026-11-03',
+    'Batch 33 wax, paste and slick-back discovery',
   ),
   page(
     '/hair-dryers',
@@ -64,8 +64,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-01',
-    'Batch 29 fringe, curl finishing and everyday methods',
+    '2026-11-03',
+    'Batch 33 wax, paste and slick-back discovery',
   ),
   page(
     '/hair-accessories',
@@ -76,8 +76,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-11-01',
-    'Batch 29 fringe, curl finishing and everyday methods',
+    '2026-11-03',
+    'Batch 33 wax, paste and slick-back discovery',
   ),
   page('/hair-brush-finder', 'tool'),
   page(

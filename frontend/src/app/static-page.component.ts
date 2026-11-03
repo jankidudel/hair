@@ -1,3 +1,4 @@
+import { shapingMethodCards } from './shaping-method-guides';
 import { airflowMethodCards } from './airflow-method-guides';
 import { waveMethodCards } from './wave-method-guides';
 import { toolChoiceCards } from './tool-choice-guides';
@@ -548,6 +549,19 @@ import { AnalyticsService } from './analytics/analytics.service';
                 >
               </li>
             </ul>
+            <p>
+              For a prepared section being arranged backwards,
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToSlickBackHairWithGel,
+                ]"
+                >slick-back gel styling</a
+              >
+              separates the comb or brush's finishing role from detangling. The
+              product's setting directions and the tool's own care permissions
+              remain separate checks.
+            </p>
           </section>
         }
         @if (category.id === 'hair-care') {
@@ -606,6 +620,19 @@ import { AnalyticsService } from './analytics/analytics.service';
                 <span class="text-link">Read guide →</span></a
               >
             </div>
+            <p>
+              For deliberate shaping, compare
+              <a [routerLink]="['/guides', articleSlug.HairWaxVsHairGel]"
+                >wax and gel</a
+              >
+              or
+              <a [routerLink]="['/guides', articleSlug.HairPasteVsHairClay]"
+                >paste and clay</a
+              >
+              by the actual formula's finish and directions. Keep product choice
+              separate from stacking several jars that would arrange the same
+              area.
+            </p>
           </section>
           <section
             class="category-guide-section"
@@ -694,6 +721,26 @@ import { AnalyticsService } from './analytics/analytics.service';
                 <span class="text-link">Read guide →</span></a
               >
             </div>
+            <p>
+              Follow
+              <a [routerLink]="['/guides', articleSlug.HowToApplyHairWax]"
+                >wax application</a
+              >
+              or
+              <a [routerLink]="['/guides', articleSlug.HowToApplyHairPaste]"
+                >paste application</a
+              >
+              for hand-distributed shaping. For a deliberately backward outline,
+              use
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToSlickBackHairWithGel,
+                ]"
+                >slick-back gel styling</a
+              >, keeping preparation, arranging and the formula's setting stage
+              separate.
+            </p>
           </section>
         }
         @if (category.id === 'hair-care') {
@@ -1433,6 +1480,7 @@ export class StaticPageComponent implements OnInit {
     ...toolChoiceCards,
     ...waveMethodCards,
     ...airflowMethodCards,
+    ...shapingMethodCards,
   };
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;

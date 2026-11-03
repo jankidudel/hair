@@ -1,3 +1,4 @@
+import { shapingMethodRelated } from './shaping-method-guides';
 import { airflowMethodRelated } from './airflow-method-guides';
 import { waveMethodRelated } from './wave-method-guides';
 import { toolChoiceRelated } from './tool-choice-guides';
@@ -33,6 +34,7 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
   ...coreGuideRelated,
   ...headFormatRelated,
   ...airflowMethodRelated,
+  ...shapingMethodRelated,
   [ArticleSlug.GhdAirVsHelios]: [
     ArticleSlug.HairDryerChooser,
     ArticleSlug.HairDryerWattageGuide,

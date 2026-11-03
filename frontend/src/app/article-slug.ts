@@ -1,5 +1,11 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HairWaxVsHairGel: 'hair-wax-vs-hair-gel',
+  HowToApplyHairWax: 'how-to-apply-hair-wax',
+  HairPasteVsHairClay: 'hair-paste-vs-hair-clay',
+  HowToApplyHairPaste: 'how-to-apply-hair-paste',
+  HowToSlickBackHairWithGel: 'how-to-slick-back-hair-with-gel',
+
   AirflowCurlingBarrelVsCurlingWand: 'airflow-curling-barrel-vs-curling-wand',
   HairDryerCombAttachmentVsConcentrator:
     'hair-dryer-comb-attachment-vs-concentrator',

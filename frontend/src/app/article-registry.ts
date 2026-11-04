@@ -118,6 +118,20 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
   );
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
+  ...[
+    ArticleSlug.SteamHairStraightenerVsFlatIron,
+    ArticleSlug.HowToUseASteamHairStraightener,
+    ArticleSlug.HowToCleanASteamHairStraightener,
+    ArticleSlug.WetToDryHairStraightenerVsFlatIron,
+    ArticleSlug.HowToUseAWetToDryHairStraightener,
+    ArticleSlug.HowToCleanAWetToDryHairStraightener,
+  ].map((slug, index) => ({
+    slug,
+    group: ArticleGroupId.DirectHeat,
+    order: 1150 + index * 10,
+    enabled: true,
+    publishDate: '2026-11-04',
+  })),
   {
     slug: ArticleSlug.HowToUseABananaClip,
     group: ArticleGroupId.HairAccessories,

@@ -1,3 +1,4 @@
+import { straightenerGuideRelated } from '../src/app/straightener-guides.ts';
 import {
   supportedUpdoSlugs,
   supportedUpdoIncoming,
@@ -233,6 +234,7 @@ for (const article of articles) {
     `| ${route} | ${html.match(/<h1\b[^>]*>([^]*?)<\/h1>/)?.[1].trim() === escapeHtml(article.heading) ? 'Expected article H1' : 'REVIEW identity'} | ${bodyStats.words} | ${bodyStats.headings.join('; ')} | ${hasEvidence ? 'Yes' : 'REVIEW missing'} | ${sourceCount} | ${bodyStats.words < 500 || bodyStats.headings.length < 3 || !hasEvidence || !sourceCount ? 'Editorial review' : '—'} |`,
   );
   if (
+    Object.hasOwn(straightenerGuideRelated, article.slug) ||
     supportedUpdoSlugs.includes(article.slug as ArticleSlug) ||
     article.slug === ArticleSlug.HowToChooseClawClipSize ||
     shapingMethodSlugs.includes(article.slug as ArticleSlug) ||

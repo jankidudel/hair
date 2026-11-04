@@ -1,4 +1,5 @@
 import { waveMethodCards } from './wave-method-guides';
+import { straightenerGuideCards } from './straightener-guides';
 import { toolChoiceCards } from './tool-choice-guides';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -79,6 +80,28 @@ import {
             body have different permission checks; an ordinary exposed-barrel
             cleaning method does not establish those access rules.
           </p>
+          <p>
+            For a reservoir-fed tool, use
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.HowToCleanASteamHairStraightener,
+              ]"
+              >steam-straightener care</a
+            >
+            to separate surfaces, combs, outlets and the water system. For a
+            two-arm airflow appliance, use
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.HowToCleanAWetToDryHairStraightener,
+              ]"
+              >wet-to-dry straightener care</a
+            >
+            to identify permitted contact-surface and air-path access. Neither
+            task is covered completely by an ordinary plate wipe, and another
+            revision's removable part does not establish a cleaning permission.
+          </p>
         </div>
         <div class="editorial-grid guides-grid">
           <a
@@ -136,6 +159,42 @@ import {
             >Corrale CoolShine versus original Corrale</a
           >. Keep user controls, internal regulation and power arrangements as
           separate choices.
+        </p>
+        <p>
+          Compare
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.SteamHairStraightenerVsFlatIron,
+            ]"
+            >steam straightener versus flat iron</a
+          >
+          for a reservoir-fed plate system, or
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.WetToDryHairStraightenerVsFlatIron,
+            ]"
+            >wet-to-dry straightener versus flat iron</a
+          >
+          when the aim is combined drying and straightening. Once the task is
+          clear, follow
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.HowToUseASteamHairStraightener,
+            ]"
+            >steam-straightener use</a
+          >
+          or
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.HowToUseAWetToDryHairStraightener,
+            ]"
+            >wet-to-dry straightener use</a
+          >. Keep each appliance's starting state, fitted parts and modes with
+          its own instructions.
         </p>
       } @else {
         <p>
@@ -343,7 +402,11 @@ export class DirectHeatHubComponent {
   readonly guides = articles.filter(
     (article) =>
       article.group === ArticleGroupId.DirectHeat &&
-      !(this.isFlat && modelComparisonDescriptions[article.slug]) &&
+      !(
+        this.isFlat &&
+        (modelComparisonDescriptions[article.slug] ||
+          straightenerGuideCards[article.slug])
+      ) &&
       (this.isFlat
         ? !/curling|curler|waver|crimper|wand/.test(article.slug) ||
           article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl

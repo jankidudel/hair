@@ -1,5 +1,14 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  SteamHairStraightenerVsFlatIron: 'steam-hair-straightener-vs-flat-iron',
+  HowToUseASteamHairStraightener: 'how-to-use-a-steam-hair-straightener',
+  HowToCleanASteamHairStraightener: 'how-to-clean-a-steam-hair-straightener',
+  WetToDryHairStraightenerVsFlatIron:
+    'wet-to-dry-hair-straightener-vs-flat-iron',
+  HowToUseAWetToDryHairStraightener:
+    'how-to-use-a-wet-to-dry-hair-straightener',
+  HowToCleanAWetToDryHairStraightener:
+    'how-to-clean-a-wet-to-dry-hair-straightener',
   HowToUseABananaClip: 'how-to-use-a-banana-clip',
   BananaClipVsClawClip: 'banana-clip-vs-claw-clip',
   HowToUseAHairBungee: 'how-to-use-a-hair-bungee',

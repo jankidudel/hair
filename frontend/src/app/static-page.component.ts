@@ -1,4 +1,5 @@
 import { supportedUpdoCards } from './supported-updo-guides';
+import { straightenerGuideCards } from './straightener-guides';
 import { shapingMethodCards } from './shaping-method-guides';
 import { airflowMethodCards } from './airflow-method-guides';
 import { waveMethodCards } from './wave-method-guides';
@@ -390,7 +391,32 @@ import { AnalyticsService } from './analytics/analytics.service';
           </section>
         }
         @if (categoryPathwayGroups.length) {
-          <app-choose-use-fix-pathways [groups]="categoryPathwayGroups" />
+          <app-choose-use-fix-pathways [groups]="categoryPathwayGroups">
+            @if (category.id === 'hair-dryers') {
+              <p>
+                If the proposed replacement combines drying and straightening,
+                begin with
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.WetToDryHairStraightenerVsFlatIron,
+                  ]"
+                  >wet-to-dry straightener versus flat iron</a
+                >. It compares the routine stage and actual mechanism rather
+                than assuming every airflow tool performs the same movement. Use
+                the
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToUseAWetToDryHairStraightener,
+                  ]"
+                  >wet-to-dry method</a
+                >
+                only with the selected appliance's own preparation and mode
+                instructions.
+              </p>
+            }
+          </app-choose-use-fix-pathways>
         }
         @if (category.id === 'hot-air-brushes') {
           <p>
@@ -1161,6 +1187,28 @@ import { AnalyticsService } from './analytics/analytics.service';
                 powered brush and an airflow barrel describe different
                 functions.
               </p>
+              <p>
+                A two-arm airflow straightener is another format to assess when
+                the aim is combined drying and straightening. Use
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.WetToDryHairStraightenerVsFlatIron,
+                  ]"
+                  >wet-to-dry versus flat iron</a
+                >
+                for that stage decision, then
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HowToCleanAWetToDryHairStraightener,
+                  ]"
+                  >wet-to-dry straightener care</a
+                >
+                for its separate air-path and contact-surface checks. Do not
+                borrow a brush-head movement or cleaning procedure simply
+                because both appliances move air.
+              </p>
             }
             @if (section.id === 'hot-air-brushes-learn-guides') {
               <p>
@@ -1522,6 +1570,7 @@ export class StaticPageComponent implements OnInit {
     ...airflowMethodCards,
     ...shapingMethodCards,
     ...supportedUpdoCards,
+    ...straightenerGuideCards,
   };
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="760" viewBox="0 0 340 760" role="img" aria-labelledby="title">
+  <title id="title">Match the starting state to the mode</title>
+  <rect width="340" height="760" rx="16" fill="#f5f1e8"/>
+  <g fill="#20332c" font-family="system-ui, sans-serif">
+    <text x="22" y="45" font-size="25" font-weight="700">
+      <tspan x="22">Match the starting</tspan>
+      <tspan x="22" dy="31">state to the mode</tspan>
+    </text>
+    <g>
+      <rect x="16" y="106" width="308" height="188" rx="13" fill="#fffdf8" stroke="#81968b"/>
+      <g fill="none" stroke="#336553" stroke-width="4" stroke-linecap="round">
+        <rect x="37" y="136" width="84" height="16" rx="5"/>
+        <rect x="37" y="168" width="84" height="16" rx="5"/>
+      </g>
+      <text x="36" y="225" font-size="21" font-weight="700">Conventional dry-use iron</text>
+      <text x="36" y="259" font-size="19">Meet its dry-hair instructions</text>
+    </g>
+    <g>
+      <rect x="16" y="310" width="308" height="188" rx="13" fill="#fffdf8" stroke="#81968b"/>
+      <g fill="none" stroke="#336553" stroke-width="4" stroke-linecap="round">
+        <rect x="37" y="340" width="84" height="16" rx="5"/>
+        <rect x="37" y="372" width="84" height="16" rx="5"/>
+        <rect x="144" y="347" width="32" height="35" rx="5"/>
+        <path d="M151 367h18"/>
+      </g>
+      <text x="36" y="429" font-size="21" font-weight="700">Steam plate example: LP74</text>
+      <text x="36" y="463" font-size="19">Dry hair before styling</text>
+    </g>
+    <g>
+      <rect x="16" y="514" width="308" height="229" rx="13" fill="#fffdf8" stroke="#81968b"/>
+      <g fill="none" stroke="#336553" stroke-width="4" stroke-linecap="round">
+        <path d="M37 550h64c16 0 16-17 4-17"/>
+        <path d="M37 566h83c19 0 19 18 5 18"/>
+        <path d="M37 583h45"/>
+      </g>
+      <text x="36" y="626" font-size="21" font-weight="700">
+        <tspan x="36">Documented wet-to-dry</tspan>
+        <tspan x="36" dy="25">mode</tspan>
+      </text>
+      <text x="36" y="683" font-size="18">Use its permitted starting state</text>
+      <text x="36" y="712" font-size="18">Check dry-only modes separately</text>
+    </g>
+  </g>
+</svg>

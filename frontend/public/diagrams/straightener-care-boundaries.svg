@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="660" viewBox="0 0 340 660" role="img" aria-labelledby="title">
+  <title id="title">Identify the area before cleaning</title>
+  <rect width="340" height="660" rx="16" fill="#f5f1e8"/>
+  <g fill="#20332c" font-family="system-ui, sans-serif">
+    <text x="22" y="45" font-size="25" font-weight="700">
+      <tspan x="22">Identify the area</tspan>
+      <tspan x="22" dy="31">before cleaning</tspan>
+    </text>
+    <g>
+      <rect x="16" y="103" width="308" height="151" rx="13" fill="#fffdf8" stroke="#81968b"/>
+      <g fill="none" stroke="#336553" stroke-width="4" stroke-linecap="round">
+        <rect x="37" y="128" width="70" height="29" rx="7"/>
+        <path d="M48 142h48"/>
+      </g>
+      <text x="36" y="194" font-size="22" font-weight="700">Contact surface</text>
+      <text x="36" y="225" font-size="19">Check cloth and substances</text>
+    </g>
+    <g>
+      <rect x="16" y="269" width="308" height="151" rx="13" fill="#fffdf8" stroke="#81968b"/>
+      <g fill="none" stroke="#336553" stroke-width="4" stroke-linecap="round">
+        <path d="M37 298h53c10 0 10-11 3-11"/>
+        <path d="M37 310h68c11 0 11 11 4 11"/>
+        <path d="M37 322h36"/>
+      </g>
+      <text x="36" y="360" font-size="22" font-weight="700">Air path</text>
+      <text x="36" y="391" font-size="19">Check the permitted access</text>
+    </g>
+    <g>
+      <rect x="16" y="435" width="308" height="151" rx="13" fill="#fffdf8" stroke="#81968b"/>
+      <g fill="none" stroke="#336553" stroke-width="4" stroke-linecap="round">
+        <path d="M48 461h43l11 17-11 17H48l-11-17z"/>
+        <circle cx="69" cy="478" r="5"/>
+      </g>
+      <text x="36" y="526" font-size="22" font-weight="700">Removable part</text>
+      <text x="36" y="557" font-size="18">Check removal, care and refitting</text>
+    </g>
+    <rect x="16" y="601" width="308" height="43" rx="10" fill="#e0ebe4"/>
+    <text x="170" y="628" text-anchor="middle" font-size="17" font-weight="700">Match the appliance revision first</text>
+  </g>
+</svg>

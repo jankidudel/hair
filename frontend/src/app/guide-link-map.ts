@@ -1,4 +1,5 @@
 import { supportedUpdoRelated } from './supported-updo-guides';
+import { straightenerGuideRelated } from './straightener-guides';
 import { shapingMethodRelated } from './shaping-method-guides';
 import { airflowMethodRelated } from './airflow-method-guides';
 import { waveMethodRelated } from './wave-method-guides';
@@ -37,6 +38,7 @@ const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
   ...airflowMethodRelated,
   ...shapingMethodRelated,
   ...supportedUpdoRelated,
+  ...straightenerGuideRelated,
   [ArticleSlug.GhdAirVsHelios]: [
     ArticleSlug.HairDryerChooser,
     ArticleSlug.HairDryerWattageGuide,

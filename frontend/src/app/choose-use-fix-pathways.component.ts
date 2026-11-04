@@ -28,6 +28,7 @@ export interface PathwayGroup {
           </section>
         }
       </div>
+      <ng-content />
     </nav>
   `,
 })

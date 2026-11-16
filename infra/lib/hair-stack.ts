@@ -287,7 +287,7 @@ export class HairStack extends Stack {
 const contactRateRule: wafv2.CfnWebACL.RuleProperty = {
   name: 'ContactRateLimitByIp',
   priority: 1,
-  action: { block: { customResponse: { responseCode: 429 } } },
+  action: { block: {} },
   statement: {
     rateBasedStatement: {
       aggregateKeyType: 'IP',

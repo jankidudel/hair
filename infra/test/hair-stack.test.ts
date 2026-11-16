@@ -95,7 +95,7 @@ test('routes uncached contact POSTs to the throttled API with Turnstile verifica
     Rules: Match.arrayWith([
       Match.objectLike({
         Name: 'ContactRateLimitByIp',
-        Action: { Block: { CustomResponse: { ResponseCode: 429 } } },
+        Action: { Block: { CustomResponse: Match.absent() } },
         Statement: { RateBasedStatement: Match.objectLike({ Limit: 10 }) },
         VisibilityConfig: Match.objectLike({ SampledRequestsEnabled: false }),
       }),

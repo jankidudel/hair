@@ -91,16 +91,6 @@ test('routes uncached contact POSTs to the throttled API with Turnstile verifica
       ]),
     }),
   });
-  template.hasResourceProperties('AWS::WAFv2::WebACL', {
-    Rules: Match.arrayWith([
-      Match.objectLike({
-        Name: 'ContactRateLimitByIp',
-        Action: { Block: { CustomResponse: Match.absent() } },
-        Statement: { RateBasedStatement: Match.objectLike({ Limit: 10 }) },
-        VisibilityConfig: Match.objectLike({ SampledRequestsEnabled: false }),
-      }),
-    ]),
-  });
   template.hasResourceProperties('AWS::IAM::Policy', {
     PolicyDocument: {
       Statement: Match.arrayWith([
@@ -156,6 +146,25 @@ test('adds the production domain and required WAF protection', () => {
   template.hasResourceProperties('AWS::WAFv2::WebACL', {
     Name: 'hair-prod-cloudfront',
     Scope: 'CLOUDFRONT',
+    Rules: Match.exact([
+      {
+        Name: 'RateLimitByIp',
+        Priority: 0,
+        Action: { Block: {} },
+        Statement: {
+          RateBasedStatement: {
+            AggregateKeyType: 'IP',
+            EvaluationWindowSec: 300,
+            Limit: 3_000,
+          },
+        },
+        VisibilityConfig: {
+          CloudWatchMetricsEnabled: true,
+          MetricName: 'hairProdCloudFrontRateLimitByIp',
+          SampledRequestsEnabled: true,
+        },
+      },
+    ]),
   });
   const productionFunction = Object.values(
     template.findResources('AWS::CloudFront::Function'),

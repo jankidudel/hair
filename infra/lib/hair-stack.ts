@@ -104,7 +104,6 @@ export class HairStack extends Stack {
             sampledRequestsEnabled: true,
           },
         },
-        contactRateRule,
       ],
     });
     productionWebAcl.applyRemovalPolicy(RemovalPolicy.RETAIN);
@@ -283,46 +282,3 @@ export class HairStack extends Stack {
     };
   }
 }
-
-const contactRateRule: wafv2.CfnWebACL.RuleProperty = {
-  name: 'ContactRateLimitByIp',
-  priority: 1,
-  action: { block: {} },
-  statement: {
-    rateBasedStatement: {
-      aggregateKeyType: 'IP',
-      limit: 10,
-      evaluationWindowSec: 300,
-      scopeDownStatement: {
-        andStatement: {
-          statements: [
-            {
-              byteMatchStatement: {
-                fieldToMatch: { uriPath: {} },
-                positionalConstraint: 'EXACTLY',
-                searchString: contactEndpoint,
-                textTransformations: [
-                  { priority: 0, type: 'URL_DECODE' },
-                  { priority: 1, type: 'NORMALIZE_PATH' },
-                ],
-              },
-            },
-            {
-              byteMatchStatement: {
-                fieldToMatch: { method: {} },
-                positionalConstraint: 'EXACTLY',
-                searchString: 'POST',
-                textTransformations: [{ priority: 0, type: 'NONE' }],
-              },
-            },
-          ],
-        },
-      },
-    },
-  },
-  visibilityConfig: {
-    cloudWatchMetricsEnabled: true,
-    metricName: 'hairProdContactRateLimitByIp',
-    sampledRequestsEnabled: false,
-  },
-};

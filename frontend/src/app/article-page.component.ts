@@ -40,6 +40,7 @@ import { guideEvidence, type GuideEvidence } from './guide-evidence';
 import { additionalGuideSources } from './current-model-comparison-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
+import { GHD_UK_RETAILER_OFFERS } from './retailer-availability';
 
 const safetyInsertionHeading: Readonly<Record<string, string>> = {
   [ArticleSlug.HowToCleanHairStraightenerPlates]:
@@ -200,6 +201,41 @@ export function splitEvidenceArticleHtml(
           class="article-body"
           [innerHTML]="articleHtmlAfterUpgrade"
         ></section>
+      } @else if (articleHtmlBeforeRetailers) {
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlBeforeRetailers"
+        ></section>
+        <section
+          class="article-body retailer-availability"
+          aria-labelledby="retailer-availability-heading"
+        >
+          <h2 id="retailer-availability-heading">
+            Check retailer availability
+          </h2>
+          <p>These links are for the UK models compared above.</p>
+          @if (hasAffiliateOffer) {
+            <p>We may earn a commission if you buy through links marked Ad.</p>
+          }
+          <ul>
+            @for (offer of ghdRetailerOffers; track offer.product) {
+              <li>
+                <span>{{ offer.product }}</span>
+                <a
+                  [href]="offer.affiliateUrl || offer.url"
+                  [attr.rel]="offer.affiliateUrl ? 'sponsored' : null"
+                  (click)="trackGhdRetailerLink()"
+                  (auxclick)="trackGhdRetailerLink($event)"
+                >
+                  {{
+                    offer.affiliateUrl ? 'Ad ' + offer.label : offer.label
+                  }}</a
+                >
+              </li>
+            }
+          </ul>
+        </section>
+        <section class="article-body" [innerHTML]="articleHtmlMain"></section>
       } @else if (articleHtmlBeforeSafety) {
         <section
           class="article-body"
@@ -334,6 +370,10 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
+  readonly ghdRetailerOffers = inject(GHD_UK_RETAILER_OFFERS);
+  readonly hasAffiliateOffer = this.ghdRetailerOffers.some(
+    (offer) => !!offer.affiliateUrl,
+  );
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private safetyObserver?: IntersectionObserver;
@@ -386,6 +426,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtmlBeforeUpgrade = '';
   articleHtmlAfterUpgrade = '';
   articleHtmlBeforeSafety = '';
+  articleHtmlBeforeRetailers = '';
   articleHtmlAfterSafety = '';
   articleHtmlIntro = '';
   articleHtmlMain = '';
@@ -397,12 +438,24 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
       this.decisionSnapshot = decisionSnapshots[this.article.slug];
       this.decisionLinks = decisionRelatedLinks[this.article.slug];
       this.guideEvidenceContent = guideEvidence[this.article.slug];
-      if (this.guideEvidenceContent) {
+      if (
+        this.guideEvidenceContent ||
+        slug === ArticleSlug.HairDryerWattageGuide
+      ) {
         [this.articleHtmlIntro, this.articleHtmlMain] =
           splitAfterFirstParagraph(this.article.html);
+      }
+      if (this.guideEvidenceContent) {
         [this.articleHtmlMain, this.articleHtmlFaq] = splitInlineFaq(
           this.articleHtmlMain,
         );
+      }
+      if (slug === ArticleSlug.GhdSpeedVsHelios) {
+        [this.articleHtmlBeforeRetailers, this.articleHtmlMain] =
+          splitBeforeHeading(
+            this.articleHtmlMain || this.article.html,
+            'Give setting memory a real job',
+          );
       }
       const safetyHeading = safetyInsertionHeading[this.article.slug];
       if (safetyHeading) {
@@ -522,6 +575,15 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
       this.safetyObserver?.disconnect();
     });
     this.safetyObserver.observe(safety);
+  }
+
+  trackGhdRetailerLink(event?: MouseEvent): void {
+    if (event && event.button !== 1) return;
+    this.analytics.track('retailer_outbound_click', {
+      guide_path: `/guides/${ArticleSlug.GhdSpeedVsHelios}`,
+      merchant: 'ghd',
+      offer_market: 'UK',
+    });
   }
 
   trackGuideTaskLink(event: MouseEvent): void {

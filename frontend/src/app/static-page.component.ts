@@ -32,6 +32,7 @@ import {
 } from './choose-use-fix-pathways.component';
 import { categoryPathways } from './category-pathways';
 import { AnalyticsService } from './analytics/analytics.service';
+import { CONTACT_FORM_PRIVACY } from './contact-config';
 
 @Component({
   imports: [
@@ -1370,6 +1371,7 @@ import { AnalyticsService } from './analytics/analytics.service';
           <a routerLink="/affiliate-disclosure">affiliate disclosure</a>, or
           <a routerLink="/corrections-policy">corrections policy</a> for more.
         </p>
+        <p><a routerLink="/contact">Contact Comb Report</a></p>
       </section>
     }
     @case ('author') {
@@ -1486,30 +1488,39 @@ import { AnalyticsService } from './analytics/analytics.service';
           We assess substantiated corrections and update material inaccuracies.
           We do not alter dates merely because a page is rebuilt.
         </p>
-      </section>
-    }
-    @case ('contact') {
-      <section class="listing-intro">
-        <p class="eyebrow">Contact</p>
-        <h1>Contact Comb Report</h1>
-        <p class="lede">
-          For corrections, source information, or business enquiries, please use
-          the contact channel provided by the site owner.
-        </p>
-        <p>
-          Contact details are awaiting owner confirmation and are not yet
-          published.
-        </p>
+        <p><a routerLink="/contact">Report a correction</a></p>
       </section>
     }
     @case ('privacy') {
       <section class="listing-intro">
         <p class="eyebrow">Privacy</p>
         <h1>Privacy notice</h1>
-        <p class="lede">
-          You can read Comb Report without an account. The site has no contact
-          form and does not ask you to submit personal details through its
-          pages.
+        <p class="lede">You can read Comb Report without an account.</p>
+        <h2>Contact enquiries</h2>
+        <p>
+          We use your email address, your message and any details you include to
+          respond and follow up on your enquiry. For questions about your
+          personal data, use the form on our
+          <a routerLink="/contact">contact page</a>.
+        </p>
+        <p>
+          The contact form collects your reason for getting in touch, email
+          address and message, plus your name and a page link if you provide
+          them. Amazon Simple Email Service delivers messages to our mailbox.
+        </p>
+        @if (contactPrivacy; as policy) {
+          <p>
+            {{ policy.controller }} is responsible for this data. The lawful
+            basis is {{ policy.lawfulBasis }}.
+          </p>
+          <p>
+            Our mailbox is hosted by {{ policy.mailboxProvider }}.
+            {{ policy.retention }}
+          </p>
+        }
+        <p>
+          AWS uses incoming IP addresses to limit repeated form submissions.
+          Form answers are kept out of application logs and analytics.
         </p>
         <h2>Your analytics choice</h2>
         <p>
@@ -1531,6 +1542,10 @@ import { AnalyticsService } from './analytics/analytics.service';
           enabled. The cookie lifetime and Analytics data-retention settings are
           controlled outside this codebase and have not been verified here.
         </p>
+        <p>
+          If you accept analytics, we record clicks on retailer links along with
+          the guide, retailer, and market for the offer.
+        </p>
         <h2>Choices and product comparisons</h2>
         <p>
           Finder answers stay in page memory while you use a tool. A product
@@ -1546,8 +1561,7 @@ import { AnalyticsService } from './analytics/analytics.service';
           destination or a retention period for provider-side request and
           security records, so those details are not stated here. Links to
           manufacturers and other sites take you to services with their own
-          privacy practices. No public contact address or contact form is
-          currently provided by this site.
+          privacy practices.
         </p>
       </section>
     }
@@ -1579,6 +1593,7 @@ export class StaticPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
+  readonly contactPrivacy = inject(CONTACT_FORM_PRIVACY);
   readonly guides = articles;
   readonly articleSlug = ArticleSlug;
   readonly everydayMethodDescriptions = everydayMethodDescriptions;
@@ -2028,17 +2043,12 @@ export class StaticPageComponent implements OnInit {
         'How to report and assess a correction on Comb Report.',
         '/corrections-policy',
       ],
-      contact: ['Contact | Comb Report', 'Contact Comb Report.', '/contact'],
     };
     const pageData =
       this.page === 'category' && this.category
         ? [this.category.title, this.category.description, this.category.path]
         : data[this.page];
     const [title, description, path] = pageData;
-    if (this.page === 'contact') {
-      this.seo.applyNoIndex(title, description);
-      return;
-    }
     this.seo.set(
       title,
       description,

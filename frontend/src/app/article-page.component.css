@@ -65,6 +65,33 @@
   max-width: 100%;
   height: auto;
 }
+.retailer-availability {
+  margin: 2rem 0;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.retailer-availability h2:first-child {
+  margin: 0 0 0.65rem;
+  padding: 0;
+  border: 0;
+}
+.retailer-availability ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.retailer-availability li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--border);
+}
+.retailer-availability li + li {
+  margin-top: 0;
+}
 .disclosure {
   margin: 1.8rem 0;
   padding: 1rem 1.1rem;

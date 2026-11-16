@@ -194,8 +194,6 @@ for (const route of removedDuplicateRoutes) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
 }
-if (sitemapUrls.some((url) => url.endsWith('/contact')))
-  failures.push('sitemap.xml: noindex contact route must be excluded.');
 for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
   if (
     match[1].includes('<lastmod>') &&

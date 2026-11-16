@@ -13,6 +13,8 @@ function rewriteOrRedirect(request) {
     };
   }
 
+  if (request.uri.startsWith('/api/')) return request;
+
   if (request.uri.charAt(request.uri.length - 1) === '/') {
     request.uri += 'index.html';
   } else if (request.uri.indexOf('.') === -1) {

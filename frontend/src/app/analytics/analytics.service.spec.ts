@@ -42,12 +42,18 @@ describe('task guide analytics consent', () => {
       ],
     });
     const service = TestBed.inject(AnalyticsService);
+    const retailerEvent = {
+      guide_path: '/guides/ghd-speed-vs-helios',
+      merchant: 'ghd',
+      offer_market: 'UK',
+    };
     TestBed.flushEffects();
     service.track('guide_task_link_click', {
       task_group: 'roller_method',
       destination_type: 'method',
     });
     service.track('care_stop_guidance_view', { tool_family: 'flat_iron' });
+    service.track('retailer_outbound_click', retailerEvent);
     expect(gtag).not.toHaveBeenCalled();
     expect(
       document.querySelector('script[src*="googletagmanager"]'),
@@ -62,6 +68,10 @@ describe('task guide analytics consent', () => {
     expect(gtag).toHaveBeenCalledWith('event', 'care_stop_guidance_view', {
       tool_family: 'curling_tool',
     });
+    service.track('retailer_outbound_click', retailerEvent);
+    expect(
+      gtag.mock.calls.filter((call) => call[1] === 'retailer_outbound_click'),
+    ).toEqual([['event', 'retailer_outbound_click', retailerEvent]]);
     allowed.set(false);
     TestBed.flushEffects();
     gtag.mockClear();
@@ -69,6 +79,7 @@ describe('task guide analytics consent', () => {
       task_group: 'hot_tool_care',
       destination_type: 'method',
     });
+    service.track('retailer_outbound_click', retailerEvent);
     navigation.next(
       new NavigationEnd(
         1,

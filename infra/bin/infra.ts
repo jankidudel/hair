@@ -10,6 +10,7 @@ if (!googleSiteVerification) {
 }
 new HairStack(app, 'Hair-prod', {
   googleSiteVerification,
+  contactSesFrom: process.env['CONTACT_SES_FROM']?.trim() || undefined,
   env: {
     account: process.env['CDK_DEFAULT_ACCOUNT'],
     region: process.env['CDK_DEFAULT_REGION'] ?? 'us-east-1',

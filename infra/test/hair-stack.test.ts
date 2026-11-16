@@ -36,7 +36,86 @@ test('creates private static hosting and a health API in production', () => {
     }),
   });
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
+  template.resourceCountIs('AWS::ApiGateway::UsagePlan', 0);
+  template.resourceCountIs('AWS::Lambda::Function', 1);
   assert.ok(template.toJSON());
+});
+
+test('routes uncached contact POSTs to the throttled existing API only when configured', () => {
+  const stack = new HairStack(new cdk.App(), 'ContactTest', {
+    contactSesFrom: 'hello@inspectmesh.com',
+  });
+  const template = Template.fromStack(stack);
+  template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
+  template.resourceCountIs('AWS::CloudFront::CachePolicy', 0);
+  template.hasResourceProperties('AWS::Lambda::Function', {
+    Handler: 'dist/contact.handler',
+    Environment: {
+      Variables: {
+        CONTACT_SES_FROM: 'hello@inspectmesh.com',
+        CONTACT_SES_TO: 'hello@inspectmesh.com',
+      },
+    },
+  });
+  template.hasResourceProperties('AWS::ApiGateway::Method', {
+    HttpMethod: 'POST',
+    ApiKeyRequired: true,
+  });
+  template.hasResourceProperties('AWS::ApiGateway::UsagePlan', {
+    Quota: { Limit: 300, Period: 'DAY' },
+    ApiStages: Match.arrayWith([
+      Match.objectLike({
+        Throttle: { '/api/contact/POST': { BurstLimit: 3, RateLimit: 1 } },
+      }),
+    ]),
+  });
+  template.hasResourceProperties('AWS::CloudFront::Distribution', {
+    DistributionConfig: Match.objectLike({
+      CacheBehaviors: Match.arrayWith([
+        Match.objectLike({
+          PathPattern: '/api/contact',
+          CachePolicyId: '4135ea2d-6df8-44a3-9df3-4b5a84be39ad',
+          ViewerProtocolPolicy: 'https-only',
+        }),
+      ]),
+      Origins: Match.arrayWith([
+        Match.objectLike({
+          OriginCustomHeaders: [
+            {
+              HeaderName: 'x-api-key',
+              HeaderValue: { Ref: 'ContactOriginKey' },
+            },
+          ],
+        }),
+      ]),
+    }),
+  });
+  template.hasResourceProperties('AWS::WAFv2::WebACL', {
+    Rules: Match.arrayWith([
+      Match.objectLike({
+        Name: 'ContactRateLimitByIp',
+        Action: { Block: { CustomResponse: { ResponseCode: 429 } } },
+        Statement: { RateBasedStatement: Match.objectLike({ Limit: 10 }) },
+        VisibilityConfig: Match.objectLike({ SampledRequestsEnabled: false }),
+      }),
+    ]),
+  });
+  template.hasResourceProperties('AWS::IAM::Policy', {
+    PolicyDocument: {
+      Statement: Match.arrayWith([
+        Match.objectLike({
+          Action: 'ses:SendEmail',
+          Condition: {
+            StringEquals: { 'ses:FromAddress': 'hello@inspectmesh.com' },
+            'ForAllValues:StringEquals': {
+              'ses:Recipients': ['hello@inspectmesh.com'],
+            },
+          },
+        }),
+      ]),
+    },
+  });
+  assert.equal(template.toJSON().Parameters.ContactOriginKey.NoEcho, true);
 });
 
 test('adds the production domain and required WAF protection', () => {

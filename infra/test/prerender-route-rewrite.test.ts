@@ -49,3 +49,16 @@ test('rewrites clean routes using CloudFront JavaScript-compatible operations', 
   assert.equal(edgeHandler()({ request: directoryRoute }), directoryRoute);
   assert.equal(directoryRoute.uri, '/guides/index.html');
 });
+
+test('passes API paths through without an index rewrite', () => {
+  const handler = edgeHandler();
+  for (const path of ['/api/contact', '/api/v1/status', '/api/']) {
+    const apiRequest = request('www.combreport.com', path);
+    assert.equal(handler({ request: apiRequest }), apiRequest);
+    assert.equal(apiRequest.uri, path);
+  }
+
+  const guide = request('www.combreport.com', '/api-guide');
+  handler({ request: guide });
+  assert.equal(guide.uri, '/api-guide/index.html');
+});

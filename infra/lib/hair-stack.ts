@@ -4,7 +4,9 @@ import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as logs from 'aws-cdk-lib/aws-logs';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as s3 from 'aws-cdk-lib/aws-s3';
@@ -18,6 +20,8 @@ const productionApexDomain = 'combreport.com';
 const productionCanonicalDomain = `www.${productionApexDomain}`;
 const cloudFrontIpRateLimit = 3_000;
 const cloudFrontIpRateLimitWindowSeconds = 300;
+const contactEndpoint = '/api/contact';
+const contactRecipient = 'hello@inspectmesh.com';
 const infrastructureDirectory = dirname(fileURLToPath(import.meta.url));
 const prerenderRouteRewritePath = join(
   infrastructureDirectory,
@@ -26,6 +30,7 @@ const prerenderRouteRewritePath = join(
 
 export interface HairStackProps extends StackProps {
   googleSiteVerification?: string;
+  contactSesFrom?: string;
 }
 export class HairStack extends Stack {
   constructor(scope: Construct, id: string, props: HairStackProps) {
@@ -50,6 +55,23 @@ export class HairStack extends Stack {
       subjectAlternativeNames: [productionApexDomain],
       validation: acm.CertificateValidation.fromDns(hostedZone),
     });
+    // `npm run build --workspace=api` creates api/dist before CDK deployment.
+    const health = new lambda.Function(this, 'HealthFunction', {
+      runtime: lambda.Runtime.NODEJS_26_X,
+      handler: 'dist/health.handler',
+      code: lambda.Code.fromAsset('../api'),
+      timeout: Duration.seconds(10),
+    });
+    const api = new apigateway.LambdaRestApi(this, 'Api', {
+      handler: health,
+      proxy: false,
+    });
+    api.root
+      .addResource('health')
+      .addMethod('GET', new apigateway.LambdaIntegration(health));
+    const contactBehavior = props.contactSesFrom
+      ? this.addContactApi(api, props.contactSesFrom)
+      : undefined;
     const productionWebAcl = new wafv2.CfnWebACL(this, 'ProductionWebAcl', {
       name: 'hair-prod-cloudfront',
       scope: 'CLOUDFRONT',
@@ -77,6 +99,7 @@ export class HairStack extends Stack {
             sampledRequestsEnabled: true,
           },
         },
+        ...(contactBehavior ? [contactRateRule] : []),
       ],
     });
     productionWebAcl.applyRemovalPolicy(RemovalPolicy.RETAIN);
@@ -116,6 +139,19 @@ export class HairStack extends Stack {
         ],
       },
       additionalBehaviors: {
+        ...(contactBehavior
+          ? {
+              [contactEndpoint]: {
+                ...contactBehavior,
+                functionAssociations: [
+                  {
+                    eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+                    function: routeRewrite,
+                  },
+                ],
+              },
+            }
+          : {}),
         '*.js': cacheableStaticAssetBehavior,
         '*.css': cacheableStaticAssetBehavior,
       },
@@ -167,20 +203,6 @@ export class HairStack extends Stack {
         });
       }
     }
-    // `npm run build --workspace=api` creates api/dist before CDK deployment.
-    const health = new lambda.Function(this, 'HealthFunction', {
-      runtime: lambda.Runtime.NODEJS_22_X,
-      handler: 'dist/health.handler',
-      code: lambda.Code.fromAsset('../api'),
-      timeout: Duration.seconds(10),
-    });
-    const api = new apigateway.LambdaRestApi(this, 'Api', {
-      handler: health,
-      proxy: false,
-    });
-    api.root
-      .addResource('health')
-      .addMethod('GET', new apigateway.LambdaIntegration(health));
     new cdk.CfnOutput(this, 'SiteBucketName', { value: site.bucketName });
     new cdk.CfnOutput(this, 'DistributionId', {
       value: distribution.distributionId,
@@ -195,4 +217,130 @@ export class HairStack extends Stack {
       });
     }
   }
+
+  private addContactApi(
+    api: apigateway.RestApi,
+    sender: string,
+  ): cloudfront.BehaviorOptions {
+    const contactOriginKey = new cdk.CfnParameter(this, 'ContactOriginKey', {
+      type: 'String',
+      noEcho: true,
+      allowedPattern: '[a-zA-Z0-9]{40,64}',
+      description:
+        'Private API Gateway key passed by CloudFront to the contact origin',
+    });
+    const contact = new lambda.Function(this, 'ContactFunction', {
+      runtime: lambda.Runtime.NODEJS_26_X,
+      handler: 'dist/contact.handler',
+      code: lambda.Code.fromAsset('../api'),
+      timeout: Duration.seconds(8),
+      environment: {
+        CONTACT_SES_FROM: sender,
+        CONTACT_SES_TO: contactRecipient,
+      },
+      logGroup: new logs.LogGroup(this, 'ContactFunctionLogs', {
+        retention: logs.RetentionDays.ONE_WEEK,
+        removalPolicy: RemovalPolicy.DESTROY,
+      }),
+    });
+    contact.addToRolePolicy(
+      new iam.PolicyStatement({
+        actions: ['ses:SendEmail'],
+        resources: [sender.slice(sender.lastIndexOf('@') + 1), sender].map(
+          (identity) =>
+            this.formatArn({
+              service: 'ses',
+              resource: 'identity',
+              resourceName: identity,
+            }),
+        ),
+        conditions: {
+          StringEquals: { 'ses:FromAddress': sender },
+          'ForAllValues:StringEquals': {
+            'ses:Recipients': [contactRecipient],
+          },
+        },
+      }),
+    );
+
+    const post = api.root
+      .addResource('api')
+      .addResource('contact')
+      .addMethod('POST', new apigateway.LambdaIntegration(contact), {
+        apiKeyRequired: true,
+      });
+    const plan = api.addUsagePlan('ContactUsagePlan', {
+      quota: { limit: 300, period: apigateway.Period.DAY },
+      apiStages: [
+        {
+          stage: api.deploymentStage,
+          throttle: [
+            { method: post, throttle: { rateLimit: 1, burstLimit: 3 } },
+          ],
+        },
+      ],
+    });
+    plan.addApiKey(
+      api.addApiKey('ContactApiKey', { value: contactOriginKey.valueAsString }),
+    );
+
+    return {
+      origin: new origins.HttpOrigin(
+        `${api.restApiId}.execute-api.${this.region}.${this.urlSuffix}`,
+        {
+          originPath: `/${api.deploymentStage.stageName}`,
+          protocolPolicy: cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
+          customHeaders: { 'x-api-key': contactOriginKey.valueAsString },
+          connectionAttempts: 1,
+        },
+      ),
+      viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPS_ONLY,
+      allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
+      cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED,
+      originRequestPolicy: cloudfront.OriginRequestPolicy.CORS_CUSTOM_ORIGIN,
+    };
+  }
 }
+
+const contactRateRule: wafv2.CfnWebACL.RuleProperty = {
+  name: 'ContactRateLimitByIp',
+  priority: 1,
+  action: { block: { customResponse: { responseCode: 429 } } },
+  statement: {
+    rateBasedStatement: {
+      aggregateKeyType: 'IP',
+      limit: 10,
+      evaluationWindowSec: 300,
+      scopeDownStatement: {
+        andStatement: {
+          statements: [
+            {
+              byteMatchStatement: {
+                fieldToMatch: { uriPath: {} },
+                positionalConstraint: 'EXACTLY',
+                searchString: contactEndpoint,
+                textTransformations: [
+                  { priority: 0, type: 'URL_DECODE' },
+                  { priority: 1, type: 'NORMALIZE_PATH' },
+                ],
+              },
+            },
+            {
+              byteMatchStatement: {
+                fieldToMatch: { method: {} },
+                positionalConstraint: 'EXACTLY',
+                searchString: 'POST',
+                textTransformations: [{ priority: 0, type: 'NONE' }],
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  visibilityConfig: {
+    cloudWatchMetricsEnabled: true,
+    metricName: 'hairProdContactRateLimitByIp',
+    sampledRequestsEnabled: false,
+  },
+};

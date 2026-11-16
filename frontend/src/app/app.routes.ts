@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ArticlePageComponent } from './article-page.component';
 import { StaticPageComponent } from './static-page.component';
+import { ContactPageComponent } from './contact-page.component';
 import { HairBrushFinderComponent } from './hair-brush-finder.component';
 import { HairToolRoutineBuilderComponent } from './hair-tool-routine-builder.component';
 import { NotFoundPageComponent } from './not-found-page.component';
@@ -86,8 +87,7 @@ export const routes: Routes = [
   },
   {
     path: 'contact',
-    component: StaticPageComponent,
-    data: { page: 'contact' },
+    component: ContactPageComponent,
   },
   {
     path: 'privacy',

@@ -77,7 +77,6 @@ test('duplicate, excluded, query-state, foreign-host and invented-date sitemap e
     /found 2/,
   );
   for (const url of [
-    'https://www.combreport.com/contact',
     'https://www.combreport.com/404',
     'https://www.combreport.com/products?filter=one',
     'https://combreport.com/curling-irons',

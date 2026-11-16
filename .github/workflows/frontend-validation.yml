@@ -27,6 +27,12 @@ jobs:
         if: ${{ inputs.build-production-artifact }}
       - run: npm run check:internal-links
         if: ${{ inputs.build-production-artifact }}
+      - uses: actions/setup-node@v6
+        with: { node-version: 26 }
+      - name: Verify API on Node.js 26
+        run: |
+          npm run build --workspace=@hair/api
+          npm run test --workspace=@hair/api
       - name: Upload generated site on failure
         if: failure()
         uses: actions/upload-artifact@v4

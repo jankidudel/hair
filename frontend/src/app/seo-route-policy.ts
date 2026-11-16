@@ -119,16 +119,7 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page('/corrections-policy', 'policy'),
   page('/privacy', 'policy'),
   page('/affiliate-disclosure', 'policy'),
-  {
-    path: '/contact',
-    id: 'page:/contact',
-    pageType: 'utility',
-    disposition: 'non-indexable-utility',
-    reason:
-      'Contact details await owner confirmation; StaticPageComponent explicitly applies noindex, nofollow.',
-    canonical: null,
-    lastmodSource: 'Excluded from sitemap.',
-  },
+  page('/contact', 'policy'),
   {
     path: '/404',
     id: 'page:/404',

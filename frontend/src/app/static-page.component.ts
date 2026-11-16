@@ -1519,8 +1519,10 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           </p>
         }
         <p>
-          AWS uses incoming IP addresses to limit repeated form submissions.
-          Form answers are kept out of application logs and analytics.
+          AWS uses incoming IP addresses to limit repeated form submissions. The
+          contact form uses Cloudflare Turnstile to check for automated
+          submissions. Form answers are kept out of application logs and
+          analytics.
         </p>
         <h2>Your analytics choice</h2>
         <p>

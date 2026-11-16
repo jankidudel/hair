@@ -20,7 +20,6 @@ jobs:
       AWS_REGION: us-east-1
       CDK_DEFAULT_REGION: us-east-1
       GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
-      CONTACT_SES_FROM: ${{ vars.CONTACT_SES_FROM }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -56,16 +55,12 @@ jobs:
       - name: Deploy infrastructure and API
         working-directory: infra
         env:
-          CONTACT_ORIGIN_KEY: ${{ secrets.CONTACT_ORIGIN_KEY }}
+          TURNSTILE_SECRET: ${{ secrets.TURNSTILE_SECRET }}
         run: |
           npm run synth
-          contact_parameters=()
-          if [[ -n "$CONTACT_SES_FROM" ]]; then
-            if [[ ! "$CONTACT_ORIGIN_KEY" =~ ^[a-zA-Z0-9]{40,64}$ ]]; then
-              echo "::error::Set CONTACT_ORIGIN_KEY to a random 40–64 character alphanumeric secret."
-              exit 1
-            fi
-            contact_parameters=(--parameters "ContactOriginKey=$CONTACT_ORIGIN_KEY")
+          if [[ -z "$TURNSTILE_SECRET" ]]; then
+            echo "::error::Set TURNSTILE_SECRET in the prod GitHub Environment."
+            exit 1
           fi
-          npx cdk deploy Hair-prod --require-approval never --outputs-file cdk-outputs.json "${contact_parameters[@]}"
+          npx cdk deploy Hair-prod --require-approval never --outputs-file cdk-outputs.json --parameters "TurnstileSecret=$TURNSTILE_SECRET"
           cat cdk-outputs.json

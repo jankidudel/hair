@@ -9,6 +9,7 @@ const valid = {
   email: 'reader+test@example.com',
   link: 'https://www.combreport.com/guides/ghd-speed-vs-helios#section',
   message: ' The specification needs checking.\nThank you. ',
+  turnstileToken: 'valid-challenge',
 };
 const request = (body: unknown) =>
   ({
@@ -22,6 +23,7 @@ const request = (body: unknown) =>
     isBase64Encoded: false,
   }) as APIGatewayProxyEvent;
 const context = {} as Context;
+const verifyToken = async (token: string) => token === valid.turnstileToken;
 
 test('accepts a validated correction only after the provider accepts it', async () => {
   const handler = createContactHandler(async (mail) => {
@@ -38,7 +40,7 @@ test('accepts a validated correction only after the provider accepts it', async 
       ].join('\n'),
     });
     return true;
-  });
+  }, verifyToken);
   const event = request(valid);
   // API Gateway can deliver the same request as a base64 payload.
   event.body = Buffer.from(event.body!).toString('base64');
@@ -54,7 +56,7 @@ test('rejects invalid fields, unexpected fields, honeypot entries and oversized 
   const handler = createContactHandler(async () => {
     deliveries++;
     return true;
-  });
+  }, verifyToken);
   const invalid = await handler(
     request({
       reason: 'unauthorised',
@@ -102,8 +104,9 @@ test('rejects invalid fields, unexpected fields, honeypot entries and oversized 
 });
 
 test('returns the JSON error contract for rejected HTTP requests', async () => {
-  const handler = createContactHandler(async () =>
-    assert.fail('Unexpected delivery'),
+  const handler = createContactHandler(
+    async () => assert.fail('Unexpected delivery'),
+    verifyToken,
   );
   const validRequest = request(valid);
   for (const [event, status] of [
@@ -128,8 +131,26 @@ test('returns a generic failure for provider rejection or an ambiguous timeout',
       throw new Error(valid.message);
     },
   ]) {
-    const response = await createContactHandler(send)(request(valid), context);
+    const response = await createContactHandler(send, verifyToken)(
+      request(valid),
+      context,
+    );
     assert.equal(response.statusCode, 503);
     assert.deepEqual(JSON.parse(response.body), { ok: false });
+  }
+});
+
+test('rejects missing or invalid Turnstile tokens before submitting to SES', async () => {
+  const handler = createContactHandler(
+    async () => assert.fail('Unexpected delivery'),
+    verifyToken,
+  );
+  for (const turnstileToken of [undefined, 'invalid', 'x'.repeat(2049)]) {
+    const response = await handler(
+      request({ ...valid, turnstileToken }),
+      context,
+    );
+    assert.equal(response.statusCode, 400);
+    assert.deepEqual(JSON.parse(response.body), { ok: false, captcha: true });
   }
 });

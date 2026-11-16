@@ -122,6 +122,14 @@
           <input name="website" tabindex="-1" autocomplete="off" />
         </label>
       </fieldset>
+      @if (!preview && turnstileSiteKey) {
+        <app-contact-turnstile
+          [siteKey]="turnstileSiteKey"
+          (tokenChange)="turnstileToken.set($event)"
+        />
+      } @else if (!preview) {
+        <p role="status">The contact form is temporarily unavailable.</p>
+      }
       <div class="contact-submit">
         @if (preview) {
           <p>Local preview. Test submissions stay in this browser.</p>
@@ -131,7 +139,11 @@
             <a routerLink="/privacy">privacy notice</a>.
           </p>
         }
-        <button class="button" type="submit" [disabled]="sending()">
+        <button
+          class="button"
+          type="submit"
+          [disabled]="sending() || (!preview && !turnstileSiteKey)"
+        >
           @if (preview) {
             Test form
           } @else {

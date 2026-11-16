@@ -2,12 +2,22 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { CONTACT_FORM_PREVIEW } from './contact-config';
+import {
+  CONTACT_FORM_PREVIEW,
+  CONTACT_TURNSTILE_SITE_KEY,
+} from './contact-config';
 import { ContactPageComponent } from './contact-page.component';
+import {
+  TurnstileService,
+  type Turnstile,
+} from './contact-turnstile.component';
 
 describe('Contact Comb Report', () => {
+  let completeChallenge: (token: string) => void;
+  const resetChallenge = vi.fn();
   afterEach(() => {
     vi.unstubAllGlobals();
+    resetChallenge.mockClear();
     TestBed.resetTestingModule();
   });
 
@@ -18,6 +28,21 @@ describe('Contact Comb Report', () => {
         provideZonelessChangeDetection(),
         provideRouter([]),
         { provide: CONTACT_FORM_PREVIEW, useValue: preview },
+        { provide: CONTACT_TURNSTILE_SITE_KEY, useValue: 'test-site-key' },
+        {
+          provide: TurnstileService,
+          useValue: {
+            load: async (): Promise<Turnstile> => ({
+              render: (_element, options) => {
+                expect(options.action).toBe('contact');
+                completeChallenge = options.callback;
+                return 'test-widget';
+              },
+              reset: resetChallenge,
+              remove: () => undefined,
+            }),
+          },
+        },
       ],
     });
     const fixture = TestBed.createComponent(ContactPageComponent);
@@ -83,6 +108,11 @@ describe('Contact Comb Report', () => {
     reason.value = 'correction';
     email.value = 'reader@example.com';
     message.value = 'Please check the specification.';
+    submit();
+    await fixture.whenStable();
+    expect(fetchContact).not.toHaveBeenCalled();
+    expect(page.textContent).toContain('Complete the security check');
+    completeChallenge('first-token');
     let finish!: (response: Response) => void;
     fetchContact.mockReturnValueOnce(
       new Promise((resolve) => {
@@ -93,6 +123,9 @@ describe('Contact Comb Report', () => {
     submit();
     fixture.detectChanges();
     expect(fetchContact).toHaveBeenCalledTimes(1);
+    expect(
+      JSON.parse(String(fetchContact.mock.calls[0][1]?.body)).turnstileToken,
+    ).toBe('first-token');
     expect(button.disabled).toBe(true);
     expect(button.textContent).toContain('Sending…');
     finish(new Response(null, { status: 429 }));
@@ -103,8 +136,10 @@ describe('Contact Comb Report', () => {
       );
     });
     expect(message.value).toBe('Please check the specification.');
+    expect(resetChallenge).toHaveBeenCalledTimes(1);
 
     fetchContact.mockResolvedValueOnce(new Response(null, { status: 503 }));
+    completeChallenge('second-token');
     submit();
     await vi.waitFor(() => {
       fixture.detectChanges();
@@ -115,6 +150,7 @@ describe('Contact Comb Report', () => {
     expect(email.value).toBe('reader@example.com');
 
     fetchContact.mockResolvedValueOnce(Response.json({ ok: true }));
+    completeChallenge('third-token');
     submit();
     await vi.waitFor(() => {
       fixture.detectChanges();

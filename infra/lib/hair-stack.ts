@@ -21,7 +21,7 @@ const productionCanonicalDomain = `www.${productionApexDomain}`;
 const cloudFrontIpRateLimit = 3_000;
 const cloudFrontIpRateLimitWindowSeconds = 300;
 const contactEndpoint = '/api/contact';
-const contactRecipient = 'hello@inspectmesh.com';
+const contactMailbox = 'hello@inspectmesh.com';
 const infrastructureDirectory = dirname(fileURLToPath(import.meta.url));
 const prerenderRouteRewritePath = join(
   infrastructureDirectory,
@@ -30,7 +30,6 @@ const prerenderRouteRewritePath = join(
 
 export interface HairStackProps extends StackProps {
   googleSiteVerification?: string;
-  contactSesFrom?: string;
 }
 export class HairStack extends Stack {
   constructor(scope: Construct, id: string, props: HairStackProps) {
@@ -65,13 +64,19 @@ export class HairStack extends Stack {
     const api = new apigateway.LambdaRestApi(this, 'Api', {
       handler: health,
       proxy: false,
+      deployOptions: {
+        methodOptions: {
+          '/api/contact/POST': {
+            throttlingRateLimit: 1,
+            throttlingBurstLimit: 3,
+          },
+        },
+      },
     });
     api.root
       .addResource('health')
       .addMethod('GET', new apigateway.LambdaIntegration(health));
-    const contactBehavior = props.contactSesFrom
-      ? this.addContactApi(api, props.contactSesFrom)
-      : undefined;
+    const contactBehavior = this.addContactApi(api);
     const productionWebAcl = new wafv2.CfnWebACL(this, 'ProductionWebAcl', {
       name: 'hair-prod-cloudfront',
       scope: 'CLOUDFRONT',
@@ -99,7 +104,7 @@ export class HairStack extends Stack {
             sampledRequestsEnabled: true,
           },
         },
-        ...(contactBehavior ? [contactRateRule] : []),
+        contactRateRule,
       ],
     });
     productionWebAcl.applyRemovalPolicy(RemovalPolicy.RETAIN);
@@ -139,19 +144,15 @@ export class HairStack extends Stack {
         ],
       },
       additionalBehaviors: {
-        ...(contactBehavior
-          ? {
-              [contactEndpoint]: {
-                ...contactBehavior,
-                functionAssociations: [
-                  {
-                    eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
-                    function: routeRewrite,
-                  },
-                ],
-              },
-            }
-          : {}),
+        [contactEndpoint]: {
+          ...contactBehavior,
+          functionAssociations: [
+            {
+              eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+              function: routeRewrite,
+            },
+          ],
+        },
         '*.js': cacheableStaticAssetBehavior,
         '*.css': cacheableStaticAssetBehavior,
       },
@@ -218,16 +219,13 @@ export class HairStack extends Stack {
     }
   }
 
-  private addContactApi(
-    api: apigateway.RestApi,
-    sender: string,
-  ): cloudfront.BehaviorOptions {
-    const contactOriginKey = new cdk.CfnParameter(this, 'ContactOriginKey', {
+  private addContactApi(api: apigateway.RestApi): cloudfront.BehaviorOptions {
+    const turnstileSecret = new cdk.CfnParameter(this, 'TurnstileSecret', {
       type: 'String',
       noEcho: true,
-      allowedPattern: '[a-zA-Z0-9]{40,64}',
+      minLength: 1,
       description:
-        'Private API Gateway key passed by CloudFront to the contact origin',
+        'Cloudflare Turnstile secret for the Comb Report contact form',
     });
     const contact = new lambda.Function(this, 'ContactFunction', {
       runtime: lambda.Runtime.NODEJS_26_X,
@@ -235,8 +233,9 @@ export class HairStack extends Stack {
       code: lambda.Code.fromAsset('../api'),
       timeout: Duration.seconds(8),
       environment: {
-        CONTACT_SES_FROM: sender,
-        CONTACT_SES_TO: contactRecipient,
+        CONTACT_SES_FROM: contactMailbox,
+        CONTACT_SES_TO: contactMailbox,
+        TURNSTILE_SECRET: turnstileSecret.valueAsString,
       },
       logGroup: new logs.LogGroup(this, 'ContactFunctionLogs', {
         retention: logs.RetentionDays.ONE_WEEK,
@@ -246,7 +245,7 @@ export class HairStack extends Stack {
     contact.addToRolePolicy(
       new iam.PolicyStatement({
         actions: ['ses:SendEmail'],
-        resources: [sender.slice(sender.lastIndexOf('@') + 1), sender].map(
+        resources: [contactMailbox.split('@')[1], contactMailbox].map(
           (identity) =>
             this.formatArn({
               service: 'ses',
@@ -255,34 +254,18 @@ export class HairStack extends Stack {
             }),
         ),
         conditions: {
-          StringEquals: { 'ses:FromAddress': sender },
+          StringEquals: { 'ses:FromAddress': contactMailbox },
           'ForAllValues:StringEquals': {
-            'ses:Recipients': [contactRecipient],
+            'ses:Recipients': [contactMailbox],
           },
         },
       }),
     );
 
-    const post = api.root
+    api.root
       .addResource('api')
       .addResource('contact')
-      .addMethod('POST', new apigateway.LambdaIntegration(contact), {
-        apiKeyRequired: true,
-      });
-    const plan = api.addUsagePlan('ContactUsagePlan', {
-      quota: { limit: 300, period: apigateway.Period.DAY },
-      apiStages: [
-        {
-          stage: api.deploymentStage,
-          throttle: [
-            { method: post, throttle: { rateLimit: 1, burstLimit: 3 } },
-          ],
-        },
-      ],
-    });
-    plan.addApiKey(
-      api.addApiKey('ContactApiKey', { value: contactOriginKey.valueAsString }),
-    );
+      .addMethod('POST', new apigateway.LambdaIntegration(contact));
 
     return {
       origin: new origins.HttpOrigin(
@@ -290,7 +273,6 @@ export class HairStack extends Stack {
         {
           originPath: `/${api.deploymentStage.stageName}`,
           protocolPolicy: cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
-          customHeaders: { 'x-api-key': contactOriginKey.valueAsString },
           connectionAttempts: 1,
         },
       ),

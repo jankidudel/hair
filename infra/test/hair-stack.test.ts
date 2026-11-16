@@ -37,14 +37,12 @@ test('creates private static hosting and a health API in production', () => {
   });
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
   template.resourceCountIs('AWS::ApiGateway::UsagePlan', 0);
-  template.resourceCountIs('AWS::Lambda::Function', 1);
+  template.resourceCountIs('AWS::Lambda::Function', 2);
   assert.ok(template.toJSON());
 });
 
-test('routes uncached contact POSTs to the throttled existing API only when configured', () => {
-  const stack = new HairStack(new cdk.App(), 'ContactTest', {
-    contactSesFrom: 'hello@inspectmesh.com',
-  });
+test('routes uncached contact POSTs to the throttled API with Turnstile verification', () => {
+  const stack = new HairStack(new cdk.App(), 'ContactTest', {});
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
   template.resourceCountIs('AWS::CloudFront::CachePolicy', 0);
@@ -54,18 +52,22 @@ test('routes uncached contact POSTs to the throttled existing API only when conf
       Variables: {
         CONTACT_SES_FROM: 'hello@inspectmesh.com',
         CONTACT_SES_TO: 'hello@inspectmesh.com',
+        TURNSTILE_SECRET: { Ref: 'TurnstileSecret' },
       },
     },
   });
   template.hasResourceProperties('AWS::ApiGateway::Method', {
     HttpMethod: 'POST',
-    ApiKeyRequired: true,
+    ApiKeyRequired: Match.absent(),
   });
-  template.hasResourceProperties('AWS::ApiGateway::UsagePlan', {
-    Quota: { Limit: 300, Period: 'DAY' },
-    ApiStages: Match.arrayWith([
+  template.resourceCountIs('AWS::ApiGateway::ApiKey', 0);
+  template.hasResourceProperties('AWS::ApiGateway::Stage', {
+    MethodSettings: Match.arrayWith([
       Match.objectLike({
-        Throttle: { '/api/contact/POST': { BurstLimit: 3, RateLimit: 1 } },
+        ResourcePath: '/~1api~1contact',
+        HttpMethod: 'POST',
+        ThrottlingBurstLimit: 3,
+        ThrottlingRateLimit: 1,
       }),
     ]),
   });
@@ -80,12 +82,11 @@ test('routes uncached contact POSTs to the throttled existing API only when conf
       ]),
       Origins: Match.arrayWith([
         Match.objectLike({
-          OriginCustomHeaders: [
-            {
-              HeaderName: 'x-api-key',
-              HeaderValue: { Ref: 'ContactOriginKey' },
-            },
-          ],
+          OriginPath: Match.anyValue(),
+          CustomOriginConfig: Match.objectLike({
+            OriginProtocolPolicy: 'https-only',
+          }),
+          OriginCustomHeaders: Match.absent(),
         }),
       ]),
     }),
@@ -115,7 +116,7 @@ test('routes uncached contact POSTs to the throttled existing API only when conf
       ]),
     },
   });
-  assert.equal(template.toJSON().Parameters.ContactOriginKey.NoEcho, true);
+  assert.equal(template.toJSON().Parameters.TurnstileSecret.NoEcho, true);
 });
 
 test('adds the production domain and required WAF protection', () => {
@@ -125,7 +126,7 @@ test('adds the production domain and required WAF protection', () => {
   });
   const template = Template.fromStack(stack);
   template.resourceCountIs('AWS::Route53::HostedZone', 1);
-  assert.equal(Object.keys(template.toJSON().Parameters ?? {}).length, 1);
+  assert.equal(Object.keys(template.toJSON().Parameters ?? {}).length, 2);
   template.hasResourceProperties('AWS::CertificateManager::Certificate', {
     DomainName: 'www.combreport.com',
     SubjectAlternativeNames: ['combreport.com'],

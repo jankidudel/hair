@@ -12,7 +12,11 @@ import {
 const maxRequestBytes = 48 * 1024;
 const contactPath = '/api/contact';
 const siteOrigin = 'https://www.combreport.com';
-const acceptedFields = new Set<string>([...contactFields, 'website']);
+const acceptedFields = new Set<string>([
+  ...contactFields,
+  'website',
+  'turnstileToken',
+]);
 
 interface OutgoingContact {
   replyTo: string;
@@ -21,7 +25,10 @@ interface OutgoingContact {
 }
 type DeliverContact = (mail: OutgoingContact) => Promise<boolean>;
 
-export function createContactHandler(deliver: DeliverContact) {
+export function createContactHandler(
+  deliver: DeliverContact,
+  verifyToken: (token: string) => Promise<boolean>,
+) {
   const app = Fastify({ logger: false });
   app.addHook('onRequest', async (_request, reply) => {
     reply.header('cache-control', 'no-store');
@@ -71,7 +78,10 @@ export function createContactHandler(deliver: DeliverContact) {
       )
         return reply.code(400).send({ ok: false });
 
-      const payload = candidate as Partial<ContactInput> & { website?: string };
+      const payload = candidate as Partial<ContactInput> & {
+        website?: string;
+        turnstileToken?: string;
+      };
       if (payload.website) return reply.code(400).send({ ok: false });
       const result = validateContact({
         reason: payload.reason ?? '',
@@ -85,7 +95,11 @@ export function createContactHandler(deliver: DeliverContact) {
 
       const { reason, name, email, link, message } = result.message;
       const reasonLabel = contactReasons[reason];
+      const token = payload.turnstileToken?.trim();
       try {
+        if (!token || token.length > 2048 || !(await verifyToken(token))) {
+          return reply.code(400).send({ ok: false, captcha: true });
+        }
         const accepted = await deliver({
           replyTo: email,
           subject: `Comb Report contact — ${reasonLabel}`,
@@ -134,6 +148,29 @@ interface SesRuntime {
 
 const requireFromLambda = createRequire(import.meta.url);
 let sesClient: InstanceType<SesRuntime['SESv2Client']> | undefined;
+async function verifyTurnstileToken(token: string): Promise<boolean> {
+  const secret = process.env['TURNSTILE_SECRET'];
+  if (!secret) throw new Error('Turnstile is unavailable.');
+  const response = await fetch(
+    'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+    {
+      method: 'POST',
+      body: new URLSearchParams({ secret, response: token }),
+      signal: AbortSignal.timeout(2000),
+    },
+  );
+  if (!response.ok) throw new Error('Turnstile is unavailable.');
+  const result = await response.json();
+  if (result['error-codes']?.includes('internal-error')) {
+    throw new Error('Turnstile is unavailable.');
+  }
+  return (
+    result.success === true &&
+    result.hostname === new URL(siteOrigin).hostname &&
+    result.action === 'contact'
+  );
+}
+
 export const handler = createContactHandler(async (mail) => {
   const from = process.env['CONTACT_SES_FROM'];
   const to = process.env['CONTACT_SES_TO'];
@@ -157,4 +194,4 @@ export const handler = createContactHandler(async (mail) => {
     { abortSignal: AbortSignal.timeout(5000) },
   );
   return !!response.MessageId;
-});
+}, verifyTurnstileToken);

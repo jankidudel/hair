@@ -37,7 +37,13 @@ import { CookieConsentBannerComponent } from './analytics/cookie-consent-banner.
         ><a routerLink="/tools" routerLinkActive="active">Tools</a
         ><a routerLink="/products" routerLinkActive="active">Products</a
         ><a routerLink="/guides" routerLinkActive="active">Guides</a
-        ><a routerLink="/about" routerLinkActive="active">About</a>
+        ><a routerLink="/about" routerLinkActive="active">About</a
+        ><a
+          routerLink="/contact"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Contact</a
+        >
       </nav>
     </header>
     <main class="site-main"><router-outlet /></main>

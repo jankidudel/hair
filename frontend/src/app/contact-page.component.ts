@@ -1,4 +1,10 @@
-import { Component, afterNextRender, inject, signal } from '@angular/core';
+import {
+  Component,
+  afterNextRender,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   contactFields,
@@ -7,16 +13,23 @@ import {
   type ContactField,
   type ContactFieldErrors,
 } from '../../../api/src/contact-fields.js';
-import { CONTACT_FORM_PREVIEW } from './contact-config';
+import {
+  CONTACT_FORM_PREVIEW,
+  CONTACT_TURNSTILE_SITE_KEY,
+} from './contact-config';
+import { ContactTurnstileComponent } from './contact-turnstile.component';
 import { SiteSeoService } from './site-seo.service';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, ContactTurnstileComponent],
   styleUrl: 'contact-page.component.css',
   templateUrl: 'contact-page.component.html',
 })
 export class ContactPageComponent {
   readonly preview = inject(CONTACT_FORM_PREVIEW);
+  readonly turnstileSiteKey = inject(CONTACT_TURNSTILE_SITE_KEY);
+  readonly turnstileToken = signal('');
+  private readonly turnstile = viewChild(ContactTurnstileComponent);
   readonly reasons = Object.entries(contactReasons);
   readonly formAvailable = signal(false);
   readonly sending = signal(false);
@@ -69,6 +82,13 @@ export class ContactPageComponent {
       );
       return;
     }
+    const turnstileToken = this.turnstileToken();
+    if (!turnstileToken) {
+      this.failure.set(
+        'Complete the security check before sending your message.',
+      );
+      return;
+    }
 
     this.sending.set(true);
     try {
@@ -78,6 +98,7 @@ export class ContactPageComponent {
         body: JSON.stringify({
           ...checked.message,
           website: values.get('website') ?? '',
+          turnstileToken,
         }),
         signal: AbortSignal.timeout(12000),
       });
@@ -90,6 +111,8 @@ export class ContactPageComponent {
       if (response.ok && result?.ok === true) {
         form.reset();
         this.status.set('Thanks. Your message was sent.');
+      } else if (response.status === 400 && result?.captcha === true) {
+        this.failure.set('Complete the security check again, then retry.');
       } else if (response.status === 400 && result?.errors) {
         const errors: ContactFieldErrors = {};
         for (const field of contactFields) {
@@ -107,6 +130,7 @@ export class ContactPageComponent {
       );
     } finally {
       this.sending.set(false);
+      this.turnstile()?.reset();
     }
   }
 

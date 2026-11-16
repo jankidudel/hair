@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run content:generate && ng serve",
-    "build": "npm run content:generate && npm run seo:generate && ng build && npm run assets:fingerprint",
+    "build": "npm run content:generate && npm run seo:generate && ng build --define \"__TURNSTILE_SITE_KEY__=$(node -p 'JSON.stringify(process.env.TURNSTILE_SITE_KEY ?? \"\")')\" && npm run assets:fingerprint",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "npm run content:generate && ng test --watch=false",

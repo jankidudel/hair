@@ -36,6 +36,7 @@ export const ArticleSlug = {
   DysonCorraleCoolshineVsCorrale: 'dyson-corrale-coolshine-vs-corrale',
   DysonAirsmoothVsGhdDuetBlowdry: 'dyson-airsmooth-vs-ghd-duet-blowdry',
   SharkGlamVsFlexstyle: 'shark-glam-vs-flexstyle',
+  SharkFlexstyleVsIonCurl: 'shark-flexstyle-vs-ioncurl',
   AutomaticHairCurlerVsCurlingWand: 'automatic-hair-curler-vs-curling-wand',
   HowToBlowDryAFringe: 'how-to-blow-dry-a-fringe',
   HowToBrushOutCurls: 'how-to-brush-out-curls',
@@ -108,6 +109,8 @@ export const ArticleSlug = {
   BestHairDryersThickHair: 'best-hair-dryers-thick-hair',
   BestHairDryersCurlyHair: 'best-hair-dryers-curly-hair',
   BestTravelHairDryers: 'best-travel-hair-dryers',
+  DysonSupersonicTravelVsGhdFlightPlus:
+    'dyson-supersonic-travel-vs-ghd-flight-plus',
   RoundBrushSizeGuide: 'round-brush-size-guide',
   ThermalBrushVsHotAirBrush: 'thermal-brush-vs-hot-air-brush',
   DenmanD3VsD4: 'denman-d3-vs-d4',

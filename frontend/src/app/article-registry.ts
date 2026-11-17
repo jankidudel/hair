@@ -118,6 +118,20 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
   );
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
+  {
+    slug: ArticleSlug.DysonSupersonicTravelVsGhdFlightPlus,
+    group: ArticleGroupId.HairDryers,
+    order: 41,
+    enabled: true,
+    publishDate: '2026-11-17',
+  },
+  {
+    slug: ArticleSlug.SharkFlexstyleVsIonCurl,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 425,
+    enabled: true,
+    publishDate: '2026-11-17',
+  },
   ...[
     ArticleSlug.SteamHairStraightenerVsFlatIron,
     ArticleSlug.HowToUseASteamHairStraightener,

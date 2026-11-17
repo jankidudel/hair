@@ -1,3 +1,4 @@
+import { consolidatedComparisonRelated } from './consolidated-comparison-guides';
 import { supportedUpdoRelated } from './supported-updo-guides';
 import { straightenerGuideRelated } from './straightener-guides';
 import { shapingMethodRelated } from './shaping-method-guides';
@@ -25,6 +26,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...consolidatedComparisonRelated,
   ...waveMethodRelated,
   ...toolChoiceRelated,
   ...everydayMethodRelated,

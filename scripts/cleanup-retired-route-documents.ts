@@ -1,4 +1,4 @@
-import { access, readFile } from 'node:fs/promises';
+import { stat, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { execFile } from 'node:child_process';
@@ -16,18 +16,19 @@ if (mode && mode !== '--execute') throw new Error(`Unknown option: ${mode}`);
 const bucket = bucketUri.slice('s3://'.length);
 const output = resolve(buildDirectory);
 const sitemap = await readFile(resolve(output, 'sitemap.xml'), 'utf8');
-const keys = removedDuplicateRoutes.map((route) => {
+const keys = removedDuplicateRoutes.flatMap((route) => {
   if (!/^\/(guides|products)\/[a-z0-9-]+$/.test(route))
     throw new Error(`Unsafe retired route: ${route}`);
   if (sitemap.includes(`<loc>https://www.combreport.com${route}</loc>`))
     throw new Error(`Still in the generated sitemap: ${route}`);
-  return `${route.slice(1)}/index.html`;
+  const key = route.slice(1);
+  return [`${key}/index.html`, `${key}.html`, key];
 });
 
 for (const key of keys) {
   try {
-    await access(resolve(output, key));
-    throw new Error(`Still in the generated build: ${key}`);
+    if ((await stat(resolve(output, key))).isFile())
+      throw new Error(`Still in the generated build: ${key}`);
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }

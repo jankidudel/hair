@@ -25,6 +25,7 @@ import {
 } from './article-registry';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { ArticleSlug } from './article-slug';
+import { consolidatedComparisonAliases } from './consolidated-comparison-guides';
 import { combReportEditorialTeam } from './editorial';
 import {
   ChooseUseFixPathwaysComponent,
@@ -253,6 +254,14 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           >Choose a troubleshooting guide <span aria-hidden="true">→</span></a
         >
       </section>
+      <label for="guide-search">Find a guide by task, product or model</label>
+      <input
+        id="guide-search"
+        type="search"
+        [value]="guideSearch"
+        (input)="guideSearch = $any($event.target).value"
+      />
+      <p aria-live="polite">{{ guides.length }} guides</p>
       <section class="editorial-grid guides-grid" aria-label="All guides">
         @for (article of guides; track article.slug; let first = $first) {
           <a
@@ -421,12 +430,52 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
         }
         @if (category.id === 'hot-air-brushes') {
           <p>
+            Match the next purchase to its task. Use the
+            <a [routerLink]="['/guides', articleSlug.SharkFlexstyleVsIonCurl]"
+              >IonCurl attachment lookup</a
+            >,
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.T3Aire360NextGenVsDysonAirwrapId,
+              ]"
+              >current T3 and i.d. kit comparison</a
+            >, or
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.BabylissAirWandAs6550uVsAs6553u,
+              ]"
+              >Air Wand box chooser</a
+            >
+            after identifying the heads you need.
+          </p>
+          <p>
             <a href="/guides/hot-air-brush-barrel-size-guide#head-fit-worksheet"
               >Compare two head-fit records</a
             >
           </p>
         }
         @if (category.id === 'hair-care') {
+          <p>
+            Choosing a labelled formula? Compare
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.ColorWowDreamCoatOriginalVsExtraStrengthVsCurly,
+              ]"
+              >Dream Coat's three application routes</a
+            >
+            or
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.MoroccanoilTreatmentOriginalVsLight,
+              ]"
+              >Moroccanoil Original and Light</a
+            >
+            before following the routine and application guides below.
+          </p>
           <section
             class="category-guide-section"
             aria-labelledby="care-method-heading"
@@ -868,6 +917,25 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           </section>
         }
         @if (category.id === 'hair-accessories') {
+          <p>
+            Buying a named kit or clip? Compare
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.ConairHs400VsHs79crHotRollers,
+              ]"
+              >Conair roller counts and original clips</a
+            >
+            or
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.FramarGatorGripsVsSuperSectioners,
+              ]"
+              >Framar clip mechanisms and sectioning tasks</a
+            >
+            alongside the choose, use and care guides.
+          </p>
           <section
             class="category-guide-section"
             aria-labelledby="roller-method-heading"
@@ -1596,7 +1664,22 @@ export class StaticPageComponent implements OnInit {
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
   readonly contactPrivacy = inject(CONTACT_FORM_PRIVACY);
-  readonly guides = articles;
+  guideSearch = '';
+  get guides() {
+    const normalise = (value: string) =>
+      value.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const query = normalise(this.guideSearch);
+    return articles.filter((article) =>
+      normalise(
+        [
+          article.title,
+          article.heading,
+          article.slug,
+          ...(consolidatedComparisonAliases[article.slug] ?? []),
+        ].join(' '),
+      ).includes(query),
+    );
+  }
   readonly articleSlug = ArticleSlug;
   readonly everydayMethodDescriptions = everydayMethodDescriptions;
   readonly finishingMethodDescriptions = finishingMethodDescriptions;

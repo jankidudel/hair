@@ -48,5 +48,7 @@ jobs:
           retry-max-attempts: 3
       - name: Upload assets and revalidate entry documents
         run: bash .github/scripts/deploy-frontend-assets.sh frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}" "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}"
+      - name: Retire exact obsolete route documents
+        run: node --import tsx scripts/cleanup-retired-route-documents.ts frontend/dist/hair-frontend/browser "s3://${{ vars.SITE_BUCKET }}" --execute
       - name: Verify published editorial release
         run: npm run seo:smoke-release

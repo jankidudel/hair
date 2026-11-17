@@ -1,3 +1,8 @@
+import {
+  consolidatedComparisonSlugs,
+  consolidatedUpdatedSlugs,
+} from '../../frontend/src/app/consolidated-comparison-guides.ts';
+import { removedDuplicateRoutes } from '../removed-duplicate-routes.ts';
 import { ArticleSlug } from '../../frontend/src/app/article-slug.ts';
 import { supportedUpdoSlugs } from '../../frontend/src/app/supported-updo-guides.ts';
 import { shapingMethodSlugs } from '../../frontend/src/app/shaping-method-guides.ts';
@@ -17,7 +22,10 @@ import { currentModelSlugs } from '../../frontend/src/app/current-model-comparis
 import { guideEvidence } from '../../frontend/src/app/guide-evidence.ts';
 import { guideLinkMap } from '../../frontend/src/app/guide-link-map.ts';
 import { parseSitemap } from './route-coverage.ts';
-import { releaseArticleErrors } from './release-article-validation.ts';
+import {
+  releaseArticleErrors,
+  retiredRouteErrors,
+} from './release-article-validation.ts';
 
 // Read-only, explicit post-release command. No deployment or invalidation.
 const artifactOnly = process.argv.includes('--artifact-only');
@@ -36,6 +44,8 @@ const failures: string[] = [];
 const observations: { stage: string; path: string; errors: string[] }[] = [];
 const intended = [
   ...new Set([
+    ...consolidatedComparisonSlugs,
+    ...consolidatedUpdatedSlugs,
     ...carePackingSlugs,
     ...finishingMethodSlugs,
     ...currentModelSlugs,
@@ -59,7 +69,10 @@ const hash = createHash('sha256');
 const expectedFor = (article: (typeof articles)[number]) => ({
   article,
   evidence: guideEvidence[article.slug],
-  relatedPaths: guideLinkMap[article.slug].relatedSlugs.map(
+  authoredBody: (consolidatedUpdatedSlugs as readonly string[]).includes(
+    article.slug,
+  ),
+  relatedPaths: (guideLinkMap[article.slug]?.relatedSlugs ?? []).map(
     (slug) => `/guides/${slug}`,
   ),
 });
@@ -71,6 +84,25 @@ try {
   const sitemap = await readFile(resolve(artifact, 'sitemap.xml'), 'utf8');
   hash.update(sitemap);
   const entries = parseSitemap(sitemap).entries;
+  for (const route of removedDuplicateRoutes) {
+    for (const key of [
+      route.slice(1),
+      `${route.slice(1)}.html`,
+      `${route.slice(1)}/index.html`,
+    ]) {
+      try {
+        const { stat } = await import('node:fs/promises');
+        if ((await stat(resolve(artifact, key))).isFile())
+          record('artifact-retired', route, [
+            `Obsolete document survives at ${key}.`,
+          ]);
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+      }
+    }
+    if (entries.some((entry) => entry.url === origin + route))
+      record('artifact-retired', route, ['Retired route appears in sitemap.']);
+  }
   for (const article of intended) {
     const path = `/guides/${article.slug}`;
     try {
@@ -117,6 +149,24 @@ if (!artifactOnly && failures.length === 0) {
     const sitemap = await request('/sitemap.xml');
     if (sitemap.status !== 200) throw Error(`Sitemap HTTP ${sitemap.status}`);
     const entries = parseSitemap(sitemap.text).entries;
+    for (const route of removedDuplicateRoutes) {
+      for (const path of [
+        route,
+        `${route}/`,
+        `${route}/index.html`,
+        `${route}.html`,
+      ]) {
+        try {
+          record(
+            'production-retired',
+            path,
+            retiredRouteErrors(await request(path)),
+          );
+        } catch (error) {
+          record('production-retired', path, [String(error)]);
+        }
+      }
+    }
     // Bounded release owners from the maintained batches, plus the sitemap.
     for (const article of intended) {
       const path = `/guides/${article.slug}`;

@@ -1,5 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { cosmeticNamesForSafetyScan } from './content-safety.ts';
 
 const contentDirectory = join(import.meta.dirname, '..', 'frontend', 'content');
 const prohibitedTerms = [
@@ -23,8 +24,8 @@ const files = (await readdir(contentDirectory)).filter((file) =>
 const failures: string[] = [];
 for (const file of files) {
   const text = await readFile(join(contentDirectory, file), 'utf8');
-  const matches = [...text.matchAll(matcher)].map((match) =>
-    match[0].toLowerCase(),
+  const matches = [...cosmeticNamesForSafetyScan(text).matchAll(matcher)].map(
+    (match) => match[0].toLowerCase(),
   );
   if (matches.length > 0)
     failures.push(`${file}: ${[...new Set(matches)].join(', ')}`);

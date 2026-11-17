@@ -6,6 +6,7 @@ import {
   type HairBrushAnswers,
 } from './hair-brush-recommendation';
 import { SiteSeoService } from './site-seo.service';
+import { ArticleSlug } from './article-slug';
 
 type QuestionKey = keyof HairBrushAnswers;
 interface FinderQuestion {
@@ -292,8 +293,8 @@ export class HairBrushFinderComponent {
           label: 'Compare two exact wet-use detanglers',
         },
         {
-          slug: 'wide-tooth-comb-vs-detangling-brush',
-          label: 'Compare a comb and detangling brush',
+          slug: ArticleSlug.TangleTeezerUltimateDetanglerVsUltimateStyler,
+          label: 'Separate wet preparation from dry finishing',
         },
       ];
     }
@@ -316,8 +317,12 @@ export class HairBrushFinderComponent {
           label: 'Best Hair Brushes for Curly Hair',
         },
         {
-          slug: 'wide-tooth-comb-vs-detangling-brush',
-          label: 'Wide-Tooth Comb vs Detangling Brush',
+          slug: ArticleSlug.DenmanD3VsD31,
+          label: 'Compare two seven-row styling-pin layouts',
+        },
+        {
+          slug: ArticleSlug.DenmanD3VsD4,
+          label: 'Compare seven and nine rows for styling width',
         },
       ];
     }
@@ -345,8 +350,8 @@ export class HairBrushFinderComponent {
         label: 'How to Choose the Right Hair Brush',
       },
       {
-        slug: 'round-brush-vs-paddle-brush',
-        label: 'Round Brush vs Paddle Brush',
+        slug: ArticleSlug.TangleTeezerUltimateDetanglerVsUltimateStyler,
+        label: 'Choose wet preparation or dry finishing',
       },
     ];
   }

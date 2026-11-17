@@ -1,3 +1,4 @@
+import { consolidatedComparisonEvidence } from './consolidated-comparison-guides';
 import { supportedUpdoEvidence } from './supported-updo-guides';
 import { straightenerGuideEvidence } from './straightener-guides';
 import { shapingMethodEvidence } from './shaping-method-guides';
@@ -131,6 +132,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...consolidatedComparisonEvidence,
   ...waveMethodEvidence,
   ...toolChoiceEvidence,
   ...everydayMethodEvidence,

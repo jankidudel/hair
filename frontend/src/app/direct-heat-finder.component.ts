@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { productProfiles, ProductCategory } from './product-comparisons';
 import { SiteSeoService } from './site-seo.service';
+import { ArticleSlug } from './article-slug';
 
 type FinderKind = 'flat' | 'curling';
 type Answer = 'precision' | 'general' | 'broad' | 'clamp' | 'wand' | 'varied';
@@ -85,6 +86,18 @@ type Answer = 'precision' | 'general' | 'broad' | 'clamp' | 'wand' | 'varied';
             }
           </ul>
           <a class="button" [routerLink]="guidePath">Read the primary guide</a>
+          @if (kind === 'flat' && answers[0] === 'broad') {
+            <p>
+              <a [routerLink]="['/guides', articleSlug.GhdMaxVsChronosMax]"
+                >Compare two wide ghd models</a
+              >
+              for the 42 mm and 43 mm labels and control differences. For
+              standard versus wide, use
+              <a [routerLink]="['/guides', articleSlug.GhdChronosVsChronosMax]"
+                >Chronos versus Chronos Max</a
+              >.
+            </p>
+          }
           <p><a routerLink="/products">Compare published specifications</a></p>
           <button type="button" class="finder-restart" (click)="reset()">
             Start again
@@ -94,6 +107,7 @@ type Answer = 'precision' | 'general' | 'broad' | 'clamp' | 'wand' | 'varied';
     </section>`,
 })
 export class DirectHeatFinderComponent {
+  readonly articleSlug = ArticleSlug;
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   readonly kind: FinderKind = this.route.snapshot.data['kind'] as FinderKind;

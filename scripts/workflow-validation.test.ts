@@ -124,14 +124,18 @@ test('deployment builds fingerprint static entry assets', async () => {
   assert.match(fingerprintScript, /createHash\('sha256'\)/);
 });
 
-test('manual frontend deployments verify the actual published release after upload', async () => {
+test('manual frontend deployments retire exact duplicates before release verification', async () => {
   for (const name of ['deploy-content.yml', 'deploy-all.yml']) {
     const source = await workflow(name);
     const upload = source.indexOf(
       'run: bash .github/scripts/deploy-frontend-assets.sh',
     );
+    const cleanup = source.indexOf(
+      'run: node --import tsx scripts/cleanup-retired-route-documents.ts',
+    );
     const smoke = source.indexOf('run: npm run seo:smoke-release');
-    assert.ok(upload >= 0 && smoke > upload, name);
+    assert.ok(upload >= 0 && cleanup > upload && smoke > cleanup, name);
+    assert.match(source.slice(cleanup, smoke), /--execute/);
     assert.doesNotMatch(source.slice(smoke), /continue-on-error|\|\|\s*true/);
   }
 });

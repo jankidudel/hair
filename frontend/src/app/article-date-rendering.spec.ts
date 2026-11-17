@@ -42,7 +42,11 @@ describe('substantive article dates', () => {
         (value: Record<string, unknown>) => value['@type'] === 'Article',
       );
       expect(article.datePublished).toBe('2026-10-07');
-      expect(article.dateModified).toBe('2026-11-03');
+      expect(article.dateModified).toBe(
+        slug === ArticleSlug.HowToChooseHairSectioningClips
+          ? '2026-11-17'
+          : '2026-11-03',
+      );
       expect(
         seoRoutesForArticles(articles).find(
           (route) => route.path === `/guides/${slug}`,
@@ -57,7 +61,9 @@ describe('substantive article dates', () => {
           (route) => route.path === `/guides/${unchanged.slug}`,
         )?.lastmod,
       ).toBe(unchanged.publishDate);
-      expect(fixture.nativeElement.textContent).not.toContain('2026-11-03');
+      expect(fixture.nativeElement.textContent).not.toContain(
+        article.dateModified,
+      );
       fixture.destroy();
       doc
         .querySelectorAll('script[data-site-jsonld]')

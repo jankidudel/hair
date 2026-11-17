@@ -8,7 +8,10 @@ import { articles } from '../frontend/src/app/content.generated.ts';
 import { ArticleSlug } from '../frontend/src/app/article-slug.ts';
 import { guideEvidence } from '../frontend/src/app/guide-evidence.ts';
 import { guideLinkMap } from '../frontend/src/app/guide-link-map.ts';
-import { releaseArticleErrors } from './seo/release-article-validation.ts';
+import {
+  releaseArticleErrors,
+  retiredRouteErrors,
+} from './seo/release-article-validation.ts';
 
 test('release check rejects stale 200s, wrong identities, missing body and missing sitemap entries', () => {
   const article = articles.find(
@@ -88,4 +91,12 @@ test('the real release command exits unsuccessfully when its rendered artifact i
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
+});
+
+test('retired brush routes reject indexable 200s and redirects', () => {
+  assert.deepEqual(retiredRouteErrors({ status: 404, text: 'Not found' }), []);
+  for (const status of [200, 301, 302, 403])
+    assert.ok(
+      retiredRouteErrors({ status, text: 'Legacy brush guide' }).length,
+    );
 });

@@ -1,5 +1,22 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  GhdMaxVsChronosMax: 'ghd-max-vs-chronos-max',
+  DenmanD3VsD31: 'denman-d3-vs-d31',
+  TangleTeezerUltimateDetanglerVsUltimateStyler:
+    'tangle-teezer-ultimate-detangler-vs-ultimate-styler',
+  GhdDuetStyleVsDuetBlowdry: 'ghd-duet-style-vs-duet-blowdry',
+  SharkSpeedstyleProVsProFlex: 'shark-speedstyle-pro-vs-pro-flex',
+  T3Aire360NextGenVsDysonAirwrapId: 't3-aire-360-next-gen-vs-dyson-airwrap-id',
+  BabylissAirWandAs6550uVsAs6553u: 'babyliss-air-wand-as6550u-vs-as6553u',
+  ColorWowDreamCoatOriginalVsExtraStrengthVsCurly:
+    'color-wow-dream-coat-original-vs-extra-strength-vs-curly',
+  MoroccanoilTreatmentOriginalVsLight:
+    'moroccanoil-treatment-original-vs-light',
+  FramarGatorGripsVsSuperSectioners: 'framar-gator-grips-vs-super-sectioners',
+  ConairHs400VsHs79crHotRollers: 'conair-hs400-vs-hs79cr-hot-rollers',
+  SharkSilkiproStraightVsDysonAirstrait:
+    'shark-silkipro-straight-vs-dyson-airstrait',
+
   SteamHairStraightenerVsFlatIron: 'steam-hair-straightener-vs-flat-iron',
   HowToUseASteamHairStraightener: 'how-to-use-a-steam-hair-straightener',
   HowToCleanASteamHairStraightener: 'how-to-clean-a-steam-hair-straightener',

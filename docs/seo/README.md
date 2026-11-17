@@ -1,5 +1,7 @@
 # CombReport keyword research and URL decisions
 
+The current implementation is recorded in [the consolidated 17 November handoff](#consolidated-17-november-implementation). Earlier zero-new-URL and pending-pilot findings describe their dated snapshots and are superseded there.
+
 Use [content-opportunities.csv](content-opportunities.csv) to decide which reader task belongs on which URL. The research work package ends when the evidence, decision and next review are recorded. Page writing, rewrites, redirects and releases are separate work.
 
 Follow the [editorial rules](../../AGENTS.md), the [guide publishing workflow](../../README.md#publishing-a-guide), and the [technical SEO runbook](../README.md#route-discovery-and-sitemap-checks). Give each page a distinct cosmetic grooming or styling task and a piece of information that changes the reader's decision. Apply the [durable editorial integration rules](../../COMBREPORT_SEO_IMPLEMENTATION_REPORT.md#durable-editorial-integration-rules). Use specifications and instructions within their exact scope. Require appropriate firsthand evidence for tested performance or ranked recommendations. [Google's people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) and [spam policies](https://developers.google.com/search/docs/essentials/spam-policies) explain the risks of expanding at scale without adding original value.
@@ -142,7 +144,7 @@ A property-wide Search Analytics API pull remains unavailable through the curren
 
 Slug checks used the live and generated sitemaps, all article sources and registry states, the route policy, retired-route list and the CSV's working slugs. Direct public checks returned HTTP 404 for the leading Shark, Parlux, Panasonic, heated-roller and separate IonCurl-diffuser working slugs. The two sitemaps still have the same 245 unique URLs.
 
-## 17 November implementation handover
+## Earlier 17 November pilot handover
 
 Two editorial pilots are implemented locally and tracked as PLANNED / NEW until release. Their exact query volume and controlled national ranking remain unknown. Both target URLs returned HTTP 404 before release. The backlog keeps the existing IonCurl ID and adds a travel comparison row.
 
@@ -156,6 +158,242 @@ The six planned additions cover the US Nural fit and learning example, HD19 carr
 **Pre-release baseline.** The pilots have no live landing-page baseline. Use the 17 October–13 November Web export for existing owners and the separate 17 August–14 November US/UK reports above. The six updated owners had respectively 4/341, 0/237, 2/179, 2/131, 3/95 and 1/37 clicks/impressions in the all-country export. Compare those pages against the preceding comparable window after 28 complete post-release days. For the pilots, record indexing, canonical selection and relevant queries after the same interval.
 
 **Local acceptance.** The production build has 248 prerendered documents and 247 unique sitemap URLs. The only sitemap additions are the two pilots. Both have contextual article links and self-canonical metadata. At 375 px, the five changed tables fit within the page, accept keyboard focus, and support horizontal keyboard scrolling wherever the table exceeds its container. All three new contextual links navigated to their intended guides. Production release remains pending.
+
+## Consolidated 17 November implementation
+
+Prepared as one unstaged change set against reviewed commit `833e770`. The release review requested in the brief is the next step. Twelve guides are implemented locally, with twelve PLANNED / NEW rows. The two earlier pilots are DONE / KEEP with `verified_live` state. Significant article and discovery revisions use 2026-11-17 lastmod. If publication occurs later, reconcile first-publication scheduling with the actual release date while preserving source-check provenance.
+
+### Deployed baseline reconciled
+
+Ordinary production checks on 2026-11-17 returned HTTP 200, one self canonical and index/follow for all ten requested baseline pages. All authored paragraphs, section headings and table cells matched the reviewed HEAD sources. The HD19 voltage, packed kit, nozzle/case and attachment-reuse answer, IonCurl UK direction and Glam exclusion, exact US parts, Co-anda2x US boxes, Nural fit/learning distinction, MagicSense direct-fit rows, D3/D4 pads and Halo replacement wording were present. The travel guide linked to the HD19 comparison. Both the attachment chooser and Glam/FlexStyle comparison linked to IonCurl. Public guide/category incoming links were checked separately.
+
+| Existing production page                                                     | Confirmation                                                  |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| https://www.combreport.com/guides/dyson-supersonic-travel-vs-ghd-flight-plus | Voltage, case/nozzle and attachment reuse                     |
+| https://www.combreport.com/guides/shark-flexstyle-vs-ioncurl                 | UK migration direction, Glam exclusion, US body/part table    |
+| https://www.combreport.com/guides/best-travel-hair-dryers                    | HD19 carry-over and contextual comparison link                |
+| https://www.combreport.com/guides/dyson-airwrap-id-vs-co-anda2x              | Two named US box inventories                                  |
+| https://www.combreport.com/guides/hair-dryer-diffuser-compatibility          | Physical fit, learning and wide-tooth-comb exception          |
+| https://www.combreport.com/guides/parlux-alyon-vs-digitalyon                 | MagicSense direct fit and accessory-versus-dryer package rows |
+| https://www.combreport.com/guides/denman-d3-vs-d4                            | Exact replacement-pad rows                                    |
+| https://www.combreport.com/guides/ghd-speed-vs-helios                        | Halo replacement matches authored output                      |
+| https://www.combreport.com/guides/how-to-choose-multi-styler-attachments     | IonCurl contextual link                                       |
+| https://www.combreport.com/guides/shark-glam-vs-flexstyle                    | IonCurl contextual link                                       |
+
+### Added pages for release review
+
+- [ghd Max vs Chronos Max: Wide Plate Choice](https://www.combreport.com/guides/ghd-max-vs-chronos-max)
+- [Denman D3 vs D31: Seven Rows, Different Spacing](https://www.combreport.com/guides/denman-d3-vs-d31)
+- [Ultimate Detangler vs Ultimate Styler: Which Task?](https://www.combreport.com/guides/tangle-teezer-ultimate-detangler-vs-ultimate-styler)
+- [ghd Duet Style vs Duet Blowdry: Format and Modes](https://www.combreport.com/guides/ghd-duet-style-vs-duet-blowdry)
+- [Shark SpeedStyle Pro vs Pro Flex: UK Bodies and Boxes](https://www.combreport.com/guides/shark-speedstyle-pro-vs-pro-flex)
+- [T3 Aire 360 Next Gen vs Dyson Airwrap i.d.: UK Kits](https://www.combreport.com/guides/t3-aire-360-next-gen-vs-dyson-airwrap-id)
+- [BaByliss Air Wand AS6550U vs AS6553U: Box Contents](https://www.combreport.com/guides/babyliss-air-wand-as6550u-vs-as6553u)
+- [Color Wow Dream Coat: Original, Extra Strength or Curly?](https://www.combreport.com/guides/color-wow-dream-coat-original-vs-extra-strength-vs-curly)
+- [Moroccanoil Treatment Original vs Light: UK Choice](https://www.combreport.com/guides/moroccanoil-treatment-original-vs-light)
+- [Framar Gator Grips vs Super Sectioners: Clip Tasks](https://www.combreport.com/guides/framar-gator-grips-vs-super-sectioners)
+- [Conair HS400 vs HS79CR: Roller Counts and Clips](https://www.combreport.com/guides/conair-hs400-vs-hs79cr-hot-rollers)
+- [Shark SilkiPro Straight vs Dyson Airstrait: UK Modes](https://www.combreport.com/guides/shark-silkipro-straight-vs-dyson-airstrait)
+
+Each has a conditional decision, exact-market table, documented evidence scope, manufacturer source panel, three FAQs, related destinations and contextual incoming article and category links. The UK T3 main table uses the current Aire 360 2.0 New Edition and Dyson i.d. Vinca Blue/Topaz Straight+Wavy kit, whose complete box could be verified. The US T3 diffuser note retains its second-generation scope. The Shark table explicitly selects two Pro pieces and three Pro Flex pieces as editorial example configurations. The selected order determines what is supplied.
+
+### Existing guide pages updated locally
+
+The 41 incremental article edits sharing owners have been combined in their source files. The thick-brush owner also preserves the legacy paddle-control point. This gives 42 existing guide source revisions. The CSV contains the precise addition and manufacturer links beside each applicable owner. Earlier deployed work on the three unchanged travel, diffuser and Speed/Helios owners remains verified_live.
+
+- https://www.combreport.com/guides/olivia-garden-ceramic-ion-vs-nanothermic
+- https://www.combreport.com/guides/how-to-choose-hair-sectioning-clips
+- https://www.combreport.com/guides/how-to-choose-a-hair-barrette
+- https://www.combreport.com/guides/hair-roller-size-guide
+- https://www.combreport.com/guides/how-to-use-heated-hair-rollers
+- https://www.combreport.com/guides/how-to-use-snap-closure-foam-rollers
+- https://www.combreport.com/guides/how-to-choose-hair-dryer
+- https://www.combreport.com/guides/hair-dryer-heat-and-speed-settings-guide
+- https://www.combreport.com/guides/how-to-use-hair-dryer-concentrator-nozzle
+- https://www.combreport.com/guides/ghd-air-vs-helios
+- https://www.combreport.com/guides/dyson-supersonic-nural-vs-supersonic-r
+- https://www.combreport.com/guides/dyson-supersonic-vs-shark-speedstyle
+- https://www.combreport.com/guides/parlux-alyon-vs-digitalyon
+- https://www.combreport.com/guides/dyson-airwrap-id-vs-co-anda2x
+- https://www.combreport.com/guides/revlon-one-step-volumizer-vs-plus
+- https://www.combreport.com/guides/how-to-clean-a-steam-hair-straightener
+- https://www.combreport.com/guides/steam-hair-straightener-vs-flat-iron
+- https://www.combreport.com/guides/how-to-clean-hair-dryer-filter
+- https://www.combreport.com/guides/how-to-use-hot-air-brush
+- https://www.combreport.com/guides/best-travel-flat-irons
+- https://www.combreport.com/guides/babyliss-air-style-1000-vs-flawless-volume
+- https://www.combreport.com/guides/how-to-clean-a-hair-brush
+- https://www.combreport.com/guides/hair-styling-product-order
+- https://www.combreport.com/guides/hair-serum-vs-hair-oil
+- https://www.combreport.com/guides/how-to-apply-hair-serum-or-oil
+- https://www.combreport.com/guides/flat-iron-plate-width-guide
+- https://www.combreport.com/guides/thermal-brush-vs-hot-air-brush
+- https://www.combreport.com/guides/denman-d3-vs-d4
+- https://www.combreport.com/guides/best-brushes-curly-hair
+- https://www.combreport.com/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original
+- https://www.combreport.com/guides/ghd-chronos-vs-chronos-max
+- https://www.combreport.com/guides/dyson-airstrait-vs-ghd-duet-style
+- https://www.combreport.com/guides/dyson-airsmooth-vs-ghd-duet-blowdry
+- https://www.combreport.com/guides/how-to-choose-multi-styler-attachments
+- https://www.combreport.com/guides/how-to-use-texturising-spray
+- https://www.combreport.com/guides/sea-salt-spray-vs-texturising-spray
+- https://www.combreport.com/guides/how-to-apply-hair-mousse
+- https://www.combreport.com/guides/how-to-use-spiral-hair-ties
+- https://www.combreport.com/guides/heatless-curls-not-working
+- https://www.combreport.com/guides/how-to-use-airflow-curling-barrels
+- https://www.combreport.com/guides/how-to-use-an-automatic-hair-curler
+- https://www.combreport.com/guides/best-brushes-thick-hair
+
+### Discovery pages updated locally
+
+- https://www.combreport.com/
+- https://www.combreport.com/guides
+- https://www.combreport.com/hair-dryers
+- https://www.combreport.com/hot-air-brushes
+- https://www.combreport.com/brushes-combs
+- https://www.combreport.com/hair-care
+- https://www.combreport.com/hair-accessories
+- https://www.combreport.com/flat-irons
+- https://www.combreport.com/hair-brush-finder
+- https://www.combreport.com/flat-iron-finder
+
+Guide search accepts D31, Flight Plus, HD500, AS6553U and Dream Coat Curly. Category cards use the existing registry. Small task-labelled link groups connect hair-care formulas, accessory purchase decisions and multi-styler kit selection. Brush, wide-plate and embedded dryer finder results retain the relevant general method and exact-model next step.
+
+### Brush transition decision and exact retirement keys
+
+Prefer the registered plural owners for both tasks. The supplied US/UK query comparisons remain 2026-08-17 through 2026-11-14 Web reports. Curly singular/plural US impressions were 109/2. Thick plural/singular impressions were US 434/288 and GB 126/95, with shared leading query wording. Both pairs recorded zero clicks. The fuller current bodies cover wet detangling, section control and separate styling tasks. The legacy thick page's paddle-control point is now explicit in the plural owner. The curly page's useful wet-use and open-spacing material was already covered.
+
+On 2026-11-17, the signed-in `sc-domain:combreport.com` Links report showed **External links Total 0**, with No data under top linked pages, linking sites and linking text. This establishes the report's current observation. Unreported external links remain unknown. Proceed with the user's preferred real-404 retirement in the reviewed release. External links to either retired URL will then land on an HTTP 404 page.
+
+| Retire URL                                                       | Preferred owner                                           | Confirmed S3 document                              |
+| ---------------------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------- |
+| https://www.combreport.com/guides/best-hair-brush-for-curly-hair | https://www.combreport.com/guides/best-brushes-curly-hair | `guides/best-hair-brush-for-curly-hair/index.html` |
+| https://www.combreport.com/guides/best-hair-brush-for-thick-hair | https://www.combreport.com/guides/best-brushes-thick-hair | `guides/best-hair-brush-for-thick-hair/index.html` |
+
+Read-only AWS checks confirmed production distribution `E15KYMP9H859CS`, its default S3 origin `hair-prod-sitebucket397a1860-lu3pd8ii5lc8` and empty OriginPath. The actual LIVE viewer-request function maps both extensionless and slash routes to these index documents. S3 prefix listing found those two old index files, dated 2026-09-20. Alternative exact bare and `.html` keys were absent. The legitimate short-hair page under the nearby prefix is retained. The distribution's S3 403/404 error mapping serves `/404/index.html` with HTTP 404. Ordinary public legacy brush requests still returned indexable 200 before cleanup.
+
+The existing cleanup script previews exact keys and now checks all three document shapes for each already-retired route. Its guards reject any matching build file or sitemap owner. The release smoke command checks the two brush pairs and all existing retired routes in extensionless, slash, explicit index and `.html` forms. Any HTTP 200 or redirect fails retirement acceptance. Both existing manual content-upload workflows now run the exact-key cleanup after upload and before release smoke verification. A workflow regression check enforces that order. The retirement is prepared locally. Origin deletion awaits the requested release review.
+
+### Research inventory reconciliation
+
+The one CSV now contains **314 rows and 40 columns**, preserving all 82 original IDs. It covers all **237 article registry entries**, including **236 published guides and one disabled draft**, plus all **23 other indexable canonical routes**. Every one of the expected **259 sitemap URLs** has an existing or selected row. The current live sitemap has 247 unique URLs and zero duplicates. All twelve new ordinary production URLs returned HTTP 404 before release, and both legacy brush URLs still returned HTTP 200. There are twelve distinct proposed URLs, with no duplicate proposed slugs and no collision with pre-batch live routes, other drafts or existing planned owners. The two already-live pilots moved to existing_url. The IonCurl replacement-diffuser row now shares the deployed IonCurl owner, with the former generic chooser metrics retained as explicitly adjacent context and its current-owner gsc fields cleared.
+
+The brief contains **100 supplied topic decisions**, grouped as twelve selected guides, 41 existing-owner questions and 47 further hypotheses. Several question placements share an owner and source edits also add contextual next decisions. File counts and CSV row counts therefore measure different things. The 47 hypothesis decisions occupy **46 RESEARCH rows** because the generic rod-versus-flexi format question shares the Kitsch format task. Their `research_decisions` tags preserve all 47 original placements. Working candidates appear only in notes and reserve no route. Three prior research IDs are reused for Parlux range compatibility, Panasonic replacement parts and FlexStyle/IonCurl care. Exact pair-specific volumes, controlled UK/US ranking order and difficulty remain unknown. The longer-term target of 100–300 publication-ready new URLs remains unfulfilled.
+
+Current statuses are 252 DONE, 46 RESEARCH, twelve PLANNED, three DECLINED and one DRAFT. Current actions are 221 KEEP, 27 EXPAND, 47 REVIEW_OVERLAP, three DROP, one OBSERVE, three REFRESH and twelve NEW. `implementation_state` records 66 implemented_local, 7 verified_live, 190 covered_existing, 50 pending and 1 draft. DONE describes a serving owner. Proposed work remains visible in the action and implementation fields.
+
+The earlier Pass 1 zero-new and Pass 2 zero-qualified findings are historical. The user's later editorial selections supersede those publication decisions. Earlier 404 and release-pending observations for the two pilots are superseded by the production confirmation above. This twelve-page consolidated batch is prepared for review.
+
+### Remaining factual unknowns
+
+- The AS6553U manual was not independently retrieved from the manufacturer. The guide compares documented UK box contents and keeps body equivalence unknown. AS6550U manual evidence cannot establish AS6553U equivalence.
+- Conair's HS79CR product-linked PDF uses HS79 naming. The exact revision relationship and cross-kit spare compatibility remain unknown.
+- Width, grip, crease, fit, drying-time and styling-retention results have no same-method CombReport measurements. Labelled dimensions and maker directions retain their exact model and market scope.
+- Direct HTTP source checks returned 200 for 26 of 35 new-guide source URLs. Manufacturer filtering, BaByliss redirect loops and a media-host DNS failure limited the remaining checks. Product identity and relevant wording were also reviewed through manufacturer search/text evidence. The ghd Duet PDF path was corrected to the official UK guide. The exact Moroccanoil cosmetic product name and two specific catalogue URL patterns receive a narrow safety-scan normalization, with regression tests retaining the surrounding medical-language checks. Final browser accessibility of blocked sources remains unknown.
+- The disabled round-brush draft stays in overlap review. All 46 hypothesis rows require the exact-model, reader-task, regional demand and results checks documented beside their closest owners. The selected SilkiPro page already answers its wet/dry-mode hypothesis, so a separate URL has no established additional value.
+- Property-wide finalized query/page/country API evidence remains unavailable. Preserve the earlier 28-day all-country Pages aggregates and the eight US/GB filtered reports as separate baselines. Latest complete 90-day range at this handoff is 2026-08-19 through 2026-11-16, subject to Search Console finalized-data availability. Do not relabel the older August–November reports as this refreshed window. For the smallest retirement follow-up set, export Queries separately for each of the four brush URLs in the ownership table and preferred-owner columns, with exact page, Web (text), this available finalized range and country US or UK. This makes eight filtered exports. For new-page performance, export exact new owners after 28 complete post-release days.
+
+### Validation and release sequence
+
+Final local acceptance passed on 2026-11-17.
+
+- `npm run verify` passed formatting, lint, type checks, all 98 frontend tests, six API tests, six infrastructure tests, 37 shared validation tests, the 238-file content safety scan, editorial checks, production build, generated SEO and internal-link checks.
+- `npm run seo:audit` passed with 260 registered/generated documents, 259 indexable sitemap entries, zero duplicates, zero missing/unexpected sitemap routes, zero metadata failures, zero internal orphans and zero broken internal links. Nine pre-existing guides still lack contextual article incoming links and remain reachable through navigation/hubs. The audit normalizes the sitemap's bare root origin and the homepage's slash canonical as the same root URL.
+- Artifact-only release smoke passed all 101 intended owners against authored bodies, metadata and lastmod. Its retired-file guards passed. Production retirement checks remain for the reviewed release.
+- At 375 × 812, all 54 changed/new guides and ten discovery pages passed viewport checks. All 64 tables were focusable and named. All 38 overflowing tables passed horizontal arrow-key scrolling. New guide tables and added comparison-record tables were included. Missing accessible table labels found during this check were repaired within the edited sources.
+- All five requested search aliases resolved to their canonical guide. Search clearing/no-match handling and keyboard navigation worked. Actual wet-detangling, styling-pin, wide-plate and everyday/diffuser/travel dryer finder choices exposed their expected guide links.
+- Every new guide has a rendered category link and an authored contextual incoming article link. The 314-row CSV passed quoting, unique/stable ID, status/action, proposed-slug and full-route reconciliation checks. The root URL equivalence is normalized for this reconciliation.
+- Exact-key cleanup preview passed for all six already-retired routes and their three document shapes, covering 18 keys. The two surviving brush index documents are the confirmed production objects. The preview made no deletion.
+- `git diff --check` passed. Existing advisory editorial targets for length and metadata remain warnings. Production delivery of this batch and the first 28 complete post-release days remain pending.
+
+The expected denominator is 260 prerendered documents, 259 indexable sitemap URLs, zero duplicate sitemap locations, zero missing policy owners and zero unexpected sitemap routes. The retired singular brush routes were already absent, so retirement subtracts no sitemap entries.
+
+Use the existing manual content-release workflow after review. The release has ordinary existing S3 upload, storage and request charges plus normal CloudFront delivery usage. Exact obsolete-key removal adds ordinary S3 API requests. It creates no new recurring AWS resources. The workflow change calls the existing exact-document cleanup script after content upload. No cache-policy, WAF, logging or viewer-request routing configuration change is included. CloudFront caching is disabled on the checked default behavior, and the plan requires no invalidation. The smoke command is read-only.
+
+Before a production upload, run the existing cleanup preview against the exact built output and production bucket. After the reviewed upload and exact-key cleanup, run `npm run seo:verify-production` and `npm run seo:smoke-release`, preserve actual statuses, canonicals, content checks and sitemap comparison, and require real 404 responses for every retired route form. The extended smoke check covers 101 intended release owners plus retired-route checks. Significant lastmod values track substantive content edits. Google ignores priority and changefreq. [Google's sitemap guidance](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping).
+
+After release, record the release time and the first complete next day as the start of the 28-day review window. Check indexing/canonical selection and query/page/country performance for the two pilots, twelve new guides and changed owners, and removal of the two duplicates. Calendar dates remain unknown until the release is recorded. Existing low-volume baselines require an extended review when 28 days yields little data.
+
+### Changed implementation files
+
+- `.github/workflows/deploy-all.yml`
+- `.github/workflows/deploy-content.yml`
+- `docs/seo/README.md`
+- `docs/seo/content-opportunities.csv`
+- `frontend/content/babyliss-air-style-1000-vs-flawless-volume.html`
+- `frontend/content/babyliss-air-wand-as6550u-vs-as6553u.html`
+- `frontend/content/best-brushes-curly-hair.html`
+- `frontend/content/best-brushes-thick-hair.html`
+- `frontend/content/best-travel-flat-irons.html`
+- `frontend/content/color-wow-dream-coat-original-vs-extra-strength-vs-curly.html`
+- `frontend/content/conair-hs400-vs-hs79cr-hot-rollers.html`
+- `frontend/content/denman-d3-vs-d31.html`
+- `frontend/content/denman-d3-vs-d4.html`
+- `frontend/content/dyson-airsmooth-vs-ghd-duet-blowdry.html`
+- `frontend/content/dyson-airstrait-vs-ghd-duet-style.html`
+- `frontend/content/dyson-airwrap-id-vs-co-anda2x.html`
+- `frontend/content/dyson-supersonic-nural-vs-supersonic-r.html`
+- `frontend/content/dyson-supersonic-vs-shark-speedstyle.html`
+- `frontend/content/flat-iron-plate-width-guide.html`
+- `frontend/content/framar-gator-grips-vs-super-sectioners.html`
+- `frontend/content/ghd-air-vs-helios.html`
+- `frontend/content/ghd-chronos-vs-chronos-max.html`
+- `frontend/content/ghd-duet-style-vs-duet-blowdry.html`
+- `frontend/content/ghd-max-vs-chronos-max.html`
+- `frontend/content/hair-dryer-heat-and-speed-settings-guide.html`
+- `frontend/content/hair-roller-size-guide.html`
+- `frontend/content/hair-serum-vs-hair-oil.html`
+- `frontend/content/hair-styling-product-order.html`
+- `frontend/content/heatless-curls-not-working.html`
+- `frontend/content/how-to-apply-hair-mousse.html`
+- `frontend/content/how-to-apply-hair-serum-or-oil.html`
+- `frontend/content/how-to-choose-a-hair-barrette.html`
+- `frontend/content/how-to-choose-hair-dryer.html`
+- `frontend/content/how-to-choose-hair-sectioning-clips.html`
+- `frontend/content/how-to-choose-multi-styler-attachments.html`
+- `frontend/content/how-to-clean-a-hair-brush.html`
+- `frontend/content/how-to-clean-a-steam-hair-straightener.html`
+- `frontend/content/how-to-clean-hair-dryer-filter.html`
+- `frontend/content/how-to-use-airflow-curling-barrels.html`
+- `frontend/content/how-to-use-an-automatic-hair-curler.html`
+- `frontend/content/how-to-use-hair-dryer-concentrator-nozzle.html`
+- `frontend/content/how-to-use-heated-hair-rollers.html`
+- `frontend/content/how-to-use-hot-air-brush.html`
+- `frontend/content/how-to-use-snap-closure-foam-rollers.html`
+- `frontend/content/how-to-use-spiral-hair-ties.html`
+- `frontend/content/how-to-use-texturising-spray.html`
+- `frontend/content/moroccanoil-treatment-original-vs-light.html`
+- `frontend/content/olivia-garden-ceramic-ion-vs-nanothermic.html`
+- `frontend/content/parlux-alyon-vs-digitalyon.html`
+- `frontend/content/revlon-one-step-volumizer-vs-plus.html`
+- `frontend/content/sea-salt-spray-vs-texturising-spray.html`
+- `frontend/content/shark-silkipro-straight-vs-dyson-airstrait.html`
+- `frontend/content/shark-speedstyle-pro-vs-pro-flex.html`
+- `frontend/content/steam-hair-straightener-vs-flat-iron.html`
+- `frontend/content/t3-aire-360-next-gen-vs-dyson-airwrap-id.html`
+- `frontend/content/tangle-teezer-ultimate-detangler-vs-ultimate-styler.html`
+- `frontend/content/tangle-teezer-ultimate-detangler-vs-wet-brush-original.html`
+- `frontend/content/thermal-brush-vs-hot-air-brush.html`
+- `frontend/src/app/article-date-rendering.spec.ts`
+- `frontend/src/app/article-registry.ts`
+- `frontend/src/app/article-slug.ts`
+- `frontend/src/app/consolidated-comparison-guides.ts`
+- `frontend/src/app/direct-heat-finder.component.ts`
+- `frontend/src/app/guide-evidence.ts`
+- `frontend/src/app/guide-link-map.ts`
+- `frontend/src/app/hair-brush-finder.component.ts`
+- `frontend/src/app/hair-dryer-finder.component.ts`
+- `frontend/src/app/seo-route-policy.ts`
+- `frontend/src/app/static-page.component.ts`
+- `scripts/check-content.ts`
+- `scripts/cleanup-retired-route-documents.test.ts`
+- `scripts/cleanup-retired-route-documents.ts`
+- `scripts/content-safety.test.ts`
+- `scripts/content-safety.ts`
+- `scripts/release-smoke.test.ts`
+- `scripts/seo/release-article-validation.ts`
+- `scripts/seo/release-smoke.ts`
+- `scripts/workflow-validation.test.ts`
 
 ## Monthly review
 

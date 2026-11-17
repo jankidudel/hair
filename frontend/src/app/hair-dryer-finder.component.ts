@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AnalyticsService } from './analytics/analytics.service';
+import { ArticleSlug } from './article-slug';
 import {
   recommendHairDryer,
   dryerGoalGuidance,
@@ -152,9 +153,45 @@ import {
           </nav>
           @if (goal === 'quick' || goal === 'smooth') {
             <p class="dryer-finder-compare">
-              <a routerLink="/guides/dyson-supersonic-vs-shark-speedstyle"
-                >Compare published dryer specifications</a
+              Compare
+              <a [routerLink]="['/guides', articleSlug.GhdSpeedVsHelios]"
+                >ghd controls</a
               >
+              or
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.SharkSpeedstyleProVsProFlex,
+                ]"
+                >UK Shark bodies and selected kits</a
+              >.
+            </p>
+          }
+          @if (goal === 'diffuser') {
+            <p>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.DysonSupersonicNuralVsSupersonicR,
+                ]"
+                >Compare the named Nural and Supersonic r boxes</a
+              >
+              when included attachments drive the choice.
+            </p>
+          }
+          @if (goal === 'travel') {
+            <p>
+              <a [routerLink]="['/guides', articleSlug.BestTravelHairDryers]"
+                >Build a travel-dryer shortlist</a
+              >, then
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.DysonSupersonicTravelVsGhdFlightPlus,
+                ]"
+                >compare HD19 and Flight+</a
+              >
+              by packed setup.
             </p>
           }
           <p class="dryer-finder-compare">
@@ -166,6 +203,7 @@ import {
   `,
 })
 export class HairDryerFinderComponent {
+  readonly articleSlug = ArticleSlug;
   private readonly analytics = inject(AnalyticsService);
   length: DryerLength = 'medium';
   sectionAmount: DryerSectionAmount = 'medium';

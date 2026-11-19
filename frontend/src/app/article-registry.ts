@@ -119,6 +119,27 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.DysonAirwrapAttachmentCompatibility,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 609,
+    enabled: true,
+    publishDate: '2026-11-19',
+  },
+  {
+    slug: ArticleSlug.BounceCurlDefineVsVolumeEdgelift,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 610,
+    enabled: true,
+    publishDate: '2026-11-19',
+  },
+  {
+    slug: ArticleSlug.MasonPearsonBrushSizeAndBristleGuide,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 611,
+    enabled: true,
+    publishDate: '2026-11-19',
+  },
+  {
     slug: ArticleSlug.ParluxDiffuserCompatibility,
     group: ArticleGroupId.HairDryers,
     order: 600,

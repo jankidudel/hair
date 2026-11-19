@@ -151,49 +151,28 @@ import {
               </a>
             }
           </nav>
-          @if (goal === 'quick' || goal === 'smooth') {
-            <p class="dryer-finder-compare">
-              Compare
-              <a [routerLink]="['/guides', articleSlug.GhdSpeedVsHelios]"
-                >ghd controls</a
-              >
-              or
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.SharkSpeedstyleProVsProFlex,
-                ]"
-                >UK Shark bodies and selected kits</a
-              >.
-            </p>
-          }
-          @if (goal === 'diffuser') {
-            <p>
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.DysonSupersonicNuralVsSupersonicR,
-                ]"
-                >Compare the named Nural and Supersonic r boxes</a
-              >
-              when included attachments drive the choice.
-            </p>
-          }
-          @if (goal === 'travel') {
-            <p>
-              <a [routerLink]="['/guides', articleSlug.BestTravelHairDryers]"
-                >Build a travel-dryer shortlist</a
-              >, then
-              <a
-                [routerLink]="[
-                  '/guides',
-                  articleSlug.DysonSupersonicTravelVsGhdFlightPlus,
-                ]"
-                >compare HD19 and Flight+</a
-              >
-              by packed setup.
-            </p>
-          }
+          <h4>Three features to compare</h4>
+          <ul class="dryer-finder-features">
+            @for (feature of result.features; track feature.name) {
+              <li>
+                <strong>{{ feature.name }}:</strong> {{ feature.why }}
+              </li>
+            }
+          </ul>
+          <h4>Named comparisons</h4>
+          <ul class="dryer-finder-features">
+            @for (comparison of result.comparisons; track comparison.slug) {
+              <li>
+                <a
+                  [routerLink]="['/guides', comparison.slug]"
+                  (click)="trackGuideClick()"
+                  >{{ comparison.label }}</a
+                >
+                ({{ comparison.scope }})
+              </li>
+            }
+          </ul>
+          <p><strong>Next check:</strong> {{ result.nextCheck }}</p>
           <p class="dryer-finder-compare">
             <a routerLink="/products">Compare published specifications</a>
           </p>

@@ -140,26 +140,6 @@ export const airflowMethodCards: Readonly<
     Record<string, { readonly title: string; readonly description: string }>
   >
 > = {
-  [ArticleSlug.HowToUseARotatingHotAirBrush]: {
-    title: '`/guides/how-to-use-a-rotating-hot-air-brush`',
-    description: 'Hot-Air Brushes',
-  },
-  [ArticleSlug.HowToUseAirflowCurlingBarrels]: {
-    title: '`/guides/how-to-use-airflow-curling-barrels`',
-    description: 'Hot-Air Brushes',
-  },
-  [ArticleSlug.HowToUseAHairDryerFlyawayAttachment]: {
-    title: '`/guides/how-to-use-a-hair-dryer-flyaway-attachment`',
-    description: 'Hair Dryers',
-  },
-  [ArticleSlug.HairDryerCombAttachmentVsConcentrator]: {
-    title: '`/guides/hair-dryer-comb-attachment-vs-concentrator`',
-    description: 'Hair Dryers',
-  },
-  [ArticleSlug.AirflowCurlingBarrelVsCurlingWand]: {
-    title: '`/guides/airflow-curling-barrel-vs-curling-wand`',
-    description: 'Hot-Air Brushes',
-  },
   [ArticleSlug.RotatingVsFixedHotAirBrush]: {
     title: 'Rotating vs fixed hot-air brush: what moves?',
     description:

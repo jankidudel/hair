@@ -260,37 +260,31 @@ export const straightenerGuideRelated = {
 
 export const straightenerGuideCards: Readonly<
   Partial<
-    Record<string, { readonly title: string; readonly description: string }>
+    Record<string, { readonly title?: string; readonly description: string }>
   >
 > = {
   [ArticleSlug.SteamHairStraightenerVsFlatIron]: {
-    title: '`/guides/steam-hair-straightener-vs-flat-iron`',
     description:
-      'Decide whether a reservoir-fed steam plate tool changes a useful part of a dry-hair routine | Mechanism selection, not a SteamPod review or operating manual',
+      'Decide whether a reservoir-fed steam plate tool changes a useful part of a dry-hair routine.',
   },
   [ArticleSlug.HowToUseASteamHairStraightener]: {
-    title: '`/guides/how-to-use-a-steam-hair-straightener`',
     description:
-      'Prepare and organise a steam-straightening session using the exact model instructions | Operation, with SteamPod 4 LP74 as a named example',
+      'Prepare and organise a steam-straightening session using the exact model instructions.',
   },
   [ArticleSlug.HowToCleanASteamHairStraightener]: {
-    title: '`/guides/how-to-clean-a-steam-hair-straightener`',
     description:
-      'Separate contact-surface care, removable comb care and a reservoir/service question | Maintenance, not a generic descaling recipe',
+      'Separate contact-surface care, removable comb care and a reservoir/service question.',
   },
   [ArticleSlug.WetToDryHairStraightenerVsFlatIron]: {
-    title: '`/guides/wet-to-dry-hair-straightener-vs-flat-iron`',
     description:
-      'Choose combined drying/straightening or a separate dry-use finishing step | Category choice, not another Airstrait/Duet Style pair page',
+      'Choose combined drying/straightening or a separate dry-use finishing step.',
   },
   [ArticleSlug.HowToUseAWetToDryHairStraightener]: {
-    title: '`/guides/how-to-use-a-wet-to-dry-hair-straightener`',
     description:
-      'Keep preparation, drying mode and optional dry refresh in the correct order | Operation; does not copy an ordinary flat-iron pass onto every system',
+      'Keep preparation, drying mode and optional dry refresh in the correct order.',
   },
   [ArticleSlug.HowToCleanAWetToDryHairStraightener]: {
-    title: '`/guides/how-to-clean-a-wet-to-dry-hair-straightener`',
     description:
-      'Identify which contact surfaces, air paths and removable parts may be cleaned | Maintenance; care permissions stay with the exact revision',
+      'Identify which contact surfaces, air paths and removable parts may be cleaned.',
   },
 };

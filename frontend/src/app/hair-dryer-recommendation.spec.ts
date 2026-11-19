@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { articles } from './content.generated';
 import {
   recommendHairDryer,
   type HairDryerAnswers,
@@ -50,5 +51,19 @@ describe('dryer feature guidance', () => {
     expect(
       recommendHairDryer(answers({ diffuser: 'no' })).diffuserNote,
     ).toBeUndefined();
+  });
+  it('returns three features, one or two live comparisons with a market label and a next check', () => {
+    const live = new Set(articles.map((article) => article.slug));
+    for (const goal of ['quick', 'smooth', 'diffuser', 'travel'] as const) {
+      const result = recommendHairDryer(answers({ goal }));
+      expect(result.features).toHaveLength(3);
+      expect(result.comparisons.length).toBeGreaterThanOrEqual(1);
+      expect(result.comparisons.length).toBeLessThanOrEqual(2);
+      for (const comparison of result.comparisons) {
+        expect(live, comparison.slug).toContain(comparison.slug);
+        expect(comparison.scope.trim()).not.toBe('');
+      }
+      expect(result.nextCheck.trim()).not.toBe('');
+    }
   });
 });

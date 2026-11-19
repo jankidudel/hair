@@ -1,5 +1,10 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  DysonAirwrapAttachmentCompatibility: 'dyson-airwrap-attachment-compatibility',
+  BounceCurlDefineVsVolumeEdgelift: 'bounce-curl-define-vs-volume-edgelift',
+  MasonPearsonBrushSizeAndBristleGuide:
+    'mason-pearson-brush-size-and-bristle-guide',
+
   ParluxDiffuserCompatibility: 'parlux-diffuser-compatibility',
   T3AireluxeVsFeatherweightStylemax: 't3-aireluxe-vs-featherweight-stylemax',
   RemingtonHydraluxeProVsProluxeYouDryer:

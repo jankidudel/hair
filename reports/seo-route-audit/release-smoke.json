@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-03T13:22:12.159Z",
+  "checkedAt": "2026-11-19T20:54:25.096Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "c41dccca3c3f9c916444f3feac43d0bc430cb369",
+  "sourceCommit": "2117269cd839ac39811cbbd45f018606025e8054",
   "sourceTreeDirty": true,
-  "artifactSha256": "587f28b0ad139f373d0a30527611c799f109794d5cae9935bcdb40f670b1f730",
+  "artifactSha256": "fec5ad8fe983f5709cb5c4142da8a9ce0cfa78a0b6c68a201e85b0190ec80ed0",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -12,22 +12,104 @@
   },
   "mode": "artifact-only",
   "expectedOwners": [
+    "dyson-airwrap-attachment-compatibility",
+    "bounce-curl-define-vs-volume-edgelift",
+    "mason-pearson-brush-size-and-bristle-guide",
+    "hair-dryer-wattage-guide",
+    "how-to-choose-hair-dryer",
+    "best-hair-dryer-for-short-hair",
+    "best-travel-hair-dryers",
+    "hair-dryer-diffuser-compatibility",
+    "best-brushes-fine-hair",
+    "best-brushes-curly-hair",
+    "best-hot-air-brushes-fine-hair",
+    "hot-air-brush-vs-curling-iron",
+    "round-brush-size-guide",
+    "how-to-clean-a-hair-brush",
+    "dyson-airwrap-id-vs-co-anda2x",
+    "parlux-diffuser-compatibility",
+    "t3-aireluxe-vs-featherweight-stylemax",
+    "remington-hydraluxe-pro-vs-proluxe-you-dryer",
+    "cloud-nine-original-iron-vs-touch-iron",
+    "steampod-3-vs-steampod-4",
+    "denman-d3-vs-d38",
+    "invisibobble-original-vs-power-vs-slim",
+    "color-wow-raise-the-root-vs-xtra-large",
+    "babyliss-wave-secret-air-vs-style-secret-air",
+    "denman-d3-vs-d4",
+    "denman-d3-vs-d31",
+    "cloud-nine-original-iron-vs-wide-iron",
+    "how-to-use-a-steam-hair-straightener",
+    "best-travel-flat-irons",
+    "how-to-clean-a-steam-hair-straightener",
+    "hair-dryer-heat-and-speed-settings-guide",
+    "how-to-clean-hair-dryer-filter",
+    "how-to-use-an-automatic-hair-curler",
+    "how-to-clean-an-automatic-hair-curler",
+    "how-to-use-spiral-hair-ties",
+    "how-to-apply-hair-mousse",
+    "hair-styling-product-order",
+    "how-to-use-heatless-curling-rod",
+    "how-to-use-flexi-rods",
+    "best-heatless-curling-sets",
+    "how-to-get-root-volume-with-a-round-brush",
+    "parlux-alyon-vs-digitalyon",
+    "curl-defining-brush-vs-detangling-brush",
+    "shark-speedstyle-pro-vs-pro-flex",
+    "how-to-choose-multi-styler-attachments",
+    "t3-aire-360-next-gen-vs-dyson-airwrap-id",
+    "thermal-brush-vs-hot-air-brush",
+    "best-detangling-brushes",
+    "conair-hs400-vs-hs79cr-hot-rollers",
+    "how-to-choose-a-hair-barrette",
+    "how-to-use-texturising-spray",
+    "hair-serum-vs-hair-oil",
+    "flat-iron-plate-width-guide",
+    "babyliss-air-wand-as6550u-vs-as6553u",
+    "dyson-corrale-coolshine-vs-corrale",
+    "ghd-max-vs-chronos-max",
+    "tangle-teezer-ultimate-detangler-vs-ultimate-styler",
+    "ghd-duet-style-vs-duet-blowdry",
+    "color-wow-dream-coat-original-vs-extra-strength-vs-curly",
+    "moroccanoil-treatment-original-vs-light",
+    "framar-gator-grips-vs-super-sectioners",
+    "shark-silkipro-straight-vs-dyson-airstrait",
+    "olivia-garden-ceramic-ion-vs-nanothermic",
+    "how-to-choose-hair-sectioning-clips",
+    "hair-roller-size-guide",
+    "how-to-use-heated-hair-rollers",
+    "how-to-use-snap-closure-foam-rollers",
+    "how-to-use-hair-dryer-concentrator-nozzle",
+    "ghd-air-vs-helios",
+    "dyson-supersonic-nural-vs-supersonic-r",
+    "dyson-supersonic-vs-shark-speedstyle",
+    "revlon-one-step-volumizer-vs-plus",
+    "steam-hair-straightener-vs-flat-iron",
+    "how-to-use-hot-air-brush",
+    "babyliss-air-style-1000-vs-flawless-volume",
+    "how-to-apply-hair-serum-or-oil",
+    "tangle-teezer-ultimate-detangler-vs-wet-brush-original",
+    "ghd-chronos-vs-chronos-max",
+    "dyson-airstrait-vs-ghd-duet-style",
+    "dyson-airsmooth-vs-ghd-duet-blowdry",
+    "sea-salt-spray-vs-texturising-spray",
+    "heatless-curls-not-working",
+    "how-to-use-airflow-curling-barrels",
+    "dyson-supersonic-travel-vs-ghd-flight-plus",
+    "shark-flexstyle-vs-ioncurl",
+    "ghd-speed-vs-helios",
+    "shark-glam-vs-flexstyle",
+    "best-brushes-thick-hair",
     "how-to-clean-hair-rollers",
     "how-to-clean-hair-clips-and-pins",
     "how-to-pack-hair-tools-for-travel",
     "how-to-apply-hair-clay",
-    "how-to-use-texturising-spray",
-    "how-to-apply-hair-serum-or-oil",
     "how-to-apply-curl-cream",
     "how-to-use-hair-styling-powder",
     "how-to-clean-a-straightening-brush",
     "hair-styling-powder-vs-dry-shampoo",
     "how-to-clean-hot-air-brush",
-    "ghd-speed-vs-helios",
     "ghd-glide-plus-vs-glide-plus-max",
-    "dyson-supersonic-nural-vs-supersonic-r",
-    "dyson-airstrait-vs-ghd-duet-style",
-    "dyson-airwrap-id-vs-co-anda2x",
     "how-to-blow-dry-a-fringe",
     "how-to-brush-out-curls",
     "how-to-use-a-hair-barrette",
@@ -35,19 +117,13 @@
     "how-to-use-dry-shampoo",
     "why-curls-fall-out",
     "ghd-sculpt-vs-chronos",
-    "dyson-corrale-coolshine-vs-corrale",
-    "dyson-airsmooth-vs-ghd-duet-blowdry",
-    "shark-glam-vs-flexstyle",
     "automatic-hair-curler-vs-curling-wand",
     "fixed-vs-adjustable-temperature-hair-straighteners",
-    "how-to-use-an-automatic-hair-curler",
-    "how-to-clean-an-automatic-hair-curler",
     "hair-waver-vs-curling-iron",
     "how-to-use-a-hair-waver",
     "hair-crimper-vs-hair-waver",
     "curling-iron-leaves-crease",
     "how-to-use-a-rotating-hot-air-brush",
-    "how-to-use-airflow-curling-barrels",
     "how-to-use-a-hair-dryer-flyaway-attachment",
     "hair-dryer-comb-attachment-vs-concentrator",
     "airflow-curling-barrel-vs-curling-wand",
@@ -67,6 +143,446 @@
   "observations": [
     {
       "stage": "artifact",
+      "path": "/guides/dyson-airwrap-attachment-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/bounce-curl-define-vs-volume-edgelift",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/mason-pearson-brush-size-and-bristle-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-wattage-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-hair-dryer",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hair-dryer-for-short-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-travel-hair-dryers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-diffuser-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-brushes-fine-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-brushes-curly-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hot-air-brushes-fine-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hot-air-brush-vs-curling-iron",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/round-brush-size-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-a-hair-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airwrap-id-vs-co-anda2x",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/parlux-diffuser-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/t3-aireluxe-vs-featherweight-stylemax",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/remington-hydraluxe-pro-vs-proluxe-you-dryer",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/cloud-nine-original-iron-vs-touch-iron",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/steampod-3-vs-steampod-4",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/denman-d3-vs-d38",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/invisibobble-original-vs-power-vs-slim",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/color-wow-raise-the-root-vs-xtra-large",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/babyliss-wave-secret-air-vs-style-secret-air",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/denman-d3-vs-d4",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/denman-d3-vs-d31",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/cloud-nine-original-iron-vs-wide-iron",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-steam-hair-straightener",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-travel-flat-irons",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-a-steam-hair-straightener",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-heat-and-speed-settings-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-hair-dryer-filter",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-an-automatic-hair-curler",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-an-automatic-hair-curler",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-spiral-hair-ties",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-hair-mousse",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-styling-product-order",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-heatless-curling-rod",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-flexi-rods",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-heatless-curling-sets",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-get-root-volume-with-a-round-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/parlux-alyon-vs-digitalyon",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/curl-defining-brush-vs-detangling-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-speedstyle-pro-vs-pro-flex",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-multi-styler-attachments",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/t3-aire-360-next-gen-vs-dyson-airwrap-id",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/thermal-brush-vs-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-detangling-brushes",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/conair-hs400-vs-hs79cr-hot-rollers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-a-hair-barrette",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-texturising-spray",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-serum-vs-hair-oil",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/flat-iron-plate-width-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/babyliss-air-wand-as6550u-vs-as6553u",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-corrale-coolshine-vs-corrale",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-max-vs-chronos-max",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/tangle-teezer-ultimate-detangler-vs-ultimate-styler",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-duet-style-vs-duet-blowdry",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/color-wow-dream-coat-original-vs-extra-strength-vs-curly",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/moroccanoil-treatment-original-vs-light",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/framar-gator-grips-vs-super-sectioners",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-silkipro-straight-vs-dyson-airstrait",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/olivia-garden-ceramic-ion-vs-nanothermic",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-hair-sectioning-clips",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-roller-size-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-heated-hair-rollers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-snap-closure-foam-rollers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-hair-dryer-concentrator-nozzle",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-air-vs-helios",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-supersonic-nural-vs-supersonic-r",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-supersonic-vs-shark-speedstyle",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/revlon-one-step-volumizer-vs-plus",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/steam-hair-straightener-vs-flat-iron",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/babyliss-air-style-1000-vs-flawless-volume",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-apply-hair-serum-or-oil",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-chronos-vs-chronos-max",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airstrait-vs-ghd-duet-style",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airsmooth-vs-ghd-duet-blowdry",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/sea-salt-spray-vs-texturising-spray",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/heatless-curls-not-working",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-airflow-curling-barrels",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-supersonic-travel-vs-ghd-flight-plus",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-flexstyle-vs-ioncurl",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-speed-vs-helios",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-glam-vs-flexstyle",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-brushes-thick-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
       "path": "/guides/how-to-clean-hair-rollers",
       "errors": []
     },
@@ -83,16 +599,6 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-apply-hair-clay",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/how-to-use-texturising-spray",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/how-to-apply-hair-serum-or-oil",
       "errors": []
     },
     {
@@ -122,27 +628,7 @@
     },
     {
       "stage": "artifact",
-      "path": "/guides/ghd-speed-vs-helios",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
       "path": "/guides/ghd-glide-plus-vs-glide-plus-max",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/dyson-supersonic-nural-vs-supersonic-r",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/dyson-airstrait-vs-ghd-duet-style",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/dyson-airwrap-id-vs-co-anda2x",
       "errors": []
     },
     {
@@ -182,37 +668,12 @@
     },
     {
       "stage": "artifact",
-      "path": "/guides/dyson-corrale-coolshine-vs-corrale",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/dyson-airsmooth-vs-ghd-duet-blowdry",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/shark-glam-vs-flexstyle",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
       "path": "/guides/automatic-hair-curler-vs-curling-wand",
       "errors": []
     },
     {
       "stage": "artifact",
       "path": "/guides/fixed-vs-adjustable-temperature-hair-straighteners",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/how-to-use-an-automatic-hair-curler",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/how-to-clean-an-automatic-hair-curler",
       "errors": []
     },
     {
@@ -238,11 +699,6 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-use-a-rotating-hot-air-brush",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/how-to-use-airflow-curling-barrels",
       "errors": []
     },
     {

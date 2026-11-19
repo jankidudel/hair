@@ -576,6 +576,10 @@ for (const [slug, diagram] of [
   ['how-to-clean-a-hair-comb', 'comb-teeth-cleaning'],
   [ArticleSlug.DysonAirstraitVsGhdDuetStyle, 'wet-to-dry-mode-boundaries'],
   [ArticleSlug.DysonAirwrapIdVsCoAnda2x, 'airwrap-generation-fit'],
+  [ArticleSlug.DysonAirwrapAttachmentCompatibility, 'airwrap-generation-fit'],
+  [ArticleSlug.BounceCurlDefineVsVolumeEdgelift, 'bounce-curl-edge-spacing'],
+  [ArticleSlug.RoundBrushSizeGuide, 'round-brush-measurements'],
+  [ArticleSlug.HairDryerDiffuserCompatibility, 'diffuser-fit-measurements'],
 ]) {
   const html = await readFile(
     resolve(output, 'guides', slug, 'index.html'),

@@ -1,5 +1,9 @@
 import { remainingOpportunitySources } from './remaining-opportunity-guides';
 import { exactModelEvidence, exactModelSources } from './exact-model-guides';
+import {
+  seoGrowthEvidence,
+  seoGrowthSupplementarySources,
+} from './seo-growth-guides';
 import { consolidatedComparisonEvidence } from './consolidated-comparison-guides';
 import { supportedUpdoEvidence } from './supported-updo-guides';
 import { straightenerGuideEvidence } from './straightener-guides';
@@ -134,6 +138,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 const baseGuideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...seoGrowthEvidence,
   ...exactModelEvidence,
   ...consolidatedComparisonEvidence,
   ...waveMethodEvidence,
@@ -743,6 +748,7 @@ export const guideEvidence: Readonly<Record<string, GuideEvidence>> =
               [
                 ...evidence.sources,
                 ...(remainingOpportunitySources[slug as ArticleSlug] ?? []),
+                ...(seoGrowthSupplementarySources[slug] ?? []),
               ].map((source) => [source.url, source] as const),
             ).values(),
           ],

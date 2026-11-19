@@ -1,5 +1,7 @@
+import { resolveGuideCardCopy } from './guide-card-copy';
 import { remainingOpportunityAliases } from './remaining-opportunity-guides';
 import { exactModelAliases } from './exact-model-guides';
+import { seoGrowthAliases } from './seo-growth-guides';
 import { supportedUpdoCards } from './supported-updo-guides';
 import { straightenerGuideCards } from './straightener-guides';
 import { shapingMethodCards } from './shaping-method-guides';
@@ -444,6 +446,23 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 >. The use and care guides below cover the next task.
               </p>
               <p>
+                To read a rating label and estimate what a dryer costs to run,
+                use the
+                <a [routerLink]="['/guides', articleSlug.HairDryerWattageGuide]"
+                  >wattage and running-cost calculator</a
+                >. Check a diffuser with the
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.HairDryerDiffuserCompatibility,
+                  ]"
+                  >fit reference and record</a
+                >, and for travel compare automatic and manual voltage in
+                <a [routerLink]="['/guides', articleSlug.BestTravelHairDryers]"
+                  >travel hair dryers</a
+                >.
+              </p>
+              <p>
                 If the proposed replacement combines drying and straightening,
                 begin with
                 <a
@@ -489,6 +508,21 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
               >Air Wand box chooser</a
             >
             after identifying the heads you need.
+          </p>
+          <p>
+            Reusing Dyson parts? The
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.DysonAirwrapAttachmentCompatibility,
+              ]"
+              >Airwrap attachment compatibility lookup</a
+            >
+            answers which bodies and attachments fit together. For the
+            whole-machine choice, compare
+            <a [routerLink]="['/guides', articleSlug.DysonAirwrapIdVsCoAnda2x]"
+              >Airwrap i.d. and Co-anda2x</a
+            >.
           </p>
           <p>
             <a href="/guides/hot-air-brush-barrel-size-guide#head-fit-worksheet"
@@ -655,8 +689,18 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 >
               </li>
               <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.MasonPearsonBrushSizeAndBristleGuide,
+                  ]"
+                  >Mason Pearson sizes, bristles and model codes</a
+                >
+              </li>
+              <li>
                 <a [routerLink]="['/guides', articleSlug.HowToCleanAHairBrush]"
-                  >How to Clean a Hair Brush Properly</a
+                  >How to clean a hairbrush: Tangle Teezer, Denman and material
+                  checks</a
                 >
               </li>
               <li>
@@ -678,6 +722,18 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 >
               </li>
             </ul>
+            <p>
+              For curl styling after detangling,
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.BounceCurlDefineVsVolumeEdgelift,
+                ]"
+                >Bounce Curl Define vs Volume EdgeLift</a
+              >
+              compares two edge-guided styling brushes by the curl grouping the
+              maker describes. Neither replaces a detangler.
+            </p>
             <p>
               For a prepared section being arranged backwards,
               <a
@@ -1715,14 +1771,14 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
   }`,
 })
 export class StaticPageComponent implements OnInit {
-  readonly toolChoiceCards = {
-    ...toolChoiceCards,
-    ...waveMethodCards,
-    ...airflowMethodCards,
-    ...shapingMethodCards,
-    ...supportedUpdoCards,
-    ...straightenerGuideCards,
-  };
+  readonly toolChoiceCards = resolveGuideCardCopy(
+    toolChoiceCards,
+    waveMethodCards,
+    airflowMethodCards,
+    shapingMethodCards,
+    supportedUpdoCards,
+    straightenerGuideCards,
+  );
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   readonly modelComparisonGroups = modelComparisonGroups;
   readonly finishingGuideDescriptions = finishingGuideDescriptions;
@@ -1743,6 +1799,7 @@ export class StaticPageComponent implements OnInit {
           article.heading,
           article.slug,
           ...(consolidatedComparisonAliases[article.slug] ?? []),
+          ...(seoGrowthAliases[article.slug] ?? []),
           ...(exactModelAliases[article.slug] ?? []),
           ...(remainingOpportunityAliases[article.slug] ?? []),
         ].join(' '),
@@ -1805,7 +1862,7 @@ export class StaticPageComponent implements OnInit {
       name: 'Hair Dryer Feature Finder',
       type: 'Choose a dryer',
       description:
-        'Identify the dryer features and attachments that may matter most for your routine.',
+        'Identify three features worth comparing for your routine, then open a named model comparison with its market stated.',
       path: '/guides/how-to-choose-hair-dryer',
       action: 'Use the finder',
     },
@@ -1832,6 +1889,22 @@ export class StaticPageComponent implements OnInit {
         'Turn common dryer label details into a practical next step for home or travel use.',
       path: '/guides/hair-dryer-wattage-guide',
       action: 'Decode the details',
+    },
+    {
+      name: 'Hair Dryer Running-Cost Calculator',
+      type: 'Estimate electricity use',
+      description:
+        'Turn watts, minutes and your own unit rate into kWh and cost per use, per week and over 52 weeks.',
+      path: '/guides/hair-dryer-wattage-guide',
+      action: 'Estimate the cost',
+    },
+    {
+      name: 'Airwrap Attachment Lookup',
+      type: 'Check part fit',
+      description:
+        'Choose your Airwrap body and attachment family to see whether Dyson documents them as compatible.',
+      path: '/guides/' + ArticleSlug.DysonAirwrapAttachmentCompatibility,
+      action: 'Check compatibility',
     },
     {
       name: 'Round Brush Size Finder',
@@ -1880,9 +1953,11 @@ export class StaticPageComponent implements OnInit {
       label: 'Fix',
       description:
         'Translate a confusing specification before treating a working tool as the problem.',
-      tools: ['Hair Dryer Specs Decoder'].flatMap((name) =>
-        this.tools.filter((tool) => tool.name === name),
-      ),
+      tools: [
+        'Hair Dryer Specs Decoder',
+        'Hair Dryer Running-Cost Calculator',
+        'Airwrap Attachment Lookup',
+      ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
     },
   ] as const;
   readonly featuredGuide = articles[0];

@@ -1,3 +1,4 @@
+import { resolveGuideCardCopy } from './guide-card-copy';
 import { waveMethodCards } from './wave-method-guides';
 import { straightenerGuideCards } from './straightener-guides';
 import { toolChoiceCards } from './tool-choice-guides';
@@ -417,7 +418,10 @@ import {
   `,
 })
 export class DirectHeatHubComponent {
-  readonly toolChoiceCards = { ...toolChoiceCards, ...waveMethodCards };
+  readonly toolChoiceCards = resolveGuideCardCopy(
+    toolChoiceCards,
+    waveMethodCards,
+  );
   readonly modelComparisons = modelComparisonGroups['direct-heat']!;
   readonly modelComparisonDescriptions = modelComparisonDescriptions;
   private readonly route = inject(ActivatedRoute);

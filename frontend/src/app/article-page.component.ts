@@ -19,6 +19,8 @@ import { combReportEditorialTeam, contentMethodLabel } from './editorial';
 import { RoundBrushSizeFinderComponent } from './round-brush-size-finder.component';
 import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
+import { DryerRunningCostComponent } from './dryer-running-cost.component';
+import { AirwrapCompatibilityLookupComponent } from './airwrap-compatibility-lookup.component';
 import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.component';
 import { StraighteningBrushFinderComponent } from './straightening-brush-finder.component';
 import { HeatProtectantFinderComponent } from './heat-protectant-finder.component';
@@ -39,6 +41,7 @@ import { CleanInspectStopComponent } from './clean-inspect-stop.component';
 import { guideEvidence, type GuideEvidence } from './guide-evidence';
 import { additionalGuideSources } from './current-model-comparison-guides';
 import { remainingOpportunitySources } from './remaining-opportunity-guides';
+import { seoGrowthSupplementarySources } from './seo-growth-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
 import { GHD_UK_RETAILER_OFFERS } from './retailer-availability';
@@ -103,6 +106,8 @@ export function splitEvidenceArticleHtml(
     RoundBrushSizeFinderComponent,
     HairDryerFinderComponent,
     HairDryerSpecsDecoderComponent,
+    DryerRunningCostComponent,
+    AirwrapCompatibilityLookupComponent,
     HairDryerSettingsFinderComponent,
     StraighteningBrushFinderComponent,
     HeatProtectantFinderComponent,
@@ -161,6 +166,10 @@ export function splitEvidenceArticleHtml(
         }
         @case (articleSlug.HairDryerWattageGuide) {
           <app-hair-dryer-specs-decoder />
+          <app-dryer-running-cost />
+        }
+        @case (articleSlug.DysonAirwrapAttachmentCompatibility) {
+          <app-airwrap-compatibility-lookup />
         }
         @case (articleSlug.HairDryerSettingsGuide) {
           <app-hair-dryer-settings-finder />
@@ -399,6 +408,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
               ...(remainingOpportunitySources[
                 this.article.slug as ArticleSlug
               ] ?? []),
+              ...(seoGrowthSupplementarySources[this.article.slug] ?? []),
             ].map((source) => [source.url, source] as const),
           ).values(),
         ]

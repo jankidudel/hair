@@ -57,20 +57,20 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-dryers',
     'hub',
-    '2026-11-18',
-    'Exact-model choices and attachment discovery',
+    '2026-11-19',
+    'Growth batch: discovery-card titles, new owners and calculators',
   ),
   page(
     '/hot-air-brushes',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-19',
+    'Growth batch: discovery-card titles, new owners and calculators',
   ),
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-18',
-    'Exact-model choices and attachment discovery',
+    '2026-11-19',
+    'Growth batch: discovery-card titles, new owners and calculators',
   ),
   page(
     '/hair-accessories',
@@ -81,8 +81,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-11-18',
-    'Exact-model choices and attachment discovery',
+    '2026-11-19',
+    'Growth batch: discovery-card titles, new owners and calculators',
   ),
   page(
     '/hair-brush-finder',
@@ -113,8 +113,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/tools',
     'hub',
-    '2026-10-27',
-    'Batch 24 care methods and direction-check discovery',
+    '2026-11-19',
+    'Growth batch: discovery-card titles, new owners and calculators',
   ),
   page(
     '/products',

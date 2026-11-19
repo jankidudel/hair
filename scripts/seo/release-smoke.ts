@@ -1,5 +1,9 @@
 import { remainingOpportunityUpdatedSlugs } from '../../frontend/src/app/remaining-opportunity-guides.ts';
 import {
+  seoGrowthSlugs,
+  seoGrowthUpdatedSlugs,
+} from '../../frontend/src/app/seo-growth-guides.ts';
+import {
   exactModelSlugs,
   exactModelUpdatedSlugs,
 } from '../../frontend/src/app/exact-model-guides.ts';
@@ -49,6 +53,8 @@ const failures: string[] = [];
 const observations: { stage: string; path: string; errors: string[] }[] = [];
 const intended = [
   ...new Set([
+    ...seoGrowthSlugs,
+    ...seoGrowthUpdatedSlugs,
     ...exactModelSlugs,
     ...exactModelUpdatedSlugs,
     ...remainingOpportunityUpdatedSlugs,
@@ -81,6 +87,7 @@ const expectedFor = (article: (typeof articles)[number]) => ({
     [
       ...consolidatedUpdatedSlugs,
       ...exactModelUpdatedSlugs,
+      ...seoGrowthUpdatedSlugs,
       ...remainingOpportunityUpdatedSlugs,
     ] as readonly string[]
   ).includes(article.slug),

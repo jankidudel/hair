@@ -38,6 +38,7 @@ import { productBySlug, type ProductProfile } from './product-comparisons';
 import { CleanInspectStopComponent } from './clean-inspect-stop.component';
 import { guideEvidence, type GuideEvidence } from './guide-evidence';
 import { additionalGuideSources } from './current-model-comparison-guides';
+import { remainingOpportunitySources } from './remaining-opportunity-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
 import { GHD_UK_RETAILER_OFFERS } from './retailer-availability';
@@ -391,7 +392,16 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   guideEvidenceContent?: GuideEvidence;
   get supplementarySources() {
     return this.article
-      ? (additionalGuideSources[this.article.slug] ?? [])
+      ? [
+          ...new Map(
+            [
+              ...(additionalGuideSources[this.article.slug] ?? []),
+              ...(remainingOpportunitySources[
+                this.article.slug as ArticleSlug
+              ] ?? []),
+            ].map((source) => [source.url, source] as const),
+          ).values(),
+        ]
       : [];
   }
   get evidenceSourceChecks(): readonly {

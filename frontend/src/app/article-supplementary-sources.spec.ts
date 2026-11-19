@@ -28,6 +28,22 @@ describe('supplementary model-specific article sources', () => {
       ArticleSlug.HowToChooseMultiStylerAttachments,
       currentModelSources.S11.url,
     ],
+    [
+      ArticleSlug.HairDryerDiffuserCompatibility,
+      'https://bioionic.com/products/universal-diffuser-black',
+    ],
+    [
+      ArticleSlug.ThermalBrushVsHotAirBrush,
+      'https://loveamika.com/products/blowout-babe-thermal-brush',
+    ],
+    [
+      ArticleSlug.HowToCleanHairDryerFilter,
+      'https://support.sharkninja.co.uk/article/HD800UK-Series-Shark-Flexstyle-IonCurl-Air-Styler-Hair-Dryer---Getting-Started-with-Your-FlexStyle-IonCurl',
+    ],
+    [
+      ArticleSlug.BestTravelFlatIrons,
+      'https://www.dyson.co.uk/content/dam/dyson/maintenance/user-guides/en_GB/personalcare/hairstraighteners/corrale/322991-01.pdf',
+    ],
   ])(
     'renders a scoped source list for %s without replacing its existing evidence',
     (slug, url) => {
@@ -80,6 +96,11 @@ describe('supplementary model-specific article sources', () => {
         ).not.toBeNull();
       }
       if (slug === ArticleSlug.HowToChooseMultiStylerAttachments) {
+        expect(
+          sourceLists[0].querySelector(
+            'a[href="https://beauty.dreametech.com/products/diffuser-nozzle"]',
+          ),
+        ).not.toBeNull();
         for (const source of toolChoiceEvidence[
           ArticleSlug.SharkGlamVsFlexstyle
         ]!.sources)

@@ -1,3 +1,5 @@
+import { remainingOpportunityAliases } from './remaining-opportunity-guides';
+import { exactModelAliases } from './exact-model-guides';
 import { supportedUpdoCards } from './supported-updo-guides';
 import { straightenerGuideCards } from './straightener-guides';
 import { shapingMethodCards } from './shaping-method-guides';
@@ -351,6 +353,20 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           <app-handling-routine-navigator>
             @if (category.id === 'brushes-and-combs') {
               <p>
+                For a paddle-body choice, compare
+                <a [routerLink]="['/guides', articleSlug.DenmanD3VsD38]"
+                  >Denman D3 and D38</a
+                >. Keep
+                <a [routerLink]="['/guides', articleSlug.DenmanD3VsD4]"
+                  >D3/D4 row count</a
+                >
+                and
+                <a [routerLink]="['/guides', articleSlug.DenmanD3VsD31]"
+                  >D3/D31 spacing</a
+                >
+                as separate decisions.
+              </p>
+              <p>
                 After forming a styled curl set, use
                 <a [routerLink]="['/guides', articleSlug.HowToBrushOutCurls]"
                   >how to brush out curls</a
@@ -403,6 +419,30 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
         @if (categoryPathwayGroups.length) {
           <app-choose-use-fix-pathways [groups]="categoryPathwayGroups">
             @if (category.id === 'hair-dryers') {
+              <p>
+                For an exact purchase or replacement question, use the
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.ParluxDiffuserCompatibility,
+                  ]"
+                  >Parlux fit lookup</a
+                >,
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.T3AireluxeVsFeatherweightStylemax,
+                  ]"
+                  >T3 included-tool comparison</a
+                >, or
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.RemingtonHydraluxeProVsProluxeYouDryer,
+                  ]"
+                  >Remington control comparison</a
+                >. The use and care guides below cover the next task.
+              </p>
               <p>
                 If the proposed replacement combines drying and straightening,
                 begin with
@@ -457,6 +497,18 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           </p>
         }
         @if (category.id === 'hair-care') {
+          <p>
+            Choosing where to add cosmetic volume?
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.ColorWowRaiseTheRootVsXtraLarge,
+              ]"
+              >Raise the Root vs Xtra Large</a
+            >
+            compares targeted spray and distributed foam. Continue with the
+            mousse and product-order methods for the application plan.
+          </p>
           <p>
             Choosing a labelled formula? Compare
             <a
@@ -917,6 +969,21 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           </section>
         }
         @if (category.id === 'hair-accessories') {
+          <p>
+            Compare
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.InvisibobbleOriginalVsPowerVsSlim,
+              ]"
+              >the named ORIGINAL, POWER and SLIM spirals</a
+            >
+            for the fastening task, or
+            <a [routerLink]="['/guides', articleSlug.BestHeatlessCurlingSets]"
+              >heatless pack formats</a
+            >
+            for ribbon and individual-rod closure and coverage.
+          </p>
           <p>
             Buying a named kit or clip? Compare
             <a
@@ -1676,6 +1743,8 @@ export class StaticPageComponent implements OnInit {
           article.heading,
           article.slug,
           ...(consolidatedComparisonAliases[article.slug] ?? []),
+          ...(exactModelAliases[article.slug] ?? []),
+          ...(remainingOpportunityAliases[article.slug] ?? []),
         ].join(' '),
       ).includes(query),
     );
@@ -1818,9 +1887,9 @@ export class StaticPageComponent implements OnInit {
   ] as const;
   readonly featuredGuide = articles[0];
   readonly latestGuides = [
-    ArticleSlug.HowToUseHeatlessCurlingRod,
-    ArticleSlug.VelcroVsFoamHairRollers,
-    ArticleSlug.BaBylissAirStyle1000VsFlawlessVolume,
+    ArticleSlug.T3AireluxeVsFeatherweightStylemax,
+    ArticleSlug.CloudNineOriginalIronVsTouchIron,
+    ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir,
     ArticleSlug.GhdChronosVsPlatinumPlus,
     ArticleSlug.CurlDefiningBrushVsDetanglingBrush,
     ArticleSlug.HairDryerDiffuserCompatibility,

@@ -1,3 +1,4 @@
+import { exactModelRelated } from './exact-model-guides';
 import { consolidatedComparisonRelated } from './consolidated-comparison-guides';
 import { supportedUpdoRelated } from './supported-updo-guides';
 import { straightenerGuideRelated } from './straightener-guides';
@@ -26,6 +27,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...exactModelRelated,
   ...consolidatedComparisonRelated,
   ...waveMethodRelated,
   ...toolChoiceRelated,
@@ -369,7 +371,10 @@ export const guideLinkMap: Readonly<Record<string, GuideLinkMapEntry>> =
         return [
           entry.slug,
           {
-            hubPath: category.path,
+            hubPath:
+              entry.slug === ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir
+                ? '/curling-irons'
+                : category.path,
             relatedSlugs: relatedSlugs(entry.slug),
           },
         ];

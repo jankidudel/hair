@@ -1,3 +1,4 @@
+import { exactModelSources } from './exact-model-guides';
 import { ArticleSlug } from './article-slug';
 import type { GuideEvidence } from './guide-evidence';
 
@@ -9,8 +10,10 @@ export const waveMethodEvidence: Readonly<
     relatedOnly: true,
     sourceFormat: 'product-market',
     summary:
-      'One Canadian maker manual provides a named loading example. The preparation and observation framework is editorial guidance, without measured ease, tangle rate, curl retention or a universal operating recipe.',
+      'The Canadian CD1031C and UK C1900U/C6688U manuals establish separate named operating examples. Loading, preparation and air functions remain model-specific.',
     sources: [
+      exactModelSources.S28,
+      exactModelSources.S29,
       {
         label: 'Conair Curl Secret CD1031C manual',
         model: 'Conair Curl Secret CD1031C manual',
@@ -25,8 +28,9 @@ export const waveMethodEvidence: Readonly<
     relatedOnly: true,
     sourceFormat: 'product-market',
     summary:
-      'One Canadian maker manual establishes a particular removable-cover care example. The part-sorting and inspection framework is editorial guidance, not a universal wash, solvent or repair procedure.',
+      'Canadian CD1031C cover care and UK C6688U filter/inlet access are separate named examples. Their removal and cleaning permissions remain model-specific.',
     sources: [
+      exactModelSources.S29,
       {
         label: 'Conair Curl Secret CD1031C manual',
         model: 'Conair Curl Secret CD1031C manual',

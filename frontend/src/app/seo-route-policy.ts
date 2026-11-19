@@ -42,18 +42,23 @@ const page = (
 
 /** Explicit search policy, checked independently against app.routes.ts and built output. */
 export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
-  page('/', 'home', '2026-11-17', 'Consolidated comparison featured guide'),
+  page(
+    '/',
+    'home',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
+  ),
   page(
     '/hair-care',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/hair-dryers',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/hot-air-brushes',
@@ -64,20 +69,20 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/hair-accessories',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/guides',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/hair-brush-finder',
@@ -88,14 +93,14 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/flat-irons',
     'hub',
-    '2026-11-17',
-    'Consolidated exact-model comparison discovery',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/curling-irons',
     'hub',
-    '2026-10-25',
-    'Batch 22 editorial selection link labels',
+    '2026-11-18',
+    'Exact-model choices and attachment discovery',
   ),
   page(
     '/flat-iron-finder',

@@ -432,6 +432,7 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
   const article = articles.find((entry) => entry.slug === slug)!;
   const category =
     waveMethodSlugs.includes(slug as ArticleSlug) ||
+    slug === ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir ||
     slug === ArticleSlug.AutomaticHairCurlerVsCurlingWand
       ? 'curling-irons'
       : guideCategoryById[article.group].path.slice(1);
@@ -564,6 +565,11 @@ for (const [slug, diagram] of [
   ],
   [ArticleSlug.AutomaticHairCurlerVsCurlingWand, 'curl-wrapping-mechanisms'],
   ['cloud-nine-original-iron-vs-wide-iron', 'cloud-nine-plate-widths'],
+  [ArticleSlug.DenmanD3VsD38, 'denman-d3-d38-heads'],
+  [
+    ArticleSlug.ColorWowRaiseTheRootVsXtraLarge,
+    'root-vs-section-product-placement',
+  ],
   ['ghd-soft-curl-tong-vs-creative-curl-wand', 'original-ghd-curve-profiles'],
   ['bobby-pins-vs-u-shaped-hair-pins', 'pin-fastening-shapes'],
   ['how-to-choose-a-hair-barrette', 'barrette-clasp-fit'],
@@ -639,11 +645,15 @@ for (const category of guideCategories) {
 for (const [path, matcher] of [
   [
     '/flat-irons',
-    (slug: string) => !/curling|curler|waver|crimper|wand/.test(slug),
+    (slug: string) =>
+      !/curling|curler|waver|crimper|wand/.test(slug) &&
+      slug !== ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir,
   ],
   [
     '/curling-irons',
-    (slug: string) => /curling|curler|waver|crimper|wand/.test(slug),
+    (slug: string) =>
+      /curling|curler|waver|crimper|wand/.test(slug) ||
+      slug === ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir,
   ],
 ] as const) {
   const html = await readFile(

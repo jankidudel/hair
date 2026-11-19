@@ -1,5 +1,17 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  ParluxDiffuserCompatibility: 'parlux-diffuser-compatibility',
+  T3AireluxeVsFeatherweightStylemax: 't3-aireluxe-vs-featherweight-stylemax',
+  RemingtonHydraluxeProVsProluxeYouDryer:
+    'remington-hydraluxe-pro-vs-proluxe-you-dryer',
+  CloudNineOriginalIronVsTouchIron: 'cloud-nine-original-iron-vs-touch-iron',
+  Steampod3VsSteampod4: 'steampod-3-vs-steampod-4',
+  DenmanD3VsD38: 'denman-d3-vs-d38',
+  InvisibobbleOriginalVsPowerVsSlim: 'invisibobble-original-vs-power-vs-slim',
+  ColorWowRaiseTheRootVsXtraLarge: 'color-wow-raise-the-root-vs-xtra-large',
+  BabylissWaveSecretAirVsStyleSecretAir:
+    'babyliss-wave-secret-air-vs-style-secret-air',
+
   GhdMaxVsChronosMax: 'ghd-max-vs-chronos-max',
   DenmanD3VsD31: 'denman-d3-vs-d31',
   TangleTeezerUltimateDetanglerVsUltimateStyler:

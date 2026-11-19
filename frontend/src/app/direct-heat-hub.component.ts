@@ -219,6 +219,32 @@ import {
           interpreting a size label.
         </p>
       }
+      @if (isFlat) {
+        <p>
+          For current control and voltage choices, compare
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.CloudNineOriginalIronVsTouchIron,
+            ]"
+            >Cloud Nine Original and Touch</a
+          >. For documented steam-generation and comb changes, compare
+          <a [routerLink]="['/guides', articleSlug.Steampod3VsSteampod4]"
+            >SteamPod 3 and 4</a
+          >.
+        </p>
+      } @else {
+        <p>
+          For two exact UK chamber curlers, compare
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.BabylissWaveSecretAirVsStyleSecretAir,
+            ]"
+            >C1900U Wave Secret Air and C6688U Style Secret Air</a
+          >. Cooling air on release and warm AIR shaping have different roles.
+        </p>
+      }
       <ul>
         <li>
           <a
@@ -408,9 +434,12 @@ export class DirectHeatHubComponent {
           straightenerGuideCards[article.slug])
       ) &&
       (this.isFlat
-        ? !/curling|curler|waver|crimper|wand/.test(article.slug) ||
+        ? (!/curling|curler|waver|crimper|wand/.test(article.slug) &&
+            article.slug !==
+              ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir) ||
           article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl
         : /curling|curler|waver|crimper|wand/.test(article.slug) ||
+          article.slug === ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir ||
           article.slug === ArticleSlug.T3SinglepassCurlXVsGhdSoftCurl),
   );
   readonly comparisonGuides = this.guides.filter((guide) =>

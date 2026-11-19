@@ -1,3 +1,8 @@
+import { remainingOpportunityUpdatedSlugs } from '../../frontend/src/app/remaining-opportunity-guides.ts';
+import {
+  exactModelSlugs,
+  exactModelUpdatedSlugs,
+} from '../../frontend/src/app/exact-model-guides.ts';
 import {
   consolidatedComparisonSlugs,
   consolidatedUpdatedSlugs,
@@ -44,6 +49,9 @@ const failures: string[] = [];
 const observations: { stage: string; path: string; errors: string[] }[] = [];
 const intended = [
   ...new Set([
+    ...exactModelSlugs,
+    ...exactModelUpdatedSlugs,
+    ...remainingOpportunityUpdatedSlugs,
     ...consolidatedComparisonSlugs,
     ...consolidatedUpdatedSlugs,
     ...carePackingSlugs,
@@ -69,9 +77,13 @@ const hash = createHash('sha256');
 const expectedFor = (article: (typeof articles)[number]) => ({
   article,
   evidence: guideEvidence[article.slug],
-  authoredBody: (consolidatedUpdatedSlugs as readonly string[]).includes(
-    article.slug,
-  ),
+  authoredBody: (
+    [
+      ...consolidatedUpdatedSlugs,
+      ...exactModelUpdatedSlugs,
+      ...remainingOpportunityUpdatedSlugs,
+    ] as readonly string[]
+  ).includes(article.slug),
   relatedPaths: (guideLinkMap[article.slug]?.relatedSlugs ?? []).map(
     (slug) => `/guides/${slug}`,
   ),

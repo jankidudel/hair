@@ -1,3 +1,5 @@
+import { remainingOpportunitySources } from './remaining-opportunity-guides';
+import { exactModelEvidence, exactModelSources } from './exact-model-guides';
 import { consolidatedComparisonEvidence } from './consolidated-comparison-guides';
 import { supportedUpdoEvidence } from './supported-updo-guides';
 import { straightenerGuideEvidence } from './straightener-guides';
@@ -131,7 +133,8 @@ const finishingSources: readonly GuideSource[] = [
   },
 ];
 
-export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
+const baseGuideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...exactModelEvidence,
   ...consolidatedComparisonEvidence,
   ...waveMethodEvidence,
   ...toolChoiceEvidence,
@@ -436,8 +439,8 @@ export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
   },
   [ArticleSlug.HowToApplyHairMousse]: {
     summary:
-      'The named product supports one dispensing example. The sectioning and comparison workflow is editorial guidance, not a universal dose or performance claim.',
-    sources: [stylingProductSources[0]],
+      'The two named UK products supply separate aerosol and pump-foam dispensing examples. The sectioning and comparison workflow is editorial guidance, not a universal dose or performance claim.',
+    sources: [stylingProductSources[0], exactModelSources.S26],
   },
   [ArticleSlug.HowToApplyGelToCurlyHair]: {
     summary:
@@ -726,3 +729,24 @@ export const guideEvidence: Readonly<Record<string, GuideEvidence>> = {
     ],
   },
 };
+
+// Merge by URL so a newly checked source replaces its earlier dated record.
+export const guideEvidence: Readonly<Record<string, GuideEvidence>> =
+  Object.fromEntries(
+    Object.entries(baseGuideEvidence).map(([slug, evidence]) => {
+      return [
+        slug,
+        {
+          ...evidence,
+          sources: [
+            ...new Map(
+              [
+                ...evidence.sources,
+                ...(remainingOpportunitySources[slug as ArticleSlug] ?? []),
+              ].map((source) => [source.url, source] as const),
+            ).values(),
+          ],
+        },
+      ];
+    }),
+  );

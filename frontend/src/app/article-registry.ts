@@ -119,6 +119,70 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.ParluxDiffuserCompatibility,
+    group: ArticleGroupId.HairDryers,
+    order: 600,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.T3AireluxeVsFeatherweightStylemax,
+    group: ArticleGroupId.HairDryers,
+    order: 601,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.RemingtonHydraluxeProVsProluxeYouDryer,
+    group: ArticleGroupId.HairDryers,
+    order: 602,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.CloudNineOriginalIronVsTouchIron,
+    group: ArticleGroupId.DirectHeat,
+    order: 603,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.Steampod3VsSteampod4,
+    group: ArticleGroupId.DirectHeat,
+    order: 604,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.DenmanD3VsD38,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 605,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.InvisibobbleOriginalVsPowerVsSlim,
+    group: ArticleGroupId.HairAccessories,
+    order: 606,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.ColorWowRaiseTheRootVsXtraLarge,
+    group: ArticleGroupId.HairCare,
+    order: 607,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+  {
+    slug: ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir,
+    group: ArticleGroupId.DirectHeat,
+    order: 608,
+    enabled: true,
+    publishDate: '2026-11-18',
+  },
+
+  {
     slug: ArticleSlug.GhdMaxVsChronosMax,
     group: ArticleGroupId.DirectHeat,
     order: 500,

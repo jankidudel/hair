@@ -1,6 +1,10 @@
 # CombReport keyword research and URL decisions
 
-The current implementation is recorded in [the consolidated 17 November handoff](#consolidated-17-november-implementation). Earlier zero-new-URL and pending-pilot findings describe their dated snapshots and are superseded there.
+The [remaining-queue completion review](remaining-opportunities-review-2026-11-18.md) records the latest work: 25 further hypotheses answered on existing owners, the Corrale travel addition completed and the duplicate round-brush draft declined. Four exact manufacturer evidence holds remain. The CSV now has 295 DONE, 11 PLANNED, four RESEARCH and four DECLINED records; the nine already implemented new URLs are unchanged. Local completion is distinct from release.
+
+The [18 November exact-model implementation](#18-november-exact-model-implementation) records the original nine-guide batch. The completion review above adds the remaining supported existing-owner answers and identifies the four manufacturer holds.
+
+The [consolidated 17 November handoff](#consolidated-17-november-implementation) records the preceding implementation and release baseline. Earlier zero-new-URL and pending-pilot findings describe their dated snapshots.
 
 Use [content-opportunities.csv](content-opportunities.csv) to decide which reader task belongs on which URL. The research work package ends when the evidence, decision and next review are recorded. Page writing, rewrites, redirects and releases are separate work.
 
@@ -394,6 +398,163 @@ After release, record the release time and the first complete next day as the st
 - `scripts/seo/release-article-validation.ts`
 - `scripts/seo/release-smoke.ts`
 - `scripts/workflow-validation.test.ts`
+
+## 18 November exact-model implementation
+
+Implemented the supplied [research and implementation handover](exact-model-and-attachment-handover-2026-11-18.md) against starting commit `4b54640`. Its source register and uncontrolled search-result samples are preserved in that document. This batch follows its nine selections and 47 hypothesis decisions. Existing `test.sh` was untracked at the start and remains unrelated to this work. All batch changes are for unstaged local review and the user's existing manual release flow.
+
+### Baseline and release reconciliation
+
+On 2026-11-18, the ordinary production sitemap returned HTTP 200 with **259 unique URLs and zero duplicates**. All nine selected new URLs returned HTTP 404. The twelve guides selected in the previous batch each returned HTTP 200 with one self canonical and index/follow in fresh ordinary-URL checks. The supplied handover separately records the 17 November production verification of 101 intended owners and the retired brush variants. The repository's older tracked smoke report is dated 3 November and is an artifact-only record, so it is not presented as the 17 November release report.
+
+The twelve previous NEW rows are now DONE with their serving URL in `existing_url`. `implementation_state` marks current local additions separately where this batch also edits a serving page. The previous PLANNED/local-pending notes remain historical in row notes, followed by the superseding delivery observation. Sitemap membership and successful public delivery establish no Search Console indexing or national query performance.
+
+### Nine added guides prepared locally
+
+- https://www.combreport.com/guides/parlux-diffuser-compatibility
+- https://www.combreport.com/guides/t3-aireluxe-vs-featherweight-stylemax
+- https://www.combreport.com/guides/remington-hydraluxe-pro-vs-proluxe-you-dryer
+- https://www.combreport.com/guides/cloud-nine-original-iron-vs-touch-iron
+- https://www.combreport.com/guides/steampod-3-vs-steampod-4
+- https://www.combreport.com/guides/denman-d3-vs-d38
+- https://www.combreport.com/guides/invisibobble-original-vs-power-vs-slim
+- https://www.combreport.com/guides/color-wow-raise-the-root-vs-xtra-large
+- https://www.combreport.com/guides/babyliss-wave-secret-air-vs-style-secret-air
+
+Each uses the shared article renderer, the supplied title/H1/description/intent and opening, an exact-model decision table, three FAQs, manufacturer evidence and a small curated set of next steps. Registry scheduling is 2026-11-18. Reconcile the actual first-publication date if the release occurs later, while preserving the 18 November source-check provenance.
+
+The Parlux page keeps Ethos language differences and the Elysium/exclusion rows visible. T3 uses the named US white AireLuxe offer, including its particular brush extras, and StyleMax 77832. Remington uses the exact UK listings and booklets marked EC9001A/AC9800A. AC9800 Manual pairs speed and heat. The EC9001 manual excludes its highest heat with the diffuser and gives a medium-heat/low-speed root-volume example. AC9800 names Diffuse mode, recommends low speed in its tips and excludes highest manual heat. These exact restrictions replace a generic setting assumption.
+
+Cloud Nine publishes no disputed two/three-tap mapping. SteamPod identifies the named BaByliss advertising comparator without attributing its figures to generation 3. Current Xtra Large damp/dry permission stays beside its product source and is distinguished from the older Q&A. C1900U release cooling and C6688U warm AIR remain different processes with separate preparation and care boundaries.
+
+### Twelve substantive existing-guide additions
+
+- https://www.combreport.com/guides/cloud-nine-original-iron-vs-wide-iron
+- https://www.combreport.com/guides/best-travel-flat-irons
+- https://www.combreport.com/guides/hair-dryer-heat-and-speed-settings-guide
+- https://www.combreport.com/guides/how-to-clean-hair-dryer-filter
+- https://www.combreport.com/guides/hair-dryer-diffuser-compatibility
+- https://www.combreport.com/guides/how-to-use-an-automatic-hair-curler
+- https://www.combreport.com/guides/how-to-clean-an-automatic-hair-curler
+- https://www.combreport.com/guides/how-to-apply-hair-mousse
+- https://www.combreport.com/guides/hair-styling-product-order
+- https://www.combreport.com/guides/how-to-use-flexi-rods
+- https://www.combreport.com/guides/best-heatless-curling-sets
+- https://www.combreport.com/guides/how-to-choose-hair-dryer
+
+These add actual model identity, paired-control, care-access, part-fit, application or pack-coverage evidence. The current Original/Wide source confirms both 100–240 V and 30-minute hibernation descriptions for the ordinary irons. The promotional mini dryer has its own rating. The mousse FAQ, method note and source panel now preserve the different aerosol and pump-foam examples. The Canadian CD1031C and UK Secret Air examples retain separate source panels and preparation/care permissions.
+
+### Nine compact contextual updates
+
+- https://www.combreport.com/guides/denman-d3-vs-d4
+- https://www.combreport.com/guides/denman-d3-vs-d31
+- https://www.combreport.com/guides/how-to-use-a-steam-hair-straightener
+- https://www.combreport.com/guides/how-to-clean-a-steam-hair-straightener
+- https://www.combreport.com/guides/how-to-use-spiral-hair-ties
+- https://www.combreport.com/guides/how-to-use-heatless-curling-rod
+- https://www.combreport.com/guides/how-to-get-root-volume-with-a-round-brush
+- https://www.combreport.com/guides/parlux-alyon-vs-digitalyon
+- https://www.combreport.com/guides/curl-defining-brush-vs-detangling-brush
+
+These preserve the existing primary decision and add a relevant comparison or pack-selection destination. Where the heatless-rod page already had the set-selection link, its existing sentence was updated for the four/six-piece alternative instead of leaving two duplicated format paragraphs. All 21 source pages have actual body changes, with substantive revisions reflected in their maintained dates.
+
+### Eight discovery-page updates
+
+- https://www.combreport.com/
+- https://www.combreport.com/guides
+- https://www.combreport.com/hair-dryers
+- https://www.combreport.com/brushes-combs
+- https://www.combreport.com/flat-irons
+- https://www.combreport.com/curling-irons
+- https://www.combreport.com/hair-care
+- https://www.combreport.com/hair-accessories
+
+The homepage uses its existing featured/curated-card structures for a small selection. Registry category cards expose the full collection. Task-labelled links distinguish replacement fit, included T3 parts, Remington controls, Cloud Nine control/voltage, SteamPod generations, Denman head format, volume placement and spiral/heatless-format choice. The named BaByliss pair is classified as a chamber-curler comparison on the curling hub. Existing finder designs and recommendation logic retain their scope.
+
+Search aliases include Cloud 9, EC9001, AC9800, Hydracare, StyleAdapt, D38, C1900U, C6688U, MagicCompact and Xtra Large. Search results retain their position immediately below the input and status. Aliases resolve to canonical guides.
+
+### Drawings and exact factual boundaries
+
+Two original SVG assets show the Denman head formats and root-versus-section placement. Both have accessible titles/descriptions, useful image alternatives and captions identifying their schematic, unmeasured nature. They establish neither working dimensions nor dose, timing or performance results. The Parlux guide contains an original short text decision sequence for diffuser identity, direct fit, adapter scope and unresolved model checks.
+
+The supplied research is the source for the selected product facts. Targeted rechecks resolved the exact Remington restrictions, AireLuxe white-package identity, current Wide Iron fields and the LP7400/LP7400F1 support route. BaByliss indexed/product accessibility limitations remain as recorded in the handover. The C6688U PDF exceeded the web reader's retrieval-size limit during this pass, and the supplied model-specific research remains its documented provenance. T3 StyleMax's supplied primary URL was also unavailable through that reader. These retrieval limits are recorded separately from factual unknowns.
+
+Remaining factual unknowns include Touch's tap-count conflict, exact unmeasured brush/rod dimensions, replacement-part approvals outside the named lists, cross-generation comb/pad fit and independent styling/retention outcomes. Volume, difficulty and controlled UK/US ranking order remain unknown. Product and source pages supply specifications and instructions within their stated model/market scope.
+
+### One CSV and all 47 hypotheses
+
+The existing CSV retains **314 rows, 40 columns and every prior ID**. Nine rows reuse their original research IDs and become PLANNED / NEW. Only those nine reserve `proposed_url`. MagicSense/MagicCompact and T3 automatic/manual hypothesis references point to their selected owner without reserving a second URL. All **47 hypothesis tags** remain traceable.
+
+Current statuses are 270 DONE, 11 PLANNED, 29 RESEARCH, three DECLINED and one DRAFT. Eleven PLANNED records comprise nine NEW owners and two covered-question references. The 29 remaining RESEARCH records were screened against this batch and retain explicit unresolved work. They do not claim a fresh complete keyword or source investigation.
+
+Exact selected sources replace unrelated catalogue leads in `source_urls`, with old leads preserved as historical notes. Kitsch hypotheses 16/34 expand the existing heatless-set owner. SoftTouch scope expands the general diffuser method and references the T3 comparison. Original-generation identification stays with the Original/Wide owner and the new controls comparison. SilkiPro modes and the existing T3 diffuser-generation caveat remain covered by their serving owners. Remington and T3 control variants point to their named comparison and settings method. Curl Secret identity, Dreame facts, Panasonic parts, cross-series Shark approvals and the other unresolved holds remain visible. The 100–300 publication-ready new-URL target remains unfulfilled.
+
+Earlier all-country URL aggregates, US/GB exact-page reports and sitewide query totals retain their dated scopes. No new first-party export is claimed. Unknown numeric scores and total are blank for all nine selections. N01–N09 supplies implementation order and creates no numeric SEO ranking.
+
+### Acceptance and handoff
+
+Final local validation passed on 2026-11-18.
+
+- `npm run verify` passed formatting, lint, type checks, 98 frontend tests, six API tests, six infrastructure tests, 37 shared validation tests, content safety, editorial checks, production build, generated SEO and internal links. The final editorial placement correction was rebuilt and rechecked with content safety, generated SEO, internal links, route audit and artifact smoke.
+- Content safety passed all 247 HTML files. The built output contains 245 public guides, 268 sitemap URLs and 269 generated documents. The route audit reports zero duplicate sitemap locations, missing/unexpected sitemap owners, metadata failures, internal orphans or broken internal links. Nine older guides retain their existing contextual-incoming-link advisory.
+- Artifact-only release smoke passed all 117 intended owners, preserving earlier coverage and retired-route guards. Final internal-link validation checked 7,914 links. The local/live sitemap difference is exactly the nine selected additions, with zero removed live URLs.
+- At 1280 px and 375 px, isolated Chrome checked all nine new guides, all 21 specified existing owners and the eight discovery pages. All 35 mobile tables were labelled and focusable, and all 15 overflowing tables scrolled by arrow key without page overflow. Both SVG assets decoded and were visually inspected at mobile width. Ten aliases and all nine selected contextual/category destinations passed actual browser checks.
+- Firefox and WebKit test runtimes were unavailable. Safari and Firefox were not exercised. Chrome used an isolated session.
+- CSV validation confirmed 314 unique stable IDs, 40 columns, all 47 hypothesis tags, nine distinct reserved URLs and complete coverage of all 268 sitemap owners. All nine selected rows retain blank unknown scores. Root URL normalization accounts for the sitemap's bare origin and the homepage slash canonical.
+- All E01–E21 owner URLs were compared directly with the supplied placement table. The travel-iron example is on E05, and the unrelated steam-format guide is restored to its starting content. `git diff --check` passed. Existing editorial length/metadata warnings remain advisory.
+
+Actual totals are **245 published guides**, one disabled draft, **268 indexable sitemap URLs** and **269 prerendered documents**. The nine additions are the entire planned sitemap increase. Retired brush routes retain their existing retirement coverage.
+
+The release-owner smoke manifest adds the nine guides and all 21 updated owners while retaining prior regression coverage. It uses artifact-only verification before release. The two drawings also enter the existing generated-page checks. Actual production delivery of these nine guides, indexing and the first 28 complete post-release days remain pending. Record the actual release time before assigning a measurement window.
+
+### Files changed in this batch
+
+- `docs/seo/README.md`
+- `docs/seo/content-opportunities.csv`
+- `docs/seo/exact-model-and-attachment-handover-2026-11-18.md`
+- `frontend/content/babyliss-wave-secret-air-vs-style-secret-air.html`
+- `frontend/content/best-heatless-curling-sets.html`
+- `frontend/content/best-travel-flat-irons.html`
+- `frontend/content/cloud-nine-original-iron-vs-touch-iron.html`
+- `frontend/content/cloud-nine-original-iron-vs-wide-iron.html`
+- `frontend/content/color-wow-raise-the-root-vs-xtra-large.html`
+- `frontend/content/curl-defining-brush-vs-detangling-brush.html`
+- `frontend/content/denman-d3-vs-d31.html`
+- `frontend/content/denman-d3-vs-d38.html`
+- `frontend/content/denman-d3-vs-d4.html`
+- `frontend/content/hair-dryer-diffuser-compatibility.html`
+- `frontend/content/hair-dryer-heat-and-speed-settings-guide.html`
+- `frontend/content/hair-styling-product-order.html`
+- `frontend/content/how-to-apply-hair-mousse.html`
+- `frontend/content/how-to-choose-hair-dryer.html`
+- `frontend/content/how-to-clean-a-steam-hair-straightener.html`
+- `frontend/content/how-to-clean-an-automatic-hair-curler.html`
+- `frontend/content/how-to-clean-hair-dryer-filter.html`
+- `frontend/content/how-to-get-root-volume-with-a-round-brush.html`
+- `frontend/content/how-to-use-a-steam-hair-straightener.html`
+- `frontend/content/how-to-use-an-automatic-hair-curler.html`
+- `frontend/content/how-to-use-flexi-rods.html`
+- `frontend/content/how-to-use-heatless-curling-rod.html`
+- `frontend/content/how-to-use-spiral-hair-ties.html`
+- `frontend/content/invisibobble-original-vs-power-vs-slim.html`
+- `frontend/content/parlux-alyon-vs-digitalyon.html`
+- `frontend/content/parlux-diffuser-compatibility.html`
+- `frontend/content/remington-hydraluxe-pro-vs-proluxe-you-dryer.html`
+- `frontend/content/steampod-3-vs-steampod-4.html`
+- `frontend/content/t3-aireluxe-vs-featherweight-stylemax.html`
+- `frontend/public/diagrams/denman-d3-d38-heads.svg`
+- `frontend/public/diagrams/root-vs-section-product-placement.svg`
+- `frontend/scripts/check-generated-seo.ts`
+- `frontend/src/app/article-registry.ts`
+- `frontend/src/app/article-slug.ts`
+- `frontend/src/app/direct-heat-hub.component.ts`
+- `frontend/src/app/exact-model-guides.ts`
+- `frontend/src/app/guide-evidence.ts`
+- `frontend/src/app/guide-link-map.ts`
+- `frontend/src/app/seo-route-policy.ts`
+- `frontend/src/app/static-page.component.ts`
+- `frontend/src/app/wave-method-guides.ts`
+- `scripts/seo/release-smoke.ts`
 
 ## Monthly review
 

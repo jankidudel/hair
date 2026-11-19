@@ -28,7 +28,7 @@ The registry, content directory, `docs/seo/content-opportunities.csv` and the 18
 ## Evidence limits
 
 - Dyson UK pages refused automated retrieval in this session (HTTP 403). Dyson statements rely on the brief's 19 November check plus the repository's existing 31 October Dyson records; they remain family-level.
-- The Bounce Curl comparison chart (P06) and the Mason Pearson, Denman UK pages were re-opened and match the brief. The Bounce Curl product pages (P04/P05) and Tangle Teezer returned HTTP 429; product-page wording uses the brief's check and existing repository records, worded conservatively. The handle/parting row is marked "not established".
+- The Bounce Curl comparison chart (P06) and the Mason Pearson, Denman UK pages were re-opened and match the brief. The Bounce Curl product pages (P04/P05) and Tangle Teezer returned HTTP 429; product-page wording uses the brief's check and existing repository records, worded conservatively. The handle row states, for both brushes, that the handle doubles as a parting tool and heatless curler, per the manufacturer.
 - Mason Pearson military head lengths (published as 0.00) are omitted. Handle/wooden variants were not checked.
 - No GSC, analytics or browser access. Baseline, deployment date and indexing remain unrecorded; this is not a ranking claim.
 

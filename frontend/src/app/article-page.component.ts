@@ -12,9 +12,17 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   articles,
-  type ArticleSummary as Article,
+  type ArticleBody,
+  type ArticleFaq,
+  type ArticleSummary,
 } from './content-index.generated';
-import { ARTICLE_HTML_DATA_KEY } from './article-html.resolver';
+import {
+  ARTICLE_BODY_DATA_KEY,
+  emptyArticleBody,
+} from './article-html.resolver';
+
+/** Index metadata plus the FAQ loaded with this article's body chunk. */
+type Article = ArticleSummary & { readonly faq: readonly ArticleFaq[] };
 import { SiteSeoService, SITE_URL } from './site-seo.service';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { ArticleSlug } from './article-slug';
@@ -459,10 +467,11 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtml = '';
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
-    this.articleHtml = String(
-      this.route.snapshot.data?.[ARTICLE_HTML_DATA_KEY] ?? '',
-    );
-    this.article = articles.find((item) => item.slug === slug);
+    const body: ArticleBody =
+      this.route.snapshot.data?.[ARTICLE_BODY_DATA_KEY] ?? emptyArticleBody;
+    this.articleHtml = body.html;
+    const summary = articles.find((item) => item.slug === slug);
+    this.article = summary && { ...summary, faq: body.faq };
     if (this.article) {
       this.decisionSnapshot = decisionSnapshots[this.article.slug];
       this.decisionLinks = decisionRelatedLinks[this.article.slug];

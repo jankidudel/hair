@@ -8,8 +8,17 @@ readonly immutable_cache_control='public, max-age=31536000, immutable'
 readonly mutable_cache_control='no-cache, max-age=0, must-revalidate'
 
 # Never add --delete here: open tabs can still request an older hashed chunk.
+#
+# Only build-emitted, content-addressed files are immutable: Angular's
+# chunk-/main-/polyfills-/worker-/styles- outputs (or the fingerprint script's
+# main./styles. renames) and the builder's media/ directory. Hand-named public
+# files such as diagrams/*.svg, favicons and app icons keep stable URLs whose
+# contents can change, so a broader "long name before the extension" pattern
+# would cache them for a year. scripts/deploy-asset-classification.test.ts
+# keeps this list in step with the build output.
 is_hashed_asset() {
-  [[ "$1" =~ (^|[-.])[[:alnum:]_-]{8,}\.(js|css|woff2?|ttf|otf|svg|png|jpe?g|webp|avif|ico)$ ]]
+  [[ "$1" =~ ^(chunk|main|polyfills|worker|styles)[-.][[:alnum:]_]{8,}\.(js|css)$ ]] ||
+    [[ "$1" =~ ^media/[^/]+$ ]]
 }
 
 upload_file() {

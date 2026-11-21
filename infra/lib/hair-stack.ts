@@ -113,6 +113,9 @@ export class HairStack extends Stack {
       'PrerenderRouteRewrite',
       {
         code: cloudfront.FunctionCode.fromInline(routeRewriteCode),
+        // 2.0 allows const/let, arrow functions and template literals; same
+        // per-invocation pricing as 1.0.
+        runtime: cloudfront.FunctionRuntime.JS_2_0,
       },
     );
     const cacheableStaticAssetBehavior = {
@@ -158,6 +161,9 @@ export class HairStack extends Stack {
         '*.js': cacheableStaticAssetBehavior,
         '*.css': cacheableStaticAssetBehavior,
       },
+      // HTTP/3 (QUIC) is included in every CloudFront pricing plan at no
+      // extra charge; clients without it keep using HTTP/2.
+      httpVersion: cloudfront.HttpVersion.HTTP2_AND_3,
       certificate,
       domainNames: [productionCanonicalDomain, productionApexDomain],
       webAclId: productionWebAcl.attrArn,

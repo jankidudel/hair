@@ -86,7 +86,9 @@ test('frontend deployment preserves prior hashed assets without CloudFront inval
   assert.match(deployScript, /max-age=31536000, immutable/);
   assert.match(deployScript, /no-cache, max-age=0, must-revalidate/);
   assert.match(deployScript, /is_hashed_asset/);
-  assert.match(deployScript, /\(js\|css\|woff2\?\|ttf\|otf/);
+  // Only build-emitted names are immutable; deploy-asset-classification.test.ts
+  // checks the classification against real file names.
+  assert.match(deployScript, /\^\(chunk\|main\|polyfills\|worker\|styles\)/);
   assert.match(deployScript, /Upload new content-addressed assets before/);
   assert.match(deployScript, /Route documents are deliberately last/);
   assert.doesNotMatch(deployScript, /cloudfront create-invalidation/);
@@ -108,6 +110,12 @@ test('deployment builds fingerprint static entry assets', async () => {
   ) as { scripts: Record<string, string> };
 
   assert.match(frontendPackage.scripts.build, /assets:fingerprint/);
+  // Every deployment path builds through this script, so the startup JS size limit
+  // gates releases, after fingerprinting renames the entry bundle.
+  assert.match(
+    frontendPackage.scripts.build,
+    /assets:fingerprint && npm run check:js-size/,
+  );
   assert.equal(
     frontendPackage.scripts['build:deployment-development'],
     undefined,

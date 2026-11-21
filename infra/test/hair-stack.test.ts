@@ -14,6 +14,7 @@ test('creates private static hosting and a health API in production', () => {
   template.resourceCountIs('AWS::CloudFront::CachePolicy', 0);
   template.hasResourceProperties('AWS::CloudFront::Distribution', {
     DistributionConfig: Match.objectLike({
+      HttpVersion: 'http2and3',
       // Managed CachingOptimized: compression for route documents, which the
       // deploy script uploads as `no-cache, max-age=0` so they revalidate.
       DefaultCacheBehavior: Match.objectLike({
@@ -37,6 +38,9 @@ test('creates private static hosting and a health API in production', () => {
         }),
       ]),
     }),
+  });
+  template.hasResourceProperties('AWS::CloudFront::Function', {
+    FunctionConfig: Match.objectLike({ Runtime: 'cloudfront-js-2.0' }),
   });
   template.resourceCountIs('AWS::ApiGateway::RestApi', 1);
   template.resourceCountIs('AWS::ApiGateway::UsagePlan', 0);

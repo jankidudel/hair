@@ -10,8 +10,8 @@ import { DirectHeatFinderComponent } from './direct-heat-finder.component';
 import { DirectHeatHubComponent } from './direct-heat-hub.component';
 import { publishedGuideCanMatch } from './published-guide-route';
 import {
-  ARTICLE_HTML_DATA_KEY,
-  articleHtmlResolver,
+  ARTICLE_BODY_DATA_KEY,
+  articleBodyResolver,
 } from './article-html.resolver';
 export const routes: Routes = [
   { path: '', component: StaticPageComponent, data: { page: 'home' } },
@@ -107,7 +107,7 @@ export const routes: Routes = [
     path: 'guides/:slug',
     component: ArticlePageComponent,
     canMatch: [publishedGuideCanMatch],
-    resolve: { [ARTICLE_HTML_DATA_KEY]: articleHtmlResolver },
+    resolve: { [ARTICLE_BODY_DATA_KEY]: articleBodyResolver },
   },
   { path: '404', component: NotFoundPageComponent },
   { path: '**', component: NotFoundPageComponent },

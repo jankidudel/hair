@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run content:generate && ng serve",
-    "build": "npm run content:generate && npm run seo:generate && ng build --define \"__TURNSTILE_SITE_KEY__=$(node -p 'JSON.stringify(process.env.TURNSTILE_SITE_KEY ?? \"\")')\" && npm run assets:fingerprint",
+    "build": "npm run content:generate && npm run seo:generate && ng build --define \"__TURNSTILE_SITE_KEY__=$(node -p 'JSON.stringify(process.env.TURNSTILE_SITE_KEY ?? \"\")')\" && npm run assets:fingerprint && npm run check:js-size",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "npm run content:generate && ng test --watch=false",
@@ -16,6 +16,7 @@
     "report:us-localization": "tsx scripts/report-us-localization.ts",
     "check:seo": "npm run check:editorial-targets && npm run build && npm run check:generated-seo",
     "assets:fingerprint": "tsx scripts/fingerprint-static-assets.ts",
+    "check:js-size": "tsx scripts/check-js-size.ts",
     "seo:generate": "tsx scripts/generate-seo.ts"
   },
   "dependencies": {

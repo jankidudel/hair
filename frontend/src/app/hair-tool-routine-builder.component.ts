@@ -1,3 +1,4 @@
+import { ArticleSlug } from './article-slug';
 import { DOCUMENT } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -146,18 +147,14 @@ import { SiteSeoService } from './site-seo.service';
           </button>
         </section>
       }
-      <noscript
-        ><p class="finder-rationale">
-          For a no-JavaScript guide to choosing a smaller toolkit, read
-          <a href="/guides/what-hair-tools-do-i-need"
-            >What Hair Tools Do You Actually Need?</a
-          >.
-        </p></noscript
-      >
+      <!-- Bound as innerHTML: with scripting on, browsers parse noscript
+        content as text, so hydrating element children here can fail. -->
+      <noscript [innerHTML]="noScriptFallback"></noscript>
     </section>
   `,
 })
 export class HairToolRoutineBuilderComponent {
+  readonly noScriptFallback = `<p class="finder-rationale">For a no-JavaScript guide to choosing a smaller toolkit, read <a href="/guides/${ArticleSlug.WhatHairToolsDoINeed}">What Hair Tools Do You Actually Need?</a>.</p>`;
   private readonly document = inject(DOCUMENT);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);

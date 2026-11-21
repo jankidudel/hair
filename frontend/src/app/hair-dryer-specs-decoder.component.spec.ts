@@ -1,14 +1,11 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import {
-  ActivatedRoute,
-  convertToParamMap,
-  provideRouter,
-} from '@angular/router';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { expect, it } from 'vitest';
 import { AnalyticsService } from './analytics/analytics.service';
 import { ArticlePageComponent } from './article-page.component';
 import { ArticleSlug } from './article-slug';
+import { articleRouteSnapshot } from './article-route.testing';
 
 it('renders the specs introduction above the decoder and returns a result from the existing controls', () => {
   TestBed.configureTestingModule({
@@ -19,11 +16,7 @@ it('renders the specs introduction above the decoder and returns a result from t
       {
         provide: ActivatedRoute,
         useValue: {
-          snapshot: {
-            paramMap: convertToParamMap({
-              slug: ArticleSlug.HairDryerWattageGuide,
-            }),
-          },
+          snapshot: articleRouteSnapshot(ArticleSlug.HairDryerWattageGuide),
         },
       },
       { provide: AnalyticsService, useValue: { track: () => undefined } },

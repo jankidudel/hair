@@ -45,6 +45,7 @@ for file in "${files[@]}"; do
   fi
 done
 
-# Route documents revalidate through the caching-disabled behavior. Every
+# Route documents revalidate: the default behavior's managed CachingOptimized
+# policy honours this no-cache header for at most its 1-second minimum TTL. Every
 # referenced JS and CSS entry asset is content-addressed by the build, so a
 # new deployment uses new URLs without CloudFront invalidations.

@@ -1,4 +1,4 @@
-import type { Article } from './content.generated';
+import type { ArticleSummary as Article } from './content-index.generated';
 
 export const canonicalOrigin = 'https://www.combreport.com';
 export interface SeoRoutePolicy {
@@ -119,8 +119,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/products',
     'hub',
-    '2026-10-25',
-    'Batch 22 scoped records and researched pairs',
+    '2026-11-19',
+    'Explorer controls before methodology; specification disclosure',
   ),
   page('/about', 'policy'),
   page('/authors/combreport-editorial-team', 'author'),

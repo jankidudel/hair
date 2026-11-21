@@ -1,6 +1,6 @@
 {
   "scope": "Built initial HTML and published source registry. HTTP status, production 404 response, layout and private GSC performance are not verified by this audit.",
-  "generatedAt": "2026-11-19T20:54:22.644Z",
+  "generatedAt": "2026-11-19T23:56:35.147Z",
   "coverage": {
     "counts": {
       "registered": 272,
@@ -21259,8 +21259,8 @@
       "disposition": "indexable-canonical",
       "dispositionReason": "Public, self-canonical page; no intentional search exclusion is documented.",
       "canonicalPolicy": "https://www.combreport.com/products",
-      "lastmod": "2026-10-25",
-      "lastmodSource": "Batch 22 scoped records and researched pairs",
+      "lastmod": "2026-11-19",
+      "lastmodSource": "Explorer controls before methodology; specification disclosure",
       "generatedOutput": "frontend/dist/hair-frontend/browser/products/index.html",
       "discoverySources": [
         "generated-output",

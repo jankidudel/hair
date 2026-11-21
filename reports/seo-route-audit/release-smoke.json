@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-19T20:54:25.096Z",
+  "checkedAt": "2026-11-19T23:56:37.911Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "2117269cd839ac39811cbbd45f018606025e8054",
+  "sourceCommit": "96add61f6f1e0396431f05fbe9b9259fe25d0042",
   "sourceTreeDirty": true,
-  "artifactSha256": "fec5ad8fe983f5709cb5c4142da8a9ce0cfa78a0b6c68a201e85b0190ec80ed0",
+  "artifactSha256": "f058f7b0aede1302f9915647e6bfe3777a1ff0c2cc5f6068443570f20ecddefc",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,

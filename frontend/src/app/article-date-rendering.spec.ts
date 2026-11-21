@@ -1,14 +1,11 @@
 import { DOCUMENT } from '@angular/common';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import {
-  ActivatedRoute,
-  convertToParamMap,
-  provideRouter,
-} from '@angular/router';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { describe, expect, it } from 'vitest';
 import { ArticlePageComponent } from './article-page.component';
 import { ArticleSlug } from './article-slug';
+import { articleRouteSnapshot } from './article-route.testing';
 import { articles } from './content.generated';
 import { seoRoutesForArticles } from './seo-route-policy';
 import { AnalyticsService } from './analytics/analytics.service';
@@ -27,7 +24,7 @@ describe('substantive article dates', () => {
           provideRouter([]),
           {
             provide: ActivatedRoute,
-            useValue: { snapshot: { paramMap: convertToParamMap({ slug }) } },
+            useValue: { snapshot: articleRouteSnapshot(slug) },
           },
           { provide: AnalyticsService, useValue: { track: () => undefined } },
         ],

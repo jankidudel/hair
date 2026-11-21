@@ -50,7 +50,8 @@ nav a.active {
 }
 .site-main {
   min-height: 71vh;
-  padding-block: clamp(2.75rem, 7vw, 6.25rem);
+  /* Keep the top gap short so the answer or tool starts near the fold. */
+  padding-block: clamp(2rem, 4.5vw, 3.75rem) clamp(2.75rem, 7vw, 6.25rem);
 }
 .site-footer {
   padding-block: 1.65rem 2.25rem;
@@ -86,7 +87,7 @@ nav a.active {
     gap: 0.4rem 1rem;
   }
   .site-main {
-    padding-block: 2.75rem 4.5rem;
+    padding-block: 1.75rem 4.5rem;
   }
   .footer-row {
     align-items: flex-start;

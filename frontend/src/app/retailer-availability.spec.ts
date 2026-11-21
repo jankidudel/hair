@@ -1,14 +1,11 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import {
-  ActivatedRoute,
-  convertToParamMap,
-  provideRouter,
-} from '@angular/router';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { AnalyticsService } from './analytics/analytics.service';
 import { ArticlePageComponent } from './article-page.component';
 import { ArticleSlug } from './article-slug';
+import { articleRouteSnapshot } from './article-route.testing';
 import { currentModelSources } from './current-model-comparison-guides';
 import { GHD_UK_RETAILER_OFFERS } from './retailer-availability';
 
@@ -28,11 +25,7 @@ describe('ghd UK retailer pilot', () => {
           {
             provide: ActivatedRoute,
             useValue: {
-              snapshot: {
-                paramMap: convertToParamMap({
-                  slug: ArticleSlug.GhdSpeedVsHelios,
-                }),
-              },
+              snapshot: articleRouteSnapshot(ArticleSlug.GhdSpeedVsHelios),
             },
           },
           { provide: AnalyticsService, useValue: { track } },

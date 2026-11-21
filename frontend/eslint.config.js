@@ -8,5 +8,14 @@ export default tseslint.config(
       parserOptions: { tsconfigRootDir: import.meta.dirname },
     },
   },
-  { ignores: ['dist/**', '.angular/**', 'src/app/content.generated.ts'] },
+  {
+    ignores: [
+      'dist/**',
+      '.angular/**',
+      'src/app/content.generated.ts',
+      'src/app/content-index.generated.ts',
+      'src/app/article-bodies.generated.ts',
+      'src/app/article-bodies.generated/**',
+    ],
+  },
 );

@@ -132,9 +132,12 @@ export class HairStack extends Stack {
         origin: origins.S3BucketOrigin.withOriginAccessControl(site),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         compress: true,
-        // Keep route documents and stable public files revalidating. This is a
-        // managed policy, so it remains compatible with CloudFront Free plans.
-        cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED,
+        // Managed CachingOptimized enables gzip/Brotli for route documents
+        // (CachingDisabled cannot compress). The deploy script uploads every
+        // HTML and stable public file with `no-cache, max-age=0`, so the edge
+        // holds them for at most the policy's 1-second minimum TTL and browsers
+        // still revalidate. Managed, so it stays on the CloudFront Free plan.
+        cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
         functionAssociations: [
           {
             eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,

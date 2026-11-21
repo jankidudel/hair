@@ -31,6 +31,9 @@ pnpm-debug.log*
 
 # Generated application output (regenerate; do not edit by hand)
 frontend/src/app/content.generated.ts
+frontend/src/app/content-index.generated.ts
+frontend/src/app/article-bodies.generated.ts
+frontend/src/app/article-bodies.generated/
 frontend/public/robots.txt
 frontend/public/sitemap.xml
 

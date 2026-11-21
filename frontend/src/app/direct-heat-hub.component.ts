@@ -7,7 +7,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ArticleSlug } from './article-slug';
 import { ArticleGroupId } from './article-registry';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
-import { articles } from './content.generated';
+import { articles } from './content-index.generated';
 import { SiteSeoService } from './site-seo.service';
 import { AnalyticsService } from './analytics/analytics.service';
 import {

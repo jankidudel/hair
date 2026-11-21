@@ -1,5 +1,5 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
-import { articles } from './content.generated';
+import { articles } from './content-index.generated';
 export const serverRoutes: ServerRoute[] = [
   {
     path: 'guides/:slug',

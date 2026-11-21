@@ -10,7 +10,11 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { articles, Article } from './content.generated';
+import {
+  articles,
+  type ArticleSummary as Article,
+} from './content-index.generated';
+import { ARTICLE_HTML_DATA_KEY } from './article-html.resolver';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
 import { Breadcrumb, BreadcrumbsComponent } from './breadcrumbs.component';
 import { ArticleSlug } from './article-slug';
@@ -259,7 +263,7 @@ export function splitEvidenceArticleHtml(
       } @else {
         <section
           class="article-body"
-          [innerHTML]="articleHtmlMain || article.html"
+          [innerHTML]="articleHtmlMain || articleHtml"
         ></section>
       }
       @if (article.slug === articleSlug.HotAirBrushBarrelSizeGuide) {
@@ -451,8 +455,13 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtmlIntro = '';
   articleHtmlMain = '';
   articleHtmlFaq = '';
+  /** Article body from the route resolver; loaded per article, not bundled. */
+  articleHtml = '';
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
+    this.articleHtml = String(
+      this.route.snapshot.data?.[ARTICLE_HTML_DATA_KEY] ?? '',
+    );
     this.article = articles.find((item) => item.slug === slug);
     if (this.article) {
       this.decisionSnapshot = decisionSnapshots[this.article.slug];
@@ -463,7 +472,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
         slug === ArticleSlug.HairDryerWattageGuide
       ) {
         [this.articleHtmlIntro, this.articleHtmlMain] =
-          splitAfterFirstParagraph(this.article.html);
+          splitAfterFirstParagraph(this.articleHtml);
       }
       if (this.guideEvidenceContent) {
         [this.articleHtmlMain, this.articleHtmlFaq] = splitInlineFaq(
@@ -473,7 +482,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
       if (slug === ArticleSlug.GhdSpeedVsHelios) {
         [this.articleHtmlBeforeRetailers, this.articleHtmlMain] =
           splitBeforeHeading(
-            this.articleHtmlMain || this.article.html,
+            this.articleHtmlMain || this.articleHtml,
             'Give setting memory a real job',
           );
       }
@@ -481,7 +490,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
       if (safetyHeading) {
         [this.articleHtmlBeforeSafety, this.articleHtmlAfterSafety] =
           splitBeforeHeading(
-            this.articleHtmlMain || this.article.html,
+            this.articleHtmlMain || this.articleHtml,
             safetyHeading,
           );
       }
@@ -503,7 +512,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
           this.articleHtmlBeforeUpgrade,
           this.articleHtmlAfterUpgrade,
         ] = splitEvidenceArticleHtml(
-          this.article.html,
+          this.articleHtml,
           evidenceOwner.upgradeBeforeHeading,
         );
       }

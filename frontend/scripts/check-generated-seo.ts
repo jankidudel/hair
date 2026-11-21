@@ -137,6 +137,10 @@ function breadcrumbList(
   }
   return lists[0];
 }
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function validateBreadcrumb(
   html: string,
   route: string,
@@ -148,9 +152,12 @@ function validateBreadcrumb(
   )?.[1];
   if (!visible) failures.push(`${route}: missing visible breadcrumb.`);
   for (const item of expected.slice(0, -1)) {
-    if (
-      !visible?.includes(`<a href="${item.path}">${escapeHtml(item.label)}</a>`)
-    )
+    // Hydration event replay may add attributes such as jsaction after href;
+    // the link must still be a real <a href> with the exact visible label.
+    const link = new RegExp(
+      `<a href="${escapeRegExp(item.path)}"(?:\\s+[\\w:-]+="[^"]*")*>${escapeRegExp(escapeHtml(item.label))}</a>`,
+    );
+    if (!visible || !link.test(visible))
       failures.push(
         `${route}: breadcrumb link for '${item.label}' is missing or non-crawlable.`,
       );

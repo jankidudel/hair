@@ -20,7 +20,7 @@ import {
 import { finishingGuideDescriptions } from './finishing-guides';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { articles } from './content.generated';
+import { articles } from './content-index.generated';
 import { SiteSeoService, SITE_URL } from './site-seo.service';
 import {
   GuideCategory,
@@ -183,114 +183,172 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
         <p class="eyebrow">Guides</p>
         <h1>Hair tools and routine guides</h1>
         <p class="lede">
-          Start with a decision tool, then use a source-linked guide for the
-          product, size, or format decision in front of you.
+          Search {{ allGuideCount }} source-linked guides by tool, model or
+          styling task, or browse a category.
         </p>
       </section>
-      <section class="category-hubs" aria-labelledby="category-hubs-heading">
-        <div class="section-heading">
-          <p class="eyebrow">Browse by category</p>
-          <h2 id="category-hubs-heading">Find a guide by topic</h2>
+      <section class="guide-finder" aria-label="Search and browse guides">
+        <div class="guide-search">
+          <label for="guide-search">Search guides</label>
+          <div class="guide-search-row">
+            <input
+              #guideSearchInput
+              id="guide-search"
+              type="search"
+              placeholder="Search by tool, model or hair concern"
+              autocomplete="off"
+              aria-describedby="guide-result-count"
+              [value]="guideSearch"
+              (input)="guideSearch = $any($event.target).value"
+            />
+            @if (guideSearch) {
+              <button
+                type="button"
+                class="guide-search-clear"
+                (click)="clearGuideSearch(guideSearchInput)"
+              >
+                Clear search
+              </button>
+            }
+          </div>
         </div>
-        <div class="category-links">
+        <nav
+          class="guide-category-chips"
+          aria-label="Browse guides by category"
+        >
+          <span class="guide-category-label">Browse by category:</span>
           @for (category of categories; track category.id) {
-            <a [routerLink]="category.path">
-              <span>{{ category.label }}</span
-              ><b aria-hidden="true">→</b>
-            </a>
+            <a [routerLink]="category.path">{{ category.label }}</a>
           }
-        </div>
-      </section>
-      <section class="category-hubs" aria-labelledby="brush-cluster-heading">
-        <div class="section-heading">
-          <p class="eyebrow">Brushes &amp; combs</p>
-          <h2 id="brush-cluster-heading">Hair Brush Care &amp; Selection</h2>
-        </div>
-        <p>
-          Choose a styling brush, understand its bristles, and keep the one you
-          own in good working order.
+        </nav>
+        <p
+          class="guide-result-count"
+          id="guide-result-count"
+          aria-live="polite"
+        >
+          {{ guideResultCountText }}
         </p>
-        <div class="category-links">
-          <a [routerLink]="['/guides', articleSlug.RoundBrushSizeGuide]"
-            >Round brush size guide <b>→</b></a
-          ><a [routerLink]="['/guides', articleSlug.BoarBristleVsNylonBrush]"
-            >Boar bristle vs nylon <b>→</b></a
-          ><a [routerLink]="['/guides', articleSlug.HowToCleanAHairBrush]"
-            >How to clean a hairbrush <b>→</b></a
-          ><a
-            [routerLink]="['/guides', articleSlug.WhenToReplaceHairbrushOrComb]"
-            >Inspect a brush or comb <b>→</b></a
-          ><a
-            [routerLink]="[
-              '/guides',
-              articleSlug.WhatIsTheGreyFuzzOnMyHairbrush,
-            ]"
-            >What is grey fuzz? <b>→</b></a
+      </section>
+      @if (guides.length) {
+        <section class="editorial-grid guides-grid" aria-label="All guides">
+          @for (article of guides; track article.slug; let first = $first) {
+            <a
+              class="guide-card"
+              [class.guide-card-featured]="first && !guideSearch"
+              [routerLink]="['/guides', article.slug]"
+              ><p class="eyebrow">{{ article.category }}</p>
+              <h2>
+                {{ toolChoiceCards[article.slug]?.title ?? article.heading }}
+              </h2>
+              <p>
+                {{
+                  toolChoiceCards[article.slug]?.description ??
+                    everydayMethodDescriptions[article.slug] ??
+                    modelComparisonDescriptions[article.slug] ??
+                    handlingGuideDescriptions[article.slug] ??
+                    finishingGuideDescriptions[article.slug] ??
+                    article.description
+                }}
+              </p>
+              <span class="text-link"
+                >Read guide <span aria-hidden="true">→</span></span
+              ></a
+            >
+          }
+        </section>
+      } @else {
+        <p class="guide-empty-state">
+          No guides found. Try a tool name, model or hair concern, or
+          <button
+            type="button"
+            class="guide-empty-clear"
+            (click)="clearGuideSearch(guideSearchInput)"
           >
-        </div>
-      </section>
-      <section class="category-hubs" aria-labelledby="routine-builder-heading">
-        <div class="section-heading">
-          <p class="eyebrow">Build a smaller toolkit</p>
-          <h2 id="routine-builder-heading">Hair Tool Routine Builder</h2>
-        </div>
-        <p>
-          Choose the few tool categories that support your ordinary routine
-          before comparing extra options.
+            clear your search
+          </button>
+          to browse all guides.
         </p>
-        <a class="text-link" routerLink="/hair-tool-routine-builder"
-          >Build a simple routine <span aria-hidden="true">→</span></a
-        >
-      </section>
-      <section class="category-hubs" aria-labelledby="troubleshooting-heading">
-        <div class="section-heading">
-          <p class="eyebrow">Solve a styling problem</p>
-          <h2 id="troubleshooting-heading">Styling-tool troubleshooting</h2>
-        </div>
-        <p>
-          Start with the symptom you can see: a blowout that falls, frizz during
-          brushing, a curl that drops, a snag, or an attachment that may not
-          fit.
-        </p>
-        <a
-          class="text-link"
-          [routerLink]="['/guides', articleSlug.StylingToolTroubleshooting]"
-          >Choose a troubleshooting guide <span aria-hidden="true">→</span></a
-        >
-      </section>
-      <label for="guide-search">Find a guide by task, product or model</label>
-      <input
-        id="guide-search"
-        type="search"
-        [value]="guideSearch"
-        (input)="guideSearch = $any($event.target).value"
-      />
-      <p aria-live="polite">{{ guides.length }} guides</p>
-      <section class="editorial-grid guides-grid" aria-label="All guides">
-        @for (article of guides; track article.slug; let first = $first) {
-          <a
-            class="guide-card"
-            [class.guide-card-featured]="first"
-            [routerLink]="['/guides', article.slug]"
-            ><p class="eyebrow">{{ article.category }}</p>
-            <h2>
-              {{ toolChoiceCards[article.slug]?.title ?? article.heading }}
-            </h2>
+      }
+      <section
+        class="guide-secondary"
+        aria-labelledby="guide-secondary-heading"
+      >
+        <h2 id="guide-secondary-heading">More ways to start</h2>
+        <div class="guide-secondary-grid">
+          <section aria-labelledby="routine-builder-heading">
+            <p class="eyebrow">Build a smaller toolkit</p>
+            <h3 id="routine-builder-heading">Hair Tool Routine Builder</h3>
             <p>
-              {{
-                toolChoiceCards[article.slug]?.description ??
-                  everydayMethodDescriptions[article.slug] ??
-                  modelComparisonDescriptions[article.slug] ??
-                  handlingGuideDescriptions[article.slug] ??
-                  finishingGuideDescriptions[article.slug] ??
-                  article.description
-              }}
+              Choose the few tool categories that support your ordinary routine
+              before comparing extra options.
             </p>
-            <span class="text-link"
-              >Read guide <span aria-hidden="true">→</span></span
-            ></a
-          >
-        }
+            <a class="text-link" routerLink="/hair-tool-routine-builder"
+              >Build a simple routine <span aria-hidden="true">→</span></a
+            >
+          </section>
+          <section aria-labelledby="brush-cluster-heading">
+            <p class="eyebrow">Brushes &amp; combs</p>
+            <h3 id="brush-cluster-heading">Hair Brush Care &amp; Selection</h3>
+            <p>
+              Choose a styling brush, understand its bristles, and keep the one
+              you own in good working order.
+            </p>
+            <ul>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.RoundBrushSizeGuide]"
+                  >Round brush size guide</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.BoarBristleVsNylonBrush,
+                  ]"
+                  >Boar bristle vs nylon</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/guides', articleSlug.HowToCleanAHairBrush]"
+                  >How to clean a hairbrush</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.WhenToReplaceHairbrushOrComb,
+                  ]"
+                  >Inspect a brush or comb</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.WhatIsTheGreyFuzzOnMyHairbrush,
+                  ]"
+                  >What is grey fuzz?</a
+                >
+              </li>
+            </ul>
+          </section>
+          <section aria-labelledby="troubleshooting-heading">
+            <p class="eyebrow">Solve a styling problem</p>
+            <h3 id="troubleshooting-heading">Styling-tool troubleshooting</h3>
+            <p>
+              Start with the symptom you can see: a blowout that falls, frizz
+              during brushing, a curl that drops, a snag, or an attachment that
+              may not fit.
+            </p>
+            <a
+              class="text-link"
+              [routerLink]="['/guides', articleSlug.StylingToolTroubleshooting]"
+              >Choose a troubleshooting guide
+              <span aria-hidden="true">→</span></a
+            >
+          </section>
+        </div>
       </section>
     }
     @case ('tools') {
@@ -1788,6 +1846,18 @@ export class StaticPageComponent implements OnInit {
   private readonly analytics = inject(AnalyticsService);
   readonly contactPrivacy = inject(CONTACT_FORM_PRIVACY);
   guideSearch = '';
+  readonly allGuideCount = articles.length;
+  get guideResultCountText(): string {
+    const count = this.guides.length;
+    if (!this.guideSearch.trim())
+      return `${count} ${count === 1 ? 'guide' : 'guides'}`;
+    return `${count} of ${this.allGuideCount} guides ${count === 1 ? 'matches' : 'match'}`;
+  }
+  clearGuideSearch(input: HTMLInputElement): void {
+    this.guideSearch = '';
+    input.value = '';
+    input.focus();
+  }
   get guides() {
     const normalise = (value: string) =>
       value.toLowerCase().replace(/[^a-z0-9]/g, '');

@@ -3,14 +3,11 @@ import { airflowSources } from './airflow-method-guides';
 import { toolChoiceEvidence } from './tool-choice-guides';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import {
-  ActivatedRoute,
-  convertToParamMap,
-  provideRouter,
-} from '@angular/router';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { afterEach, describe, expect, it } from 'vitest';
 import { ArticlePageComponent } from './article-page.component';
 import { ArticleSlug } from './article-slug';
+import { articleRouteSnapshot } from './article-route.testing';
 import { AnalyticsService } from './analytics/analytics.service';
 import { currentModelSources } from './current-model-comparison-guides';
 
@@ -54,7 +51,7 @@ describe('supplementary model-specific article sources', () => {
           provideRouter([]),
           {
             provide: ActivatedRoute,
-            useValue: { snapshot: { paramMap: convertToParamMap({ slug }) } },
+            useValue: { snapshot: articleRouteSnapshot(slug) },
           },
           { provide: AnalyticsService, useValue: { track: () => undefined } },
         ],

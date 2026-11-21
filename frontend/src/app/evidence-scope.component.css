@@ -1,4 +1,6 @@
 .evidence-scope {
+  /* --muted (#68706a) is 4.48:1 on this panel; this shade is 5.12:1 (WCAG AA). */
+  --evidence-muted: #5f6761;
   margin: 2rem 0 0;
   padding: clamp(1.2rem, 3vw, 1.7rem);
   border: 1px solid var(--border);
@@ -10,7 +12,7 @@
 }
 .guide-scope-summary {
   margin: 0;
-  color: var(--muted);
+  color: var(--evidence-muted);
   line-height: 1.65;
 }
 .evidence-scope dl {
@@ -28,7 +30,7 @@
 }
 .evidence-scope dd {
   margin: 0;
-  color: var(--muted);
+  color: var(--evidence-muted);
 }
 .identifier {
   font-size: 0.9em;

@@ -210,3 +210,33 @@
     grid-template-columns: 1fr;
   }
 }
+.products-disclosure {
+  max-width: 46rem;
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.products-page .listing-intro + .product-filters {
+  margin-top: 2rem;
+}
+details.how-we-compare > summary {
+  cursor: pointer;
+  list-style-position: outside;
+}
+details.how-we-compare > summary h2 {
+  display: inline;
+  margin: 0;
+}
+.how-we-compare-hint {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+details.how-we-compare > summary:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+details.how-we-compare[open] > summary {
+  margin-bottom: 1rem;
+}

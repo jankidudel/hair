@@ -14,8 +14,11 @@ test('creates private static hosting and a health API in production', () => {
   template.resourceCountIs('AWS::CloudFront::CachePolicy', 0);
   template.hasResourceProperties('AWS::CloudFront::Distribution', {
     DistributionConfig: Match.objectLike({
+      // Managed CachingOptimized: compression for route documents, which the
+      // deploy script uploads as `no-cache, max-age=0` so they revalidate.
       DefaultCacheBehavior: Match.objectLike({
-        CachePolicyId: '4135ea2d-6df8-44a3-9df3-4b5a84be39ad',
+        CachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6',
+        Compress: true,
       }),
       CacheBehaviors: Match.arrayWith([
         Match.objectLike({

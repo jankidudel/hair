@@ -1,5 +1,5 @@
 import { CanMatchFn } from '@angular/router';
-import { articles } from './content.generated';
+import { articles } from './content-index.generated';
 
 const publishedGuideSlugs = new Set(articles.map((article) => article.slug));
 

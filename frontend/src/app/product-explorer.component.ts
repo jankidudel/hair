@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AnalyticsService } from './analytics/analytics.service';
-import { articles } from './content.generated';
+import { articles } from './content-index.generated';
 import {
   comparisonFacts,
   canCompareProducts,
@@ -138,63 +138,19 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
           <p class="eyebrow">Product explorer</p>
           <h1>Compare Hair Tools Before You Buy</h1>
           <p class="lede">
-            Combreport compares published manufacturer specifications and
-            practical feature trade-offs. We do not treat a feature list as a
-            substitute for hands-on testing, and we show sources so you can
-            check the details before buying.
+            Compare published hair-tool specifications, check the sources and
+            find the features that fit your routine.
           </p>
-          <p>
-            <a routerLink="/affiliate-disclosure"
-              >Read the affiliate disclosure</a
+          <p class="products-disclosure">
+            Comparisons are based on published manufacturer specifications, not
+            hands-on test results.
+            <a href="/products#how-we-compare" (click)="openMethodology($event)"
+              >How we compare</a
             >
+            ·
+            <a routerLink="/affiliate-disclosure">Affiliate disclosure</a>
           </p>
         </div>
-        <section
-          class="how-we-compare"
-          id="how-we-compare"
-          aria-labelledby="how-we-compare-heading"
-        >
-          <h2 id="how-we-compare-heading">How we compare products</h2>
-          <ol>
-            <li>
-              Each stated fact links to its manufacturer source and check date.
-              Check the cited page for exact model and market scope; records
-              with limited evidence are labelled.
-            </li>
-            <li>
-              Features do not guarantee the same result for every person or
-              routine.
-            </li>
-            <li>
-              Prices and availability change. A missing or unmaintained price
-              comparison is shown as “Price not compared”; verify the current
-              complete offer before buying.
-            </li>
-            <li>
-              Official specifications describe the product; our editorial guides
-              explain the routine trade-offs.
-            </li>
-          </ol>
-        </section>
-        <section
-          class="how-we-compare"
-          aria-labelledby="researched-pairs-heading"
-        >
-          <h2 id="researched-pairs-heading">Start with a researched pair</h2>
-          <p>
-            These comparisons keep the exact model, market and source scope
-            together. Choose one when it matches the decision you are making.
-          </p>
-          <ul>
-            @for (guide of researchedPairs; track guide.slug) {
-              <li>
-                <a [routerLink]="['/guides', guide.slug]">{{
-                  guide.heading
-                }}</a>
-              </li>
-            }
-          </ul>
-        </section>
         <section class="product-filters" aria-labelledby="filter-heading">
           <h2 id="filter-heading">Explore by tool type</h2>
           <div class="filter-group" aria-label="Filter by category">
@@ -429,6 +385,53 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
             tier.
           </p>
         }
+        <section
+          class="how-we-compare"
+          aria-labelledby="researched-pairs-heading"
+        >
+          <h2 id="researched-pairs-heading">Start with a researched pair</h2>
+          <p>
+            These comparisons keep the exact model, market and source scope
+            together. Choose one when it matches the decision you are making.
+          </p>
+          <ul>
+            @for (guide of researchedPairs; track guide.slug) {
+              <li>
+                <a [routerLink]="['/guides', guide.slug]">{{
+                  guide.heading
+                }}</a>
+              </li>
+            }
+          </ul>
+        </section>
+        <details class="how-we-compare" id="how-we-compare">
+          <summary>
+            <h2 id="how-we-compare-heading">How we compare products</h2>
+            <span class="how-we-compare-hint"
+              >Sources, scope, prices and what features cannot show</span
+            >
+          </summary>
+          <ol>
+            <li>
+              Each stated fact links to its manufacturer source and check date.
+              Check the cited page for exact model and market scope; records
+              with limited evidence are labelled.
+            </li>
+            <li>
+              Features do not guarantee the same result for every person or
+              routine.
+            </li>
+            <li>
+              Prices and availability change. A missing or unmaintained price
+              comparison is shown as “Price not compared”; verify the current
+              complete offer before buying.
+            </li>
+            <li>
+              Official specifications describe the product; our editorial guides
+              explain the routine trade-offs.
+            </li>
+          </ol>
+        </details>
       </section>
     }`,
 })
@@ -437,6 +440,15 @@ export class ProductExplorerComponent implements OnInit {
   private readonly document = inject(DOCUMENT);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
+  /** Opens the collapsed methodology in place rather than reloading the page. */
+  openMethodology(event: Event): void {
+    const details = this.document.getElementById('how-we-compare');
+    if (!(details instanceof HTMLDetailsElement)) return;
+    event.preventDefault();
+    details.open = true;
+    details.scrollIntoView({ block: 'start' });
+    details.querySelector('summary')?.focus();
+  }
   readonly categoryFilters: readonly {
     label: string;
     value: CategoryFilter;

@@ -100,3 +100,26 @@ test('retired brush routes reject indexable 200s and redirects', () => {
       retiredRouteErrors({ status, text: 'Legacy brush guide' }).length,
     );
 });
+
+test('retired route slash variants accept only the canonicalising 301', () => {
+  const canonical =
+    'https://www.combreport.com/guides/best-hair-brush-for-curly-hair';
+  assert.deepEqual(
+    retiredRouteErrors(
+      { status: 301, text: '', location: canonical },
+      canonical,
+    ),
+    [],
+  );
+  for (const response of [
+    { status: 404, text: 'Not found', location: null },
+    { status: 200, text: 'Legacy brush guide', location: null },
+    { status: 302, text: '', location: canonical },
+    { status: 301, text: '', location: 'https://www.combreport.com/guides' },
+    { status: 301, text: '', location: null },
+  ])
+    assert.ok(
+      retiredRouteErrors(response, canonical).length,
+      JSON.stringify(response),
+    );
+});

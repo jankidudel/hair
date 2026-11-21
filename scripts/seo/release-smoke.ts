@@ -160,6 +160,7 @@ if (!artifactOnly && failures.length === 0) {
     if (bytes[0] === 0x1f && bytes[1] === 0x8b) bytes = gunzipSync(bytes);
     return {
       status: response.status,
+      location: response.headers.get('location'),
       contentType: response.headers.get('content-type') ?? '',
       text: bytes.toString('utf8'),
     };
@@ -169,17 +170,20 @@ if (!artifactOnly && failures.length === 0) {
     if (sitemap.status !== 200) throw Error(`Sitemap HTTP ${sitemap.status}`);
     const entries = parseSitemap(sitemap.text).entries;
     for (const route of removedDuplicateRoutes) {
-      for (const path of [
-        route,
-        `${route}/`,
-        `${route}/index.html`,
-        `${route}.html`,
-      ]) {
+      // `route` and `route.html` must 404. The slash and index.html shapes get
+      // the edge function's canonicalising 301 to `route`, checked above.
+      const canonical = origin + route;
+      for (const [path, expectedRedirect] of [
+        [route, undefined],
+        [`${route}/`, canonical],
+        [`${route}/index.html`, canonical],
+        [`${route}.html`, undefined],
+      ] as const) {
         try {
           record(
             'production-retired',
             path,
-            retiredRouteErrors(await request(path)),
+            retiredRouteErrors(await request(path), expectedRedirect),
           );
         } catch (error) {
           record('production-retired', path, [String(error)]);

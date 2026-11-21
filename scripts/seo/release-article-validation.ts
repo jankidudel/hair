@@ -104,12 +104,27 @@ export function releaseArticleErrors(
   return errors;
 }
 
-/** A retired duplicate must return an actual 404, including alternative key shapes. */
-export function retiredRouteErrors(response: {
-  status: number;
-  text: string;
-}): string[] {
-  return response.status === 404
+/**
+ * A retired duplicate must return an actual 404. Its `/path/` and
+ * `/path/index.html` shapes instead get the edge function's single 301 to the
+ * canonical `/path`, which must itself 404; pass that URL as
+ * `canonicalLocation` to require exactly that redirect and nothing else.
+ */
+export function retiredRouteErrors(
+  response: { status: number; text: string; location?: string | null },
+  canonicalLocation?: string,
+): string[] {
+  if (canonicalLocation === undefined)
+    return response.status === 404
+      ? []
+      : [`Retired route returned HTTP ${response.status}; expected 404.`];
+  if (response.status !== 301)
+    return [
+      `Retired route variant returned HTTP ${response.status}; expected a 301 to ${canonicalLocation}.`,
+    ];
+  return response.location === canonicalLocation
     ? []
-    : [`Retired route returned HTTP ${response.status}; expected 404.`];
+    : [
+        `Retired route variant redirected to ${response.location ?? '(no Location)'}; expected ${canonicalLocation}.`,
+      ];
 }

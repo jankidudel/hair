@@ -81,6 +81,10 @@ The repository’s `node_modules` are macOS (darwin-arm64) builds, and the sessi
 
 **Not run here and required before deployment:** `npm run verify` (includes the Angular build, Vitest, `check:build`), `npm run seo:audit`, `npm run seo:smoke-release`, keyboard/focus/overflow QA at desktop and 375 px for the planner, and JS-disabled checks on all changed routes.
 
+## Release smoke fix
+
+The first `seo:smoke-release` run failed on the artifact for both new guides: N01 had no “Quick answer” H2, and both carried their FAQ inline, which the evidence-page template splits out of the main copy so the rendered body no longer matched the authored body. Both FAQs now live in front matter (rendered in the FAQ tail and FAQPage JSON-LD) and N01 has a single Quick answer section. Body validation, content safety and editorial targets pass for both after the fix.
+
 ## Post-release checklist
 
 1. Run once on macOS: `npm run verify && npm run seo:audit && npm run seo:smoke-release`, then deploy with the normal content workflow.

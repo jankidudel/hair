@@ -33,6 +33,7 @@ import { HairDryerFinderComponent } from './hair-dryer-finder.component';
 import { HairDryerSpecsDecoderComponent } from './hair-dryer-specs-decoder.component';
 import { DryerRunningCostComponent } from './dryer-running-cost.component';
 import { AirwrapCompatibilityLookupComponent } from './airwrap-compatibility-lookup.component';
+import { RollerCountPlannerComponent } from './roller-count-planner.component';
 import { HairDryerSettingsFinderComponent } from './hair-dryer-settings-finder.component';
 import { StraighteningBrushFinderComponent } from './straightening-brush-finder.component';
 import { HeatProtectantFinderComponent } from './heat-protectant-finder.component';
@@ -54,6 +55,7 @@ import { guideEvidence, type GuideEvidence } from './guide-evidence';
 import { additionalGuideSources } from './current-model-comparison-guides';
 import { remainingOpportunitySources } from './remaining-opportunity-guides';
 import { seoGrowthSupplementarySources } from './seo-growth-guides';
+import { megaBatchSupplementarySources } from './seo-mega-batch-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
 import { GHD_UK_RETAILER_OFFERS } from './retailer-availability';
@@ -64,6 +66,11 @@ const safetyInsertionHeading: Readonly<Record<string, string>> = {
   [ArticleSlug.HowToCleanACurlingIronOrWand]:
     'What not to use unless the manual permits it',
   [ArticleSlug.FlatIronSnaggingHair]: 'When to seek support',
+};
+
+/** Interactive planners rendered inside the article body, before a heading. */
+const plannerInsertionHeading: Readonly<Record<string, string>> = {
+  [ArticleSlug.HairRollerSizeGuide]: 'When one pack is enough',
 };
 
 export function splitBeforeHeading(
@@ -120,6 +127,7 @@ export function splitEvidenceArticleHtml(
     HairDryerSpecsDecoderComponent,
     DryerRunningCostComponent,
     AirwrapCompatibilityLookupComponent,
+    RollerCountPlannerComponent,
     HairDryerSettingsFinderComponent,
     StraighteningBrushFinderComponent,
     HeatProtectantFinderComponent,
@@ -258,6 +266,20 @@ export function splitEvidenceArticleHtml(
           </ul>
         </section>
         <section class="article-body" [innerHTML]="articleHtmlMain"></section>
+      } @else if (articleHtmlBeforePlanner) {
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlBeforePlanner"
+        ></section>
+        @switch (article.slug) {
+          @case (articleSlug.HairRollerSizeGuide) {
+            <app-roller-count-planner />
+          }
+        }
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlAfterPlanner"
+        ></section>
       } @else if (articleHtmlBeforeSafety) {
         <section
           class="article-body"
@@ -421,6 +443,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.article.slug as ArticleSlug
               ] ?? []),
               ...(seoGrowthSupplementarySources[this.article.slug] ?? []),
+              ...(megaBatchSupplementarySources[this.article.slug] ?? []),
             ].map((source) => [source.url, source] as const),
           ).values(),
         ]
@@ -460,6 +483,8 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtmlBeforeSafety = '';
   articleHtmlBeforeRetailers = '';
   articleHtmlAfterSafety = '';
+  articleHtmlBeforePlanner = '';
+  articleHtmlAfterPlanner = '';
   articleHtmlIntro = '';
   articleHtmlMain = '';
   articleHtmlFaq = '';
@@ -493,6 +518,14 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
           splitBeforeHeading(
             this.articleHtmlMain || this.articleHtml,
             'Give setting memory a real job',
+          );
+      }
+      const plannerHeading = plannerInsertionHeading[this.article.slug];
+      if (plannerHeading) {
+        [this.articleHtmlBeforePlanner, this.articleHtmlAfterPlanner] =
+          splitBeforeHeading(
+            this.articleHtmlMain || this.articleHtml,
+            plannerHeading,
           );
       }
       const safetyHeading = safetyInsertionHeading[this.article.slug];

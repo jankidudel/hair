@@ -69,20 +69,20 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-19',
-    'Growth batch: discovery-card titles, new owners and calculators',
+    '2026-11-22',
+    'Mega batch: static and Tangle Teezer pilots, roller count planner',
   ),
   page(
     '/hair-accessories',
     'hub',
-    '2026-11-18',
-    'Exact-model choices and attachment discovery',
+    '2026-11-22',
+    'Mega batch: static and Tangle Teezer pilots, roller count planner',
   ),
   page(
     '/guides',
     'hub',
-    '2026-11-19',
-    'Growth batch: discovery-card titles, new owners and calculators',
+    '2026-11-22',
+    'Mega batch: static and Tangle Teezer pilots, roller count planner',
   ),
   page(
     '/hair-brush-finder',

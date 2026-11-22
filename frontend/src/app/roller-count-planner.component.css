@@ -1,0 +1,128 @@
+.roller-count-planner {
+  width: 100%;
+  min-height: 0;
+  margin-top: 2rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  scroll-margin-top: 2rem;
+}
+h2 {
+  max-width: 26ch;
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+.roller-count-planner > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.planner-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+fieldset {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+}
+legend {
+  padding: 0 0.2rem;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+}
+input[aria-invalid='true'] {
+  border-color: var(--terracotta);
+}
+input:focus-visible,
+button:focus-visible,
+.table-scroll:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
+}
+.planner-hint {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.planner-error {
+  color: var(--terracotta);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+button {
+  min-height: 2.6rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--green);
+  border-radius: 0.4rem;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.planner-remove {
+  justify-self: start;
+}
+.planner-result {
+  margin-top: 1.5rem;
+}
+.planner-result h3 {
+  margin: 0 0 0.75rem;
+}
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  min-width: 26rem;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0.55rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.planner-result > p {
+  max-width: 42rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}

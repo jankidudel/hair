@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="640" viewBox="0 0 340 640" role="img" aria-labelledby="title desc">
+  <title id="title">Find the last wrap, then reverse it</title>
+  <desc id="desc">Two panels showing a loose practice strand on a hand-held unpowered round brush. Panel one marks the outermost, most recent wrap. Panel two shows the strand supported near the barrel while that last wrap is turned back in the opposite direction a little at a time.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#a45339" stroke-width="2"/></marker>
+  </defs>
+  <rect width="340" height="640" rx="16" fill="#f8f4ed"/>
+  <g fill="#fffdf9" stroke="#c9c7bc"><rect x="10" y="10" width="320" height="300" rx="12"/><rect x="10" y="320" width="320" height="310" rx="12"/></g>
+  <g font-family="system-ui, sans-serif" fill="#244638" text-anchor="middle">
+    <text x="170" y="40" font-size="18" font-weight="700">1. Find the last wrap</text>
+    <!-- brush, panel 1 -->
+    <g stroke="#244638" stroke-width="2.5" stroke-linecap="round">
+      <rect x="52" y="158" width="170" height="40" rx="20" fill="#ead7b7"/>
+      <rect x="222" y="168" width="96" height="20" rx="10" fill="#d9c7a8"/>
+      <path d="M62 154 v-8 M82 154 v-8 M102 154 v-8 M122 154 v-8 M142 154 v-8 M162 154 v-8 M182 154 v-8 M202 154 v-8 M62 202 v8 M82 202 v8 M102 202 v8 M122 202 v8 M142 202 v8 M162 202 v8 M182 202 v8 M202 202 v8"/>
+    </g>
+    <!-- strand and wraps -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M96 64 C96 100 100 130 104 156" stroke="#6b5a3e" stroke-width="5"/>
+      <path d="M104 156 C112 172 112 186 106 200" stroke="#6b5a3e" stroke-width="5"/>
+      <path d="M120 156 C128 172 128 186 122 200" stroke="#6b5a3e" stroke-width="5"/>
+      <path d="M152 156 C160 172 160 186 154 200" stroke="#a45339" stroke-width="7"/>
+      <path d="M152 156 C146 146 150 136 160 130 C170 124 176 112 178 96" stroke="#a45339" stroke-width="5"/>
+    </g>
+    <path d="M196 110 L166 150" stroke="#244638" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="250" y="96" font-size="15" font-weight="650"><tspan x="250">Last wrap:</tspan><tspan x="250" dy="18">outermost,</tspan><tspan x="250" dy="18">most recent</tspan></text>
+    <text x="70" y="86" font-size="13"><tspan x="62">Practice</tspan><tspan x="62" dy="16">strand</tspan></text>
+    <text x="170" y="244" font-size="14">Unpowered, hand-held round brush</text>
+    <text x="170" y="270" font-size="14">Do not pull the brush outward</text>
+    <text x="170" y="292" font-size="12" fill="#5d6b63">Schematic; not to scale</text>
+
+    <text x="170" y="350" font-size="18" font-weight="700">2. Reverse it a little at a time</text>
+    <!-- brush, panel 2 -->
+    <g stroke="#244638" stroke-width="2.5" stroke-linecap="round">
+      <rect x="52" y="478" width="170" height="40" rx="20" fill="#ead7b7"/>
+      <rect x="222" y="488" width="96" height="20" rx="10" fill="#d9c7a8"/>
+      <path d="M62 474 v-8 M82 474 v-8 M102 474 v-8 M122 474 v-8 M142 474 v-8 M162 474 v-8 M182 474 v-8 M202 474 v-8 M62 522 v8 M82 522 v8 M102 522 v8 M122 522 v8 M142 522 v8 M162 522 v8 M182 522 v8 M202 522 v8"/>
+    </g>
+    <g fill="none" stroke-linecap="round">
+      <path d="M96 384 C96 420 100 450 104 476" stroke="#6b5a3e" stroke-width="5"/>
+      <path d="M104 476 C112 492 112 506 106 520" stroke="#6b5a3e" stroke-width="5"/>
+      <path d="M120 476 C128 492 128 506 122 520" stroke="#6b5a3e" stroke-width="5"/>
+      <path d="M128 474 C144 446 168 432 186 420" stroke="#a45339" stroke-width="5" stroke-dasharray="7 6"/>
+    </g>
+    <!-- support bracket -->
+    <path d="M78 410 h-10 v40 h10" fill="none" stroke="#244638" stroke-width="2.5"/>
+    <text x="40" y="402" font-size="13" text-anchor="start"><tspan x="18">Support</tspan><tspan x="18" dy="16">near the</tspan><tspan x="18" dy="16">barrel</tspan></text>
+    <!-- reverse arrow around barrel -->
+    <path d="M178 532 C206 540 222 520 214 498 C208 482 192 470 174 470" fill="none" stroke="#a45339" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="262" y="414" font-size="14" font-weight="650"><tspan x="262">Last wrap</tspan><tspan x="262" dy="18">lifted off</tspan></text>
+    <text x="170" y="566" font-size="14">Turn the brush against the wrap</text>
+    <text x="170" y="586" font-size="14">direction, then do the next wrap</text>
+    <text x="170" y="612" font-size="14" font-weight="650">Needs force? Stop and get help</text>
+  </g>
+</svg>

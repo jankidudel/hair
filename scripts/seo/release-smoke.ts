@@ -4,6 +4,10 @@ import {
   seoGrowthUpdatedSlugs,
 } from '../../frontend/src/app/seo-growth-guides.ts';
 import {
+  megaBatchSlugs,
+  megaBatchUpdatedSlugs,
+} from '../../frontend/src/app/seo-mega-batch-guides.ts';
+import {
   exactModelSlugs,
   exactModelUpdatedSlugs,
 } from '../../frontend/src/app/exact-model-guides.ts';
@@ -53,6 +57,8 @@ const failures: string[] = [];
 const observations: { stage: string; path: string; errors: string[] }[] = [];
 const intended = [
   ...new Set([
+    ...megaBatchSlugs,
+    ...megaBatchUpdatedSlugs,
     ...seoGrowthSlugs,
     ...seoGrowthUpdatedSlugs,
     ...exactModelSlugs,
@@ -88,6 +94,7 @@ const expectedFor = (article: (typeof articles)[number]) => ({
       ...consolidatedUpdatedSlugs,
       ...exactModelUpdatedSlugs,
       ...seoGrowthUpdatedSlugs,
+      ...megaBatchUpdatedSlugs,
       ...remainingOpportunityUpdatedSlugs,
     ] as readonly string[]
   ).includes(article.slug),

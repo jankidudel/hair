@@ -119,6 +119,20 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
   {
+    slug: ArticleSlug.WhyHairGetsStaticAfterBrushing,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 612,
+    enabled: true,
+    publishDate: '2026-11-22',
+  },
+  {
+    slug: ArticleSlug.TangleTeezerOriginalVsUltimateDetangler,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 613,
+    enabled: true,
+    publishDate: '2026-11-22',
+  },
+  {
     slug: ArticleSlug.DysonAirwrapAttachmentCompatibility,
     group: ArticleGroupId.HotAirBrushes,
     order: 609,

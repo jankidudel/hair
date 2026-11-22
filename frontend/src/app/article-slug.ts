@@ -1,5 +1,9 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  WhyHairGetsStaticAfterBrushing: 'why-hair-gets-static-after-brushing',
+  TangleTeezerOriginalVsUltimateDetangler:
+    'tangle-teezer-original-vs-ultimate-detangler',
+
   DysonAirwrapAttachmentCompatibility: 'dyson-airwrap-attachment-compatibility',
   BounceCurlDefineVsVolumeEdgelift: 'bounce-curl-define-vs-volume-edgelift',
   MasonPearsonBrushSizeAndBristleGuide:

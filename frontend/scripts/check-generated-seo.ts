@@ -587,6 +587,7 @@ for (const [slug, diagram] of [
   [ArticleSlug.BounceCurlDefineVsVolumeEdgelift, 'bounce-curl-edge-spacing'],
   [ArticleSlug.RoundBrushSizeGuide, 'round-brush-measurements'],
   [ArticleSlug.HairDryerDiffuserCompatibility, 'diffuser-fit-measurements'],
+  [ArticleSlug.RoundBrushStuckInHair, 'round-brush-reverse-last-wrap'],
 ]) {
   const html = await readFile(
     resolve(output, 'guides', slug, 'index.html'),

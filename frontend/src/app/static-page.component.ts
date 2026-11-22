@@ -2,6 +2,7 @@ import { resolveGuideCardCopy } from './guide-card-copy';
 import { remainingOpportunityAliases } from './remaining-opportunity-guides';
 import { exactModelAliases } from './exact-model-guides';
 import { seoGrowthAliases } from './seo-growth-guides';
+import { megaBatchAliases } from './seo-mega-batch-guides';
 import { supportedUpdoCards } from './supported-updo-guides';
 import { straightenerGuideCards } from './straightener-guides';
 import { shapingMethodCards } from './shaping-method-guides';
@@ -750,6 +751,24 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 <a
                   [routerLink]="[
                     '/guides',
+                    articleSlug.WhyHairGetsStaticAfterBrushing,
+                  ]"
+                  >Why does hair get static when you brush it?</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.TangleTeezerOriginalVsUltimateDetangler,
+                  ]"
+                  >Tangle Teezer Original vs Ultimate Detangler</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
                     articleSlug.MasonPearsonBrushSizeAndBristleGuide,
                   ]"
                   >Mason Pearson sizes, bristles and model codes</a
@@ -1099,7 +1118,11 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
             for ribbon and individual-rod closure and coverage.
           </p>
           <p>
-            Buying a named kit or clip? Compare
+            Buying rollers? Try your shortest section first and count each size
+            separately with the
+            <a [routerLink]="['/guides', articleSlug.HairRollerSizeGuide]"
+              >roller size guide and count planner</a
+            >. Buying a named kit or clip? Compare
             <a
               [routerLink]="[
                 '/guides',
@@ -1870,6 +1893,7 @@ export class StaticPageComponent implements OnInit {
           article.slug,
           ...(consolidatedComparisonAliases[article.slug] ?? []),
           ...(seoGrowthAliases[article.slug] ?? []),
+          ...(megaBatchAliases[article.slug] ?? []),
           ...(exactModelAliases[article.slug] ?? []),
           ...(remainingOpportunityAliases[article.slug] ?? []),
         ].join(' '),
@@ -2239,7 +2263,7 @@ export class StaticPageComponent implements OnInit {
           {
             label: 'Plan roller sizes and pack coverage',
             path: '/guides/hair-roller-size-guide',
-            description: 'check curve, working width, closures and pieces',
+            description: 'try a first size, then count pieces per size',
           },
           {
             label: 'Choose bendable or snap rollers',

@@ -4,6 +4,10 @@ import {
   seoGrowthEvidence,
   seoGrowthSupplementarySources,
 } from './seo-growth-guides';
+import {
+  megaBatchEvidence,
+  megaBatchSupplementarySources,
+} from './seo-mega-batch-guides';
 import { consolidatedComparisonEvidence } from './consolidated-comparison-guides';
 import { supportedUpdoEvidence } from './supported-updo-guides';
 import { straightenerGuideEvidence } from './straightener-guides';
@@ -138,6 +142,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 const baseGuideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...megaBatchEvidence,
   ...seoGrowthEvidence,
   ...exactModelEvidence,
   ...consolidatedComparisonEvidence,
@@ -749,6 +754,7 @@ export const guideEvidence: Readonly<Record<string, GuideEvidence>> =
                 ...evidence.sources,
                 ...(remainingOpportunitySources[slug as ArticleSlug] ?? []),
                 ...(seoGrowthSupplementarySources[slug] ?? []),
+                ...(megaBatchSupplementarySources[slug] ?? []),
               ].map((source) => [source.url, source] as const),
             ).values(),
           ],

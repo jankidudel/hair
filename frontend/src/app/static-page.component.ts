@@ -38,9 +38,11 @@ import {
 } from './choose-use-fix-pathways.component';
 import { categoryPathways } from './category-pathways';
 import { AnalyticsService } from './analytics/analytics.service';
+import { trackComparisonClick } from './comparison-funnel';
 import { CONTACT_FORM_PRIVACY } from './contact-config';
 
 @Component({
+  host: { '(click)': 'trackHubComparisonLink($event)' },
   imports: [
     RouterLink,
     BreadcrumbsComponent,
@@ -456,10 +458,10 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                       articleSlug.DysonAirsmoothVsGhdDuetBlowdry,
                     ]"
                     >Airsmooth and Duet Blowdry</a
-                  >. For several attachment jobs, compare
+                  >. For several attachment jobs, compare the
                   <a
                     [routerLink]="['/guides', articleSlug.SharkGlamVsFlexstyle]"
-                    >Shark Glam and FlexStyle</a
+                    >UK Shark Glam and FlexStyle boxes</a
                   >. Confirm the exact body, permitted mode and selected box
                   before treating either route as a replacement for the tools
                   you own.
@@ -1818,7 +1820,10 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
         </p>
         <p>
           If you accept analytics, we record clicks on retailer links along with
-          the guide, retailer, and market for the offer.
+          the guide, retailer, market, model, the link's position on the page
+          and whether it is an affiliate link. We also record clicks from a
+          buying guide or category page to a product comparison, with both page
+          paths, the comparison's market and the link's position.
         </p>
         <h2>Choices and product comparisons</h2>
         <p>
@@ -2079,6 +2084,12 @@ export class StaticPageComponent implements OnInit {
   }[] = [];
   categoryBreadcrumbs: readonly Breadcrumb[] = [];
   page = 'home';
+
+  trackHubComparisonLink(event: MouseEvent): void {
+    if (this.page !== 'category' || this.category?.id !== 'hot-air-brushes')
+      return;
+    trackComparisonClick(this.analytics, '/hot-air-brushes', event.target);
+  }
 
   trackGuideTaskLink(
     taskGroup: 'roller_method' | 'hot_tool_care',

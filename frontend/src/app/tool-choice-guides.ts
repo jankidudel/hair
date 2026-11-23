@@ -231,9 +231,14 @@ export const toolChoiceCards: Readonly<
       'Compare two standalone UK brush appliances by head path and described heat system.',
   },
   [ArticleSlug.SharkGlamVsFlexstyle]: {
-    title: 'Shark Glam vs FlexStyle',
+    title: 'Shark Glam vs FlexStyle: UK models',
     description:
       'Check the selected UK boxes and the powered ceramic attachment boundary.',
+  },
+  [ArticleSlug.DysonAirwrapVsSharkFlexstyle]: {
+    title: 'Dyson Airwrap i.d. vs Shark FlexStyle HD430: US boxes',
+    description:
+      'Compare the exact US boxes by included attachments, bundle scope and routine fit.',
   },
   [ArticleSlug.AutomaticHairCurlerVsCurlingWand]: {
     title: 'Automatic hair curler vs curling wand',

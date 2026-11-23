@@ -58,7 +58,12 @@ import { seoGrowthSupplementarySources } from './seo-growth-guides';
 import { megaBatchSupplementarySources } from './seo-mega-batch-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
-import { GHD_UK_RETAILER_OFFERS } from './retailer-availability';
+import {
+  RETAILER_OFFERS,
+  type RetailerOfferGroup,
+} from './retailer-availability';
+import { RetailerOffersComponent } from './retailer-offers.component';
+import { funnelSourceSlugs, trackComparisonClick } from './comparison-funnel';
 
 const safetyInsertionHeading: Readonly<Record<string, string>> = {
   [ArticleSlug.HowToCleanHairStraightenerPlates]:
@@ -137,13 +142,14 @@ export function splitEvidenceArticleHtml(
     UpgradeCheckComponent,
     CleanInspectStopComponent,
     HeadFitWorksheetComponent,
+    RetailerOffersComponent,
   ],
   styleUrl: 'article-page.component.css',
   template: `@if (article) {
     <article
       class="article-page"
       [class.task-guide]="!!guideEvidenceContent"
-      (click)="trackGuideTaskLink($event)"
+      (click)="trackGuideTaskLink($event); trackComparisonLink($event)"
       [class.round-brush-guide]="
         article.slug === articleSlug.RoundBrushSizeGuide
       "
@@ -171,6 +177,12 @@ export function splitEvidenceArticleHtml(
       </header>
       @if (decisionSnapshot) {
         <app-decision-snapshot [content]="decisionSnapshot" />
+      }
+      @if (retailerAfterSnapshot) {
+        <app-retailer-offers
+          [group]="retailerGroup!"
+          [guidePath]="'/guides/' + article.slug"
+        />
       }
       @if (article.commercialOutcome === 'selection-guide') {
         <aside class="selection-guide-note">
@@ -236,35 +248,10 @@ export function splitEvidenceArticleHtml(
           class="article-body"
           [innerHTML]="articleHtmlBeforeRetailers"
         ></section>
-        <section
-          class="article-body retailer-availability"
-          aria-labelledby="retailer-availability-heading"
-        >
-          <h2 id="retailer-availability-heading">
-            Check retailer availability
-          </h2>
-          <p>These links are for the UK models compared above.</p>
-          @if (hasAffiliateOffer) {
-            <p>We may earn a commission if you buy through links marked Ad.</p>
-          }
-          <ul>
-            @for (offer of ghdRetailerOffers; track offer.product) {
-              <li>
-                <span>{{ offer.product }}</span>
-                <a
-                  [href]="offer.affiliateUrl || offer.url"
-                  [attr.rel]="offer.affiliateUrl ? 'sponsored' : null"
-                  (click)="trackGhdRetailerLink()"
-                  (auxclick)="trackGhdRetailerLink($event)"
-                >
-                  {{
-                    offer.affiliateUrl ? 'Ad ' + offer.label : offer.label
-                  }}</a
-                >
-              </li>
-            }
-          </ul>
-        </section>
+        <app-retailer-offers
+          [group]="retailerGroup!"
+          [guidePath]="'/guides/' + article.slug"
+        />
         <section class="article-body" [innerHTML]="articleHtmlMain"></section>
       } @else if (articleHtmlBeforePlanner) {
         <section
@@ -414,10 +401,11 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
-  readonly ghdRetailerOffers = inject(GHD_UK_RETAILER_OFFERS);
-  readonly hasAffiliateOffer = this.ghdRetailerOffers.some(
-    (offer) => !!offer.affiliateUrl,
-  );
+  private readonly retailerOffers = inject(RETAILER_OFFERS);
+  retailerGroup?: RetailerOfferGroup;
+  get retailerAfterSnapshot(): boolean {
+    return this.retailerGroup?.placement.kind === 'after-decision-snapshot';
+  }
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private safetyObserver?: IntersectionObserver;
@@ -513,11 +501,12 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
           this.articleHtmlMain,
         );
       }
-      if (slug === ArticleSlug.GhdSpeedVsHelios) {
+      this.retailerGroup = this.retailerOffers[slug as ArticleSlug];
+      if (this.retailerGroup?.placement.kind === 'before-heading') {
         [this.articleHtmlBeforeRetailers, this.articleHtmlMain] =
           splitBeforeHeading(
             this.articleHtmlMain || this.articleHtml,
-            'Give setting memory a real job',
+            this.retailerGroup.placement.heading,
           );
       }
       const plannerHeading = plannerInsertionHeading[this.article.slug];
@@ -648,13 +637,13 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
     this.safetyObserver.observe(safety);
   }
 
-  trackGhdRetailerLink(event?: MouseEvent): void {
-    if (event && event.button !== 1) return;
-    this.analytics.track('retailer_outbound_click', {
-      guide_path: `/guides/${ArticleSlug.GhdSpeedVsHelios}`,
-      merchant: 'ghd',
-      offer_market: 'UK',
-    });
+  trackComparisonLink(event: MouseEvent): void {
+    if (!this.article || !funnelSourceSlugs.has(this.article.slug)) return;
+    trackComparisonClick(
+      this.analytics,
+      `/guides/${this.article.slug}`,
+      event.target,
+    );
   }
 
   trackGuideTaskLink(event: MouseEvent): void {

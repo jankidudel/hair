@@ -1,0 +1,39 @@
+.retailer-availability {
+  margin: 2rem 0;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-family: var(--serif);
+  font-size: 1.14rem;
+  line-height: 1.75;
+}
+.retailer-availability h2 {
+  margin: 0 0 0.65rem;
+  padding: 0;
+  border: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.retailer-availability a {
+  color: var(--green);
+  font-weight: 650;
+}
+.retailer-availability ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.retailer-availability li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--border);
+}
+.retailer-availability li a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  overflow-wrap: anywhere;
+}

@@ -1,6 +1,6 @@
 # CombReport keyword research and URL decisions
 
-The [22 November mega-batch review](mega-batch-2026-11-22-implementation-review.md) records the latest work: U01–U04 refreshed, two new guides (static after brushing; Tangle Teezer Original vs Ultimate Detangler), partial R03/R04 additions and a live reconciliation of the 96 older local rows. The CSV now has 314 DONE, two PLANNED (implemented, awaiting release), four RESEARCH and four DECLINED records. Local completion is distinct from release.
+The [22 November mega-batch review](mega-batch-2026-11-22-implementation-review.md) records the latest work: U01–U04 refreshed, two new guides (static after brushing; Tangle Teezer Original vs Ultimate Detangler), partial R03/R04 additions and a live reconciliation of the 96 older local rows. The batch is deployed and verified live. The CSV now has 316 DONE, four RESEARCH and four DECLINED records.
 
 The [18 November exact-model implementation](#18-november-exact-model-implementation) records the original nine-guide batch. The completion review above adds the remaining supported existing-owner answers and identifies the four manufacturer holds.
 

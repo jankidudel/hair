@@ -74,6 +74,10 @@ export const categoryPathways: Readonly<
           path: guide(ArticleSlug.BestHotAirBrushes),
         },
         {
+          label: 'Choose multi-styler attachments',
+          path: guide(ArticleSlug.HowToChooseMultiStylerAttachments),
+        },
+        {
           label: 'Compare current Revlon One-Step versions',
           path: guide(ArticleSlug.RevlonOneStepVolumizerVsPlus),
         },

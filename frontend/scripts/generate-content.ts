@@ -91,6 +91,10 @@ const articleHtmlSchema: Options = {
     'sub',
   ],
   attributes: {
+    // Stable section anchors for jump links; rehype-sanitize prefixes them
+    // with `user-content-`, so link to `/guides/<slug>#user-content-<id>`.
+    h2: ['id'],
+    h3: ['id'],
     p: ['className'],
     figure: [['className', 'accessory-schematic']],
     ul: ['className'],

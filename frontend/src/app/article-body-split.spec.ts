@@ -30,7 +30,8 @@ describe('per-article body split', () => {
         html: article.html,
         faq: article.faq,
       });
-  });
+    // One dynamic import per published article; runtime grows with the catalogue.
+  }, 20_000);
 
   it('resolves a body by route slug and an empty body for an unknown slug', async () => {
     const [first] = fullArticles;

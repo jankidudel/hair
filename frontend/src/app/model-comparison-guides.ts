@@ -11,6 +11,10 @@ export const modelComparisonDescriptions: Readonly<
     'Compare two exact UK consumer boxes and their attachment jobs.',
   [ArticleSlug.DysonAirstraitVsGhdDuetStyle]:
     "Separate airflow straightening from the combined tool's wet and dry-only modes.",
+  [ArticleSlug.DysonAirsmoothVsDysonAirstrait]:
+    'Choose between a standalone styling brush and airflow straightening arms in the named UK listings.',
+  [ArticleSlug.DysonAirstraitVsCorraleCoolshine]:
+    'Separate a wet-to-dry airflow straightener from a corded dry-use plate straightener.',
   [ArticleSlug.DysonAirwrapIdVsCoAnda2x]:
     'Check connected features, attachment fit and which jobs justify a new kit.',
   [ArticleSlug.T3AirebrushVsAirebrushRound]:
@@ -68,6 +72,10 @@ export const modelComparisonGroups: Readonly<
         slug: ArticleSlug.DysonAirwrapIdVsCoAnda2x,
       },
       {
+        label: 'Dyson Airsmooth vs Airstrait',
+        slug: ArticleSlug.DysonAirsmoothVsDysonAirstrait,
+      },
+      {
         label: 'T3 AireBrush vs AireBrush Round',
         slug: ArticleSlug.T3AirebrushVsAirebrushRound,
       },
@@ -81,6 +89,10 @@ export const modelComparisonGroups: Readonly<
       {
         label: 'Dyson Airstrait vs ghd Duet Style',
         slug: ArticleSlug.DysonAirstraitVsGhdDuetStyle,
+      },
+      {
+        label: 'Dyson Airstrait vs Corrale CoolShine',
+        slug: ArticleSlug.DysonAirstraitVsCorraleCoolshine,
       },
       {
         label: 'T3 SinglePass Curl X vs ghd Soft Curl',

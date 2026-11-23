@@ -1,5 +1,7 @@
 # CombReport keyword research and URL decisions
 
+The 23 November search growth batch (rows `cr-2026-11-23-*`) implements E01–E09, E12 and E13, publishes 11 new guides and holds 10 as disabled drafts whose primary maker listings could not be verified (Dyson, ghd, Drybar and Best Buy returned 403 or timeouts, Conair 404, Wet Brush and Cloud Nine 429). E10 and E11 wait on the held N01. The batch is implemented locally and not deployed; rows stay PLANNED/NEW or RESEARCH until a post-deploy check.
+
 The [22 November mega-batch review](mega-batch-2026-11-22-implementation-review.md) records the latest work: U01–U04 refreshed, two new guides (static after brushing; Tangle Teezer Original vs Ultimate Detangler), partial R03/R04 additions and a live reconciliation of the 96 older local rows. The batch is deployed and verified live. The CSV now has 316 DONE, four RESEARCH and four DECLINED records.
 
 The [18 November exact-model implementation](#18-november-exact-model-implementation) records the original nine-guide batch. The completion review above adds the remaining supported existing-owner answers and identifies the four manufacturer holds.

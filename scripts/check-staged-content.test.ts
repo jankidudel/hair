@@ -100,3 +100,26 @@ test('allows links to the hair tool routine builder', () => {
   });
   assert.deepEqual(errors, []);
 });
+
+test('allows a same-page jump link to a heading anchor', () => {
+  const body = `<p>${'Useful routine context '.repeat(250)}</p><a href="/guides/{{ArticleSlug.IonicVsCeramicHairDryer}}#user-content-labels">Jump</a><h2 id="labels">Labels</h2>`;
+  const errors = validateStagedGuide({
+    file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
+    source: source(entry.slug, body),
+    entry,
+    today: '2026-09-06',
+  });
+  assert.deepEqual(errors, []);
+});
+
+test('rejects a same-page jump link without a matching heading id', () => {
+  const body = `<p>${'Useful routine context '.repeat(250)}</p><a href="/guides/{{ArticleSlug.IonicVsCeramicHairDryer}}#user-content-missing">Jump</a>`;
+  const errors = validateStagedGuide({
+    file: 'frontend/content/ionic-vs-ceramic-hair-dryer.html',
+    source: source(entry.slug, body),
+    entry,
+    today: '2026-09-06',
+  });
+  assert.equal(errors.length, 1);
+  assert.match(errors[0], /no matching heading id/);
+});

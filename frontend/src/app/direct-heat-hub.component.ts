@@ -159,7 +159,22 @@ import {
             ]"
             >Corrale CoolShine versus original Corrale</a
           >. Keep user controls, internal regulation and power arrangements as
-          separate choices.
+          separate choices. For the settings you can actually select on current
+          UK irons, see
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.BestAdjustableTemperatureHairStraighteners,
+            ]"
+            >adjustable-temperature straighteners</a
+          >; for Dyson’s wet-to-dry and dry-use tools, compare
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.DysonAirstraitVsCorraleCoolshine,
+            ]"
+            >Airstrait and Corrale CoolShine</a
+          >.
         </p>
         <p>
           Compare

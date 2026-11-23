@@ -57,20 +57,20 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-dryers',
     'hub',
-    '2026-11-19',
-    'Growth batch: discovery-card titles, new owners and calculators',
+    '2026-11-23',
+    'Search growth batch: new owners, dryer specs and short-hair choices',
   ),
   page(
     '/hot-air-brushes',
     'hub',
-    '2026-11-19',
-    'Growth batch: discovery-card titles, new owners and calculators',
+    '2026-11-23',
+    'Search growth batch: new owners, dryer specs and short-hair choices',
   ),
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-22',
-    'Mega batch: static and Tangle Teezer pilots, roller count planner',
+    '2026-11-23',
+    'Search growth batch: new owners, dryer specs and short-hair choices',
   ),
   page(
     '/hair-accessories',
@@ -81,8 +81,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-11-22',
-    'Mega batch: static and Tangle Teezer pilots, roller count planner',
+    '2026-11-23',
+    'Search growth batch: new owners, dryer specs and short-hair choices',
   ),
   page(
     '/hair-brush-finder',
@@ -93,8 +93,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/flat-irons',
     'hub',
-    '2026-11-18',
-    'Exact-model choices and attachment discovery',
+    '2026-11-23',
+    'Search growth batch: new owners, dryer specs and short-hair choices',
   ),
   page(
     '/curling-irons',
@@ -131,7 +131,12 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
     '2026-10-25',
     'Batch 22 evidence and date explanations',
   ),
-  page('/corrections-policy', 'policy'),
+  page(
+    '/corrections-policy',
+    'policy',
+    '2026-11-23',
+    'Search growth batch: what to include and what happens after a report',
+  ),
   page('/privacy', 'policy'),
   page('/affiliate-disclosure', 'policy'),
   page('/contact', 'policy'),

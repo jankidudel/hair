@@ -3,6 +3,7 @@ import { remainingOpportunityAliases } from './remaining-opportunity-guides';
 import { exactModelAliases } from './exact-model-guides';
 import { seoGrowthAliases } from './seo-growth-guides';
 import { megaBatchAliases } from './seo-mega-batch-guides';
+import { searchGrowthAliases } from './seo-search-growth-guides';
 import { supportedUpdoCards } from './supported-updo-guides';
 import { straightenerGuideCards } from './straightener-guides';
 import { shapingMethodCards } from './shaping-method-guides';
@@ -458,6 +459,13 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                       articleSlug.DysonAirsmoothVsGhdDuetBlowdry,
                     ]"
                     >Airsmooth and Duet Blowdry</a
+                  >; for a brush versus straightening arms, compare
+                  <a
+                    [routerLink]="[
+                      '/guides',
+                      articleSlug.DysonAirsmoothVsDysonAirstrait,
+                    ]"
+                    >Airsmooth and Airstrait</a
                   >. For several attachment jobs, compare the
                   <a
                     [routerLink]="['/guides', articleSlug.SharkGlamVsFlexstyle]"
@@ -510,7 +518,18 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 To read a rating label and estimate what a dryer costs to run,
                 use the
                 <a [routerLink]="['/guides', articleSlug.HairDryerWattageGuide]"
-                  >wattage and running-cost calculator</a
+                  >hair dryer specs and running-cost calculator</a
+                >. Choosing by routine? Start with
+                <a [routerLink]="['/guides', articleSlug.HairDryerChooser]"
+                  >how to choose a hair dryer</a
+                >
+                or, for short styles,
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.BestHairDryerForShortHair,
+                  ]"
+                  >dryers for a fringe, bob or crop</a
                 >. Check a diffuser with the
                 <a
                   [routerLink]="[
@@ -583,7 +602,22 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
             whole-machine choice, compare
             <a [routerLink]="['/guides', articleSlug.DysonAirwrapIdVsCoAnda2x]"
               >Airwrap i.d. and Co-anda2x</a
-            >.
+            >. Buying a Shark multi-styler? Compare
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.SharkFlexstyleModelsCompared,
+              ]"
+              >the UK FlexStyle kits</a
+            >
+            by what is in each box. For long lengths, see
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.BestHotAirBrushesForLongHair,
+              ]"
+              >hot-air brushes for long hair</a
+            >, which compares two US Revlon oval heads.
           </p>
           <p>
             <a href="/guides/hot-air-brush-barrel-size-guide#head-fit-worksheet"
@@ -1763,6 +1797,51 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           We do not alter dates merely because a page is rebuilt.
         </p>
         <p><a routerLink="/contact">Report a correction</a></p>
+        <h2>What to include</h2>
+        <p>
+          A correction is quickest to check when it points at one statement and
+          one source. Please include:
+        </p>
+        <ul>
+          <li>
+            the full URL of the article, so we look at the same page and market
+            you did;
+          </li>
+          <li>the exact sentence, table cell or figure you think is wrong;</li>
+          <li>what you expect it to say instead; and</li>
+          <li>
+            the source that supports it, such as the maker’s product page or
+            manual, with the model code, the market it covers and the date you
+            viewed it.
+          </li>
+        </ul>
+        <p>
+          A model code matters because the same product name can describe
+          different boxes, plugs or settings in different countries. If your
+          source covers another market or generation, say so; it may still show
+          that our page needs a clearer scope line.
+        </p>
+        <h2>What happens after you report it</h2>
+        <p>
+          We check the statement against the exact model and market the article
+          names, using the source you sent and the maker’s current material.
+          Where the published text is materially inaccurate, we correct it,
+          update the source record and its check date, and record the date of
+          the material change in our editorial record. Where a source cannot be
+          verified, the field is marked as unknown rather than replaced with a
+          guess.
+        </p>
+        <p>
+          We do not change wording simply because a different source disagrees
+          without evidence for the exact model, and we do not promise a
+          particular response time. If we need more detail, we reply through the
+          contact form’s reply address.
+        </p>
+        <p>
+          <a routerLink="/contact"
+            >Send a correction through the contact form</a
+          >
+        </p>
       </section>
     }
     @case ('privacy') {
@@ -1899,6 +1978,7 @@ export class StaticPageComponent implements OnInit {
           ...(consolidatedComparisonAliases[article.slug] ?? []),
           ...(seoGrowthAliases[article.slug] ?? []),
           ...(megaBatchAliases[article.slug] ?? []),
+          ...(searchGrowthAliases[article.slug] ?? []),
           ...(exactModelAliases[article.slug] ?? []),
           ...(remainingOpportunityAliases[article.slug] ?? []),
         ].join(' '),

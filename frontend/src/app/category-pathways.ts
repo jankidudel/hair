@@ -20,6 +20,14 @@ export const categoryPathways: Readonly<
           path: guide(ArticleSlug.HairDryerChooser),
         },
         {
+          label: 'Choose a dryer for a fringe, bob or crop',
+          path: guide(ArticleSlug.BestHairDryerForShortHair),
+        },
+        {
+          label: 'Compare lightweight dryers by weight basis',
+          path: guide(ArticleSlug.BestLightweightHairDryers),
+        },
+        {
           label: 'Compare Dyson Supersonic and Shark SpeedStyle',
           path: guide(ArticleSlug.DysonSupersonicVsSharkSpeedstyle),
         },
@@ -42,6 +50,14 @@ export const categoryPathways: Readonly<
           label: 'Use a diffuser',
           path: guide(ArticleSlug.HowToUseAHairDryerDiffuser),
         },
+        {
+          label: 'Use a wide-tooth comb attachment',
+          path: guide(ArticleSlug.HowToUseAHairDryerCombAttachment),
+        },
+        {
+          label: 'Find a replacement nozzle that fits',
+          path: guide(ArticleSlug.HairDryerReplacementNozzleCompatibility),
+        },
       ],
     },
     {
@@ -51,6 +67,14 @@ export const categoryPathways: Readonly<
         {
           label: 'Hair drying takes too long',
           path: guide(ArticleSlug.HairDryerTakesTooLong),
+        },
+        {
+          label: 'Hair looks frizzy after blow-drying',
+          path: guide(ArticleSlug.WhyIsMyHairFrizzyAfterBlowDrying),
+        },
+        {
+          label: 'The dryer only blows cold air',
+          path: guide(ArticleSlug.HairDryerOnlyBlowsColdAir),
         },
         {
           label: 'A blowout loses its shape',
@@ -76,6 +100,14 @@ export const categoryPathways: Readonly<
         {
           label: 'Choose multi-styler attachments',
           path: guide(ArticleSlug.HowToChooseMultiStylerAttachments),
+        },
+        {
+          label: 'Compare UK Shark FlexStyle kits',
+          path: guide(ArticleSlug.SharkFlexstyleModelsCompared),
+        },
+        {
+          label: 'Choose a hot-air brush for long hair',
+          path: guide(ArticleSlug.BestHotAirBrushesForLongHair),
         },
         {
           label: 'Compare current Revlon One-Step versions',
@@ -136,6 +168,10 @@ export const categoryPathways: Readonly<
         {
           label: 'Choose a brush by job',
           path: guide(ArticleSlug.HowToChooseHairBrush),
+        },
+        {
+          label: 'Choose a brush for long hair',
+          path: guide(ArticleSlug.BestHairBrushesForLongHair),
         },
         {
           label: 'Compare a wide-tooth comb and detangler',

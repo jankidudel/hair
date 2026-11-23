@@ -189,9 +189,9 @@ const sources: Readonly<Record<string, GuideSource>> = {
     model: 'Shark FlexStyle HD430',
     market: 'US',
     url: 'https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html',
-    checkedDate: '18 November 2026',
+    checkedDate: '23 November 2026',
     scope:
-      'Named US two-barrel, oval, paddle and concentrator box only; cross-brand fit unknown.',
+      'Listed as FlexStyle 5-in-1 Air Styler & Hair Dryer, Stone; two 1.25-inch curlers, oval, paddle and concentrator box, no diffuser; cross-brand fit unknown.',
   },
   t3: {
     label: 'T3 Aire 360 next-generation dual-voltage FAQ',

@@ -100,7 +100,7 @@ describe('decision support components', () => {
         (item) => item.textContent,
       ),
     ).toEqual(['Choose', 'Use', 'Fix']);
-    expect(element.querySelectorAll('a')).toHaveLength(9);
+    expect(element.querySelectorAll('a')).toHaveLength(15);
     expect(element.querySelector('a')?.getAttribute('href')).toBe(
       '/guides/how-to-choose-hair-dryer',
     );

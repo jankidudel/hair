@@ -1,5 +1,31 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  HowToChooseADysonAirwrap: 'how-to-choose-a-dyson-airwrap',
+  DysonAirsmoothVsDysonAirstrait: 'dyson-airsmooth-vs-dyson-airstrait',
+  WhyIsMyHairFrizzyAfterBlowDrying: 'why-is-my-hair-frizzy-after-blow-drying',
+  SharkFlexstyleModelsCompared: 'shark-flexstyle-models-compared',
+  DysonSupersonicVsSupersonicNural: 'dyson-supersonic-vs-supersonic-nural',
+  GhdOriginalVsGold: 'ghd-original-vs-gold',
+  SharkSpeedstyleVsFlexstyle: 'shark-speedstyle-vs-flexstyle',
+  RevlonOneStepPlusVsSharkSmoothstyle:
+    'revlon-one-step-plus-vs-shark-smoothstyle',
+  WetBrushOriginalDetanglerVsSpeedDry:
+    'wet-brush-original-detangler-vs-speed-dry',
+  DysonAirstraitVsCorraleCoolshine: 'dyson-airstrait-vs-corrale-coolshine',
+  BestLightweightHairDryers: 'best-lightweight-hair-dryers',
+  BestHairBrushesForLongHair: 'best-hair-brushes-for-long-hair',
+  BestHotAirBrushesForLongHair: 'best-hot-air-brushes-for-long-hair',
+  BestFlatIronsForShortHair: 'best-flat-irons-for-short-hair',
+  BestAdjustableTemperatureHairStraighteners:
+    'best-adjustable-temperature-hair-straighteners',
+  HairDryersWithCombAttachment: 'hair-dryers-with-comb-attachment',
+  HowToCleanADysonAirwrapFilter: 'how-to-clean-a-dyson-airwrap-filter',
+  HairDryerReplacementNozzleCompatibility:
+    'hair-dryer-replacement-nozzle-compatibility',
+  HowToUseAHairDryerCombAttachment: 'how-to-use-a-hair-dryer-comb-attachment',
+  HairDryerOnlyBlowsColdAir: 'hair-dryer-only-blows-cold-air',
+  DrybarDoubleShotVsRevlonOneStep: 'drybar-double-shot-vs-revlon-one-step',
+
   WhyHairGetsStaticAfterBrushing: 'why-hair-gets-static-after-brushing',
   TangleTeezerOriginalVsUltimateDetangler:
     'tangle-teezer-original-vs-ultimate-detangler',

@@ -56,6 +56,7 @@ import { additionalGuideSources } from './current-model-comparison-guides';
 import { remainingOpportunitySources } from './remaining-opportunity-guides';
 import { seoGrowthSupplementarySources } from './seo-growth-guides';
 import { megaBatchSupplementarySources } from './seo-mega-batch-guides';
+import { searchGrowthSupplementarySources } from './seo-search-growth-guides';
 import { guideContextualIntegrations } from './guide-contextual-integrations';
 import { AnalyticsService } from './analytics/analytics.service';
 import {
@@ -63,6 +64,7 @@ import {
   type RetailerOfferGroup,
 } from './retailer-availability';
 import { RetailerOffersComponent } from './retailer-offers.component';
+import { AnchoredHtmlPipe } from './anchored-html.pipe';
 import { funnelSourceSlugs, trackComparisonClick } from './comparison-funnel';
 
 const safetyInsertionHeading: Readonly<Record<string, string>> = {
@@ -71,6 +73,17 @@ const safetyInsertionHeading: Readonly<Record<string, string>> = {
   [ArticleSlug.HowToCleanACurlingIronOrWand]:
     'What not to use unless the manual permits it',
   [ArticleSlug.FlatIronSnaggingHair]: 'When to seek support',
+};
+
+/**
+ * Static article HTML that must precede the page's interactive tools: the
+ * body is split before this heading and the leading part renders above them.
+ */
+const toolsInsertionHeading: Readonly<Record<string, string>> = {
+  [ArticleSlug.HairDryerWattageGuide]:
+    'Worked example: what a 2,000 W dryer uses',
+  [ArticleSlug.HairDryerChooser]: 'Named comparisons by routine',
+  [ArticleSlug.HowToBlowDryHair]: 'Detailed steps',
 };
 
 /** Interactive planners rendered inside the article body, before a heading. */
@@ -126,6 +139,7 @@ export function splitEvidenceArticleHtml(
 @Component({
   imports: [
     RouterLink,
+    AnchoredHtmlPipe,
     BreadcrumbsComponent,
     RoundBrushSizeFinderComponent,
     HairDryerFinderComponent,
@@ -189,6 +203,12 @@ export function splitEvidenceArticleHtml(
           <strong>Selection guide, not a product ranking.</strong>
         </aside>
       }
+      @if (articleHtmlBeforeTools) {
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlBeforeTools | anchoredHtml"
+        ></section>
+      }
       @switch (article.slug) {
         @case (articleSlug.RoundBrushSizeGuide) {
           <app-round-brush-size-finder />
@@ -227,7 +247,7 @@ export function splitEvidenceArticleHtml(
         @if (articleHtmlBeforeTable) {
           <section
             class="article-body"
-            [innerHTML]="articleHtmlBeforeTable"
+            [innerHTML]="articleHtmlBeforeTable | anchoredHtml"
           ></section>
         }
         <app-evidence-scope
@@ -236,27 +256,30 @@ export function splitEvidenceArticleHtml(
         />
         <section
           class="article-body"
-          [innerHTML]="articleHtmlBeforeUpgrade"
+          [innerHTML]="articleHtmlBeforeUpgrade | anchoredHtml"
         ></section>
         <app-upgrade-check />
         <section
           class="article-body"
-          [innerHTML]="articleHtmlAfterUpgrade"
+          [innerHTML]="articleHtmlAfterUpgrade | anchoredHtml"
         ></section>
       } @else if (articleHtmlBeforeRetailers) {
         <section
           class="article-body"
-          [innerHTML]="articleHtmlBeforeRetailers"
+          [innerHTML]="articleHtmlBeforeRetailers | anchoredHtml"
         ></section>
         <app-retailer-offers
           [group]="retailerGroup!"
           [guidePath]="'/guides/' + article.slug"
         />
-        <section class="article-body" [innerHTML]="articleHtmlMain"></section>
+        <section
+          class="article-body"
+          [innerHTML]="articleHtmlMain | anchoredHtml"
+        ></section>
       } @else if (articleHtmlBeforePlanner) {
         <section
           class="article-body"
-          [innerHTML]="articleHtmlBeforePlanner"
+          [innerHTML]="articleHtmlBeforePlanner | anchoredHtml"
         ></section>
         @switch (article.slug) {
           @case (articleSlug.HairRollerSizeGuide) {
@@ -265,22 +288,22 @@ export function splitEvidenceArticleHtml(
         }
         <section
           class="article-body"
-          [innerHTML]="articleHtmlAfterPlanner"
+          [innerHTML]="articleHtmlAfterPlanner | anchoredHtml"
         ></section>
       } @else if (articleHtmlBeforeSafety) {
         <section
           class="article-body"
-          [innerHTML]="articleHtmlBeforeSafety"
+          [innerHTML]="articleHtmlBeforeSafety | anchoredHtml"
         ></section>
         <app-clean-inspect-stop />
         <section
           class="article-body"
-          [innerHTML]="articleHtmlAfterSafety"
+          [innerHTML]="articleHtmlAfterSafety | anchoredHtml"
         ></section>
       } @else {
         <section
           class="article-body"
-          [innerHTML]="articleHtmlMain || articleHtml"
+          [innerHTML]="articleHtmlMain || articleHtml | anchoredHtml"
         ></section>
       }
       @if (article.slug === articleSlug.HotAirBrushBarrelSizeGuide) {
@@ -432,6 +455,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
               ] ?? []),
               ...(seoGrowthSupplementarySources[this.article.slug] ?? []),
               ...(megaBatchSupplementarySources[this.article.slug] ?? []),
+              ...(searchGrowthSupplementarySources[this.article.slug] ?? []),
             ].map((source) => [source.url, source] as const),
           ).values(),
         ]
@@ -471,6 +495,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtmlBeforeSafety = '';
   articleHtmlBeforeRetailers = '';
   articleHtmlAfterSafety = '';
+  articleHtmlBeforeTools = '';
   articleHtmlBeforePlanner = '';
   articleHtmlAfterPlanner = '';
   articleHtmlIntro = '';
@@ -500,6 +525,14 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
         [this.articleHtmlMain, this.articleHtmlFaq] = splitInlineFaq(
           this.articleHtmlMain,
         );
+      }
+      const toolsHeading = toolsInsertionHeading[this.article.slug];
+      if (toolsHeading) {
+        [this.articleHtmlBeforeTools, this.articleHtmlMain] =
+          splitBeforeHeading(
+            this.articleHtmlMain || this.articleHtml,
+            toolsHeading,
+          );
       }
       this.retailerGroup = this.retailerOffers[slug as ArticleSlug];
       if (this.retailerGroup?.placement.kind === 'before-heading') {

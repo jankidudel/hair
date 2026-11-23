@@ -129,11 +129,13 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
       errors.push(`${prefix}: references an unknown SitePath '${href[1]}'.`);
     if (!path) continue;
     if (!path.startsWith('/')) continue;
-    const guideSlugReference = path.match(/^\/guides\/([^/#?]+)$/)?.[1];
+    // Validate the route only; a #fragment or ?query does not change it.
+    const [route, fragment] = path.split(/[?#]/, 2);
+    const guideSlugReference = route.match(/^\/guides\/([^/#?]+)$/)?.[1];
     const guideSlug = guideSlugReference
       ? (resolveArticleSlugReference(guideSlugReference) ?? guideSlugReference)
       : undefined;
-    const comparisonSlugReference = path.match(/^\/products\/([^/#?]+)$/)?.[1];
+    const comparisonSlugReference = route.match(/^\/products\/([^/#?]+)$/)?.[1];
     const comparisonSlug = comparisonSlugReference
       ? (resolveArticleSlugReference(comparisonSlugReference) ??
         comparisonSlugReference)
@@ -149,8 +151,17 @@ export function validateStagedGuide(input: StagedGuideInput): string[] {
       )
     )
       errors.push(`${prefix}: links to unknown product comparison '${path}'.`);
-    else if (!guideSlug && !comparisonSlug && !staticRoutes.has(path))
+    else if (!guideSlug && !comparisonSlug && !staticRoutes.has(route))
       errors.push(`${prefix}: links to unknown internal route '${path}'.`);
+    // A same-page jump link must point at a heading anchor in this article
+    // (the generator prefixes heading ids with `user-content-`).
+    if (
+      guideSlug &&
+      guideSlug === slug &&
+      fragment?.startsWith('user-content-') &&
+      !parsed.content.includes(`id="${fragment.slice('user-content-'.length)}"`)
+    )
+      errors.push(`${prefix}: jump link '${path}' has no matching heading id.`);
   }
   return errors;
 }

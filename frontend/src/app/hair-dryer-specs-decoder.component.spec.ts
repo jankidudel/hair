@@ -27,9 +27,18 @@ it('renders the specs introduction above the decoder and returns a result from t
   const page: HTMLElement = fixture.nativeElement;
   const lede = page.querySelector('.article-header .lede')!;
   const decoder = page.querySelector('.hair-dryer-specs-decoder')!;
-  expect(lede.textContent).toContain('Use the Specs Decoder below');
+  expect(lede.textContent).toContain(
+    'Use the label decoder to read your dryer',
+  );
   expect(
     lede.compareDocumentPosition(decoder) & Node.DOCUMENT_POSITION_FOLLOWING,
+  ).toBeTruthy();
+  const labelTable = page.querySelector(
+    'table[aria-label="Read the label and the product listing"]',
+  )!;
+  expect(
+    labelTable.compareDocumentPosition(decoder) &
+      Node.DOCUMENT_POSITION_FOLLOWING,
   ).toBeTruthy();
   for (const selector of [
     '[name="location"][value="home"]',

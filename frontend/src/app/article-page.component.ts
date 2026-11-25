@@ -263,6 +263,16 @@ export function splitEvidenceArticleHtml(
           class="article-body"
           [innerHTML]="articleHtmlAfterUpgrade | anchoredHtml"
         ></section>
+        @if (articleHtmlAfterEvidenceRetailers) {
+          <app-retailer-offers
+            [group]="retailerGroup!"
+            [guidePath]="'/guides/' + article.slug"
+          />
+          <section
+            class="article-body"
+            [innerHTML]="articleHtmlAfterEvidenceRetailers | anchoredHtml"
+          ></section>
+        }
       } @else if (articleHtmlBeforeRetailers) {
         <section
           class="article-body"
@@ -492,6 +502,8 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
   articleHtmlBeforeTable = '';
   articleHtmlBeforeUpgrade = '';
   articleHtmlAfterUpgrade = '';
+  /** Evidence-owner HTML after a retailer block placed in the final segment. */
+  articleHtmlAfterEvidenceRetailers = '';
   articleHtmlBeforeSafety = '';
   articleHtmlBeforeRetailers = '';
   articleHtmlAfterSafety = '';
@@ -579,6 +591,15 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
           this.articleHtml,
           evidenceOwner.upgradeBeforeHeading,
         );
+        if (this.retailerGroup?.placement.kind === 'before-heading') {
+          [
+            this.articleHtmlAfterUpgrade,
+            this.articleHtmlAfterEvidenceRetailers,
+          ] = splitBeforeHeading(
+            this.articleHtmlAfterUpgrade,
+            this.retailerGroup.placement.heading,
+          );
+        }
       }
       this.guideLinks = guideLinkMap[this.article.slug];
       this.relatedGuides = (this.guideLinks?.relatedSlugs ?? [])

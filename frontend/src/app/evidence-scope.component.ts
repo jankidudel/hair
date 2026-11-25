@@ -18,9 +18,14 @@ import type { ProductProfile } from './product-comparisons';
             <dd>
               @for (product of products; track product.slug; let last = $last) {
                 {{ product.name }}
-                <span class="identifier"
-                  >({{ product.modelIdentifier ?? product.slug }})</span
-                >
+                @if (
+                  !product.modelIdentifier ||
+                  !product.name.includes(product.modelIdentifier)
+                ) {
+                  <span class="identifier"
+                    >({{ product.modelIdentifier ?? product.slug }})</span
+                  >
+                }
                 @if (!last) {
                   ;
                 }

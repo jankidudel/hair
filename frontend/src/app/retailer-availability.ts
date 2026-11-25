@@ -34,6 +34,8 @@ export type RetailerPlacement =
 
 export interface RetailerOfferGroup {
   readonly market: OfferMarket;
+  /** Visible block heading; defaults to "Check retailer availability". */
+  readonly heading?: string;
   readonly intro: string;
   readonly placement: RetailerPlacement;
   /** Analytics label for where the block sits on the page. */
@@ -81,10 +83,14 @@ export const RETAILER_OFFERS = new InjectionToken<
     },
     [ArticleSlug.GhdChronosVsPlatinumPlus]: {
       market: 'UK',
+      heading: 'Check the UK black models at ghd',
       intro:
         'These links are for the standard black UK 26 mm models compared here. Check the exact listing and offer before ordering.',
-      placement: { kind: 'after-decision-snapshot' },
-      placementLabel: 'below_quick_choice',
+      placement: {
+        kind: 'before-heading',
+        heading: 'Exact manufacturer sources',
+      },
+      placementLabel: 'after_controls_and_ownership',
       offers: [
         {
           ...ghdUk,
@@ -92,10 +98,10 @@ export const RETAILER_OFFERS = new InjectionToken<
           model: 'ghd Chronos Black 26mm',
           label: 'Check ghd Chronos at ghd UK',
           url: 'https://www.ghdhair.com/hair-straighteners/ghd-chronos-black-styler-p-650',
-          // ghdhair.com refused automated checks (HTTP 403) on 2026-11-22 and
-          // again on 2026-11-25. Confirm the black 26 mm styler (not Max or a
-          // gift set) and that it can be bought, in a browser, before switching on.
-          destinationCheck: 'unverified',
+          // ghdhair.com refuses automated checks (HTTP 403). The 25 November
+          // 2026 deployment check loaded this exact black 26 mm listing (HTTP
+          // 200, in-stock offer). Recheck in a browser if the listing changes.
+          destinationCheck: 'verified',
           checkedDate: '2026-11-25',
         },
         {
@@ -104,9 +110,9 @@ export const RETAILER_OFFERS = new InjectionToken<
           model: 'ghd Platinum+ Black 26mm',
           label: 'Check ghd Platinum+ at ghd UK',
           url: 'https://www.ghdhair.com/hair-straighteners/ghd-platinum-plus-black-styler-p-453',
-          // As above (HTTP 403 on 2026-11-25); if Platinum+ is no longer sold,
-          // mark it 'unavailable'.
-          destinationCheck: 'unverified',
+          // As above: HTTP 200 with an in-stock offer in the 25 November 2026
+          // deployment check. If Platinum+ is no longer sold, mark it 'unavailable'.
+          destinationCheck: 'verified',
           checkedDate: '2026-11-25',
         },
       ],
@@ -124,10 +130,10 @@ export const RETAILER_OFFERS = new InjectionToken<
           model: 'Airwrap i.d. Straight+Wavy US',
           label: 'Check Airwrap i.d. Straight+Wavy at Dyson US',
           url: 'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
-          // dyson.com refused automated checks (HTTP 403) on 2026-11-22 and
-          // again on 2026-11-25. Confirm the Straight+Wavy box contents in a
-          // browser before switching on.
-          destinationCheck: 'unverified',
+          // dyson.com refuses automated checks (HTTP 403). The 25 November 2026
+          // deployment check loaded this exact US Straight+Wavy Plum/Copper
+          // listing (HTTP 200, in-stock offer).
+          destinationCheck: 'verified',
           checkedDate: '2026-11-25',
         },
         {

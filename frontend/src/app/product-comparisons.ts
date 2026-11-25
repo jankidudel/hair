@@ -1022,7 +1022,7 @@ export const productProfiles: readonly ProductProfile[] = [
   }),
   product({
     slug: 'shark-flexstyle-hd430',
-    name: 'Shark FlexStyle® 4-in-1 Air Styling & Drying System (HD430)',
+    name: 'Shark FlexStyle HD430 in Stone (US)',
     modelIdentifier: 'HD430',
     generation: 'FlexStyle HD430',
     brand: 'Shark',

@@ -21,7 +21,9 @@ import {
       class="article-body retailer-availability"
       aria-labelledby="retailer-availability-heading"
     >
-      <h2 id="retailer-availability-heading">Check retailer availability</h2>
+      <h2 id="retailer-availability-heading">
+        {{ group().heading ?? 'Check retailer availability' }}
+      </h2>
       <p>{{ group().intro }}</p>
       @if (hasAffiliateOffer) {
         <p>

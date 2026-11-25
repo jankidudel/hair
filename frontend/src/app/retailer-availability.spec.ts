@@ -134,21 +134,64 @@ describe('retailer offers', () => {
     );
   });
 
-  it('renders only verified US offers below the Airwrap quick choice', () => {
+  it('renders the Dyson US button before SharkNinja US below the Airwrap quick choice', () => {
     const { page } = render(ArticleSlug.DysonAirwrapVsSharkFlexstyle);
     const section = page.querySelector('.retailer-availability')!;
     expect(section.parentElement?.previousElementSibling?.tagName).toBe(
       'APP-DECISION-SNAPSHOT',
     );
+    expect(section.querySelector('h2')?.textContent?.trim()).toBe(
+      'Check retailer availability',
+    );
     const links = Array.from(section.querySelectorAll('a'));
     expect(links.map((link) => link.textContent?.trim())).toEqual([
+      'Check Airwrap i.d. Straight+Wavy at Dyson US',
       'Check FlexStyle HD430 at SharkNinja US',
     ]);
+    expect(links[0].getAttribute('href')).toBe(
+      'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
+    );
+    const scope = page.querySelector('.evidence-scope dd')!.textContent!;
+    expect(scope).toContain('Shark FlexStyle HD430 in Stone (US)');
+    expect(scope.match(/HD430/g)).toHaveLength(1);
   });
 
-  it('keeps the unverified ghd Chronos and Platinum+ block switched off', () => {
-    const { page } = render(ArticleSlug.GhdChronosVsPlatinumPlus);
-    expect(page.querySelector('.retailer-availability')).toBeNull();
+  it('places the ghd UK block between ownership details and manufacturer sources', () => {
+    const { page, track } = render(ArticleSlug.GhdChronosVsPlatinumPlus);
+    const section = page.querySelector('.retailer-availability')!;
+    const host = section.parentElement!;
+    expect(host.nextElementSibling?.firstElementChild?.textContent).toBe(
+      'Exact manufacturer sources',
+    );
+    const before = Array.from(
+      host.previousElementSibling?.querySelectorAll('h2') ?? [],
+    ).pop();
+    expect(before?.textContent).toBe(
+      'Decide from controls and ownership details',
+    );
+    expect(section.querySelector('h2')?.textContent?.trim()).toBe(
+      'Check the UK black models at ghd',
+    );
+    expect(section.querySelector('p')?.textContent).toBe(
+      'These links are for the standard black UK 26 mm models compared here. Check the exact listing and offer before ordering.',
+    );
+    const links = Array.from(section.querySelectorAll('a'));
+    expect(links.map((link) => link.textContent?.trim())).toEqual([
+      'Check ghd Chronos at ghd UK',
+      'Check ghd Platinum+ at ghd UK',
+    ]);
+    links[1].addEventListener('click', (event) => event.preventDefault());
+    links[1].click();
+    expect(track).toHaveBeenCalledExactlyOnceWith(
+      'retailer_outbound_click',
+      expect.objectContaining({
+        guide_path: '/guides/ghd-chronos-vs-platinum-plus',
+        retailer: 'ghd UK',
+        offer_market: 'UK',
+        model: 'ghd Platinum+ Black 26mm',
+        affiliate_status: 'direct',
+      }),
+    );
   });
 
   it('never renders an offer that has not been verified', () => {

@@ -146,6 +146,15 @@ export const shortlistBatchSources = {
     scope:
       'Twenty rollers: eight 1¼-inch, six 1-inch and six ¾-inch; twenty heated plastic clips; ready dot described. URL returned 404 to automated checks on 24 November 2026.',
   },
+  B25: {
+    label: 'Conair HS400 instruction booklet',
+    model: 'Conair HS400',
+    market: 'US',
+    url: 'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw33ed3d86/Instructional%20Booklets/HS400.pdf',
+    checkedDate: '25 November 2026',
+    scope:
+      'Official US instructions for the HS400, including roller sizes, counts and clips.',
+  },
   B16: {
     label: 'Shark SilkiPro Straight HT401UKBL1',
     model: 'Shark SilkiPro Straight HT401UKBL1',
@@ -343,7 +352,7 @@ export const shortlistBatchEvidence: Readonly<Record<string, GuideEvidence>> = {
   [ArticleSlug.BestHotRollers]: {
     summary:
       'Two exact US listings establish roller counts by size, clips and controls. The six-roller plan is a worked example, not a test; HS79CR is excluded because no current listing could be confirmed.',
-    sources: [S.B14, S.B15],
+    sources: [S.B14, S.B15, S.B25],
   },
   [ArticleSlug.HowToCleanASharkFlexstyleFilter]: {
     summary:

@@ -249,21 +249,9 @@ export const shortlistBatchSlugs = [
  * listings or support pages could not be read by automated checks on
  * 24 November 2026. Enable each only after its fields are verified.
  */
-export const shortlistBatchHeldSlugs = [
-  ArticleSlug.SharkGlamVsDysonAirwrapId,
-  ArticleSlug.GhdOriginalVsChronos,
-  ArticleSlug.RevlonOneStepRootBoosterVsPlus,
-  ArticleSlug.DrybarDoubleShotVsSingleShotVsHalfShot,
-  ArticleSlug.BabylissHydroFusionVsBigHair,
-  ArticleSlug.GhdDuetBlowdryVsRevlonOneStepPlus,
-  ArticleSlug.T3LuceaVsSinglepassStylemax,
-  ArticleSlug.BestRoundBrushesForBlowouts,
-  ArticleSlug.BestHairWavers,
-  ArticleSlug.BestRotatingHotAirBrushes,
-  ArticleSlug.DysonSupersonicFlashingLights,
-  ArticleSlug.GhdStraightenerFlashingRedAndBeeping,
-  ArticleSlug.WhyDysonAirwrapCurlsDontLast,
-] as const;
+export const shortlistBatchHeldSlugs: readonly string[] = [];
+// The 24 November held drafts were published on 25 November 2026 with
+// the editorial brief's copy; see seo-release-completion-guides.ts.
 
 /**
  * Existing owners received only contextual links to this batch, not

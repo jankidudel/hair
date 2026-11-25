@@ -244,18 +244,9 @@ export const searchGrowthSlugs = [
  * New guides written but held as disabled drafts: their primary maker
  * listings returned 403, 404, 429 or timeouts to automated checks.
  */
-export const searchGrowthHeldSlugs = [
-  ArticleSlug.HowToChooseADysonAirwrap,
-  ArticleSlug.DysonSupersonicVsSupersonicNural,
-  ArticleSlug.GhdOriginalVsGold,
-  ArticleSlug.SharkSpeedstyleVsFlexstyle,
-  ArticleSlug.RevlonOneStepPlusVsSharkSmoothstyle,
-  ArticleSlug.WetBrushOriginalDetanglerVsSpeedDry,
-  ArticleSlug.BestFlatIronsForShortHair,
-  ArticleSlug.HairDryersWithCombAttachment,
-  ArticleSlug.HowToCleanADysonAirwrapFilter,
-  ArticleSlug.DrybarDoubleShotVsRevlonOneStep,
-] as const;
+export const searchGrowthHeldSlugs: readonly string[] = [];
+// The 23 November held drafts were published on 25 November 2026 with
+// the editorial brief's copy; see seo-release-completion-guides.ts.
 
 /** Existing owners revised substantively in this batch. */
 export const searchGrowthUpdatedSlugs = [

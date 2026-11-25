@@ -440,7 +440,9 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
   const category =
     waveMethodSlugs.includes(slug as ArticleSlug) ||
     slug === ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir ||
-    slug === ArticleSlug.AutomaticHairCurlerVsCurlingWand
+    slug === ArticleSlug.AutomaticHairCurlerVsCurlingWand ||
+    // The direct-heat hub lists any "waver" slug on /curling-irons.
+    slug === ArticleSlug.BestHairWavers
       ? 'curling-irons'
       : guideCategoryById[article.group].path.slice(1);
   const relatedHtml = html.slice(related);

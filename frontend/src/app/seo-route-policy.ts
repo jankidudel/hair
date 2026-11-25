@@ -57,20 +57,20 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-dryers',
     'hub',
-    '2026-11-23',
-    'Search growth batch: new owners, dryer specs and short-hair choices',
+    '2026-11-25',
+    'Release completion: 23 held guides published with hub entry links',
   ),
   page(
     '/hot-air-brushes',
     'hub',
-    '2026-11-24',
-    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
+    '2026-11-25',
+    'Release completion: 23 held guides published with hub entry links',
   ),
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-24',
-    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
+    '2026-11-25',
+    'Release completion: 23 held guides published with hub entry links',
   ),
   page(
     '/hair-accessories',
@@ -81,8 +81,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-11-23',
-    'Search growth batch: new owners, dryer specs and short-hair choices',
+    '2026-11-25',
+    'Release completion: 23 held guides published with hub entry links',
   ),
   page(
     '/hair-brush-finder',
@@ -93,14 +93,14 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/flat-irons',
     'hub',
-    '2026-11-24',
-    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
+    '2026-11-25',
+    'Release completion: 23 held guides published with hub entry links',
   ),
   page(
     '/curling-irons',
     'hub',
-    '2026-11-24',
-    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
+    '2026-11-25',
+    'Release completion: 23 held guides published with hub entry links',
   ),
   page(
     '/flat-iron-finder',

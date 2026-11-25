@@ -82,7 +82,7 @@ export const RETAILER_OFFERS = new InjectionToken<
     [ArticleSlug.GhdChronosVsPlatinumPlus]: {
       market: 'UK',
       intro:
-        'These links are for the black standard-width UK models compared below. Chronos Max and gift sets are different products.',
+        'These links are for the standard black UK 26 mm models compared here. Check the exact listing and offer before ordering.',
       placement: { kind: 'after-decision-snapshot' },
       placementLabel: 'below_quick_choice',
       offers: [
@@ -92,10 +92,11 @@ export const RETAILER_OFFERS = new InjectionToken<
           model: 'ghd Chronos Black 26mm',
           label: 'Check ghd Chronos at ghd UK',
           url: 'https://www.ghdhair.com/hair-straighteners/ghd-chronos-black-styler-p-650',
-          // ghdhair.com refused automated checks on 2026-11-22. Confirm the
-          // black 26 mm styler (not Max or a gift set) before switching on.
+          // ghdhair.com refused automated checks (HTTP 403) on 2026-11-22 and
+          // again on 2026-11-25. Confirm the black 26 mm styler (not Max or a
+          // gift set) and that it can be bought, in a browser, before switching on.
           destinationCheck: 'unverified',
-          checkedDate: '2026-11-22',
+          checkedDate: '2026-11-25',
         },
         {
           ...ghdUk,
@@ -103,9 +104,10 @@ export const RETAILER_OFFERS = new InjectionToken<
           model: 'ghd Platinum+ Black 26mm',
           label: 'Check ghd Platinum+ at ghd UK',
           url: 'https://www.ghdhair.com/hair-straighteners/ghd-platinum-plus-black-styler-p-453',
-          // As above; if Platinum+ is no longer sold, mark it 'unavailable'.
+          // As above (HTTP 403 on 2026-11-25); if Platinum+ is no longer sold,
+          // mark it 'unavailable'.
           destinationCheck: 'unverified',
-          checkedDate: '2026-11-22',
+          checkedDate: '2026-11-25',
         },
       ],
     },
@@ -122,10 +124,11 @@ export const RETAILER_OFFERS = new InjectionToken<
           model: 'Airwrap i.d. Straight+Wavy US',
           label: 'Check Airwrap i.d. Straight+Wavy at Dyson US',
           url: 'https://www.dyson.com/hair-care/hair-stylers/airwrap-id/straight-wavy-plum-copper',
-          // dyson.com refused automated checks on 2026-11-22. Confirm the
-          // Straight+Wavy box contents before switching on.
+          // dyson.com refused automated checks (HTTP 403) on 2026-11-22 and
+          // again on 2026-11-25. Confirm the Straight+Wavy box contents in a
+          // browser before switching on.
           destinationCheck: 'unverified',
-          checkedDate: '2026-11-22',
+          checkedDate: '2026-11-25',
         },
         {
           ...sharkUs,

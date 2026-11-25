@@ -3,6 +3,14 @@ import { ArticleSlug } from './article-slug';
 export const modelComparisonDescriptions: Readonly<
   Partial<Record<string, string>>
 > = {
+  [ArticleSlug.DysonSupersonicVsSupersonicNural]:
+    'Compare two UK boxes by attachments, Scalp Protect and other automatic controls.',
+  [ArticleSlug.SharkSpeedstyleVsFlexstyle]:
+    'Choose between a US diffuser-ready dryer and a multi-styler with airflow curlers.',
+  [ArticleSlug.HairDryersWithCombAttachment]:
+    'Check the exact US model codes and named combs in each box.',
+  [ArticleSlug.DysonSupersonicFlashingLights]:
+    'Match the indicator pattern to the exact dryer and its support instructions.',
   [ArticleSlug.GhdSpeedVsHelios]:
     'Compare documented controls, nozzle setup and the reason to replace a working dryer.',
   [ArticleSlug.GhdGlidePlusVsGlidePlusMax]:
@@ -56,6 +64,22 @@ export const modelComparisonGroups: Readonly<
       {
         label: 'Parlux Alyon or Digitalyon?',
         slug: ArticleSlug.ParluxAlyonVsDigitalyon,
+      },
+      {
+        label: 'Dyson Supersonic Origin vs Supersonic Nural',
+        slug: ArticleSlug.DysonSupersonicVsSupersonicNural,
+      },
+      {
+        label: 'Shark SpeedStyle vs FlexStyle',
+        slug: ArticleSlug.SharkSpeedstyleVsFlexstyle,
+      },
+      {
+        label: 'Hair dryers with a comb attachment included',
+        slug: ArticleSlug.HairDryersWithCombAttachment,
+      },
+      {
+        label: 'Dyson Supersonic flashing lights',
+        slug: ArticleSlug.DysonSupersonicFlashingLights,
       },
     ],
   },

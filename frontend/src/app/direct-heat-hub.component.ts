@@ -238,7 +238,12 @@ import {
           For a set that cools in place,
           <a [routerLink]="['/guides', articleSlug.BestHotRollers]"
             >compare hot rollers by size and clip</a
-          >.
+          >. If a repeated wave is the format you want,
+          <a [routerLink]="['/guides', articleSlug.BestHairWavers]"
+            >compare dedicated hair wavers</a
+          >
+          to find a waver that fits the length and section you can comfortably
+          position.
         </p>
       }
       @if (isFlat) {
@@ -270,6 +275,25 @@ import {
           >
           by whether you start on dried or wet hair.
         </p>
+        <ul>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.GhdOriginalVsChronos]"
+              >Compare ghd Original and Chronos</a
+            >: compare two UK preset models by plate width, controls and sleep
+            timing.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.BestFlatIronsForShortHair]"
+              >Choose a flat iron for short hair</a
+            >: compare slim and standard heads for a fringe, crop or bob.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.GhdOriginalVsGold]"
+              >Compare ghd Original and Gold</a
+            >: see how the two UK preset stylers differ in width, controls and
+            included equipment.
+          </li>
+        </ul>
       } @else {
         <p>
           For two exact UK chamber curlers, compare

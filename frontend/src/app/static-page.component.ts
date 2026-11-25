@@ -632,6 +632,75 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
             sets the two UK boxes side by side for drying, smoothing, brushed
             volume, airflow curls and diffusing.
           </p>
+          <ul>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.SharkGlamVsDysonAirwrapId,
+                ]"
+                >Shark Glam vs Dyson Airwrap i.d.</a
+              >: compare the tools in two named UK boxes for smoothing,
+              straightening and curling.
+            </li>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.DrybarDoubleShotVsSingleShotVsHalfShot,
+                ]"
+                >Compare the three Drybar Shot sizes</a
+              >: choose a US round or oval brush for your shortest working
+              section.
+            </li>
+          </ul>
+          <p><strong>Choose or maintain a hot-air tool:</strong></p>
+          <ul>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.BestRotatingHotAirBrushes,
+                ]"
+                >Shop rotating hot-air brushes</a
+              >: compare UK powered brush heads, sizes and direction controls.
+            </li>
+            <li>
+              <a
+                [routerLink]="['/guides', articleSlug.HowToChooseADysonAirwrap]"
+                >Which Dyson Airwrap should I buy?</a
+              >: compare three US Airwrap boxes by the tools you would actually
+              use.
+            </li>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.RevlonOneStepPlusVsSharkSmoothstyle,
+                ]"
+                >Revlon One-Step Plus vs Shark SmoothStyle</a
+              >: compare oval blow-drying with a separate dry-hair smoothing
+              mode.
+            </li>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HowToCleanADysonAirwrapFilter,
+                ]"
+                >How to clean a Dyson Airwrap filter</a
+              >: find the correct filter instructions for your Airwrap model.
+            </li>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.DrybarDoubleShotVsRevlonOneStep,
+                ]"
+                >Drybar Double Shot vs Revlon One-Step Original</a
+              >: compare two US oval brushes by controls and section clearance.
+            </li>
+          </ul>
           <p>
             <a href="/guides/hot-air-brush-barrel-size-guide#head-fit-worksheet"
               >Compare two head-fit records</a
@@ -792,6 +861,15 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 >
               </li>
               <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.BestRoundBrushesForBlowouts,
+                  ]"
+                  >Compare round brushes for blowouts</a
+                >: choose barrel sizes for a fringe, a bob or longer layers.
+              </li>
+              <li>
                 <a [routerLink]="['/guides', articleSlug.BoarBristleBrushGuide]"
                   >Boar-bristle brushes: what should you compare?</a
                 >
@@ -822,6 +900,15 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                   ]"
                   >Compare Ultimate Detangler sizes</a
                 >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.WetBrushOriginalDetanglerVsSpeedDry,
+                  ]"
+                  >Wet Brush Original Detangler vs Speed Dry</a
+                >: check which model is intended for a dryer pass.
               </li>
               <li>
                 <a

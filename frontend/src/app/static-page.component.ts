@@ -4,6 +4,7 @@ import { exactModelAliases } from './exact-model-guides';
 import { seoGrowthAliases } from './seo-growth-guides';
 import { megaBatchAliases } from './seo-mega-batch-guides';
 import { searchGrowthAliases } from './seo-search-growth-guides';
+import { shortlistBatchAliases } from './seo-shortlist-batch-guides';
 import { supportedUpdoCards } from './supported-updo-guides';
 import { straightenerGuideCards } from './straightener-guides';
 import { shapingMethodCards } from './shaping-method-guides';
@@ -620,6 +621,18 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
             >, which compares two US Revlon oval heads.
           </p>
           <p>
+            <strong>Compare the kits on your shortlist:</strong>
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.BabylissAirWandVsSharkFlexstyle,
+              ]"
+              >BaByliss Air Wand vs Shark FlexStyle</a
+            >
+            sets the two UK boxes side by side for drying, smoothing, brushed
+            volume, airflow curls and diffusing.
+          </p>
+          <p>
             <a href="/guides/hot-air-brush-barrel-size-guide#head-fit-worksheet"
               >Compare two head-fit records</a
             >
@@ -805,6 +818,15 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 <a
                   [routerLink]="[
                     '/guides',
+                    articleSlug.TangleTeezerUltimateDetanglerLargeVsRegular,
+                  ]"
+                  >Compare Ultimate Detangler sizes</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
                     articleSlug.MasonPearsonBrushSizeAndBristleGuide,
                   ]"
                   >Mason Pearson sizes, bristles and model codes</a
@@ -845,7 +867,15 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 >Bounce Curl Define vs Volume EdgeLift</a
               >
               compares two edge-guided styling brushes by the curl grouping the
-              maker describes. Neither replaces a detangler.
+              maker describes. Neither replaces a detangler. To weigh an edge
+              brush against pin rows,
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.DenmanD3VsBounceCurlDefineEdgelift,
+                ]"
+                >compare Denman D3 and Bounce Curl Define EdgeLift</a
+              >.
             </p>
             <p>
               For a prepared section being arranged backwards,
@@ -1979,6 +2009,7 @@ export class StaticPageComponent implements OnInit {
           ...(seoGrowthAliases[article.slug] ?? []),
           ...(megaBatchAliases[article.slug] ?? []),
           ...(searchGrowthAliases[article.slug] ?? []),
+          ...(shortlistBatchAliases[article.slug] ?? []),
           ...(exactModelAliases[article.slug] ?? []),
           ...(remainingOpportunityAliases[article.slug] ?? []),
         ].join(' '),

@@ -63,14 +63,14 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hot-air-brushes',
     'hub',
-    '2026-11-23',
-    'Search growth batch: new owners, dryer specs and short-hair choices',
+    '2026-11-24',
+    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
   ),
   page(
     '/brushes-combs',
     'hub',
-    '2026-11-23',
-    'Search growth batch: new owners, dryer specs and short-hair choices',
+    '2026-11-24',
+    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
   ),
   page(
     '/hair-accessories',
@@ -93,14 +93,14 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/flat-irons',
     'hub',
-    '2026-11-23',
-    'Search growth batch: new owners, dryer specs and short-hair choices',
+    '2026-11-24',
+    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
   ),
   page(
     '/curling-irons',
     'hub',
-    '2026-11-18',
-    'Exact-model choices and attachment discovery',
+    '2026-11-24',
+    'Shortlist batch: exact-pair comparisons, shortlists and filter care',
   ),
   page(
     '/flat-iron-finder',

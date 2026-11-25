@@ -1,5 +1,33 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  SharkSilkiproStraightVsGhdDuetStyle:
+    'shark-silkipro-straight-vs-ghd-duet-style',
+  Steampod4VsDysonAirstrait: 'steampod-4-vs-dyson-airstrait',
+  RemingtonShineTherapyVsProluxeStraightener:
+    'remington-shine-therapy-vs-proluxe-straightener',
+  BestCordlessHairStraighteners: 'best-cordless-hair-straighteners',
+  DenmanD3VsBounceCurlDefineEdgelift:
+    'denman-d3-vs-bounce-curl-define-edgelift',
+  TangleTeezerUltimateDetanglerLargeVsRegular:
+    'tangle-teezer-ultimate-detangler-large-vs-regular',
+  BestHotRollers: 'best-hot-rollers',
+  HowToCleanASharkFlexstyleFilter: 'how-to-clean-a-shark-flexstyle-filter',
+  BabylissAirWandVsSharkFlexstyle: 'babyliss-air-wand-vs-shark-flexstyle',
+  SharkGlamVsDysonAirwrapId: 'shark-glam-vs-dyson-airwrap-id',
+  GhdOriginalVsChronos: 'ghd-original-vs-chronos',
+  RevlonOneStepRootBoosterVsPlus: 'revlon-one-step-root-booster-vs-plus',
+  DrybarDoubleShotVsSingleShotVsHalfShot:
+    'drybar-double-shot-vs-single-shot-vs-half-shot',
+  BabylissHydroFusionVsBigHair: 'babyliss-hydro-fusion-vs-big-hair',
+  GhdDuetBlowdryVsRevlonOneStepPlus: 'ghd-duet-blowdry-vs-revlon-one-step-plus',
+  T3LuceaVsSinglepassStylemax: 't3-lucea-vs-singlepass-stylemax',
+  BestRoundBrushesForBlowouts: 'best-round-brushes-for-blowouts',
+  BestHairWavers: 'best-hair-wavers',
+  BestRotatingHotAirBrushes: 'best-rotating-hot-air-brushes',
+  DysonSupersonicFlashingLights: 'dyson-supersonic-flashing-lights',
+  GhdStraightenerFlashingRedAndBeeping:
+    'ghd-straightener-flashing-red-and-beeping',
+  WhyDysonAirwrapCurlsDontLast: 'why-dyson-airwrap-curls-dont-last',
   HowToChooseADysonAirwrap: 'how-to-choose-a-dyson-airwrap',
   DysonAirsmoothVsDysonAirstrait: 'dyson-airsmooth-vs-dyson-airstrait',
   WhyIsMyHairFrizzyAfterBlowDrying: 'why-is-my-hair-frizzy-after-blow-drying',

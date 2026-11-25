@@ -12,6 +12,7 @@ import {
   searchGrowthEvidence,
   searchGrowthSupplementarySources,
 } from './seo-search-growth-guides';
+import { shortlistBatchEvidence } from './seo-shortlist-batch-guides';
 import { consolidatedComparisonEvidence } from './consolidated-comparison-guides';
 import { supportedUpdoEvidence } from './supported-updo-guides';
 import { straightenerGuideEvidence } from './straightener-guides';
@@ -146,6 +147,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 const baseGuideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...shortlistBatchEvidence,
   ...searchGrowthEvidence,
   ...megaBatchEvidence,
   ...seoGrowthEvidence,

@@ -1,5 +1,7 @@
 # CombReport keyword research and URL decisions
 
+The 24 November shortlist batch (rows `cr-2026-11-24-*`) publishes nine new guides (N03, N04, N08, N09, N11, N14, N15, N19, N22) from sources read that day or dated records of the same exact models, and holds the other 13 as disabled drafts because Dyson, ghd, Revlon, Drybar and Newegg returned 403, BaByliss looped on redirects, and T3, Denman, Tangle Teezer, amika, Mermade and Olivia Garden returned 429. Brief corrections: Corrale CoolShine is corded (excluded from N14) and the Remington AS8811 listing does not describe a rotating head (N17 needs another model). The ten 23 November held drafts were re-checked and remain held. Implemented locally, not deployed.
+
 The 23 November search growth batch (rows `cr-2026-11-23-*`) implements E01–E09, E12 and E13, publishes 11 new guides and holds 10 as disabled drafts whose primary maker listings could not be verified (Dyson, ghd, Drybar and Best Buy returned 403 or timeouts, Conair 404, Wet Brush and Cloud Nine 429). E10 and E11 wait on the held N01. The batch is implemented locally and not deployed; rows stay PLANNED/NEW or RESEARCH until a post-deploy check.
 
 The [22 November mega-batch review](mega-batch-2026-11-22-implementation-review.md) records the latest work: U01–U04 refreshed, two new guides (static after brushing; Tangle Teezer Original vs Ultimate Detangler), partial R03/R04 additions and a live reconciliation of the 96 older local rows. The batch is deployed and verified live. The CSV now has 316 DONE, four RESEARCH and four DECLINED records.

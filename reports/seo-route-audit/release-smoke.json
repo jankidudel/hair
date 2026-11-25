@@ -1,29 +1,63 @@
 {
-  "checkedAt": "2026-11-19T23:56:37.911Z",
+  "checkedAt": "2026-11-24T23:57:48.273Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "96add61f6f1e0396431f05fbe9b9259fe25d0042",
+  "sourceCommit": "2eef7911035ec9d75c0c4c8a5f2ebded462bca82",
   "sourceTreeDirty": true,
-  "artifactSha256": "f058f7b0aede1302f9915647e6bfe3777a1ff0c2cc5f6068443570f20ecddefc",
+  "artifactSha256": "6626a1b65ef6fdd74b21973cc5a540b32346501bd319ed3dc64d92062ff05b8d",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
     "attempt": null
   },
-  "mode": "artifact-only",
+  "mode": "artifact-and-production",
   "expectedOwners": [
+    "shark-silkipro-straight-vs-ghd-duet-style",
+    "steampod-4-vs-dyson-airstrait",
+    "remington-shine-therapy-vs-proluxe-straightener",
+    "best-cordless-hair-straighteners",
+    "denman-d3-vs-bounce-curl-define-edgelift",
+    "tangle-teezer-ultimate-detangler-large-vs-regular",
+    "best-hot-rollers",
+    "how-to-clean-a-shark-flexstyle-filter",
+    "babyliss-air-wand-vs-shark-flexstyle",
+    "dyson-airsmooth-vs-dyson-airstrait",
+    "why-is-my-hair-frizzy-after-blow-drying",
+    "shark-flexstyle-models-compared",
+    "dyson-airstrait-vs-corrale-coolshine",
+    "best-lightweight-hair-dryers",
+    "best-hair-brushes-for-long-hair",
+    "best-hot-air-brushes-for-long-hair",
+    "best-adjustable-temperature-hair-straighteners",
+    "hair-dryer-replacement-nozzle-compatibility",
+    "how-to-use-a-hair-dryer-comb-attachment",
+    "hair-dryer-only-blows-cold-air",
+    "hair-dryer-wattage-guide",
+    "how-to-choose-hair-dryer",
+    "hair-dryer-takes-too-long",
+    "best-hair-dryer-for-short-hair",
+    "how-to-blow-dry-hair",
+    "hair-dryer-diffuser-compatibility",
+    "hot-air-brush-vs-curling-iron",
+    "heatless-curls-not-working",
+    "dyson-airsmooth-vs-ghd-duet-blowdry",
+    "hot-air-brush-frizzy-hair",
+    "best-brushes-thick-hair",
+    "why-hair-gets-static-after-brushing",
+    "tangle-teezer-original-vs-ultimate-detangler",
+    "round-brush-stuck-in-hair",
+    "best-hair-dryers-thick-hair",
+    "hair-roller-size-guide",
+    "hair-dryer-heat-and-speed-settings-guide",
+    "babyliss-air-wand-as6550u-vs-as6553u",
+    "denman-d3-vs-d31",
     "dyson-airwrap-attachment-compatibility",
     "bounce-curl-define-vs-volume-edgelift",
     "mason-pearson-brush-size-and-bristle-guide",
-    "hair-dryer-wattage-guide",
-    "how-to-choose-hair-dryer",
-    "best-hair-dryer-for-short-hair",
     "best-travel-hair-dryers",
-    "hair-dryer-diffuser-compatibility",
     "best-brushes-fine-hair",
     "best-brushes-curly-hair",
     "best-hot-air-brushes-fine-hair",
-    "hot-air-brush-vs-curling-iron",
     "round-brush-size-guide",
     "how-to-clean-a-hair-brush",
     "dyson-airwrap-id-vs-co-anda2x",
@@ -37,12 +71,10 @@
     "color-wow-raise-the-root-vs-xtra-large",
     "babyliss-wave-secret-air-vs-style-secret-air",
     "denman-d3-vs-d4",
-    "denman-d3-vs-d31",
     "cloud-nine-original-iron-vs-wide-iron",
     "how-to-use-a-steam-hair-straightener",
     "best-travel-flat-irons",
     "how-to-clean-a-steam-hair-straightener",
-    "hair-dryer-heat-and-speed-settings-guide",
     "how-to-clean-hair-dryer-filter",
     "how-to-use-an-automatic-hair-curler",
     "how-to-clean-an-automatic-hair-curler",
@@ -65,7 +97,6 @@
     "how-to-use-texturising-spray",
     "hair-serum-vs-hair-oil",
     "flat-iron-plate-width-guide",
-    "babyliss-air-wand-as6550u-vs-as6553u",
     "dyson-corrale-coolshine-vs-corrale",
     "ghd-max-vs-chronos-max",
     "tangle-teezer-ultimate-detangler-vs-ultimate-styler",
@@ -76,7 +107,6 @@
     "shark-silkipro-straight-vs-dyson-airstrait",
     "olivia-garden-ceramic-ion-vs-nanothermic",
     "how-to-choose-hair-sectioning-clips",
-    "hair-roller-size-guide",
     "how-to-use-heated-hair-rollers",
     "how-to-use-snap-closure-foam-rollers",
     "how-to-use-hair-dryer-concentrator-nozzle",
@@ -91,15 +121,12 @@
     "tangle-teezer-ultimate-detangler-vs-wet-brush-original",
     "ghd-chronos-vs-chronos-max",
     "dyson-airstrait-vs-ghd-duet-style",
-    "dyson-airsmooth-vs-ghd-duet-blowdry",
     "sea-salt-spray-vs-texturising-spray",
-    "heatless-curls-not-working",
     "how-to-use-airflow-curling-barrels",
     "dyson-supersonic-travel-vs-ghd-flight-plus",
     "shark-flexstyle-vs-ioncurl",
     "ghd-speed-vs-helios",
     "shark-glam-vs-flexstyle",
-    "best-brushes-thick-hair",
     "how-to-clean-hair-rollers",
     "how-to-clean-hair-clips-and-pins",
     "how-to-pack-hair-tools-for-travel",
@@ -143,6 +170,201 @@
   "observations": [
     {
       "stage": "artifact",
+      "path": "/guides/shark-silkipro-straight-vs-ghd-duet-style",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/steampod-4-vs-dyson-airstrait",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/remington-shine-therapy-vs-proluxe-straightener",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-cordless-hair-straighteners",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/denman-d3-vs-bounce-curl-define-edgelift",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/tangle-teezer-ultimate-detangler-large-vs-regular",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hot-rollers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-clean-a-shark-flexstyle-filter",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/babyliss-air-wand-vs-shark-flexstyle",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airsmooth-vs-dyson-airstrait",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/why-is-my-hair-frizzy-after-blow-drying",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-flexstyle-models-compared",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airstrait-vs-corrale-coolshine",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-lightweight-hair-dryers",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hair-brushes-for-long-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hot-air-brushes-for-long-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-adjustable-temperature-hair-straighteners",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-replacement-nozzle-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-use-a-hair-dryer-comb-attachment",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-only-blows-cold-air",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-wattage-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-hair-dryer",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-takes-too-long",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hair-dryer-for-short-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-blow-dry-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-diffuser-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hot-air-brush-vs-curling-iron",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/heatless-curls-not-working",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airsmooth-vs-ghd-duet-blowdry",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hot-air-brush-frizzy-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-brushes-thick-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/why-hair-gets-static-after-brushing",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/tangle-teezer-original-vs-ultimate-detangler",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/round-brush-stuck-in-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/best-hair-dryers-thick-hair",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-roller-size-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hair-dryer-heat-and-speed-settings-guide",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/babyliss-air-wand-as6550u-vs-as6553u",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/denman-d3-vs-d31",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
       "path": "/guides/dyson-airwrap-attachment-compatibility",
       "errors": []
     },
@@ -158,27 +380,7 @@
     },
     {
       "stage": "artifact",
-      "path": "/guides/hair-dryer-wattage-guide",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/how-to-choose-hair-dryer",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/best-hair-dryer-for-short-hair",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
       "path": "/guides/best-travel-hair-dryers",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/hair-dryer-diffuser-compatibility",
       "errors": []
     },
     {
@@ -194,11 +396,6 @@
     {
       "stage": "artifact",
       "path": "/guides/best-hot-air-brushes-fine-hair",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/hot-air-brush-vs-curling-iron",
       "errors": []
     },
     {
@@ -268,11 +465,6 @@
     },
     {
       "stage": "artifact",
-      "path": "/guides/denman-d3-vs-d31",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
       "path": "/guides/cloud-nine-original-iron-vs-wide-iron",
       "errors": []
     },
@@ -289,11 +481,6 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-clean-a-steam-hair-straightener",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/hair-dryer-heat-and-speed-settings-guide",
       "errors": []
     },
     {
@@ -408,11 +595,6 @@
     },
     {
       "stage": "artifact",
-      "path": "/guides/babyliss-air-wand-as6550u-vs-as6553u",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
       "path": "/guides/dyson-corrale-coolshine-vs-corrale",
       "errors": []
     },
@@ -459,11 +641,6 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-choose-hair-sectioning-clips",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/hair-roller-size-guide",
       "errors": []
     },
     {
@@ -538,17 +715,7 @@
     },
     {
       "stage": "artifact",
-      "path": "/guides/dyson-airsmooth-vs-ghd-duet-blowdry",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
       "path": "/guides/sea-salt-spray-vs-texturising-spray",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/heatless-curls-not-working",
       "errors": []
     },
     {
@@ -574,11 +741,6 @@
     {
       "stage": "artifact",
       "path": "/guides/shark-glam-vs-flexstyle",
-      "errors": []
-    },
-    {
-      "stage": "artifact",
-      "path": "/guides/best-brushes-thick-hair",
       "errors": []
     },
     {
@@ -775,8 +937,1351 @@
       "stage": "artifact",
       "path": "/guides/how-to-choose-claw-clip-size",
       "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-curly-hair",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-curly-hair/",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-curly-hair/index.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-curly-hair.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-thick-hair",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-thick-hair/",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-thick-hair/index.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/best-hair-brush-for-thick-hair.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/flat-iron-vs-straightening-brush",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/flat-iron-vs-straightening-brush/",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/flat-iron-vs-straightening-brush/index.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/guides/flat-iron-vs-straightening-brush.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-supersonic-vs-shark-speedstyle",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-supersonic-vs-shark-speedstyle/",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-supersonic-vs-shark-speedstyle/index.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-supersonic-vs-shark-speedstyle.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-airwrap-vs-shark-flexstyle",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-airwrap-vs-shark-flexstyle/",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-airwrap-vs-shark-flexstyle/index.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/dyson-airwrap-vs-shark-flexstyle.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/babyliss-air-style-1000-vs-flawless-volume",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/babyliss-air-style-1000-vs-flawless-volume/",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/babyliss-air-style-1000-vs-flawless-volume/index.html",
+      "errors": []
+    },
+    {
+      "stage": "production-retired",
+      "path": "/products/babyliss-air-style-1000-vs-flawless-volume.html",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/shark-silkipro-straight-vs-ghd-duet-style",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'Can both be used on wet hair?'.",
+        "missing FAQ 'What is different about the dry-hair modes?'.",
+        "missing FAQ 'Which one comes with combs?'.",
+        "missing source 'https://www.sharkninja.co.uk/shark-silkipro-straight-hair-straightener-dryer-in-one-tool-with-heat-resistant-storage-case/HT401UKBL1.html'.",
+        "missing source 'https://www.ghdhair.com/wet-to-dry/ghd-duet-style-black-p-612'.",
+        "missing related destination '/guides/shark-silkipro-straight-vs-dyson-airstrait'.",
+        "missing related destination '/guides/dyson-airstrait-vs-ghd-duet-style'.",
+        "missing related destination '/guides/how-to-use-a-wet-to-dry-hair-straightener'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/steampod-4-vs-dyson-airstrait",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'Can I use SteamPod 4 on wet hair?'.",
+        "missing FAQ 'What water goes in the SteamPod 4 tank?'.",
+        "missing FAQ 'Does Airstrait have hot plates?'.",
+        "missing source 'https://www.lorealprofessionnel.co.uk/all-products/hair-tools/steampod-4'.",
+        "missing source 'https://dam.groupeseb.com/m/c159b54c21bcf6da/original/1820008740-IFU.pdf'.",
+        "missing source 'https://www.dyson.co.uk/hair-care/hair-straighteners/airstrait/plum-copper'.",
+        "missing related destination '/guides/steampod-3-vs-steampod-4'.",
+        "missing related destination '/guides/how-to-use-a-steam-hair-straightener'.",
+        "missing related destination '/guides/how-to-use-a-wet-to-dry-hair-straightener'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/remington-shine-therapy-vs-proluxe-straightener",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'Do the S8500 and S9100 reach different temperatures?'.",
+        "missing FAQ 'Which one has a temperature lock?'.",
+        "missing FAQ 'Are the plates the same size?'.",
+        "missing FAQ 'Is every PROluxe product the S9100?'.",
+        "missing source 'https://uk.remington-europe.com/shine-therapy-straightener-s8500-uk'.",
+        "missing source 'https://uk.remington-europe.com/proluxe-hair-straightener-s9100-uk'.",
+        "missing related destination '/guides/best-adjustable-temperature-hair-straighteners'.",
+        "missing related destination '/guides/flat-iron-plate-width-guide'.",
+        "missing related destination '/guides/fixed-vs-adjustable-temperature-hair-straighteners'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-cordless-hair-straighteners",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'Is the Dyson Corrale CoolShine cordless?'.",
+        "missing FAQ 'How long do cordless straighteners run?'.",
+        "missing FAQ 'Can I keep styling while the straightener charges?'.",
+        "missing FAQ 'Why is ghd Unplugged not in the table?'.",
+        "missing source 'https://revamphair.com/progloss-liberate-cordless-compact-hair-straightener'.",
+        "missing source 'https://www.dyson.co.uk/hair-care/hair-straighteners/corrale/blue-copper'.",
+        "missing source 'https://www.dyson.co.uk/support/hair-care/hair-straighteners/corrale'.",
+        "missing source 'https://www.dyson.co.uk/hair-care/hair-straighteners/corrale-coolshine/ceramic-pink'.",
+        "missing related destination '/guides/corded-vs-cordless-hair-straighteners'.",
+        "missing related destination '/guides/dyson-corrale-coolshine-vs-corrale'.",
+        "missing related destination '/guides/best-travel-flat-irons'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/denman-d3-vs-bounce-curl-define-edgelift",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'Which brush separates curls into bigger groups?'.",
+        "missing FAQ 'Can I take either brush apart to clean it?'.",
+        "missing FAQ 'Should I detangle first?'.",
+        "missing source 'https://denmanbrush.com/products/d3-original-styler-7-row'.",
+        "missing source 'https://denmanbrush.com/blogs/news/d3-original-styler-7-row-brush-of-the-month'.",
+        "missing source 'https://www.bouncecurl.com/products/define-styling-brush'.",
+        "missing related destination '/guides/bounce-curl-define-vs-volume-edgelift'.",
+        "missing related destination '/guides/denman-d3-vs-d4'.",
+        "missing related destination '/guides/how-to-use-a-curl-defining-brush'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/tangle-teezer-ultimate-detangler-large-vs-regular",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'How much bigger is the Large Ultimate Detangler?'.",
+        "missing FAQ 'Who is the Large size for?'.",
+        "missing FAQ 'Is the Regular Ultimate Detangler the same as The Original?'.",
+        "missing source 'https://tangleteezer.com/products/the-ultimate-detangler'.",
+        "missing source 'https://tangleteezer.com/products/the-original'.",
+        "missing related destination '/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile'.",
+        "missing related destination '/guides/tangle-teezer-original-vs-ultimate-detangler'.",
+        "missing related destination '/guides/best-hair-brushes-for-long-hair'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-hot-rollers",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'How many rollers come in each set?'.",
+        "missing FAQ 'Do both sets include clips?'.",
+        "missing FAQ 'Why is the Conair HS79CR not included?'.",
+        "missing source 'https://t3micro.com/collections/styling-tools/products/volumizing-hot-rollers-luxe'.",
+        "missing source 'https://www.conair.com/ceramic-flocked-hot-rollers/HS400.html'.",
+        "missing related destination '/guides/how-to-use-heated-hair-rollers'.",
+        "missing related destination '/guides/hair-roller-size-guide'.",
+        "missing related destination '/guides/conair-hs400-vs-hs79cr-hot-rollers'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-a-shark-flexstyle-filter",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'How often should I clean the FlexStyle filter?'.",
+        "missing FAQ 'Can I wash the filter cover with water?'.",
+        "missing FAQ 'What if it still overheats after cleaning?'.",
+        "missing source 'https://support.sharkninja.co.uk/article/HD440UK--HD420UK-Series-Shark-FlexStyle-Air-Styling--Drying-System-My-FlexStyle-is-Overheating?redirect=false'.",
+        "missing source 'https://support.sharkninja.co.uk/article/HD800UK-Series-Shark-Flexstyle-IonCurl-Air-Styler-Hair-Dryer---Getting-Started-with-Your-FlexStyle-IonCurl'.",
+        "missing related destination '/guides/shark-flexstyle-models-compared'.",
+        "missing related destination '/guides/how-to-clean-hot-air-brush'.",
+        "missing related destination '/guides/how-to-clean-hair-dryer-filter'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/babyliss-air-wand-vs-shark-flexstyle",
+      "errors": [
+        "HTTP 404; expected 200.",
+        "Title does not match release source.",
+        "Canonical does not match release source.",
+        "H1 does not match release source.",
+        "Article is unexpectedly noindex.",
+        "Article publication/revision dates differ from release source.",
+        "Expected exactly one current sitemap entry.",
+        "missing expected article identity.",
+        "body is too short (0; minimum 500).",
+        "needs at least 3 main H2 sections.",
+        "needs exactly one Quick answer.",
+        "rendered main copy does not match the authored body.",
+        "missing or unordered FAQ/evidence/source/related tail.",
+        "missing FAQ 'Does the BaByliss Air Wand AS6550U curl hair with airflow?'.",
+        "missing FAQ 'Which box includes a diffuser?'.",
+        "missing FAQ 'Does the FlexStyle turn into a hair dryer?'.",
+        "missing source 'https://www.sharkninja.co.uk/shark-flexstyle-5-in-1-air-styler-hair-dryer-with-storage-case-black-hd446uk/HD446UK.html'.",
+        "missing source 'https://www.babyliss.com/uk-en/air-wand-AS6550U.html'.",
+        "missing source 'https://www.babyliss.com/on/demandware.static/-/Sites-ml-babyliss-Library/en_GB/v1770307469494/information-booklets/AS6550U_IB.pdf'.",
+        "missing source 'https://www.babyliss.com/uk-en/air-wand-diffuser-ACAS6550UDIF.html'.",
+        "missing related destination '/guides/babyliss-air-wand-as6550u-vs-as6553u'.",
+        "missing related destination '/guides/shark-flexstyle-models-compared'.",
+        "missing related destination '/guides/how-to-choose-multi-styler-attachments'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-airsmooth-vs-dyson-airstrait",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/why-is-my-hair-frizzy-after-blow-drying",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/shark-flexstyle-models-compared",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-airstrait-vs-corrale-coolshine",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-lightweight-hair-dryers",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-hair-brushes-for-long-hair",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-hot-air-brushes-for-long-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-adjustable-temperature-hair-straighteners",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-replacement-nozzle-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-hair-dryer-comb-attachment",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-only-blows-cold-air",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-wattage-guide",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-choose-hair-dryer",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-takes-too-long",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-hair-dryer-for-short-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-blow-dry-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-diffuser-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hot-air-brush-vs-curling-iron",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/heatless-curls-not-working",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-airsmooth-vs-ghd-duet-blowdry",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hot-air-brush-frizzy-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-brushes-thick-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/why-hair-gets-static-after-brushing",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/tangle-teezer-original-vs-ultimate-detangler",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/round-brush-stuck-in-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-hair-dryers-thick-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-roller-size-guide",
+      "errors": [
+        "Missing authored copy 'Once you know the sizes you need, shop hot roller sets by usable size count rather than total roller'.",
+        "Missing authored destination '/guides/best-hot-rollers'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-heat-and-speed-settings-guide",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/babyliss-air-wand-as6550u-vs-as6553u",
+      "errors": [
+        "Missing authored copy 'Comparing the Air Wand with a Shark box? See BaByliss Air Wand vs Shark FlexStyle, job by job.'.",
+        "Missing authored destination '/guides/babyliss-air-wand-vs-shark-flexstyle'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/denman-d3-vs-d31",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-airwrap-attachment-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/bounce-curl-define-vs-volume-edgelift",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/mason-pearson-brush-size-and-bristle-guide",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-travel-hair-dryers",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-brushes-fine-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-brushes-curly-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-hot-air-brushes-fine-hair",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/round-brush-size-guide",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-a-hair-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-airwrap-id-vs-co-anda2x",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/parlux-diffuser-compatibility",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/t3-aireluxe-vs-featherweight-stylemax",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/remington-hydraluxe-pro-vs-proluxe-you-dryer",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/cloud-nine-original-iron-vs-touch-iron",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/steampod-3-vs-steampod-4",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/denman-d3-vs-d38",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/invisibobble-original-vs-power-vs-slim",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/color-wow-raise-the-root-vs-xtra-large",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/babyliss-wave-secret-air-vs-style-secret-air",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/denman-d3-vs-d4",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/cloud-nine-original-iron-vs-wide-iron",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-steam-hair-straightener",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-travel-flat-irons",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-a-steam-hair-straightener",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-hair-dryer-filter",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-an-automatic-hair-curler",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-an-automatic-hair-curler",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-spiral-hair-ties",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-apply-hair-mousse",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-styling-product-order",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-heatless-curling-rod",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-flexi-rods",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-heatless-curling-sets",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-get-root-volume-with-a-round-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/parlux-alyon-vs-digitalyon",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/curl-defining-brush-vs-detangling-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/shark-speedstyle-pro-vs-pro-flex",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-choose-multi-styler-attachments",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/t3-aire-360-next-gen-vs-dyson-airwrap-id",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/thermal-brush-vs-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/best-detangling-brushes",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/conair-hs400-vs-hs79cr-hot-rollers",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-choose-a-hair-barrette",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-texturising-spray",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-serum-vs-hair-oil",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/flat-iron-plate-width-guide",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-corrale-coolshine-vs-corrale",
+      "errors": [
+        "Missing authored copy 'Want a battery tool but not necessarily a Dyson? See other cordless straighteners, compared by the m'.",
+        "Missing authored destination '/guides/best-cordless-hair-straighteners'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-max-vs-chronos-max",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/tangle-teezer-ultimate-detangler-vs-ultimate-styler",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-duet-style-vs-duet-blowdry",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/color-wow-dream-coat-original-vs-extra-strength-vs-curly",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/moroccanoil-treatment-original-vs-light",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/framar-gator-grips-vs-super-sectioners",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/shark-silkipro-straight-vs-dyson-airstrait",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/olivia-garden-ceramic-ion-vs-nanothermic",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-choose-hair-sectioning-clips",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-heated-hair-rollers",
+      "errors": [
+        "Missing authored copy 'Still choosing a set? Compare hot roller sets and clips by usable rollers per size.'.",
+        "Missing authored destination '/guides/best-hot-rollers'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-snap-closure-foam-rollers",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-hair-dryer-concentrator-nozzle",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-air-vs-helios",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-supersonic-nural-vs-supersonic-r",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-supersonic-vs-shark-speedstyle",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/revlon-one-step-volumizer-vs-plus",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/steam-hair-straightener-vs-flat-iron",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/babyliss-air-style-1000-vs-flawless-volume",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-apply-hair-serum-or-oil",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/tangle-teezer-ultimate-detangler-vs-wet-brush-original",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-chronos-vs-chronos-max",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-airstrait-vs-ghd-duet-style",
+      "errors": [
+        "Missing authored copy 'Weighing the Duet Style against Shark’s wet-to-dry straightener? Compare the Shark and ghd options b'.",
+        "Missing authored destination '/guides/shark-silkipro-straight-vs-ghd-duet-style'."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/sea-salt-spray-vs-texturising-spray",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-airflow-curling-barrels",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/dyson-supersonic-travel-vs-ghd-flight-plus",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/shark-flexstyle-vs-ioncurl",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-speed-vs-helios",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/shark-glam-vs-flexstyle",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-hair-rollers",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-hair-clips-and-pins",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-pack-hair-tools-for-travel",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-apply-hair-clay",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-apply-curl-cream",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-hair-styling-powder",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-a-straightening-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-styling-powder-vs-dry-shampoo",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-clean-hot-air-brush",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-glide-plus-vs-glide-plus-max",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-blow-dry-a-fringe",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-brush-out-curls",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-hair-barrette",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-creaseless-hair-clips",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-dry-shampoo",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/why-curls-fall-out",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/ghd-sculpt-vs-chronos",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/automatic-hair-curler-vs-curling-wand",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/fixed-vs-adjustable-temperature-hair-straighteners",
+      "errors": [
+        "rendered main copy does not match the authored body."
+      ]
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-waver-vs-curling-iron",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-hair-waver",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-crimper-vs-hair-waver",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/curling-iron-leaves-crease",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-rotating-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-hair-dryer-flyaway-attachment",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-dryer-comb-attachment-vs-concentrator",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/airflow-curling-barrel-vs-curling-wand",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/rotating-vs-fixed-hot-air-brush",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-wax-vs-hair-gel",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-apply-hair-wax",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-paste-vs-hair-clay",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-apply-hair-paste",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-slick-back-hair-with-gel",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-banana-clip",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/banana-clip-vs-claw-clip",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-a-hair-bungee",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/hair-bungee-vs-hair-elastic",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-use-hair-sticks",
+      "errors": []
+    },
+    {
+      "stage": "production",
+      "path": "/guides/how-to-choose-claw-clip-size",
+      "errors": []
     }
   ],
-  "failures": [],
-  "verified": true
+  "failures": [
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: HTTP 404; expected 200.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: Title does not match release source.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: Canonical does not match release source.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: H1 does not match release source.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: Article is unexpectedly noindex.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: Article publication/revision dates differ from release source.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: Expected exactly one current sitemap entry.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing expected article identity.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: body is too short (0; minimum 500).",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: needs at least 3 main H2 sections.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: needs exactly one Quick answer.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: rendered main copy does not match the authored body.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing FAQ 'Can both be used on wet hair?'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing FAQ 'What is different about the dry-hair modes?'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing FAQ 'Which one comes with combs?'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing source 'https://www.sharkninja.co.uk/shark-silkipro-straight-hair-straightener-dryer-in-one-tool-with-heat-resistant-storage-case/HT401UKBL1.html'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing source 'https://www.ghdhair.com/wet-to-dry/ghd-duet-style-black-p-612'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing related destination '/guides/shark-silkipro-straight-vs-dyson-airstrait'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing related destination '/guides/dyson-airstrait-vs-ghd-duet-style'.",
+    "production /guides/shark-silkipro-straight-vs-ghd-duet-style: missing related destination '/guides/how-to-use-a-wet-to-dry-hair-straightener'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: HTTP 404; expected 200.",
+    "production /guides/steampod-4-vs-dyson-airstrait: Title does not match release source.",
+    "production /guides/steampod-4-vs-dyson-airstrait: Canonical does not match release source.",
+    "production /guides/steampod-4-vs-dyson-airstrait: H1 does not match release source.",
+    "production /guides/steampod-4-vs-dyson-airstrait: Article is unexpectedly noindex.",
+    "production /guides/steampod-4-vs-dyson-airstrait: Article publication/revision dates differ from release source.",
+    "production /guides/steampod-4-vs-dyson-airstrait: Expected exactly one current sitemap entry.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing expected article identity.",
+    "production /guides/steampod-4-vs-dyson-airstrait: body is too short (0; minimum 500).",
+    "production /guides/steampod-4-vs-dyson-airstrait: needs at least 3 main H2 sections.",
+    "production /guides/steampod-4-vs-dyson-airstrait: needs exactly one Quick answer.",
+    "production /guides/steampod-4-vs-dyson-airstrait: rendered main copy does not match the authored body.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing FAQ 'Can I use SteamPod 4 on wet hair?'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing FAQ 'What water goes in the SteamPod 4 tank?'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing FAQ 'Does Airstrait have hot plates?'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing source 'https://www.lorealprofessionnel.co.uk/all-products/hair-tools/steampod-4'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing source 'https://dam.groupeseb.com/m/c159b54c21bcf6da/original/1820008740-IFU.pdf'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing source 'https://www.dyson.co.uk/hair-care/hair-straighteners/airstrait/plum-copper'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing related destination '/guides/steampod-3-vs-steampod-4'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing related destination '/guides/how-to-use-a-steam-hair-straightener'.",
+    "production /guides/steampod-4-vs-dyson-airstrait: missing related destination '/guides/how-to-use-a-wet-to-dry-hair-straightener'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: HTTP 404; expected 200.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: Title does not match release source.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: Canonical does not match release source.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: H1 does not match release source.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: Article is unexpectedly noindex.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: Article publication/revision dates differ from release source.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: Expected exactly one current sitemap entry.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing expected article identity.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: body is too short (0; minimum 500).",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: needs at least 3 main H2 sections.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: needs exactly one Quick answer.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: rendered main copy does not match the authored body.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing FAQ 'Do the S8500 and S9100 reach different temperatures?'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing FAQ 'Which one has a temperature lock?'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing FAQ 'Are the plates the same size?'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing FAQ 'Is every PROluxe product the S9100?'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing source 'https://uk.remington-europe.com/shine-therapy-straightener-s8500-uk'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing source 'https://uk.remington-europe.com/proluxe-hair-straightener-s9100-uk'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing related destination '/guides/best-adjustable-temperature-hair-straighteners'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing related destination '/guides/flat-iron-plate-width-guide'.",
+    "production /guides/remington-shine-therapy-vs-proluxe-straightener: missing related destination '/guides/fixed-vs-adjustable-temperature-hair-straighteners'.",
+    "production /guides/best-cordless-hair-straighteners: HTTP 404; expected 200.",
+    "production /guides/best-cordless-hair-straighteners: Title does not match release source.",
+    "production /guides/best-cordless-hair-straighteners: Canonical does not match release source.",
+    "production /guides/best-cordless-hair-straighteners: H1 does not match release source.",
+    "production /guides/best-cordless-hair-straighteners: Article is unexpectedly noindex.",
+    "production /guides/best-cordless-hair-straighteners: Article publication/revision dates differ from release source.",
+    "production /guides/best-cordless-hair-straighteners: Expected exactly one current sitemap entry.",
+    "production /guides/best-cordless-hair-straighteners: missing expected article identity.",
+    "production /guides/best-cordless-hair-straighteners: body is too short (0; minimum 500).",
+    "production /guides/best-cordless-hair-straighteners: needs at least 3 main H2 sections.",
+    "production /guides/best-cordless-hair-straighteners: needs exactly one Quick answer.",
+    "production /guides/best-cordless-hair-straighteners: rendered main copy does not match the authored body.",
+    "production /guides/best-cordless-hair-straighteners: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/best-cordless-hair-straighteners: missing FAQ 'Is the Dyson Corrale CoolShine cordless?'.",
+    "production /guides/best-cordless-hair-straighteners: missing FAQ 'How long do cordless straighteners run?'.",
+    "production /guides/best-cordless-hair-straighteners: missing FAQ 'Can I keep styling while the straightener charges?'.",
+    "production /guides/best-cordless-hair-straighteners: missing FAQ 'Why is ghd Unplugged not in the table?'.",
+    "production /guides/best-cordless-hair-straighteners: missing source 'https://revamphair.com/progloss-liberate-cordless-compact-hair-straightener'.",
+    "production /guides/best-cordless-hair-straighteners: missing source 'https://www.dyson.co.uk/hair-care/hair-straighteners/corrale/blue-copper'.",
+    "production /guides/best-cordless-hair-straighteners: missing source 'https://www.dyson.co.uk/support/hair-care/hair-straighteners/corrale'.",
+    "production /guides/best-cordless-hair-straighteners: missing source 'https://www.dyson.co.uk/hair-care/hair-straighteners/corrale-coolshine/ceramic-pink'.",
+    "production /guides/best-cordless-hair-straighteners: missing related destination '/guides/corded-vs-cordless-hair-straighteners'.",
+    "production /guides/best-cordless-hair-straighteners: missing related destination '/guides/dyson-corrale-coolshine-vs-corrale'.",
+    "production /guides/best-cordless-hair-straighteners: missing related destination '/guides/best-travel-flat-irons'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: HTTP 404; expected 200.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: Title does not match release source.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: Canonical does not match release source.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: H1 does not match release source.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: Article is unexpectedly noindex.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: Article publication/revision dates differ from release source.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: Expected exactly one current sitemap entry.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing expected article identity.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: body is too short (0; minimum 500).",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: needs at least 3 main H2 sections.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: needs exactly one Quick answer.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: rendered main copy does not match the authored body.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing FAQ 'Which brush separates curls into bigger groups?'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing FAQ 'Can I take either brush apart to clean it?'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing FAQ 'Should I detangle first?'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing source 'https://denmanbrush.com/products/d3-original-styler-7-row'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing source 'https://denmanbrush.com/blogs/news/d3-original-styler-7-row-brush-of-the-month'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing source 'https://www.bouncecurl.com/products/define-styling-brush'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing related destination '/guides/bounce-curl-define-vs-volume-edgelift'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing related destination '/guides/denman-d3-vs-d4'.",
+    "production /guides/denman-d3-vs-bounce-curl-define-edgelift: missing related destination '/guides/how-to-use-a-curl-defining-brush'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: HTTP 404; expected 200.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: Title does not match release source.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: Canonical does not match release source.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: H1 does not match release source.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: Article is unexpectedly noindex.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: Article publication/revision dates differ from release source.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: Expected exactly one current sitemap entry.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing expected article identity.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: body is too short (0; minimum 500).",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: needs at least 3 main H2 sections.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: needs exactly one Quick answer.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: rendered main copy does not match the authored body.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing FAQ 'How much bigger is the Large Ultimate Detangler?'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing FAQ 'Who is the Large size for?'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing FAQ 'Is the Regular Ultimate Detangler the same as The Original?'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing source 'https://tangleteezer.com/products/the-ultimate-detangler'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing source 'https://tangleteezer.com/products/the-original'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing related destination '/guides/tangle-teezer-ultimate-detangler-vs-fine-fragile'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing related destination '/guides/tangle-teezer-original-vs-ultimate-detangler'.",
+    "production /guides/tangle-teezer-ultimate-detangler-large-vs-regular: missing related destination '/guides/best-hair-brushes-for-long-hair'.",
+    "production /guides/best-hot-rollers: HTTP 404; expected 200.",
+    "production /guides/best-hot-rollers: Title does not match release source.",
+    "production /guides/best-hot-rollers: Canonical does not match release source.",
+    "production /guides/best-hot-rollers: H1 does not match release source.",
+    "production /guides/best-hot-rollers: Article is unexpectedly noindex.",
+    "production /guides/best-hot-rollers: Article publication/revision dates differ from release source.",
+    "production /guides/best-hot-rollers: Expected exactly one current sitemap entry.",
+    "production /guides/best-hot-rollers: missing expected article identity.",
+    "production /guides/best-hot-rollers: body is too short (0; minimum 500).",
+    "production /guides/best-hot-rollers: needs at least 3 main H2 sections.",
+    "production /guides/best-hot-rollers: needs exactly one Quick answer.",
+    "production /guides/best-hot-rollers: rendered main copy does not match the authored body.",
+    "production /guides/best-hot-rollers: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/best-hot-rollers: missing FAQ 'How many rollers come in each set?'.",
+    "production /guides/best-hot-rollers: missing FAQ 'Do both sets include clips?'.",
+    "production /guides/best-hot-rollers: missing FAQ 'Why is the Conair HS79CR not included?'.",
+    "production /guides/best-hot-rollers: missing source 'https://t3micro.com/collections/styling-tools/products/volumizing-hot-rollers-luxe'.",
+    "production /guides/best-hot-rollers: missing source 'https://www.conair.com/ceramic-flocked-hot-rollers/HS400.html'.",
+    "production /guides/best-hot-rollers: missing related destination '/guides/how-to-use-heated-hair-rollers'.",
+    "production /guides/best-hot-rollers: missing related destination '/guides/hair-roller-size-guide'.",
+    "production /guides/best-hot-rollers: missing related destination '/guides/conair-hs400-vs-hs79cr-hot-rollers'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: HTTP 404; expected 200.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: Title does not match release source.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: Canonical does not match release source.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: H1 does not match release source.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: Article is unexpectedly noindex.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: Article publication/revision dates differ from release source.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: Expected exactly one current sitemap entry.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing expected article identity.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: body is too short (0; minimum 500).",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: needs at least 3 main H2 sections.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: needs exactly one Quick answer.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: rendered main copy does not match the authored body.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing FAQ 'How often should I clean the FlexStyle filter?'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing FAQ 'Can I wash the filter cover with water?'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing FAQ 'What if it still overheats after cleaning?'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing source 'https://support.sharkninja.co.uk/article/HD440UK--HD420UK-Series-Shark-FlexStyle-Air-Styling--Drying-System-My-FlexStyle-is-Overheating?redirect=false'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing source 'https://support.sharkninja.co.uk/article/HD800UK-Series-Shark-Flexstyle-IonCurl-Air-Styler-Hair-Dryer---Getting-Started-with-Your-FlexStyle-IonCurl'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing related destination '/guides/shark-flexstyle-models-compared'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing related destination '/guides/how-to-clean-hot-air-brush'.",
+    "production /guides/how-to-clean-a-shark-flexstyle-filter: missing related destination '/guides/how-to-clean-hair-dryer-filter'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: HTTP 404; expected 200.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: Title does not match release source.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: Canonical does not match release source.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: H1 does not match release source.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: Article is unexpectedly noindex.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: Article publication/revision dates differ from release source.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: Expected exactly one current sitemap entry.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing expected article identity.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: body is too short (0; minimum 500).",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: needs at least 3 main H2 sections.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: needs exactly one Quick answer.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: rendered main copy does not match the authored body.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing or unordered FAQ/evidence/source/related tail.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing FAQ 'Does the BaByliss Air Wand AS6550U curl hair with airflow?'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing FAQ 'Which box includes a diffuser?'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing FAQ 'Does the FlexStyle turn into a hair dryer?'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing source 'https://www.sharkninja.co.uk/shark-flexstyle-5-in-1-air-styler-hair-dryer-with-storage-case-black-hd446uk/HD446UK.html'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing source 'https://www.babyliss.com/uk-en/air-wand-AS6550U.html'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing source 'https://www.babyliss.com/on/demandware.static/-/Sites-ml-babyliss-Library/en_GB/v1770307469494/information-booklets/AS6550U_IB.pdf'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing source 'https://www.babyliss.com/uk-en/air-wand-diffuser-ACAS6550UDIF.html'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing related destination '/guides/babyliss-air-wand-as6550u-vs-as6553u'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing related destination '/guides/shark-flexstyle-models-compared'.",
+    "production /guides/babyliss-air-wand-vs-shark-flexstyle: missing related destination '/guides/how-to-choose-multi-styler-attachments'.",
+    "production /guides/shark-flexstyle-models-compared: rendered main copy does not match the authored body.",
+    "production /guides/best-hair-brushes-for-long-hair: rendered main copy does not match the authored body.",
+    "production /guides/best-adjustable-temperature-hair-straighteners: rendered main copy does not match the authored body.",
+    "production /guides/hair-roller-size-guide: Missing authored copy 'Once you know the sizes you need, shop hot roller sets by usable size count rather than total roller'.",
+    "production /guides/hair-roller-size-guide: Missing authored destination '/guides/best-hot-rollers'.",
+    "production /guides/babyliss-air-wand-as6550u-vs-as6553u: Missing authored copy 'Comparing the Air Wand with a Shark box? See BaByliss Air Wand vs Shark FlexStyle, job by job.'.",
+    "production /guides/babyliss-air-wand-as6550u-vs-as6553u: Missing authored destination '/guides/babyliss-air-wand-vs-shark-flexstyle'.",
+    "production /guides/bounce-curl-define-vs-volume-edgelift: rendered main copy does not match the authored body.",
+    "production /guides/steampod-3-vs-steampod-4: rendered main copy does not match the authored body.",
+    "production /guides/dyson-corrale-coolshine-vs-corrale: Missing authored copy 'Want a battery tool but not necessarily a Dyson? See other cordless straighteners, compared by the m'.",
+    "production /guides/dyson-corrale-coolshine-vs-corrale: Missing authored destination '/guides/best-cordless-hair-straighteners'.",
+    "production /guides/shark-silkipro-straight-vs-dyson-airstrait: rendered main copy does not match the authored body.",
+    "production /guides/how-to-use-heated-hair-rollers: Missing authored copy 'Still choosing a set? Compare hot roller sets and clips by usable rollers per size.'.",
+    "production /guides/how-to-use-heated-hair-rollers: Missing authored destination '/guides/best-hot-rollers'.",
+    "production /guides/dyson-airstrait-vs-ghd-duet-style: Missing authored copy 'Weighing the Duet Style against Shark’s wet-to-dry straightener? Compare the Shark and ghd options b'.",
+    "production /guides/dyson-airstrait-vs-ghd-duet-style: Missing authored destination '/guides/shark-silkipro-straight-vs-ghd-duet-style'.",
+    "production /guides/how-to-clean-hot-air-brush: rendered main copy does not match the authored body.",
+    "production /guides/fixed-vs-adjustable-temperature-hair-straighteners: rendered main copy does not match the authored body."
+  ],
+  "verified": false
 }

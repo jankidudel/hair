@@ -2,6 +2,7 @@ import { exactModelRelated } from './exact-model-guides';
 import { seoGrowthRelated } from './seo-growth-guides';
 import { megaBatchRelated } from './seo-mega-batch-guides';
 import { searchGrowthRelated } from './seo-search-growth-guides';
+import { shortlistBatchRelated } from './seo-shortlist-batch-guides';
 import { consolidatedComparisonRelated } from './consolidated-comparison-guides';
 import { supportedUpdoRelated } from './supported-updo-guides';
 import { straightenerGuideRelated } from './straightener-guides';
@@ -30,6 +31,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...shortlistBatchRelated,
   ...searchGrowthRelated,
   ...megaBatchRelated,
   ...seoGrowthRelated,

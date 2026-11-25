@@ -234,6 +234,12 @@ import {
           >. Decide which movement and contact pattern you want before
           interpreting a size label.
         </p>
+        <p>
+          For a set that cools in place,
+          <a [routerLink]="['/guides', articleSlug.BestHotRollers]"
+            >compare hot rollers by size and clip</a
+          >.
+        </p>
       }
       @if (isFlat) {
         <p>
@@ -248,6 +254,21 @@ import {
           <a [routerLink]="['/guides', articleSlug.Steampod3VsSteampod4]"
             >SteamPod 3 and 4</a
           >.
+        </p>
+        <p>
+          <strong>Compare straighteners by routine.</strong>
+          <a
+            [routerLink]="[
+              '/guides',
+              articleSlug.BestCordlessHairStraighteners,
+            ]"
+            >Shop cordless straighteners for touch-ups</a
+          >
+          by stated runtime and charging, or
+          <a [routerLink]="['/guides', articleSlug.Steampod4VsDysonAirstrait]"
+            >choose between SteamPod 4 and Dyson Airstrait</a
+          >
+          by whether you start on dried or wet hair.
         </p>
       } @else {
         <p>

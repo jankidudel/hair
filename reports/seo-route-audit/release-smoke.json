@@ -1322,9 +1322,7 @@
     {
       "stage": "production",
       "path": "/guides/shark-flexstyle-models-compared",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1339,9 +1337,7 @@
     {
       "stage": "production",
       "path": "/guides/best-hair-brushes-for-long-hair",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1351,9 +1347,7 @@
     {
       "stage": "production",
       "path": "/guides/best-adjustable-temperature-hair-straighteners",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1479,9 +1473,7 @@
     {
       "stage": "production",
       "path": "/guides/bounce-curl-define-vs-volume-edgelift",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1546,9 +1538,7 @@
     {
       "stage": "production",
       "path": "/guides/steampod-3-vs-steampod-4",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1746,9 +1736,7 @@
     {
       "stage": "production",
       "path": "/guides/shark-silkipro-straight-vs-dyson-airstrait",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1909,9 +1897,7 @@
     {
       "stage": "production",
       "path": "/guides/how-to-clean-hot-air-brush",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",
@@ -1961,9 +1947,7 @@
     {
       "stage": "production",
       "path": "/guides/fixed-vs-adjustable-temperature-hair-straighteners",
-      "errors": [
-        "rendered main copy does not match the authored body."
-      ]
+      "errors": ["rendered main copy does not match the authored body."]
     },
     {
       "stage": "production",

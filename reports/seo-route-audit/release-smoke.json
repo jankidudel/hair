@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-26T21:44:04.078Z",
+  "checkedAt": "2026-11-26T23:26:15.592Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "b98d7561c842d43c0d9e9341d758334bcdb598c0",
+  "sourceCommit": "414c65d22093d0067c56e51af71fcbe8cf26dfb7",
   "sourceTreeDirty": true,
-  "artifactSha256": "2f07df1b100ec2f04b97fdfa9cbacc4d5d6e6ceb724f6f7c8f11c48f7b4d505d",
+  "artifactSha256": "7437e1979bdadbae423150fc1077f13e50f5bfa02b105272bdb9127ea3248359",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -22,6 +22,12 @@
     "hair-dryer-keeps-shutting-off",
     "how-to-clean-a-dyson-supersonic-filter",
     "best-budget-hair-dryers-uk",
+    "dyson-airwrap-vs-supersonic",
+    "dyson-airwrap-id-vs-complete-long",
+    "hot-tools-one-step-vs-revlon-one-step-plus",
+    "ghd-gold-vs-chronos",
+    "ghd-mini-vs-original",
+    "how-to-choose-a-ghd-straightener",
     "shark-flexstyle-models-compared",
     "how-to-choose-multi-styler-attachments",
     "best-hair-dryers-fine-hair",
@@ -252,6 +258,36 @@
     {
       "stage": "artifact",
       "path": "/guides/best-budget-hair-dryers-uk",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airwrap-vs-supersonic",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/dyson-airwrap-id-vs-complete-long",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/hot-tools-one-step-vs-revlon-one-step-plus",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-gold-vs-chronos",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/ghd-mini-vs-original",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/how-to-choose-a-ghd-straightener",
       "errors": []
     },
     {

@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, provideRouter } from '@angular/router';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { AnalyticsService } from './analytics/analytics.service';
 import {
   DIFFERENT_MARKET_WARNING,
@@ -14,6 +14,26 @@ import { SiteSeoService } from './site-seo.service';
 
 describe('ProductExplorerComponent decision support', () => {
   const analyticsCalls: unknown[][] = [];
+  // The kit comparison is deferred `on viewport`, and jsdom has no
+  // IntersectionObserver. A no-op observer keeps the block on its
+  // placeholder, which is what these tests assert against.
+  const original = globalThis.IntersectionObserver;
+  beforeAll(() => {
+    globalThis.IntersectionObserver = class {
+      readonly root = null;
+      readonly rootMargin = '';
+      readonly thresholds: readonly number[] = [];
+      observe(): void {}
+      unobserve(): void {}
+      disconnect(): void {}
+      takeRecords(): IntersectionObserverEntry[] {
+        return [];
+      }
+    } as unknown as typeof IntersectionObserver;
+  });
+  afterAll(() => {
+    globalThis.IntersectionObserver = original;
+  });
 
   beforeEach(async () => {
     analyticsCalls.length = 0;

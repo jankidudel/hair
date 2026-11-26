@@ -4,7 +4,7 @@ import type { GuideEvidence } from './guide-evidence';
 /** Exact-model source scope for current tool choices; no performance testing. */
 export const toolChoiceEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.GhdSculptVsChronos]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -177,7 +177,7 @@ export const toolChoiceEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const toolChoiceRelated = {
   [ArticleSlug.GhdSculptVsChronos]: [
     ArticleSlug.FixedVsAdjustableTemperatureHairStraighteners,

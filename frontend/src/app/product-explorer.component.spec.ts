@@ -15,9 +15,9 @@ import { SiteSeoService } from './site-seo.service';
 describe('ProductExplorerComponent decision support', () => {
   const analyticsCalls: unknown[][] = [];
 
-  beforeEach(() => {
+  beforeEach(async () => {
     analyticsCalls.length = 0;
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [ProductExplorerComponent],
       providers: [
         provideZonelessChangeDetection(),
@@ -39,7 +39,7 @@ describe('ProductExplorerComponent decision support', () => {
         },
         { provide: DOCUMENT, useValue: document },
       ],
-    });
+    }).compileComponents();
   });
 
   async function setup() {
@@ -203,5 +203,22 @@ describe('ProductExplorerComponent decision support', () => {
     expect(
       component.comparisonForProduct('ghd-curve-soft-curl-tong-uk')?.path,
     ).toBe('/guides/ghd-soft-curl-tong-vs-creative-curl-wand');
+  });
+  it('prerenders the linkable kit-comparison section with its worked example and guide links', () => {
+    const fixture = TestBed.createComponent(ProductExplorerComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const section = element.querySelector('#compare-multi-styler-kits');
+    expect(section?.querySelector('h2')?.textContent).toContain(
+      'Compare what comes with two multi-styler kits',
+    );
+    expect(section?.textContent).toContain(
+      'The listed HD430 Stone box includes airflow curlers, an oval brush, a paddle brush and a concentrator.',
+    );
+    expect(
+      section?.querySelector(
+        'a[href="/guides/shark-flexstyle-diffuser-compatibility"]',
+      ),
+    ).not.toBeNull();
   });
 });

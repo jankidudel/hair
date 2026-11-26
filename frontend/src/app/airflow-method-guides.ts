@@ -2,64 +2,65 @@ import { ArticleSlug } from './article-slug';
 import type { GuideEvidence, GuideSource } from './guide-evidence';
 
 /** Exact model and market examples; compatibility and operation remain separate. */
-export const airflowSources = {
-  S1: {
-    label: 'Remington AS8810 instructions',
-    model: 'Remington AS8810 international manual, English section',
-    market: 'International (English)',
-    url: 'https://cdn-img.remington-europe.com/manager/remington-europe_com/User%20Manuals/EU/aw17/AS8810_IB_INT_T22-0004889.pdf',
-    checkedDate: '2 November 2026',
-    scope:
-      'Named controls and ordinary release; not a universal tangle procedure.',
-  },
-  S2: {
-    label: 'Dyson Airwrap i.d. manual',
-    model: 'Dyson Airwrap i.d. UK user manual',
-    market: 'UK',
-    url: 'https://www.dyson.co.uk/content/dam/dyson/maintenance/user-guides/en_GB/personalcare/dyson-airwrap-multi-styler/N308F_OUG_UK.pdf',
-    checkedDate: '2 November 2026',
-    scope:
-      'Pre-styling, connected sequence, direction and release; not Co-anda2x controls.',
-  },
-  S3: {
-    label: 'Dyson Supersonic wide-tooth-comb support',
-    model: 'Dyson Supersonic wide-tooth comb',
-    market: 'UK',
-    url: 'https://www.dyson.co.uk/support/journey/tools/969748-05',
-    checkedDate: '2 November 2026',
-    scope:
-      'Named comb format and role, not a complete fit list or operating sequence.',
-  },
-  S4: {
-    label: 'Dyson Supersonic Flyaway attachment support',
-    model: 'Dyson Supersonic Flyaway attachment 971618-02',
-    market: 'UK',
-    url: 'https://www.dyson.co.uk/support/journey/tools/971618-02.392913-01',
-    checkedDate: '2 November 2026',
-    scope:
-      'Starting condition, movement and handling, not universal smoother instructions.',
-  },
-  S5: {
-    label: 'Dyson Supersonic styling article',
-    model: 'Dyson Supersonic styling article',
-    market: 'US',
-    url: 'https://www.dyson.com/discover/insights/hair/styles/how-to-style-your-hair-using-the-supersonic-hair-dryer',
-    checkedDate: '2 November 2026',
-    scope:
-      'Attachment roles and separate-brush context, not a UK bundle record.',
-  },
-  S6: {
-    label: 'Conair CD705/CD706 wand manual',
-    model: 'Conair CD705/CD706 Double Ceramic wand',
-    market: 'US',
-    url: 'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw4e1e1319/Instructional%20Booklets/CD706.pdf',
-    checkedDate: '2 November 2026',
-    scope: 'Dry-hair hand wrapping, not clamp operation.',
-  },
-} as const satisfies Readonly<Record<string, GuideSource>>;
+export const airflowSources = /* @__PURE__ */ (() =>
+  ({
+    S1: {
+      label: 'Remington AS8810 instructions',
+      model: 'Remington AS8810 international manual, English section',
+      market: 'International (English)',
+      url: 'https://cdn-img.remington-europe.com/manager/remington-europe_com/User%20Manuals/EU/aw17/AS8810_IB_INT_T22-0004889.pdf',
+      checkedDate: '2 November 2026',
+      scope:
+        'Named controls and ordinary release; not a universal tangle procedure.',
+    },
+    S2: {
+      label: 'Dyson Airwrap i.d. manual',
+      model: 'Dyson Airwrap i.d. UK user manual',
+      market: 'UK',
+      url: 'https://www.dyson.co.uk/content/dam/dyson/maintenance/user-guides/en_GB/personalcare/dyson-airwrap-multi-styler/N308F_OUG_UK.pdf',
+      checkedDate: '2 November 2026',
+      scope:
+        'Pre-styling, connected sequence, direction and release; not Co-anda2x controls.',
+    },
+    S3: {
+      label: 'Dyson Supersonic wide-tooth-comb support',
+      model: 'Dyson Supersonic wide-tooth comb',
+      market: 'UK',
+      url: 'https://www.dyson.co.uk/support/journey/tools/969748-05',
+      checkedDate: '2 November 2026',
+      scope:
+        'Named comb format and role, not a complete fit list or operating sequence.',
+    },
+    S4: {
+      label: 'Dyson Supersonic Flyaway attachment support',
+      model: 'Dyson Supersonic Flyaway attachment 971618-02',
+      market: 'UK',
+      url: 'https://www.dyson.co.uk/support/journey/tools/971618-02.392913-01',
+      checkedDate: '2 November 2026',
+      scope:
+        'Starting condition, movement and handling, not universal smoother instructions.',
+    },
+    S5: {
+      label: 'Dyson Supersonic styling article',
+      model: 'Dyson Supersonic styling article',
+      market: 'US',
+      url: 'https://www.dyson.com/discover/insights/hair/styles/how-to-style-your-hair-using-the-supersonic-hair-dryer',
+      checkedDate: '2 November 2026',
+      scope:
+        'Attachment roles and separate-brush context, not a UK bundle record.',
+    },
+    S6: {
+      label: 'Conair CD705/CD706 wand manual',
+      model: 'Conair CD705/CD706 Double Ceramic wand',
+      market: 'US',
+      url: 'https://www.conair.com/on/demandware.static/-/Library-Sites-usConairShared/default/dw4e1e1319/Instructional%20Booklets/CD706.pdf',
+      checkedDate: '2 November 2026',
+      scope: 'Dry-hair hand wrapping, not clamp operation.',
+    },
+  }) as const satisfies Readonly<Record<string, GuideSource>>)();
 export const airflowMethodEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HowToUseARotatingHotAirBrush]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -102,7 +103,7 @@ export const airflowMethodEvidence: Readonly<
       'One manufacturer manual illustrates powered head rotation. The distinction between the moving parts and the choice framework are editorial guidance, without timed drying, handling scores or tangle-rate testing.',
     sources: [airflowSources.S1],
   },
-};
+}))();
 export const airflowMethodRelated = {
   [ArticleSlug.HowToUseARotatingHotAirBrush]: [
     ArticleSlug.RotatingVsFixedHotAirBrush,

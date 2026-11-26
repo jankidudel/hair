@@ -23,6 +23,15 @@ import {
 import { SiteSeoService } from './site-seo.service';
 import { EvidenceScopeComponent } from './evidence-scope.component';
 import { UpgradeCheckComponent } from './upgrade-check.component';
+import { MultiStylerKitComparisonComponent } from './multi-styler-kit-comparison.component';
+import { ArticleSlug } from './article-slug';
+
+/** Guides linked from the static kit-comparison section. */
+const kitComparisonGuides = [
+  ArticleSlug.HowToChooseMultiStylerAttachments,
+  ArticleSlug.SharkFlexstyleModelsCompared,
+  ArticleSlug.DysonAirwrapVsSharkFlexstyle,
+] as const;
 
 type CategoryFilter = ProductCategory | 'all';
 type PriceFilter = PriceTier | 'all';
@@ -45,7 +54,12 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
 };
 
 @Component({
-  imports: [RouterLink, EvidenceScopeComponent, UpgradeCheckComponent],
+  imports: [
+    RouterLink,
+    EvidenceScopeComponent,
+    UpgradeCheckComponent,
+    MultiStylerKitComparisonComponent,
+  ],
   styleUrl: 'product-explorer.component.css',
   template: `@if (comparison) {
       <section class="comparison-page">
@@ -404,6 +418,58 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
             }
           </ul>
         </section>
+        <section
+          id="compare-multi-styler-kits"
+          class="kit-comparison"
+          aria-labelledby="kit-comparison-heading"
+        >
+          <p class="eyebrow">Multi-Styler Kit Comparison</p>
+          <h2 id="kit-comparison-heading" tabindex="-1">
+            Compare what comes with two multi-styler kits
+          </h2>
+          <p>
+            Choose the market and the exact two kits you are considering. Mark
+            the attachments you need and check whether they come in each box.
+          </p>
+          @defer (on viewport) {
+            <app-multi-styler-kit-comparison />
+          } @placeholder {
+            <p class="kit-placeholder">
+              The interactive kit comparison loads here. The worked example and
+              guides below work without it.
+            </p>
+          }
+          <div class="kit-example">
+            <h3>Worked example: US HD430</h3>
+            <p>
+              The listed HD430 Stone box includes airflow curlers, an oval
+              brush, a paddle brush and a concentrator. If a diffuser is part of
+              your routine, check the exact box and part listing. See the
+              <a
+                href="https://www.sharkninja.com/shark-flexstyle-air-styling-drying-system/HD430.html"
+                >official HD430 listing</a
+              >
+              and
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.SharkFlexstyleDiffuserCompatibility,
+                ]"
+                >which diffuser fits a Shark FlexStyle</a
+              >.
+            </p>
+            <h3>Related guides</h3>
+            <ul>
+              @for (guide of kitGuides; track guide.slug) {
+                <li>
+                  <a [routerLink]="['/guides', guide.slug]">{{
+                    guide.heading
+                  }}</a>
+                </li>
+              }
+            </ul>
+          </div>
+        </section>
         <details class="how-we-compare" id="how-we-compare">
           <summary>
             <h2 id="how-we-compare-heading">How we compare products</h2>
@@ -462,6 +528,10 @@ export class ProductExplorerComponent implements OnInit {
     { label: 'Curling Irons', value: ProductCategory.CurlingIron },
     { label: 'Curling Wands', value: ProductCategory.CurlingWand },
   ];
+  readonly articleSlug = ArticleSlug;
+  readonly kitGuides = kitComparisonGuides.flatMap((slug) =>
+    articles.filter((article) => article.slug === slug),
+  );
   readonly researchedPairs = researchedPairSlugs.map((slug) =>
     articles.find((article) => article.slug === slug)!,
   );

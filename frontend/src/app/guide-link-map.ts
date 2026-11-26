@@ -4,6 +4,7 @@ import { megaBatchRelated } from './seo-mega-batch-guides';
 import { searchGrowthRelated } from './seo-search-growth-guides';
 import { shortlistBatchRelated } from './seo-shortlist-batch-guides';
 import { releaseCompletionRelated } from './seo-release-completion-guides';
+import { modelDecisionRelated } from './seo-model-decision-guides';
 import { consolidatedComparisonRelated } from './consolidated-comparison-guides';
 import { supportedUpdoRelated } from './supported-updo-guides';
 import { straightenerGuideRelated } from './straightener-guides';
@@ -32,6 +33,7 @@ export interface GuideLinkMapEntry {
  * publication concern and must not determine editorial recommendations.
  */
 const comparisonOverrides: Readonly<Record<string, readonly string[]>> = {
+  ...modelDecisionRelated,
   ...releaseCompletionRelated,
   ...shortlistBatchRelated,
   ...searchGrowthRelated,

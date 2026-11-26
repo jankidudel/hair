@@ -3,12 +3,21 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withInMemoryScrolling,
+} from '@angular/router';
 import { routes } from './app.routes';
 import { CURRENT_UTC_DATE } from './publication-date';
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      // Fragment links such as /products#compare-multi-styler-kits.
+      withInMemoryScrolling({ anchorScrolling: 'enabled' }),
+    ),
     // Reuse the prerendered DOM instead of re-rendering every page on startup.
     provideClientHydration(withEventReplay()),
     {

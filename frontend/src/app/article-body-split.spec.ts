@@ -3,6 +3,7 @@ import { articleBodyLoaders } from './article-bodies.generated';
 import { articles as fullArticles } from './content.generated';
 import { articles as indexedArticles } from './content-index.generated';
 import { articleBodyResolver } from './article-html.resolver';
+import { guideEvidence } from './guide-evidence';
 import {
   convertToParamMap,
   type ActivatedRouteSnapshot,
@@ -26,9 +27,11 @@ describe('per-article body split', () => {
       fullArticles.map((article) => article.slug).sort(),
     );
     for (const article of fullArticles)
+      // Evidence travels with its own body, never in the shared bundle.
       expect(await articleBodyLoaders[article.slug]()).toEqual({
         html: article.html,
         faq: article.faq,
+        evidence: guideEvidence[article.slug],
       });
     // One dynamic import per published article; runtime grows with the catalogue.
   }, 20_000);
@@ -43,6 +46,7 @@ describe('per-article body split', () => {
     expect(await resolve(first.slug)).toEqual({
       html: first.html,
       faq: first.faq,
+      evidence: guideEvidence[first.slug],
     });
     expect(await resolve('not-a-published-guide')).toEqual({
       html: '',

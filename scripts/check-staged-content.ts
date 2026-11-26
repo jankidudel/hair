@@ -26,6 +26,7 @@ const staticRoutes = new Set([
   '/hair-accessories',
   '/tools',
   '/hair-brush-finder',
+  '/hair-tool-manual-finder',
   '/flat-iron-finder',
   '/curling-tool-finder',
   '/hair-tool-routine-builder',

@@ -1,5 +1,30 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  // 26 November 2026 model-decision batch (published).
+  ParluxElysiumVsDigitalyon: 'parlux-elysium-vs-digitalyon',
+  TangleTeezerUltimateDetanglerVsNaturallyCurly:
+    'tangle-teezer-ultimate-detangler-vs-naturally-curly',
+  UnbrushVsWetBrushOriginalDetangler: 'unbrush-vs-wet-brush-original-detangler',
+  Mermade25mmVs32mmWaver: 'mermade-25mm-vs-32mm-waver',
+  BeachwaverB1VsB125: 'beachwaver-b1-vs-b125',
+  DysonAirwrapFlashingLights: 'dyson-airwrap-flashing-lights',
+  SharkFlexstyleDiffuserCompatibility: 'shark-flexstyle-diffuser-compatibility',
+  HairDryerKeepsShuttingOff: 'hair-dryer-keeps-shutting-off',
+  HowToCleanADysonSupersonicFilter: 'how-to-clean-a-dyson-supersonic-filter',
+  BestBudgetHairDryersUk: 'best-budget-hair-dryers-uk',
+  // 26 November 2026 model-decision batch (held drafts pending source checks).
+  DysonAirwrapVsSupersonic: 'dyson-airwrap-vs-supersonic',
+  DysonAirwrapIdVsCompleteLong: 'dyson-airwrap-id-vs-complete-long',
+  SharkFlexfusionVsFlexstyle: 'shark-flexfusion-vs-flexstyle',
+  SharkFlexfusionVsDysonAirwrapId: 'shark-flexfusion-vs-dyson-airwrap-id',
+  SharkFlexstyleVsRevlonOneStepPlus: 'shark-flexstyle-vs-revlon-one-step-plus',
+  HotToolsOneStepVsRevlonOneStepPlus:
+    'hot-tools-one-step-vs-revlon-one-step-plus',
+  GhdGoldVsChronos: 'ghd-gold-vs-chronos',
+  GhdMiniVsOriginal: 'ghd-mini-vs-original',
+  HowToChooseAGhdStraightener: 'how-to-choose-a-ghd-straightener',
+  SharkSpeedstyleProFlexVsGhdHelios: 'shark-speedstyle-pro-flex-vs-ghd-helios',
+
   SharkSilkiproStraightVsGhdDuetStyle:
     'shark-silkipro-straight-vs-ghd-duet-style',
   Steampod4VsDysonAirstrait: 'steampod-4-vs-dyson-airstrait',

@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   articles,
+  guideEvidenceSlugs,
   type ArticleBody,
   type ArticleFaq,
   type ArticleSummary,
@@ -51,7 +52,7 @@ import {
 } from './decision-support';
 import { productBySlug, type ProductProfile } from './product-comparisons';
 import { CleanInspectStopComponent } from './clean-inspect-stop.component';
-import { guideEvidence, type GuideEvidence } from './guide-evidence';
+import type { GuideEvidence } from './guide-evidence';
 import { additionalGuideSources } from './current-model-comparison-guides';
 import { remainingOpportunitySources } from './remaining-opportunity-guides';
 import { seoGrowthSupplementarySources } from './seo-growth-guides';
@@ -342,12 +343,21 @@ export function splitEvidenceArticleHtml(
               <li>
                 @if (guideEvidenceContent.sourceFormat === 'product-market') {
                   <a [href]="source.url">{{ source.label }}</a> —
-                  {{ source.market }}; checked {{ source.checkedDate }}.
+                  {{ source.market }}
+                  @if (source.checkedDate) {
+                    ; checked {{ source.checkedDate }}
+                  }
+                  .
                   {{ source.scope }}
                 } @else {
                   <strong>{{ source.model }}</strong> ({{ source.market }}):
-                  <a [href]="source.url">{{ source.label }}</a> — checked
-                  {{ source.checkedDate }}. {{ source.scope }}
+                  <a [href]="source.url">{{ source.label }}</a>
+                  @if (source.checkedDate) {
+                    — checked {{ source.checkedDate }}.
+                  } @else {
+                    —
+                  }
+                  {{ source.scope }}
                 }
               </li>
             }
@@ -366,7 +376,11 @@ export function splitEvidenceArticleHtml(
             @for (source of supplementarySources; track source.url) {
               <li>
                 <a [href]="source.url">{{ source.label }}</a> —
-                {{ source.market }}; checked {{ source.checkedDate }}.
+                {{ source.market }}
+                @if (source.checkedDate) {
+                  ; checked {{ source.checkedDate }}
+                }
+                .
                 {{ source.scope }}
               </li>
             }
@@ -525,7 +539,8 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.article) {
       this.decisionSnapshot = decisionSnapshots[this.article.slug];
       this.decisionLinks = decisionRelatedLinks[this.article.slug];
-      this.guideEvidenceContent = guideEvidence[this.article.slug];
+      // Evidence loads with the article body, so it stays out of the shared bundle.
+      this.guideEvidenceContent = body.evidence;
       if (
         this.guideEvidenceContent ||
         slug === ArticleSlug.HairDryerWattageGuide
@@ -737,7 +752,7 @@ export class ArticlePageComponent implements OnInit, AfterViewInit, OnDestroy {
           : this.article.group === 'brushes-and-combs'
             ? 'brush_comb_care'
             : undefined;
-    const isNewTaskDestination = Object.keys(guideEvidence).some(
+    const isNewTaskDestination = guideEvidenceSlugs.some(
       (slug) => path === `/guides/${slug}`,
     );
     if (!taskGroup || (!isNewTaskDestination && !this.guideEvidenceContent))

@@ -68,7 +68,7 @@ export const consolidatedComparisonRelated: Readonly<
 };
 export const consolidatedComparisonEvidence: Readonly<
   Record<string, GuideEvidence>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.GhdMaxVsChronosMax]: {
     summary:
       'Manufacturer specifications and directions establish the stated product scope. Handling choices are editorial and measured comparative outcomes remain unknown.',
@@ -456,7 +456,7 @@ export const consolidatedComparisonEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const consolidatedComparisonAliases: Readonly<
   Record<string, readonly string[]>
 > = {

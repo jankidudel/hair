@@ -375,7 +375,11 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           </div>
           <div class="tools-grid">
             @for (tool of group.tools; track tool.name) {
-              <a class="tool-card" [routerLink]="tool.path">
+              <a
+                class="tool-card"
+                [routerLink]="tool.path"
+                [fragment]="$any(tool).fragment"
+              >
                 <p class="eyebrow">{{ tool.type }}</p>
                 <h3>{{ tool.name }}</h3>
                 <p>{{ tool.description }}</p>
@@ -411,6 +415,40 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
           <h1>{{ category.heading }}</h1>
           <p class="lede">{{ category.intro }}</p>
         </section>
+        @if (category.id === 'hair-dryers') {
+          <nav
+            class="category-product-explorer hub-task-links"
+            aria-labelledby="hub-task-links-heading"
+          >
+            <h2 id="hub-task-links-heading">Buy or maintain a dryer</h2>
+            <ul>
+              <li>
+                <a
+                  [routerLink]="['/guides', articleSlug.BestBudgetHairDryersUk]"
+                  >Choose a UK budget dryer</a
+                >
+              </li>
+              <li>
+                <a routerLink="/hair-tool-manual-finder">Find a dryer manual</a>
+              </li>
+            </ul>
+          </nav>
+        }
+        @if (category.id === 'hot-air-brushes') {
+          <nav
+            class="category-product-explorer hub-task-links"
+            aria-labelledby="hub-task-links-heading"
+          >
+            <h2 id="hub-task-links-heading">Compare the kit you would buy</h2>
+            <ul>
+              <li>
+                <a routerLink="/products" fragment="compare-multi-styler-kits"
+                  >Compare exact multi-styler boxes</a
+                >
+              </li>
+            </ul>
+          </nav>
+        }
         @if (
           category.id === 'brushes-and-combs' ||
           category.id === 'hair-accessories'
@@ -652,6 +690,32 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
                 >Compare the three Drybar Shot sizes</a
               >: choose a US round or oval brush for your shortest working
               section.
+            </li>
+            <li>
+              <a
+                [routerLink]="['/guides', articleSlug.DysonAirwrapVsSupersonic]"
+                >Dyson Airwrap vs Supersonic</a
+              >: check whether the UK Airwrap i.d. box can replace a dedicated
+              dryer and diffuser.
+            </li>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.DysonAirwrapIdVsCompleteLong,
+                ]"
+                >Dyson Airwrap i.d. vs Complete Long</a
+              >: compare the barrels and brushes in two UK Airwrap boxes.
+            </li>
+            <li>
+              <a
+                [routerLink]="[
+                  '/guides',
+                  articleSlug.HotToolsOneStepVsRevlonOneStepPlus,
+                ]"
+                >Hot Tools 24K Gold One-Step vs Revlon One-Step Plus</a
+              >: compare two US oval brush heads by size label, controls and
+              head removal.
             </li>
           </ul>
           <p><strong>Choose or maintain a hot-air tool:</strong></p>
@@ -2124,6 +2188,23 @@ export class StaticPageComponent implements OnInit {
   ] as const;
   readonly tools = [
     {
+      name: 'Multi-Styler Kit Comparison',
+      type: 'Compare two boxes',
+      description:
+        'See which attachments come with two exact kits sold in your market.',
+      path: '/products',
+      fragment: 'compare-multi-styler-kits',
+      action: 'Compare kits',
+    },
+    {
+      name: 'Hair Tool Manual Finder',
+      type: 'Find the instructions',
+      description:
+        'Find the official manual or support page for the model code on your tool.',
+      path: '/hair-tool-manual-finder',
+      action: 'Find a manual',
+    },
+    {
       name: 'Flat Iron Finder',
       type: 'Choose a flat iron',
       description:
@@ -2233,6 +2314,7 @@ export class StaticPageComponent implements OnInit {
         'Hair Dryer Feature Finder',
         'Round Brush Size Finder',
         'Heat Protectant Finder',
+        'Multi-Styler Kit Comparison',
       ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
     },
     {
@@ -2254,6 +2336,7 @@ export class StaticPageComponent implements OnInit {
         'Hair Dryer Specs Decoder',
         'Hair Dryer Running-Cost Calculator',
         'Airwrap Attachment Lookup',
+        'Hair Tool Manual Finder',
       ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
     },
   ] as const;

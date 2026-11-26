@@ -472,7 +472,7 @@ const sources: Readonly<Record<string, GuideSource>> = {
 
 export const remainingOpportunitySources: Readonly<
   Partial<Record<ArticleSlug, readonly GuideSource[]>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.SharkSpeedstyleProVsProFlex]: [
     sources.shark300,
     sources.shark500,
@@ -535,7 +535,7 @@ export const remainingOpportunitySources: Readonly<
     sources.coolproduct,
   ],
   [ArticleSlug.BestTravelFlatIrons]: [sources.corrale],
-};
+}))();
 
 export const remainingOpportunityAliases: Readonly<
   Record<string, readonly string[]>

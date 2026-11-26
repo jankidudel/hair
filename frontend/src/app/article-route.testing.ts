@@ -4,6 +4,7 @@ import {
   emptyArticleBody,
 } from './article-html.resolver';
 import { articleBySlug } from './content.generated';
+import { guideEvidence } from './guide-evidence';
 
 /**
  * Test double for the `guides/:slug` route snapshot, including the article
@@ -15,7 +16,11 @@ export function articleRouteSnapshot(slug: string) {
     paramMap: convertToParamMap({ slug }),
     data: {
       [ARTICLE_BODY_DATA_KEY]: article
-        ? { html: article.html, faq: article.faq }
+        ? {
+            html: article.html,
+            faq: article.faq,
+            evidence: guideEvidence[slug],
+          }
         : emptyArticleBody,
     },
   };

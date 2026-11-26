@@ -96,7 +96,7 @@ const sources: Readonly<Record<string, GuideSource>> = {
 
 export const careMethodEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.ColdWaterForHair]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -187,7 +187,7 @@ export const careMethodEvidence: Readonly<
       'These records document the named instructions or construction examples. They do not establish an independent result for this guide.',
     sources: [sources.S6, sources.S7, sources.S10],
   },
-};
+}))();
 export const careMethodRelated: Readonly<
   Partial<Record<ArticleSlug, readonly ArticleSlug[]>>
 > = {

@@ -4,7 +4,7 @@ import type { GuideEvidence } from './guide-evidence';
 /** Named fastening constructions and maker-specific supported handling. */
 export const supportedUpdoEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HowToUseABananaClip]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -135,7 +135,7 @@ export const supportedUpdoEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const supportedUpdoRelated = {
   [ArticleSlug.HowToUseABananaClip]: [
     ArticleSlug.BananaClipVsClawClip,

@@ -14,6 +14,7 @@ import {
 } from './seo-search-growth-guides';
 import { shortlistBatchEvidence } from './seo-shortlist-batch-guides';
 import { releaseCompletionEvidence } from './seo-release-completion-guides';
+import { modelDecisionEvidence } from './seo-model-decision-guides';
 import { consolidatedComparisonEvidence } from './consolidated-comparison-guides';
 import { supportedUpdoEvidence } from './supported-updo-guides';
 import { straightenerGuideEvidence } from './straightener-guides';
@@ -148,6 +149,7 @@ const finishingSources: readonly GuideSource[] = [
 ];
 
 const baseGuideEvidence: Readonly<Record<string, GuideEvidence>> = {
+  ...modelDecisionEvidence,
   ...releaseCompletionEvidence,
   ...shortlistBatchEvidence,
   ...searchGrowthEvidence,

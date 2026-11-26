@@ -4,7 +4,7 @@ import type { GuideEvidence } from './guide-evidence';
 /** Named formula and market instructions; descriptors are not measured rankings. */
 export const shapingMethodEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HairWaxVsHairGel]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -127,7 +127,7 @@ export const shapingMethodEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const shapingMethodRelated = {
   [ArticleSlug.HairWaxVsHairGel]: [
     ArticleSlug.HowToApplyHairWax,

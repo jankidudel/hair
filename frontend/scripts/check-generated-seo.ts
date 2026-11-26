@@ -442,7 +442,9 @@ for (const [slug, evidence] of Object.entries(guideEvidence)) {
     slug === ArticleSlug.BabylissWaveSecretAirVsStyleSecretAir ||
     slug === ArticleSlug.AutomaticHairCurlerVsCurlingWand ||
     // The direct-heat hub lists any "waver" slug on /curling-irons.
-    slug === ArticleSlug.BestHairWavers
+    slug === ArticleSlug.BestHairWavers ||
+    slug === ArticleSlug.Mermade25mmVs32mmWaver ||
+    slug === ArticleSlug.BeachwaverB1VsB125
       ? 'curling-irons'
       : guideCategoryById[article.group].path.slice(1);
   const relatedHtml = html.slice(related);

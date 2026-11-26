@@ -5,7 +5,7 @@ import type { GuideEvidence } from './guide-evidence';
 /** Named manual examples; operating and care permissions stay model-specific. */
 export const waveMethodEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HowToUseAnAutomaticHairCurler]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -131,7 +131,7 @@ export const waveMethodEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const waveMethodRelated = {
   [ArticleSlug.HowToUseAnAutomaticHairCurler]: [
     ArticleSlug.AutomaticHairCurlerVsCurlingWand,

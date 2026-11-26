@@ -58,7 +58,7 @@ const sources: Readonly<Record<string, GuideSource>> = {
 };
 export const fastenerEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HowToUseAClawClip]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -101,7 +101,7 @@ export const fastenerEvidence: Readonly<
       'The named official listing establishes a spiral-format example, and the textile reference identifies satin as a weave. Fit and removal comparisons are editorial guidance, not measured friction, breakage, comfort or hold-duration results.',
     sources: [sources.S3, sources.S6],
   },
-};
+}))();
 export const fastenerRelated: Readonly<
   Partial<Record<ArticleSlug, readonly ArticleSlug[]>>
 > = {

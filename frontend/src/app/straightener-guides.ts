@@ -5,7 +5,7 @@ const checkedDate = '4 November 2026';
 
 export const straightenerGuideEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.SteamHairStraightenerVsFlatIron]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -218,7 +218,7 @@ export const straightenerGuideEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 
 export const straightenerGuideRelated = {
   [ArticleSlug.SteamHairStraightenerVsFlatIron]: [

@@ -43,6 +43,13 @@ export const routes: Routes = [
   { path: 'guides', component: StaticPageComponent, data: { page: 'guides' } },
   { path: 'hair-brush-finder', component: HairBrushFinderComponent },
   {
+    path: 'hair-tool-manual-finder',
+    loadComponent: () =>
+      import('./hair-tool-manual-finder.component').then(
+        (m) => m.HairToolManualFinderComponent,
+      ),
+  },
+  {
     path: 'flat-irons',
     component: DirectHeatHubComponent,
     data: { kind: 'flat' },

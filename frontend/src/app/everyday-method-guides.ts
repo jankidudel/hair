@@ -2,7 +2,7 @@ import { ArticleSlug } from './article-slug';
 import type { GuideEvidence } from './guide-evidence';
 export const everydayMethodEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HowToBlowDryAFringe]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -149,7 +149,7 @@ export const everydayMethodEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const everydayMethodRelated: Readonly<
   Partial<Record<ArticleSlug, readonly ArticleSlug[]>>
 > = {

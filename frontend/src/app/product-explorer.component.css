@@ -240,3 +240,26 @@ details.how-we-compare > summary:focus-visible {
 details.how-we-compare[open] > summary {
   margin-bottom: 1rem;
 }
+.kit-comparison {
+  margin-top: 2.5rem;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  scroll-margin-top: 1rem;
+}
+.kit-comparison h2 {
+  margin: 0.25rem 0 0.75rem;
+}
+.kit-comparison h2:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
+}
+.kit-placeholder {
+  color: var(--muted);
+}
+.kit-example {
+  margin-top: 1.5rem;
+}
+.kit-example h3 {
+  margin: 1rem 0 0.4rem;
+}

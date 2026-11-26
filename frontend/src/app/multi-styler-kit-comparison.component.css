@@ -1,0 +1,115 @@
+.kit-widget input:focus-visible,
+.kit-widget select:focus-visible,
+.kit-table-scroll:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
+}
+fieldset {
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+legend {
+  font-weight: 700;
+}
+.kit-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-top: 0.4rem;
+}
+.kit-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+}
+.kit-options input {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+.kit-selects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.kit-selects label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  font-weight: 700;
+}
+.kit-selects select {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+}
+.kit-status {
+  margin: 1.25rem 0 0;
+  font-weight: 700;
+}
+.kit-table-scroll {
+  max-width: 100%;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+.kit-table {
+  width: 100%;
+  min-width: 20rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.kit-table th,
+.kit-table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.kit-table tbody th {
+  width: 28%;
+}
+.kit-table td[data-status='not-listed'] strong {
+  color: var(--terracotta);
+}
+.kit-table tr.required th {
+  background: rgba(200, 103, 67, 0.08);
+}
+.needed {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.detail,
+.optional {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.summary td {
+  font-weight: 700;
+}
+.kit-note {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

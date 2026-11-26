@@ -245,6 +245,17 @@ import {
           to find a waver that fits the length and section you can comfortably
           position.
         </p>
+        <p>
+          Within one range, compare
+          <a [routerLink]="['/guides', articleSlug.Mermade25mmVs32mmWaver]"
+            >Mermade 25 mm and 32 mm Pro Wavers</a
+          >
+          by wave scale and head placement, or
+          <a [routerLink]="['/guides', articleSlug.BeachwaverB1VsB125]"
+            >Beachwaver B1 and B1.25</a
+          >
+          by barrel size on one rotating clamp design.
+        </p>
       }
       @if (isFlat) {
         <p>
@@ -292,6 +303,27 @@ import {
               >Compare ghd Original and Gold</a
             >: see how the two UK preset stylers differ in width, controls and
             included equipment.
+          </li>
+          <li>
+            <a
+              [routerLink]="[
+                '/guides',
+                articleSlug.HowToChooseAGhdStraightener,
+              ]"
+              >Choose a ghd straightener</a
+            >: sort the seven black UK models by plate format, sleep timer and
+            warranty.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.GhdGoldVsChronos]"
+              >Compare ghd Gold and Chronos</a
+            >: two 26 mm UK stylers with different sleep timers and warranties.
+          </li>
+          <li>
+            <a [routerLink]="['/guides', articleSlug.GhdMiniVsOriginal]"
+              >Compare ghd Mini and Original</a
+            >: a narrow plate for a fringe or crop against the standard
+            Original.
           </li>
         </ul>
       } @else {

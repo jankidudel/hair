@@ -2,7 +2,7 @@ import { ArticleSlug } from './article-slug';
 import type { GuideEvidence } from './guide-evidence';
 export const finishingMethodEvidence: Readonly<
   Partial<Record<ArticleSlug, GuideEvidence>>
-> = {
+> = /* @__PURE__ */ (() => ({
   [ArticleSlug.HowToApplyHairSerumOrOil]: {
     relatedOnly: true,
     sourceFormat: 'product-market',
@@ -123,7 +123,7 @@ export const finishingMethodEvidence: Readonly<
       },
     ],
   },
-};
+}))();
 export const finishingMethodRelated: Readonly<
   Partial<Record<ArticleSlug, readonly ArticleSlug[]>>
 > = {

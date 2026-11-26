@@ -33,7 +33,10 @@ async function renderDirectory() {
   return { fixture, page, input, search };
 }
 
-describe('guide directory', () => {
+// Each test renders every guide card (one per published guide) in jsdom.
+// That takes under a second alone but can pass 5 s in the full parallel
+// suite on a loaded machine, so allow more time than the default.
+describe('guide directory', { timeout: 20_000 }, () => {
   it('puts a labelled full search before the results and secondary panels', async () => {
     const { page, input } = await renderDirectory();
     const label = page.querySelector('label[for="guide-search"]')!;

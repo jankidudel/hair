@@ -189,9 +189,9 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     enabled: true,
     publishDate: '2026-11-26',
   },
-  // 26 November 2026 model-decision batch: held drafts. The exact maker
-  // listings these briefs depend on (Dyson, ghd, Revlon, Argos and the
-  // SharkNinja HD652SUK box) could not be read on 26 November 2026.
+  // 26 November 2026 model-decision batch: drafts held until their exact
+  // maker records were verified; the last four were released on
+  // 27 November 2026.
   {
     slug: ArticleSlug.DysonAirwrapVsSupersonic,
     group: ArticleGroupId.HotAirBrushes,
@@ -210,22 +210,22 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     slug: ArticleSlug.SharkFlexfusionVsFlexstyle,
     group: ArticleGroupId.HotAirBrushes,
     order: 1054,
-    enabled: false,
-    publishDate: '2099-01-01',
+    enabled: true,
+    publishDate: '2026-11-27',
   },
   {
     slug: ArticleSlug.SharkFlexfusionVsDysonAirwrapId,
     group: ArticleGroupId.HotAirBrushes,
     order: 1055,
-    enabled: false,
-    publishDate: '2099-01-01',
+    enabled: true,
+    publishDate: '2026-11-27',
   },
   {
     slug: ArticleSlug.SharkFlexstyleVsRevlonOneStepPlus,
     group: ArticleGroupId.HotAirBrushes,
     order: 1056,
-    enabled: false,
-    publishDate: '2099-01-01',
+    enabled: true,
+    publishDate: '2026-11-27',
   },
   {
     slug: ArticleSlug.HotToolsOneStepVsRevlonOneStepPlus,
@@ -259,8 +259,8 @@ export const articleRegistry: readonly ArticleRegistryEntry[] = [
     slug: ArticleSlug.SharkSpeedstyleProFlexVsGhdHelios,
     group: ArticleGroupId.HairDryers,
     order: 626,
-    enabled: false,
-    publishDate: '2099-01-01',
+    enabled: true,
+    publishDate: '2026-11-27',
   },
   {
     slug: ArticleSlug.SharkSilkiproStraightVsGhdDuetStyle,

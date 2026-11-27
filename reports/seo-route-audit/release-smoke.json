@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-26T23:26:15.592Z",
+  "checkedAt": "2026-11-27T18:33:46.337Z",
   "origin": "https://www.combreport.com",
   "artifact": "/Users/jankidudel/soft/hair/frontend/dist/hair-frontend/browser",
-  "sourceCommit": "414c65d22093d0067c56e51af71fcbe8cf26dfb7",
+  "sourceCommit": "32ec089a22ba22cc547958ca0b63ebf6c9dc8c5a",
   "sourceTreeDirty": true,
-  "artifactSha256": "7437e1979bdadbae423150fc1077f13e50f5bfa02b105272bdb9127ea3248359",
+  "artifactSha256": "3902b3006af73a4b74acb9bb9c402317602320109b602ce4928c1d5e628f957d",
   "artifactScope": "sitemap.xml and the intended rendered article documents",
   "releaseRun": {
     "id": null,
@@ -28,6 +28,10 @@
     "ghd-gold-vs-chronos",
     "ghd-mini-vs-original",
     "how-to-choose-a-ghd-straightener",
+    "shark-flexfusion-vs-flexstyle",
+    "shark-flexfusion-vs-dyson-airwrap-id",
+    "shark-flexstyle-vs-revlon-one-step-plus",
+    "shark-speedstyle-pro-flex-vs-ghd-helios",
     "shark-flexstyle-models-compared",
     "how-to-choose-multi-styler-attachments",
     "best-hair-dryers-fine-hair",
@@ -288,6 +292,26 @@
     {
       "stage": "artifact",
       "path": "/guides/how-to-choose-a-ghd-straightener",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-flexfusion-vs-flexstyle",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-flexfusion-vs-dyson-airwrap-id",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-flexstyle-vs-revlon-one-step-plus",
+      "errors": []
+    },
+    {
+      "stage": "artifact",
+      "path": "/guides/shark-speedstyle-pro-flex-vs-ghd-helios",
       "errors": []
     },
     {

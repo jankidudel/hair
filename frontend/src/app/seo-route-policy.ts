@@ -57,14 +57,14 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-dryers',
     'hub',
-    '2026-11-26',
-    'Model-decision batch: new guides, kit comparison and manual finder',
+    '2026-11-27',
+    'Release fix: four comparison guides and the BaByliss dryer comparison',
   ),
   page(
     '/hot-air-brushes',
     'hub',
-    '2026-11-26',
-    'Model-decision batch: new guides, kit comparison and manual finder',
+    '2026-11-27',
+    'Release fix: four comparison guides and the BaByliss dryer comparison',
   ),
   page(
     '/brushes-combs',
@@ -81,8 +81,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/guides',
     'hub',
-    '2026-11-26',
-    'Model-decision batch: new guides, kit comparison and manual finder',
+    '2026-11-27',
+    'Release fix: four comparison guides and the BaByliss dryer comparison',
   ),
   page(
     '/hair-brush-finder',
@@ -111,8 +111,8 @@ export const staticSeoRoutes: readonly SeoRoutePolicy[] = [
   page(
     '/hair-tool-manual-finder',
     'tool',
-    '2026-11-26',
-    'Model-decision batch: official manual and support finder',
+    '2026-11-27',
+    'Release fix: plain-text result heading',
   ),
   page('/curling-tool-finder', 'tool'),
   page('/hair-tool-routine-builder', 'tool'),

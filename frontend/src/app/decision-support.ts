@@ -694,4 +694,50 @@ export const decisionRelatedLinks: Readonly<
       },
     ],
   },
+  // 27 November 2026: the related rail also carries the kit comparison. Keep
+  // the guide paths in step with modelDecisionRelated.
+  [ArticleSlug.SharkFlexfusionVsFlexstyle]: {
+    sentence:
+      'Continue with the fit or kit question that is still open for your shortlist.',
+    links: [
+      {
+        label: 'Shark FlexStyle models and kits compared',
+        path: guide(ArticleSlug.SharkFlexstyleModelsCompared),
+      },
+      {
+        label: 'Which diffuser fits my Shark FlexStyle?',
+        path: guide(ArticleSlug.SharkFlexstyleDiffuserCompatibility),
+      },
+      {
+        label: 'Shark FlexFusion vs Dyson Airwrap i.d.',
+        path: guide(ArticleSlug.SharkFlexfusionVsDysonAirwrapId),
+      },
+      {
+        label: 'Compare multi-styler kits side by side',
+        path: '/products#compare-multi-styler-kits',
+      },
+    ],
+  },
+  [ArticleSlug.SharkFlexfusionVsDysonAirwrapId]: {
+    sentence:
+      'Continue with the attachment or kit question that is still open for your shortlist.',
+    links: [
+      {
+        label: 'How to choose a multi-styler attachment bundle',
+        path: guide(ArticleSlug.HowToChooseMultiStylerAttachments),
+      },
+      {
+        label: 'Shark Glam vs Dyson Airwrap i.d.',
+        path: guide(ArticleSlug.SharkGlamVsDysonAirwrapId),
+      },
+      {
+        label: 'Shark FlexFusion vs FlexStyle',
+        path: guide(ArticleSlug.SharkFlexfusionVsFlexstyle),
+      },
+      {
+        label: 'Compare multi-styler kits side by side',
+        path: '/products#compare-multi-styler-kits',
+      },
+    ],
+  },
 };

@@ -11,9 +11,12 @@ import type { GuideEvidence, GuideSource } from './guide-evidence';
  * Guides whose decision depends on those pages are registered as disabled
  * drafts in article-registry.ts until an editor verifies the exact records.
  * An editor read the Dyson, ghd, Revlon and Hot Tools pages in a browser on
- * 26 November 2026; six drafts were released from those records. The
- * two FlexFusion drafts, SpeedStyle Pro Flex vs Helios and FlexStyle vs
- * Revlon stay held.
+ * 26 November 2026; six drafts were released from those records.
+ *
+ * 27 November 2026 release fix: the two FlexFusion guides, FlexStyle vs
+ * Revlon and SpeedStyle Pro Flex vs Helios were released, and the budget
+ * dryer route was rewritten as a BaByliss comparison, from the editorial
+ * release handover of that date. Sources added for it carry that date.
  */
 const checkedDate = '26 November 2026';
 
@@ -24,6 +27,21 @@ const source = (
   url: string,
   scope: string,
 ): GuideSource => ({ label, model, market, url, checkedDate, scope });
+
+const releaseFixSource = (
+  label: string,
+  model: string,
+  market: string,
+  url: string,
+  scope: string,
+): GuideSource => ({
+  label,
+  model,
+  market,
+  url,
+  checkedDate: '27 November 2026',
+  scope,
+});
 
 export const modelDecisionSources = /* @__PURE__ */ (() =>
   ({
@@ -323,6 +341,72 @@ export const modelDecisionSources = /* @__PURE__ */ (() =>
       'https://ukie.help.ghdhair.com/hc/en-gb/articles/7498246753810-WHAT-IS-THE-DIFFERENCE-BETWEEN-THE-GHD-STRAIGHTENERS',
       'Gives no model-by-model differences; directs readers to the comparison page.',
     ),
+    // 27 November 2026 release fix: exact pages named in the release
+    // handover. A kit inventory, a replacement part and a fit statement each
+    // support a different claim, so each is its own source.
+    bootsHd652suk: releaseFixSource(
+      'Boots: Shark FlexFusion Straight 5-in-1 with Storage Case, Cosmic Blush',
+      'Shark FlexFusion Straight HD652SUK, Cosmic Blush',
+      'UK (retailer)',
+      'https://www.boots.com/shark-flexfusion-straight-5-in-1-air-and-ceramic-styling-drying-and-straightening-system-with-storage-case-cosmic-blush-10352836',
+      'Retailer kit listing: a wet-or-dry straightener that combines airflow and heated ceramic, a wet-or-dry Fusion Brush, 32 mm Auto-Wrap Curlers, a styling concentrator, a curl-defining diffuser and a storage case. Evidence for the kit this retailer displays, not a maker box list.',
+    ),
+    sharkFlexfusionSupportUk: releaseFixSource(
+      'Shark UK support: FlexFusion tips by hair type (HD600UK series)',
+      'Shark FlexFusion HD600UK series',
+      'UK',
+      'https://support.sharkninja.co.uk/article/HD600UK-Series-Shark-FlexFusion-Tips-by-Hair-Type',
+      'Identifies the wet-or-dry Fusion Air Straightener for the FlexFusion. Gives no full box list and no compatibility with older FlexStyle bodies.',
+    ),
+    sharkHd652sukStraightener: releaseFixSource(
+      'Shark UK Straightener Attachment XSKHD6SAHRUK',
+      'Straightener attachment titled for HD652SUK',
+      'UK',
+      'https://www.sharkninja.co.uk/shark-straightener-attachment-hd652suk/XSKHD6SAHRUK.html',
+      'Replacement part whose title names HD652SUK; its compatibility field names other codes. Identifies the part only. Does not state box contents, voltage, wattage or fit on other bodies.',
+    ),
+    sharkHd542ukBox: releaseFixSource(
+      'Shark SpeedStyle Pro Flex 4-in-1 High-Velocity Hair Dryer System HD542UK',
+      'Shark SpeedStyle Pro Flex HD542UK, Mocha Silver',
+      'UK',
+      'https://www.sharkninja.co.uk/shark-speedstyle-pro-flex-4-in-1-high-velocity-hair-dryer-system-hd542uk/HD542UK.html',
+      'In the Box: Turbo Concentrator, QuickSmooth Brush, DefrizzFast Diffuser and FrizzFighter Finishing Tool. Folding handle, 2.44 m cord and 0.68 kg, without stating what the weight includes.',
+    ),
+    bootsHd542uk: releaseFixSource(
+      'Boots: Shark SpeedStyle Pro Flex 4-in-1 HD542UK',
+      'Shark SpeedStyle Pro Flex HD542UK',
+      'UK (retailer)',
+      'https://www.boots.com/shark-speedstyle-pro-flex-4-in-1-high-velocity-hair-dryer-system-hd542uk-10352839',
+      'Retailer specification for the exact code: four heat and three airflow settings plus a Cool Shot.',
+    ),
+    ghdHeliosBlackUk: releaseFixSource(
+      'ghd Helios professional hair dryer in black',
+      'ghd Helios, black',
+      'UK',
+      'https://www.ghdhair.com/hair-dryers/ghd-black-helios-p-497',
+      'Contoured nozzle included, variable controls with a cool shot and a 3 m cord. States no heat or speed counts, numeric weight or storage format.',
+    ),
+    ghdHeliosDiffuserUk: releaseFixSource(
+      'ghd professional hair dryer diffuser',
+      'ghd diffuser with adapter ring',
+      'UK',
+      'https://www.ghdhair.com/hair-dryers/ghd-hair-dryer-diffuser-p-281',
+      'Separately sold diffuser. The product page says to use the adapter ring with Helios. A fit statement, not a Helios box list.',
+    ),
+    argos5335ksu: releaseFixSource(
+      'Argos: BaByliss Keratin Shine 2200 Hair Dryer 5335KSU (item 679/6679)',
+      'BaByliss Keratin Shine 5335KSU',
+      'UK (retailer)',
+      'https://www.argos.co.uk/product/6796679',
+      'Box contents: dryer, concentrator nozzle and instructions; no diffuser listed. Two speeds and four temperature settings, including a cool shot. Also carries an Argos Q&A answer relaying the supplier’s statement that 5395KSU has a diffuser and nozzle.',
+    ),
+    argos5395ksu: releaseFixSource(
+      'Argos: BaByliss Keratin Shine Pro 2200 Hair Dryer with Diffuser 5395KSU (item 463/9226)',
+      'BaByliss Keratin Shine Pro 5395KSU',
+      'UK (retailer)',
+      'https://www.argos.co.uk/product/4639226',
+      'The description and features describe a dryer, concentrator and diffuser; the separate box-contents line lists the dryer, nozzle and instructions only. Two speeds and four temperature settings, including a cool shot.',
+    ),
   }) as const satisfies Record<string, GuideSource>)();
 
 const S = modelDecisionSources;
@@ -346,6 +430,11 @@ export const modelDecisionSlugs = [
   ArticleSlug.GhdGoldVsChronos,
   ArticleSlug.GhdMiniVsOriginal,
   ArticleSlug.HowToChooseAGhdStraightener,
+  // Released by the 27 November 2026 release fix.
+  ArticleSlug.SharkFlexfusionVsFlexstyle,
+  ArticleSlug.SharkFlexfusionVsDysonAirwrapId,
+  ArticleSlug.SharkFlexstyleVsRevlonOneStepPlus,
+  ArticleSlug.SharkSpeedstyleProFlexVsGhdHelios,
 ] as const;
 
 /** Existing guides that received substantive section additions (E03–E12). */
@@ -408,8 +497,8 @@ export const modelDecisionRelated: Readonly<Record<string, readonly string[]>> =
       ArticleSlug.DysonSupersonicVsSupersonicNural,
     ],
     [ArticleSlug.BestBudgetHairDryersUk]: [
+      ArticleSlug.HairDryerDiffuserCompatibility,
       ArticleSlug.HairDryerChooser,
-      ArticleSlug.BestHairDryersFineHair,
       ArticleSlug.HairDryerDiffuserVsConcentrator,
     ],
     [ArticleSlug.DysonAirwrapVsSupersonic]: [
@@ -441,6 +530,28 @@ export const modelDecisionRelated: Readonly<Record<string, readonly string[]>> =
       ArticleSlug.GhdGoldVsChronos,
       ArticleSlug.GhdMiniVsOriginal,
       ArticleSlug.GhdChronosVsChronosMax,
+    ],
+    // The two FlexFusion rails also link the kit comparison; see
+    // decisionRelatedLinks in decision-support.ts.
+    [ArticleSlug.SharkFlexfusionVsFlexstyle]: [
+      ArticleSlug.SharkFlexstyleModelsCompared,
+      ArticleSlug.SharkFlexstyleDiffuserCompatibility,
+      ArticleSlug.SharkFlexfusionVsDysonAirwrapId,
+    ],
+    [ArticleSlug.SharkFlexfusionVsDysonAirwrapId]: [
+      ArticleSlug.HowToChooseMultiStylerAttachments,
+      ArticleSlug.SharkGlamVsDysonAirwrapId,
+      ArticleSlug.SharkFlexfusionVsFlexstyle,
+    ],
+    [ArticleSlug.SharkFlexstyleVsRevlonOneStepPlus]: [
+      ArticleSlug.SharkFlexstyleDiffuserCompatibility,
+      ArticleSlug.HotToolsOneStepVsRevlonOneStepPlus,
+      ArticleSlug.RevlonOneStepVolumizerVsPlus,
+    ],
+    [ArticleSlug.SharkSpeedstyleProFlexVsGhdHelios]: [
+      ArticleSlug.SharkSpeedstyleProVsProFlex,
+      ArticleSlug.HairDryerDiffuserCompatibility,
+      ArticleSlug.GhdSpeedVsHelios,
     ],
   };
 
@@ -501,8 +612,8 @@ export const modelDecisionEvidence: Readonly<Record<string, GuideEvidence>> =
       sources: [S.hd07Manual, S.hd16Manual],
     },
     [ArticleSlug.BestBudgetHairDryersUk]: {
-      summary: `Controls, attachments, cords and dimensions come from Remington’s UK listings, read on 26 November 2026, with the prices shown that day. Prices and offers change; recheck before buying. ${noTesting}`,
-      sources: [S.remingtonD3010, S.remingtonD5216, S.remingtonD1500],
+      summary: `Attachments and controls come from the two exact Argos UK listings, read on 27 November 2026. The 5395KSU description and its box-contents line disagree about the diffuser, so both statements are reported. ${noTesting}`,
+      sources: [S.argos5335ksu, S.argos5395ksu],
     },
     [ArticleSlug.DysonAirwrapVsSupersonic]: {
       summary: `Box lists come from Dyson UK’s Airwrap i.d. Straight+Wavy and Supersonic Nural listings and positioning from Dyson UK’s own comparison, read on 26 November 2026. A shared job does not show that parts fit another body. ${noTesting}`,
@@ -540,6 +651,36 @@ export const modelDecisionEvidence: Readonly<Record<string, GuideEvidence>> =
         S.ghdChronosMaxUk,
         S.ghdCompareUk,
         S.ghdSupportDifferenceUk,
+      ],
+    },
+    [ArticleSlug.SharkFlexfusionVsFlexstyle]: {
+      summary: `The FlexFusion kit comes from the Boots UK listing; the straightener’s identity from Shark UK support and part pages; the HD446UK box from Shark UK, read on 26 and 27 November 2026. No live Shark box list for HD652SUK was available, and fit on older FlexStyle bodies is not confirmed. ${noTesting}`,
+      sources: [
+        S.bootsHd652suk,
+        S.sharkFlexfusionSupportUk,
+        S.sharkHd652sukStraightener,
+        S.sharkHd446uk,
+      ],
+    },
+    [ArticleSlug.SharkFlexfusionVsDysonAirwrapId]: {
+      summary: `The Dyson box and connected features come from Dyson UK’s exact listing, read on 26 November 2026. The Shark column is limited to Shark UK’s support and part pages, read on 27 November 2026, which do not state the full HD652SUK box. ${noTesting}`,
+      sources: [
+        S.dysonAirwrapIdSwUk,
+        S.sharkFlexfusionSupportUk,
+        S.sharkHd652sukStraightener,
+      ],
+    },
+    [ArticleSlug.SharkFlexstyleVsRevlonOneStepPlus]: {
+      summary: `Box contents and diffuser fit come from SharkNinja’s US HD430 and diffuser listings; the Revlon head and settings from Revlon’s US listing, read on 26 November 2026. Revlon states no model number or head measurement basis. ${noTesting}`,
+      sources: [S.sharkHd430, S.sharkDiffuserUs, S.revlonPlusUs],
+    },
+    [ArticleSlug.SharkSpeedstyleProFlexVsGhdHelios]: {
+      summary: `The HD542UK box, cord and weight come from Shark UK and its settings from the Boots specification; Helios details and the separate diffuser come from ghd UK, read on 27 November 2026. ghd gives no heat or speed counts or weight for the black Helios. ${noTesting}`,
+      sources: [
+        S.sharkHd542ukBox,
+        S.bootsHd542uk,
+        S.ghdHeliosBlackUk,
+        S.ghdHeliosDiffuserUk,
       ],
     },
   }))();

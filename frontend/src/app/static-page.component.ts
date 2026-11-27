@@ -425,7 +425,16 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
               <li>
                 <a
                   [routerLink]="['/guides', articleSlug.BestBudgetHairDryersUk]"
-                  >Choose a UK budget dryer</a
+                  >Compare two UK BaByliss dryers</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.DysonAirwrapVsSupersonic,
+                  ]"
+                  >Compare a Dyson dryer and multi-styler</a
                 >
               </li>
               <li>
@@ -444,6 +453,24 @@ import { CONTACT_FORM_PRIVACY } from './contact-config';
               <li>
                 <a routerLink="/products" fragment="compare-multi-styler-kits"
                   >Compare exact multi-styler boxes</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.SharkFlexfusionVsFlexstyle,
+                  ]"
+                  >FlexFusion or FlexStyle?</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="[
+                    '/guides',
+                    articleSlug.SharkFlexstyleVsRevlonOneStepPlus,
+                  ]"
+                  >FlexStyle or Revlon One-Step Plus?</a
                 >
               </li>
             </ul>

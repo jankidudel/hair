@@ -206,8 +206,8 @@ export const manualRecords: readonly ManualRecord[] = [
       },
     ],
     checkedDate,
-    guideSlug: ArticleSlug.BestBudgetHairDryersUk,
-    guideLabel: 'Budget hair dryers in the UK',
+    guideSlug: ArticleSlug.HairDryerChooser,
+    guideLabel: 'How to choose a hair dryer',
   },
   {
     id: 'remington-d5216-uk',
@@ -224,8 +224,8 @@ export const manualRecords: readonly ManualRecord[] = [
       },
     ],
     checkedDate,
-    guideSlug: ArticleSlug.BestBudgetHairDryersUk,
-    guideLabel: 'Budget hair dryers in the UK',
+    guideSlug: ArticleSlug.HairDryerChooser,
+    guideLabel: 'How to choose a hair dryer',
   },
   {
     id: 'remington-d1500-uk',
@@ -242,8 +242,8 @@ export const manualRecords: readonly ManualRecord[] = [
       },
     ],
     checkedDate,
-    guideSlug: ArticleSlug.BestBudgetHairDryersUk,
-    guideLabel: 'Budget hair dryers in the UK',
+    guideSlug: ArticleSlug.HairDryerChooser,
+    guideLabel: 'How to choose a hair dryer',
   },
   {
     id: 'babyliss-5335ksu-uk',

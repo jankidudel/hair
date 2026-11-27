@@ -118,6 +118,44 @@ describe('HairToolManualFinderComponent', () => {
     expect(element.querySelector('.manual-card.other-market')).not.toBeNull();
   });
 
+  it('writes a plain-text result heading that also names the result region', () => {
+    const fixture = setup();
+    const component = fixture.componentInstance;
+    const element = fixture.nativeElement as HTMLElement;
+    const heading = () =>
+      element.querySelector('#manual-results-heading')?.textContent?.trim();
+    const regionName = () => {
+      const region = element.querySelector('section.manual-records');
+      const id = region?.getAttribute('aria-labelledby');
+      return id ? element.querySelector(`#${id}`)?.textContent?.trim() : null;
+    };
+    component.setMarket('UK');
+    component.code = '  hd16 ';
+    component.search();
+    refresh(fixture);
+    expect(heading()).toBe(
+      'Official documents for Dyson Supersonic Nural hair dryer (UK)',
+    );
+    expect(regionName()).toBe(heading());
+    expect(
+      element.querySelector<HTMLAnchorElement>(
+        '.manual-card a[href$="HD16_OUG_MASTER.pdf"]',
+      )?.textContent,
+    ).toContain('User manual');
+    component.code = 'HD430';
+    component.search();
+    refresh(fixture);
+    expect(heading()).toBe('US record for HD430');
+    expect(regionName()).toBe('US record for HD430');
+    component.code = 'ZZ999';
+    component.search();
+    refresh(fixture);
+    expect(element.querySelector('#manual-results-heading')).toBeNull();
+    expect(element.querySelector('.manual-card')).toBeNull();
+    expect(element.querySelector('#fallback-heading')).not.toBeNull();
+    expect(element.textContent).not.toContain('[object');
+  });
+
   it('requires explicit selection of a suggestion', () => {
     const fixture = setup();
     const component = fixture.componentInstance;

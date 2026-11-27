@@ -100,8 +100,8 @@ const marketLabel: Record<ManualMarketChoice, string> = {
           class="manual-records"
           aria-labelledby="manual-results-heading"
         >
-          <h2 id="manual-results-heading" tabindex="-1" #resultsHeading>
-            {{ resultsHeading }}
+          <h2 id="manual-results-heading" tabindex="-1" #resultsHeadingEl>
+            {{ resultsHeadingText }}
           </h2>
           @for (record of shownRecords; track record.id) {
             <article
@@ -305,7 +305,7 @@ const marketLabel: Record<ManualMarketChoice, string> = {
 export class HairToolManualFinderComponent {
   private readonly seo = inject(SiteSeoService);
   private readonly analytics = inject(AnalyticsService);
-  @ViewChild('resultsHeading') resultsHeadingRef?: ElementRef<HTMLElement>;
+  @ViewChild('resultsHeadingEl') resultsHeadingRef?: ElementRef<HTMLElement>;
   @ViewChild('codeInput') codeInputRef?: ElementRef<HTMLInputElement>;
   readonly marketOptions: readonly ManualMarketChoice[] = [
     'UK',
@@ -379,10 +379,24 @@ export class HairToolManualFinderComponent {
       : [];
   }
 
-  get resultsHeading(): string {
-    return this.result.kind === 'other-market'
-      ? 'Record from another market'
-      : 'Official documents';
+  /**
+   * Plain-text title for the result H2 (and, through aria-labelledby, the
+   * result region). Kept distinct from the #resultsHeadingEl template
+   * reference: a template reference with the same name as a component member
+   * shadows it, which rendered the element itself as "[object HTMLHeadingElement]".
+   */
+  get resultsHeadingText(): string {
+    const result = this.result;
+    if (result.kind === 'other-market') {
+      const record = result.records[0];
+      const markets = [...new Set(result.records.map((r) => r.market))];
+      return `${markets.join(' and ')} record for ${record.code}`;
+    }
+    if (result.kind === 'exact') {
+      const record = result.records[0];
+      return `Official documents for ${record.name} (${record.market})`;
+    }
+    return 'Official documents';
   }
 
   get status(): string {

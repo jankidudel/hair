@@ -50,6 +50,27 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'hair-dryer-attachment-finder',
+    loadComponent: () =>
+      import('./hair-dryer-attachment-finder.component').then(
+        (m) => m.HairDryerAttachmentFinderComponent,
+      ),
+  },
+  {
+    path: 'hair-tool-size-visualiser',
+    loadComponent: () =>
+      import('./hair-tool-size-visualiser.component').then(
+        (m) => m.HairToolSizeVisualiserComponent,
+      ),
+  },
+  {
+    path: 'used-multi-styler-checklist',
+    loadComponent: () =>
+      import('./used-multi-styler-checklist.component').then(
+        (m) => m.UsedMultiStylerChecklistComponent,
+      ),
+  },
+  {
     path: 'flat-irons',
     component: DirectHeatHubComponent,
     data: { kind: 'flat' },

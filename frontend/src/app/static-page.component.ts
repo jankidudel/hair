@@ -2215,6 +2215,30 @@ export class StaticPageComponent implements OnInit {
   ] as const;
   readonly tools = [
     {
+      name: 'Hair Dryer Attachment Finder',
+      type: 'Check part fit',
+      description:
+        'Check which diffuser, concentrator or other attachment fits your exact hair dryer, whether it needs an adapter, and what your selected kit lists in the box.',
+      path: '/hair-dryer-attachment-finder',
+      action: 'Check an attachment',
+    },
+    {
+      name: 'Hair Tool Size Visualiser',
+      type: 'Compare sizes',
+      description:
+        'Compare flat iron plate widths, curling barrel diameters and round brush sizes side by side. Use maker specs or enter your own measurements.',
+      path: '/hair-tool-size-visualiser',
+      action: 'Compare sizes',
+    },
+    {
+      name: 'Used Multi-Styler Checklist',
+      type: 'Check a used listing',
+      description:
+        'Match a used Dyson Airwrap or Shark FlexStyle listing to a known kit and turn missing or unclear attachments into questions for the seller.',
+      path: '/used-multi-styler-checklist',
+      action: 'Check a listing',
+    },
+    {
       name: 'Multi-Styler Kit Comparison',
       type: 'Compare two boxes',
       description:
@@ -2342,6 +2366,8 @@ export class StaticPageComponent implements OnInit {
         'Round Brush Size Finder',
         'Heat Protectant Finder',
         'Multi-Styler Kit Comparison',
+        'Hair Tool Size Visualiser',
+        'Used Multi-Styler Checklist',
       ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
     },
     {
@@ -2363,6 +2389,7 @@ export class StaticPageComponent implements OnInit {
         'Hair Dryer Specs Decoder',
         'Hair Dryer Running-Cost Calculator',
         'Airwrap Attachment Lookup',
+        'Hair Dryer Attachment Finder',
         'Hair Tool Manual Finder',
       ].flatMap((name) => this.tools.filter((tool) => tool.name === name)),
     },

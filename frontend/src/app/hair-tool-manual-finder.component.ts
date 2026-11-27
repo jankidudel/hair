@@ -12,6 +12,22 @@ import {
 } from './hair-tool-manuals';
 import { SiteSeoService } from './site-seo.service';
 
+/**
+ * Manual Finder records with an exact Hair Dryer Attachment Finder preset.
+ * Kept here, not imported, so the finder's data stays out of this route.
+ * hair-tool-manuals.spec.ts checks each preset id exists.
+ */
+export const attachmentFinderPresetForManual: Readonly<Record<string, string>> =
+  {
+    'shark-hd542uk': 'hd542uk-diffuser',
+    'dyson-hd16-uk': 'nural-wave-curl',
+  };
+
+/** Dedicated hair dryers, not multi-stylers. */
+export const isDedicatedDryer = (record: ManualRecord): boolean =>
+  /hair dryer/i.test(record.name) &&
+  !/multi-styler|flexstyle/i.test(record.name);
+
 const marketLabel: Record<ManualMarketChoice, string> = {
   UK: 'UK',
   US: 'US',
@@ -157,6 +173,15 @@ const marketLabel: Record<ManualMarketChoice, string> = {
                   </li>
                 }
               </ul>
+              @if (isDryer(record)) {
+                <p class="related-guide">
+                  Use the
+                  <a [href]="attachmentFinderHref(record)"
+                    >Hair Dryer Attachment Finder</a
+                  >
+                  to check a replacement part against the model on your label.
+                </p>
+              }
               @if (record.guideSlug) {
                 <p class="related-guide">
                   Related guide:
@@ -202,6 +227,13 @@ const marketLabel: Record<ManualMarketChoice, string> = {
       @if (result.kind === 'none' || result.kind === 'other-market') {
         <section class="maker-fallback" aria-labelledby="fallback-heading">
           <h2 id="fallback-heading">Open the maker’s support page</h2>
+          <p>
+            Use the
+            <a href="/hair-dryer-attachment-finder"
+              >Hair Dryer Attachment Finder</a
+            >
+            to check a replacement part against the model on your label.
+          </p>
           <ul>
             @for (maker of makers; track maker.maker) {
               @for (link of maker.links; track link.url) {
@@ -327,6 +359,17 @@ export class HairToolManualFinderComponent {
       'Find official manuals and support pages by hair tool model and market. Check the exact Dyson, Shark, ghd or other model code on your appliance.',
       '/hair-tool-manual-finder',
     );
+  }
+
+  isDryer(record: ManualRecord): boolean {
+    return isDedicatedDryer(record);
+  }
+
+  attachmentFinderHref(record: ManualRecord): string {
+    const preset = attachmentFinderPresetForManual[record.id];
+    return preset
+      ? `/hair-dryer-attachment-finder#preset-${preset}`
+      : '/hair-dryer-attachment-finder';
   }
 
   label(option: ManualMarketChoice): string {

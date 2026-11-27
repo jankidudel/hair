@@ -1,0 +1,110 @@
+.reference-summary {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--paper);
+}
+.reference-summary p {
+  margin: 0.2rem 0;
+}
+.checklist-main {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+.heading-scope {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.item-row {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--border);
+}
+.item-row legend {
+  padding: 0;
+  font-weight: 700;
+}
+.tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--green);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.observation-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+.obs {
+  position: relative;
+  display: flex;
+}
+.obs input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.obs span {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  font-size: 0.92rem;
+}
+.obs input:checked + span {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--surface);
+  font-weight: 700;
+}
+.obs input:focus-visible + span {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
+}
+.checklist-result h3 {
+  margin: 1.25rem 0 0.35rem;
+  font-size: 1.1rem;
+}
+.checklist-result ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.questions-text {
+  width: 100%;
+  min-height: 8rem;
+  font: inherit;
+}
+.cosmetic {
+  margin-top: 1rem;
+}
+@media print {
+  .no-print,
+  .used-checklist app-breadcrumbs,
+  .used-checklist .listing-intro .lede {
+    display: none !important;
+  }
+  .tool-layout {
+    display: block;
+  }
+  .tool-card {
+    border: 0;
+    padding: 0;
+  }
+  .questions-text {
+    border: 0;
+    resize: none;
+    overflow: visible;
+  }
+}

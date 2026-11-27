@@ -1,0 +1,27 @@
+.selected-dryer {
+  display: flex;
+  flex-direction: column;
+  margin: 1.25rem 0 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--paper);
+}
+.selected-dryer .eyebrow {
+  margin: 0;
+}
+.finder-results {
+  min-width: 0;
+}
+.next-actions {
+  margin: 0 0 1.5rem;
+}
+.next-actions h3 {
+  font-size: 1.1rem;
+}
+.next-actions ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+.samples-heading {
+  margin: 1.5rem 0 0;
+  font-size: 1.25rem;
+}

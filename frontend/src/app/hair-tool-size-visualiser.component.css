@@ -1,0 +1,145 @@
+.mode-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.size-layout {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 60rem) {
+  .size-layout {
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  }
+}
+.size-cards {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+.size-card legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.25rem;
+  font-size: 1.1rem;
+}
+.size-card .pill-row {
+  margin-bottom: 1rem;
+}
+.slot-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--surface);
+  font-size: 0.85rem;
+  font-weight: 750;
+}
+.size-drawing {
+  min-width: 0;
+}
+.drawing-block {
+  max-width: 30rem;
+  color: var(--ink);
+}
+svg.scaled {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ruler-caption {
+  margin: 0.15rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.size-figure {
+  margin: 0 0 1.25rem;
+}
+.size-figure figcaption {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+.size-figure figcaption strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.size-figure .note,
+.scale-note {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.shape-svg .fill {
+  fill: var(--green);
+  stroke: none;
+}
+.shape-svg.slot-b .fill {
+  fill: var(--terracotta);
+}
+.shape-svg .outline {
+  fill: none;
+  stroke: var(--ink);
+}
+.summary-heading {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.1rem;
+}
+.cell-line {
+  display: block;
+}
+.print-only {
+  display: none;
+}
+.calibration {
+  align-items: center;
+  gap: 0.5rem;
+}
+.calibration-bar {
+  width: 50mm;
+  height: 6mm;
+}
+@media print {
+  .no-print,
+  .size-visualiser app-breadcrumbs,
+  .size-visualiser .listing-intro .lede {
+    display: none !important;
+  }
+  .print-only {
+    display: block;
+  }
+  .calibration {
+    display: flex;
+  }
+  .size-layout {
+    display: block;
+  }
+  .tool-card {
+    border: 0;
+    padding: 0;
+  }
+  .drawing-block {
+    max-width: none;
+  }
+  /* One millimetre of viewBox is one printed millimetre. */
+  .drawing-block svg.scaled {
+    width: var(--print-width) !important;
+    max-width: none;
+  }
+  .drawing-block.print-omit svg,
+  .drawing-block.print-omit .ruler-caption {
+    display: none;
+  }
+  .size-figure {
+    break-inside: avoid;
+  }
+}

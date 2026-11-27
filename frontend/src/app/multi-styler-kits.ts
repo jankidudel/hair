@@ -39,6 +39,8 @@ export interface MultiStylerKit {
   readonly roles: Readonly<Record<KitRole, KitRoleCell>>;
   readonly optional?: readonly KitOptionalAccessory[];
   readonly note?: string;
+  /** Matching Used Multi-Styler Checklist reference (same exact pack). */
+  readonly usedChecklistId?: string;
 }
 
 export const kitRoleLabels: Readonly<Record<KitRole, string>> = {
@@ -83,6 +85,7 @@ export const multiStylerKits: readonly MultiStylerKit[] = [
       'We could not confirm this box list on our latest check.',
     ),
     note: 'Dyson’s UK manual lists every Airwrap i.d. attachment and says some may not be included, so it cannot stand in for this box list.',
+    usedChecklistId: 'uk-airwrap-id-straight-wavy-patina-topaz',
   },
   {
     id: 'shark-hd446uk',
@@ -193,6 +196,7 @@ export const multiStylerKits: readonly MultiStylerKit[] = [
       'ceramic-straightening': notListed,
     },
     note: 'Shark’s US XSKHD4DA diffuser listing names HD430REF but not standard HD430, so no optional diffuser is shown for this body.',
+    usedChecklistId: 'us-flexstyle-hd430-stone',
   },
   {
     id: 't3-aire-360-dv-us',

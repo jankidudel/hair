@@ -439,6 +439,13 @@ const productCategoryChoiceCopy: Readonly<Record<ProductCategory, string>> = {
               guides below work without it.
             </p>
           }
+          <p>
+            Looking at a seller’s photos? Open the
+            <a href="/used-multi-styler-checklist"
+              >Used Multi-Styler Checklist</a
+            >
+            to check the individual pieces against a reference kit.
+          </p>
           <div class="kit-example">
             <h3>Worked example: US HD430</h3>
             <p>

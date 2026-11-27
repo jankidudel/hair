@@ -118,6 +118,91 @@ export const guideCategoryById: Readonly<Record<string, GuideCategory>> =
   );
 
 export const articleRegistry: readonly ArticleRegistryEntry[] = [
+  // 27 November 2026 tool-led batch.
+  {
+    slug: ArticleSlug.GhdAirHeliosDiffuserCompatibility,
+    group: ArticleGroupId.HairDryers,
+    order: 626,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.SharkSpeedstyleDiffuserCompatibility,
+    group: ArticleGroupId.HairDryers,
+    order: 627,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.DysonWaveCurlDomeVsDiffuse,
+    group: ArticleGroupId.HairDryers,
+    order: 628,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.GhdHeliosNozzleAttachmentsCompared,
+    group: ArticleGroupId.HairDryers,
+    order: 629,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.GhdChronosCurveClassicVsGrand,
+    group: ArticleGroupId.DirectHeat,
+    order: 1174,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.GhdChronosCurveConicalVsMax,
+    group: ArticleGroupId.DirectHeat,
+    order: 1175,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.T3SinglepassCurlX1Vs125,
+    group: ArticleGroupId.DirectHeat,
+    order: 1176,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.OliviaGardenNanothermicRoundVsSpeedXl,
+    group: ArticleGroupId.BrushesAndCombs,
+    order: 926,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.HotToolsBlackGoldVs24kGoldOneStep,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 1058,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.BuyingAUsedDysonAirwrap,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 1059,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.SharkFlexstyleHd430VsHd430ref,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 1060,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
+  {
+    slug: ArticleSlug.DysonAirwrapIdStraightWavyVsWithDiffuser,
+    group: ArticleGroupId.HotAirBrushes,
+    order: 1061,
+    enabled: true,
+    publishDate: '2026-11-27',
+  },
   // 26 November 2026 model-decision batch: published guides.
   {
     slug: ArticleSlug.ParluxElysiumVsDigitalyon,

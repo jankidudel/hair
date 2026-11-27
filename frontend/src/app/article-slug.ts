@@ -1,5 +1,22 @@
 /** Canonical slugs for every published or scheduled article. */
 export const ArticleSlug = {
+  // 27 November 2026 tool-led batch.
+  GhdAirHeliosDiffuserCompatibility: 'ghd-air-helios-diffuser-compatibility',
+  SharkSpeedstyleDiffuserCompatibility:
+    'shark-speedstyle-diffuser-compatibility',
+  DysonWaveCurlDomeVsDiffuse: 'dyson-wave-curl-dome-vs-diffuse',
+  GhdHeliosNozzleAttachmentsCompared: 'ghd-helios-nozzle-attachments-compared',
+  GhdChronosCurveClassicVsGrand: 'ghd-chronos-curve-classic-vs-grand',
+  GhdChronosCurveConicalVsMax: 'ghd-chronos-curve-conical-vs-max',
+  OliviaGardenNanothermicRoundVsSpeedXl:
+    'olivia-garden-nanothermic-round-vs-speed-xl',
+  HotToolsBlackGoldVs24kGoldOneStep:
+    'hot-tools-black-gold-vs-24k-gold-one-step',
+  T3SinglepassCurlX1Vs125: 't3-singlepass-curl-x-1-vs-125',
+  BuyingAUsedDysonAirwrap: 'buying-a-used-dyson-airwrap',
+  SharkFlexstyleHd430VsHd430ref: 'shark-flexstyle-hd430-vs-hd430ref',
+  DysonAirwrapIdStraightWavyVsWithDiffuser:
+    'dyson-airwrap-id-straight-wavy-vs-with-diffuser',
   // 26 November 2026 model-decision batch (published).
   ParluxElysiumVsDigitalyon: 'parlux-elysium-vs-digitalyon',
   TangleTeezerUltimateDetanglerVsNaturallyCurly:

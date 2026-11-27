@@ -82,6 +82,14 @@ import {
       <p class="kit-status" role="status" aria-live="polite">
         {{ status }}
       </p>
+      @for (kit of checklistKits; track kit.id) {
+        <p class="kit-checklist-link">
+          Looking at a seller’s photos of the {{ kit.name }}? Open the
+          <a [href]="'/used-multi-styler-checklist#kit-' + kit.usedChecklistId"
+            >Used Multi-Styler Checklist for this kit</a
+          >.
+        </p>
+      }
 
       @if (selectedKits.length === 2) {
         <div
@@ -191,6 +199,11 @@ export class MultiStylerKitComparisonComponent {
     return this.selection
       .map((id) => (id ? kitById(id) : undefined))
       .filter((kit): kit is MultiStylerKit => kit !== undefined);
+  }
+
+  /** Selected kits with a matching used-listing checklist reference. */
+  get checklistKits(): readonly MultiStylerKit[] {
+    return this.selectedKits.filter((kit) => kit.usedChecklistId);
   }
 
   /** Needed roles first, then the rest, so the decision is read first. */

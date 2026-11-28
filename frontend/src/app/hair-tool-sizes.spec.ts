@@ -4,8 +4,11 @@ import {
 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { describe, expect, it } from 'vitest';
-import { HairToolSizeVisualiserWidgetComponent } from './hair-tool-size-visualiser-widget.component';
+import { describe, expect, it, vi } from 'vitest';
+import {
+  FIELD_COMMIT_DELAY_MS,
+  HairToolSizeVisualiserWidgetComponent,
+} from './hair-tool-size-visualiser-widget.component';
 import {
   HairToolSizeVisualiserComponent,
   visualiserWorkedComparisons,
@@ -243,6 +246,59 @@ describe('HairToolSizeVisualiserWidgetComponent', () => {
     expect(
       (element.querySelector('#size-b-width') as HTMLInputElement).value,
     ).toBe('25.4');
+  });
+
+  it('draws typed sizes after a pause, without blur or Enter', () => {
+    vi.useFakeTimers();
+    try {
+      const fixture = setup();
+      const component = fixture.componentInstance;
+      const element = fixture.nativeElement as HTMLElement;
+      for (const [slot, value] of [
+        ['a', '18'],
+        ['b', '36'],
+      ] as const) {
+        component.setSource(slot, 'manual');
+        refresh(fixture);
+        // An untouched empty field shows no error.
+        expect(element.querySelector(`#size-${slot}-width-error`)).toBeNull();
+        const input = element.querySelector<HTMLInputElement>(
+          `#size-${slot}-width`,
+        )!;
+        input.value = value;
+        input.dispatchEvent(new Event('input'));
+      }
+      refresh(fixture);
+      expect(element.querySelectorAll('svg.shape-svg')).toHaveLength(0);
+      vi.advanceTimersByTime(FIELD_COMMIT_DELAY_MS);
+      refresh(fixture);
+      expect(element.querySelectorAll('.field-error')).toHaveLength(0);
+      expect(element.querySelectorAll('svg.shape-svg')).toHaveLength(2);
+      expect(element.textContent).toContain(
+        'The 36 mm plate (B) is 18 mm wider than the 18 mm plate (A).',
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('commits on Enter and flags a cleared field only after use', () => {
+    const fixture = setup();
+    const component = fixture.componentInstance;
+    const element = fixture.nativeElement as HTMLElement;
+    component.setSource('a', 'manual');
+    refresh(fixture);
+    const input = element.querySelector<HTMLInputElement>('#size-a-width')!;
+    input.value = '20';
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    refresh(fixture);
+    expect(element.textContent).toContain('Heated plate width: 20 mm');
+    input.value = '';
+    input.dispatchEvent(new Event('change'));
+    refresh(fixture);
+    expect(element.querySelector('#size-a-width-error')?.textContent).toContain(
+      'Enter this measurement.',
+    );
   });
 
   it('never suggests a barrel length that is not published', () => {

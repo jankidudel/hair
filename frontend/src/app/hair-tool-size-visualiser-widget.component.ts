@@ -1,4 +1,9 @@
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  inject,
+} from '@angular/core';
 import { watchPresetHash } from './tool-preset-hash';
 import { AnalyticsService } from './analytics/analytics.service';
 import { ArticleSlug } from './article-slug';
@@ -41,7 +46,12 @@ interface CardState {
   raw: Partial<Record<FieldName, string>>;
   values: ManualValues;
   invalid: Set<FieldName>;
+  /** Fields the reader has committed at least once; only these show errors. */
+  touched: Set<FieldName>;
 }
+
+/** Pause after the last keystroke before an entry counts as finished. */
+export const FIELD_COMMIT_DELAY_MS = 600;
 
 interface CardView {
   readonly slot: Slot;
@@ -93,6 +103,7 @@ const newCard = (mode: SizeMode): CardState => ({
   raw: {},
   values: {},
   invalid: new Set(),
+  touched: new Set(),
 });
 
 @Component({
@@ -241,7 +252,9 @@ const newCard = (mode: SizeMode): CardState => ({
                       autocomplete="off"
                       [id]="fieldId(view.slot, field)"
                       [value]="card(view.slot).raw[field] ?? ''"
+                      (input)="queueField(view.slot, field, $event)"
                       (change)="setField(view.slot, field, $event)"
+                      (keydown.enter)="setField(view.slot, field, $event)"
                       [attr.aria-invalid]="view.errors[field] ? 'true' : null"
                       [attr.aria-describedby]="
                         view.errors[field]
@@ -478,6 +491,11 @@ const newCard = (mode: SizeMode): CardState => ({
 })
 export class HairToolSizeVisualiserWidgetComponent {
   private readonly analytics = inject(AnalyticsService);
+  private readonly changeDetector = inject(ChangeDetectorRef);
+  private readonly commitTimers = new Map<
+    string,
+    ReturnType<typeof setTimeout>
+  >();
   readonly slugs = ArticleSlug;
   readonly modes: readonly SizeMode[] = ['plates', 'barrels', 'brushes'];
   readonly units: readonly SizeUnit[] = ['mm', 'in'];
@@ -493,6 +511,9 @@ export class HairToolSizeVisualiserWidgetComponent {
   private completedTracked = new Set<SizeMode>();
 
   constructor() {
+    inject(DestroyRef).onDestroy(() =>
+      this.commitTimers.forEach((timer) => clearTimeout(timer)),
+    );
     for (const mode of this.modes) {
       const demo = comparisonPresetById(modeDemo[mode]);
       if (demo) this.loadComparison(demo);
@@ -578,11 +599,17 @@ export class HairToolSizeVisualiserWidgetComponent {
         notes: measurement ? this.notes(measurement) : [],
       };
     }
-    const { measurement, errors } = buildMeasurement(
+    const { measurement, errors: allErrors } = buildMeasurement(
       card.shape,
       card.values,
       card.invalid,
     );
+    // An untouched empty field is not an error yet.
+    const errors = Object.fromEntries(
+      Object.entries(allErrors).filter(([field]) =>
+        card.touched.has(field as FieldName),
+      ),
+    ) as Partial<Record<FieldName, string>>;
     return {
       slot,
       measurement,
@@ -847,9 +874,37 @@ export class HairToolSizeVisualiserWidgetComponent {
   }
 
   /** Commits on change (blur or Enter), so partial typing is ignored. */
-  setField(slot: Slot, field: FieldName, event: Event): void {
+  /**
+   * Commits a field once the reader pauses typing, so a half-typed value such
+   * as “1 1/” is never drawn, but nobody has to leave the field or press Enter.
+   */
+  queueField(slot: Slot, field: FieldName, event: Event): void {
+    const input = event.target as HTMLInputElement;
     const card = this.card(slot);
-    const raw = (event.target as HTMLInputElement).value;
+    const key = `${this.mode}-${slot}-${field}`;
+    clearTimeout(this.commitTimers.get(key));
+    this.commitTimers.set(
+      key,
+      setTimeout(() => {
+        this.commitTimers.delete(key);
+        this.commitField(card, field, input.value);
+        this.changeDetector.markForCheck();
+      }, FIELD_COMMIT_DELAY_MS),
+    );
+  }
+
+  /** Commits immediately on blur or Enter. */
+  setField(slot: Slot, field: FieldName, event: Event): void {
+    clearTimeout(this.commitTimers.get(`${this.mode}-${slot}-${field}`));
+    this.commitField(
+      this.card(slot),
+      field,
+      (event.target as HTMLInputElement).value,
+    );
+  }
+
+  private commitField(card: CardState, field: FieldName, raw: string): void {
+    card.touched.add(field);
     card.raw[field] = raw;
     const parsed = parseLength(raw, this.unit);
     if (parsed === null) {
